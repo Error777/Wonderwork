@@ -162,8 +162,8 @@
 	name = "small notebook"
 	desc = "A generic small spiral notebook that flips upwards."
 	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "smallnotetext"
-	item_state = "smallnotetext"
+	icon_state = "smallnotetext00"
+	item_state = "smallnotetext00"
 
 /obj/item/weapon/storage/fluff/maye_daye_1 //morrinn: Maye Day
 	name = "pristine lunchbox"
@@ -420,8 +420,8 @@
 	name = "McReary's journal"
 	desc = "A journal with a warning sticker on the front cover. The initials \"J.M.\" are written on the back."
 	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "mcreary_journal"
-	item_state = "mcreary_journal"
+	icon_state = "mcreary_journal00"
+	item_state = "mcreary_journal00"
 
 /obj/item/device/flashlight/fluff/thejesster14_1 //thejesster14: Rosa Wolff
 	name = "old red flashlight"
