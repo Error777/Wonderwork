@@ -1,0 +1,159 @@
+
+
+Starting up. 01:14.56
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[01:14:56]ADMIN: Loading Banlistjob
+[01:14:56]ADMIN: Loading jobban_rank
+[01:14:56]ADMIN: jobban_keylist was empty
+[01:14:56]ADMIN: Updating jobbanfile!
+[01:14:56]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[01:15:53]ACCESS: Login: Recei/(Recei) from 127.0.0.1-2019073278 || BYOND v506
+[01:16:38]ADMIN: Recei has started the game.
+[01:16:39]GAME: The current game mode is - extended
+[01:16:41]DEBUG: Next event in 19.332 minutes.
+[01:16:42]ACCESS: Logout: *no key*/(Recei)
+[01:16:42]ACCESS: Login: Recei/(Luca Ellis) from 127.0.0.1-2019073278 || BYOND v506
+[01:26:45]SAY: Experiment 88d/ : eh?
+[01:27:51]SAY: Runtime/ : Esp!
+[01:28:39]ACCESS: Logout: Recei/(Luca Ellis)
+
+
+Starting up. 02:37.05
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[02:37:05]ADMIN: Loading Banlistjob
+[02:37:05]ADMIN: Loading jobban_rank
+[02:37:05]ADMIN: jobban_keylist was empty
+[02:37:05]ADMIN: Updating jobbanfile!
+[02:37:05]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[02:38:48]ACCESS: Login: Recei/(Recei) from 127.0.0.1-2019073278 || BYOND v506
+[02:39:31]ADMIN: Recei has started the game.
+[02:39:31]GAME: The current game mode is - extended
+[02:39:34]DEBUG: Next event in 28.56 minutes.
+[02:39:34]ACCESS: Logout: *no key*/(Recei)
+[02:39:34]ACCESS: Login: Recei/(Leroy Moore) from 127.0.0.1-2019073278 || BYOND v506
+[02:41:35]ADMIN: Recei/(Leroy Moore) created a /obj/machinery/computer
+[02:41:41]ADMIN: Recei/(Leroy Moore) deleted the computer at (216,126,1)
+[02:41:45]ADMIN: Recei/(Leroy Moore) created a /obj/machinery/computer/rust_radiation_monitor
+[02:41:52]ADMIN: Recei/(Leroy Moore) deleted Radiation Monitor at (216,126,1)
+[02:42:00]ADMIN: Recei/(Leroy Moore) created a /obj/machinery/computer/rdconsole
+[02:42:06]ADMIN: Recei/(Leroy Moore) deleted R&D Console at (216,129,1)
+[02:42:13]ADMIN: Recei/(Leroy Moore) created a /obj/machinery/computer/telecomms/monitor
+[02:42:27]ADMIN: Recei/(Leroy Moore) deleted Telecommunications Monitor at (217,129,1)
+[02:42:30]ADMIN: Recei/(Leroy Moore) created a /obj/machinery/computer/gravity_control_computer
+[02:42:41]ADMIN: Recei/(Leroy Moore) deleted Gravity Generator Control at (217,126,1)
+[02:42:46]ADMIN: Recei/(Leroy Moore) created a /obj/machinery/computer/rust_core_control
+[02:42:51]ADMIN: Recei/(Leroy Moore) deleted RUST Core Control at (218,126,1)
+[02:42:59]ADMIN: Recei/(Leroy Moore) created a /obj/machinery/computer/rust_fuel_control
+[02:43:06]ACCESS: Logout: Recei/(Leroy Moore)
+
+
+Starting up. 02:50.58
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[02:50:58]ADMIN: Loading Banlistjob
+[02:50:58]ADMIN: Loading jobban_rank
+[02:50:58]ADMIN: jobban_keylist was empty
+[02:50:58]ADMIN: Updating jobbanfile!
+[02:50:58]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[02:51:54]ACCESS: Login: Recei/(Recei) from 127.0.0.1-2019073278 || BYOND v506
+[02:53:14]ADMIN: Recei has started the game.
+[02:53:16]GAME: The current game mode is - extended
+[02:53:18]DEBUG: Next event in 24.122 minutes.
+[02:53:22]ACCESS: Logout: *no key*/(Recei)
+[02:53:22]ACCESS: Login: Recei/(Jaylen Owens) from 127.0.0.1-2019073278 || BYOND v506
+[02:53:26]SAY: Experiment 88d/ : eh?
+[02:53:40]SAY: Experiment 88d/ : eh?
+[02:54:11]ADMIN: Recei/(Jaylen Owens) created a /obj/machinery/computer/rust_fuel_control
+[02:54:21]ADMIN: Recei/(Jaylen Owens) deleted RUST Fuel Injection Control at (217,130,1)
+[02:54:30]ADMIN: Recei/(Jaylen Owens) created a /obj/machinery/computer/rust_fuel_control
+[02:54:44]ADMIN: Recei/(Jaylen Owens) deleted RUST Fuel Injection Control at (175,134,1)
+[02:54:47]ACCESS: Logout: Recei/(Jaylen Owens)
+
+
+Starting up. 03:26.42
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[03:26:42]ADMIN: Loading Banlistjob
+[03:26:42]ADMIN: Loading jobban_rank
+[03:26:42]ADMIN: jobban_keylist was empty
+[03:26:42]ADMIN: Updating jobbanfile!
+[03:26:42]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[03:27:10]ACCESS: Login: Recei/(Recei) from 127.0.0.1-2019073278 || BYOND v506
+[03:27:58]ADMIN: Recei has started the game.
+[03:27:58]GAME: The current game mode is - extended
+[03:28:01]DEBUG: Next event in 22.1 minutes.
+[03:28:02]ACCESS: Logout: *no key*/(Recei)
+[03:28:02]ACCESS: Login: Recei/(Zachariah Wile) from 127.0.0.1-2019073278 || BYOND v506
+[03:29:52]ADMIN: Recei/(Zachariah Wile) modified light fixture's LuminosityGreen to 7
+[03:30:03]SAY: Runtime/ : Purr!
+[03:30:14]SAY: Experiment 88d/ : eh?
+[03:30:17]ADMIN: Recei/(Zachariah Wile) modified light fixture's luminosity to 8
+[03:30:21]ADMIN: Recei/(Zachariah Wile) modified light fixture's luminosity to 1
+[03:30:25]ADMIN: Recei/(Zachariah Wile) modified light fixture's luminosity to 3
+[03:30:30]ADMIN: Recei/(Zachariah Wile) modified light fixture's LuminosityBlue to 5
+[03:31:03]ADMIN: Recei/(Zachariah Wile) modified light fixture's on to 1
+[03:31:16]ADMIN: Recei/(Zachariah Wile) modified light fixture's brightness to 5
+[03:31:33]ADMIN: Recei/(Zachariah Wile) modified light fixture's infra_luminosity to 5
+[03:31:44]ACCESS: Logout: Recei/(Zachariah Wile)

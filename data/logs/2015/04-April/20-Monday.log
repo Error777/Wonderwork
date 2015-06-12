@@ -1,0 +1,35 @@
+
+
+Starting up. 01:11.12
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[01:11:12]ADMIN: Loading Banlistjob
+[01:11:12]ADMIN: Loading jobban_rank
+[01:11:12]ADMIN: jobban_keylist was empty
+[01:11:12]ADMIN: Updating jobbanfile!
+[01:11:12]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[01:12:31]ACCESS: Login: VictorSerion/(VictorSerion) from 127.0.0.1-2019073278 || BYOND v506
+[01:14:58]ADMIN: VictorSerion has started the game.
+[01:14:58]GAME: The current game mode is - extended
+[01:14:58]ACCESS: Logout: *no key*/(VictorSerion)
+[01:14:58]ACCESS: Login: VictorSerion/(Jace Williamson) from 127.0.0.1-2019073278 || BYOND v506
+[01:14:59]GAME:  (victorserion) with rank (Captain) spawn at 126,161,1
+[01:15:02]DEBUG: Next event in 22.944 minutes.
+[01:15:31]SAY: Ian/ : YAP.
+[01:19:30]SAY: Runtime/ : HSSSSS.
+[01:20:34]ACCESS: Logout: VictorSerion/(Jace Williamson)

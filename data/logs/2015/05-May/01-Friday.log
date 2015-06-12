@@ -1,0 +1,131 @@
+
+
+Starting up. 18:10.47
+---------------------
+
+
+Starting up. 18:16.37
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[18:17:37]ADMIN: Loading Banlistjob
+[18:17:37]ADMIN: Loading jobban_rank
+[18:17:37]ADMIN: jobban_keylist was empty
+[18:17:37]ADMIN: Updating jobbanfile!
+[18:17:37]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[18:18:32]ACCESS: Login: Recei/(Recei) from localhost-2019073278 || BYOND v506
+[18:19:08]ADMIN: Recei has started the game.
+[18:19:08]GAME: The current game mode is - extended
+[18:19:10]DEBUG: Next event in 25.728 minutes.
+[18:19:13]ACCESS: Logout: *no key*/(Recei)
+[18:19:13]ACCESS: Login: Recei/(Alexander Hill) from localhost-2019073278 || BYOND v506
+[18:23:44]SAY: Experiment 88d/ : EHEHEHEHEH.
+[18:27:06]SAY: Experiment 88d/ : eh?
+[18:28:16]SAY: Runtime/ : HSSSSS.
+[18:29:09]SAY: Runtime/ : Purr!
+[18:30:16]ADMIN: Recei/(Alexander Hill) jumped to 132,117,1 in Bar Maintenance
+[18:30:22]ADMIN: Recei/(Alexander Hill) jumped to 131,120,1 in Bar Maintenance
+[18:33:35]ADMIN: Recei/(Alexander Hill) toggled debugging on.
+[18:33:38]ATTACK: Alexander Hill(Recei) was shocked at (131,119,1) by the grille
+[18:36:11]ADMIN: Recei/(Alexander Hill) jumped to *no key*/(Boris)
+[18:36:31]ADMIN: Recei/(Alexander Hill) jumped to the Aft Primary Hallway
+[18:37:44]GAME: Explosion with size (1, 2, 4) in area Bar Maintenance 
+[18:40:29]ADMIN: Recei/(Alexander Hill) jumped to Bar Maintenance
+[18:41:01]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[18:41:14]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[18:41:16]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[18:41:37]ACCESS: Logout: Recei/(Alexander Hill)
+
+
+Starting up. 19:56.48
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[19:56:50]ADMIN: Loading Banlistjob
+[19:56:50]ADMIN: Loading jobban_rank
+[19:56:50]ADMIN: jobban_keylist was empty
+[19:56:50]ADMIN: Updating jobbanfile!
+[19:56:50]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[19:56:54]ACCESS: Login: Recei/(Recei) from localhost-2019073278 || BYOND v506
+[19:57:37]ADMIN: Recei has started the game.
+[19:57:37]GAME: The current game mode is - extended
+[19:57:40]DEBUG: Next event in 23.486 minutes.
+[19:57:41]ACCESS: Logout: *no key*/(Recei)
+[19:57:41]ACCESS: Login: Recei/(Alexander Hill) from localhost-2019073278 || BYOND v506
+[19:58:04]ADMIN: Recei/(Alexander Hill) jumped to the Administration Shuttle Centcom
+[19:58:10]ADMIN: Recei/(Alexander Hill) jumped to 97,98,2 in the Administration Shuttle Centcom
+[19:58:23]ADMIN: Recei/(Alexander Hill) changed the equipment of Recei/(Alexander Hill) to centcom commander.
+[19:59:50]ADMIN: Recei/(Alexander Hill) modified Hologram Computer's pixel_y to 0
+[20:01:32]SAY: Runtime/ : Esp!
+[20:07:48]SAY: Experiment 88d/ : EHEHEHEHEH.
+[20:12:18]SAY: corgi puppy/ : Woof!
+[20:14:25]SAY: Experiment 88d/ : eh?
+[20:17:35]SAY: Runtime/ : Purr!
+[20:17:35]ATTACK: viscerator () attacked Alexander Hill (recei)(Animal)
+[20:17:37]ATTACK: viscerator () attacked Alexander Hill (recei)(Animal)
+[20:17:39]ATTACK: viscerator () attacked Alexander Hill (recei)(Animal)
+[20:17:41]ATTACK: viscerator () attacked Alexander Hill (recei)(Animal)
+[20:17:43]ATTACK: viscerator () attacked Alexander Hill (recei)(Animal)
+[20:17:45]ATTACK: viscerator () attacked Alexander Hill (recei)(Animal)
+[20:17:47]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> screams!
+[20:17:48]ATTACK: viscerator () attacked Alexander Hill (recei)(Animal)
+[20:17:55]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:17:57]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:18:02]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:18:06]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:18:08]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:18:26]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:18:30]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:19:06]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:19:12]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:19:21]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:19:25]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:19:53]SAY: Experiment 88d/ : EHEHEHEHEH.
+[20:19:57]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:20:01]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> gasps!
+[20:20:03]EMOTE: Alexander Hill/Recei : <B>Alexander Hill</B> seizes up and falls limp, his eyes dead and lifeless...
+[20:21:10]DEBUG: Firing random event. #Engineer:0 #Medical:0 #Security:0 #Scientist:0 #AI:0 #Cyborg:0 #Janitor:0 #Botanist:0 ||| /datum/event/economic_event:200/datum/event/trivial_news:300/datum/event/mundane_news:200/datum/event/pda_spam:200/datum/event/money_lotto:50/datum/event/carp_migration:50/datum/event/brand_intelligence:50/datum/event/rogue_drone:25/datum/event/infestation:50/datum/event/communications_blackout:50/datum/event/ionstorm:1/datum/event/grid_check:25/datum/event/electrical_storm:1/datum/event/wallrot:1/datum/event/spacevine:5/datum/event/viral_infection:25/datum/event/prison_break:1|||Picked:/datum/event/pda_spam
+[20:21:10]DEBUG: Next event in 20.412 minutes.
+[20:21:39]SAY: Runtime/ : Esp!
+[20:22:33]SAY: Runtime/ : Esp!
+[20:23:23]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:23:25]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:32:36]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:32:38]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:33:35]ATTACK: viscerator () attacked mouse ()(Animal)
+[20:36:44]SAY: Experiment 88d/ : eh?
+[20:37:51]SAY: Experiment 88d/ : eh?
+[20:38:19]SAY: Ian/ : YAP.
+[20:40:37]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:40:39]ATTACK: viscerator () attacked corgi puppy ()(Animal)
+[20:41:35]DEBUG: Firing random event. #Engineer:0 #Medical:0 #Security:0 #Scientist:0 #AI:0 #Cyborg:0 #Janitor:0 #Botanist:0 ||| /datum/event/economic_event:200/datum/event/trivial_news:300/datum/event/mundane_news:200/datum/event/pda_spam:1/datum/event/money_lotto:50/datum/event/carp_migration:50/datum/event/brand_intelligence:50/datum/event/rogue_drone:25/datum/event/infestation:50/datum/event/communications_blackout:50/datum/event/ionstorm:1/datum/event/grid_check:25/datum/event/electrical_storm:1/datum/event/wallrot:1/datum/event/spacevine:5/datum/event/meteor_wave:1/datum/event/meteor_shower:1/datum/event/blob:1/datum/event/viral_infection:25/datum/event/prison_break:1|||Picked:/datum/event/mundane_news
+[20:41:35]DEBUG: Next event in 25.432 minutes.
+[20:42:37]ACCESS: Logout: Recei/(Alexander Hill)
