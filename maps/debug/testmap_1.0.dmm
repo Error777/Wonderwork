@@ -1,0 +1,240 @@
+"aa" = (/turf/space,/area)
+"ab" = (/turf/simulated/wall/r_wall,/area/teleporter)
+"ac" = (/obj/structure/disposalpipe/segment,/turf/simulated/wall/r_wall,/area/teleporter)
+"ad" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/wall/r_wall,/area/teleporter)
+"ae" = (/turf/simulated/floor{dir = 1; icon_state = "arrival"},/area/teleporter)
+"af" = (/obj/structure/disposalpipe/segment,/turf/simulated/floor{dir = 1; icon_state = "arrival"},/area/teleporter)
+"ag" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor{dir = 1; icon_state = "arrival"},/area/teleporter)
+"ah" = (/turf/simulated/floor{dir = 9; icon_state = "warning"},/area/teleporter)
+"ai" = (/turf/simulated/floor{dir = 1; icon_state = "warning"},/area/teleporter)
+"aj" = (/obj/machinery/light{dir = 1},/turf/simulated/floor{dir = 1; icon_state = "warning"},/area/teleporter)
+"ak" = (/turf/simulated/floor,/area/teleporter)
+"al" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/teleporter)
+"am" = (/obj/structure/disposalpipe/segment,/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor,/area/teleporter)
+"an" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor,/area/teleporter)
+"ao" = (/turf/simulated/wall/r_wall,/area/bridge)
+"ap" = (/turf/simulated/floor{dir = 8; icon_state = "warning"},/area/teleporter)
+"aq" = (/turf/simulated/floor{tag = "icon-warningcorner"; icon_state = "warningcorner"; dir = 2},/area/teleporter)
+"ar" = (/obj/machinery/status_display{layer = 4; pixel_x = 0; pixel_y = -32},/turf/simulated/floor{icon_state = "warning"},/area/teleporter)
+"as" = (/turf/simulated/floor{icon_state = "warning"},/area/teleporter)
+"at" = (/turf/simulated/floor{tag = "icon-warningcorner (NORTH)"; icon_state = "warningcorner"; dir = 1},/area/teleporter)
+"au" = (/turf/simulated/wall/r_wall,/area/crew_quarters/captain)
+"av" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/door/airlock/hatch{name = "Captain's Office"; req_access_txt = "20"},/obj/structure/disposalpipe/segment,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aw" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/wall/r_wall,/area/crew_quarters/captain)
+"ax" = (/turf/simulated/floor,/area/bridge)
+"ay" = (/obj/machinery/door/airlock/hatch{name = "Bridge"; req_access_txt = "19"},/turf/simulated/floor,/area/teleporter)
+"az" = (/turf/simulated/floor{dir = 9; icon_state = "escape"},/area/teleporter)
+"aA" = (/turf/simulated/floor{dir = 1; icon_state = "escape"},/area/teleporter)
+"aB" = (/obj/item/device/radio/intercom{broadcasting = 0; name = "Station Intercom (General)"; pixel_y = 20},/obj/machinery/light{dir = 1},/obj/machinery/camera/xray{c_tag = "Arrivals Escape Pods"},/turf/simulated/floor{dir = 1; icon_state = "warning"},/area/teleporter)
+"aC" = (/turf/simulated/floor{tag = "icon-warningcorner (EAST)"; icon_state = "warningcorner"; dir = 4},/area/teleporter)
+"aD" = (/turf/simulated/floor{dir = 4; icon_state = "warning"},/area/teleporter)
+"aE" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/teleporter)
+"aF" = (/obj/machinery/door/airlock/external{name = "Arrival Airlock"},/turf/simulated/floor/plating,/area/teleporter)
+"aG" = (/obj/structure/closet/emcloset,/turf/simulated/floor{dir = 10; icon_state = "warning"},/area/teleporter)
+"aH" = (/obj/structure/table/woodentable,/obj/item/weapon/pinpointer,/obj/item/weapon/disk/nuclear,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aI" = (/obj/structure/table/woodentable,/obj/item/weapon/melee/chainofcommand,/obj/item/device/megaphone,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aJ" = (/obj/structure/table/woodentable,/obj/machinery/recharger{pixel_y = 4},/obj/machinery/firealarm{pixel_x = 0; pixel_y = 24; tag = "24"},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aK" = (/obj/machinery/disposal,/obj/machinery/light{dir = 1},/obj/structure/disposalpipe/trunk,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aL" = (/obj/structure/table/woodentable,/obj/item/device/destTagger{pixel_x = 4; pixel_y = 3},/obj/item/weapon/packageWrap,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aM" = (/obj/machinery/power/apc{cell_type = 5000; dir = 1; name = "Captain's Office APC"; pixel_y = 24},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aN" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/structure/disposalpipe/segment,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aO" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/structure/flora/kirbyplants{icon_state = "plant-10"},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aP" = (/obj/machinery/door/firedoor{layer = 2.6},/obj/machinery/door/window/northleft,/turf/simulated/floor{icon_state = "bot"},/area/bridge)
+"aQ" = (/obj/machinery/door/firedoor{layer = 2.6},/obj/machinery/door/window/northright,/turf/simulated/floor{icon_state = "bot"},/area/bridge)
+"aR" = (/turf/simulated/floor{dir = 8; icon_state = "escape"},/area/teleporter)
+"aS" = (/obj/machinery/vending/coffee,/turf/simulated/floor{dir = 6; icon_state = "warning"},/area/teleporter)
+"aT" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/teleporter)
+"aU" = (/turf/simulated/floor/plating,/area/teleporter)
+"aV" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/sign/securearea{desc = "A warning sign which reads 'EXTERNAL AIRLOCK'"; icon_state = "space"; layer = 4; name = "EXTERNAL AIRLOCK"; pixel_x = 0; pixel_y = 32},/turf/simulated/floor/plating,/area/teleporter)
+"aW" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/teleporter)
+"aX" = (/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"aY" = (/obj/structure/stool/bed/chair{dir = 1},/obj/machinery/atmospherics/unary/vent_scrubber{dir = 4; on = 1},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"aZ" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"ba" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{color = ""; dir = 1; icon_state = "manifold-r-f"; initialize_directions = 13; level = 1; name = "Scrubbers pipe"},/obj/structure/disposalpipe/segment{dir = 1; icon_state = "pipe-c"},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"bb" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"bc" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/structure/disposalpipe/segment{dir = 8; icon_state = "pipe-c"},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"bd" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 9},/obj/machinery/light_switch{dir = 4; pixel_x = 26; pixel_y = 0},/obj/machinery/computer/arcade{LuminosityGreen = 3},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"be" = (/turf/unsimulated/wall,/area/start)
+"bf" = (/obj/machinery/light{dir = 8},/obj/item/device/radio/intercom{dir = 1; name = "Station Intercom (General)"; pixel_y = 20},/turf/simulated/floor{dir = 8; icon_state = "warning"},/area/bridge)
+"bg" = (/obj/structure/stool/bed/chair/office/dark{dir = 4},/obj/machinery/door_control{dir = 1; id = "store1"; name = "Store Shutters"; pixel_y = 27},/turf/simulated/floor,/area/bridge)
+"bh" = (/obj/structure/table,/obj/structure/window/reinforced,/obj/machinery/door/window/eastleft{name = "Store"},/turf/simulated/floor,/area/bridge)
+"bi" = (/turf/simulated/floor{dir = 8; icon_state = "neutralcorner"},/area/bridge)
+"bj" = (/obj/machinery/door_control{dir = 8; id = "store1"; name = "Store Shutters"; pixel_x = 27; pixel_y = 0; req_access_txt = "19"},/turf/simulated/floor{icon_state = "neutralcorner"; dir = 2},/area/bridge)
+"bk" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/teleporter)
+"bl" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area/teleporter)
+"bm" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating,/area/teleporter)
+"bn" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/teleporter)
+"bo" = (/turf/space,/area/teleporter)
+"bp" = (/obj/machinery/alarm{dir = 4; icon_state = "alarm0"; pixel_x = -22},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bq" = (/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"br" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"bs" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"bt" = (/obj/machinery/camera{c_tag = "Captain's Office"; dir = 8},/obj/machinery/vending/snack,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bu" = (/turf/simulated/floor{dir = 8; icon_state = "warning"},/area/bridge)
+"bv" = (/obj/machinery/door/poddoor/shutters{density = 0; dir = 2; icon_state = "shutter0"; id = "store1"; layer = 2.9; name = "Store Shutters"; opacity = 0},/turf/simulated/floor,/area/bridge)
+"bw" = (/obj/machinery/atm{pixel_x = 27},/turf/simulated/floor{icon_state = "neutralcorner"; dir = 2},/area/bridge)
+"bx" = (/turf/simulated/shuttle/wall{tag = "icon-swall_s6"; icon_state = "swall_s6"; dir = 2},/area/shuttle/arrival/station)
+"by" = (/turf/simulated/shuttle/wall{tag = "icon-swall8"; icon_state = "swall8"; dir = 2},/area/shuttle/arrival/station)
+"bz" = (/obj/structure/window/reinforced,/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/turf/simulated/shuttle/plating,/area/shuttle/arrival/station)
+"bA" = (/turf/simulated/shuttle/wall,/area/shuttle/arrival/station)
+"bB" = (/obj/machinery/door/unpowered/shuttle,/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"bC" = (/turf/simulated/shuttle/wall{tag = "icon-swallc2"; icon_state = "swallc2"},/area/shuttle/arrival/station)
+"bD" = (/turf/simulated/shuttle/wall{tag = "icon-swall_s10"; icon_state = "swall_s10"; dir = 2},/area/shuttle/arrival/station)
+"bE" = (/obj/structure/table/woodentable,/obj/item/weapon/paper_bin{pixel_x = -3; pixel_y = 7},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bF" = (/obj/structure/table/woodentable,/obj/item/weapon/pen,/obj/item/weapon/stamp/captain,/obj/item/weapon/folder/blue,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bG" = (/obj/structure/table/woodentable,/obj/item/weapon/hand_tele,/obj/item/clothing/glasses/thermal/monocle,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bH" = (/obj/structure/table/woodentable,/obj/item/device/flashlight/lamp/green,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bI" = (/obj/structure/stool/bed/chair{dir = 8},/mob/living/carbon/monkey{icon_state = "monkey1"; name = "Pun Pun"},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bJ" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bK" = (/obj/machinery/vending/cola,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bL" = (/obj/machinery/firealarm{dir = 8; pixel_x = -24},/obj/machinery/light{dir = 8},/turf/simulated/floor{dir = 8; icon_state = "neutralcorner"},/area/bridge)
+"bM" = (/turf/simulated/floor{icon_state = "neutralcorner"; dir = 2},/area/bridge)
+"bN" = (/obj/machinery/door/airlock/hatch{name = "Bridge"; req_access_txt = "19"},/turf/simulated/floor{icon_state = "delivery"},/area/teleporter)
+"bO" = (/turf/simulated/shuttle/wall{tag = "icon-swall14"; icon_state = "swall14"; dir = 2},/area/shuttle/arrival/station)
+"bP" = (/turf/simulated/shuttle/wall{tag = "icon-swall12"; icon_state = "swall12"; dir = 2},/area/shuttle/arrival/station)
+"bQ" = (/turf/simulated/shuttle/wall{tag = "icon-swall11"; icon_state = "swall11"; dir = 2},/area/shuttle/arrival/station)
+"bR" = (/obj/structure/closet/wardrobe/green,/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"bS" = (/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"bT" = (/turf/simulated/shuttle/wall{icon_state = "swallc3"; tag = "icon-swallc3"},/area/shuttle/arrival/station)
+"bU" = (/obj/structure/shuttle/engine/propulsion{tag = "icon-burst_r (WEST)"; icon_state = "burst_r"; dir = 8},/turf/space,/area/shuttle/arrival/station)
+"bV" = (/obj/machinery/requests_console{announcementConsole = 1; department = "Captain's Desk"; departmentType = 5; name = "Captain RC"; pixel_x = -30; pixel_y = 0},/obj/structure/filingcabinet,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bW" = (/obj/structure/stool/bed/chair/comfy/brown{dir = 4},/obj/effect/landmark/start{name = "Captain"},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bX" = (/obj/machinery/computer/communications{LuminosityBlue = 1; LuminosityGreen = 3},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bY" = (/obj/structure/table/woodentable,/obj/item/weapon/book/manual/security_space_law,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bZ" = (/obj/structure/stool/bed/chair{dir = 8},/obj/machinery/atmospherics/unary/vent_pump{dir = 4; external_pressure_bound = 101.325; on = 1; pressure_checks = 1},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"ca" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cb" = (/obj/item/weapon/storage/secure/safe{pixel_x = 35; pixel_y = 5},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 4; icon_state = "manifold-b-f"; initialize_directions = 13; layer = 2.4; level = 1; name = "pipe manifold"},/obj/structure/displaycase,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cc" = (/obj/structure/stool/bed/chair/office/dark{dir = 4},/obj/machinery/door_control{dir = 1; id = "store2"; name = "Store Shutters"; pixel_y = 27},/turf/simulated/floor,/area/bridge)
+"cd" = (/obj/machinery/door_control{dir = 8; id = "store2"; name = "Store Shutters"; pixel_x = 27; pixel_y = 0; req_access_txt = "19"},/turf/simulated/floor{icon_state = "neutralcorner"; dir = 2},/area/bridge)
+"ce" = (/turf/simulated/shuttle/floor,/turf/simulated/shuttle/wall{tag = "icon-swall_f9"; icon_state = "swall_f9"; dir = 2},/area/shuttle/arrival/station)
+"cf" = (/obj/structure/stool/bed/chair{dir = 8},/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"cg" = (/turf/simulated/shuttle/wall{icon_state = "swall1"; dir = 2},/area/shuttle/arrival/station)
+"ch" = (/obj/structure/closet/wardrobe/mixed,/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"ci" = (/obj/structure/stool/bed/chair{dir = 8},/obj/effect/landmark{name = "JoinLate"},/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"cj" = (/obj/structure/shuttle/engine/heater{tag = "icon-heater (EAST)"; icon_state = "heater"; dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating/airless,/area/shuttle/arrival/station)
+"ck" = (/obj/structure/shuttle/engine/propulsion{tag = "icon-propulsion (WEST)"; icon_state = "propulsion"; dir = 8},/turf/space,/area/shuttle/arrival/station)
+"cl" = (/obj/item/device/radio/intercom{anyai = 1; broadcasting = 0; freerange = 1; listening = 1; name = "Captain's Intercom"; pixel_x = -27; pixel_y = -3},/obj/structure/closet/secure_closet/captains,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cm" = (/obj/machinery/computer/card{LuminosityBlue = 2; LuminosityGreen = 1},/obj/item/weapon/card/id/captains_spare,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cn" = (/obj/structure/table/woodentable,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"co" = (/obj/machinery/hologram/holopad,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cp" = (/obj/machinery/door/poddoor/shutters{density = 0; dir = 2; icon_state = "shutter0"; id = "store2"; layer = 2.9; name = "Store Shutters"; opacity = 0},/turf/simulated/floor,/area/bridge)
+"cq" = (/obj/machinery/alarm{dir = 1; icon_state = "alarm0"; pixel_y = -22},/turf/simulated/floor{dir = 8; icon_state = "neutralcorner"},/area/bridge)
+"cr" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/turf/simulated/shuttle/plating,/area/shuttle/arrival/station)
+"cs" = (/obj/effect/landmark{name = "Observer-Start"},/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"ct" = (/obj/structure/rack,/obj/item/weapon/tank/jetpack/oxygen,/obj/item/clothing/mask/gas,/obj/item/clothing/suit/armor/captain,/obj/item/clothing/head/helmet/space/capspace,/obj/machinery/newscaster/security_unit{pixel_x = -32; pixel_y = 0},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cu" = (/obj/machinery/door/window{base_state = "right"; dir = 4; icon_state = "right"; name = "Captain's Desk Door"; req_access_txt = "20"},/obj/machinery/atmospherics/unary/vent_scrubber{dir = 1; on = 1; scrub_CO2 = 0; scrub_N2O = 0; scrub_Toxins = 0},/obj/machinery/light,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cv" = (/obj/machinery/door/firedoor{layer = 2.6},/obj/machinery/door/airlock/command{name = "Mint"; req_access_txt = "19"},/turf/simulated/floor{icon_state = "vault"; dir = 8},/area/bridge)
+"cw" = (/turf/simulated/shuttle/floor,/turf/simulated/shuttle/wall{tag = "icon-swall_f10"; icon_state = "swall_f10"; dir = 2},/area/shuttle/arrival/station)
+"cx" = (/turf/simulated/shuttle/wall{tag = "icon-swall2"; icon_state = "swall2"; dir = 2},/area/shuttle/arrival/station)
+"cy" = (/obj/structure/closet/wardrobe/white,/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"cz" = (/obj/machinery/door/airlock/hatch{name = "Captain's Office"; req_access_txt = "20"},/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"cA" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/door/airlock/hatch{name = "Captain's Office"; req_access_txt = "20"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/crew_quarters/captain)
+"cB" = (/obj/structure/closet/crate,/obj/item/stack/sheet/metal{amount = 50},/turf/simulated/floor{icon_state = "delivery"},/area/bridge)
+"cC" = (/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor,/area/bridge)
+"cD" = (/obj/machinery/alarm{pixel_y = 24; tag = ""},/turf/simulated/floor{dir = 4; icon_state = "warning"},/area/bridge)
+"cE" = (/obj/machinery/mineral/output,/obj/machinery/light{dir = 1},/turf/simulated/floor{dir = 1; icon_state = "loadingarea"},/area/bridge)
+"cF" = (/turf/simulated/shuttle/wall{tag = "icon-swall_s5"; icon_state = "swall_s5"; dir = 2},/area/shuttle/arrival/station)
+"cG" = (/turf/simulated/shuttle/wall{tag = "icon-swall13"; icon_state = "swall13"; dir = 2},/area/shuttle/arrival/station)
+"cH" = (/obj/structure/closet/wardrobe/yellow,/turf/simulated/shuttle/floor,/area/shuttle/arrival/station)
+"cI" = (/obj/structure/shuttle/engine/propulsion{tag = "icon-burst_l (WEST)"; icon_state = "burst_l"; dir = 8},/turf/space,/area/shuttle/arrival/station)
+"cJ" = (/obj/machinery/light/small{dir = 1},/obj/structure/filingcabinet/security,/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"cK" = (/obj/machinery/light_switch{pixel_y = 28},/obj/machinery/atmospherics/unary/vent_pump{dir = 4; on = 1},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"cL" = (/obj/machinery/door/airlock{name = "Private Restroom"; req_access_txt = "0"},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor{icon_state = "freezerfloor"},/area/crew_quarters/captain)
+"cM" = (/obj/structure/sink{dir = 4; icon_state = "sink"; pixel_x = 11; pixel_y = 0},/obj/structure/mirror{pixel_x = 28},/obj/machinery/light{dir = 1},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor{icon_state = "freezerfloor"},/area/crew_quarters/captain)
+"cN" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/wall,/area/crew_quarters/captain)
+"cO" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 9},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/crew_quarters/captain)
+"cP" = (/obj/structure/lattice,/turf/space,/area)
+"cQ" = (/obj/effect/landmark/start,/turf/unsimulated/floor,/area/start)
+"cR" = (/obj/machinery/light{dir = 8},/obj/structure/closet/crate,/obj/item/stack/sheet/mineral/silver,/obj/item/stack/sheet/mineral/silver,/turf/simulated/floor{icon_state = "delivery"},/area/bridge)
+"cS" = (/obj/machinery/door/window/eastleft{name = "Mint Vault"; req_access_txt = "19"},/turf/simulated/floor,/area/bridge)
+"cT" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor{dir = 4; icon_state = "warning"},/area/bridge)
+"cU" = (/obj/machinery/mineral/mint,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor{icon_state = "bot"},/area/bridge)
+"cV" = (/obj/machinery/power/apc{dir = 4; name = "Mint APC"; pixel_x = 27; pixel_y = 2},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/simulated/floor{dir = 8; icon_state = "warning"},/area/bridge)
+"cW" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/turf/simulated/shuttle/plating,/area/shuttle/arrival/station)
+"cX" = (/turf/simulated/shuttle/wall{tag = "icon-swall4"; icon_state = "swall4"},/area/shuttle/arrival/station)
+"cY" = (/turf/simulated/shuttle/wall{icon_state = "swall12"; dir = 2},/area/shuttle/arrival/station)
+"cZ" = (/turf/simulated/shuttle/wall{icon_state = "swall13"; dir = 2},/area/shuttle/arrival/station)
+"da" = (/turf/simulated/shuttle/wall{tag = "icon-swall_s9"; icon_state = "swall_s9"; dir = 2},/area/shuttle/arrival/station)
+"db" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/captain,/obj/machinery/alarm{dir = 4; icon_state = "alarm0"; pixel_x = -22},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"dc" = (/obj/structure/table/woodentable,/obj/item/device/camera,/obj/item/weapon/storage/photo_album{pixel_y = -10},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"dd" = (/obj/structure/toilet{dir = 4},/turf/simulated/floor{icon_state = "freezerfloor"},/area/crew_quarters/captain)
+"de" = (/turf/simulated/wall,/area/crew_quarters/captain)
+"df" = (/obj/machinery/light/small{dir = 8},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/crew_quarters/captain)
+"dg" = (/obj/structure/closet/crate,/obj/item/stack/sheet/mineral/gold{pixel_y = 2},/turf/simulated/floor{icon_state = "delivery"},/area/bridge)
+"dh" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor{dir = 4; icon_state = "warning"},/area/bridge)
+"di" = (/obj/machinery/firealarm{dir = 1; pixel_x = 0; pixel_y = -24},/obj/machinery/mineral/input,/turf/simulated/floor{dir = 1; icon_state = "loadingarea"},/area/bridge)
+"dj" = (/obj/structure/table/woodentable,/obj/item/device/flashlight/lamp/green,/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"dk" = (/obj/structure/stool/bed/chair/comfy/brown{dir = 4},/obj/machinery/camera{c_tag = "Captain's Quarters"; dir = 1},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"dl" = (/obj/structure/table/woodentable,/obj/item/device/radio/intercom{name = "Station Intercom (General)"; pixel_y = -29},/obj/item/weapon/storage/box/matches,/obj/item/clothing/mask/cigarette/cigar,/obj/item/weapon/reagent_containers/food/drinks/flask{pixel_x = 8},/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"dm" = (/obj/machinery/door/window/eastright{base_state = "left"; dir = 1; icon_state = "left"; name = "Shower"; req_access_txt = "0"},/obj/machinery/shower{icon_state = "shower"; dir = 4},/obj/item/weapon/soap/deluxe,/obj/item/weapon/bikehorn/rubberducky,/turf/simulated/floor{icon_state = "freezerfloor"},/area/crew_quarters/captain)
+"dn" = (/obj/item/weapon/cigbutt/cigarbutt,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/crew_quarters/captain)
+"do" = (/obj/machinery/door/airlock/command{name = "Mint"; req_access_txt = "19"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/bridge)
+"dp" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/teleporter)
+"dq" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating,/area/teleporter)
+"dr" = (/obj/structure/sign/securearea{pixel_x = -32; pixel_y = 0},/obj/machinery/door/airlock/hatch{name = "Teleport Access"; req_access_txt = "17"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/teleporter)
+"ds" = (/turf/simulated/floor/plating,/area/bridge)
+"dt" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/bridge)
+"du" = (/turf/simulated/floor{dir = 8; icon_state = "brown"},/area/teleporter)
+"dv" = (/obj/structure/cable{d2 = 4; icon_state = "0-4"},/obj/machinery/power/apc{cell_type = 15000; dir = 1; name = "Engineering APC"; pixel_x = 0; pixel_y = 25},/turf/simulated/floor,/area/teleporter)
+"dw" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/teleporter)
+"dx" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/plating,/area/teleporter)
+"dy" = (/obj/structure/cable,/turf/simulated/floor/plating,/area/bridge)
+"dz" = (/obj/structure/stool/bed/chair/office/dark{dir = 4},/turf/simulated/floor{dir = 10; icon_state = "brown"},/area/teleporter)
+"dA" = (/obj/machinery/computer/secure_data{LuminosityRed = 3},/turf/simulated/floor{dir = 2; icon_state = "brown"},/area/teleporter)
+"dB" = (/turf/simulated/floor{dir = 2; icon_state = "brown"},/area/teleporter)
+"dC" = (/obj/machinery/computer/atmoscontrol{LuminosityGreen = 4},/turf/simulated/floor{dir = 2; icon_state = "brown"},/area/teleporter)
+"dD" = (/obj/structure/stool/bed/chair/office/dark{dir = 4},/turf/simulated/floor{dir = 2; icon_state = "brown"},/area/teleporter)
+"dE" = (/turf/unsimulated/wall/splashscreen,/area/start)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababacadabaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababaeaeaeaeaeaeaeaeaeafagabaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabahaiaiajakakalalalalalalalamanabaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaoaoaoaoaoaoababababababababapaqarakasatauauauauauauauavawauaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaoaxaxaxaxaxayazaAaAaAaAaBaiaCaDaEaFaEaGauaHaIaJaKaLaMaNaOauaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaoaoaoaoaPaQabaRakakakakakasasaSaTaUaVaWauaXaYaZbabbbbbcbdauaaaa
+bebebebebebebebebebebebebebebeaaaaaaaobfbgbhbibjabaRakbkblblblblblblbmaFbnboaubpbqbqbrbqbqbsbtauaaaa
+bebebebebebebebebebebebebebebeaaaaaaaobuaxbvbibwabaRakaTaaaaaabxbybzbAbBbCbDaubEbFbGbHbIaXbJbKauaaaa
+bebebebebebebebebebebebebebebeaaaaaaaoaoaoaobLbMbNaRakaTbxbObPbQbRbSbSbSbTbUaubVbWbXbYbZcacbauauaaaa
+bebebebebebebebebebebebebebebeaaaaaaaobfccbhbicdabaRakaTbTcecfcgchbScibScjckauclaXcmcnaXcobJauauaaaa
+bebebebebebebebebebebebebebebeaaaaaaaobuaxcpcqbwabaRakaTcrbSbSbBbScscibScjckauctaXaXcuaXaXbJauauaaaa
+bebebebebebebebebebebebebebebeaaaaaaaoaoaoaoaocvabaRakaTbCcwcfcxcybScibScjckauauczauauauaucAauauaaaa
+bebebebebebebebebebebebebebebeaaaaaaaocBcCcDcEbuabaRakaTcFcGbPbQcHbSbSbSbCcIaucJbqcKcLcMcNcOaucPaaaa
+bebebebebebebecQbebebebebebebeaaaaaaaocRcScTcUcVabaRakaTaaaaaacFbycWcXcYcZdaaudbbqdcaudddedfaucPaaaa
+bebebebebebebebebebebebebebebeaaaaaaaodgcCdhdibubNaRakaTaaaaaaaaaaaaaaaaaaaaaudjdkdlaudmdednaucPaaaa
+bebebebebebebebebebebebebebebeaaaaaaaoaoaodoaoaoabaRakdpblblblblblblblblbldqabababababababdrabcPaaaa
+bebebebebebebebebebebebebebebeaaaaaaaodsdsdtdsdsabduakakakakakakakakakakakakakakdvalalaldwdxabaaaaaa
+bebebebebebebebebebebebebebebeaaaaaaaodsdsdydsdsabdzdAdBdBdBdBdBdBdBdBdBdCdDasasasasasasasaUabaaaaaa
+bebebebebebebebebebebebebebebeaaaaaaaoaoaoaoaoaoabababababababababababababababababababababababaaaaaa
+bebebebebebebebebebebebebebebeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+dEbebebebebebebebebebebebebebeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
