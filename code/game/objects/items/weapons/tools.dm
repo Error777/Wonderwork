@@ -395,7 +395,7 @@
 	origin_tech = "engineering=2"
 
 /obj/item/weapon/weldingtool/mini
-	name = "emergency welding tool"
+	name = "mini welding tool"
 	icon_state = "miniwelder"
 	item_state = "welder"
 	w_class = 1
