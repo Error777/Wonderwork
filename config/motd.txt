@@ -1,3 +1,4 @@
+<meta http-equiv="content-type" content="text/html; charset=windows-1251" />
 <h1>Добро пожаловать на Космическую Станцию 13!</h1>
 
 -<i>This server is running <a href="http://baystation12.net/">Baystation 12's</a> modification of the <a href="http://nanotrasen.com/">/tg/station13</a> SS13 code.</i>

@@ -1,11 +1,11 @@
-VG-STATION WATCHDOG
+VG-STATION-Wonderwork WATCHDOG
 ===================
 <em>Keeping Serbians in Line since 2013.</em>
 
 This handy script will reboot your server automatically 
 after it freezes or crashes.  
 
-This is used on the /vg/station code testing server.
+This is used on the Wonderwork code testing server.
 
 Requirements
 ------------

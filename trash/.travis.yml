@@ -18,7 +18,7 @@ install:
   - cd ..
 
 script:
-  - bash dm.sh baystation12.dme
+  - bash dm.sh wonderwork.dme
 
 notifications:
   irc:

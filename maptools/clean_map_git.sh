@@ -3,11 +3,11 @@
 #MAPROOT='../../_maps/map_files/'
 MAPROOT="../maps/"
 MAPFILES=(
-	$MAPROOT"tgstation.dmm"
-	$MAPROOT"vgstation.dmm"
-	$MAPROOT"defficiency.dmm"
-	$MAPROOT"taxistation.dmm"
-	$MAPROOT"metaclub.dmm"
+	$MAPROOT"fernflower_1.4.1.dmm"
+	$MAPROOT"tgstation_2.0.7.dmm"
+	$MAPROOT"tgstation_2.1.0.dmm"
+	$MAPROOT"oldstation.dmm"
+	$MAPROOT"spacebattle.dmm"
 )
 for MAPFILE in "${MAPFILES[@]}"
 do
