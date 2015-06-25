@@ -1,0 +1,388 @@
+"aa" = (/turf/space,/area)
+"ab" = (/obj/structure/lattice,/obj/structure/grille,/turf/space,/area)
+"ac" = (/obj/structure/lattice,/obj/structure/grille{density = 0; health = 0; icon_state = "brokengrille"},/turf/space,/area)
+"ad" = (/obj/structure/lattice,/turf/space,/area)
+"ae" = (/obj/machinery/power/solar/fake,/turf/simulated/floor/airless{icon_state = "solarpanelnew"},/area)
+"af" = (/turf/simulated/floor/plating/airless{icon_state = "plating"},/area)
+"ag" = (/obj/machinery/camera{c_tag = "North Solars"; dir = 8; network = list("Tcomsat")},/turf/space,/area)
+"ah" = (/obj/structure/grille,/turf/simulated/floor/plating/airless,/area)
+"ai" = (/turf/simulated/wall/r_wall,/area)
+"aj" = (/turf/simulated/wall/r_wall,/area/turret_protected/tcomsat)
+"ak" = (/turf/simulated/wall/r_wall,/area/tcommsat/computer)
+"al" = (/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"am" = (/turf/space,/area/turret_protected/tcomsat)
+"an" = (/obj/structure/window/reinforced{dir = 4},/obj/machinery/camera{c_tag = "West Wing North"; dir = 2; network = list("Tcomsat")},/turf/space,/area/turret_protected/tcomsat)
+"ao" = (/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"ap" = (/obj/machinery/power/apc{dir = 1; name = "Telecoms Sat. APC"; pixel_x = 1; pixel_y = 26},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 6},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aq" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"ar" = (/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 1; icon_state = "manifold-b-f"; level = 1; name = "Air supply pipe manifold"},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"as" = (/obj/machinery/atmospherics/pipe/tank/air{dir = 8},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"at" = (/obj/item/weapon/coin/clown,/turf/simulated/floor/engine,/area/tcommsat/computer)
+"au" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/green,/turf/simulated/floor,/area/tcommsat/computer)
+"av" = (/obj/machinery/light{dir = 1},/turf/simulated/floor,/area/tcommsat/computer)
+"aw" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/brown,/turf/simulated/floor,/area/tcommsat/computer)
+"ax" = (/obj/machinery/camera{c_tag = "Lounge"; dir = 2; network = list("Tcomsat")},/turf/simulated/floor,/area/tcommsat/computer)
+"ay" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/red,/turf/simulated/floor,/area/tcommsat/computer)
+"az" = (/turf/simulated/floor,/area/tcommsat/computer)
+"aA" = (/obj/structure/lattice,/obj/structure/window/reinforced{dir = 4},/turf/space,/area/turret_protected/tcomsat)
+"aB" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/unary/vent_pump{on = 1},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aC" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/meter,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aD" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aE" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aF" = (/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/tank/air{dir = 8},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aG" = (/obj/structure/lattice,/obj/structure/window/reinforced{dir = 8},/turf/space,/area/turret_protected/tcomsat)
+"aH" = (/obj/structure/filingcabinet,/turf/simulated/floor,/area/tcommsat/computer)
+"aI" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 1; external_pressure_bound = 101.325; on = 1; pressure_checks = 0},/obj/machinery/camera{c_tag = "Main Computer Room"; dir = 2; network = list("Tcomsat")},/obj/structure/table,/obj/item/weapon/folder/yellow,/obj/item/weapon/folder/yellow,/obj/item/device/flashlight/lamp,/turf/simulated/floor,/area/tcommsat/computer)
+"aJ" = (/obj/structure/table,/obj/item/weapon/paper_bin,/obj/item/weapon/pen/blue{pixel_x = -3; pixel_y = 2},/turf/simulated/floor,/area/tcommsat/computer)
+"aK" = (/obj/machinery/computer/telecomms/traffic,/turf/simulated/floor,/area/tcommsat/computer)
+"aL" = (/obj/item/weapon/syntiflesh{name = "Cuban Pete-Meat"},/turf/simulated/floor/engine,/area/tcommsat/computer)
+"aM" = (/obj/item/device/radio/intercom{name = "Station Intercom (General)"; pixel_x = -29; pixel_y = 0},/turf/simulated/floor,/area/tcommsat/computer)
+"aN" = (/obj/structure/window/reinforced{dir = 4},/turf/space,/area/turret_protected/tcomsat)
+"aO" = (/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aP" = (/obj/machinery/atmospherics/valve/digital{color = ""; icon_state = "valve1"; name = "Mixed Air Outlet Valve"; open = 1},/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aQ" = (/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aR" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/closet,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"aS" = (/obj/structure/window/reinforced{dir = 8},/turf/space,/area/turret_protected/tcomsat)
+"aT" = (/obj/item/device/radio/intercom{dir = 8; name = "Station Intercom (General)"; pixel_x = -28},/turf/simulated/floor,/area/tcommsat/computer)
+"aU" = (/obj/structure/stool/bed/chair/office/dark{dir = 1},/turf/simulated/floor,/area/tcommsat/computer)
+"aV" = (/obj/structure/stool/bed/chair/office/dark{dir = 4},/turf/simulated/floor,/area/tcommsat/computer)
+"aW" = (/obj/machinery/computer/telecomms/monitor{network = list("tcommsat")},/obj/item/device/radio/intercom{anyai = 1; freerange = 1; name = "General Listening Channel"; pixel_x = 28; pixel_y = 0},/turf/simulated/floor,/area/tcommsat/computer)
+"aX" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/orange,/obj/machinery/light{dir = 8},/turf/simulated/floor,/area/tcommsat/computer)
+"aY" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"aZ" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/lattice,/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 4; icon_state = "manifold-b-f"; initialize_directions = 13; layer = 2.4; level = 1; name = "Air supply pipe manifold"},/turf/space,/area/turret_protected/tcomsat)
+"ba" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"bb" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/space,/area/turret_protected/tcomsat)
+"bc" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/turf/space,/area/turret_protected/tcomsat)
+"bd" = (/obj/structure/window/reinforced,/turf/space,/area/turret_protected/tcomsat)
+"be" = (/obj/structure/sign/securearea,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 6},/turf/simulated/wall/r_wall,/area/tcommsat/computer)
+"bf" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor,/area/tcommsat/computer)
+"bg" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 8; on = 1},/turf/simulated/floor,/area/tcommsat/computer)
+"bh" = (/obj/machinery/computer/telecomms/server{network = list("tcommsat")},/turf/simulated/floor,/area/tcommsat/computer)
+"bi" = (/obj/item/weapon/syntiflesh{name = "Cuban Pete-Meat"},/obj/item/weapon/spacecash,/turf/simulated/floor/engine,/area/tcommsat/computer)
+"bj" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 4; layer = 2.4; on = 1},/turf/simulated/floor,/area/tcommsat/computer)
+"bk" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 10},/turf/simulated/floor,/area/tcommsat/computer)
+"bl" = (/obj/structure/stool/bed/chair{dir = 4},/turf/simulated/floor,/area/tcommsat/computer)
+"bm" = (/obj/structure/table,/obj/item/weapon/storage/fancy/cigarettes,/turf/simulated/floor,/area/tcommsat/computer)
+"bn" = (/obj/structure/stool/bed/chair{dir = 8},/turf/simulated/floor,/area/tcommsat/computer)
+"bo" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 6},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"bp" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; icon_state = "manifold-b-f"; level = 1; name = "Air supply pipe manifold"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"bq" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/window/reinforced,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"br" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"bs" = (/obj/machinery/atmospherics/pipe/simple{color = ""; dir = 9; icon_state = "intact-b-f"; level = 1; name = "pipe"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/door/airlock/hatch{name = "Telecoms Control Room"; req_access_txt = "61"},/turf/simulated/floor,/area/tcommsat/computer)
+"bt" = (/obj/machinery/atmospherics/pipe/simple{dir = 6},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/tcommsat/computer)
+"bu" = (/obj/machinery/atmospherics/pipe/manifold{dir = 1},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/tcommsat/computer)
+"bv" = (/obj/machinery/atmospherics/pipe/simple{dir = 4},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor,/area/tcommsat/computer)
+"bw" = (/obj/machinery/atmospherics/pipe/simple{dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/tcommsat/computer)
+"bx" = (/obj/machinery/atmospherics/pipe/simple{dir = 10; icon_state = "intact-f"; initialize_directions = 10},/obj/machinery/power/apc{dir = 4; name = "Telecoms Sat. Control APC"; pixel_x = 25},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/simulated/floor,/area/tcommsat/computer)
+"by" = (/turf/simulated/wall/r_wall,/area/tcommsat/chamber)
+"bz" = (/obj/machinery/vending/snack,/turf/simulated/floor,/area/tcommsat/computer)
+"bA" = (/obj/machinery/vending/cola,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor,/area/tcommsat/computer)
+"bB" = (/obj/item/weapon/cigbutt,/obj/machinery/light,/turf/simulated/floor,/area/tcommsat/computer)
+"bC" = (/obj/structure/stool/bed/chair{dir = 1},/turf/simulated/floor,/area/tcommsat/computer)
+"bD" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{dir = 4},/turf/simulated/floor,/area/tcommsat/computer)
+"bE" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/wall/r_wall,/area/tcommsat/computer)
+"bF" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/wall/r_wall,/area)
+"bG" = (/obj/structure/disposalpipe/segment{dir = 4},/obj/structure/grille,/turf/simulated/floor/plating/airless,/area)
+"bH" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/plating/airless,/area)
+"bI" = (/obj/structure/disposaloutlet{dir = 4},/obj/structure/disposalpipe/trunk{dir = 8},/turf/simulated/floor/plating/airless,/area)
+"bJ" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple{color = ""; icon_state = "intact-b-f"; level = 1; name = "pipe"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"bK" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/space,/area/turret_protected/tcomsat)
+"bL" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/lattice,/obj/machinery/light,/turf/space,/area/turret_protected/tcomsat)
+"bM" = (/obj/structure/window/reinforced{dir = 1},/turf/space,/area/turret_protected/tcomsat)
+"bN" = (/obj/machinery/atmospherics/pipe/simple,/obj/machinery/light{dir = 8},/obj/structure/table,/obj/item/device/multitool,/obj/structure/sign/electricshock{pixel_x = -32},/turf/simulated/floor,/area/tcommsat/computer)
+"bO" = (/obj/machinery/atmospherics/unary/cold_sink/freezer{current_temperature = 80; dir = 1; on = 1},/turf/simulated/floor,/area/tcommsat/computer)
+"bP" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/tcommsat/computer)
+"bQ" = (/obj/machinery/atmospherics/pipe/simple,/turf/simulated/floor,/area/tcommsat/computer)
+"bR" = (/obj/machinery/door/firedoor{layer = 2.6},/obj/machinery/door/window/eastleft{req_access_txt = "61"},/obj/machinery/door/window/westleft{req_access_txt = "61"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/tcommsat/chamber)
+"bS" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/tcommsat/chamber)
+"bT" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/wall/r_wall,/area/tcommsat/computer)
+"bU" = (/obj/machinery/door/airlock/hatch{name = "Telecoms Lounge"; req_access_txt = "61"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/tcommsat/computer)
+"bV" = (/obj/machinery/turret{lasers = 1; lasertype = 2},/turf/simulated/floor/plating/airless,/area/turret_protected/tcomsat)
+"bW" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"bX" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple,/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating,/area/tcommsat/chamber)
+"bY" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating,/area/tcommsat/chamber)
+"bZ" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/structure/cable,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating,/area/tcommsat/chamber)
+"ca" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple{dir = 5; icon_state = "intact-f"},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/simulated/floor/plating,/area/tcommsat/chamber)
+"cb" = (/obj/machinery/atmospherics/pipe/simple{dir = 10; icon_state = "intact-f"; initialize_directions = 10},/obj/structure/sign/securearea{desc = "A warning sign which reads 'SERVER ROOM'."; name = "SERVER ROOM"; pixel_y = 0},/turf/simulated/wall/r_wall,/area/tcommsat/chamber)
+"cc" = (/obj/machinery/door/airlock/maintenance_hatch{name = "Telecoms Server Access"; req_access_txt = "61"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/tcommsat/chamber)
+"cd" = (/obj/structure/sign/securearea{desc = "A warning sign which reads 'SERVER ROOM'."; name = "SERVER ROOM"; pixel_y = 0},/turf/simulated/wall/r_wall,/area/tcommsat/chamber)
+"ce" = (/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"cf" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"cg" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"ch" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple{color = ""; dir = 5; icon_state = "intact-b-f"; level = 1; name = "pipe"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"ci" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple{color = ""; dir = 10; icon_state = "intact-b-f"; initialize_directions = 10; level = 1; name = "pipe"},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"cj" = (/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"ck" = (/obj/machinery/power/apc{cell_type = 5000; dir = 1; name = "Telecoms Sat. Central Compartment APC"; pixel_x = -1; pixel_y = 26},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cl" = (/obj/machinery/atmospherics/pipe/simple,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cm" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cn" = (/obj/machinery/camera{c_tag = "Central Compartment North"; dir = 2; network = list("Tcomsat")},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/machinery/light{dir = 1},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"co" = (/obj/machinery/atmospherics/pipe/simple,/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cp" = (/turf/simulated/floor/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cq" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/unary/vent_pump{dir = 4; layer = 2.4; on = 1},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"cr" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 4; icon_state = "manifold-b-f"; initialize_directions = 13; layer = 2.4; level = 1; name = "Air supply pipe manifold"},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"cs" = (/obj/machinery/atmospherics/pipe/simple,/turf/simulated/floor/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"ct" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cu" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 6},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"cv" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"cw" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 10},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"cx" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple{color = ""; dir = 6; icon_state = "intact-b-f"; initialize_directions = 6; level = 1; name = "pipe"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"cy" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple{color = ""; dir = 9; icon_state = "intact-b-f"; level = 1; name = "pipe"},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"cz" = (/obj/machinery/telecomms/server/presets/supply,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cA" = (/obj/machinery/account_database,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cB" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cC" = (/obj/machinery/telecomms/server/presets/common,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cD" = (/obj/machinery/telecomms/server/presets/engineering,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cE" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"cF" = (/obj/structure/table,/obj/item/weapon/stock_parts/micro_laser,/obj/item/weapon/stock_parts/manipulator,/obj/item/weapon/stock_parts/manipulator,/obj/item/weapon/stock_parts/manipulator,/obj/item/weapon/stock_parts/manipulator,/obj/item/weapon/stock_parts/capacitor,/obj/item/weapon/stock_parts/micro_laser/high,/obj/item/weapon/stock_parts/micro_laser/high,/obj/item/weapon/stock_parts/micro_laser/high,/obj/item/weapon/stock_parts/micro_laser/high,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"cG" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 1; external_pressure_bound = 101.325; on = 1; pressure_checks = 1},/obj/machinery/camera{c_tag = "Telecoms Storage"; network = list("Tcomsat")},/turf/simulated/floor,/area/turret_protected/tcomsat)
+"cH" = (/obj/structure/rack,/obj/item/weapon/circuitboard/telecomms/processor,/obj/item/weapon/circuitboard/telecomms/processor,/obj/item/weapon/circuitboard/telecomms/receiver,/obj/item/weapon/circuitboard/telecomms/server,/obj/item/weapon/circuitboard/telecomms/server,/obj/item/weapon/circuitboard/telecomms/bus,/obj/item/weapon/circuitboard/telecomms/bus,/obj/item/weapon/circuitboard/telecomms/broadcaster,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"cI" = (/obj/machinery/camera{c_tag = "West Solars"; dir = 8; network = list("Tcomsat")},/turf/space,/area)
+"cJ" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"cK" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/camera{c_tag = "West Wing Middle"; dir = 8; network = list("Tcomsat")},/turf/space,/area/turret_protected/tcomsat)
+"cL" = (/obj/machinery/telecomms/broadcaster/preset_left,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cM" = (/obj/machinery/telecomms/broadcaster/preset_right,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cN" = (/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 8; icon_state = "manifold-b-f"; initialize_directions = 13; level = 1; name = "Air supply pipe manifold"},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"cO" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/unary/vent_pump{dir = 8; on = 1},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"cP" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/turf/space,/area/turret_protected/tcomsat)
+"cQ" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"cR" = (/obj/structure/table,/obj/item/weapon/stock_parts/subspace/treatment,/obj/item/weapon/stock_parts/subspace/treatment,/obj/item/weapon/stock_parts/subspace/treatment,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"cS" = (/turf/simulated/floor,/area/turret_protected/tcomsat)
+"cT" = (/obj/structure/table,/obj/item/weapon/stock_parts/subspace/analyzer,/obj/item/weapon/stock_parts/subspace/analyzer,/obj/item/weapon/stock_parts/subspace/analyzer,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"cU" = (/obj/machinery/camera{c_tag = "East Solars"; dir = 4; network = list("Tcomsat")},/turf/space,/area)
+"cV" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple{color = ""; icon_state = "intact-b-f"; level = 1; name = "pipe"},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"cW" = (/obj/structure/lattice,/obj/structure/window/reinforced{dir = 8},/obj/machinery/light{dir = 4},/turf/space,/area/turret_protected/tcomsat)
+"cX" = (/obj/structure/sign/nosmoking_2{pixel_x = -32; pixel_y = 0},/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cY" = (/obj/machinery/telecomms/processor/preset_two,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"cZ" = (/obj/machinery/telecomms/bus/preset_two,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"da" = (/obj/machinery/telecomms/relay/preset/telecomms,/turf/simulated/floor/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"db" = (/obj/machinery/telecomms/hub/preset,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dc" = (/obj/machinery/atmospherics/pipe/simple,/obj/machinery/telecomms/relay/preset/station,/turf/simulated/floor/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dd" = (/obj/machinery/telecomms/processor/preset_four,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"de" = (/obj/machinery/telecomms/bus/preset_four,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"df" = (/obj/structure/sign/nosmoking_2{pixel_x = 32; pixel_y = 0},/obj/machinery/light{dir = 4},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dg" = (/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/obj/structure/lattice,/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/space,/area/turret_protected/tcomsat)
+"dh" = (/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 1; icon_state = "manifold-b-f"; level = 1; name = "Air supply pipe manifold"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"di" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"dj" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 9},/obj/machinery/door/airlock/maintenance_hatch{name = "Telecoms Storage"; req_access_txt = "61"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"dk" = (/obj/structure/table,/obj/item/weapon/stock_parts/subspace/amplifier,/obj/item/weapon/stock_parts/subspace/amplifier,/obj/item/weapon/stock_parts/subspace/amplifier,/obj/item/device/radio/intercom{name = "Station Intercom (General)"; pixel_x = 29; pixel_y = 0},/obj/machinery/light/small{dir = 4},/turf/simulated/floor,/area/turret_protected/tcomsat)
+"dl" = (/obj/machinery/telecomms/bus/preset_one,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dm" = (/obj/machinery/telecomms/processor/preset_one,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dn" = (/obj/machinery/telecomms/receiver/preset_left,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"do" = (/obj/machinery/telecomms/receiver/preset_right,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dp" = (/obj/machinery/telecomms/bus/preset_three,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dq" = (/obj/machinery/telecomms/processor/preset_three,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dr" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/turf/space,/area/turret_protected/tcomsat)
+"ds" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"dt" = (/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"du" = (/obj/structure/table,/obj/item/weapon/stock_parts/subspace/ansible,/obj/item/weapon/stock_parts/subspace/ansible,/obj/item/weapon/stock_parts/subspace/ansible,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"dv" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"dw" = (/obj/structure/table,/obj/item/weapon/stock_parts/subspace/transmitter,/obj/item/weapon/stock_parts/subspace/transmitter,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"dx" = (/obj/structure/table,/obj/item/weapon/stock_parts/subspace/filter,/obj/item/weapon/stock_parts/subspace/filter,/obj/item/weapon/stock_parts/subspace/filter,/obj/item/weapon/stock_parts/subspace/filter,/obj/item/weapon/stock_parts/subspace/filter,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"dy" = (/obj/structure/table,/obj/item/weapon/stock_parts/subspace/crystal,/obj/item/weapon/stock_parts/subspace/crystal,/obj/item/weapon/stock_parts/subspace/crystal,/turf/simulated/floor,/area/turret_protected/tcomsat)
+"dz" = (/obj/machinery/telecomms/server/presets/science,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dA" = (/obj/machinery/telecomms/server/presets/medical,/turf/simulated/floor{dir = 1; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dB" = (/obj/machinery/atmospherics/pipe/simple{dir = 6},/turf/simulated/floor/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dC" = (/obj/machinery/atmospherics/pipe/simple{dir = 9; icon_state = "intact-f"},/turf/simulated/floor/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dD" = (/obj/machinery/telecomms/server/presets/command,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dE" = (/obj/machinery/telecomms/server/presets/security,/turf/simulated/floor{dir = 4; icon_state = "vault"; name = "Mainframe floor"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dF" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"dG" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"dH" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/turret_protected/tcomsat)
+"dI" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 1; external_pressure_bound = 101.325; on = 1; pressure_checks = 0},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dJ" = (/obj/machinery/camera{c_tag = "Central Compartment South"; dir = 1; network = list("Tcomsat")},/obj/machinery/light,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dK" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 1; external_pressure_bound = 120; icon_state = "in"; initialize_directions = 1; internal_pressure_bound = 4000; on = 1; pressure_checks = 2; pump_direction = 0},/turf/simulated/floor/bluegrid{name = "Mainframe Base"; nitrogen = 100; oxygen = 0; temperature = 80},/area/tcommsat/chamber)
+"dL" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/wall/r_wall,/area/tcommsat/chamber)
+"dM" = (/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"dN" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/turf/space,/area/turret_protected/tcomsat)
+"dO" = (/obj/structure/window/reinforced,/obj/structure/lattice,/obj/machinery/light{dir = 1},/turf/space,/area/turret_protected/tcomsat)
+"dP" = (/turf/simulated/wall/r_wall,/area/turret_protected/tcomfoyer)
+"dQ" = (/obj/machinery/turret{dir = 4},/obj/structure/sign/securearea{desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!"; name = "LETHAL TURRETS"; pixel_x = -32; pixel_y = 0},/turf/simulated/floor{dir = 9; icon_state = "warning"},/area/turret_protected/tcomfoyer)
+"dR" = (/obj/machinery/power/apc{dir = 1; name = "Telecoms Sat. Foyer APC"; pixel_x = 1; pixel_y = 26},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor{icon_state = "warningcorner"; dir = 4},/area/turret_protected/tcomfoyer)
+"dS" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 6},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"dT" = (/obj/machinery/turretid{ailock = 1; control_area = "\improper Telecoms Satellite"; desc = "A firewall prevents AIs from interacting with this device."; icon_state = "motion1"; lethal = 1; name = "Telecoms lethal turret control"; pixel_y = 29; req_access = list(61)},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/camera{c_tag = "Telecoms Foyer"; dir = 2; network = list("Tcomsat")},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"dU" = (/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 1; icon_state = "manifold-b-f"; level = 1; name = "Air supply pipe manifold"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"dV" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 10},/turf/simulated/floor{icon_state = "warningcorner"; dir = 8},/area/turret_protected/tcomfoyer)
+"dW" = (/obj/machinery/turret{dir = 8},/obj/structure/sign/securearea{desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!"; name = "LETHAL TURRETS"; pixel_x = 32; pixel_y = 0},/turf/simulated/floor{dir = 5; icon_state = "warning"},/area/turret_protected/tcomfoyer)
+"dX" = (/obj/structure/window/reinforced,/obj/machinery/light{dir = 1},/turf/space,/area/turret_protected/tcomsat)
+"dY" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/turf/space,/area/turret_protected/tcomsat)
+"dZ" = (/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"ea" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"eb" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/door/airlock/hatch{name = "Telecoms West Wing"; req_access_txt = "61"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomfoyer)
+"ec" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor{dir = 8; icon_state = "warning"},/area/turret_protected/tcomfoyer)
+"ed" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"ee" = (/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 4; icon_state = "manifold-b-f"; initialize_directions = 13; layer = 2.4; level = 1; name = "Air supply pipe manifold"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"ef" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"eg" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 1; external_pressure_bound = 101.325; on = 1; pressure_checks = 1},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"eh" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"ei" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor{dir = 4; icon_state = "warning"},/area/turret_protected/tcomfoyer)
+"ej" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/door/airlock/hatch{name = "Telecoms East Wing"; req_access_txt = "61"},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomfoyer)
+"ek" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 9},/turf/simulated/floor{icon_state = "vault"; dir = 5},/area/turret_protected/tcomsat)
+"el" = (/obj/machinery/camera{c_tag = "East Wing South"; dir = 8; network = list("Tcomsat")},/turf/space,/area/turret_protected/tcomsat)
+"em" = (/obj/machinery/camera{c_tag = "West Wing South"; dir = 4; network = list("Tcomsat")},/turf/space,/area/turret_protected/tcomsat)
+"en" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/lattice,/turf/space,/area/turret_protected/tcomsat)
+"eo" = (/obj/structure/sign/securearea{desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!"; name = "LETHAL TURRETS"; pixel_x = -32; pixel_y = 0},/turf/simulated/floor{dir = 10; icon_state = "warning"},/area/turret_protected/tcomfoyer)
+"ep" = (/obj/machinery/light/small,/turf/simulated/floor{icon_state = "warningcorner"; dir = 1},/area/turret_protected/tcomfoyer)
+"eq" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"er" = (/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"es" = (/obj/machinery/light/small,/turf/simulated/floor{icon_state = "warningcorner"; dir = 2},/area/turret_protected/tcomfoyer)
+"et" = (/obj/structure/sign/securearea{desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!"; name = "LETHAL TURRETS"; pixel_x = 32; pixel_y = 0},/turf/simulated/floor{dir = 6; icon_state = "warning"},/area/turret_protected/tcomfoyer)
+"eu" = (/turf/simulated/wall/r_wall,/area/tcommsat/entrance)
+"ev" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/turf/simulated/wall/r_wall,/area/turret_protected/tcomfoyer)
+"ew" = (/obj/machinery/door/airlock/hatch{name = "Telecoms Satellite"; req_access_txt = "61"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/turret_protected/tcomfoyer)
+"ex" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"ey" = (/obj/machinery/power/smes/magical,/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/simulated/floor,/area/tcommsat/entrance)
+"ez" = (/obj/machinery/power/terminal{dir = 8},/turf/simulated/floor{dir = 8; icon_state = "warning"},/area/tcommsat/entrance)
+"eA" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/sign/electricshock,/turf/simulated/wall/r_wall,/area/tcommsat/entrance)
+"eB" = (/obj/item/device/radio/intercom{broadcasting = 0; listening = 1; name = "Station Intercom (General)"; pixel_y = 20},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{color = ""; dir = 8; icon_state = "manifold-b-f"; initialize_directions = 13; level = 1; name = "Air supply pipe manifold"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eC" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eD" = (/obj/machinery/turretid{ailock = 1; control_area = "\improper Telecoms Foyer"; desc = "A firewall prevents AIs from interacting with this device."; icon_state = "motion3"; lethal = 0; name = "Telecoms Foyer turret control"; pixel_y = 29; req_access = list(61)},/obj/machinery/atmospherics/unary/vent_pump{dir = 8; on = 1},/turf/simulated/floor,/area/tcommsat/entrance)
+"eE" = (/obj/structure/sign/electricshock,/turf/simulated/wall/r_wall,/area/tcommsat/entrance)
+"eF" = (/turf/simulated/floor,/area/tcommsat/entrance)
+"eG" = (/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/machinery/power/monitor{name = "telecoms power monitoring"},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor{icon_state = "bot"},/area/tcommsat/entrance)
+"eH" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"eI" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor{dir = 1; icon_state = "warning"},/area/tcommsat/entrance)
+"eJ" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor{icon_state = "warningcorner"; dir = 4},/area/tcommsat/entrance)
+"eK" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/camera{c_tag = "Power Room West"; dir = 1; network = list("Tcomsat")},/obj/machinery/light/small{dir = 1},/turf/simulated/floor,/area/tcommsat/entrance)
+"eL" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eM" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eN" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eO" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/camera{c_tag = "Power Room East"; dir = 1; network = list("Tcomsat")},/obj/machinery/light/small{dir = 1},/turf/simulated/floor,/area/tcommsat/entrance)
+"eP" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eQ" = (/obj/structure/sign/securearea,/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/turf/simulated/wall/r_wall,/area/tcommsat/entrance)
+"eR" = (/obj/machinery/door/airlock/hatch{name = "Telecoms Satellite"; req_access_txt = "61"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eS" = (/obj/structure/sign/securearea,/turf/simulated/wall/r_wall,/area/tcommsat/entrance)
+"eT" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/turf/simulated/floor{dir = 9; icon_state = "warning"},/area/tcommsat/entrance)
+"eU" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor{dir = 1; icon_state = "warning"},/area/tcommsat/entrance)
+"eV" = (/obj/machinery/camera{c_tag = "Entrance North"; dir = 2; network = list("Tcomsat")},/turf/simulated/floor{dir = 5; icon_state = "warning"},/area/tcommsat/entrance)
+"eW" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = "0"},/turf/simulated/floor{icon_state = "warningcorner"; dir = 4},/area/tcommsat/entrance)
+"eX" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/tcommsat/entrance)
+"eY" = (/turf/simulated/floor{icon_state = "warningcorner"; dir = 8},/area/tcommsat/entrance)
+"eZ" = (/turf/simulated/floor/plating/airless,/area)
+"fa" = (/obj/machinery/light{dir = 8},/obj/machinery/atmospherics/unary/vent_pump{dir = 4; layer = 2.4; on = 1},/turf/simulated/floor,/area/tcommsat/entrance)
+"fb" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 9},/turf/simulated/floor,/area/tcommsat/entrance)
+"fc" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor,/area/tcommsat/entrance)
+"fd" = (/obj/machinery/power/apc{dir = 1; name = "Telecoms Sat. Teleporter APC"; pixel_x = 1; pixel_y = 26},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/simulated/floor,/area/tcommsat/entrance)
+"fe" = (/obj/structure/sign/vacuum,/turf/simulated/wall/r_wall,/area/tcommsat/entrance)
+"ff" = (/obj/machinery/atmospherics/pipe/tank/air,/turf/simulated/floor{dir = 9; icon_state = "warning"},/area/tcommsat/entrance)
+"fg" = (/obj/item/weapon/cell,/turf/simulated/floor,/area/tcommsat/entrance)
+"fh" = (/obj/structure/closet/malf/suits,/turf/simulated/floor,/area/tcommsat/entrance)
+"fi" = (/obj/machinery/access_button{command = "cycle_exterior"; frequency = 1381; master_tag = "telecoms_airlock"; name = "exterior access button"; pixel_x = 25; pixel_y = 25; req_access_txt = "13"},/turf/simulated/floor/plating/airless,/area)
+"fj" = (/obj/machinery/door/airlock/external{frequency = 1381; icon_state = "door_locked"; id_tag = "telecoms_outer"; locked = 1; name = "External Access"; req_access = null; req_access_txt = "10;13"},/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"fk" = (/obj/machinery/camera/xray{c_tag = "External Airlock"; network = list("Tcomsat")},/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 4; frequency = 1381; id_tag = "telecoms_pump"},/obj/machinery/embedded_controller/radio/airlock_controller{airpump_tag = "telecoms_pump"; exterior_door_tag = "telecoms_outer"; frequency = 1381; id_tag = "telecoms_airlock"; interior_door_tag = "telecoms_inner"; pixel_x = 0; pixel_y = -25; req_access_txt = "13"; sensor_tag = "telecoms_sensor"},/obj/machinery/airlock_sensor{frequency = 1381; id_tag = "telecoms_sensor"; pixel_x = 12; pixel_y = -25},/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"fl" = (/obj/machinery/atmospherics/pipe/simple{dir = 4; icon_state = "intact"; level = 2},/obj/machinery/door/airlock/external{frequency = 1381; icon_state = "door_locked"; id_tag = "telecoms_inner"; locked = 1; name = "External Access"; req_access = null; req_access_txt = "13"},/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"fm" = (/obj/machinery/access_button{command = "cycle_interior"; frequency = 1381; master_tag = "telecoms_airlock"; name = "interior access button"; pixel_x = -25; pixel_y = -25; req_access_txt = "13"},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 9},/turf/simulated/floor{dir = 8; icon_state = "warning"},/area/tcommsat/entrance)
+"fn" = (/obj/item/device/radio/beacon,/turf/simulated/floor,/area/tcommsat/entrance)
+"fo" = (/obj/item/device/radio/intercom{name = "Station Intercom (General)"; pixel_x = 29; pixel_y = 0},/turf/simulated/floor,/area/tcommsat/entrance)
+"fp" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/plating/airless,/area)
+"fq" = (/obj/structure/closet/crate,/obj/item/clothing/glasses/night,/turf/simulated/floor{dir = 10; icon_state = "warning"},/area/tcommsat/entrance)
+"fr" = (/turf/simulated/floor{icon_state = "warningcorner"; dir = 1},/area/tcommsat/entrance)
+"fs" = (/obj/structure/closet/crate,/obj/item/device/aicard,/obj/item/device/multitool,/obj/machinery/camera{c_tag = "Entrance South"; dir = 1; network = list("Tcomsat")},/turf/simulated/floor{dir = 10; icon_state = "warning"},/area/tcommsat/entrance)
+"ft" = (/turf/simulated/floor{dir = 2; icon_state = "warning"},/area/tcommsat/entrance)
+"fu" = (/obj/machinery/light{dir = 4},/obj/structure/closet/emcloset,/turf/simulated/floor{dir = 6; icon_state = "warning"},/area/tcommsat/entrance)
+"fv" = (/obj/machinery/computer/teleporter,/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"fw" = (/obj/machinery/teleport/station,/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"fx" = (/obj/machinery/teleport/hub,/turf/simulated/floor/plating,/area/tcommsat/entrance)
+"fy" = (/obj/machinery/camera{c_tag = "South Solars"; dir = 4; network = list("Tcomsat")},/turf/space,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababacabababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaadaaaaaaaaaaadaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeadadadaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaacaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeadadadaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeagabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabadadafafafafafafafadadabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaadaaaaafaaaaadaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababababahababababababababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiaiababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaiaiajajajajajajajajajaiaiaiaiaiaiaiaiaiakakakakakakakakaiababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiaiajalamanaoapaqarasajakakakakakakakakatakauavawaxayazakaiaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajalalalaAaBaCaDaEaFaGakaHaIaJavazaKakaLakaMazazazazazakaiaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajamalamaNaOaPaDaQaRaSakaTaUazazaVaWakaLakaXazazazazazakaiaiadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajamalamamaYaZbabbbcbdbebfbgazazazbhakbiakbjbkazblbmbnakaiaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajamalamaNbobpbqbrbrbrbsbtbubvbwbxbybybyakbzbAazbBbCbDbEbFbFbGbHbIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababacabababababababababababaiajamalamaNbJbKbLbMbMbMakbNbObPazbQbRbSbyakakbTbUakakakakaiaiabababababababababababababababababacababababaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadabaiajalbValbWbJaGbybybybybybXbYbZbYcacbcccdbybycecfcgalbValajaiabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabadaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaaaaabaiajamalamaNchcibycjcjcjckclcmcncjcjcocpcjcjbycecfaSamalamajaiababaaadaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaafafafafafafafafafafafafafafafafafaaabaiajamalamaNcqcrbycjcpcpcpcscpctcpcpcscpcpcjbycecfaScucvcwajaiaiabadafafafafafafafafafafafafafafafafafadabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeafaaabaiajamalamaNcxcybycjczcAcpcscpcBcpcpcscCcDcjbycecfaScEcFcGcHajaiabaaafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaadaaaaaaaaadaaaaaaaaaaafcIabaiajamalamaNcJcKbycjcpcpcpcscLcBcMcpcscpcpcjbycNcOcPcQcRcScTajaiabcUafaaaaaaaaaaadaaaaaaaaadaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaadaaaaaaaaadaaaaaaaaaaafafahaiajalalalbWcVcWbycXcYcZdacocjdbcjcjdcdddedfbydgdhdidjcScSdkajaiahafafaaaaaaaaaaadaaaaaaaaadaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaadaaaaaaaaadaaaaaaaaaaafaaabaiajamalamaNcVaSbycjdldmcpcsdncBdocpcsdpdqcjbyaNcJdrdscSdtduajaiabaaafaaaaaaaaaaadaaaaaaaaadaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeafaaabaiajamalamaNcJaSbycjcpcpcpcscpcBcpcpcscpcpcjbyaNcJaSdvdwdxdyajaiabaaafaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaafafafafafafafafafafafafafafafafafaaabaiajamalamaNbJaSbycjdzdAdBdCcpctcpcpcsdDdEcjbyaNcJaSdFdGdHajaiaiabadafafafafafafafafafafafafafafafafafadabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabadaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaaaaabaiajamalamaNbJaSbycjcjcjdIcjcjdJcjcjdKcjcjcjbyaNcJaSamalamajaiababaaadaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaiajalbValbWcJaGbybybybybybybydLbybybybybybybybWcJaGalbValajaiabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababacababababababababaiajamalamaNdMdNdObdbddPdQdRdSdTdUdVdWdPbdbddXdYcJaSamalamajaiabababababababacababababababababababacabababaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajamalamaNdZeaeaeaeaebecedeeefegeheiejeadieaeaekaSamalelajaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajemalamambMbMenbMbMdPeoepeqeferesetdPbMbMbMbMbMamamalamajaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajamalamamamamalameudPdPdPevewdPdPdPdPeuamamamamamamalamajaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiajalalalalalalalalexeyezeAeBeCeDeEeFeGeHalalalalalalalalajaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaiaiajalamamamamamajeueIeJeKeLeMeNeOeNePeuajamamamamamalajaiaiabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaiaiajajajajajajajeueueueueQeReSeueueueuajajajajajajajaiaiababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaiaiaiaiaiaiaiaiaiaiaieueTeUeVeuaiaiaiaiaiaiaiaiaiaiaiababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababeueueWeXeYeueuabababababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabeZeZababeueufafbfceNfdeueuababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeZeZeZeueufefffgeFeFeFeFfheuabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeZeZfifjfkflfmeFeFfneFeFfoeuabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeZeZfpeSeueufqfreFeFeFeFfheuababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabeZeZababeueufsftftftfueueuababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababeueufvfwfxeueuabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababeueueueueuababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaaabababahabababaaababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaadaaaaafaaaaadaaaaadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaadafafafafafafafadaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabfyaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacaaaeafaeadadadaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeadadadaeafaeaaacaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaeafaeaaaaaaaeafaeaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaadaaaaaaaaaaadaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababacabababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
