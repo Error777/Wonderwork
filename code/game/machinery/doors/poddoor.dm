@@ -378,7 +378,8 @@
 		del f3
 		del f4
 		..()
-*/
+
 /obj/machinery/door/poddoor/filler_object
 	name = ""
 	icon_state = ""
+*/

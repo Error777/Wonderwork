@@ -421,7 +421,6 @@
 	m_amt = 70
 	g_amt = 120
 	origin_tech = "engineering=4;plasma=3"
-	icon_state = "ewelder"
 	var/last_gen = 0
 
 /obj/item/weapon/weldingtool/experimental/process()
