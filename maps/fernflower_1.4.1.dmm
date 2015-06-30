@@ -7505,7 +7505,7 @@
 "cOq" = (/turf/simulated/shuttle/wall{tag = "icon-swall4"; icon_state = "swall4"},/area/shuttle/escape/centcom)
 "cOr" = (/turf/simulated/shuttle/wall{icon_state = "swall11"; dir = 2},/area/shuttle/escape/centcom)
 "cOs" = (/obj/structure/shuttle/engine/propulsion{icon_state = "burst_r"; dir = 4},/turf/simulated/shuttle/wall{icon_state = "wall3"},/area/shuttle/specops/centcom)
-"cOt" = (/obj/structure/table/woodentable{dir = 2},/obj/item/weapon/storage/box/ids,/turf/unsimulated/floor{dir = 8; icon_state = "wood"; name = "wooden floor"},/area/centcom/creed)
+"cOt" = (/obj/structure/table/woodentable{dir = 2},/obj/item/weapon/storage/box/ids,/obj/item/weapon/gun/energy,/turf/unsimulated/floor{dir = 8; icon_state = "wood"; name = "wooden floor"},/area/centcom/creed)
 "cOu" = (/obj/structure/table/woodentable{dir = 2},/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/turf/unsimulated/floor{dir = 8; icon_state = "wood"; name = "wooden floor"},/area/centcom/creed)
 "cOv" = (/obj/machinery/telecomms/relay/preset/centcom,/turf/unsimulated/floor{dir = 8; icon_state = "wood"; name = "wooden floor"},/area/centcom/creed)
 "cOw" = (/obj/machinery/door/poddoor{id = "CentComPort"; name = "Security Doors"},/turf/unsimulated/floor{icon_state = "green"; dir = 8},/area/centcom/control)
