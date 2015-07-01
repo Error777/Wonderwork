@@ -661,7 +661,7 @@
 // will fit into empty /obj/machinery/light of the corresponding type
 
 /obj/item/weapon/light
-	icon = 'lighting.dmi'
+	icon = 'icons/obj/lighting.dmi'
 	flags = FPRINT | TABLEPASS
 	force = 2
 	throwforce = 5
@@ -805,7 +805,7 @@
 // a box of replacement light items
 /obj/item/weapon/storage/lightbox
 	name = "replacement bulbs"
-	icon = 'storage.dmi'
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
 	item_state = "syringe_kit"

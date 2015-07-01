@@ -110,7 +110,7 @@
 
 /obj/item/weapon/crystal
 	name = "Crystal"
-	icon = 'mining.dmi'
+	icon = 'icons/obj/mining.dmi'
 	icon_state = "crystal"
 
 /obj/item/weapon/crystal/bullet_act(var/obj/item/projectile/P)
@@ -141,7 +141,7 @@
 
 /obj/item/weapon/talkingcrystal
 	name = "Crystal"
-	icon = 'mining.dmi'
+	icon = 'icons/obj/mining.dmi'
 	icon_state = "crystal2"
 
 /obj/item/weapon/talkingcrystal/bullet_act(var/obj/item/projectile/P)
