@@ -109,7 +109,19 @@
 	desc = "A special suit that protects against hazardous, low pressure environments. Has reinforced plating."
 	item_state = "mining_hardsuit"
 
+//Special rig
+/obj/item/clothing/head/helmet/space/rig/roaper
+	name = "roaper hardsuit helmet"
+	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating."
+	icon_state = "rig0-roaper"
+	item_state = "roaper_helm"
+	item_color = "roaper"
 
+/obj/item/clothing/suit/space/rig/roaper
+	icon_state = "rig-roaper"
+	name = "roaper hardsuit"
+	desc = "A special suit that protects against hazardous, low pressure environments. Has reinforced plating."
+	item_state = "roaper_hardsuit"
 
 //Syndicate rig
 /obj/item/clothing/head/helmet/space/rig/syndi

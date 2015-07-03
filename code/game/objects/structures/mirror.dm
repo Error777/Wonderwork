@@ -85,7 +85,7 @@
 	user.visible_message("<span class='danger'>[user] smashes [src]!</span>")
 	shatter()
 
-/* WIP - OdSt
+/*
 obj/structure/mirror/attack_metroid(mob/user as mob)
 	if(!ismetroidadult(user)) return
 	if(shattered)
@@ -93,7 +93,9 @@ obj/structure/mirror/attack_metroid(mob/user as mob)
 		return
 	user.visible_message("<span class='danger'>[user] smashes [src]!</span>")
 	shatter()
+*/
 
+//WIP - OdSt
 /obj/structure/mirror/magic
 	name = "magic mirror"
 	desc = "Turn and face the strange... face."
@@ -101,87 +103,27 @@ obj/structure/mirror/attack_metroid(mob/user as mob)
 
 
 /obj/structure/mirror/magic/attack_hand(mob/user as mob)
-	if(!ishuman(user))
-		return
+	if(shattered)	return
 
-	var/mob/living/carbon/human/H = user
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
 
-	var/choice = input(user, "Something to change?", "Magical Grooming") as null|anything in list("name", "race", "gender", "hair", "eyes")
+		var/userloc = H.loc
 
-	switch(choice)
-		if("name")
-			var/newname = copytext(sanitize(input(H, "Who are we again?", "Name change", H.name) as null|text),1,MAX_NAME_LEN)
+		//see code/modules/mob/new_player/preferences.dm at approx line 545 for comments!
+		//this is largely copypasted from there.
 
-			if(!newname)
-				return
+		//handle facial hair (if necessary)
+		if(H.gender == MALE)
+			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in facial_hair_styles_list
+			if(userloc != H.loc) return	//no tele-grooming
+			if(new_style)
+				H.f_style = new_style
 
-			H.real_name = newname
-			H.name = newname
-			if(H.mind)
-				H.mind.name = newname
+		//handle normal hair
+		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in hair_styles_list
+		if(userloc != H.loc) return	//no tele-grooming
+		if(new_style)
+			H.h_style = new_style
 
-		if("race")
-			var/newrace
-			var/racechoice = input(H, "What are we again?", "Race change") as null|anything in species_list
-			newrace = species_list[racechoice]
-
-			if(!newrace || !H.dna)
-				return
-
-			hardset_dna(H, null, null, null, null, newrace)
-
-			if(H.dna.species.use_skintones)
-				var/new_s_tone = input(user, "What are we again?", "Race change")  as null|anything in skin_tones
-
-				if(new_s_tone)
-					H.s_tone = new_s_tone
-
-			if(MUTCOLORS in H.dna.species.specflags)
-				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change") as color|null
-				if(new_mutantcolor)
-					var/temp_hsv = RGBtoHSV(new_mutantcolor)
-
-					if(ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright
-						H.dna.mutant_color = sanitize_hexcolor(new_mutantcolor)
-
-					else
-						H << "<span class='notice'>Invalid color. Your color is not bright enough.</span>"
-
-			H.regenerate_icons()
-
-		if("gender")
-			if(!(H.gender in list("male", "female"))) //blame the patriarchy
-				return
-
-			if(H.gender == "male")
-				if(alert(H, "Become a Witch?", "Confirmation", "Yes", "No") == "Yes")
-					H.gender = "female"
-					H << "<span class='notice'>Man, you feel like a woman!</span>"
-					H.regenerate_icons()
-			else
-				if(alert(H, "Become a Warlock?", "Confirmation", "Yes", "No") == "Yes")
-					H.gender = "male"
-					H << "<span class='notice'>Whoa man, you feel like a man!</span>"
-					H.regenerate_icons()
-
-		if("hair")
-			var/hairchoice = alert(H, "Hair style or hair color?", "Change Hair", "Style", "Color")
-
-			if(hairchoice == "Style") //So you just want to use a mirror then?
-				..()
-			else
-				var/new_hair_color = input(H, "Choose your hair color", "Hair Color") as null|color
-				if(new_hair_color)
-					H.h_color = sanitize_hexcolor(new_hair_color)
-				if(H.gender == "male")
-					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color") as null|color
-					if(new_face_color)
-						H.f_hair_color = sanitize_hexcolor(new_face_color)
-
-				H.update_hair()
-
-		if("eyes")
-			var/new_eye_color = input(H, "Choose your eye color", "Eye Color") as null|color
-			if(new_eye_color)
-				H.e_color = sanitize_hexcolor(new_eye_color)
-				H.update_body() */
+		H.update_hair()

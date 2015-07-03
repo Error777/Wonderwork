@@ -1108,7 +1108,7 @@
 "vp" = (/obj/structure/table,/obj/item/weapon/storage/firstaid/regular,/turf/simulated/shuttle/floor,/area)
 "vq" = (/obj/machinery/door/window,/turf/simulated/shuttle/floor,/area)
 "vr" = (/obj/structure/stool/bed/chair{dir = 4},/turf/simulated/shuttle/floor,/area)
-"vs" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/table,/obj/machinery,/obj/item/weapon/reagent_containers/syringe,/turf/simulated/shuttle/floor,/area)
+"vs" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/table,/obj/item/weapon/reagent_containers/syringe,/turf/simulated/shuttle/floor,/area)
 "vt" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating,/area)
 "vu" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/grille,/turf/simulated/floor/plating,/area)
 "vv" = (/obj/structure/window/reinforced{dir = 4},/obj/machinery/computer/shuttle,/turf/simulated/shuttle/floor,/area)

@@ -111,10 +111,15 @@ var/list/beam_master = list()
 	icon_state = "heavylaser"
 	damage = 80
 
+/obj/item/projectile/beam/pilot
+	name = "Clown pilot laser"
+	icon_state = "bluelaser"
+	damage = 30
+
 /obj/item/projectile/beam/emitter
 	name = "emitter beam"
 	icon_state = "emitter"
-	damage = 20
+	damage = 50
 
 
 /obj/item/projectile/beam/lastertag/blue

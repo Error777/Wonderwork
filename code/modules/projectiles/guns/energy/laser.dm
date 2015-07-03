@@ -96,6 +96,14 @@ obj/item/weapon/gun/energy/laser/retro
 	projectile_type = "/obj/item/projectile/beam/xray"
 	charge_cost = 50
 
+obj/item/weapon/gun/energy/laser/pilot
+	name ="Clown Pilot"
+	icon_state = "clownpilot"
+	desc = "A high-power laser cannon capable of expelling concentrated piray blasts."
+	origin_tech = "combat=6;materials=3;magnets=3"
+	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY
+	slot_flags = SLOT_BACK
+	projectile_type = "/obj/item/projectile/beam/pilot"
 
 ////////Laser Tag////////////////////
 
