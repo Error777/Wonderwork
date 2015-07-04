@@ -1143,6 +1143,10 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Security lobby"
 	icon_state = "security"
 
+/area/security/interrogation
+	name = "\improper Interrogation Room"
+	icon_state = "security"
+
 /area/security/brig
 	name = "\improper Brig"
 	icon_state = "brig"
