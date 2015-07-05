@@ -124,8 +124,8 @@
 	body_parts_covered = UPPER_TORSO|ARMS
 
 //Internal Affairs
-/obj/item/clothing/suit/storage/internalaffairs
-	name = "Internal Affairs Jacket"
+/obj/item/clothing/suit/storage/lawyer
+	name = "Lawyer Jacket"
 	desc = "A smooth black jacket."
 	icon_state = "ia_jacket_open"
 	item_state = "ia_jacket"

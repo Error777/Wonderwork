@@ -88,12 +88,12 @@
 	flags = FPRINT | TABLEPASS
 
 
-/obj/item/clothing/under/rank/internalaffairs
-	desc = "The plain, professional attire of an Internal Affairs Agent. The collar is <i>immaculately</i> starched."
-	name = "Internal Affairs uniform"
-	icon_state = "internalaffairs"
-	item_state = "internalaffairs"
-	item_color = "internalaffairs"
+/obj/item/clothing/under/rank/lawyer
+	desc = "The plain, professional attire of an Lawyer. The collar is <i>immaculately</i> starched."
+	name = "Lawyer uniform"
+	icon_state = "lawyer"
+	item_state = "lawyer"
+	item_color = "lawyer"
 	flags = FPRINT | TABLEPASS
 
 

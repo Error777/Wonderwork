@@ -538,12 +538,14 @@ var/list/liftable_structures = list(\
 // the index of the sort department that you want. For example, sortType set to 2 will reroute all packages
 // tagged for the Cargo Bay.
 var/list/TAGGERLOCATIONS = list("Disposals",
-	"Cargo Bay", "QM Office", "Engineering", "CE Office",
-	"Atmospherics", "Security", "HoS Office", "Medbay",
-	"CMO Office", "Chemistry", "Research", "RD Office",
-	"Robotics", "HoP Office", "Library", "Chapel", "Theatre",
-	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics","Captain Office",
-	"Law Office","Heads of Staff Meeting Room")
+	"Cargo Bay","QM Office", "Engineering","CE Office",
+	"Atmospherics","Security","HoS Office","Medbay",
+	"CMO Office","Chemistry","Research","RD Office",
+	"Robotics","HoP Office","Library","Chapel","Theatre",
+	"Bar","Kitchen","Hydroponics","Janitor Closet","Genetics","Captain Office",
+	"Law Office","Heads of Staff Meeting Room","Detective Office","Locker Room",
+	"Xenobiology Lab","Toxin Lab","Morgue","Aft Primary Hallway","Arrival Hallway",
+	"Captain's Quarters")
 
 #define HOSTILE_STANCE_IDLE 1
 #define HOSTILE_STANCE_ALERT 2

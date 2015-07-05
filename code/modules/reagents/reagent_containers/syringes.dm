@@ -411,6 +411,14 @@
 		mode = SYRINGE_INJECT
 		update_icon()
 
+/obj/item/weapon/reagent_containers/ld50_syringe/adminordrazine
+	name = "Syringe (adenine)"
+	New()
+		..()
+		reagents.add_reagent("adminordrazine", 50)
+		mode = SYRINGE_INJECT
+		update_icon()
+
 
 //Robot syringes
 //Not special in any way, code wise. They don't have added variables or procs.

@@ -708,7 +708,7 @@
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/soda/cola = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/space_mountain_wind = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/soda/dr_gibb = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/starkist = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/soda/space_up = 10)
+					/obj/item/weapon/reagent_containers/food/drinks/soda/space_up = 10,/obj/item/weapon/reagent_containers/food/drinks/waterbottle = 10)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/soda/thirteenloko = 5)
 //	prices = list(/obj/item/weapon/reagent_containers/food/drinks/soda/cola = 20,/obj/item/weapon/reagent_containers/food/drinks/soda/space_mountain_wind = 20,
 //					/obj/item/weapon/reagent_containers/food/drinks/soda/dr_gibb = 20,/obj/item/weapon/reagent_containers/food/drinks/soda/starkist = 20,
@@ -722,7 +722,7 @@
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not spaceup?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/soda/cola = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/space_mountain_wind = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/soda/dr_gibb = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/starkist = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/soda/space_up = 10)
+					/obj/item/weapon/reagent_containers/food/drinks/soda/space_up = 10,/obj/item/weapon/reagent_containers/food/drinks/waterbottle = 10)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/soda/thirteenloko = 5)
 
 /obj/machinery/vending/spacewind
@@ -733,7 +733,7 @@
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not spacewind?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/soda/cola = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/space_mountain_wind = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/soda/dr_gibb = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/starkist = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/soda/space_up = 10)
+					/obj/item/weapon/reagent_containers/food/drinks/soda/space_up = 10,/obj/item/weapon/reagent_containers/food/drinks/waterbottle = 10)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/soda/thirteenloko = 5)
 
 //This one's from bay12

@@ -262,6 +262,16 @@
 		src.pixel_x = rand(-10.0, 10)
 		src.pixel_y = rand(-10.0, 10)
 
+/obj/item/weapon/reagent_containers/food/drinks/waterbottle
+	name = "Water bottle"
+	desc = "Water. Cold water."
+	icon_state = "waterbottle"
+	New()
+		..()
+		reagents.add_reagent("water", 30)
+		src.pixel_x = rand(-10.0, 10)
+		src.pixel_y = rand(-10.0, 10)
+
 /obj/item/weapon/reagent_containers/food/drinks/beer
 	name = "Space Beer"
 	desc = "Beer. In space."

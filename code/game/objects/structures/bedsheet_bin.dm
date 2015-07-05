@@ -78,6 +78,10 @@ LINEN BINS
 	icon_state = "mime"
 	item_color = "mime"
 
+/obj/item/weapon/bedsheet/prison
+	icon_state = "prison"
+	item_color = "prison"
+
 /obj/item/weapon/bedsheet/medical
 	icon_state = "medical"
 	item_color = "medical"

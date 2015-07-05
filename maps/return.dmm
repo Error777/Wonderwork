@@ -1,0 +1,48 @@
+"aaa" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron6"},/area)
+"aab" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron12"},/area)
+"aac" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron14"},/area)
+"aad" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron10"},/area)
+"aae" = (/turf/space,/area)
+"aaf" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron3"},/area)
+"aag" = (/turf/unsimulated/floor{dir = 8; icon_state = "wood"},/area)
+"aah" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron1"},/area)
+"aai" = (/turf/unsimulated/floor{icon_state = "grimy"},/area)
+"aaj" = (/turf/unsimulated/floor{dir = 9; icon_state = "carpetside"},/area)
+"aak" = (/turf/unsimulated/floor{dir = 1; icon_state = "carpetside"},/area)
+"aal" = (/turf/unsimulated/floor{dir = 8; icon_state = "carpetside"},/area)
+"aam" = (/turf/unsimulated/floor{icon_state = "carpet"; dir = 2},/area)
+"aan" = (/turf/unsimulated/floor{dir = 4; icon_state = "carpetside"},/area)
+"aao" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron2"},/area)
+"aap" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron7"},/area)
+"aaq" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron13"},/area)
+"aar" = (/turf/unsimulated/floor{dir = 10; icon_state = "carpetside"},/area)
+"aas" = (/turf/unsimulated/floor{dir = 2; icon_state = "carpetside"},/area)
+"aat" = (/turf/unsimulated/floor{dir = 6; icon_state = "carpetside"},/area)
+"aau" = (/turf/unsimulated/floor{dir = 1; icon_state = "chapel"},/area)
+"aav" = (/turf/unsimulated/floor{dir = 5; icon_state = "carpetside"},/area)
+"aaw" = (/turf/unsimulated/floor{dir = 4; icon_state = "chapel"},/area)
+"aax" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron8"},/area)
+"aay" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron4"},/area)
+"aaz" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron11"},/area)
+"aaA" = (/turf/unsimulated/floor{dir = 8; icon_state = "chapel"},/area)
+"aaB" = (/turf/unsimulated/floor{icon_state = "chapel"},/area)
+"aaC" = (/turf/unsimulated/floor{icon_state = "cafeteria"; dir = 2},/area)
+"aaD" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron5"},/area)
+"aaE" = (/turf/unsimulated/wall{icon = 'mineral_walls.dmi'; icon_state = "iron9"},/area)
+
+(1,1,1) = {"
+aaaaabaabaabaabaabaacaabaabaabaabaacaabaabaabaabaabaabaadaaeaaeaae
+aafaagaagaagaagaagaafaagaagaagaagaahaaiaaiaaiaaiaaiaaiaafaaeaaeaae
+aafaagaajaakaakaagaahaagaagaagaagaagaaiaaiaaiaaiaaiaaiaafaaeaaeaae
+aafaagaalaamaamaanaagaagaagaagaagaaoaaiaaiaaiaaiaaiaaiaafaaeaaeaae
+aafaagaalaamaamaanaagaagaajaakaakaapaabaabaabaabaabaabaaqaadaaeaae
+aafaagaaraasaasaataaoaagaalaamaamaafaauaajaakaakaakaavaawaafaaeaae
+aapaabaaxaagaagaayaazaagaalaamaamaafaaAaaraasaasaasaataaBaafaaeaae
+aafaagaagaagaagaagaafaagaalaamaamaafaauaawaaiaaiaaiaauaawaafaaeaae
+aafaagaajaakaakaavaahaagaaraasaasaahaaAaaBaaiaaiaaiaaAaaBaafaaeaae
+aafaagaalaamaamaanaagaagaagaagaagaagaauaawaaiaaiaaiaauaawaafaaeaae
+aafaagaalaamaamaanaagaagaagaagaagaagaaAaaBaaiaaiaaiaaAaaBaafaaeaae
+aafaagaaraasaasaataaoaaCaaCaaCaaCaaoaauaawaaiaaiaaiaauaawaafaaeaae
+aafaagaagaagaagaagaafaaCaaCaaCaaCaafaaAaaBaaiaaiaaiaaAaaBaafaaeaae
+aaDaabaabaabaabaabaaqaabaabaabaabaaqaabaabaabaabaabaabaabaaEaaeaae
+"}
