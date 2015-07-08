@@ -171,6 +171,7 @@ var/MAX_EXPLOSION_RANGE = 14
 #define SLOT_BACK		1024
 #define SLOT_POCKET		2048		//this is to allow items with a w_class of 3 or 4 to fit in pockets.
 #define SLOT_DENYPOCKET	4096	//this is to deny items with a w_class of 2 or 1 to fit in pockets.
+#define SLOT_TWOEARS    8192
 
 
 //FLAGS BITMASK
@@ -235,7 +236,7 @@ var/MAX_EXPLOSION_RANGE = 14
 #define slot_r_hand			5
 #define slot_belt			6
 #define slot_wear_id		7
-#define slot_ears			8
+#define slot_l_ear			8
 #define slot_glasses		9
 #define slot_gloves			10
 #define slot_head			11
@@ -247,6 +248,7 @@ var/MAX_EXPLOSION_RANGE = 14
 #define slot_s_store		17
 #define slot_in_backpack	18
 #define slot_legcuffed		19
+#define slot_r_ear          20
 
 //Cant seem to find a mob bitflags area other than the powers one
 

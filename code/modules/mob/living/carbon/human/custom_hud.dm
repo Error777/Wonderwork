@@ -34,7 +34,8 @@
 	"shoes" = "SOUTH,WEST",
 	"head" = "SOUTH,WEST+1",
 	"gloves" = "SOUTH,WEST+2",
-	"ears" = "SOUTH,WEST+3",
+	"l_ear" = "SOUTH,WEST+3",
+	"r_ear" = "SOUTH-1,WEST+3",
 	"glasses" = "SOUTH,WEST+4",
 
 	"filler" = "SOUTH-1,WEST to SOUTH-1,EAST",
@@ -60,13 +61,15 @@
 			if(myhud.inventory_shown && myhud.hud_shown)
 				if(H.shoes)		H.shoes.screen_loc = locations["shoes"]
 				if(H.gloves)	H.gloves.screen_loc = locations["gloves"]
-				if(H.ears)		H.ears.screen_loc = locations["ears"]
+				if(H.l_ear)		H.l_ear.screen_loc = locations["l_ear"]
+				if(H.r_ear)		H.r_ear.screen_loc = locations["r_ear"]
 				if(H.glasses)	H.glasses.screen_loc = locations["glasses"]
 				if(H.head)		H.head.screen_loc = locations["head"]
 			else
 				if(H.shoes)		H.shoes.screen_loc = null
 				if(H.gloves)	H.gloves.screen_loc = null
-				if(H.ears)		H.ears.screen_loc = null
+				if(H.l_ear)		H.l_ear.screen_loc = null
+				if(H.r_ear)		H.r_ear.screen_loc = null
 				if(H.glasses)	H.glasses.screen_loc = null
 				if(H.head)		H.head.screen_loc = null
 		return 1
@@ -366,11 +369,23 @@
 		src.adding += inv_box
 
 	inv_box = new /obj/screen/inventory()
-	inv_box.name = "ears"
+	inv_box.name = "l_ear"
 	inv_box.icon = uistyle
 	inv_box.icon_state = "ears"
-	inv_box.screen_loc = special.locations["ears"]
-	inv_box.slot_id = slot_ears
+	inv_box.screen_loc = special.locations["l_ear"]
+	inv_box.slot_id = slot_l_ear
+	inv_box.layer = 19
+	if(special.hideable["ears"])
+		src.other += inv_box
+	else
+		src.adding += inv_box
+
+	inv_box = new /obj/screen/inventory()
+	inv_box.name = "r_ear"
+	inv_box.icon = uistyle
+	inv_box.icon_state = "ears"
+	inv_box.screen_loc = special.locations["r_ear"]
+	inv_box.slot_id = slot_r_ear
 	inv_box.layer = 19
 	if(special.hideable["ears"])
 		src.other += inv_box

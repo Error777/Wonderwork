@@ -79,7 +79,8 @@
 
 #define ui_glasses "1:6,3:9"
 #define ui_mask "2:8,3:9"
-#define ui_ears "3:10,3:9"
+#define ui_l_ear "3:10,3:9"
+#define ui_r_ear "3:10,4:11"
 
 #define ui_head "2:8,4:11"
 
@@ -244,7 +245,8 @@ var/datum/global_hud/global_hud = new()
 		if("shoes") return ui_shoes
 		if("head") return ui_head
 		if("gloves") return ui_gloves
-		if("ears") return ui_ears
+		if("l_ear") return ui_l_ear
+		if("r_ear") return ui_r_ear
 		if("glasses") return ui_glasses
 
 		if("acti") return ui_acti
@@ -272,7 +274,8 @@ var/datum/global_hud/global_hud = new()
 		if("shoes") return ui_shoes
 		if("head") return ui_head
 		if("gloves") return ui_gloves
-		if("ears") return ui_ears
+		if("l_ear") return ui_l_ear
+		if("r_ear") return ui_r_ear
 		if("glasses") return ui_glasses
 
 		if("acti") return ui_acti
@@ -287,7 +290,8 @@ var/datum/global_hud/global_hud = new()
 		if(inventory_shown && hud_shown)
 			if(H.shoes)		H.shoes.screen_loc = get_slot_loc("shoes")
 			if(H.gloves)	H.gloves.screen_loc = get_slot_loc("gloves")
-			if(H.ears)		H.ears.screen_loc = get_slot_loc("ears")
+			if(H.l_ear)		H.l_ear.screen_loc = get_slot_loc("l_ear")
+			if(H.r_ear)		H.r_ear.screen_loc = get_slot_loc("r_ear")
 			if(H.glasses)	H.glasses.screen_loc = get_slot_loc("glasses")
 			if(H.w_uniform)	H.w_uniform.screen_loc = get_slot_loc("iclothing")
 			if(H.wear_suit)	H.wear_suit.screen_loc = get_slot_loc("oclothing")
@@ -296,7 +300,8 @@ var/datum/global_hud/global_hud = new()
 		else
 			if(H.shoes)		H.shoes.screen_loc = null
 			if(H.gloves)	H.gloves.screen_loc = null
-			if(H.ears)		H.ears.screen_loc = null
+			if(H.l_ear)		H.l_ear.screen_loc = null
+			if(H.r_ear)		H.r_ear.screen_loc = null
 			if(H.glasses)	H.glasses.screen_loc = null
 			if(H.w_uniform)	H.w_uniform.screen_loc = null
 			if(H.wear_suit)	H.wear_suit.screen_loc = null

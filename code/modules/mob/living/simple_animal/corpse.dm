@@ -15,6 +15,7 @@
 	var/corpseshoes = null
 	var/corpsegloves = null
 	var/corpseradio = null
+	var/corpseradio2 = null
 	var/corpseglasses = null
 	var/corpsemask = null
 	var/corpsehelmet = null
@@ -43,7 +44,9 @@
 	if(src.corpsegloves)
 		M.equip_to_slot_or_del(new src.corpsegloves(M), slot_gloves)
 	if(src.corpseradio)
-		M.equip_to_slot_or_del(new src.corpseradio(M), slot_ears)
+		M.equip_to_slot_or_del(new src.corpseradio(M), slot_l_ear)
+	if(src.corpseradio2)
+		M.equip_to_slot_or_del(new src.corpseradio2(M), slot_r_ear)
 	if(src.corpseglasses)
 		M.equip_to_slot_or_del(new src.corpseglasses(M), slot_glasses)
 	if(src.corpsemask)
