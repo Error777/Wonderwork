@@ -1563,7 +1563,6 @@ datum
 					/mob/living/simple_animal/hostile/mimic/copy,
 					/mob/living/simple_animal/hostile/tree,
 					/mob/living/simple_animal/hostile/retaliate,
-					/mob/living/simple_animal/hostile/tribesman,
 					/mob/living/simple_animal/poni,
 					/mob/living/simple_animal/vox,
 					/mob/living/simple_animal/bee,

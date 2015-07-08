@@ -218,7 +218,7 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
  */
 /obj/item/stack/sheet/mineral/enruranium
 	name = "enriched uranium"
-	icon_state = "sheet-enruranium"
+	icon_state = "sheet-uranium"
 	force = 5.0
 	throwforce = 5
 	w_class = 3.0

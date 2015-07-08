@@ -230,3 +230,8 @@
 
 	return
 
+/obj/machinery/computer/robotics/newscreen
+	name = "Robotics Control"
+	desc = "Used to remotely lockdown or detonate linked Cyborgs."
+	icon_state = "left"
+	circuit = "/obj/item/weapon/circuitboard/robotics"

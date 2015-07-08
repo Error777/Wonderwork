@@ -94,5 +94,5 @@
 /obj/machinery/computer/borgupload/newscreen
 	name = "Cyborg Upload"
 	desc = "Used to upload laws to Cyborgs."
-	icon_state = "left"
+	icon_state = "aimainframe"
 	circuit = "/obj/item/weapon/circuitboard/borgupload"

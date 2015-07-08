@@ -27,8 +27,13 @@
 
 
 /turf/simulated/floor/wood
-	name = "floor"
+	name = "wooden floor"
 	icon_state = "wood"
+	floor_tile = new/obj/item/stack/tile/wood
+
+/turf/simulated/floor/wood/old
+	name = "wooden floor"
+	icon_state = "woodold"
 	floor_tile = new/obj/item/stack/tile/wood
 
 /turf/simulated/floor/vault

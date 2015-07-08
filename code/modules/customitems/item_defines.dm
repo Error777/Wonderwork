@@ -158,13 +158,6 @@
 	icon_state = "siraj_tongueleaf"
 	item_state = "siraj_tongueleaf"
 
-/obj/item/weapon/clipboard/fluff/smallnote //lexusjjss: Lexus Langg, Zachary Tomlinson
-	name = "small notebook"
-	desc = "A generic small spiral notebook that flips upwards."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "smallnotetext00"
-	item_state = "smallnotetext00"
-
 /obj/item/weapon/storage/fluff/maye_daye_1 //morrinn: Maye Day
 	name = "pristine lunchbox"
 	desc = "A pristine stainless steel lunch box. The initials M.D. are engraved on the inside of the lid."
@@ -415,13 +408,6 @@
 	desc = "A special identification card with a red cross signifying an emergency physician has specialised in Odysseus operations and maintenance.\nIt grants the owner recharge bay access."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "odysseus_spec_id"
-
-/obj/item/weapon/clipboard/fluff/mcreary_journal //sirribbot: James McReary
-	name = "McReary's journal"
-	desc = "A journal with a warning sticker on the front cover. The initials \"J.M.\" are written on the back."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "mcreary_journal00"
-	item_state = "mcreary_journal00"
 
 /obj/item/device/flashlight/fluff/thejesster14_1 //thejesster14: Rosa Wolff
 	name = "old red flashlight"

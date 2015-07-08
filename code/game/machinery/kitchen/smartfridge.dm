@@ -54,8 +54,13 @@
 	return 0
 
 /obj/machinery/smartfridge/extract
-	name = "\improper metroid Extract Storage"
+	name = "\improper Metroid Extract Storage"
 	desc = "A refrigerated storage unit for metroid extracts"
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "smartcore"
+	icon_on = "smartcore"
+	icon_off = "smartcore-off"
+
 
 //obj/machinery/smartfridge/extract/accept_check(var/obj/item/O as obj)
 //	if(istype(O,/obj/item/metroid_core))

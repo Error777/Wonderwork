@@ -30,6 +30,10 @@
 	desc = "A green folder."
 	icon_state = "folder_green"
 
+/obj/item/weapon/folder/syndicate
+	desc = "A black-red folder."
+	icon_state = "folder_syndicate"
+
 /obj/item/weapon/folder/update_icon()
 	overlays.Cut()
 	if(contents.len)

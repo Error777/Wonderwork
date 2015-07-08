@@ -532,9 +532,9 @@
 /obj/item/device/camera_bug
 	name = "camera bug"
 	icon = 'icons/obj/device.dmi'
-	icon_state = "flash"
+	icon_state = "camera_bug"
 	w_class = 1.0
-	item_state = "electronic"
+	item_state = "camera_bug"
 	throw_speed = 4
 	throw_range = 20
 
