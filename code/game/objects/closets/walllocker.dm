@@ -8,6 +8,7 @@
 	icon_state = "wall-locker"
 	density = 0
 	anchored = 1
+	wall_mounted = 1
 	icon_closed = "wall-locker"
 	icon_opened = "wall-lockeropen"
 

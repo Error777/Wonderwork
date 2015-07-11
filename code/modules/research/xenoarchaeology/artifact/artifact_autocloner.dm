@@ -2,8 +2,8 @@
 /obj/machinery/auto_cloner
 	name = "mysterious pod"
 	desc = "It's full of a viscous liquid, but appears dark and silent."
-	icon = 'icons/obj/cryogenics.dmi'
-	icon_state = "cellold0"
+	icon = 'icons/obj/Cryogenic2.dmi'
+	icon_state = "artifact-off"
 	var/spawn_type
 	var/current_ticks_spawning = 0
 	var/ticks_required_to_spawn
@@ -47,7 +47,7 @@
 	if(powered(power_channel))
 		if(!previous_power_state)
 			previous_power_state = 1
-			icon_state = "cellold1"
+			icon_state = "artifact-on"
 			src.visible_message("\blue \icon[src] [src] suddenly comes to life!")
 
 		//slowly grow a mob
@@ -60,7 +60,7 @@
 			current_ticks_spawning = 0
 			use_power = 1
 			src.visible_message("\blue \icon[src] [src] pings!")
-			icon_state = "cellold1"
+			icon_state = "artifact-on"
 			desc = "It's full of a bubbling viscous liquid, and is lit by a mysterious glow."
 			if(spawn_type)
 				new spawn_type(src.loc)
@@ -68,16 +68,16 @@
 		//if we're getting close to finished, kick into overdrive power usage
 		if(current_ticks_spawning / ticks_required_to_spawn > 0.75)
 			use_power = 2
-			icon_state = "cellold2"
+			icon_state = "artifact-occupied"
 			desc = "It's full of a bubbling viscous liquid, and is lit by a mysterious glow. A dark shape appears to be forming inside..."
 		else
 			use_power = 1
-			icon_state = "cellold1"
+			icon_state = "artifact-on"
 			desc = "It's full of a bubbling viscous liquid, and is lit by a mysterious glow."
 	else
 		if(previous_power_state)
 			previous_power_state = 0
-			icon_state = "cellold0"
+			icon_state = "artifact-off"
 			src.visible_message("\blue \icon[src] [src] suddenly shuts down.")
 
 		//cloned mob slowly breaks down

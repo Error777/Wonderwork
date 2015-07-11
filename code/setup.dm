@@ -132,6 +132,13 @@
 #define T20C 293.15					// 20degC
 #define TCMB 2.7					// -270.3degC
 
+//zlevel defines, can be overridden for different maps in the appropriate maps file.
+#define ZLEVEL_SPACEMAX 7
+#define ZLEVEL_SPACEMIN 3
+
+//Distance from edge to move to another z-level
+#define TRANSITIONEDGE			7
+
 var/turf/space/Space_Tile = locate(/turf/space) // A space tile to reference when atmos wants to remove excess heat.
 
 #define TANK_LEAK_PRESSURE		(30.*ONE_ATMOSPHERE)	// Tank starts leaking

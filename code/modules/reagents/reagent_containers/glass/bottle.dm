@@ -94,6 +94,44 @@
 		..()
 		reagents.add_reagent("mutagen", 30)
 
+/obj/item/weapon/reagent_containers/glass/bottle/ert/quikheal
+	name = "Quikheal bottle"
+	desc = "Seems to be a strange mix of delicious goodness. Smells woozy."
+	icon_state = "bottle12"
+
+	New()
+		..()
+		reagents.add_reagent("bicaridine", 8)
+		reagents.add_reagent("dexalinp", 5)
+		reagents.add_reagent("dermaline", 8)
+		reagents.add_reagent("arithrazine", 8)
+		reagents.add_reagent("inaprovaline", 8)
+		reagents.add_reagent("cryptobiolin", 13)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ert/boost
+	name = "Combat Boost bottle"
+	desc = "Seems to be a strange mix of delicious goodness. It... Pulses slightly before your eyes."
+	icon_state = "bottle17"
+
+	New()
+		..()
+		reagents.add_reagent("hyperzine", 10)
+		reagents.add_reagent("dermaline", 10)
+		reagents.add_reagent("leporazine", 10)
+		reagents.add_reagent("bicaridine", 10)
+		reagents.add_reagent("mutagen", 10)
+
+/obj/item/weapon/reagent_containers/glass/bottle/ert/cryo
+	name = "Cryo-in-a-bottle"
+	desc = "Seems to be a strange mix of delicious goodness. It's freezing cold to the touch."
+	icon_state = "bottle20"
+
+	New()
+		..()
+		reagents.add_reagent("clonexadone", 25)
+		reagents.add_reagent("liquidnitrogen", 15)
+		reagents.add_reagent("chloralhydrate", 10)
+
 /obj/item/weapon/reagent_containers/glass/bottle/ammonia
 	name = "ammonia bottle"
 	desc = "A small bottle."

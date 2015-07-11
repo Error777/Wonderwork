@@ -85,3 +85,14 @@
 		usr << "\blue It is currently loaded."
 	else
 		usr << "\blue It is spent."
+
+/obj/item/weapon/reagent_containers/hypospray/combat
+	name = "combat-spray"
+	icon_state = "combat_hypo"
+
+/obj/item/weapon/reagent_containers/hypospray/combat/New()
+	..()
+	reagents.remove_reagent("tricordrazine", 30)
+	reagents.add_reagent("tricordrazine", 60)
+	update_icon()
+	return

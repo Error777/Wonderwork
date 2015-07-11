@@ -139,6 +139,7 @@ var/global/list/all_money_accounts = list()
 	icon = 'icons/obj/virology.dmi'
 	icon_state = "analyser"
 	density = 1
+	anchored = 1
 	req_one_access = list(access_hop, access_captain)
 	var/receipt_num
 	var/machine_id = ""

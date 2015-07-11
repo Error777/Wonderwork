@@ -248,7 +248,7 @@
 	src.other += inv_box
 
 	inv_box = new /obj/screen/inventory()
-	inv_box.name = "l_ear"
+	inv_box.name = "left ear"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "ears"
 	inv_box.screen_loc = ui_l_ear
@@ -257,7 +257,7 @@
 	src.other += inv_box
 
 	inv_box = new /obj/screen/inventory()
-	inv_box.name = "l_ear"
+	inv_box.name = "right ear"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "ears"
 	inv_box.screen_loc = ui_r_ear

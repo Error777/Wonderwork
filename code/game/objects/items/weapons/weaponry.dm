@@ -157,9 +157,10 @@
 	icon_state = "chainsaw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags = FPRINT | TABLEPASS | CONDUCT
-	force = 20.0
+	slot_flags = SLOT_BELT
+	force = 70.0
 	w_class = 1
-	throwforce = 5
+	throwforce = 40
 	throw_speed = 2
 	throw_range = 2
 	m_amt = 20000
