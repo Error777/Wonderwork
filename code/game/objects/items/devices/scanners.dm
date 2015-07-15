@@ -194,6 +194,10 @@ MASS SPECTROMETER
 		if(0)
 			usr << "The scanner no longer shows limb damage."
 
+/obj/item/device/healthanalyzer/old
+	name = "Old Analyzer"
+	icon_state = "healthold"
+
 
 /obj/item/device/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."

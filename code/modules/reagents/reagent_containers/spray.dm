@@ -128,6 +128,16 @@
 	..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
+/obj/item/weapon/reagent_containers/spray/pepper/elite
+	name = "elite pepperspray"
+	icon_state = "peppersprayold"
+	volume = 100
+	amount_per_transfer_from_this = 15
+
+
+/obj/item/weapon/reagent_containers/spray/pepper/elite/New()
+	..()
+	reagents.add_reagent("condensedcapsaicin", 100)
 
 //chemsprayer
 /obj/item/weapon/reagent_containers/spray/chemsprayer

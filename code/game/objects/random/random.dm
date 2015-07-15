@@ -170,16 +170,16 @@
 
 /obj/random/projectile
 	name = "Random Projectile Weapon"
-	desc = "This is a random security weapon."
+	desc = "This is a random projectile weapon."
 	icon_state = "projectile"
 	item_to_spawn()
-		return pick(prob(3);/obj/item/weapon/gun/projectile/shotgun/combat,\
-					prob(2);/obj/item/weapon/gun/projectile/revolver/mateba,\
+		return pick(prob(1);/obj/item/weapon/gun/projectile/shotgun/combat,\
+					prob(3);/obj/item/weapon/gun/projectile/revolver/mateba,\
 					prob(1);/obj/item/weapon/gun/projectile/automatic/c20r)
 
 /obj/random/handgun
 	name = "Random Handgun"
-	desc = "This is a random security sidearm."
+	desc = "This is a random security weapon."
 	icon_state = "handgun"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/weapon/gun/projectile/revolver/detective,\

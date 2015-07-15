@@ -1,32 +1,40 @@
 "a" = (/turf/space,/area)
-"b" = (/turf/simulated/shuttle/wall{icon_state = "swall_s6"; dir = 2},/area)
-"c" = (/obj/structure/shuttle/window{tag = "icon-13"; icon_state = "13"},/obj/structure/grille,/turf/simulated/shuttle/plating,/area)
-"d" = (/obj/structure/shuttle/window{tag = "icon-9"; icon_state = "9"},/obj/structure/grille,/turf/simulated/shuttle/plating,/area)
-"e" = (/obj/structure/shuttle/window{tag = "icon-12"; icon_state = "12"},/obj/structure/grille,/turf/simulated/shuttle/plating,/area)
-"f" = (/turf/simulated/shuttle/wall{icon_state = "swall_s10"; dir = 2},/area)
-"g" = (/turf/simulated/wall/r_wall,/area)
-"h" = (/turf/simulated/shuttle/wall{icon_state = "swall3"; dir = 2},/area)
-"i" = (/obj/structure/stool/bed/chair/evac{anchored = 1; dir = 4},/turf/simulated/shuttle/floor4,/area)
-"j" = (/obj/machinery/computer/prison_shuttle,/turf/simulated/shuttle/floor4,/area)
-"k" = (/turf/simulated/shuttle/floor4,/area)
-"l" = (/turf/simulated/shuttle/wall{tag = "icon-swall1"; icon_state = "swall1"; dir = 2},/area)
-"m" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/structure/grille,/turf/simulated/floor/plating,/area)
-"n" = (/turf/simulated/floor,/area)
-"o" = (/obj/machinery/computer/prison_shuttle,/obj/machinery/firealarm{pixel_y = 31},/turf/simulated/floor,/area)
-"p" = (/obj/machinery/door/firedoor,/turf/simulated/floor,/area)
-"q" = (/obj/machinery/door/unpowered/shuttle,/turf/simulated/shuttle/floor4,/area)
-"r" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area)
-"s" = (/turf/simulated/floor/plating,/area)
-"t" = (/obj/machinery/door/firedoor,/obj/machinery/door/poddoor{name = "Prison Blast Door"; icon_state = "pdoor0"; pixel_x = 0; pixel_y = 0; opacity = 0; density = 0; id = "Prison Gate"},/obj/machinery/door/airlock/glass_security{name = "Prison Wing"; pixel_y = 0; req_access_txt = "2"},/turf/simulated/floor,/area)
-"u" = (/obj/structure/stool/bed/chair/evac{anchored = 1; dir = 1},/turf/simulated/shuttle/floor4,/area)
-"v" = (/turf/simulated/shuttle/wall{tag = "icon-swall2"; icon_state = "swall2"; dir = 2},/area)
-"w" = (/obj/machinery/light,/obj/machinery/door_control{id = "Prison Gate"; name = "Prison Wing Lockdown"; pixel_x = -28; pixel_y = 7; req_access_txt = "2"},/turf/simulated/floor,/area)
-"x" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/shuttle/engine/heater,/turf/simulated/shuttle/plating,/area)
-"y" = (/turf/simulated/shuttle/wall{icon_state = "swall_s5"; dir = 2},/area)
-"z" = (/obj/structure/shuttle/engine/propulsion{tag = "icon-propulsion_l"; icon_state = "propulsion_l"},/turf/simulated/shuttle/wall{icon_state = "wall3"},/area)
-"A" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/shuttle/wall{icon_state = "wall3"},/area)
-"B" = (/obj/structure/shuttle/engine/propulsion{tag = "icon-propulsion_r"; icon_state = "propulsion_r"},/turf/simulated/shuttle/wall{icon_state = "wall3"},/area)
-"C" = (/turf/simulated/shuttle/wall{icon_state = "swall_s9"; dir = 2},/area)
+"b" = (/turf/simulated/wall/r_wall,/area)
+"c" = (/turf/simulated/floor,/area)
+"d" = (/obj/structure/lattice,/turf/space,/area)
+"e" = (/turf/simulated/shuttle/wall{icon_state = "swall_s6"; dir = 2},/area)
+"f" = (/obj/structure/shuttle/window{tag = "icon-13"; icon_state = "13"},/obj/structure/grille,/turf/simulated/shuttle/plating,/area)
+"g" = (/obj/structure/shuttle/window{tag = "icon-9"; icon_state = "9"},/obj/structure/grille,/turf/simulated/shuttle/plating,/area)
+"h" = (/obj/structure/shuttle/window{tag = "icon-12"; icon_state = "12"},/obj/structure/grille,/turf/simulated/shuttle/plating,/area)
+"i" = (/turf/simulated/shuttle/wall{icon_state = "swall_s10"; dir = 2},/area)
+"j" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area)
+"k" = (/turf/simulated/shuttle/wall{icon_state = "swall3"; dir = 2},/area)
+"l" = (/obj/structure/stool/bed/chair/evac{anchored = 1; dir = 4},/turf/simulated/shuttle/floor4,/area)
+"m" = (/obj/machinery/computer/prison_shuttle,/turf/simulated/shuttle/floor4,/area)
+"n" = (/turf/simulated/shuttle/floor4,/area)
+"o" = (/turf/simulated/shuttle/wall{tag = "icon-swall1"; icon_state = "swall1"; dir = 2},/area)
+"p" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/structure/grille,/turf/simulated/floor/plating,/area)
+"q" = (/obj/machinery/computer/prison_shuttle,/obj/machinery/firealarm{pixel_y = 31},/turf/simulated/floor,/area)
+"r" = (/obj/machinery/door/firedoor,/turf/simulated/floor,/area)
+"s" = (/turf/simulated/floor{icon_state = "blue"; dir = 8},/area)
+"t" = (/turf/simulated/floor{icon_state = "bot"},/area)
+"u" = (/turf/simulated/floor{icon_state = "dark"},/area)
+"v" = (/obj/machinery/door/unpowered/shuttle,/turf/simulated/shuttle/floor4,/area)
+"w" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area)
+"x" = (/turf/simulated/floor/plating,/area)
+"y" = (/obj/machinery/door/firedoor,/obj/machinery/door/poddoor{name = "Prison Blast Door"; icon_state = "pdoor0"; pixel_x = 0; pixel_y = 0; opacity = 0; density = 0; id = "Prison Gate"},/obj/machinery/door/airlock/glass_security{name = "Prison Wing"; pixel_y = 0; req_access_txt = "2"},/turf/simulated/floor,/area)
+"z" = (/obj/structure/stool/bed/chair/evac{anchored = 1; dir = 1},/turf/simulated/shuttle/floor4,/area)
+"A" = (/turf/simulated/shuttle/wall{tag = "icon-swall2"; icon_state = "swall2"; dir = 2},/area)
+"B" = (/obj/machinery/light,/obj/machinery/door_control{id = "Prison Gate"; name = "Prison Wing Lockdown"; pixel_x = -28; pixel_y = 7; req_access_txt = "2"},/turf/simulated/floor,/area)
+"C" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/shuttle/engine/heater,/turf/simulated/shuttle/plating,/area)
+"D" = (/turf/simulated/floor{icon_state = "red"; dir = 5},/area)
+"E" = (/turf/simulated/floor{icon_state = "red"; dir = 9},/area)
+"F" = (/turf/simulated/shuttle/wall{icon_state = "swall_s5"; dir = 2},/area)
+"G" = (/obj/structure/shuttle/engine/propulsion{tag = "icon-propulsion_l"; icon_state = "propulsion_l"},/turf/simulated/shuttle/wall{icon_state = "wall3"},/area)
+"H" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/shuttle/wall{icon_state = "wall3"},/area)
+"I" = (/obj/structure/shuttle/engine/propulsion{tag = "icon-propulsion_r"; icon_state = "propulsion_r"},/turf/simulated/shuttle/wall{icon_state = "wall3"},/area)
+"J" = (/turf/simulated/shuttle/wall{icon_state = "swall_s9"; dir = 2},/area)
+"K" = (/turf/simulated/floor{icon_state = "vault"; dir = 8},/area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -91,22 +99,22 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaabcdefaagggaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaahijklgmgnopaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaahkkkqrstnnpaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaahuuuvgmgwnpaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaahxxxhaagggaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaayzABCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbcccccccccbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaabbbbbbcccbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabbbbccccbcccccccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabddbccccbcccbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaefghiaabbbbbcbjjbjjjbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaklmnobpbcqrscccctuuutcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaknnnvwxyccrscccctuuutcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaakzzzAbpbBcrscccctuuutcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaakCCCkaabbbbbDccEbbbbbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaFGHIJaaabddbbrrbbcccbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabbbbKcccbcccbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaabKcccbcccccccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaabKcccbcccbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaabKcccbcccbcccccccccccbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
