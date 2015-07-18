@@ -145,6 +145,12 @@
 	desc = "To be Robust is not an action or a way of life, but a mental state. Only those with the force of Will strong enough to act during a crisis, saving friend from foe, are truly Robust. Stay Robust my friends."
 	icon_state = "goldenplaque"
 
+/obj/structure/sign/animusposter
+	name = "Clear Portrait"
+	desc = "Stay Animus. Stay Robust."
+	icon = 'icons/obj/animusposters.dmi'
+	icon_state = "clear"
+
 /obj/structure/sign/kiddieplaque
 	name = "AI developers plaque"
 	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. The child appears to be retarded. Beneath the image, someone has scratched the word \"PACKETS\""

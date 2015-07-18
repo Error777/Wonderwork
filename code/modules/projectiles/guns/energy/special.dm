@@ -163,7 +163,9 @@ obj/item/weapon/gun/energy/staff
 /obj/item/weapon/gun/energy/mindflayer
 	name = "mind flayer"
 	desc = "A prototype weapon recovered from the ruins of Research-Station Epsilon."
-	icon_state = "xray"
+	icon_state = "xraycannon"
+	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY
+	slot_flags = SLOT_BACK
 	projectile_type = "/obj/item/projectile/beam/mindflayer"
 	fire_sound = 'sound/weapons/Laser.ogg'
 

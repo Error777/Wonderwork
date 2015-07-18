@@ -243,23 +243,6 @@
 	update(0)
 	..()
 
-// the desk lamp
-/obj/machinery/light/lamp
-	name = "desk lamp"
-	icon_state = "lamp1"
-	base_state = "lamp"
-	fitting = "bulb"
-	desc = "A desk lamp"
-	light_type = /obj/item/weapon/light/bulb
-	var/switchon = 0		// independent switching for lamps - not controlled by area lightswitch
-
-// green-shaded desk lamp
-/obj/machinery/light/lamp/green
-	icon_state = "green1"
-	base_state = "green"
-	desc = "A green-shaded desk lamp"
-
-
 // create a new lighting fixture
 /obj/machinery/light/New()
 	..()

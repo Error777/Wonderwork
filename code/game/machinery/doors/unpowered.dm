@@ -29,5 +29,3 @@
 	icon = 'icons/turf/shuttle.dmi'
 	name = "door"
 	icon_state = "gdoor1"
-	opacity = 1
-	density = 1

@@ -1,8 +1,8 @@
 /obj/item/device/pipe_painter
 	name = "pipe painter"
-	icon = 'icons/obj/bureaucracy.dmi'
-	icon_state = "labeler1"
-	item_state = "flight"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "rpd"
+	item_state = "rcd"
 	var/list/modes = list("grey","red","blue","cyan","green","yellow","purple")
 	var/mode = "grey"
 

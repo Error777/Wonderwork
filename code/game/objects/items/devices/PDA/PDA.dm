@@ -160,7 +160,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	silent = 1 //Quiet in the library!
 
 /obj/item/device/pda/clear
-	icon_state = "pda-transp"
+	icon_state = "pda-clear"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. This is model is a special edition with a transparent case."
 	note = "Congratulations, you have chosen the Thinktronic 5230 Personal Data Assistant Deluxe Special Max Turbo Limited Edition!"
 
