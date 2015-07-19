@@ -129,7 +129,7 @@
 	New()
 		..()
 		reagents.add_reagent("clonexadone", 25)
-		reagents.add_reagent("liquidnitrogen", 15)
+		reagents.add_reagent("nitrogen", 15)
 		reagents.add_reagent("chloralhydrate", 10)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ammonia
@@ -141,6 +141,26 @@
 	New()
 		..()
 		reagents.add_reagent("ammonia", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/nanites
+	name = "Nanomachines Bottle"
+	desc = "A small bottle of microscopic construction robots!"
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle20"
+
+	New()
+		..()
+		reagents.add_reagent("nanites", 15)
+
+/obj/item/weapon/reagent_containers/glass/bottle/xenomicrobes
+	name = "Xenomicrobes Bottle"
+	desc = "A small bottle of microbes with an entirely alien cellular structure."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle20"
+
+	New()
+		..()
+		reagents.add_reagent("xenomicrobes", 15)
 
 /obj/item/weapon/reagent_containers/glass/bottle/diethylamine
 	name = "diethylamine bottle"

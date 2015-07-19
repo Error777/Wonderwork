@@ -668,7 +668,7 @@ datum
 		sulfur
 			name = "Sulfur"
 			id = "sulfur"
-			description = "A chemical element."
+			description = "A chemical element with a pungent smell."
 			reagent_state = SOLID
 			reagent_color = "#BF8C00" // rgb: 191, 140, 0
 
@@ -678,7 +678,7 @@ datum
 		carbon
 			name = "Carbon"
 			id = "carbon"
-			description = "A chemical element."
+			description = "A chemical element, the builing block of life."
 			reagent_state = SOLID
 			reagent_color = "#1C1300" // rgb: 30, 20, 0
 
@@ -693,7 +693,7 @@ datum
 		chlorine
 			name = "Chlorine"
 			id = "chlorine"
-			description = "A chemical element."
+			description = "A chemical element with a characteristic odour."
 			reagent_state = GAS
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
@@ -719,7 +719,7 @@ datum
 		sodium
 			name = "Sodium"
 			id = "sodium"
-			description = "A chemical element."
+			description = "A chemical element, readily reacts with water."
 			reagent_state = SOLID
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
@@ -729,7 +729,7 @@ datum
 		phosphorus
 			name = "Phosphorus"
 			id = "phosphorus"
-			description = "A chemical element."
+			description = "A chemical element, the backbone of biological energy carriers."
 			reagent_state = SOLID
 			reagent_color = "#832828" // rgb: 131, 40, 40
 
@@ -739,7 +739,7 @@ datum
 		lithium
 			name = "Lithium"
 			id = "lithium"
-			description = "A chemical element."
+			description = "A chemical element, used as antidepressant."
 			reagent_state = SOLID
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
