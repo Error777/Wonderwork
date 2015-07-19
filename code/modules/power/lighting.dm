@@ -599,50 +599,6 @@
 		sleep(1)
 		del(src)
 
-
-
-
-// special handling for desk lamps
-
-
-// if attack with hand, only "grab" attacks are an attempt to remove bulb
-// otherwise, switch the lamp on/off
-
-/obj/machinery/light/lamp/attack_hand(mob/user)
-
-	if(user.a_intent == "grab")
-		..()	// do standard hand attack
-	else
-		switchon = !switchon
-		user << "You switch [switchon ? "on" : "off"] the [name]."
-		seton(switchon && powered(LIGHT))
-
-
-// called when area power state changes
-// override since lamp does not use area lightswitch
-
-/obj/machinery/light/lamp/power_change()
-	spawn(rand(0,15))
-		var/area/A = src.loc.loc
-		A = A.master
-		seton(switchon && A.power_light)
-
-// returns whether this lamp has power
-// true if area has power and lamp switch is on
-
-/obj/machinery/light/lamp/has_power()
-	var/area/A = src.loc.loc
-	return switchon && A.master.power_light
-
-
-
-
-
-
-// the light item
-// can be tube or bulb subtypes
-// will fit into empty /obj/machinery/light of the corresponding type
-
 /obj/item/weapon/light
 	icon = 'icons/obj/lighting.dmi'
 	flags = FPRINT | TABLEPASS
@@ -838,10 +794,6 @@
 /obj/structure/light_frame/small
 	light_type = /obj/machinery/light/small
 	icon_state = "bulb-empty"
-
-/obj/structure/light_frame/lamp
-	light_type = /obj/machinery/light/lamp
-	icon_state = "lamp-empty"
 
 /obj/structure/light_frame/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/wrench) && !anchored)
