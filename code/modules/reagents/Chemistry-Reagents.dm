@@ -1743,7 +1743,7 @@ datum
 				..()
 
 		mindbreaker
-			name = "Mindbreaker Toxin"
+			name = "LSD"
 			id = "mindbreaker"
 			description = "A powerful hallucinogen. Not a thing to be messed with."
 			reagent_state = LIQUID
@@ -1756,6 +1756,43 @@ datum
 				..()
 				return
 
+		liquidnitrogen
+			name = "Liquid Nitrogen"
+			id = "liquidnitrogen"
+			description = "Liquid Nitrogen. VERY cold."
+			reagent_state = LIQUID
+			reagent_color = "#B31008" // rgb: 139, 166, 233
+
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				M:bodytemperature = max(M:bodytemperature - 30, 100) //This and the following two lines need to be checked and tinkered with so that the Cryo-In-A-Syringe
+				if(prob(5)) // leaves someone at 100% healthy from anything up to in heavy crit (-75%)
+					M.take_organ_damage(0, 1)
+				if(prob(80) && istype(M, /mob/living/carbon/metroid))
+					M.adjustFireLoss(rand(5,20))
+					M << "\red You feel a terrible chill inside your body!"
+				..()
+				return
+
+			reaction_turf(var/turf/simulated/T, var/volume)
+				for(var/mob/living/carbon/metroid/M in T)
+					M.adjustToxLoss(rand(15,30))
+
+		freezer
+			name = "Liquid vacuum"
+			id = "freezer"
+			description = "Unknown substance"
+			reagent_state = SOLID
+			reagent_color = "#619494"
+
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				if (!M.freezed)
+					freezemob(M)
+				if( holder.has_reagent("freezer") )
+					holder.remove_reagent("freezer", 2)
+				..()
+				return
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -679,6 +679,12 @@ datum
 			required_reagents = list("toxin" = 1, "water" = 4)
 			result_amount = 5
 
+		freezer
+			name = "Liquid vacuum"
+			id = "freezer"
+			result = "freezer"
+			required_reagents = list("ice" = 1, "cryoxadone" = 1, "frostoil" = 1)
+			result_amount = 1
 
 /////////////////////////////////////OLD METROID CORE REACTIONS ///////////////////////////////
 /*

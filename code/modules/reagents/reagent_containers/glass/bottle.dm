@@ -129,7 +129,7 @@
 	New()
 		..()
 		reagents.add_reagent("clonexadone", 25)
-		reagents.add_reagent("nitrogen", 15)
+		reagents.add_reagent("liquidnitrogen", 15)
 		reagents.add_reagent("chloralhydrate", 10)
 
 /obj/item/weapon/reagent_containers/glass/bottle/ammonia
