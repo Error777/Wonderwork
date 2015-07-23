@@ -937,6 +937,14 @@
 					/obj/item/weapon/screwdriver = 5,/obj/item/weapon/crowbar = 5)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 
+/obj/machinery/vending/trader
+	name = "Space Trader" //OCD had to be uppercase to look nice with the new formating
+	desc = "Robusted tool vending machine. Honk?"
+	icon_state = "spacetrader"
+	products = list(/obj/item/weapon/melee/classic_baton = 5,/obj/item/weapon/handcuffs = 10,/obj/item/weapon/flamethrower/full = 4)
+	contraband = list(/obj/item/weapon/chainsaw = 2)
+	premium = list(/obj/item/weapon/gun/projectile/automatic/pistol = 1)
+
 /obj/item/weapon/vending_charge
 	name = "Vending Charge"
 	icon = 'icons/obj/vending_restock.dmi'

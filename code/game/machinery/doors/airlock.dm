@@ -166,6 +166,13 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	glass = 1
 
+/obj/machinery/door/airlock/glass_special
+	name = "Maintenance Hatch"
+	icon = 'icons/obj/doors/Doorweapglass.dmi'
+	opacity = 0
+	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	glass = 1
+
 /obj/machinery/door/airlock/glass_engineering
 	name = "Maintenance Hatch"
 	icon = 'icons/obj/doors/Doorengglass.dmi'
