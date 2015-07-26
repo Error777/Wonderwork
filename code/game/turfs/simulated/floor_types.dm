@@ -36,6 +36,11 @@
 	icon_state = "woodold"
 	floor_tile = new/obj/item/stack/tile/wood
 
+/turf/simulated/floor/wood/oldest
+	name = "wooden floor"
+	icon_state = "woodnew"
+	floor_tile = new/obj/item/stack/tile/wood
+
 /turf/simulated/floor/vault
 	icon_state = "rockvault"
 

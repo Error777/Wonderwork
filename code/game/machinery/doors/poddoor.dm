@@ -18,6 +18,11 @@
 /obj/machinery/door/poddoor/newicon
 	icon = 'icons/obj/doors/blastdoor.dmi'
 
+/obj/machinery/door/poddoor/shield
+	name = "Energy Podlock"
+	icon = 'icons/obj/doors/shielddoor.dmi'
+	opacity = 0
+
 /obj/machinery/door/poddoor/attackby(obj/item/weapon/C as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if (!( istype(C, /obj/item/weapon/crowbar) || (istype(C, /obj/item/weapon/twohanded/fireaxe) && C:wielded == 1) ))
