@@ -8,7 +8,7 @@
 	name = "Antimatter Engine Console"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "comm_computer"
-	req_access = list(access_engine)
+	req_access = list(ACCESS_ENGINE)
 	var/engine_id = 0
 	var/authenticated = 0
 	var/obj/machinery/power/am_engine/engine/connected_E = null
@@ -57,7 +57,6 @@
 	src.updateUsrDialog()
 
 /obj/machinery/computer/am_engine/attack_ai(var/mob/user as mob)
-	src.add_hiddenprint(user)
 	return src.attack_hand(user)
 
 /obj/machinery/computer/am_engine/attack_paw(var/mob/user as mob)

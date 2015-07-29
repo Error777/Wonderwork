@@ -1,11 +1,8 @@
 /obj/machinery/power/am_control_unit
 	name = "antimatter control unit"
 	desc = "This device injects antimatter into connected shielding units, the more antimatter injected the more power produced.  Wrench the device to set it up."
-	//icon = 'icons/obj/machines/antimatter.dmi'
-	icon = 'icons/obj/machines/new_ame.dmi'
+	icon = 'icons/obj/machines/antimatter.dmi'
 	icon_state = "control"
-	var/icon_mod = "on" // on, critical, or fuck
-	var/old_icon_mod = "on"
 	anchored = 1
 	density = 1
 	use_power = 1
@@ -18,7 +15,6 @@
 	var/update_shield_icons = 0
 	var/stability = 100
 	var/exploding = 0
-	var/exploded = 0
 
 	var/active = 0//On or not
 	var/fuel_injection = 2//How much fuel to inject
@@ -46,12 +42,9 @@
 
 
 /obj/machinery/power/am_control_unit/process()
-	if(exploding && !exploded)
-		message_admins("AME explosion at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>) - Last touched by [fingerprintslast]",0,1)
-		exploded=1
-		explosion(get_turf(src),8,10,12,15)
-		if(src)
-			del(src)
+	if(exploding)
+		explosion(get_turf(src),8,12,18,12)
+		if(src) del(src)
 
 	if(update_shield_icons && !shield_icon_delay)
 		check_shield_icons()
@@ -65,8 +58,6 @@
 		//Angry buzz or such here
 		return
 
-	check_core_stability()
-
 	add_avail(stored_power)
 
 	power_cycle++
@@ -78,13 +69,13 @@
 
 
 /obj/machinery/power/am_control_unit/proc/produce_power()
-	playsound(get_turf(src), 'sound/effects/bang.ogg', 25, 1)
+	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 	var/core_power = reported_core_efficiency//Effectively how much fuel we can safely deal with
 	if(core_power <= 0) return 0//Something is wrong
 	var/core_damage = 0
 	var/fuel = fueljar.usefuel(fuel_injection)
 
-	stored_power = (fuel/core_power)*fuel*20000 // Was 200000, was too much. New value run past Aurx. - N3X
+	stored_power = (fuel/core_power)*fuel*200000
 	//Now check if the cores could deal with it safely, this is done after so you can overload for more power if needed, still a bad idea
 	if(fuel > (2*core_power))//More fuel has been put in than the current cores can deal with
 		if(prob(50))core_damage = 1//Small chance of damage
@@ -94,7 +85,7 @@
 		for(var/obj/machinery/am_shielding/AMS in linked_cores)
 			AMS.stability -= core_damage
 			AMS.check_stability(1)
-		playsound(get_turf(src), 'sound/effects/bang.ogg', 50, 1)
+		playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
 	return
 
 
@@ -149,8 +140,7 @@
 
 
 /obj/machinery/power/am_control_unit/update_icon()
-	if(active)
-		icon_state = "control_[icon_mod]"
+	if(active) icon_state = "control_on"
 	else icon_state = "control"
 	//No other icons for it atm
 
@@ -159,14 +149,14 @@
 	if(!istype(W) || !user) return
 	if(istype(W, /obj/item/weapon/wrench))
 		if(!anchored)
-			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
 			user.visible_message("[user.name] secures the [src.name] to the floor.", \
 				"You secure the anchor bolts to the floor.", \
 				"You hear a ratchet")
 			src.anchored = 1
 			connect_to_network()
 		else if(!linked_shielding.len > 0)
-			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
 			user.visible_message("[user.name] unsecures the [src.name].", \
 				"You remove the anchor bolts.", \
 				"You hear a ratchet")
@@ -181,12 +171,11 @@
 			user << "\red There is already a [fueljar] inside!"
 			return
 		fueljar = W
+		W.loc = src
 		if(user.client)
 			user.client.screen -= W
 		user.u_equip(W)
-		W.loc = src
 		user.update_icons()
-		message_admins("AME loaded with fuel by [user.name] at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 		user.visible_message("[user.name] loads an [W.name] into the [src.name].", \
 				"You load an [W.name].", \
 				"You hear a thunk.")
@@ -236,8 +225,6 @@
 	else
 		use_power = 1
 		visible_message("The [src.name] shuts down.")
-	for(var/obj/machinery/am_shielding/AMS in linked_cores)
-		AMS.update_icon()
 	update_icon()
 	return
 
@@ -262,37 +249,15 @@
 
 
 /obj/machinery/power/am_control_unit/proc/check_core_stability()
-	//if(stored_core_stability_delay || linked_cores.len <= 0)	return
-	if(linked_cores.len <=0) return
-	//stored_core_stability_delay = 1
+	if(stored_core_stability_delay || linked_cores.len <= 0)	return
+	stored_core_stability_delay = 1
 	stored_core_stability = 0
 	for(var/obj/machinery/am_shielding/AMS in linked_cores)
 		stored_core_stability += AMS.stability
 	stored_core_stability/=linked_cores.len
-	switch(stored_core_stability)
-		if(0 to 24)
-			icon_mod="fuck"
-		if(25 to 49)
-			icon_mod="critical"
-		if(50 to INFINITY)
-			icon_mod="on"
-	if(icon_mod!=old_icon_mod)
-		old_icon_mod=icon_mod
-		update_icon()
-
-	//spawn(40)
-	//	stored_core_stability_delay = 0
+	spawn(40)
+		stored_core_stability_delay = 0
 	return
-
-
-/obj/machinery/power/am_control_unit/interact(mob/user)
-	if((get_dist(src, user) > 1) || (stat & (BROKEN|NOPOWER)))
-		if(!istype(user, /mob/living/silicon/ai))
-			user.unset_machine()
-			user << browse(null, "window=AMcontrol")
-			return
-	return interact(user)
-
 
 
 /obj/machinery/power/am_control_unit/interact(mob/user)
@@ -333,6 +298,7 @@
 	onclose(user, "AMcontrol")
 	return
 
+
 /obj/machinery/power/am_control_unit/Topic(href, href_list)
 	..()
 	//Ignore input if we are broken or guy is not touching us, AI can control from a ways away
@@ -348,34 +314,26 @@
 
 	if(href_list["togglestatus"])
 		toggle_power()
-		message_admins("AME toggled [active?"on":"off"] by [usr.name] at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-		return 1
 
 	if(href_list["refreshicons"])
-		update_shield_icons = 2 // Fuck it
-		return 1
+		update_shield_icons = 1
 
 	if(href_list["ejectjar"])
 		if(fueljar)
-			message_admins("AME fuel jar ejected by [usr.name] at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 			fueljar.loc = src.loc
 			fueljar = null
 			//fueljar.control_unit = null currently it does not care where it is
 			//update_icon() when we have the icon for it
-		return 1
 
-	if(href_list["set_strength"])
-		var/newval = input("Enter new injection strength") as num|null
-		if(isnull(newval))
-			return
-		fuel_injection=newval
-		fuel_injection=max(1,fuel_injection)
-		message_admins("AME injection strength set to [fuel_injection] by [usr.name] at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-		return 1
+	if(href_list["strengthup"])
+		fuel_injection++
+
+	if(href_list["strengthdown"])
+		fuel_injection--
+		if(fuel_injection < 0) fuel_injection = 0
 
 	if(href_list["refreshstability"])
 		check_core_stability()
-		return 1
 
 	updateDialog()
-	return 1
+	return

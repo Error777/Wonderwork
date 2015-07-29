@@ -13,7 +13,7 @@ obj/machinery/recharger
 obj/machinery/recharger/attackby(obj/item/weapon/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
-	if(istype(G, /obj/item/weapon/gun/energy) || istype(G, /obj/item/weapon/melee/baton))
+	if(istype(G, /obj/item/weapon/gun/energy) || istype(G, /obj/item/weapon/melee/baton) || istype(G, /obj/item/weapon/cargotele))
 		if(charging)
 			return
 
@@ -80,6 +80,15 @@ obj/machinery/recharger/process()
 			else
 				icon_state = "recharger2"
 
+		if(istype(charging, /obj/item/weapon/cargotele))
+			var/obj/item/weapon/cargotele/B = charging
+			if(B.charges < initial(B.charges))
+				B.charges++
+				icon_state = "recharger1"
+				use_power(150)
+			else
+				icon_state = "recharger2"
+
 obj/machinery/recharger/emp_act(severity)
 	if(stat & (NOPOWER|BROKEN) || !anchored)
 		..(severity)
@@ -92,6 +101,10 @@ obj/machinery/recharger/emp_act(severity)
 
 	else if(istype(charging, /obj/item/weapon/melee/baton))
 		var/obj/item/weapon/melee/baton/B = charging
+		B.charges = 0
+
+	else if(istype(charging, /obj/item/weapon/cargotele))
+		var/obj/item/weapon/cargotele/B = charging
 		B.charges = 0
 	..(severity)
 
@@ -122,6 +135,15 @@ obj/machinery/recharger/wallcharger/process()
 			return
 		if(istype(charging, /obj/item/weapon/melee/baton))
 			var/obj/item/weapon/melee/baton/B = charging
+			if(B.charges < initial(B.charges))
+				B.charges++
+				icon_state = "wrecharger1"
+				use_power(150)
+			else
+				icon_state = "wrecharger2"
+
+		if(istype(charging, /obj/item/weapon/cargotele))
+			var/obj/item/weapon/cargotele/B = charging
 			if(B.charges < initial(B.charges))
 				B.charges++
 				icon_state = "wrecharger1"

@@ -7,7 +7,7 @@
 
 
 
-#define RECOMMENDED_VERSION 495
+#define RECOMMENDED_VERSION 500
 /world/New()
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")

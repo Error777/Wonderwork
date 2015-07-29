@@ -97,8 +97,7 @@
 					prob(3);/obj/item/weapon/cable_coil/random,\
 					prob(2);/obj/random/toolbox,\
 					prob(2);/obj/item/weapon/storage/belt/utility,\
-					prob(5);/obj/random/tool,\
-					prob(2);/obj/item/weapon/coin/iron)
+					prob(5);/obj/random/tool)
 
 /obj/random/medical
 	name = "Random Medicine"

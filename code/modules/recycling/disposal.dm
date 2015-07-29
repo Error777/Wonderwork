@@ -473,6 +473,26 @@
 		else
 			return ..(mover, target, height, air_group)
 
+/obj/machinery/disposal/toilet
+	name = "toilet"
+	desc = "A torque rotation-based, waste disposal unit for small matter."
+	icon_state = "toilet"
+	density = 0//So you can stand on it.
+	mode = 2
+
+	update()
+		overlays = null
+		if( !(stat & BROKEN) )
+			if(flush)
+				overlays += image('icons/obj/pipes/disposal.dmi',"toilet-handle",,dir)
+			if( !(stat & NOPOWER) )
+				overlays += image('icons/obj/pipes/disposal.dmi',"toilet-ready",,dir)
+		else
+			icon_state = "toilet-broken"
+			mode = 0
+			flush = 0
+		return
+
 // virtual disposal object
 // travels through pipes in lieu of actual items
 // contents will be items flushed by the disposal

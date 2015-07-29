@@ -200,6 +200,7 @@
 	name = "Potted plant"
 	icon = 'icons/obj/flora/plants.dmi'
 	icon_state = "plant-01"
+	layer = FLY_LAYER
 
 /obj/structure/flora/kirbyplants/dead
 	name = "RD's potted plant"

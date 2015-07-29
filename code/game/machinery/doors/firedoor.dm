@@ -7,7 +7,7 @@
 	icon_state = "door_open"
 	opacity = 0
 	density = 0
-	layer = 2.5
+	layer = 2.6
 
 	var/blocked = 0
 	var/nextstate = null

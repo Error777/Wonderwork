@@ -17,8 +17,8 @@
 			user << "You cannot turn the light on while in this [user.loc]" //To prevent some lighting anomalities.
 			return
 		on = !on
-		icon_state = "hardhat[on]_[color]"
-		item_state = "hardhat[on]_[color]"
+		icon_state = "hardhat[on]_[item_color]"
+		item_state = "hardhat[on]_[item_color]"
 
 		if(on)
 			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)

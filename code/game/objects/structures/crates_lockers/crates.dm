@@ -464,6 +464,8 @@
 		del(W)
 		rigged = 1
 		return
+	else if(istype(W, /obj/item/weapon/cargotele))
+		return
 	else if(istype(W, /obj/item/device/radio/electropack))
 		if(rigged)
 			user  << "<span class='notice'>You attach [W] to [src].</span>"

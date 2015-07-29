@@ -18,10 +18,14 @@
 /obj/machinery/door/poddoor/newicon
 	icon = 'icons/obj/doors/blastdoor.dmi'
 
-/obj/machinery/door/poddoor/shield
+/obj/machinery/door/poddoor/glass
+	name = "Glass Podlock"
+	icon = 'icons/obj/doors/pdoorglass.dmi'
+	opacity = 0
+
+/obj/machinery/door/poddoor/glass/shield
 	name = "Energy Podlock"
 	icon = 'icons/obj/doors/shielddoor.dmi'
-	opacity = 0
 
 /obj/machinery/door/poddoor/attackby(obj/item/weapon/C as obj, mob/user as mob)
 	src.add_fingerprint(user)

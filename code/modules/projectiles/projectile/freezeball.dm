@@ -2,8 +2,8 @@ obj/item/weapon/gun/energy/freezegun
 	name = "Freezer gun"
 	desc = "Special gun to freeze some badasses"
 	icon = 'icons/obj/gun.dmi'
-	icon_state = "freezegun"
-	item_state = "freezegun"
+	icon_state = "freezegunold"
+	item_state = "freezegunold"
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY
 	charge_cost = 500

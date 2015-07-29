@@ -126,19 +126,24 @@
 	icon_state = "nosmoking2"
 
 /obj/structure/sign/redcross
-	name = "medbay"
+	name = "\improper medbay"
 	desc = "The Intergalactic symbol of Medical institutions. You'll probably get help here.'"
 	icon_state = "redcross"
 
 /obj/structure/sign/greencross
-	name = "medbay"
+	name = "\improper medbay"
 	desc = "The Intergalactic symbol of Medical institutions. You'll probably get help here.'"
 	icon_state = "greencross"
 
 /obj/structure/sign/medbaylogo
-	name = "Medbay"
+	name = "\improper medbay"
 	desc = "The Intergalactic symbol of Medical institutions. You'll probably get help here.'"
 	icon_state = "medlogo"
+
+/obj/structure/sign/medbaylogo2
+	name = "\improper medbay"
+	desc = "The Intergalactic symbol of Medical institutions. You'll probably get help here.'"
+	icon_state = "medlogo2"
 
 /obj/structure/sign/goldenplaque
 	name = "The Most Robust Men Award for Robustness"
@@ -185,3 +190,33 @@
 	name = "\improper HYDROPONICS"
 	desc = "A warning sign which reads 'HYDROPONICS'"
 	icon_state = "hydro1"
+
+/obj/structure/sign/pipemarker/no2
+	desc = "A small marker that indicates the preferred content of a pipe line"
+	name = "nitrous oxide pipeline"
+	icon_state = "pipemark_no2"
+
+/obj/structure/sign/pipemarker/o2
+	desc = "A small marker that indicates the preferred content of a pipe line"
+	name = "oxygen pipeline"
+	icon_state = "pipemark_o2"
+
+/obj/structure/sign/pipemarker/co2
+	desc = "A small marker that indicates the preferred content of a pipe line"
+	name = "carbon dioxide pipeline"
+	icon_state = "pipemark_co2"
+
+/obj/structure/sign/pipemarker/pl
+	desc = "A small marker that indicates the preferred content of a pipe line"
+	name = "plasma pipeline"
+	icon_state = "pipemark_pl"
+
+/obj/structure/sign/pipemarker/air
+	desc = "A small marker that indicates the preferred content of a pipe line"
+	name = "mixed-air pipeline"
+	icon_state = "pipemark_air"
+
+/obj/structure/sign/pipemarker/n2
+	desc = "A small marker that indicates the preferred content of a pipe line"
+	name = "nitrogen pipeline"
+	icon_state = "pipemark_n2"
