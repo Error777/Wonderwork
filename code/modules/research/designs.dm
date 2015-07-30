@@ -1592,6 +1592,14 @@ datum/design/mesons
 	materials = list("$metal" = 50, "$glass" = 150, "$plasma" = 150)
 	build_path = /obj/item/device/telepadremote
 
+/datum/design/cargotele
+	name = "Cargo Transporter"
+	id = "cargotele"
+	req_tech = list("bluespace" = 4, "materials" = 2, "magnets" = 4)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 200, "$glass" = 150, "$silver" = 500)
+	build_path = /obj/item/weapon/cargotele
+
 /////////////////////////////////////////
 /////////////////HUDs////////////////////
 /////////////////////////////////////////
