@@ -1,3 +1,4 @@
+#define FIREDOOR_CLOSED_MOD	0.8
 /var/const/OPEN = 1
 /var/const/CLOSED = 2
 /obj/machinery/door/firedoor
@@ -7,7 +8,8 @@
 	icon_state = "door_open"
 	opacity = 0
 	density = 0
-	layer = 2.6
+	layer = DOOR_LAYER - 0.2
+	base_layer = DOOR_LAYER - 0.2
 
 	var/blocked = 0
 	var/nextstate = null
@@ -233,7 +235,7 @@
 	icon_state = "door0"
 	src.ul_SetOpacity(0)
 	sleep(10)
-	src.layer = 2.5		//NO, FIREDOOR, NO!
+	src.layer = base_layer		//NO, FIREDOOR, NO!
 	src.density = 0
 	explosion_resistance = 0
 	update_icon()
@@ -260,7 +262,7 @@
 	do_animate("closing")
 	src.density = 1
 	explosion_resistance = initial(explosion_resistance)
-	src.layer = 3.0
+	src.layer = base_layer + 0.2
 	sleep(10)
 	update_icon()
 	if(visible && !glass)
