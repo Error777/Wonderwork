@@ -14,6 +14,7 @@
 	icon_state = "bluetag"
 	item_state = "bluetag"
 	blood_overlay_type = "armor"
+	poo_overlay_type = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	allowed = list (/obj/item/weapon/gun/energy/laser/bluetag)
 	siemens_coefficient = 3.0
@@ -24,6 +25,7 @@
 	icon_state = "redtag"
 	item_state = "redtag"
 	blood_overlay_type = "armor"
+	poo_overlay_type = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	allowed = list (/obj/item/weapon/gun/energy/laser/redtag)
 	siemens_coefficient = 3.0
@@ -100,6 +102,7 @@
 	icon_state = "vest"
 	item_state = "wcoat"
 	blood_overlay_type = "armor"
+	poo_overlay_type = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 

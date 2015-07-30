@@ -145,3 +145,62 @@
 	icon_state = "mucus"
 	random_icon_states = list("mucus")
 	var/list/datum/disease2/disease/virus2 = list()
+
+/obj/effect/decal/cleanable/poo
+	name = "poo"
+	desc = "It's a poo stain..."
+	icon = 'icons/effects/pooeffect.dmi'
+	icon_state = "floor1"
+	gender = PLURAL
+	density = 0
+	anchored = 1
+	layer = 2
+	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7", "floor8")
+	var/viruses = list()
+	var/amount = 5
+
+	Del()
+		for(var/datum/disease/D in viruses)
+			D.cure(0)
+		..()
+
+
+/obj/effect/decal/cleanable/poo/HasEntered(mob/living/carbon/human/perp)
+	if (!istype(perp))
+		return
+	if(amount < 1)
+		return
+
+	if(perp.shoes)
+		perp.shoes:track_poo = max(amount,perp.shoes:track_poo)		//Adding poo to shoes
+		if(!perp.shoes.poo_overlay)
+			perp.shoes.generate_poo_overlay()
+			perp.shoes.overlays += perp.shoes.poo_overlay
+			perp.update_inv_shoes(1)
+	else
+		perp.track_poo = max(amount,perp.track_poo)				//Or feet
+
+	amount--
+
+/obj/effect/decal/cleanable/poo/footprints
+	name = "poo footprints"
+	desc = "Whoops..."
+	icon='icons/effects/footprints.dmi'
+	icon_state = "poo1"
+	amount = 0
+	random_icon_states = null
+
+/obj/effect/decal/cleanable/poo/tracks
+	icon_state = "tracks"
+	desc = "They look like tracks left by wheels."
+	gender = PLURAL
+	random_icon_states = null
+	amount = 0
+
+/obj/effect/decal/cleanable/poo/drip
+	name = "drips of poo"
+	desc = "It's brown."
+	gender = PLURAL
+	icon = 'icons/effects/pooeffect.dmi'
+	icon_state = "drip1"
+	amount = 0

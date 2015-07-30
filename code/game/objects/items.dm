@@ -2,6 +2,7 @@
 	name = "item"
 	icon = 'icons/obj/items.dmi'
 	var/icon/blood_overlay = null //this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
+	var/icon/poo_overlay = null
 	var/abstract = 0
 	var/item_state = null
 	var/r_speed = 1.0
@@ -789,3 +790,33 @@
 	for(var/obj/item/A in world)
 		if(A.type == type && !A.blood_overlay)
 			A.blood_overlay = I
+//POO!!
+
+/obj/item/clean_poo()
+	. = ..()
+	if(poo_overlay)
+		overlays.Remove(poo_overlay)
+
+/obj/item/add_poo(mob/living/carbon/human/M as mob)
+	if (!..())
+		return 0
+
+	//if we haven't made our blood_overlay already
+	if( !poo_overlay )
+		generate_poo_overlay()
+
+		overlays += poo_overlay
+	return 1
+
+/obj/item/proc/generate_poo_overlay()
+	if(poo_overlay)
+		return
+
+	var/icon/I = new /icon(icon, icon_state)
+	I.Blend(new /icon('icons/effects/pooeffect.dmi', rgb(255,255,255)),ICON_ADD) //fills the icon_state with white (except where it's transparent)
+	I.Blend(new /icon('icons/effects/pooeffect.dmi', "itempoo"),ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+
+	//not sure if this is worth it. It attaches the blood_overlay to every item of the same type if they don't have one already made.
+	for(var/obj/item/A in world)
+		if(A.type == type && !A.poo_overlay)
+			A.poo_overlay = I
