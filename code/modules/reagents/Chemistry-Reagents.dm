@@ -1160,24 +1160,6 @@ datum
 				..()
 				return
 
-		poo
-			name = "Poo"
-			id = "poo"
-			description = "It's poo."
-			reagent_state = LIQUID
-			reagent_color = "#660000"
-
-			reaction_turf(var/turf/T, var/volume)
-				src = null
-				if(volume >= 1)
-					if(!istype(T, /turf/space))
-						new /obj/effect/decal/cleanable/poo/(T)
-
-			on_mob_life(var/mob/living/M as mob)
-				if(!M) M = holder.my_atom
-				M.adjustToxLoss(2)
-				..()
-				return
 
 		space_cleaner
 			name = "Space cleaner"

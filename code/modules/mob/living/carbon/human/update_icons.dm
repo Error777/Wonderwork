@@ -508,10 +508,6 @@ proc/get_damage_icon_part(damage_state, body_part)
 			lying.overlays		+= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "uniformblood2")
 			standing.overlays	+= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "uniformblood")
 
-		if(w_uniform.poo)
-			lying.overlays		+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "uniformpoo2")
-			standing.overlays	+= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "uniformpoo")
-
 		if(w_uniform:hastie)	//WE CHECKED THE TYPE ABOVE. THIS REALLY SHOULD BE FINE.
 			var/tie_color = w_uniform:hastie.item_color
 			if(!tie_color) tie_color = w_uniform:hastie.icon_state
@@ -574,20 +570,6 @@ proc/get_damage_icon_part(damage_state, body_part)
 		if(blood_DNA)
 			overlays_lying[GLOVES_LAYER]	= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "bloodyhands2")
 			overlays_standing[GLOVES_LAYER]	= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "bloodyhands")
-		else
-			overlays_lying[GLOVES_LAYER]	= null
-			overlays_standing[GLOVES_LAYER]	= null
-
-		if(gloves.poo)
-			lying.overlays		+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "poohands2")
-			standing.overlays	+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "poohands")
-		gloves.screen_loc = get_slot_loc("gloves")
-		overlays_lying[GLOVES_LAYER]	= lying
-		overlays_standing[GLOVES_LAYER]	= standing
-	else
-		if(poo)
-			overlays_lying[GLOVES_LAYER]	= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "poohands2")
-			overlays_standing[GLOVES_LAYER]	= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "poohands")
 		else
 			overlays_lying[GLOVES_LAYER]	= null
 			overlays_standing[GLOVES_LAYER]	= null
@@ -659,15 +641,6 @@ proc/get_damage_icon_part(damage_state, body_part)
 		else
 			overlays_lying[SHOES_LAYER]			= null
 			overlays_standing[SHOES_LAYER]		= null
-
-			if(shoes.poo)
-				lying.overlays		+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "shoepoo2")
-				standing.overlays	+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "shoepoo")
-			overlays_lying[SHOES_LAYER]		= lying
-			overlays_standing[SHOES_LAYER]	= standing
-		else
-			overlays_lying[SHOES_LAYER]			= null
-			overlays_standing[SHOES_LAYER]		= null
 		if(update_icons)   update_icons()
 
 	if(gender == FEMALE)
@@ -682,17 +655,7 @@ proc/get_damage_icon_part(damage_state, body_part)
 		else
 			overlays_lying[SHOES_LAYER]			= null
 			overlays_standing[SHOES_LAYER]		= null
-
-			if(shoes.poo)
-				lying.overlays		+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "shoepoo2")
-				standing.overlays	+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "shoepoo")
-			overlays_lying[SHOES_LAYER]		= lying
-			overlays_standing[SHOES_LAYER]	= standing
-		else
-			overlays_lying[SHOES_LAYER]			= null
-			overlays_standing[SHOES_LAYER]		= null
 		if(update_icons)   update_icons()
-
 
 /mob/living/carbon/human/update_inv_s_store(var/update_icons=1)
 	if(s_store)
@@ -726,16 +689,6 @@ proc/get_damage_icon_part(damage_state, body_part)
 	else
 		overlays_lying[HEAD_LAYER]		= null
 		overlays_standing[HEAD_LAYER]	= null
-
-		if(head.poo)
-			lying.overlays		+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "helmetpoo2")
-			standing.overlays	+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "helmetpoo")
-		overlays_lying[HEAD_LAYER]		= lying
-		overlays_standing[HEAD_LAYER]	= standing
-	else
-		overlays_lying[HEAD_LAYER]		= null
-		overlays_standing[HEAD_LAYER]	= null
-
 
 	if(update_icons)   update_icons()
 
@@ -777,11 +730,6 @@ proc/get_damage_icon_part(damage_state, body_part)
 			lying.overlays		+= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "[S.blood_overlay_type]blood2")
 			standing.overlays	+= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "[S.blood_overlay_type]blood")
 
-		if(wear_suit.poo)
-			var/obj/item/clothing/suit/S = wear_suit
-			lying.overlays		+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "[S.poo_overlay_type]poo2")
-			standing.overlays	+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "[S.poo_overlay_type]poo")
-
 		overlays_lying[SUIT_LAYER]		= lying
 		overlays_standing[SUIT_LAYER]	= standing
 
@@ -815,16 +763,8 @@ proc/get_damage_icon_part(damage_state, body_part)
 	else
 		overlays_lying[FACEMASK_LAYER]		= null
 		overlays_standing[FACEMASK_LAYER]	= null
-
-		if( !istype(wear_mask, /obj/item/clothing/mask/cigarette) && wear_mask.poo )
-			lying.overlays		+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "maskpoo2")
-			standing.overlays	+= image("icon" = 'icons/effects/pooeffect.dmi', "icon_state" = "maskpoo")
-		overlays_lying[FACEMASK_LAYER]		= lying
-		overlays_standing[FACEMASK_LAYER]	= standing
-	else
-		overlays_lying[FACEMASK_LAYER]		= null
-		overlays_standing[FACEMASK_LAYER]	= null
 	if(update_icons)   update_icons()
+
 
 /mob/living/carbon/human/update_inv_back(var/update_icons=1)
 	if(back)

@@ -6,7 +6,6 @@
 	var/list/fingerprintshidden
 	var/fingerprintslast = null
 	var/list/blood_DNA
-	var/list/poo
 	var/last_bumped = 0
 	var/pass_flags = 0
 	var/throwpass = 0
