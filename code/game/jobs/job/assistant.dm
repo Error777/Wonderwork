@@ -9,7 +9,6 @@
 	selection_color = "#dddddd"
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
-	alt_titles = list("Technical Assistant","Medical Intern","Research Assistant","Security Cadet")
 
 /datum/job/assistant/equip(var/mob/living/carbon/human/H)
 	if(!H)	return 0

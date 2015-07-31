@@ -407,6 +407,7 @@
 /obj/item/weapon/storage/box/pillbottles
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
+	icon_state = "pillbox"
 
 	New()
 		..()
@@ -464,6 +465,29 @@
 			processing_objects.Add(W)
 		W.update_icon()
 		return
+
+/obj/item/weapon/storage/cigar
+	name = "cigar box"
+	desc = "A box full of excellent cigars."
+	icon = 'icons/obj/cigarettes.dmi'
+	icon_state = "cigarbox"
+	item_state = "zippo"
+	storage_slots = 10
+	w_class = 1
+	flags = TABLEPASS
+	slot_flags = SLOT_BELT
+	New()
+		..()
+		new /obj/item/clothing/mask/cigarette/cigar(src)
+		new /obj/item/clothing/mask/cigarette/cigar(src)
+		new /obj/item/clothing/mask/cigarette/cigar(src)
+		new /obj/item/clothing/mask/cigarette/cigar(src)
+		new /obj/item/clothing/mask/cigarette/cigar/cohiba(src)
+		new /obj/item/clothing/mask/cigarette/cigar/cohiba(src)
+		new /obj/item/clothing/mask/cigarette/cigar/cohiba(src)
+		new /obj/item/clothing/mask/cigarette/cigar/havana(src)
+		new /obj/item/clothing/mask/cigarette/cigar/havana(src)
+		new /obj/item/clothing/mask/cigarette/cigar/havana(src)
 
 /obj/item/weapon/storage/box/autoinjectors
 	name = "box of injectors"

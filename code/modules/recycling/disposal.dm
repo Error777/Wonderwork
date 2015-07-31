@@ -480,6 +480,19 @@
 	density = 0//So you can stand on it.
 	mode = 2
 
+	attackby(var/obj/item/I, var/mob/user)
+		if(!I)
+			return
+
+		if(istype(I, /obj/item/weapon/paper))
+			user << "You clogged toilet."
+			icon_state = "toilet-broken"
+			mode = 0
+			flush = 0
+
+		else
+			return
+
 	update()
 		overlays = null
 		if( !(stat & BROKEN) )

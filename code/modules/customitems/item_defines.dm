@@ -158,7 +158,7 @@
 	icon_state = "siraj_tongueleaf"
 	item_state = "siraj_tongueleaf"
 
-/obj/item/weapon/storage/fluff/maye_daye_1 //morrinn: Maye Day
+/obj/item/weapon/storage/lunchbox //morrinn: Maye Day
 	name = "pristine lunchbox"
 	desc = "A pristine stainless steel lunch box. The initials M.D. are engraved on the inside of the lid."
 	icon = 'icons/obj/custom_items.dmi'
