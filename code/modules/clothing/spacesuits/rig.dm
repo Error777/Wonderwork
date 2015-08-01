@@ -40,6 +40,7 @@
 	var/on = 0
 	item_color = "engineering" //Determines used sprites: rig[on]-[color] and rig[on]-[color]2 (lying down sprite)
 	icon_action_button = "action_hardhat"
+	flags_inv = 0
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
 	species_restricted = list("exclude","Unathi","Tajaran","Skrell","Diona","Vox")
@@ -55,7 +56,7 @@
 		if(on)
 			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
 		else
-			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+			user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
 
 	pickup(mob/user)
 		if(on)
@@ -64,8 +65,8 @@
 
 	dropped(mob/user)
 		if(on)
-			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-			ul_SetLuminosity(brightness_on, brightness_on-1, 0)
+			user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+			ul_SetLuminosity(brightness_on, brightness_on - 1, 0)
 
 /obj/item/clothing/suit/space/rig
 	name = "engineering hardsuit"
