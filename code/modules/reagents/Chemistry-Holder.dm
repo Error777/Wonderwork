@@ -174,28 +174,23 @@ datum
 				var/datum/reagents/R = target.reagents
 				var/trans_data = null
 				//if(R.total_volume + amount > R.maximum_volume) return 0
-
 				current_list_element = rand(1,reagent_list.len) //Eh, bandaid fix.
-
 				while(total_transfered != amount)
 					if(total_transfered >= amount) break //Better safe than sorry.
 					if(total_volume <= 0 || !reagent_list.len) break
 					if(R.total_volume >= R.maximum_volume) break
-
 					if(current_list_element > reagent_list.len) current_list_element = 1
 					var/datum/reagent/current_reagent = reagent_list[current_list_element]
 					if(preserve_data)
 						trans_data = current_reagent.data
 					R.add_reagent(current_reagent.id, (1 * multiplier), trans_data)
 					src.remove_reagent(current_reagent.id, 1)
-
 					current_list_element++
 					total_transfered++
 					src.update_total()
 					R.update_total()
 				R.handle_reactions()
 				handle_reactions()
-
 				return total_transfered
 */
 
@@ -217,7 +212,7 @@ datum
 				update_total()
 
 			handle_reactions()
-				if(!my_atom) 				return //  ј  ЅЋя“№? Ёто что, вылезает при кислотных гренах? Ќиху€ не понимаю.
+				if(!my_atom) 				return // EAE AE?OU? Yoi ?oi, aueacaao i?e eeneioiuo a?aiao? Ieooy ia iiieia?.
 				if(my_atom.flags & NOREACT) return //Yup, no reactions here. No siree.
 
 				var/reaction_occured = 0
@@ -530,5 +525,3 @@ datum
 atom/proc/create_reagents(var/max_vol)
 	reagents = new/datum/reagents(max_vol)
 	reagents.my_atom = src
-
-
