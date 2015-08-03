@@ -41,13 +41,18 @@
 	new /obj/item/clothing/head/ushanka(src)
 	new /obj/item/clothing/head/ushanka(src)
 	new /obj/item/clothing/head/ushanka(src)
-	new /obj/item/clothing/head/ushanka(src)
+	new /obj/item/clothing/suit/bearcoat(src)
+	new /obj/item/clothing/suit/bearcoat(src)
+	new /obj/item/clothing/suit/bearcoat(src)
+	new /obj/item/clothing/suit/bearcoat(src)
 	new /obj/item/clothing/under/soviet(src)
 	new /obj/item/clothing/under/soviet(src)
 	new /obj/item/clothing/under/soviet(src)
 	new /obj/item/clothing/under/soviet(src)
-	new /obj/item/clothing/under/soviet(src)
-
+	new /obj/item/clothing/shoes/bearboots(src)
+	new /obj/item/clothing/shoes/bearboots(src)
+	new /obj/item/clothing/shoes/bearboots(src)
+	new /obj/item/clothing/shoes/bearboots(src)
 
 /obj/structure/closet/gimmick/tacticool
 	name = "tacticool gear closet"
