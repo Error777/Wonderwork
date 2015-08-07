@@ -1394,4 +1394,5 @@
 #include "code\ZAS\ZAS_Zones.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
+#include "maps\NMV Khan.dmm"
 // END_INCLUDE
