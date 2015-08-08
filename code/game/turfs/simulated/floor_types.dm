@@ -205,7 +205,7 @@
 /turf/simulated/beach/desert1
 	name = "Sand"
 	icon_state = "desert8"
-	luminosity = 10
+	luminosity = 0
 	temperature = 323.15
 
 /turf/simulated/beach/dgrass
