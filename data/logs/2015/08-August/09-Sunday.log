@@ -291,3 +291,131 @@ Failed to connect to database in load_donators().
 [18:11:30]ATTACK: Deandre Holdeman (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/midbullet
 [18:11:31]ATTACK: Deandre Holdeman (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003f]'>JMP</A>) shot Scoprio () with the bullet.
 [18:11:31]ATTACK: Deandre Holdeman (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/midbullet
+[18:12:07]SAY: Camel/ : eh?
+[18:13:35]SAY: droid/ : Beep!
+[18:14:29]SAY: Repents/ : HSSSSS.
+[18:16:02]ATTACK: Unknown (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003f]'>JMP</A>) shot Scoprio () with the bullet.
+[18:16:02]ATTACK: Unknown (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/midbullet
+[18:18:04]SAY: Camel/ : eh?
+[18:19:36]SAY: Repents/ : Meow!
+[18:19:58]SAY: Repents/ : Esp!
+[18:23:07]SAY: Repents/ : Purr!
+[18:23:27]SAY: Repents/ : Esp!
+[18:24:17]SAY: Repents/ : HSSSSS.
+[18:24:17]SAY: Repents/ : Purr!
+[18:25:27]SAY: Repents/ : Esp!
+[18:27:03]SAY: droid/ : Beep!
+[18:27:53]ACCESS: Logout: PahomLancer/(Deandre Holdeman)
+
+
+Starting up. 19:00.37
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[19:00:38]ADMIN: Loading Banlistjob
+[19:00:38]ADMIN: Loading jobban_rank
+[19:00:38]ADMIN: jobban_keylist was empty
+[19:00:38]ADMIN: Updating jobbanfile!
+[19:00:38]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[19:00:38]ACCESS: Login: PahomLancer/(PahomLancer) from localhost-357177658 || BYOND v506
+[19:04:30]GAME: The current game mode is - extended
+[19:05:02]DEBUG: Next event in 25.84 minutes.
+[19:05:08]ACCESS: Logout: *no key*/(PahomLancer)
+[19:05:08]ACCESS: Login: PahomLancer/(Aidan Highlands) from localhost-357177658 || BYOND v506
+[19:05:20]SAY: Repents/ : HSSSSS.
+[19:06:22]SAY: Camel/ : EHEHEHEHEH.
+[19:07:02]SAY: droid/ : Bzzt!
+[19:07:57]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:07:59]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:08:36]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) injected Aidan Highlands (pahomlancer) with the autoinjector. Reagents: Inaprovaline
+[19:08:36]ATTACK: Aidan Highlands (pahomlancer) injected Aidan Highlands (pahomlancer) with autoinjector. Reagents: Inaprovaline
+[19:08:58]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the electrode.
+[19:08:58]ATTACK: Aidan Highlands (pahomlancer) shot Scoprio () with /obj/item/projectile/energy/electrode
+[19:08:59]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:09:01]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:09:03]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:09:33]SAY: Camel/ : eh?
+[19:09:39]SAY: Repents/ : Esp!
+[19:10:19]ATTACK: The turret from 115,40,1 shot the mouse () with a /obj/item/projectile/beam/heavylaser
+[19:10:19]ATTACK: The turret from 115,44,1 shot the mouse () with a /obj/item/projectile/beam/heavylaser
+[19:11:01]SAY: Repents/ : Meow!
+[19:12:09]SAY: Repents/ : Esp!
+[19:12:12]SAY: Repents/ : HSSSSS.
+[19:12:27]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[19:12:27]ATTACK: Aidan Highlands (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[19:12:27]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[19:12:27]ATTACK: Aidan Highlands (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[19:12:28]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[19:12:28]ATTACK: Aidan Highlands (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[19:13:24]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:13:25]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[19:13:25]ATTACK: Aidan Highlands (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[19:13:25]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[19:13:25]ATTACK: Aidan Highlands (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[19:13:27]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:13:28]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:13:30]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:13:41]GAME: PahomLancer/(Aidan Highlands) triggered a welding kit explosion.
+[19:13:41]GAME: Explosion with size (-1, 0, 2) in area Mine 
+[19:13:58]SAY: Camel/ : EHEHEHEHEH.
+[19:14:04]SAY: Camel/ : EHEHEHEHEH.
+[19:14:30]ADMIN: PahomLancer/(Aidan Highlands) healed / revived *no key*/(Scoprio)
+[19:14:30]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:14:36]ATTACK: Scoprio () attacked Aidan Highlands (pahomlancer)(Animal)
+[19:14:36]EMOTE: Aidan Highlands/PahomLancer : <B>Aidan Highlands</B> screams!
+[19:14:46]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the welding tool.
+[19:14:46]ATTACK: Aidan Highlands (pahomlancer) attacked himself with welding tool (INTENT: HURT) (DAMTYE: FIRE)
+[19:14:47]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the welding tool.
+[19:14:47]ATTACK: Aidan Highlands (pahomlancer) attacked himself with welding tool (INTENT: HURT) (DAMTYE: FIRE)
+[19:14:48]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the welding tool.
+[19:14:48]ATTACK: Aidan Highlands (pahomlancer) attacked himself with welding tool (INTENT: HURT) (DAMTYE: FIRE)
+[19:14:49]ATTACK: Aidan Highlands (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the welding tool.
+[19:14:49]ATTACK: Aidan Highlands (pahomlancer) attacked himself with welding tool (INTENT: HURT) (DAMTYE: FIRE)
+[19:14:53]ACCESS: Logout: PahomLancer/(Aidan Highlands)
+
+
+Starting up. 19:19.25
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[19:19:25]ADMIN: Loading Banlistjob
+[19:19:25]ADMIN: Loading jobban_rank
+[19:19:25]ADMIN: jobban_keylist was empty
+[19:19:25]ADMIN: Updating jobbanfile!
+[19:19:25]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[19:19:26]ACCESS: Login: PahomLancer/(PahomLancer) from localhost-357177658 || BYOND v506
+[19:21:09]ADMIN: PahomLancer has started the game.
+[19:21:09]GAME: The current game mode is - extended
+[19:21:40]DEBUG: Next event in 19.288 minutes.
+[19:21:52]ACCESS: Logout: *no key*/(PahomLancer)
+[19:21:52]ACCESS: Login: PahomLancer/(Apple Christman) from localhost-357177658 || BYOND v506
+[19:22:09]SAY: Camel/ : eh?
+[19:22:13]ACCESS: Logout: PahomLancer/(Apple Christman)

@@ -1,37 +1,37 @@
 Captain=1
-Head of Personnel=1
-Head of Security=1
-Chief Engineer=1
-Research Director=1
-Chief Medical Officer=1
+Head of Personnel=0
+Head of Security=0
+Chief Engineer=0
+Research Director=0
+Chief Medical Officer=0
 
-Station Engineer=5
-Roboticist=1
+Station Engineer=3
+Roboticist=0
 
-Medical Doctor=5
-Geneticist=2
-Virologist=1
+Medical Doctor=2
+Geneticist=0
+Virologist=0
 
-Scientist=3
-Chemist=2
+Scientist=0
+Chemist=0
 
 Bartender=1
 Botanist=2
 Chef=1
-Janitor=1
-Quartermaster=1
-Shaft Miner=3
+Janitor=0
+Quartermaster=0
+Shaft Miner=0
 
-Warden=1
-Detective=1
-Security Officer=5
+Warden=0
+Detective=0
+Security Officer=4
 
 Assistant=-1
-Atmospheric Technician=4
-Cargo Technician=3
-Chaplain=1
-Lawyer=2
-Librarian=1
+Atmospheric Technician=0
+Cargo Technician=0
+Chaplain=0
+Lawyer=0
+Librarian=0
 
-AI=1
-Cyborg=1
+AI=0
+Cyborg=0
