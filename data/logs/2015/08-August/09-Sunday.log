@@ -1,0 +1,101 @@
+
+
+Starting up. 16:07.11
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[16:07:11]ADMIN: Loading Banlistjob
+[16:07:11]ADMIN: Loading jobban_rank
+[16:07:11]ADMIN: jobban_keylist was empty
+[16:07:11]ADMIN: Updating jobbanfile!
+[16:07:11]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[16:07:11]ACCESS: Login: PahomLancer/(PahomLancer) from localhost-357177658 || BYOND v506
+[16:09:24]ACCESS: Logout: *no key*/(PahomLancer)
+[16:09:24]ACCESS: Login: PahomLancer/(Oscar Kirkson) from localhost-357177658 || BYOND v506
+[16:09:28]ACCESS: Logout: PahomLancer/(Oscar Kirkson)
+
+
+Starting up. 16:13.12
+---------------------
+Adding game mode AutoTraitor (extend-a-traitormongous) to configuration.
+Adding game mode traitor+changeling (traitorchan) to configuration.
+Adding game mode traitor (traitor) to configuration.
+Adding game mode changeling (changeling) to configuration.
+Adding game mode cult (cult) to configuration.
+Adding game mode extended (extended) to configuration.
+Adding game mode heist (heist) to configuration.
+Adding game mode AI malfunction (malfunction) to configuration.
+Adding game mode Memetic Anomaly (meme) to configuration.
+Adding game mode meteor (meteor) to configuration.
+Adding game mode nuclear emergency (nuclear) to configuration.
+Adding game mode rp-revolution (rp-revolution) to configuration.
+Adding game mode revolution (revolution) to configuration.
+Adding game mode wizard (wizard) to configuration.
+Saved mode is 'extended'
+[16:13:12]ADMIN: Loading Banlistjob
+[16:13:12]ADMIN: Loading jobban_rank
+[16:13:12]ADMIN: jobban_keylist was empty
+[16:13:12]ADMIN: Updating jobbanfile!
+[16:13:12]ADMIN: Loading Banlist
+Failed to connect to database in load_donators().
+[16:13:12]ACCESS: Login: PahomLancer/(PahomLancer) from localhost-357177658 || BYOND v506
+[16:17:11]GAME: The current game mode is - extended
+[16:17:11]ACCESS: Logout: *no key*/(PahomLancer)
+[16:17:11]ACCESS: Login: PahomLancer/(Cash Shirey) from localhost-357177658 || BYOND v506
+[16:17:11]GAME:  (pahomlancer) with rank (Chef) spawn at 102,46,1
+[16:17:44]DEBUG: Next event in 20.412 minutes.
+[16:19:46]ADMIN: PahomLancer/(Cash Shirey) told everyone to man up and deal with it.
+[16:19:47]SAY: mouse/ : SQUEEK!
+[16:19:59]SAY: mouse/ : SQUEEK!
+[16:19:59]SAY: Repents/ : Esp!
+[16:21:35]SAY: Repents/ : Purr!
+[16:23:38]SAY: Camel/ : EHEHEHEHEH.
+[16:23:42]SAY: Camel/ : eh?
+[16:23:44]SAY: Repents/ : HSSSSS.
+[16:23:50]SAY: Repents/ : Esp!
+[16:24:32]SAY: Repents/ : Esp!
+[16:25:18]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:25:18]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HELP) (DAMTYE: BRUTE)
+[16:25:28]SAY: Repents/ : Meow!
+[16:26:20]SAY: Repents/ : Meow!
+[16:26:25]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[16:26:25]ATTACK: Cash Shirey (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[16:26:26]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[16:26:26]ATTACK: Cash Shirey (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[16:26:26]ATTACK: Scoprio () attacked Cash Shirey (pahomlancer)(Animal)
+[16:26:27]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[16:26:27]ATTACK: Cash Shirey (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[16:26:27]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) shot Scoprio () with the bullet.
+[16:26:27]ATTACK: Cash Shirey (pahomlancer) shot Scoprio () with /obj/item/projectile/bullet/weakbullet
+[16:27:26]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:26]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:27]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:27]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:28]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:28]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:31]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:31]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:32]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:32]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:33]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:33]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:35]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:35]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:36]ATTACK: Cash Shirey (pahomlancer)(<A HREF='?_src_=holder;adminplayerobservejump=[0x300003e]'>JMP</A>) attacked himself with the revolver.
+[16:27:36]ATTACK: Cash Shirey (pahomlancer) attacked himself with revolver (INTENT: HURT) (DAMTYE: BRUTE)
+[16:27:52]SAY: Camel/ : EHEHEHEHEH.
+[16:27:58]SAY: Ian/ : AUUUUUU.
