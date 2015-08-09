@@ -131,7 +131,7 @@
 			protected_area.Exited(T)
 			return 0 //If the guy is somehow not in the turret's area (teleportation), get them out the damn list. --NEO
 		if( iscarbon(T) )
-			var/mob/living/carbon/MC = T
+			var/mob/living/carbon/alien/MC = T
 			if( !MC.stat )
 				if( !MC.lying || lasers )
 					return 1
@@ -149,7 +149,7 @@
 /obj/machinery/turret/proc/get_new_target()
 	var/list/new_targets = new
 	var/new_target
-	for(var/mob/living/carbon/M in protected_area.turretTargets)
+	for(var/mob/living/carbon/alien/M in protected_area.turretTargets)
 		if(!M.stat)
 			if(!M.lying || lasers)
 				new_targets += M
