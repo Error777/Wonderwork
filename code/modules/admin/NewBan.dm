@@ -1,6 +1,6 @@
 var/CMinutes = null
 var/savefile/Banlist
-//var/list/bwhitelist
+var/list/bwhitelist
 
 
 /proc/CheckBan(var/ckey, var/id, var/address)
@@ -224,23 +224,26 @@ var/savefile/Banlist
 	Banlist.cd = "/base"
 	for (var/A in Banlist.dir)
 		RemoveBan(A)
-/*
+
 /proc/load_bwhitelist()
+	set name = "Reload bwhitelist"
+	set category = "Server"
+
 	log_admin("Loading whitelist")
 	bwhitelist = list()
-	var/DBConnection/dbcon1 = new()
-	dbcon1.Connect("dbi:mysql:forum2:[sqladdress]:[sqlport]","[sqllogin]","[sqlpass]")
-	if(!dbcon1.IsConnected())
-		log_admin("Failed to load bwhitelist. Error: [dbcon1.ErrorMsg()]")
+	establish_db_connection()
+	if(!dbcon.IsConnected())
+		log_admin("Failed to load bwhitelist. Error: [dbcon.ErrorMsg()]")
 		return
-	var/DBQuery/query = dbcon1.NewQuery("SELECT byond FROM Z_whitelist ORDER BY byond ASC")
+	dbcon.Connect("dbi:mysql:forum2:[sqladdress]:[sqlport]","[sqllogin]","[sqlpass]")
+	var/DBQuery/query = dbcon.NewQuery("SELECT byond FROM whitelist ORDER BY byond ASC")
 	query.Execute()
 	while(query.NextRow())
 		bwhitelist += "[query.item[1]]"
 	if (bwhitelist==list(  ))
 		log_admin("Failed to load bwhitelist or its empty")
 		return
-	dbcon1.Disconnect()
+	dbcon.Disconnect()
 
 /proc/check_bwhitelist(var/K)
 	if (!bwhitelist)
@@ -250,35 +253,32 @@ var/savefile/Banlist
 	if (K in bwhitelist)
 		return 1
 	return 0
-	*/
-//////////////////////////////////// WHITELIST ////////////////////////////////////
 
-
-
-/*/proc/load_bwhitelist()
-	log_admin("Loading whitelist")
-	bwhitelist = list()
-	var/DBConnection/dbcon = new()
-	dbcon.Connect("dbi:mysql:[sqldb]:[sqladdress]:[sqlport]","[sqllogin]","[sqlpass]")
+/proc/add_to_bwhitelist(var/K)				//INSERT INTO whitelist VALUES('ckey')
+	establish_db_connection()
 	if(!dbcon.IsConnected())
-		log_admin("Failed to load bwhitelist. Error: [dbcon.ErrorMsg()]")
+		log_admin("Failed to connect to bwhitelist. Error: [dbcon.ErrorMsg()]")
+		world.log << "Failed to connect to bwhitelist. Error: [dbcon.ErrorMsg()]"
 		return
-	var/DBQuery/query = dbcon.NewQuery("SELECT byond FROM forum2.Z_whitelist ORDER BY byond ASC")
+	var/DBQuery/query = dbcon.NewQuery("INSERT INTO whitelist VALUES('[K]')")
 	query.Execute()
-	while(query.NextRow())
-
-	if (bwhitelist==list( ))
-		log_admin("Failed to load black whitelist or its empty")
-		dbcon.Disconnect() // ??? ????? ?????
+	log_admin("Added [K] to bwhitelist.")
+	load_bwhitelist()
+	return
+/client/proc/add_p_to_bwhitelist()
+	set name = "Add ckey to whitelist"
+	set category = "Admin"
+	var/added_key
+	if(!src.holder)
+		src << "Only administrators may use this command."
 		return
-
-	query = dbcon.NewQuery("SELECT byond FROM green.whitelist ORDER BY byond ASC")
-	query.Execute()
-	while(query.NextRow())
-		bwhitelist += "[query.item[1]]"
-	if (bwhitelist==list( ))
-		log_admin("Failed to load green whitelist or its empty")
-		dbcon.Disconnect() // ??? ????? ?????
+	added_key = input("What ckey would you like to add?","Adding to Whitelist", null) as text|null
+	if(added_key)
+		if(!check_bwhitelist(added_key))
+			add_to_bwhitelist(added_key)
+			log_admin("[usr] attempted to add [added_key] to bwhitelist.")
+		else
+			usr << "\red That ckey is already in whitelist!"
+			return
+	else
 		return
-	dbcon.Disconnect()
-	log_admin("whitelist init complete. it consists of [bwhitelist.len] users")*/
