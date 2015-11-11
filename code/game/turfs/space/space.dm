@@ -10,8 +10,18 @@
 	heat_capacity = 700000
 
 /turf/space/New()
+	var/turf/controllerlocation = locate(1, 1, z)
+	for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
+		// check if there is something to draw below
+		if(controller.down)
+			var/turf/temp =  get_turf(locate(x,y,controller.down_target))
+			if(!istype(temp,/turf/space))
+				src.ChangeTurf(/turf/simulated/floor/open)
+			return
 	if(!istype(src, /turf/space/transit))
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+	return
+
 
 /turf/space/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
@@ -63,9 +73,6 @@
 // Ported from unstable r355
 
 /turf/space/Entered(atom/movable/A as mob|obj)
-	if(movement_disabled)
-		usr << "\red Movement is admin-disabled." //This is to identify lag problems
-		return
 	..()
 	if ((!(A) || src != A.loc))	return
 
@@ -75,7 +82,7 @@
 
 		// Okay, so let's make it so that people can travel z levels but not nuke disks!
 		// if(ticker.mode.name == "nuclear emergency")	return
-		if(A.z > 6) return
+		if(A.z > world.maxz) return
 		if (A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE - 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE - 1))
 			if(istype(A, /obj/effect/meteor)||istype(A, /obj/effect/space_dust))
 				del(A)
@@ -253,3 +260,4 @@
 				if ((A && A.loc))
 					A.loc.Entered(A)
 	return
+

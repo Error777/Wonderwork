@@ -53,3 +53,10 @@
 	throw_range = 20
 	flags = FPRINT | TABLEPASS | CONDUCT
 	max_amount = 60
+
+/*
+ *	Other
+ */
+/obj/item/stack/tile/open_space
+	name = "underplating"
+	singular_name = "underplating"

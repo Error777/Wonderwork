@@ -192,47 +192,44 @@
 	var/datum/powernet/powernet
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer"
-	icon = 'icons/obj/power_cond_red.dmi'
+	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
 	var/d1 = 0
 	var/d2 = 1
 	layer = 2.44 //Just below unary stuff, which is at 2.45 and above pipes, which are at 2.4
-	var/cable_color = "red"
+	color = COLOR_RED
+	var/cable_color = COLOR_RED
 	var/obj/structure/powerswitch/power_switch
 
 /obj/structure/cable/yellow
-	cable_color = "yellow"
-	icon = 'icons/obj/power_cond_yellow.dmi'
+	cable_color = COLOR_YELLOW
+	color = COLOR_YELLOW
 
 /obj/structure/cable/green
-	cable_color = "green"
-	icon = 'icons/obj/power_cond_green.dmi'
+	cable_color = COLOR_GREEN
 
 /obj/structure/cable/blue
-	cable_color = "blue"
-	icon = 'icons/obj/power_cond_blue.dmi'
+	cable_color = COLOR_BLUE
 
 /obj/structure/cable/pink
-	cable_color = "pink"
-	icon = 'icons/obj/power_cond_pink.dmi'
+	cable_color = COLOR_PINK
 
 /obj/structure/cable/orange
-	cable_color = "orange"
-	icon = 'icons/obj/power_cond_orange.dmi'
+	cable_color = COLOR_ORANGE
 
 /obj/structure/cable/cyan
-	color = "cyan"
-	icon = 'icons/obj/power_cond_cyan.dmi'
+	cable_color = COLOR_CYAN
 
 /obj/structure/cable/white
-	cable_color = "white"
-	icon = 'icons/obj/power_cond_white.dmi'
+	cable_color = COLOR_WHITE
+
+/obj/structure/cable/New()
+	..()
 
 /obj/effect/projection
 	name = "Projection"
 	desc = "This looks like a projection of something."
 	anchored = 1.0
-
 
 /obj/effect/shut_controller
 	name = "shut controller"

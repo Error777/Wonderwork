@@ -910,6 +910,12 @@
 				C.ptype = 9
 			if("pipe-j2s")
 				C.ptype = 10
+///// Z-Level stuff
+			if("pipe-u")
+				C.ptype = 11
+			if("pipe-d")
+				C.ptype = 12
+///// Z-Level stuff
 		src.transfer_fingerprints_to(C)
 		C.dir = dir
 		C.density = 0
@@ -922,6 +928,74 @@
 //client/verb/dispstop()
 //	for(var/obj/structure/disposalholder/H in world)
 //		H.active = 0
+
+// a straight or bent segment
+/obj/structure/disposalpipe/segment
+	icon_state = "pipe-s"
+
+	New()
+		..()
+		if(icon_state == "pipe-s")
+			dpdir = dir | turn(dir, 180)
+		else
+			dpdir = dir | turn(dir, -90)
+
+		update()
+		return
+
+///// Z-Level stuff
+/obj/structure/disposalpipe/crossZ/up
+	icon_state = "pipe-u"
+
+	New()
+		..()
+		dpdir = dir
+		update()
+		return
+
+	nextdir(var/fromdir)
+		var/nextdir
+		if(fromdir == 11)
+			nextdir = dir
+		else
+			nextdir = 12
+		return nextdir
+
+	transfer(var/obj/structure/disposalholder/H)
+		var/nextdir = nextdir(H.dir)
+		H.dir = nextdir
+
+		var/turf/T
+		var/obj/structure/disposalpipe/P
+
+		if(nextdir == 12)
+			var/turf/controllerlocation = locate(1, 1, src.z)
+			for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
+				if(controller.up)
+					T = locate(src.x, src.y, controller.up_target)
+			if(!T)
+				H.loc = src.loc
+				return
+			else
+				for(var/obj/structure/disposalpipe/crossZ/down/F in T)
+					P = F
+
+		else
+			T = get_step(src.loc, H.dir)
+			P = H.findpipe(T)
+
+		if(P)
+			// find other holder in next loc, if inactive merge it with current
+			var/obj/structure/disposalholder/H2 = locate() in P
+			if(H2 && !H2.active)
+				H.merge(H2)
+
+			H.loc = P
+		else			// if wasn't a pipe, then set loc to turf
+			H.loc = T
+			return null
+
+		return P
 
 // a straight or bent segment
 /obj/structure/disposalpipe/segment
@@ -983,6 +1057,107 @@
 				return setbit
 			else
 				return mask & (~setbit)
+
+
+
+/obj/structure/disposalpipe/crossZ/down
+	icon_state = "pipe-d"
+
+	New()
+		..()
+		dpdir = dir
+		update()
+		return
+
+	nextdir(var/fromdir)
+		var/nextdir
+		if(fromdir == 12)
+			nextdir = dir
+		else
+			nextdir = 11
+		return nextdir
+
+	transfer(var/obj/structure/disposalholder/H)
+		var/nextdir = nextdir(H.dir)
+		H.dir = nextdir
+
+		var/turf/T
+		var/obj/structure/disposalpipe/P
+
+		if(nextdir == 11)
+			var/turf/controllerlocation = locate(1, 1, src.z)
+			for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
+				if(controller.down)
+					T = locate(src.x, src.y, controller.down_target)
+			if(!T)
+				H.loc = src.loc
+				return
+			else
+				for(var/obj/structure/disposalpipe/crossZ/up/F in T)
+					P = F
+
+		else
+			T = get_step(src.loc, H.dir)
+			P = H.findpipe(T)
+
+		if(P)
+			// find other holder in next loc, if inactive merge it with current
+			var/obj/structure/disposalholder/H2 = locate() in P
+			if(H2 && !H2.active)
+				H.merge(H2)
+
+			H.loc = P
+		else			// if wasn't a pipe, then set loc to turf
+			H.loc = T
+			return null
+
+		return P
+///// Z-Level stuff
+
+//a three-way junction with dir being the dominant direction
+/obj/structure/disposalpipe/junction
+	icon_state = "pipe-j1"
+
+	New()
+		..()
+		if(icon_state == "pipe-j1")
+			dpdir = dir | turn(dir, -90) | turn(dir,180)
+		else if(icon_state == "pipe-j2")
+			dpdir = dir | turn(dir, 90) | turn(dir,180)
+		else // pipe-y
+			dpdir = dir | turn(dir,90) | turn(dir, -90)
+		update()
+		return
+
+
+	// next direction to move
+	// if coming in from secondary dirs, then next is primary dir
+	// if coming in from primary dir, then next is equal chance of other dirs
+
+	nextdir(var/fromdir)
+		var/flipdir = turn(fromdir, 180)
+		if(flipdir != dir)	// came from secondary dir
+			return dir		// so exit through primary
+		else				// came from primary
+							// so need to choose either secondary exit
+			var/mask = ..(fromdir)
+
+			// find a bit which is set
+			var/setbit = 0
+			if(mask & NORTH)
+				setbit = NORTH
+			else if(mask & SOUTH)
+				setbit = SOUTH
+			else if(mask & EAST)
+				setbit = EAST
+			else
+				setbit = WEST
+
+			if(prob(50))	// 50% chance to choose the found bit or the other one
+				return setbit
+			else
+				return mask & (~setbit)
+
 
 //a three-way junction that sorts objects
 /obj/structure/disposalpipe/sortjunction

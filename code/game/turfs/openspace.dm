@@ -3,7 +3,7 @@
 /turf/open
 	name = ""
 	intact = 0
-	icon_state = "black"
+	icon_state = "open_space"
 	pathweight = 100000
 	var/icon/darkoverlays = null
 	var/turf/floorbelow

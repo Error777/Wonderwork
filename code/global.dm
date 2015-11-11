@@ -78,6 +78,7 @@ var/diary = null
 var/diaryofmeanpeople = null
 var/href_logfile = null
 var/station_name = "NSS Exodus"
+var/vessel_type = "station"
 var/game_version = "Green Miracle"
 var/changelog_hash = ""
 

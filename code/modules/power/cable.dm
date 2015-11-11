@@ -57,10 +57,9 @@
 	updateicon()
 
 /obj/structure/cable/proc/updateicon()
-	if(invisibility)
-		icon_state = "[d1]-[d2]-f"
-	else
-		icon_state = "[d1]-[d2]"
+	icon_state = "[d1]-[d2]"
+	alpha = invisibility ? 127 : 255
+	color = cable_color
 
 
 // returns the powernet this cable belongs to
@@ -81,6 +80,12 @@
 
 	if(istype(W, /obj/item/weapon/wirecutters))
 
+///// Z-Level Stuff
+		if(src.d1 == 12 || src.d2 == 12)
+			user << "<span class='warning'>You must cut this cable from above.</span>"
+			return
+///// Z-Level Stuff
+
 //		if(power_switch)
 //			user << "\red This piece of cable is tied to a power switch. Flip the switch to remove it."
 //			return
@@ -94,7 +99,18 @@
 			new/obj/item/weapon/cable_coil(T, 1, cable_color)
 
 		for(var/mob/O in viewers(src, null))
-			O.show_message("\red [user] cuts the cable.", 1)
+			O.show_message("<span class='warning'>[user] cuts the cable.</span>", 1)
+
+///// Z-Level Stuff
+		if(src.d1 == 11 || src.d2 == 11)
+			var/turf/controllerlocation = locate(1, 1, z)
+			for(var/obj/effect/landmark/zcontroller/controller in controllerlocation)
+				if(controller.down)
+					var/turf/below = locate(src.x, src.y, controller.down_target)
+					for(var/obj/structure/cable/c in below)
+						if(c.d1 == 12 || c.d2 == 12)
+							c.Del()
+///// Z-Level Stuff
 
 		del(src)
 
@@ -110,10 +126,10 @@
 		var/datum/powernet/PN = get_powernet()		// find the powernet
 
 		if(PN && (PN.avail > 0))		// is it powered?
-			user << "\red [PN.avail]W in power network."
+			user << "<span class='warning'>[PN.avail]W in power network.</span>"
 
 		else
-			user << "\red The cable is not powered."
+			user << "<span class='warning'>The cable is not powered.</span>"
 
 		shock(user, 5, 0.2)
 
@@ -122,6 +138,7 @@
 			shock(user, 50, 0.7)
 
 	src.add_fingerprint(user)
+
 
 // shock the user with probability prb
 
@@ -157,9 +174,9 @@
 /obj/item/weapon/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/power.dmi'
-	icon_state = "coil_red"
+	icon_state = "coil"
 	var/amount = MAXCOIL
-	item_color = "red"
+	item_color = COLOR_RED
 	desc = "A coil of power cable."
 	throwforce = 10
 	w_class = 2.0
@@ -169,7 +186,7 @@
 	g_amt = 20
 	flags = TABLEPASS | USEDELAY | FPRINT | CONDUCT
 	slot_flags = SLOT_BELT
-	item_state = "coil_red"
+	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 
 	suicide_act(mob/user)
@@ -188,15 +205,16 @@
 
 /obj/item/weapon/cable_coil/proc/updateicon()
 	if (!item_color)
-		item_color = pick("red", "yellow", "blue", "green")
+		item_color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+	color = item_color
 	if(amount == 1)
-		icon_state = "coil_[item_color]1"
+		icon_state = "coil1"
 		name = "cable piece"
 	else if(amount == 2)
-		icon_state = "coil_[item_color]2"
+		icon_state = "coil2"
 		name = "cable piece"
 	else
-		icon_state = "coil_[item_color]"
+		icon_state = "coil"
 		name = "cable coil"
 
 /obj/item/weapon/cable_coil/examine()
@@ -290,35 +308,78 @@
 		else
 			dirn = get_dir(F, user)
 
-		for(var/obj/structure/cable/LC in F)
-			if((LC.d1 == dirn && LC.d2 == 0 ) || ( LC.d2 == dirn && LC.d1 == 0))
-				user << "There's already a cable at that position."
-				return
+///// Z-Level Stuff
+		// check if the target is open space
+		if(istype(F, /turf/simulated/floor/open))
+			for(var/obj/structure/cable/LC in F)
+				if((LC.d1 == dirn && LC.d2 == 11 ) || ( LC.d2 == dirn && LC.d1 == 11))
+					user << "<span class='warning'>There's already a cable at that position.</span>"
+					return
 
-		var/obj/structure/cable/C = new(F)
+			var/turf/simulated/floor/open/temp = F
+			var/obj/structure/cable/C = new(F)
+			var/obj/structure/cable/D = new(temp.floorbelow)
 
-		C.cableColor(item_color)
+			C.cableColor(item_color)
 
-		C.d1 = 0
-		C.d2 = dirn
-		C.add_fingerprint(user)
-		C.updateicon()
+			C.d1 = 11
+			C.d2 = dirn
+			C.add_fingerprint(user)
+			C.updateicon()
 
-		C.powernet = new()
-		powernets += C.powernet
-		C.powernet.cables += C
+			C.powernet = new()
+			powernets += C.powernet
+			C.powernet.cables += C
 
-		C.mergeConnectedNetworks(C.d2)
-		C.mergeConnectedNetworksOnTurf()
+			C.mergeConnectedNetworks(C.d2)
+			C.mergeConnectedNetworksOnTurf()
+
+			D.cableColor(item_color)
+
+			D.d1 = 12
+			D.d2 = 0
+			D.add_fingerprint(user)
+			D.updateicon()
+
+			D.powernet = C.powernet
+			D.powernet.cables += D
+
+			D.mergeConnectedNetworksOnTurf()
+
+		// do the normal stuff
+		else
+///// Z-Level Stuff
+
+			for(var/obj/structure/cable/LC in F)
+				if((LC.d1 == dirn && LC.d2 == 0 ) || ( LC.d2 == dirn && LC.d1 == 0))
+					user << "There's already a cable at that position."
+					return
+
+			var/obj/structure/cable/C = new(F)
+
+			C.cableColor(item_color)
+
+			C.d1 = 0
+			C.d2 = dirn
+			C.add_fingerprint(user)
+			C.updateicon()
+
+			C.powernet = new()
+			powernets += C.powernet
+			C.powernet.cables += C
+
+			C.mergeConnectedNetworks(C.d2)
+			C.mergeConnectedNetworksOnTurf()
 
 
-		use(1)
-		if (C.shock(user, 50))
-			if (prob(50)) //fail
-				new/obj/item/weapon/cable_coil(C.loc, 1, C.cable_color)
-				del(C)
+			use(1)
+			if (C.shock(user, 50))
+				if (prob(50)) //fail
+					new/obj/item/weapon/cable_coil(C.loc, 1, C.cable_color)
+					del(C)
 		//src.laying = 1
 		//last = C
+
 
 
 // called when cable_coil is click on an installed obj/cable
@@ -487,30 +548,14 @@
 
 
 obj/structure/cable/proc/cableColor(var/colorC)
-	var/color_n = "red"
+	var/color_n = "#DD0000"
 	if(colorC)
 		color_n = colorC
 	cable_color = color_n
-	switch(colorC)
-		if("red")
-			icon = 'icons/obj/power_cond_red.dmi'
-		if("yellow")
-			icon = 'icons/obj/power_cond_yellow.dmi'
-		if("green")
-			icon = 'icons/obj/power_cond_green.dmi'
-		if("blue")
-			icon = 'icons/obj/power_cond_blue.dmi'
-		if("pink")
-			icon = 'icons/obj/power_cond_pink.dmi'
-		if("orange")
-			icon = 'icons/obj/power_cond_orange.dmi'
-		if("cyan")
-			icon = 'icons/obj/power_cond_cyan.dmi'
-		if("white")
-			icon = 'icons/obj/power_cond_white.dmi'
+	color = color_n
 
 /obj/item/weapon/cable_coil/cut
-	item_state = "coil_red2"
+	item_state = "coil2"
 
 /obj/item/weapon/cable_coil/cut/New(loc)
 	..()
@@ -520,37 +565,30 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	updateicon()
 
 /obj/item/weapon/cable_coil/yellow
-	item_color = "yellow"
-	icon_state = "coil_yellow"
+	item_color = COLOR_YELLOW
 
 /obj/item/weapon/cable_coil/blue
-	item_color = "blue"
-	icon_state = "coil_blue"
+	item_color = COLOR_BLUE
 
 /obj/item/weapon/cable_coil/green
-	item_color = "green"
-	icon_state = "coil_green"
+	item_color = COLOR_GREEN
 
 /obj/item/weapon/cable_coil/pink
-	item_color = "pink"
-	icon_state = "coil_pink"
+	item_color = COLOR_PINK
 
 /obj/item/weapon/cable_coil/orange
-	item_color = "orange"
-	icon_state = "coil_orange"
+	item_color = COLOR_ORANGE
 
 /obj/item/weapon/cable_coil/cyan
-	item_color = "cyan"
-	icon_state = "coil_cyan"
+	item_color = COLOR_CYAN
 
 /obj/item/weapon/cable_coil/white
-	item_color = "white"
-	icon_state = "coil_white"
+	item_color = COLOR_WHITE
 
 /obj/item/weapon/cable_coil/random/New()
-	item_color = pick("red","yellow","green","blue","pink")
-	icon_state = "coil_[item_color]"
+	item_color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
 	..()
+
 
 /obj/item/weapon/cable_coil/attack(mob/M as mob, mob/user as mob)
 	if(hasorgans(M))

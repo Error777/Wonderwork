@@ -403,20 +403,6 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Asteroid - Artifact"
 	icon_state = "cave"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /area/planet/clown
 	name = "\improper Clown Planet"
 	icon_state = "honk"
@@ -613,6 +599,40 @@ proc/process_ghost_teleport_locs()
 /area/prison/cell_block/C
 	name = "Prison Cell Block C"
 	icon_state = "brig"
+
+//SHIP
+
+/area/ship/bridge
+	name = "\improper Ship Bridge"
+	icon_state = "bridge"
+
+area/ship/meeting
+	name = "\improper Ship Meeting Hall"
+	icon_state = "cafeteria"
+
+area/ship/hydroponics
+	name = "\improper Ship Hydroponics"
+	icon_state = "hydro"
+
+area/ship/hallway
+	name = "\improper Ship Hallway"
+	icon_state = "yellow"
+
+area/ship/medbay
+	name = "\improper Ship Medbay"
+	icon_state = "medbay"
+
+area/ship/storage
+	name = "\improper Ship Storage"
+	icon_state = "storage"
+
+area/ship/dorms
+	name = "\improper Ship Dormitories"
+	icon_state = "Sleep"
+
+area/ship/eva
+	name = "\improper Ship EVA"
+	icon_state = "eva"
 
 //STATION13
 
