@@ -911,10 +911,10 @@
 			if("pipe-j2s")
 				C.ptype = 10
 ///// Z-Level stuff
-			if("pipe-u")
-				C.ptype = 11
-			if("pipe-d")
-				C.ptype = 12
+//			if("pipe-u")
+//				C.ptype = 11
+//			if("pipe-d")
+//				C.ptype = 12
 ///// Z-Level stuff
 		src.transfer_fingerprints_to(C)
 		C.dir = dir
@@ -944,7 +944,7 @@
 		return
 
 ///// Z-Level stuff
-/obj/structure/disposalpipe/crossZ/up
+/*/obj/structure/disposalpipe/crossZ/up
 	icon_state = "pipe-u"
 
 	New()
@@ -1112,7 +1112,7 @@
 			return null
 
 		return P
-///// Z-Level stuff
+*///// Z-Level stuff
 
 //a three-way junction with dir being the dominant direction
 /obj/structure/disposalpipe/junction
