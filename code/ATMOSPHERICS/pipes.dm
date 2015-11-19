@@ -21,6 +21,10 @@ obj/machinery/atmospherics/pipe
 
 		return 1
 
+	New()
+		color = pipe_color
+		..()
+
 	return_air()
 		if(!parent)
 			parent = new /datum/pipeline()
@@ -185,15 +189,8 @@ obj/machinery/atmospherics/pipe
 
 		update_icon()
 			if(node1&&node2)
-				var/C = ""
-				switch(pipe_color)
-					if ("red") C = "-r"
-					if ("blue") C = "-b"
-					if ("cyan") C = "-c"
-					if ("green") C = "-g"
-					if ("yellow") C = "-y"
-					if ("purple") C = "-p"
-				icon_state = "intact[C][invisibility ? "-f" : "" ]"
+				color = pipe_color
+				icon_state = "intact[invisibility ? "-f" : "" ]"
 
 				//var/node1_direction = get_dir(src, node1)
 				//var/node2_direction = get_dir(src, node2)
@@ -251,18 +248,27 @@ obj/machinery/atmospherics/pipe
 			return null
 
 	simple/scrubbers
-		name="scrubbers pipe"
-		pipe_color="red"
+		name="Scrubbers pipe"
+		pipe_color = COLOR_RED
+		color = COLOR_RED
 		icon_state = ""
 
 	simple/supply
-		name="air supply pipe"
-		pipe_color="blue"
+		name="Air supply pipe"
+		pipe_color = COLOR_BLUE
+		color = COLOR_BLUE
 		icon_state = ""
 
 	simple/supplymain
 		name="Main air supply pipe"
-		pipe_color="purple"
+		pipe_color = COLOR_PURPLE
+		color = COLOR_PURPLE
+		icon_state = ""
+
+	simple/yellow
+		name="Extended pipe"
+		pipe_color = COLOR_YELLOW
+		color = COLOR_YELLOW
 		icon_state = ""
 
 	simple/general
@@ -272,27 +278,27 @@ obj/machinery/atmospherics/pipe
 
 	simple/scrubbers/visible
 		level = 2
-		icon_state = "intact-r"
+		icon_state = "intact"
 
 	simple/scrubbers/hidden
 		level = 1
-		icon_state = "intact-r-f"
+		icon_state = "intact-f"
 
 	simple/supply/visible
 		level = 2
-		icon_state = "intact-b"
+		icon_state = "intact"
 
 	simple/supply/hidden
 		level = 1
-		icon_state = "intact-b-f"
+		icon_state = "intact-f"
 
 	simple/supplymain/visible
 		level = 2
-		icon_state = "intact-p"
+		icon_state = "intact"
 
 	simple/supplymain/hidden
 		level = 1
-		icon_state = "intact-p-f"
+		icon_state = "intact-f"
 
 	simple/general/visible
 		level = 2
@@ -302,18 +308,13 @@ obj/machinery/atmospherics/pipe
 		level = 1
 		icon_state = "intact-f"
 
-	simple/yellow
-		name="Pipe"
-		pipe_color="yellow"
-		icon_state = ""
-
 	simple/yellow/visible
 		level = 2
-		icon_state = "intact-y"
+		icon_state = "intact"
 
 	simple/yellow/hidden
 		level = 1
-		icon_state = "intact-y-f"
+		icon_state = "intact-f"
 
 
 
@@ -696,15 +697,8 @@ obj/machinery/atmospherics/pipe
 
 		update_icon()
 			if(node1&&node2&&node3)
-				var/C = ""
-				switch(pipe_color)
-					if ("red") C = "-r"
-					if ("blue") C = "-b"
-					if ("cyan") C = "-c"
-					if ("green") C = "-g"
-					if ("yellow") C = "-y"
-					if ("purple") C = "-p"
-				icon_state = "manifold[C][invisibility ? "-f" : ""]"
+				color = pipe_color
+				icon_state = "manifold[invisibility ? "-f" : ""]"
 
 			else
 				var/connected = 0
@@ -769,51 +763,55 @@ obj/machinery/atmospherics/pipe
 
 	manifold/scrubbers
 		name="Scrubbers pipe manifold"
-		pipe_color="red"
+		pipe_color = COLOR_RED
+		color = COLOR_RED
 		icon_state = ""
 
 	manifold/supply
 		name="Air supply pipe manifold"
-		pipe_color="blue"
+		pipe_color = COLOR_BLUE
+		color = COLOR_BLUE
 		icon_state = ""
 
 	manifold/supplymain
 		name="Main air supply pipe manifold"
-		pipe_color="purple"
+		pipe_color = COLOR_PURPLE
+		color = COLOR_PURPLE
 		icon_state = ""
 
 	manifold/general
-		pipe_color="gray"
+		pipe_color = ""
 		icon_state = ""
 
 	manifold/yellow
-		name="Yellow supply pipe manifold"
-		pipe_color="yellow"
+		name="Extended pipe manifold"
+		pipe_color = COLOR_YELLOW
+		color = COLOR_YELLOW
 		icon_state = ""
 
 	manifold/scrubbers/visible
 		level = 2
-		icon_state = "manifold-r"
+		icon_state = "manifold"
 
 	manifold/scrubbers/hidden
 		level = 1
-		icon_state = "manifold-r-f"
+		icon_state = "manifold-f"
 
 	manifold/supply/visible
 		level = 2
-		icon_state = "manifold-b"
+		icon_state = "manifold"
 
 	manifold/supply/hidden
 		level = 1
-		icon_state = "manifold-b-f"
+		icon_state = "manifold-f"
 
 	manifold/supplymain/visible
 		level = 2
-		icon_state = "manifold-p"
+		icon_state = "manifold"
 
 	manifold/supplymain/hidden
 		level = 1
-		icon_state = "manifold-p-f"
+		icon_state = "manifold-f"
 
 	manifold/general/visible
 		level = 2
@@ -825,11 +823,11 @@ obj/machinery/atmospherics/pipe
 
 	manifold/yellow/visible
 		level = 2
-		icon_state = "manifold-y"
+		icon_state = "manifold"
 
 	manifold/yellow/hidden
 		level = 1
-		icon_state = "manifold-y-f"
+		icon_state = "manifold-f"
 
 	manifold4w
 		icon = 'icons/obj/atmospherics/pipe_manifold.dmi'
@@ -923,15 +921,8 @@ obj/machinery/atmospherics/pipe
 		update_icon()
 			overlays.Cut()
 			if(node1&&node2&&node3&&node4)
-				var/C = ""
-				switch(pipe_color)
-					if ("red") C = "-r"
-					if ("blue") C = "-b"
-					if ("cyan") C = "-c"
-					if ("green") C = "-g"
-					if ("yellow") C = "-y"
-					if ("purple") C = "-p"
-				icon_state = "manifold4w[C][invisibility ? "-f" : ""]"
+				color = pipe_color
+				icon_state = "manifold4w[invisibility ? "-f" : ""]"
 
 			else
 				icon_state = "manifold4w_ex"
@@ -979,53 +970,70 @@ obj/machinery/atmospherics/pipe
 
 	manifold4w/scrubbers
 		name="Scrubbers pipe"
-		pipe_color="red"
+		pipe_color = COLOR_RED
+		color = COLOR_RED
 		icon_state = ""
 
 	manifold4w/supply
 		name="Air supply pipe"
-		pipe_color="blue"
+		pipe_color = COLOR_BLUE
+		color = COLOR_BLUE
 		icon_state = ""
 
 	manifold4w/supplymain
 		name="Main air supply pipe"
-		pipe_color="purple"
+		pipe_color = COLOR_PURPLE
+		color = COLOR_PURPLE
+		icon_state = ""
+
+	manifold4w/yellow
+		name="Extended pipe"
+		pipe_color = COLOR_YELLOW
+		color = COLOR_YELLOW
 		icon_state = ""
 
 	manifold4w/general
 		name="Air supply pipe"
-		pipe_color="gray"
+		pipe_color = ""
 		icon_state = ""
 
 	manifold4w/scrubbers/visible
 		level = 2
-		icon_state = "manifold4w-r"
+		icon_state = "manifold4w"
 
 	manifold4w/scrubbers/hidden
 		level = 1
-		icon_state = "manifold4w-r-f"
+		icon_state = "manifold4w-f"
 
 	manifold4w/supply/visible
 		level = 2
-		icon_state = "manifold4w-b"
+		icon_state = "manifold4w"
 
 	manifold4w/supply/hidden
 		level = 1
-		icon_state = "manifold4w-b-f"
+		icon_state = "manifold4w-f"
 
 	manifold4w/supplymain/visible
 		level = 2
-		icon_state = "manifold4w-p"
+		icon_state = "manifold4w"
 
 	manifold4w/supplymain/hidden
 		level = 1
-		icon_state = "manifold4w-p-f"
+		icon_state = "manifold4w-f"
 
 	manifold4w/general/visible
 		level = 2
 		icon_state = "manifold4w"
 
 	manifold4w/general/hidden
+		level = 1
+		icon_state = "manifold4w-f"
+
+	manifold4w/yellow/visible
+		level = 2
+		icon_state = "manifold4w"
+
+	manifold4w/yellow/hidden
 		level = 1
 		icon_state = "manifold4w-f"
 

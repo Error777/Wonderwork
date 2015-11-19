@@ -213,6 +213,19 @@
 		..()
 		reagents.add_reagent("water",500)
 
+/obj/structure/reagent_dispensers/chemtank
+	name = "Chemical Tank"
+	desc = "May contain dangerous chemicals."
+	icon = 'objects.dmi'
+	icon_state = "chemtank"
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(10,30,50,100)	//up to the big beaker, and not an unit further
+
+/obj/structure/reagent_dispensers/chemtank/inaprovaline
+	name = "Inaprovaline Tank"
+	New()
+		..()
+		reagents.add_reagent("inaprovaline",1000)
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
@@ -240,3 +253,4 @@
 
 proc/is_reagent_dispenser(var/obj/O)
 	return (istype(O, /obj/structure/reagent_dispensers) || istype(O, /obj/item/weapon/reagent_containers/glass/backpack))
+

@@ -21,17 +21,15 @@ proc/createRandomZlevel()
 	//	var/value = null
 
 		if (pos)
-            // No, don't do lowertext here, that breaks paths on linux
-			name = copytext(t, 1, pos)
+			name = lowertext(copytext(t, 1, pos))
 		//	value = copytext(t, pos + 1)
 		else
-            // No, don't do lowertext here, that breaks paths on linux
-			name = t
+			name = lowertext(t)
 
 		if (!name)
 			continue
 
-		potentialRandomZlevels.Add(name)
+		potentialRandomZlevels.Add(t)
 
 
 	if(potentialRandomZlevels.len)
@@ -40,7 +38,8 @@ proc/createRandomZlevel()
 		var/map = pick(potentialRandomZlevels)
 		var/file = file(map)
 		if(isfile(file))
-			maploader.load_map(file, load_speed = 100)
+			maploader.load_map(file)
+			world.log << "away mission loaded: [map]"
 
 		for(var/obj/effect/landmark/L in landmarks_list)
 			if (L.name != "awaystart")
