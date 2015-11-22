@@ -268,6 +268,7 @@
 
 	else if (src.density)
 		flick(text("[]deny", src.base_state), src)
+		playsound(src.loc, 'sound/machines/denied.ogg')
 
 	return
 

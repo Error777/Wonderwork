@@ -1767,6 +1767,16 @@
 						M.req_access = list()
 						M.req_one_access = list(access_brig,access_engine)
 				message_admins("[key_name_admin(usr)] made all maint doors engineering and brig access-only.")
+			if("emergency_armory")
+				for(var/obj/structure/closet/secure_closet/armorysafe/A in world)
+					if(A.z == 1)
+						if(A.locked)
+							A.unlock()
+							A.open()
+				world << "<font size=4 color='red'>Attention!</font>"
+				world << "<font color='red'>Central Command has detected a threat or threats that put the station in a state of emergency. Due to the nature of this threat; the Armory Safe has been unlocked</font>"
+				world << sound('sound/AI/highlevelemergency.ogg')
+				message_admins("[key_name_admin(usr)] has admin unlocked the emergency armory.")
 			if("infinite_sec")
 				var/datum/job/J = job_master.GetJob("Security Officer")
 				if(!J) return

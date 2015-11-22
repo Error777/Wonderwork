@@ -82,6 +82,7 @@
 				open()
 			else
 				flick("door_deny", src)
+				playsound(src.loc, 'sound/machines/denied.ogg')
 		return
 	return
 
@@ -103,7 +104,9 @@
 
 	if(density)
 		if(allowed(user))	open()
-		else				flick("door_deny", src)
+		else
+			flick("door_deny", src)
+			playsound(src.loc, 'sound/machines/denied.ogg')
 	return
 
 /obj/machinery/door/meteorhit(obj/M as obj)
@@ -144,6 +147,7 @@
 		return
 	if(src.density)
 		flick("door_deny", src)
+		playsound(src.loc, 'sound/machines/denied.ogg')
 	return
 
 
@@ -201,6 +205,7 @@
 				flick("doorc1", src)
 		if("deny")
 			flick("door_deny", src)
+			playsound(src.loc, 'sound/machines/denied.ogg')
 	return
 
 

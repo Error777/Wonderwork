@@ -667,6 +667,7 @@ var/global/floorIsLava = 0
 			<BR>
 			<A href='?src=\ref[src];secretscoder=maint_access_engiebrig'>Change all maintenance doors to engie/brig access only</A><BR>
 			<A href='?src=\ref[src];secretscoder=maint_access_brig'>Change all maintenance doors to brig access only</A><BR>
+			<A href='?src=\ref[src];secretscoder=emergency_armory'>Unlock Emergency Armory</A><BR>
 			<A href='?src=\ref[src];secretscoder=infinite_sec'>Remove cap on security officers</A><BR>
 			<BR>
 			<B>Coder Secrets</B><BR>

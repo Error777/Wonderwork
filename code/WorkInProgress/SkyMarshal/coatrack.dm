@@ -1,53 +1,92 @@
 /obj/structure/coatrack
-	name = "coat rack"
-	desc = "Rack that holds coats."
+	name = "Coat Rack"
+	desc = "For a detective to hang his coat and hat."
 	icon = 'icons/obj/coatrack.dmi'
 	icon_state = "coatrack0"
-	var/obj/item/clothing/suit/coat
-	var/list/allowed = list(/obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/labcoat/cmo, /obj/item/clothing/suit/storage/det_suit)
+	density = 1
+	anchored = 0
+	pressure_resistance = ONE_ATMOSPHERE*5
+	flags = FPRINT
+	var/obj/item/clothing/suit/storage/det_suit/suit = null
+	var/obj/item/clothing/head/det_hat/hat = null
 
-/obj/structure/coatrack/attack_hand(mob/user as mob)
-	user.visible_message("[user] takes [coat] off \the [src].", "You take [coat] off the \the [src]")
-	if(!user.put_in_active_hand(coat))
-		coat.loc = get_turf(user)
-	coat = null
-	update_icon()
-
-/obj/structure/coatrack/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	var/can_hang = 0
-	for (var/T in allowed)
-		if(istype(W,T))
-			can_hang = 1
-	if (can_hang && !coat)
-		user.visible_message("[user] hangs [W] on \the [src].", "You hang [W] on the \the [src]")
-		coat = W
-		user.drop_item(src)
-		coat.loc = src
+/obj/structure/coatrack/attack_hand(mob/user)
+	if(suit)
+		user << "<span class='notice'>You pick up the [suit] from the [src]</span>"
+		playsound(get_turf(src), "rustle", 50, 1, -5)
+		suit.loc = get_turf(src)
+		if(!user.get_active_hand())
+			user.put_in_hands(suit)
+		suit = null
 		update_icon()
+		return
+
+	if(hat)
+		user << "<span class='notice'>You pick up the [hat] from the [src]</span>"
+		playsound(get_turf(src), "rustle", 50, 1, -5)
+		hat.loc = get_turf(src)
+		if(!user.get_active_hand())
+			user.put_in_hands(hat)
+		hat = null
+		update_icon()
+		return
+
+/obj/structure/coatrack/attackby(obj/item/clothing/C, mob/user)
+	if (istype(C, /obj/item/clothing/suit/storage/det_suit) && !suit)
+		user << "<span class='notice'>You place your [C] on the [src]</span>"
+		playsound(get_turf(src), "rustle", 50, 1, -5)
+		user.drop_item(C, src)
+		suit = C
+		update_icon()
+
+	else if (istype(C, /obj/item/clothing/head/det_hat) && !hat)
+		user << "<span class='notice'>You place your [C] on the [src]</span>"
+		playsound(get_turf(src), "rustle", 50, 1, -5)
+		user.drop_item(C, src)
+		hat = C
+		update_icon()
+
 	else
-		user << "<span class='notice'>You cannot hang [W] on [src]</span>"
 		return ..()
 
-/obj/structure/coatrack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	var/can_hang = 0
-	for (var/T in allowed)
-		if(istype(mover,T))
-			can_hang = 1
+/obj/structure/coatrack/ex_act(severity)
+	switch(severity)
+		if(1.0)
+			del(src)
+			return
+		if(2.0)
+			if (prob(50))
+				del(src)
+				return
+		if(3.0)
+			if (prob(5))
+				del(src)
+				return
 
-	if (can_hang && !coat)
-		src.visible_message("[mover] lands on \the [src].")
-		coat = mover
-		coat.loc = src
-		update_icon()
-		return 0
-	else
-		return 1
+/obj/structure/coatrack/Del()
+	if(loc)
+		if(suit)
+			suit.loc = loc
+		if(hat)
+			hat.loc = loc
+	..()
 
 /obj/structure/coatrack/update_icon()
-	overlays.Cut()
-	if (istype(coat, /obj/item/clothing/suit/storage/labcoat))
-		overlays += image(icon, icon_state = "coat_lab")
-	if (istype(coat, /obj/item/clothing/suit/storage/labcoat/cmo))
-		overlays += image(icon, icon_state = "coat_cmo")
-	if (istype(coat, /obj/item/clothing/suit/storage/det_suit))
-		overlays += image(icon, icon_state = "coat_det")
+	if(hat)
+		if(suit)
+			icon_state = "coatrack3"
+		else
+			icon_state = "coatrack1"
+	else
+		if(suit)
+			icon_state = "coatrack2"
+		else
+			icon_state = "coatrack0"
+
+/obj/structure/coatrack/full
+	icon_state = "coatrack3"
+
+/obj/structure/coatrack/full/New()
+	..()
+	suit = new(src)
+	hat = new(src)

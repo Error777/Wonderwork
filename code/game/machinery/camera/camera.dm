@@ -288,3 +288,41 @@
 		return 1
 	busy = 0
 	return 0
+
+/obj/machinery/camera/arena
+	name = "arena camera"
+	desc = "A camera anchored to the floor, designed to survive hits and explosions of any size. What's it made of anyway?"
+	icon_state = "camerarena"
+	use_power = 0
+	idle_power_usage = 0
+	active_power_usage = 0
+	layer = 2.1
+
+/obj/machinery/camera/arena/New()
+	..()
+	pixel_x = 0
+	pixel_y = 0
+	upgradeXRay()
+
+/obj/machinery/camera/arena/attackby(W as obj, mob/living/user as mob)
+	if(istype(W, /obj/item/weapon/screwdriver))
+		user << "<span class='warning'>There aren't any visible screws to unscrew.</span>"
+	else
+		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W] but it doesn't seem to affect it in the least.</span>","<span class='warning'>You hit \the [src] with \the [W] but it doesn't seem to affect it in the least</span>")
+	return
+
+/obj/machinery/camera/arena/attack_paw(mob/living/carbon/alien/humanoid/user as mob)
+	user.visible_message("<span class='warning'>\The [user] slashes at \the [src], but that didn't affect it at all.</span>","<span class='warning'>You slash at \the [src], but that didn't affect it at all.</span>")
+	return
+
+/obj/machinery/camera/arena/update_icon()
+	return
+
+/obj/machinery/camera/arena/emp_act(severity)
+	return
+
+/obj/machinery/camera/arena/ex_act(severity)
+	return
+
+/obj/machinery/camera/arena/blob_act(severity)
+	return

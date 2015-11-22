@@ -183,6 +183,13 @@
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "entertainment"
 
+/obj/machinery/computer/security/telescreen/old
+	name = "Research Monitor"
+	desc = "Used for watching the RD's goons from the safety of his office."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "telescreenold"
+	network = list("Research")
+
 /obj/machinery/computer/security/wooden_tv
 	name = "Security Cameras"
 	desc = "An old TV hooked into the stations camera network."

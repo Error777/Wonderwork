@@ -960,4 +960,9 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 			ul_SetLuminosity(0)
 		return
 
+/obj/machinery/hydroponics/soil/grass //Not actually hydroponics at all! Honk!
+	name = "dirt"
+	icon = 'icons/obj/hydroponics.dmi'
+	icon_state = "dirtwip1"
+
 #undef HYDRO_SPEED_MULTIPLIER

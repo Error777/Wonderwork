@@ -49,11 +49,11 @@ var/global/vouchers = 0 //So badmins can't change this
 				dat += "<A href='byond://?src=\ref[src];op=order'>Obtaining Vouchers</A><BR>"
 			if(1)
 				if(vouchers >= 10)
-					dat += "<A href='byond://?src=\ref[src];op=buycode'>Away Mission Code (15)</A><BR>"
+					dat += "<A href='byond://?src=\ref[src];op=buycode'>Away Mission Code (10)</A><BR>"
 				if(vouchers >= 10)
 					dat += "<A href='byond://?src=\ref[src];op=smes'>Power all SMES (10)</A><BR>"
 				if(vouchers >= 7 && !research)
-					dat += "<A href='byond://?src=\ref[src];op=res'>Research Jump Start (5)</A><BR>"
+					dat += "<A href='byond://?src=\ref[src];op=res'>Research Jump Start (7)</A><BR>"
 				if(emagged && vouchers >= 10)
 					dat += "<A href='byond://?src=\ref[src];op=emag'>Syndicate Bunker (15)</A><BR>"
 				dat += "<A href='byond://?src=\ref[src];op=mm'>Main Menu</A><BR>"
