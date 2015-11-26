@@ -59,6 +59,12 @@
 #define SHOE_MIN_COLD_PROTECITON_TEMPERATURE 2.0	//For gloves
 #define SHOE_MAX_HEAT_PROTECITON_TEMPERATURE 1500		//For gloves
 
+//Turf Construction defines
+#define BUILD_SILENT_FAILURE -1		//We failed but don't give an error message
+#define BUILD_FAILURE 0				//We failed so give an error message
+#define BUILD_SUCCESS 1			//Looks for a lattice to build.
+#define BUILD_IGNORE 2		//Ignores the need for lattice to build.
+
 
 #define PRESSURE_DAMAGE_COEFFICIENT 4 //The amount of pressure damage someone takes is equal to (pressure / HAZARD_HIGH_PRESSURE)*PRESSURE_DAMAGE_COEFFICIENT, with the maximum of MAX_PRESSURE_DAMAGE
 #define MAX_HIGH_PRESSURE_DAMAGE 4	//This used to be 20... I got this much random rage for some retarded decision by polymorph?! Polymorph now lies in a pool of blood with a katana jammed in his spleen. ~Errorage --PS: The katana did less than 20 damage to him :(

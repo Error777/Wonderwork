@@ -156,3 +156,48 @@ obj/machinery/recharger/wallcharger/update_icon()
 		icon_state = "wrecharger1"
 	else
 		icon_state = "wrecharger0"
+
+//Floor
+
+obj/machinery/recharger/floorcharger
+	name = "floor recharger"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "flocharger0"
+
+obj/machinery/recharger/floorcharger/process()
+	if(stat & (NOPOWER|BROKEN) || !anchored)
+		return
+
+	if(charging)
+		if(istype(charging, /obj/item/weapon/gun/energy))
+			var/obj/item/weapon/gun/energy/E = charging
+			if(E.power_supply.charge < E.power_supply.maxcharge)
+				E.power_supply.give(100)
+				icon_state = "flocharger1"
+				use_power(250)
+			else
+				icon_state = "flocharger2"
+			return
+		if(istype(charging, /obj/item/weapon/melee/baton))
+			var/obj/item/weapon/melee/baton/B = charging
+			if(B.charges < initial(B.charges))
+				B.charges++
+				icon_state = "flocharger1"
+				use_power(150)
+			else
+				icon_state = "flocharger2"
+
+		if(istype(charging, /obj/item/weapon/cargotele))
+			var/obj/item/weapon/cargotele/B = charging
+			if(B.charges < initial(B.charges))
+				B.charges++
+				icon_state = "flocharger1"
+				use_power(150)
+			else
+				icon_state = "flocharger2"
+
+obj/machinery/recharger/floorcharger/update_icon()
+	if(charging)
+		icon_state = "flocharger1"
+	else
+		icon_state = "flocharger0"

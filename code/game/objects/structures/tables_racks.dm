@@ -501,7 +501,6 @@
 /obj/structure/rack/meteorhit(obj/O as obj)
 	del(src)
 
-
 /obj/structure/table/attack_hand(mob/user)
 	if(HULK in user.mutations)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
@@ -542,3 +541,9 @@
 		new /obj/item/weapon/rack_parts(loc)
 		density = 0
 		del(src)
+
+/obj/structure/rack/shelf
+	name = "shelving unit"
+	desc = "An efficient surface area management system. It can not move."
+	icon = 'icons/obj/scooterstuff.dmi'
+	icon_state = "metalshelf"

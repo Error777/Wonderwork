@@ -28,11 +28,9 @@
 							/obj/item/toy/gun										= 2,
 							/obj/item/toy/crossbow									= 2,
 							/obj/item/clothing/suit/syndicatefake					= 5, //vends all types, see vend_prize()
-							/obj/item/weapon/storage/backpack/toy					= 2,
 							/obj/item/weapon/storage/fancy/crayons					= 2,
 							/obj/item/toy/spinningtoy								= 2,
 							/obj/item/toy/prize										= 6, //vends all types except base, see vend_prize()
-							/obj/item/weapon/storage/backpack/toy 					= 2,
 							/obj/item/weapon/reagent_containers/spray/waterflower	= 2,
 							)
 

@@ -177,6 +177,7 @@
 	icon_state = "coil"
 	var/amount = MAXCOIL
 	item_color = COLOR_RED
+	color = COLOR_RED
 	desc = "A coil of power cable."
 	throwforce = 10
 	w_class = 2.0
@@ -523,24 +524,31 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 /obj/item/weapon/cable_coil/yellow
 	item_color = COLOR_YELLOW
+	color = COLOR_YELLOW
 
 /obj/item/weapon/cable_coil/blue
 	item_color = COLOR_BLUE
+	color = COLOR_BLUE
 
 /obj/item/weapon/cable_coil/green
 	item_color = COLOR_GREEN
+	color = COLOR_GREEN
 
 /obj/item/weapon/cable_coil/pink
 	item_color = COLOR_PINK
+	color = COLOR_PINK
 
 /obj/item/weapon/cable_coil/orange
 	item_color = COLOR_ORANGE
+	color = COLOR_ORANGE
 
 /obj/item/weapon/cable_coil/cyan
 	item_color = COLOR_CYAN
+	color = COLOR_CYAN
 
 /obj/item/weapon/cable_coil/white
 	item_color = COLOR_WHITE
+	color = COLOR_WHITE
 
 /obj/item/weapon/cable_coil/random/New()
 	item_color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)

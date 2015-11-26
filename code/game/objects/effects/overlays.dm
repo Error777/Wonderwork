@@ -32,3 +32,11 @@
 	name = "Coconuts"
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "coconuts"
+
+/obj/effect/overlay/darkroom
+	name = "dark room"
+	icon = 'icons/obj/scooterstuff.dmi'
+	icon_state = "darkroom"
+	layer = MOB_LAYER + 0.5
+	anchored = 1
+	mouse_opacity = 0

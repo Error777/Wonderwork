@@ -2,6 +2,7 @@
 	name = "heavy cable coil"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "wire"
+	color = COLOR_ORANGE
 
 /obj/structure/cable/heavyduty
 	icon = 'icons/obj/power_cond_heavy.dmi'

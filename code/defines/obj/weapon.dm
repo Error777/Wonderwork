@@ -331,7 +331,7 @@
 /obj/item/weapon/caution/openspace
 	name = "open space sign"
 	desc = "Caution! Open Space!"
-	icon_state = "openspacecaution"
+	icon_state = "spacecaution"
 
 /obj/item/weapon/rack_parts
 	name = "rack parts"
