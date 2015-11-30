@@ -12,16 +12,15 @@
 	var/wall_mounted = 0 //never solid (You can always pass over it)
 	var/health = 100
 	var/lastbang
-	var/storage_capacity = 30 //This is so that someone can't pack hundreds of items in a locker/crate
+	var/storage_capacity = 40 //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
 
-/obj/structure/closet/New()
+/obj/structure/closet/initialize()
 	..()
-	spawn(1)
-		if(!opened)		// if closed, any item at the crate's loc is put in the contents
-			for(var/obj/item/I in src.loc)
-				if(I.density || I.anchored || I == src) continue
-				I.loc = src
+	if(!opened)		// if closed, any item at the crate's loc is put in the contents
+		take_contents()
+	else
+		density = 0
 
 /obj/structure/closet/alter_health()
 	return get_turf(src)
@@ -283,3 +282,27 @@
 			overlays += "welded"
 	else
 		icon_state = icon_opened
+
+/obj/structure/closet/proc/take_contents()
+	//writepanic("[__FILE__].[__LINE__] ([src.type])([usr ? usr.ckey : ""])  \\/obj/structure/closet/proc/take_contents() called tick#: [world.time]")
+	for(var/atom/movable/AM in src.loc)
+		if(insert(AM) == -1) // limit reached
+			break
+
+/obj/structure/closet/proc/insert(var/atom/movable/AM)
+
+	//writepanic("[__FILE__].[__LINE__] ([src.type])([usr ? usr.ckey : ""])  \\/obj/structure/closet/proc/insert() called tick#: [world.time]")
+
+	if(contents.len >= storage_capacity)
+		return -1
+
+	// Prevent AIs from being crammed into lockers. /vg/ Redmine #153 - N3X
+	if(istype(AM, /mob/living/silicon/ai) || istype(AM, /mob/living/simple_animal/sculpture))
+		return 0
+
+	else if(!istype(AM, /obj/item))
+		return 0
+	else if(AM.density || AM.anchored)
+		return 0
+	AM.loc = src
+	return 1

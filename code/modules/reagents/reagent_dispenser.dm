@@ -227,6 +227,36 @@
 		..()
 		reagents.add_reagent("inaprovaline",1000)
 
+/obj/structure/reagent_dispensers/chemtank/sulphuric
+	name = "Sulphuric acid Tank"
+	New()
+		..()
+		reagents.add_reagent("sacid",1000)
+
+/obj/structure/reagent_dispensers/chemtank/radium
+	name = "Radium Tank"
+	New()
+		..()
+		reagents.add_reagent("radium",1000)
+
+/obj/structure/reagent_dispensers/chemtank/cleaner
+	name = "Space cleaner Tank"
+	New()
+		..()
+		reagents.add_reagent("cleaner",1000)
+
+/obj/structure/reagent_dispensers/chemtank/dexalin
+	name = "Dexalin Tank"
+	New()
+		..()
+		reagents.add_reagent("dexalin",1000)
+
+/obj/structure/reagent_dispensers/chemtank/tramadol
+	name = "Tramadol Tank"
+	New()
+		..()
+		reagents.add_reagent("tramadol",1000)
+
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
 	desc = "A beer keg"
