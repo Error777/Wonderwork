@@ -1412,4 +1412,5 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\fernflower_1.4.1.dmm"
+#include "maps\wip\supermatter.dmm"
 // END_INCLUDE
