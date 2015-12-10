@@ -95,6 +95,11 @@
 
 //Costume spawner landmarks
 
+/obj/effect/landmark/vrstart
+	name = "vrstart"
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "x3"
+
 /obj/effect/landmark/costume/New() //costume spawner, selects a random subclass and disappears
 
 	var/list/options = typesof(/obj/effect/landmark/costume)

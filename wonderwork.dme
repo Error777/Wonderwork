@@ -1385,6 +1385,7 @@
 #include "code\WorkInProgress\d2k5\metaldetector.dm"
 #include "code\WorkInProgress\facepunch\armorysafe.dm"
 #include "code\WorkInProgress\facepunch\voucher.dm"
+#include "code\WorkInProgress\facepunch\arena\vrpod.dm"
 #include "code\WorkInProgress\facepunch\explore\exploring.dm"
 #include "code\WorkInProgress\facepunch\explore\gate.dm"
 #include "code\WorkInProgress\facepunch\explore\world_defines.dm"
@@ -1412,5 +1413,4 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\fernflower_1.4.1.dmm"
-#include "maps\wip\supermatter.dmm"
 // END_INCLUDE

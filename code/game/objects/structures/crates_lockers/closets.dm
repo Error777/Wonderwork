@@ -306,3 +306,12 @@
 		return 0
 	AM.loc = src
 	return 1
+
+
+/obj/structure/closet/vr
+	name = "system closet"
+	desc = "It's a system storage unit."
+	icon = 'icons/obj/vrstuff.dmi'
+	icon_state = "tutclosed"
+	icon_closed = "tutclosed"
+	icon_opened = "tutopen"

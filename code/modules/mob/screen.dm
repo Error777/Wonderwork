@@ -573,7 +573,6 @@
 	user.update_inv_r_hand()
 	return
 
-
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
 	set category = "IC"

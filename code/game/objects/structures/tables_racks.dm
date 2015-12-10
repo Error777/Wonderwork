@@ -547,3 +547,14 @@
 	desc = "An efficient surface area management system. It can not move."
 	icon = 'icons/obj/scooterstuff.dmi'
 	icon_state = "metalshelf"
+
+/obj/structure/rack/vr
+	name = "system rack unit"
+	desc = "It can not move."
+	icon = 'icons/obj/vrstuff.dmi'
+	icon_state = "rack"
+
+/obj/structure/rack/vr/table
+	name = "system table unit"
+	desc = "It can not move."
+	icon_state = "table"

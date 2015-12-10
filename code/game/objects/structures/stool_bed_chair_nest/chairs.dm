@@ -129,3 +129,8 @@
 
 /obj/structure/stool/bed/chair/office/dark
 	icon_state = "officechair_dark"
+
+/obj/structure/stool/bed/chair/vr
+	icon = 'icons/obj/vrstuff.dmi'
+	icon_state = "chair"
+	name = "system chair"

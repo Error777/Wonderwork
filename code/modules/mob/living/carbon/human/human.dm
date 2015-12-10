@@ -1286,3 +1286,53 @@ mob/living/carbon/human/yank_out_object()
 		return 1
 	else
 		return 0
+
+var/global/team1points = 0
+var/global/team2points = 0
+
+/mob/living/carbon/human/virtualreality
+	real_name = "Player"
+	var/mob/living/carbon/human/prevmob
+	var/obj/machinery/vrpod/linkedmachine
+	var/prevname
+	var/test = 0
+	var/teamtype = 1
+
+	New()
+		..()
+		var/r = rand(1,999)
+		name = "Player [r]"
+		real_name = name
+
+	Life()
+		..()
+		if(stat == 2)
+			world << "Dead"
+			if(src.test == 0)
+				switch(teamtype)
+					if(1)
+						team2points++
+					if(2)
+						team1points++
+				test = 1
+				world << "[test]"
+				spawn(20)
+					src.name = src.prevname//Make the name the old bodies name if the body doesn't exist
+					src.real_name = src.prevname // same
+					src.client.mob = src.prevmob
+					src << "You are thrust back into your body. Re-enter to respawn."
+					spawn(20)
+						gib()
+		if(z == 2)//Are they in z6?
+			return
+		else
+			stat = 2//Die
+		..()
+/*
+			src.name = prevname//Make the name the old bodies name if the body doesn't exist
+			src.real_name = prevname // same
+			ghostize(src)//ghosts this mob
+			src << "Your body no longer exists. Normally this is due to your main body destroyed while in VR."
+			spawn(0)
+				del(src)
+	*/
