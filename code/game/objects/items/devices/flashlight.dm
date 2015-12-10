@@ -1,7 +1,3 @@
-#define GLOW_GREEN "#00FF00"
-#define GLOW_RED "#FF0000"
-#define GLOW_BLUE "#0000FF"
-
 /obj/item/device/flashlight
 	name = "flashlight"
 	desc = "A hand-held emergency light."
@@ -145,13 +141,18 @@
 	name = "flare"
 	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = 2.0
-	brightness_on = 7 // Pretty bright.
+//	brightness_on = 7 // Pretty bright.
 	icon_state = "flare"
 	item_state = "flare"
 	icon_action_button = null	//just pull it manually, neckbeard.
 	var/fuel = 0
 	var/on_damage = 7
 	var/produce_heat = 1500
+
+	LuminosityRed = 5
+	LuminosityGreen = 1
+	LuminosityBlue = 1
+
 
 /obj/item/device/flashlight/flare/New()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
@@ -194,44 +195,3 @@
 		src.force = on_damage
 		src.damtype = "fire"
 		processing_objects += src
-
-/obj/item/device/flashlight/flare/glowstick
-	name = "glowstick"
-	desc = "A plastic stick filled with luminescent liquid, this one is green."
-	color = GLOW_GREEN
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "glowstick"
-	var/light_color = GLOW_GREEN
-	w_class = 2
-
-	suicide_act(mob/user)
-		viewers(user) << "<span class='danger'>[user] is breaking open the [src.name] and eating the liquid inside! It looks like \he's  trying to commit suicide!</span>"
-		return (TOXLOSS)
-
-/obj/item/device/flashlight/flare/glowstick/red
-	desc = "A plastic stick filled with luminescent liquid, this one is red."
-	color = GLOW_RED
-
-	light_color = GLOW_RED
-
-/obj/item/device/flashlight/flare/glowstick/blue
-	desc = "A plastic stick filled with luminescent liquid, this one is blue."
-	color = GLOW_BLUE
-
-	light_color = GLOW_BLUE
-
-/obj/item/device/flashlight/flare/glowstick/yellow
-	desc = "A plastic stick filled with luminescent liquid, this one is yellow."
-	color = "#FFFF00"
-
-	light_color = "#FFFF00"
-
-/obj/item/device/flashlight/flare/glowstick/magenta
-	desc = "A plastic stick filled with luminescent liquid, this one is magenta."
-	color = "#FF00FF"
-
-	light_color = "#FF00FF"
-
-#undef GLOW_GREEN
-#undef GLOW_RED
-#undef GLOW_BLUE

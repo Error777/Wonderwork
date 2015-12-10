@@ -7,3 +7,4 @@
 	icon_state = "keycard"
 	item_state = "electronic"
 	w_class = 1
+
