@@ -125,3 +125,13 @@
 	layer = 2
 	icon = 'icons/effects/tomatodecal.dmi'
 	random_icon_states = list("smashed_pie")
+
+/obj/effect/decal/cleanable/soot
+	name = "soot"
+	desc = "One hell of a party..."
+	icon = 'icons/effects/tile_effects.dmi'
+	icon_state = "tile_soot1"
+	density = 0
+	anchored = 1
+	layer=2
+	random_icon_states = list("tile_soot1", "tile_soot2", "tile_soot3", "tile_soot4")

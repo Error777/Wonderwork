@@ -3,15 +3,23 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 
 /obj/machinery/vrpod
 	name = "Virtual Realityator"
-	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "vrpod_open"
+	icon = 'icons/obj/vrpods.dmi'
+	icon_state = "med_0"
 	density = 1
 	anchored = 1
+	var/orient = "LEFT" // "RIGHT" changes the dir suffix to "-r"
 	var/mob/living/occupant = null
 	var/mob/living/linkedmob = null
 	use_power = 1
 	active_power_usage = 500
 	idle_power_usage = 100
+
+	New()
+		switch(orient)
+			if("LEFT")
+				icon_state = "med_0"
+			if("RIGHT")
+				icon_state = "med_0-r"
 
 	process()
 		if(occupant && linkedmob)
@@ -21,14 +29,13 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 					occupant.loc = src.loc
 					linkedmob = null
 					occupant = null
-					icon_state = "vrpod_open"
-
+					icon_state = "med_1"
 			if(linkedmob.stat == 2)//VR body dies
 				occupant.client = linkedmob.client
 				occupant.loc = src.loc
 				linkedmob = null
 				occupant = null
-				icon_state = "vrpod_open"
+				icon_state = "med_1"
 	blob_act()
 		if(prob(75))
 			for(var/atom/movable/A as mob|obj in src)
@@ -60,7 +67,6 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 					del(src)
 					return
 		return
-
 	emp_act(severity)
 		if(stat & (BROKEN|NOPOWER))
 			..(severity)
@@ -68,6 +74,7 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 		if(occupant)
 			go_out()
 		..(severity)
+
 
 	proc/go_out()
 		if(!src.occupant)
@@ -80,7 +87,11 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 			src.occupant.client.perspective = MOB_PERSPECTIVE
 		src.occupant.loc = src.loc
 		src.occupant = null
+		if(orient == "RIGHT")
+			icon_state = "med_0-r"
 		return
+
+
 
 	verb/eject()
 		set name = "Eject Virtual Realityator"
@@ -91,8 +102,12 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 		if(usr == occupant)//Only the user
 			src.go_out()
 		add_fingerprint(usr)
-		src.icon_state = "vrpod_close"
+		if(orient == "RIGHT")
+			icon_state = "med_1-r"
+		else
+			src.icon_state = "med_1"
 		return
+
 
 	verb/move_inside()
 		set name = "Enter Virtual Realityator"
@@ -107,18 +122,17 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 			return
 
 		if(src.occupant)
-			usr << "\blue <B>The sleeper is already occupied!</B>"
+			usr << "\blue <B>The Virtual Realityator is already occupied!</B>"
 			return
 
 		for(var/mob/living/carbon/metroid/M in range(1,usr))
 			if(M.Victim == usr)
 				usr << "You're too busy getting your life sucked out of you."
 				return
-
-		visible_message("[usr] starts climbing into the sleeper.", 3)
+		visible_message("[usr] starts climbing into the Virtual Realityator.", 3)
 		if(do_after(usr, 20))
 			if(src.occupant)
-				usr << "\blue <B>The sleeper is already occupied!</B>"
+				usr << "\blue <B>The Virtual Realityator is already occupied!</B>"
 				return
 			use_power = 2
 			usr.stop_pulling()
@@ -126,15 +140,14 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 			usr.client.eye = src
 			usr.loc = src
 			src.occupant = usr
-			src.icon_state = "vrpod_open"
+			src.icon_state = "med_1"
+			if(orient == "RIGHT")
+				icon_state = "med_1-r"
 
 			for(var/obj/O in src)
 				del(O)
-
 			src.add_fingerprint(usr)
-
-			icon_state = "vrpod1"
-
+			icon_state = "med_0"
 			if(occupant)
 				occupant.client.lastknownmob = usr
 				var/mob/living/carbon/human/virtualreality/S1 = new/mob/living/carbon/human/virtualreality

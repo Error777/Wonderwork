@@ -95,7 +95,7 @@
 
 	var/timeofdeath = 0.0//Living
 	var/cpr_time = 1.0//Carbon
-
+	var/footstep = 1
 
 	var/bodytemperature = 310.055	//98.7 F
 	var/drowsyness = 0.0//Carbon

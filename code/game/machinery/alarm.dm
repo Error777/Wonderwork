@@ -1581,7 +1581,7 @@ Code shamelessly copied from apc_frame
 	name = "\improper PARTY BUTTON"
 	desc = "Cuban Pete is in the house!"
 	icon = 'icons/obj/monitors.dmi'
-	icon_state = "fire0"
+	icon_state = "party"
 	var/detecting = 1.0
 	var/working = 1.0
 	var/time = 10.0
