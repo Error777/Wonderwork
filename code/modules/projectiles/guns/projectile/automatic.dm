@@ -72,7 +72,6 @@
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
 	var/cover_open = 0
 
-
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attack_self(mob/user as mob)
 	cover_open = !cover_open
 	user << "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>"
@@ -112,7 +111,6 @@
 		user << "<span class='notice'>[src]'s cover is closed! You can't insert a new mag!</span>"
 		return
 	..()
-
 
 /* The thing I found with guns in ss13 is that they don't seem to simulate the rounds in the magazine in the gun.
    Afaik, since projectile.dm features a revolver, this would make sense since the magazine is part of the gun.

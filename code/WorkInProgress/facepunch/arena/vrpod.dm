@@ -103,9 +103,9 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 			src.go_out()
 		add_fingerprint(usr)
 		if(orient == "RIGHT")
-			icon_state = "med_1-r"
+			icon_state = "med_0-r"
 		else
-			src.icon_state = "med_1"
+			src.icon_state = "med_0"
 		return
 
 
@@ -147,7 +147,7 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 			for(var/obj/O in src)
 				del(O)
 			src.add_fingerprint(usr)
-			icon_state = "med_0"
+			icon_state = "med_1"
 			if(occupant)
 				occupant.client.lastknownmob = usr
 				var/mob/living/carbon/human/virtualreality/S1 = new/mob/living/carbon/human/virtualreality

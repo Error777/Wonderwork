@@ -200,6 +200,23 @@
 		..()
 		reagents.add_reagent("condensedcapsaicin",1000)
 
+/obj/structure/reagent_dispensers/coffeetank
+	name = "Coffeetank"
+	desc = "A coffeetank"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "coffeetank"
+	New()
+		..()
+		reagents.add_reagent("coffee",1000)
+
+/obj/structure/reagent_dispensers/enyismetank
+	name = "Enzymetank"
+	desc = "A enzymetank"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "enzymetank"
+	New()
+		..()
+		reagents.add_reagent("enzyme",1000)
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "Water-Cooler"
