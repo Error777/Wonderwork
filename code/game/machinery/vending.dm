@@ -843,6 +843,14 @@
 					/obj/item/stack/medical/ointment =3,/obj/item/device/healthanalyzer = 3)
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3)
 
+/obj/machinery/vending/pizza
+	name = "PizzaFlat"
+	desc = "Pizza machine only on a PizzaFlat Ñorporation. With a taste of Italy."
+	icon_state = "pizzavend"
+	charge_type = "Snack"
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita = 3,/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 4,/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 2,)
+	premium = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 1)
+
 /obj/machinery/vending/security
 	name = "SecTech"
 	desc = "A security equipment vendor"

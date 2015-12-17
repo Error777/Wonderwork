@@ -3,7 +3,7 @@
 		return (config.human_delay)
 
 	var/tally = 0
-
+	if(status_flags & GOTTAGOFAST) return -1
 	if(reagents.has_reagent("hyperzine")) return -1
 	if(reagents.has_reagent("nuka_cola")) return -1
 

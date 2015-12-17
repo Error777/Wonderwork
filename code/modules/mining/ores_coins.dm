@@ -54,10 +54,134 @@
 	icon_state = "Clown ore"
 	origin_tech = "materials=4"
 
+
+/obj/item/weapon/ore/triberium
+	name = "Triberium crystal"
+	icon_state = "triberium ore"
+	origin_tech = "materials=5"
+
 /obj/item/weapon/ore/slag
 	name = "Slag"
 	desc = "Completely useless"
 	icon_state = "slag"
+
+/obj/item/weapon/ore/mauxite
+	name = "mauxite ore"
+	desc = "A chunk of Mauxite, a sturdy common metal."
+	icon_state = "mauxite"
+
+/obj/item/weapon/ore/molitz
+	name = "molitz crystal"
+	desc = "A crystal of Molitz, a common crystalline substance."
+	icon_state = "molitz"
+
+/obj/item/weapon/ore/pharosium
+	name = "pharosium ore"
+	desc = "A chunk of Pharosium, a conductive metal."
+	icon_state = "pharosium"
+// Common Cluster Ores
+
+/obj/item/weapon/ore/cobryl
+	name = "cobryl ore"
+	desc = "A chunk of Cobryl, a somewhat valuable metal."
+	icon_state = "cobryl"
+
+/obj/item/weapon/ore/char
+	name = "char ore"
+	desc = "A heap of Char, a fossil energy source similar to coal."
+	icon_state = "char"
+// Rare Vein Ores
+
+/obj/item/weapon/ore/claretine
+	name = "claretine ore"
+	desc = "A heap of Claretine, a highly conductive salt."
+	icon_state = "claretine"
+
+/obj/item/weapon/ore/bohrum
+	name = "bohrum ore"
+	desc = "A chunk of Bohrum, a heavy and highly durable metal."
+	icon_state = "bohrum"
+
+/obj/item/weapon/ore/syreline
+	name = "syreline ore"
+	desc = "A chunk of Syreline, an extremely valuable and coveted metal."
+	icon_state = "syreline"
+// Rare Cluster Ores
+
+/obj/item/weapon/ore/erebite
+	name = "erebite ore"
+	desc = "A chunk of Erebite, an extremely volatile high-energy mineral."
+	icon_state = "erebite"
+
+/obj/item/weapon/ore/erebite/ex_act()
+	explosion(src.loc,-1,0,2)
+	del(src)
+
+/obj/item/weapon/ore/erebite/bullet_act(var/obj/item/projectile/P)
+	explosion(src.loc,-1,0,2)
+	del(src)
+
+/obj/item/weapon/ore/cerenkite
+	name = "cerenkite ore"
+	desc = "A chunk of Cerenkite, a highly radioactive mineral."
+	icon_state = "cerenkite"
+
+/obj/item/weapon/ore/cerenkite/ex_act()
+	var/L = get_turf(src)
+	for(var/mob/living/carbon/human/M in viewers(L, null))
+		M.apply_effect((rand(10, 50)), IRRADIATE, 0)
+	del(src)
+/obj/item/weapon/ore/cerenkite/attack_hand(mob/user as mob)
+	var/L = get_turf(user)
+	for(var/mob/living/carbon/human/M in viewers(L, null))
+		M.apply_effect((rand(10, 50)), IRRADIATE, 0)
+	del(src)
+/obj/item/weapon/ore/cerenkite/bullet_act(var/obj/item/projectile/P)
+	var/L = get_turf(src)
+	for(var/mob/living/carbon/human/M in viewers(L, null))
+		M.apply_effect((rand(10, 50)), IRRADIATE, 0)
+	del(src)
+/obj/item/weapon/ore/cytine
+	name = "cytine"
+	desc = "A glowing Cytine gemstone, somewhat valuable but not paticularly useful."
+	icon_state = "cytine"
+
+/obj/item/weapon/ore/uqill
+	name = "uqill nugget"
+	desc = "A nugget of Uqill, a rare and very dense stone."
+	icon_state = "uqill"
+
+/obj/item/weapon/ore/coal
+	name = "bituminous coal"
+	desc = "A lump of bituminous coal, a excellent and high-calorie fuel."
+	icon_state = "coal"
+
+/obj/item/weapon/ore/ruvium
+	name = "ruvium ore"
+	desc = "A chunk of Ruvium, a conductive metal."
+	icon_state = "ruvium"
+
+/obj/item/weapon/ore/lovite
+	name = "lovite crystal"
+	desc = "A crystal of Lovite, a rare and very homogaye crystal."
+	icon_state = "lovite"
+
+/obj/item/weapon/ore/telecrystal
+	name = "telecrystal"
+	desc = "A large unprocessed telecrystal, a gemstone with space-warping properties."
+	icon_state = "telecrystal"
+
+/obj/item/weapon/ore/eldritch
+	name = "eldritch ore"
+	icon_state = "eldritch"
+
+/obj/item/weapon/ore/martian
+	name = "martian ore"
+	icon_state = "martian"
+
+/obj/item/weapon/ore/fibrilith
+	name = "fibrilith ore"
+	icon_state = "fibrilith"
 
 /obj/item/weapon/ore/New()
 	pixel_x = rand(0,16)-8

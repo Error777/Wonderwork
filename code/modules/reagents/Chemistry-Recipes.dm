@@ -15,6 +15,8 @@ datum
 		var/secondary = 0 // set to nonzero if secondary reaction
 		var/list/secondary_results = list()		//additional reagents produced by the reaction
 		var/requires_heating = 0
+		var/required_temp = 0
+		var/mix_message = "The solution begins to bubble."
 
 		proc
 			on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -497,7 +499,7 @@ datum
 			required_reagents = list("pacid" = 10, "plasticide" = 20)
 			result_amount = 1
 			on_reaction(var/datum/reagents/holder)
-				var/obj/item/stack/sheet/metal/M = new /obj/item/stack/sheet/mineral/plastic
+				var/obj/item/stack/sheet/metal/M = new /obj/item/stack/sheet/plastic
 				M.amount = 10
 				M.loc = get_turf_loc(holder.my_atom)
 				return

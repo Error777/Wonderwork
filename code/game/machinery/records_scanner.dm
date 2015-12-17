@@ -68,7 +68,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	<b><u>Blood Type</u></b>: [bloodtype]
 	<b><u>Fingerprint</u></b>: [fingerprint]
 
-	<b><u>Black Marks</u></b>:<br> "}
+	<b><u>Black Marks</u></b>: [marks]<br> "}
 	for(var/A in marks)
 		text += "\red[A]<br>"
 	user << "\blue You feel a sting as the scanner extracts some of your blood."

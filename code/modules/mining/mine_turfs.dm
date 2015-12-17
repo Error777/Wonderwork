@@ -149,8 +149,8 @@
 
 /turf/simulated/mineral/random
 	name = "Mineral deposit"
-	var/mineralAmtList = list("Uranium" = 5, "Iron" = 5, "Diamond" = 5, "Gold" = 5, "Silver" = 5, "Plasma" = 5,/*, "Adamantine" = 5 "Aluminum" = 5, "Triberium" = 5,*/)
-	var/mineralSpawnChanceList = list("Uranium" = 5, "Iron" = 50, "Diamond" = 1, "Gold" = 5, "Silver" = 5, "Plasma" = 25,/*, "Adamantine" =5 "Aluminum" = 50, "Triberium" = 8,*/)//Currently, Adamantine won't spawn as it has no uses. -Durandan
+	var/mineralAmtList = list("Uranium" = 5, "Iron" = 5, "Diamond" = 5, "Gold" = 5, "Silver" = 5, "Plasma" = 5, "Adamantine" = 5, "Aluminum" = 5, "Triberium" = 5, "Phazite" = 5, "Pharosium" = 5, "Char" = 5, "Claretine" = 5, "Bohrum" = 5, "Syreline" = 5, "Erebite" = 5, "Cytine" = 5, "Uqill" = 5, "Telecrystal" = 5, "Mauxite" = 5, "Cobryl" = 5, "Cerenkite" = 5, "Molitz" = 5, "Ice" = 5, "Viscerite" = 5, "Ruvium" = 5, "Lovite" = 5, "Koshmarite" = 5, "Coal" = 5,)
+	var/mineralSpawnChanceList = list("Uranium" = 5, "Iron" = 50, "Diamond" = 1, "Gold" = 5, "Silver" = 5, "Plasma" = 25, "Adamantine" = 1, "Aluminum" = 20, "Triberium" = 5, "Phazite" = 1, "Pharosium" = 5, "Char" = 8, "Claretine" = 5, "Bohrum" = 5, "Syreline" = 5, "Erebite" = 5, "Cytine" = 5, "Uqill" = 5, "Telecrystal" = 2, "Mauxite" = 5, "Cobryl" = 5, "Cerenkite" = 5, "Molitz" = 5, "Ice" = 5, "Viscerite" = 5, "Ruvium" = 5, "Lovite" = 5, "Koshmarite" = 5, "Coal" = 15,)//Currently, Adamantine won't spawn as it has no uses. -Durandan
 	var/mineralChance = 10  //means 10% chance of this plot changing to a mineral deposit
 
 /turf/simulated/mineral/random/New()
@@ -165,20 +165,59 @@
 					M = new/turf/simulated/mineral/uranium(src)
 				if("Iron")
 					M = new/turf/simulated/mineral/iron(src)
-				//if("Aluminum")
-				//	M = new/turf/simulated/mineral/aluminum(src)
+				if("Aluminum")
+					M = new/turf/simulated/mineral/aluminum(src)
 				if("Diamond")
 					M = new/turf/simulated/mineral/diamond(src)
-				//if("Triberium")
-				//	M = new/turf/simulated/mineral/triberium(src)
+				if("Triberium")
+					M = new/turf/simulated/mineral/triberium(src)
 				if("Gold")
 					M = new/turf/simulated/mineral/gold(src)
 				if("Silver")
 					M = new/turf/simulated/mineral/silver(src)
 				if("Plasma")
 					M = new/turf/simulated/mineral/plasma(src)
-				/*if("Adamantine")
-					M = new/turf/simulated/mineral/adamantine(src)*/
+				if("Adamantine")
+					M = new/turf/simulated/mineral/adamantine(src)
+				if("Phazite")
+					M = new/turf/simulated/mineral/phazon(src)
+				if("Pharosium")
+					M = new/turf/simulated/mineral/pharosium(src)
+				if("Char")
+					M = new/turf/simulated/mineral/char(src)
+				if("Claretine")
+					M = new/turf/simulated/mineral/claretine(src)
+				if("Bohrum")
+					M = new/turf/simulated/mineral/bohrum(src)
+				if("Syreline")
+					M = new/turf/simulated/mineral/syreline(src)
+				if("Erebite")
+					M = new/turf/simulated/mineral/erebite(src)
+				if("Cytine")
+					M = new/turf/simulated/mineral/cytine(src)
+				if("Uqill")
+					M = new/turf/simulated/mineral/uqill(src)
+				if("Telecrystal")
+					M = new/turf/simulated/mineral/telecrystal(src)
+				if("Mauxite")
+					M = new/turf/simulated/mineral/mauxite(src)
+				if("Cobryl")
+					M = new/turf/simulated/mineral/cobryl(src)
+				if("Cerenkite")
+					M = new/turf/simulated/mineral/cerenkite(src)
+				if("Molitz")
+					M = new/turf/simulated/mineral/molitz(src)
+				if("Ice")
+					M = new/turf/simulated/mineral/ice(src)
+				if("Viscerite")
+					M = new/turf/simulated/mineral/viscerite(src)
+				if("Ruvium")
+					M = new/turf/simulated/mineral/ruvium(src)
+				if("Lovite")
+					M = new/turf/simulated/mineral/lovite(src)
+				if("Koshmarite")
+					M = new/turf/simulated/mineral/koshmarite(src)
+
 			if(M)
 				src = M
 				M.levelupdate()
@@ -197,21 +236,18 @@
 
 /turf/simulated/mineral/random/high_chance
 	mineralChance = 25
-	mineralSpawnChanceList = list("Uranium" = 10, "Iron" = 30, "Diamond" = 2, "Gold" = 10, "Silver" = 10, "Plasma" = 25, "Archaeo" = 2, "Aluminum" = 30, "Triberium" = 6)
+	mineralSpawnChanceList = list("Uranium" = 10, "Iron" = 30, "Diamond" = 2, "Gold" = 10, "Silver" = 10, "Plasma" = 25, "Archaeo" = 2, "Aluminum" = 20, "Triberium" = 6, "Phazite" = 2, "Pharosium" = 5, "Char" = 8, "Claretine" = 5, "Bohrum" = 5, "Syreline" = 5, "Erebite" = 5, "Cytine" = 5, "Uqill" = 5, "Telecrystal" = 4, "Mauxite" = 5, "Cobryl" = 5, "Cerenkite" = 5, "Molitz" = 5, "Ice" = 5, "Viscerite" = 5, "Ruvium" = 5, "Lovite" = 5, "Koshmarite" = 5, "Coal" = 15,)
 
 /turf/simulated/mineral/random/Del()
 	return
 
 /turf/simulated/mineral/uranium
 	name = "Uranium deposit"
-	icon_state = "rock_Triberium"
-	//icon_state = "rock_Uranium"
+	icon_state = "rock_Uranium"
 	mineralName = "Uranium"
 	mineralAmt = 5
 	spreadChance = 10
 	spread = 1
-
-
 
 /turf/simulated/mineral/iron
 	name = "Iron deposit"
@@ -221,7 +257,6 @@
 	spreadChance = 25
 	spread = 1
 
-
 /turf/simulated/mineral/aluminum
 	name = "Aluminum deposit"
 	icon_state = "rock_Aluminum"
@@ -229,9 +264,6 @@
 	mineralAmt = 5
 	spreadChance = 25
 	spread = 1
-
-
-
 
 /turf/simulated/mineral/diamond
 	name = "Diamond deposit"
@@ -241,7 +273,6 @@
 	spreadChance = 10
 	spread = 1
 
-
 /turf/simulated/mineral/gold
 	name = "Gold deposit"
 	icon_state = "rock_Gold"
@@ -249,7 +280,6 @@
 	mineralAmt = 5
 	spreadChance = 10
 	spread = 1
-
 
 /turf/simulated/mineral/silver
 	name = "Silver deposit"
@@ -259,7 +289,6 @@
 	spreadChance = 10
 	spread = 1
 
-
 /turf/simulated/mineral/plasma
 	name = "Plasma deposit"
 	icon_state = "rock_Plasma"
@@ -267,7 +296,6 @@
 	mineralAmt = 5
 	spreadChance = 25
 	spread = 1
-
 
 /turf/simulated/mineral/clown
 	name = "Bananium deposit"
@@ -277,7 +305,6 @@
 	spreadChance = 0
 	spread = 0
 
-
 /turf/simulated/mineral/triberium
 	name = "Triberium deposit"
 	icon_state = "rock_Triberium"
@@ -286,7 +313,168 @@
 	spreadChance = 10
 	spread = 1
 
+/turf/simulated/mineral/adamantine
+	name = "Adamantine deposit"
+	icon_state = "rock_Adamantine"
+	mineralName = "Adamantine"
+	mineralAmt = 5
+	spreadChance = 10
+	spread = 1
 
+/turf/simulated/mineral/phazon
+	name = "Phazite deposit"
+	icon_state = "rock_Phazon"
+	mineralName = "Phazite"
+	mineralAmt = 2
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/pharosium
+	name = "Pharosium deposit"
+	icon_state = "rock_Pharosium"
+	mineralName = "Pharosium"
+	mineralAmt = 5
+	spreadChance = 10
+
+/turf/simulated/mineral/char
+	name = "Char deposit"
+	icon_state = "rock_Char"
+	mineralName = "Char"
+	mineralAmt = 5
+	spreadChance = 10
+
+/turf/simulated/mineral/claretine
+	name = "Claretine deposit"
+	icon_state = "rock_Claretine"
+	mineralName = "Claretine"
+	mineralAmt = 5
+	spreadChance = 10
+
+/turf/simulated/mineral/bohrum
+	name = "Bohrum deposit"
+	icon_state = "rock_Bohrum"
+	mineralName = "Bohrum"
+	mineralAmt = 5
+	spreadChance = 10
+
+/turf/simulated/mineral/syreline
+	name = "Syreline deposit"
+	icon_state = "rock_Syreline"
+	mineralName = "Syreline"
+	mineralAmt = 5
+	spreadChance = 10
+
+/turf/simulated/mineral/erebite
+	name = "Erebite deposit"
+	icon_state = "rock_Erebite"
+	mineralName = "Erebite"
+	mineralAmt = 2
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/cytine
+	name = "Cytine deposit"
+	icon_state = "rock_Cytine"
+	mineralName = "Cytine"
+	mineralAmt = 5
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/uqill
+	name = "Uqill deposit"
+	icon_state = "rock_Uqill"
+	mineralName = "Uqill"
+	mineralAmt = 5
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/telecrystal
+	name = "Telecrystal deposit"
+	icon_state = "rock_Telecrystal"
+	mineralName = "Telecrystal"
+	mineralAmt = 3
+	spreadChance = 5
+	spread = 1
+
+/turf/simulated/mineral/mauxite
+	name = "Mauxite deposit"
+	icon_state = "rock_Mauxite"
+	mineralName = "Mauxite"
+	mineralAmt = 5
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/cobryl
+	name = "Cobryl deposit"
+	icon_state = "rock_Cobryl"
+	mineralName = "Cobryl"
+	mineralAmt = 5
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/cerenkite
+	name = "Cerenkite deposit"
+	icon_state = "rock_Cerenkite"
+	mineralName = "Cerenkite"
+	mineralAmt = 3
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/molitz
+	name = "Molitz deposit"
+	icon_state = "rock_Molitz"
+	mineralName = "Molitz"
+	mineralAmt = 5
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/ice
+	name = "Ice deposit"
+	icon_state = "rock_Ice"
+	mineralName = "Ice"
+	mineralAmt = 7
+	spreadChance = 25
+	spread = 1
+
+/turf/simulated/mineral/viscerite
+	name = "Viscerite deposit"
+	icon_state = "rock_Viscerite"
+	mineralName = "Viscerite"
+	mineralAmt = 5
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/ruvium
+	name = "Ruvium deposit"
+	icon_state = "rock_Ruvium"
+	mineralName = "Ruvium"
+	mineralAmt = 3
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/lovite
+	name = "Lovite deposit"
+	icon_state = "rock_Lovite"
+	mineralName = "Lovite"
+	mineralAmt = 3
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/koshmarite
+	name = "Koshmarite deposit"
+	icon_state = "rock_Koshmarite"
+	mineralName = "Koshmarite"
+	mineralAmt = 3
+	spreadChance = 10
+	spread = 1
+
+/turf/simulated/mineral/coal
+	name = "Coal deposit"
+	icon_state = "rock_Coal"
+	mineralName = "Coal"
+	mineralAmt = 5
+	spreadChance = 15
+	spread = 1
 /*
 commented out in r5061, I left it because of the shroom thingies
 
@@ -474,6 +662,44 @@ commented out in r5061, I left it because of the shroom thingies
 		O = new /obj/item/weapon/ore/diamond(src)
 	if (src.mineralName == "Clown")
 		O = new /obj/item/weapon/ore/clown(src)
+	if (src.mineralName == "Triberium")
+		O = new /obj/item/weapon/ore/triberium(src)
+	if (src.mineralName == "Mauxite")
+		O = new /obj/item/weapon/ore/mauxite(src)
+	if (src.mineralName == "Molitz")
+		O = new /obj/item/weapon/ore/molitz(src)
+	if (src.mineralName == "Pharosium")
+		O = new /obj/item/weapon/ore/pharosium(src)
+	if (src.mineralName == "Cobryl")
+		O = new /obj/item/weapon/ore/cobryl(src)
+	if (src.mineralName == "Char")
+		O = new /obj/item/weapon/ore/char(src)
+	if (src.mineralName == "Claretine")
+		O = new /obj/item/weapon/ore/claretine(src)
+	if (src.mineralName == "Bohrum")
+		O = new /obj/item/weapon/ore/bohrum(src)
+	if (src.mineralName == "Syreline")
+		O = new /obj/item/weapon/ore/syreline(src)
+	if (src.mineralName == "Erebite")
+		O = new /obj/item/weapon/ore/erebite(src)
+	if (src.mineralName == "Cerenkite")
+		O = new /obj/item/weapon/ore/cerenkite(src)
+	if (src.mineralName == "Cytine")
+		O = new /obj/item/weapon/ore/cytine(src)
+	if (src.mineralName == "Uqill")
+		O = new /obj/item/weapon/ore/uqill(src)
+	if (src.mineralName == "Coal")
+		O = new /obj/item/weapon/ore/coal(src)
+	if (src.mineralName == "Ruvium")
+		O = new /obj/item/weapon/ore/ruvium(src)
+	if (src.mineralName == "Lovite")
+		O = new /obj/item/weapon/ore/lovite(src)
+	if (src.mineralName == "Telecrystal")
+		O = new /obj/item/weapon/ore/telecrystal(src)
+	if (src.mineralName == "Viscerite")
+		O = new /obj/item/weapon/ore/martian(src)
+	if (src.mineralName == "Koshmarite")
+		O = new /obj/item/weapon/ore/eldritch(src)
 	if(O)
 		src.geological_data.UpdateNearbyArtifactInfo(src)
 		O.geological_data = src.geological_data

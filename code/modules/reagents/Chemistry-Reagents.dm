@@ -19,8 +19,13 @@ datum
 		var/list/data = null
 		var/volume = 0
 		var/nutriment_factor = 0
-		var/custom_metabolism = REAGENTS_METABOLISM
 		var/mildly_toxic = 0
+		var/addiction_stage = 0
+		var/metabolization_rate = REAGENTS_METABOLISM
+		var/overdosed = 0 // You fucked up and this is now triggering it's overdose effects, purge that shit quick.
+		var/overrides_metab = 0
+		var/overdose_threshold = 0
+		var/addiction_threshold = 0
 		//var/list/viruses = list()
 		var/reagent_color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
 
@@ -77,13 +82,37 @@ datum
 					if(H.side_effects.len == 0)
 						M.add_side_effect(pick("Headache", "Bad Stomach", "Itch"))
 
-				holder.remove_reagent(src.id, custom_metabolism) //By default it slowly disappears.
+				holder.remove_reagent(src.id, metabolization_rate) //By default it slowly disappears.
 				return
 
 			on_move(var/mob/M)
 				return
 
 			on_update(var/atom/A)
+				return
+
+// Called if the reagent has passed the overdose threshold and is set to be triggering overdose effects
+			overdose_process(var/mob/living/M as mob)
+				return
+
+			addiction_act_stage1(var/mob/living/M as mob)
+				if(prob(30))
+					M << "<span class = 'notice'>You feel like some [name] right about now.</span>"
+				return
+
+			addiction_act_stage2(var/mob/living/M as mob)
+				if(prob(30))
+					M << "<span class = 'notice'>You feel like you need [name]. You just can't get enough.</span>"
+				return
+
+			addiction_act_stage3(var/mob/living/M as mob)
+				if(prob(30))
+					M << "<span class = 'danger'>You have an intense craving for [name].</span>"
+				return
+
+			addiction_act_stage4(var/mob/living/M as mob)
+				if(prob(30))
+					M << "<span class = 'userdanger'>You're not feeling good at all! You really need some [name].</span>"
 				return
 
 		metroidjelly
@@ -211,7 +240,7 @@ datum
 			description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
 			reagent_state = LIQUID
 			reagent_color = "#0064C8" // rgb: 0, 100, 200
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 			reaction_turf(var/turf/simulated/T, var/volume)
 				if (!istype(T)) return
@@ -322,7 +351,7 @@ datum
 			description = "A Toxic chemical."
 			reagent_state = LIQUID
 			reagent_color = "#CF3600" // rgb: 207, 54, 0
-			custom_metabolism = 0.5
+			metabolization_rate = 0.5
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
@@ -339,7 +368,7 @@ datum
 			description = "A Toxic chemical which cannot be treated."
 			reagent_state = LIQUID
 			reagent_color = "#0066DD" // rgb: 0, 102, 221
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
@@ -356,7 +385,7 @@ datum
 			description = "Liquid plastic, do not eat."
 			reagent_state = LIQUID
 			reagent_color = "#CF3600" // rgb: 207, 54, 0
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
@@ -372,7 +401,7 @@ datum
 			description = "A highly toxic chemical."
 			reagent_state = LIQUID
 			reagent_color = "#CF3600" // rgb: 207, 54, 0
-			custom_metabolism = 0.4
+			metabolization_rate = 0.4
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
@@ -608,7 +637,7 @@ datum
 			reagent_state = GAS
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		copper
 			name = "Copper"
@@ -617,7 +646,7 @@ datum
 			reagent_color = "#6E3B08" // rgb: 110, 59, 8
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		nitrogen
 			name = "Nitrogen"
@@ -627,7 +656,7 @@ datum
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		hydrogen
 			name = "Hydrogen"
@@ -637,7 +666,7 @@ datum
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		potassium
 			name = "Potassium"
@@ -648,7 +677,7 @@ datum
 
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		mercury
 			name = "Mercury"
@@ -673,7 +702,7 @@ datum
 			reagent_color = "#BF8C00" // rgb: 191, 140, 0
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		carbon
 			name = "Carbon"
@@ -683,7 +712,7 @@ datum
 			reagent_color = "#1C1300" // rgb: 30, 20, 0
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 			reaction_turf(var/turf/T, var/volume)
 				src = null
@@ -724,7 +753,7 @@ datum
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		phosphorus
 			name = "Phosphorus"
@@ -734,7 +763,7 @@ datum
 			reagent_color = "#832828" // rgb: 131, 40, 40
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		lithium
 			name = "Lithium"
@@ -903,7 +932,7 @@ datum
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		nitroglycerin
 			name = "Nitroglycerin"
@@ -913,7 +942,7 @@ datum
 			reagent_color = "#808080" // rgb: 128, 128, 128
 
 			mildly_toxic = 1
-			custom_metabolism = 0.01
+			metabolization_rate = 0.01
 
 		radium
 			name = "Radium"
@@ -1748,7 +1777,7 @@ datum
 			description = "A powerful hallucinogen. Not a thing to be messed with."
 			reagent_state = LIQUID
 			reagent_color = "#B31008" // rgb: 139, 166, 233
-			custom_metabolism = 0.1
+			metabolization_rate = 0.1
 
 			on_mob_life(var/mob/living/M)
 				if(!M) M = holder.my_atom
