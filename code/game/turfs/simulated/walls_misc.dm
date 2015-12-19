@@ -10,3 +10,11 @@
 	name = "heat shielding"
 	icon = 'icons/turf/hshield.dmi'
 	icon_state = "thermal"
+
+/turf/simulated/wall/r_wall/rusted
+	icon_state = "rrust"
+	walltype = "rrust"
+
+/turf/simulated/wall/rusted
+	icon_state = "arust"
+	walltype = "arust"

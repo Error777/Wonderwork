@@ -171,7 +171,14 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3), \
 	new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg), \
 	new/datum/stack_recipe("pizza box", /obj/item/pizzabox), \
-	new/datum/stack_recipe("folder", /obj/item/weapon/folder), \
+	new/datum/stack_recipe("white folder", /obj/item/weapon/folder/white), \
+	new/datum/stack_recipe("grey folder", /obj/item/weapon/folder), \
+	new/datum/stack_recipe("black folder", /obj/item/weapon/folder/black), \
+	new/datum/stack_recipe("blue folder", /obj/item/weapon/folder/blue), \
+	new/datum/stack_recipe("red folder", /obj/item/weapon/folder/red), \
+	new/datum/stack_recipe("yellow folder", /obj/item/weapon/folder/yellow), \
+	new/datum/stack_recipe("indigo folder", /obj/item/weapon/folder/indigo), \
+	new/datum/stack_recipe("green folder", /obj/item/weapon/folder/green), \
 )
 
 /obj/item/stack/sheet/cardboard	//BubbleWrap

@@ -327,6 +327,7 @@
 		return cost
 	else
 		return get_dist(src,t)
+
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()
 	for(var/turf/t in oview(src,1))

@@ -268,14 +268,21 @@
 						var/turf/simulated/floor/FF = get_step(src,direction)
 						FF.update_icon() //so siding get updated properly
 
-
 /turf/simulated/floor/plating/ironsand
 	name = "Iron Sand"
-	icon_state = "ironsand"
+	icon_state = "ironsand0"
 
-/turf/simulated/floor/plating/ironsand/New()
-	..()
-	icon_state = "ironsand[rand(1,15)]"
+	New()
+		floor_tile.New() //I guess New() isn't ran on objects spawned without the definition of a turf to house them, ah well.
+		icon_state = "ironsand[rand(1,15)]"
+		..()
+		spawn(4)
+			if(src)
+				update_icon()
+				for(var/direction in cardinal)
+					if(istype(get_step(src,direction),/turf/simulated/floor/plating))
+						var/turf/simulated/floor/plating/FF = get_step(src,direction)
+						FF.update_icon() //so siding get updated properly
 
 /turf/simulated/floor/plating/snow
 	name = "snow"

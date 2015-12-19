@@ -72,6 +72,7 @@
 	desc = "It has Epsilon written on it."
 	icon = 'icons/obj/scooterstuff.dmi'
 	icon_state = "key"
+	var/keyid = 0
 	var/style = 0 //1 = greed, 2 = gluttony
 
 /obj/item/chestkey/chtonic

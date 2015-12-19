@@ -804,7 +804,7 @@ window "Telecomms IDE"
 window "chemdispenser"
 	elem "chemdispenser"
 		type = MAIN
-		pos = 281,0
+		pos = 372,0
 		size = 340x480
 		anchor1 = none
 		anchor2 = none
@@ -867,6 +867,8 @@ window "chemdispenser"
 		keep-aspect = false
 		align = center
 		text-wrap = false
+		allow-html = false
+		letterbox = true
 	elem "eject"
 		type = BUTTON
 		pos = 264,4
@@ -1033,6 +1035,8 @@ window "chemdispenser"
 		keep-aspect = false
 		align = center
 		text-wrap = false
+		allow-html = false
+		letterbox = true
 	elem "child1"
 		type = CHILD
 		pos = 0,40
@@ -1154,6 +1158,8 @@ window "chemdispenser_reagents"
 		keep-aspect = false
 		align = center
 		text-wrap = false
+		allow-html = false
+		letterbox = true
 
 window "mainwindow"
 	elem "mainwindow"
@@ -1197,7 +1203,7 @@ window "mainwindow"
 		on-close = ""
 	elem "oocbutton"
 		type = BUTTON
-		pos = 600,420
+		pos = 592,420
 		size = 45x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1252,7 +1258,7 @@ window "mainwindow"
 	elem "input"
 		type = INPUT
 		pos = 3,420
-		size = 549x20
+		size = 541x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		font-family = ""
@@ -1275,7 +1281,7 @@ window "mainwindow"
 		no-command = false
 	elem "saybutton"
 		type = BUTTON
-		pos = 552,420
+		pos = 544,420
 		size = 48x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1305,7 +1311,7 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 372,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none

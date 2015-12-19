@@ -27,13 +27,14 @@
 	return 1
 
 /obj/machinery/metaldetector/attackby(obj/item/W as obj, mob/user as mob)
+
 	if(istype(W, /obj/item/weapon/card/emag))
 		if(!src.emagged)
 			src.emagged = 1
 			user << "\blue You short out the circuitry."
 			return
 	if(istype(W, /obj/item/weapon/card))
-		for(var/ID in list(user.equipped(), user:wear_id, user:belt))
+		for(var/ID in list(user.equipped()))
 			if(src.check_access(ID,list("20")))
 				if(!src.detectall)
 					src.detectall = 1
