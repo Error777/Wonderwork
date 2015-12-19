@@ -700,6 +700,8 @@ commented out in r5061, I left it because of the shroom thingies
 		O = new /obj/item/weapon/ore/martian(src)
 	if (src.mineralName == "Koshmarite")
 		O = new /obj/item/weapon/ore/eldritch(src)
+	if (src.mineralName == "Coal")
+		O = new /obj/item/weapon/ore/coal(src)
 	if(O)
 		src.geological_data.UpdateNearbyArtifactInfo(src)
 		O.geological_data = src.geological_data

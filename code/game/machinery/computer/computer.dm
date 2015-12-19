@@ -10,7 +10,6 @@
 	var/processing = 0
 	var/brightness_on = 3 //luminosity when on
 
-
 /obj/machinery/computer/New()
 	..()
 	if(ticker)
@@ -21,7 +20,11 @@
 
 /obj/machinery/computer/process()
 	if(stat & (NOPOWER|BROKEN))
+		ul_SetLuminosity(0,0,0)
 		return 0
+	else
+		if(!istype(src,/obj/machinery/computer/centrifuge) && !istype(src,/obj/machinery/computer/security/wooden_tv) && !istype(src,/obj/machinery/computer/security/telescreen))
+			ul_SetLuminosity(0,0,2)
 	return 1
 
 /obj/machinery/computer/meteorhit(var/obj/O as obj)

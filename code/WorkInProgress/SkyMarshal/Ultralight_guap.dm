@@ -14,7 +14,7 @@
 #define ul_Steps 7
 #define ul_FalloffStyle UL_I_FALLOFF_ROUND // Sets the lighting falloff to be either squared or circular.
 #define ul_Layer 10
-#define ul_TopLuminosity 12 //Maximum brightness an object can have.
+#define ul_TopLuminosity 13 //Maximum brightness an object can have.
 
 //#define ul_LightLevelChangedUpdates
 //Uncomment if you have code that you want triggered when the light level on an atom changes.
@@ -23,7 +23,6 @@
 #define ul_Clamp(Value) min(max(Value, 0), ul_Steps)
 #define ul_IsLuminous(A) (A.LuminosityRed || A.LuminosityGreen || A.LuminosityBlue)
 #define ul_Luminosity(A) max(A.LuminosityRed, A.LuminosityGreen, A.LuminosityBlue)
-
 
 #ifdef ul_LightingResolution
 var/ul_LightingResolutionSqrt = sqrt(ul_LightingResolution)
@@ -74,6 +73,18 @@ atom/proc/ul_SetLuminosity(var/Red, var/Green = Red, var/Blue = Red)
 		ul_Illuminate()
 
 	return
+
+atom/proc/SetLuminocity_NewColor(var/textcolor = "")	//To use one var instead of three.
+	if(!textcolor)
+		return
+	var/red = text2num(copytext(textcolor, 1, 2))
+	var/green = text2num(copytext(textcolor, 2, 3))
+	var/blue = text2num(copytext(textcolor, 3, 4))
+	ul_SetLuminosity(red, green, blue)
+	return
+
+atom/proc/AddLuminosity(var/Red, var/Green = Red, var/Blue = Red)
+	ul_SetLuminosity(LuminosityRed + Red, LuminosityGreen + Green, LuminosityBlue + Blue)
 
 atom/proc/ul_Illuminate()
 	if (ul_Extinguished == UL_I_LIT)
@@ -330,7 +341,7 @@ area/proc/ul_Light(var/Red = LightLevelRed, var/Green = LightLevelGreen, var/Blu
 
 	luminosity = LightLevelRed || LightLevelGreen || LightLevelBlue
 
-	ul_Overlay = image('icons/effects/ULIcons.dmi', , num2text(LightLevelRed) + "-" + num2text(LightLevelGreen) + "-" + num2text(LightLevelBlue), ul_Layer)
+	ul_Overlay = image('ULIcons.dmi', , num2text(LightLevelRed) + "-" + num2text(LightLevelGreen) + "-" + num2text(LightLevelBlue), ul_Layer)
 
 	overlays += ul_Overlay
 

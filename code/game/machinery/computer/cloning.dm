@@ -38,10 +38,6 @@
 	idle_power_usage = 10
 	active_power_usage = 400
 
-/obj/machinery/computer/scan_consolenew/New()
-	..()
-	loc.ul_SetLuminosity(loc.LuminosityRed, loc.LuminosityGreen, loc.LuminosityBlue + brightness_on)
-
 /obj/machinery/computer/scan_consolenew/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/weapon/screwdriver))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)

@@ -39,7 +39,7 @@
 			//shoes
 			if(istype(src, /turf/simulated/floor/grass || /turf/simulated/floor/holofloor/grass))
 				footstepsound = "grassfootsteps"
-			else if(istype(src, /turf/unsimulated/beach/sand ||/turf/simulated/floor/plating/airless/asteroid))
+			else if(istype(src, /turf/unsimulated/beach/sand || /turf/simulated/floor/plating/airless/asteroid))
 				footstepsound = "sandfootsteps"
 			else if(istype(src, /turf/unsimulated/beach/water))
 				footstepsound = "waterfootsteps"
