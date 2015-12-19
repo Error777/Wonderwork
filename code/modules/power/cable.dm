@@ -81,9 +81,9 @@
 	if(istype(W, /obj/item/weapon/wirecutters))
 
 ///// Z-Level Stuff
-		if(src.d1 == 12 || src.d2 == 12)
-			user << "<span class='warning'>You must cut this cable from above.</span>"
-			return
+//		if(src.d1 == 12 || src.d2 == 12)
+//			user << "<span class='warning'>You must cut this cable from above.</span>"
+//			return
 ///// Z-Level Stuff
 
 //		if(power_switch)

@@ -33,6 +33,8 @@
 					new /obj/item/weapon/table_parts/reinforced( get_turf(src.loc), 2 )
 				if (3)
 					new /obj/item/weapon/table_parts/wood( get_turf(src.loc), 2 )
+				if (4)
+					new /obj/item/weapon/table_parts/glass( get_turf(src.loc), 2 )
 			del(T)
 	update_icon()
 	for(var/direction in list(1,2,4,8,5,6,9,10))
@@ -202,6 +204,23 @@
 					icon_state = "wood_tabledir2"
 				if(6)
 					icon_state = "wood_tabledir3"
+		else if(istype(src,/obj/structure/table/glass))
+			switch(table_type)
+				if(0)
+					icon_state = "glasstable"
+				if(1)
+					icon_state = "glasstable_1tileendtable"
+				if(2)
+					icon_state = "glasstable_1tilethick"
+				if(3)
+					icon_state = "glasstable_dir"
+				if(4)
+					icon_state = "glasstable_middle"
+				if(5)
+					icon_state = "glasstable_dir2"
+				if(6)
+					icon_state = "glasstable_dir3"
+
 		else
 			switch(table_type)
 				if(0)
@@ -386,6 +405,46 @@
 	desc = "Do not apply fire to this. Rumour says it burns easily."
 	icon_state = "wood_table"
 	parts = /obj/item/weapon/table_parts/wood
+
+/*
+ * Wooden tables
+ */
+/obj/structure/table/glass
+	tabletype = 4
+	name = "glass table"
+	desc = "What did I say about leaning on the glass tables? Now you need surgery."
+	icon_state = "glasstable"
+	parts = /obj/item/weapon/table_parts/glass
+
+/obj/structure/table/glass/attackby(obj/item/weapon/F as obj, mob/user as mob)
+	if (istype(F, /obj/item/weapon/wrench))
+		return
+	if (istype(F, /obj/item/weapon/screwdriver))
+		user << "\blue Now disassembling table"
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user,50))
+			destroy()
+		return
+
+/*
+/obj/structure/table/glass/tablepush(obj/item/I, mob/user)
+	if(..())
+		visible_message("<span class='warning'>[src] breaks!</span>")
+		playsound(src.loc, "shatter", 50, 1)
+		new /obj/item/stack/rods(src.loc)
+		new /obj/item/weapon/shard(src.loc)
+		del(src)
+
+
+/obj/structure/table/glass/climb_table(mob/user)
+	if(..())
+		visible_message("<span class='warning'>[src] breaks!</span>")
+		playsound(src.loc, "shatter", 50, 1)
+		new /obj/item/stack/rods(src.loc)
+		new /obj/item/weapon/shard(src.loc)
+		del(src)
+		user.Weaken(5)
+*/
 
 /*
  * Reinforced tables

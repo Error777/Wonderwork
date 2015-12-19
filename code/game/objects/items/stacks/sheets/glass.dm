@@ -137,7 +137,7 @@
 		return 0
 	var/title = "Sheet Reinf. Glass"
 	title += " ([src.amount] sheet\s left)"
-	switch(input(title, "Would you like full tile glass a one direction glass pane or a windoor?") in list("One Direction", "Full Window", "Windoor", "Cancel"))
+	switch(input(title, "Would you like full tile glass a one direction glass pane or a windoor?") in list("One Direction", "Full Window", "Windoor", "Glass Table", "Cancel"))
 		if("One Direction")
 			if(!src)	return 1
 			if(src.loc != user)	return 1
@@ -222,6 +222,16 @@
 				else//If the user is facing northeast. northwest, southeast, southwest or north, default to north
 					WD.dir = NORTH
 					WD.ini_dir = NORTH
+
+		if("Glass Table")
+			if(!src || src.loc != user) return 1
+
+			if(src.amount < 2)
+				user << "\red You need more glass to do that."
+				return 1
+
+			new /obj/item/weapon/table_parts/glass(user.loc)
+			src.use(2)
 		else
 			return 1
 

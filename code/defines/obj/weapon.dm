@@ -480,6 +480,13 @@
 	icon_state = "wood_tableparts"
 	flags = FPRINT | TABLEPASS| CONDUCT
 
+/obj/item/weapon/table_parts/glass
+	name = "glass table parts"
+	desc = "Parts of a glass table. Gay table."
+	icon_state = "glass_tableparts"
+	g_amt = 7500
+	flags = FPRINT | TABLEPASS| CONDUCT
+
 /obj/item/weapon/wire
 	desc = "This is just a simple piece of regular insulated wire."
 	name = "wire"

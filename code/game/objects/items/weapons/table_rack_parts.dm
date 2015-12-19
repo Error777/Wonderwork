@@ -63,6 +63,21 @@
 	return
 
 /*
+ * Glass Table Parts
+ */
+/obj/item/weapon/table_parts/glass/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/weapon/screwdriver))
+		new /obj/item/stack/sheet/glass( user.loc )
+		new /obj/item/stack/rods( user.loc )
+		del(src)
+
+/obj/item/weapon/table_parts/glass/attack_self(mob/user as mob)
+	new /obj/structure/table/glass( user.loc )
+	user.drop_item()
+	del(src)
+	return
+
+/*
  * Rack Parts
  */
 /obj/item/weapon/rack_parts/attackby(obj/item/weapon/W as obj, mob/user as mob)

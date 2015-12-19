@@ -73,3 +73,15 @@
 	icon = 'icons/obj/scooterstuff.dmi'
 	icon_state = "key"
 	var/style = 0 //1 = greed, 2 = gluttony
+
+/obj/item/chestkey/chtonic
+	name = "chtonic key"
+	icon_state = "key-chtonic"
+
+/obj/item/chestkey/card
+	name = "key-card"
+	icon_state = "key-card"
+
+/obj/item/chestkey/artifact
+	name = "old artifact"
+	icon_state = "key-artifact"
