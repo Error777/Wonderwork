@@ -197,6 +197,19 @@
 	throw_range = 5
 
 
+/***/WIP/***/
+/obj/item/weapon/keycard
+	name = "keycard"
+	desc = "A access keycard for safe."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "keycard"
+	item_state = "electronic"
+	w_class = 1
+	throwforce = 0
+	throw_speed = 4
+	throw_range = 20
+/***/WIP/***/
+
 /obj/item/weapon/cane
 	name = "cane"
 	desc = "A cane used by a true gentlemen. Or a clown."

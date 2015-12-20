@@ -503,7 +503,6 @@
 #include "code\game\objects\items\candle.dm"
 #include "code\game\objects\items\contraband.dm"
 #include "code\game\objects\items\crayons.dm"
-#include "code\game\objects\items\keycard.dm"
 #include "code\game\objects\items\latexballoon.dm"
 #include "code\game\objects\items\shooting_range.dm"
 #include "code\game\objects\items\spec-op.dm"

@@ -4,6 +4,7 @@
 Починить баг файролками
 Починить баг с картами (квадратик)
 Починить баг с незаряжающимися зарядками на тандердоме.
+Починить баг с пропажей у мартышки кнопки swaphand в интерфейсе
 
 Добавить дамаг в мусорных трубах.
 Добавить простую систему освещения.
@@ -16,3 +17,36 @@
 Добавить новую панель настройки персонажа с фейспанча
 Добавить превращение новых руд в минералы
 Добавить столы из всех видов минералов
+Добавить кислородный урон при жажде.
+Перепилить органосистему по принципу ренди.
+
+ 
+
+
+
+
+
+Runtimes
+
+runtime error: Cannot read null.log_adminwarn
+proc name: log adminwarn (/proc/log_adminwarn)
+  source file: logging.dm,72
+  usr: null
+  src: null
+  call stack:
+log adminwarn("<span cl...")
+message admins("<span cl...", 1)
+Centcomm Manipulation Device (/obj/item/weapon/melee/gibstick): New(the wooden floor (104,64,2) (/turf/unsimulated/floor))
+
+runtime error: Cannot read null.mode
+proc name: New (/obj/item/device/uplink/New)
+  source file: uplinks.dm,17
+  usr: null
+  src: Hidden Uplink. (/obj/item/device/uplink/hidden)
+  call stack:
+Hidden Uplink. (/obj/item/device/uplink/hidden): New(the uplink (/obj/item/weapon/implant/uplink))
+Hidden Uplink. (/obj/item/device/uplink/hidden): New(the uplink (/obj/item/weapon/implant/uplink))
+the uplink (/obj/item/weapon/implant/uplink): New(the implanter (/obj/item/weapon/implanter))
+Uplink Implant (with injector) (/obj/item/weapon/storage/box/syndie_kit/imp_uplink): New(the floor (123,146,2) (/turf/simulated/shuttle/floor))
+Random Illegal Item (/obj/random/contraband): spawn item()
+Random Illegal Item (/obj/random/contraband): New(the floor (123,146,2) (/turf/simulated/shuttle/floor))
