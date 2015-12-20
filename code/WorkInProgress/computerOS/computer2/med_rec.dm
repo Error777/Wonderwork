@@ -2,7 +2,7 @@
 	name = "Medical Records"
 	size = 32.0
 	active_icon = "dna"
-	var/req_one_access = list(access_medical, access_forensics_lockers)
+	var.req_access_txt = list(access_medical)
 	var/authenticated = null
 	var/rank = null
 	var/screen = null

@@ -1,7 +1,7 @@
 /obj/item/weapon/peripheral
 	name = "Peripheral card"
 	desc = "A computer circuit board."
-	icon = 'icons/obj/module.dmi'
+	icon = 'module.dmi'
 	icon_state = "id_mod"
 	item_state = "electronic"
 	w_class = 2
@@ -154,9 +154,9 @@
 
 		switch(prizeselect)
 			if(1)
-				prize = new /obj/item/toy/figure/captain( prize_location )
-				prize.name = "action figure"
-				prize.desc = "What the fuck did you do?"
+				prize = new /obj/item/weapon/spacecash( prize_location )
+				prize.name = "space ticket"
+				prize.desc = "It's almost like actual currency!"
 			if(2)
 				prize = new /obj/item/device/radio/beacon( prize_location )
 				prize.name = "electronic blink toy game"
@@ -168,7 +168,7 @@
 			if(4)
 				prize = new /obj/item/weapon/c_tube( prize_location )
 				prize.name = "toy sword"
-				prize.icon = 'icons/obj/weapons.dmi'
+				prize.icon = 'weapons.dmi'
 				prize.icon_state = "sword1"
 				prize.desc = "A sword made of cheap plastic."
 

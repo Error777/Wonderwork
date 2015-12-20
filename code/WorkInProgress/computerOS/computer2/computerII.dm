@@ -2,21 +2,34 @@
 /obj/machinery/computer2
 	name = "computer"
 	desc = "A computer workstation."
-	icon = 'icons/obj/computer.dmi'
-	icon_state = "aiupload"
+	icon = 'computer2.dmi'
+	icon_state = "computer"
 	density = 1
 	anchored = 1.0
 	req_access = list() //This doesn't determine PROGRAM req access, just the access needed to install/delete programs.
-	var/base_icon_state = "aiupload" //Assembly creates a new computer2 and not a child typepath, so initial doesn't work!!
-	var/datum/radio_frequency/radio_connection
-	var/obj/item/weapon/disk/data/fixed_disk/hd = null
-	var/datum/computer/file/computer_program/active_program
-	var/datum/computer/file/computer_program/host_program //active is set to this when the normal active quits, if available
-	var/list/processing_programs = list()
-	var/obj/item/weapon/card/id/authid = null //For records computers etc
-	var/obj/item/weapon/card/id/auxid = null //For computers that need two ids for some reason.
-	var/obj/item/weapon/disk/data/diskette = null
+	var/datum/radio_frequency/radio_connection					//Used whenever a program communicates via radio, like the messenger
+	var/obj/item/weapon/motherboard/mainboard = null			//Will remove variable in the future
+	var/obj/item/weapon/disk/data/fixed_disk/hd = null			//Can only have one hard drive, will change in the future
+	var/datum/computer/file/computer_program/active_program		//Text from this program is displayed when you slap the computer
+	var/datum/computer/file/computer_program/host_program		//active_program is set to this when the normal active quits, if available
+	//var/screen_size = /obj/computer2frame						//Different frame for arcade cabinets, etc.
+	var/list/processing_programs = list()						//These programs are processed every /obj/machinery/computer2/process()
+	var/obj/item/weapon/card/id/authid = null					//For records computers etc.
+	var/obj/item/weapon/card/id/auxid = null					//For computers that need two ids for some reason, like the card access computer.
+	var/obj/item/weapon/disk/data/diskette = null				//Inserted data disk
 	var/list/peripherals = list()
+	var/obj/overlay/compscreen = null							//The overlay that will represent the computer's screen
+	var/startup_progress = 0									//How far along the computer is in its startup progress
+	var/allow_datadisk = 1										//Can you insert a data disk into it?
+	var/screen_size = "heavy"									//Used in screen resolution checks, set by computer2frame
+	var/frame_type = /obj/structure/computer2frame				//Used in disassembly
+	var/autoboot = 0											//Whether the system boots when spawned
+
+	var/obj/machinery/camera/current = null						//Used by the security cam program
+	var/authenticated = 0.0										//For ID changer, etc
+	var/moneyinserted = 0
+	var/pincode
+
 	//Setup for Starting program & peripherals
 	var/setup_starting_program = null //If set to a program path it will start with this one active.
 	var/setup_starting_peripheral = null //Spawn with radio card and whatever path is here.
@@ -77,30 +90,34 @@
 /obj/machinery/computer2/New()
 	..()
 
-	spawn(4)
+	spawn(2)
+
+		if(setup_mainboard && !mainboard)
+			mainboard = new /obj/item/weapon/motherboard (src)
+
 		if(setup_has_radio)
 			var/obj/item/weapon/peripheral/radio/radio = new /obj/item/weapon/peripheral/radio(src)
 			radio.frequency = setup_frequency
 			radio.code = setup_radio_tag
 
 		if(!hd && (setup_drive_size > 0))
-			src.hd = new /obj/item/weapon/disk/data/fixed_disk(src)
-			src.hd.file_amount = src.setup_drive_size
+			hd = new /obj/item/weapon/disk/data/fixed_disk(src)
+			hd.file_amount = setup_drive_size
 
-		if(ispath(src.setup_starting_program))
-			src.active_program = new src.setup_starting_program
-			src.active_program.id_tag = setup_id_tag
+		if(ispath(setup_starting_peripheral))
+			new setup_starting_peripheral(src)
 
-			src.hd.file_amount = max(src.hd.file_amount, src.active_program.size)
+		if(ispath(setup_starting_program))
+			active_program = new setup_starting_program
+			active_program.id_tag = setup_id_tag
 
-			src.active_program.transfer_holder(src.hd)
+			hd.file_amount = max(hd.file_amount, active_program.size)
 
-		if(ispath(src.setup_starting_peripheral))
-			new src.setup_starting_peripheral(src)
+			active_program.transfer_holder(hd)
 
-		src.base_icon_state = src.icon_state
-
-	return
+		power_change()
+		if(autoboot)
+			computer_startup()
 
 /obj/machinery/computer2/attack_hand(mob/user as mob)
 	if(..())
@@ -263,73 +280,128 @@
 
 /obj/machinery/computer2/power_change()
 	if(stat & BROKEN)
-		icon_state = src.base_icon_state
-		src.icon_state += "b"
+		add_screen_overlay("[screen_size]-b")
 
 	else if(powered())
 		icon_state = src.base_icon_state
 		stat &= ~NOPOWER
 	else
 		spawn(rand(0, 15))
-			icon_state = src.base_icon_state
-			src.icon_state += "0"
+			if(startup_progress)
+				computer_shutdown()
 			stat |= NOPOWER
 
 
 /obj/machinery/computer2/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/disk/data)) //INSERT SOME DISKETTES
-		if ((!src.diskette) && W:portable)
+		if ((!diskette) && W:portable)
 			user.machine = src
 			user.drop_item()
 			W.loc = src
-			src.diskette = W
+			diskette = W
 			user << "You insert [W]."
-			src.updateUsrDialog()
+			updateUsrDialog()
 			return
 
 	else if (istype(W, /obj/item/weapon/screwdriver))
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+		if(startup_progress > 0)
+			if(mainboard)
+				mainboard.burnt = 1							//GOOD JOB IDIOT
+				mainboard.icon_state = "mainboard_burnt"	//HAVE FUN WITH YOUR BRICK
+			if(shocked(user))
+				computer_shutdown()
+				return
+			else
+				computer_shutdown()
+		playsound(loc, 'Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20))
-			var/obj/structure/computer2frame/A = new /obj/structure/computer2frame( src.loc )
-			A.created_icon_state = src.base_icon_state
-			if (src.stat & BROKEN)
+			var/obj/structure/computer2frame/A = new frame_type( loc )
+
+			A.pixel_x = pixel_x
+			A.pixel_y = pixel_y
+			A.density = density
+
+			if (stat & BROKEN)
 				user << "\blue The broken glass falls out."
-				new /obj/item/weapon/shard( src.loc )
+				new /obj/item/weapon/shard( loc )
 				A.state = 3
-				A.icon_state = "3"
+				A.icon_state = "[A.screen_size]3"
 			else
 				user << "\blue You disconnect the monitor."
 				A.state = 4
-				A.icon_state = "4"
+				A.icon_state = "[A.screen_size]4"
 
-			for (var/obj/item/weapon/peripheral/C in src.peripherals)
+			for (var/obj/item/weapon/peripheral/C in peripherals)
 				C.loc = A
 				A.peripherals.Add(C)
 
-			if(src.diskette)
-				src.diskette.loc = src.loc
+			if(diskette)
+				diskette.loc = loc
 
 			//TO-DO: move card reading to peripheral cards instead
-			if(src.authid)
-				src.authid.loc = src.loc
+			if(authid)
+				authid.loc = loc
 
-			if(src.auxid)
-				src.auxid.loc = src.loc
+			if(auxid)
+				auxid.loc = loc
 
-			if(src.hd)
-				src.hd.loc = A
-				A.hd = src.hd
+			if(hd)
+				hd.loc = A
+				A.hd = hd
 
-			A.mainboard = new /obj/item/weapon/motherboard(A)
-			A.mainboard.created_name = src.name
-
+			if(mainboard)
+				//A.mainboard = new /obj/item/weapon/periph_mobo(A)
+				//A.mainboard.created_name = name
+				mainboard.loc = A
+				A.mainboard = mainboard
+				A.mainboard_secure = 1
 
 			A.anchored = 1
 			del(src)
 
 	else
-		src.attack_hand(user)
+		attack_hand(user)
 	return
+
+/obj/machinery/computer2/proc/computer_startup()
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if(mainboard)
+		if(!mainboard.burnt)
+			startup_progress = 1
+			change_screen_to("startup_[screen_size]")
+			//flick("startup", compscreen) Doesn't work with overlays :(
+			spawn(1)
+
+				sleep(35)
+
+				change_screen_to("loadprog_[screen_size]")
+				startup_progress = 2
+
+				sleep(5)
+
+				if(active_program)
+					change_screen_to_prog(active_program)
+				else
+					change_screen_to("bioswait_[screen_size]")
+
+				startup_progress = 3
+		else
+			visible_message("\blue The [name] beeps twice!","\blue You hear two beeps!") //Make up cryptic error feedback all day every day
+	else
+		visible_message("\blue The [name] beeps!","\blue You hear a beep!")
+	return
+
+/obj/machinery/computer2/proc/computer_shutdown()
+	change_screen_to("bioswait_[screen_size]")
+	for(var/datum/computer/file/computer_program/program in processing_programs)
+		unload_program(program)
+	sleep(15)
+	remove_screen_overlay()
+	startup_progress = 0
+	stat |= NOPOWER
+	spawn(5)
+		stat &= ~NOPOWER
 
 /obj/machinery/computer2/proc/send_command(command, datum/signal/signal)
 	for(var/obj/item/weapon/peripheral/P in src.peripherals)
@@ -394,6 +466,46 @@
 		return 1
 
 	return 0
+
+/obj/machinery/computer2/proc/change_screen_to(var/screen_icon_state)
+	remove_screen_overlay()
+	compscreen = new /obj/overlay(  )
+	compscreen.icon = 'computer2.dmi'
+	compscreen.icon_state = screen_icon_state
+	overlays = list(compscreen)
+
+/obj/machinery/computer2/proc/change_screen_to_prog(var/datum/computer/file/computer_program/prog)
+	if(prog)
+		remove_screen_overlay()
+		compscreen = new /obj/overlay(  )
+		var/icon/compscreenicon = icon('computer2.dmi', prog.program_screen_icon)
+		//compscreen.icon = 'computer2.dmi'
+		//compscreen.icon_state = prog.program_screen_icon
+		if(prog.resolution != screen_size)
+			switch(screen_size)
+				//if("heavy")		//Heavy screen's the largest out of any frame and smaller screens fit so whatever
+				if("atmframe")
+					compscreenicon.Crop(11,17,22,25)
+					compscreen.pixel_x = 10
+					compscreen.pixel_y = 16			//Hardcoded until I find a better way
+				if("arcade")
+					compscreenicon.Crop(10,16,21,26)
+					compscreen.pixel_x = 9
+					compscreen.pixel_y = 15
+		compscreen.icon = compscreenicon
+		overlays = list(compscreen)
+
+/obj/machinery/computer2/proc/add_screen_overlay(var/over_icon_state)
+	var/obj/overlay/scrover = new /obj/overlay(  )
+	scrover.icon = 'computer2.dmi'
+	scrover.icon_state = over_icon_state
+	overlays.Add(scrover)
+
+/obj/machinery/computer2/proc/remove_screen_overlay()
+	if(compscreen)
+		compscreen.pixel_x = 0
+		compscreen.pixel_y = 0
+		overlays.Remove(compscreen)
 
 /obj/machinery/computer2/proc/delete_file(datum/computer/file/file)
 	//world << "Deleting [file]..."

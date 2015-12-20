@@ -4544,7 +4544,7 @@
 "bJt" = (/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/toxins/rdoffice)
 "bJu" = (/obj/structure/table,/obj/item/weapon/paper_bin{pixel_x = 1; pixel_y = 9},/obj/item/device/megaphone,/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/toxins/rdoffice)
 "bJv" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/table,/obj/item/weapon/paper/monitorkey,/obj/item/weapon/folder/blue,/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/toxins/rdoffice)
-"bJw" = (/obj/structure/table,/obj/item/weapon/stamp/rd{pixel_x = 3; pixel_y = -2},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/item/weapon/folder/indigo,/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/toxins/rdoffice)
+"bJw" = (/obj/structure/table,/obj/item/weapon/stamp/rd{pixel_x = 3; pixel_y = -2},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/toxins/rdoffice)
 "bJx" = (/obj/machinery/door/firedoor{layer = 2.5},/obj/machinery/door/airlock/glass_research{name = "Research Director"; req_access_txt = "30"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/toxins/rdoffice)
 "bJy" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/structure/disposalpipe/segment,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor{icon_state = "white"},/area/toxins/hallway)
 "bJz" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor{icon_state = "white"},/area/toxins/hallway)

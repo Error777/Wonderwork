@@ -33,9 +33,13 @@
 #define ui_monkey_back "6:14,1:5"	//monkey
 
 //Lower right, persistant menu
+//#define ui_dropbutton "11:22,1:5"
 #define ui_dropbutton "11:22,1:5"
-#define ui_drop_throw "14:28,2:7"
-#define ui_pull_resist "13:26,2:7"
+//#define ui_drop_throw "14:28,2:7"
+#define ui_drop_throw "11:22,1:5"
+//#define ui_pull_resist "13:26,2:7"
+#define ui_pull_resist "12:24,1:5"
+#define ui_resist "14:24,1:5"
 #define ui_acti "13:26,1:5"
 #define ui_movi "12:24,1:5"
 #define ui_zonesel "14:28,1:5"
