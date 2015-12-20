@@ -2,7 +2,7 @@
 	name = "Medical Records"
 	size = 32.0
 	active_icon = "dna"
-	req_access = list(ACCESS_MEDICAL)
+	req_access = list(access_medical)
 	var/authenticated = null
 	var/rank = null
 	var/screen = null
@@ -74,7 +74,7 @@
 					dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
 					dat += "<br><b>Medical Robots:</b>"
 					var/bdat = null
-					for(var/obj/machinery/bot/medbot/M in world)
+					for(var/obj/machinery/bot/medbot/M in machines)
 						var/turf/bl = get_turf(M)
 						bdat += "[M.name] - <b>\[[bl.x],[bl.y]\]</b> - [M.on ? "Online" : "Offline"]<br>"
 						if(!isnull(M.reagent_glass))
@@ -119,7 +119,7 @@
 			src.active1 = null
 			src.active2 = null
 			if (src.check_access(src.master.authid))
-				src.authenticated = src.master.authid.registered_name
+				src.authenticated = src.master.authid.registered
 				src.rank = src.master.authid.assignment
 				src.screen = 1
 	if (src.authenticated)
@@ -171,7 +171,7 @@
 <BR><b>Possible Cure:</b> None
 <BR><b>Affected Species:</b> Monkey
 <BR>
-<BR><b>Notes:</b> monkeys with this disease will bite humans, causing humans to spontaneously to mutate into a monkey.
+<BR><b>Notes:</b> Monkies with this disease will bite humans, causing humans to spontaneously to mutate into a monkey.
 <BR>
 <BR><b>Severity:</b> Medium"}
 				if("ca")
@@ -229,7 +229,7 @@
 			switch(href_list["field"])
 				if("fingerprint")
 					if (istype(src.active1, /datum/data/record))
-						var/t1 = input("Please input fingerprint hash:", "Med. records", src.active1.fields["id"], null)  as text
+						var/t1 = strip_html(input("Please input fingerprint hash:", "Med. records", src.active1.fields["id"], null)  as text)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
 							return
 						src.active1.fields["fingerprint"] = t1
@@ -241,61 +241,61 @@
 							src.active1.fields["sex"] = "Male"
 				if("age")
 					if (istype(src.active1, /datum/data/record))
-						var/t1 = input("Please input age:", "Med. records", src.active1.fields["age"], null)  as text
+						var/t1 = strip_html(input("Please input age:", "Med. records", src.active1.fields["age"], null)  as text)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
 							return
 						src.active1.fields["age"] = t1
 				if("mi_dis")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please input minor disabilities list:", "Med. records", src.active2.fields["mi_dis"], null)  as text
+						var/t1 = strip_html(input("Please input minor disabilities list:", "Med. records", src.active2.fields["mi_dis"], null)  as text)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["mi_dis"] = t1
 				if("mi_dis_d")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please summarize minor dis.:", "Med. records", src.active2.fields["mi_dis_d"], null)  as message
+						var/t1 = strip_html(input("Please summarize minor dis.:", "Med. records", src.active2.fields["mi_dis_d"], null)  as message)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["mi_dis_d"] = t1
 				if("ma_dis")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please input major diabilities list:", "Med. records", src.active2.fields["ma_dis"], null)  as text
+						var/t1 = strip_html(input("Please input major diabilities list:", "Med. records", src.active2.fields["ma_dis"], null)  as text)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["ma_dis"] = t1
 				if("ma_dis_d")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please summarize major dis.:", "Med. records", src.active2.fields["ma_dis_d"], null)  as message
+						var/t1 = strip_html(input("Please summarize major dis.:", "Med. records", src.active2.fields["ma_dis_d"], null)  as message)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["ma_dis_d"] = t1
 				if("alg")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please state allergies:", "Med. records", src.active2.fields["alg"], null)  as text
+						var/t1 = strip_html(input("Please state allergies:", "Med. records", src.active2.fields["alg"], null)  as text)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["alg"] = t1
 				if("alg_d")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please summarize allergies:", "Med. records", src.active2.fields["alg_d"], null)  as message
+						var/t1 = strip_html(input("Please summarize allergies:", "Med. records", src.active2.fields["alg_d"], null)  as message)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["alg_d"] = t1
 				if("cdi")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please state diseases:", "Med. records", src.active2.fields["cdi"], null)  as text
+						var/t1 = strip_html(input("Please state diseases:", "Med. records", src.active2.fields["cdi"], null)  as text)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["cdi"] = t1
 				if("cdi_d")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please summarize diseases:", "Med. records", src.active2.fields["cdi_d"], null)  as message
+						var/t1 = strip_html(input("Please summarize diseases:", "Med. records", src.active2.fields["cdi_d"], null)  as message)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["cdi_d"] = t1
 				if("notes")
 					if (istype(src.active2, /datum/data/record))
-						var/t1 = input("Please summarize notes:", "Med. records", src.active2.fields["notes"], null)  as message
+						var/t1 = strip_html(input("Please summarize notes:", "Med. records", src.active2.fields["notes"], null)  as message)
 						if ((!( t1 ) || !( src.authenticated ) || (!src.master) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 							return
 						src.active2.fields["notes"] = t1
@@ -403,20 +403,20 @@
 			if (!( istype(src.active2, /datum/data/record) ))
 				return
 			var/a2 = src.active2
-			var/t1 = input("Add Comment:", "Med. records", null, null)  as message
+			var/t1 = strip_html(input("Add Comment:", "Med. records", null, null)  as message)
 			if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src.master, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 				return
 			var/counter = 1
 			while(src.active2.fields[text("com_[]", counter)])
 				counter++
-			src.active2.fields[text("com_[]", counter)] = text("Made by [] ([]) on [], 2556<BR>[]", src.authenticated, src.rank, time2text(world.realtime, "DDD MMM DD hh:mm:ss"), t1)
+			src.active2.fields[text("com_[]", counter)] = text("Made by [] ([]) on [], 2053<BR>[]", src.authenticated, src.rank, time2text(world.realtime, "DDD MMM DD hh:mm:ss"), t1)
 
 		if (href_list["del_c"])
 			if ((istype(src.active2, /datum/data/record) && src.active2.fields[text("com_[]", href_list["del_c"])]))
 				src.active2.fields[text("com_[]", href_list["del_c"])] = "<B>Deleted</B>"
 
 		if (href_list["search"])
-			var/t1 = input("Search String: (Name or ID)", "Med. records", null, null)  as text
+			var/t1 = strip_html(input("Search String: (Name or ID)", "Med. records", null, null)  as text)
 			if ((!( t1 ) || usr.stat || (!src.master) || !( src.authenticated ) || usr.restrained() || ((!in_range(src.master, usr)) && (!istype(usr, /mob/living/silicon)))))
 				return
 			src.active1 = null

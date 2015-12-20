@@ -154,9 +154,9 @@
 
 		switch(prizeselect)
 			if(1)
-				prize = new /obj/item/weapon/money( prize_location )
-				prize.name = "space ticket"
-				prize.desc = "It's almost like actual currency!"
+				prize = new /obj/item/toy/figure/captain( prize_location )
+				prize.name = "action figure"
+				prize.desc = "What the fuck did you do?"
 			if(2)
 				prize = new /obj/item/device/radio/beacon( prize_location )
 				prize.name = "electronic blink toy game"

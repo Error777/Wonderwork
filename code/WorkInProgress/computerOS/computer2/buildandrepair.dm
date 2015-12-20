@@ -8,7 +8,7 @@
 	w_class = 3
 	var/created_name = null //If defined, result computer will have this name.
 
-/obj/computer2frame
+/obj/structure/computer2frame
 	density = 1
 	anchored = 0
 	name = "Computer-frame"
@@ -20,7 +20,7 @@
 	var/list/peripherals = list()
 	var/created_icon_state = "aiupload"
 
-/obj/computer2frame/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/computer2frame/attackby(obj/item/P as obj, mob/user as mob)
 	switch(state)
 		if(0)
 			if(istype(P, /obj/item/weapon/wrench))

@@ -775,6 +775,19 @@
 					if(do_after(CM, 50))
 						if(!CM.handcuffed || CM.buckled)
 							return
+						else
+							usr << pick("You hear something click, but it doesn't open yet.",	// - Uristqwerty
+										"The latch resists!",									// - IRC: BowlSoldier
+										"The chain is starting to give!",						// - IRC: BowlSoldier
+										"The chain bends a little.",							// - IRC: STALKER
+										"Your wrist hurts.",									// - IRC: STALKER
+										"Unnng",												// - IRC: Doug_H_Nuts
+										"The chain jangles a bit.",								// - SkyMarshal
+										"\red Hurry up, dammit!",								// - SkyMarshal
+										"This is exhausting!")									// - SkyMarshal
+							for(var/mob/O in viewers(usr))
+								if(prob(50)) //Reduces spam slightly
+									O.show_message(text("\red [] continues to struggle in \the [usr:handcuffed]!", usr), 1)
 						for(var/mob/O in viewers(CM))
 							O.show_message(text("\red <B>[] manages to break the handcuffs!</B>", CM), 1)
 						CM << "\red You successfully break your handcuffs."
