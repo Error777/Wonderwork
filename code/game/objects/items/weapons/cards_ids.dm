@@ -239,3 +239,75 @@
 /obj/item/weapon/card/id/prisoner/seven
 	name = "Prisoner #13-007"
 	registered_name = "Prisoner #13-007"
+
+/obj/item/weapon/card/id/civilian
+	name = "Civilian ID"
+	registered_name = "Assistant"
+	icon_state = "id_civ"
+	desc = "Holy shit. Where am I?"
+
+/obj/item/weapon/card/id/medical
+	name = "Medical ID"
+	registered_name = "Doctor"
+	icon_state = "id_med"
+	desc = "A card covered in the blood stains of the wild ride."
+
+/obj/item/weapon/card/id/security
+	name = "Security ID"
+	registered_name = "Officer"
+	icon_state = "id_sec"
+	desc = "Some say these cards are drowned in the tears of assistants, forged in the burning bodies of clowns."
+
+/obj/item/weapon/card/id/research
+	name = "Research ID"
+	registered_name = "Scientist"
+	icon_state = "id_res"
+	desc = "Pinnacle of name technology."
+
+/obj/item/weapon/card/id/supply
+	name = "Supply ID"
+	registered_name = "Cargomen"
+	icon_state = "id_civ"
+	desc = "ROH ROH! HEIL THE QUARTERMASTER!"
+
+/obj/item/weapon/card/id/engineering
+	name = "Engineering ID"
+	registered_name = "Engineer"
+	icon_state = "id_eng"
+	desc = "Shame it's going to be lost in the void of a black hole."
+
+/obj/item/weapon/card/id/hos
+	name = "Head of Security ID"
+	registered_name = "HoS"
+	icon_state = "id_com"
+	desc = "An ID awarded to only the most robust shits in the buisness."
+
+/obj/item/weapon/card/id/cmo
+	name = "Chief Medical Officer ID"
+	registered_name = "CMO"
+	icon_state = "id_com"
+	desc = "It gives off the faint smell of chloral, mixed with a backdraft of shittery."
+
+/obj/item/weapon/card/id/rd
+	name = "Research Director ID"
+	registered_name = "RD"
+	icon_state = "id_com"
+	desc = "If you put your ear to the card, you can faintly hear screaming, glomping, and mechs. What the fuck."
+
+/obj/item/weapon/card/id/ce
+	name = "Chief Engineer ID"
+	registered_name = "CE"
+	icon_state = "id_com"
+	desc = "The card has a faint aroma of autism."
+
+/obj/item/weapon/card/id/clown
+	name = "Pink ID"
+	registered_name = "HONK!"
+	icon_state = "id_clown"
+	desc = "Even looking at the card strikes you with deep fear."
+
+/obj/item/weapon/card/id/mime
+	name = "Black and White ID"
+	registered_name = "..."
+	icon_state = "id_mime"
+	desc = "..."

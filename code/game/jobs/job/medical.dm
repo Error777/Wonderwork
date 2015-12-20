@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	supervisors = "the captain"
 	selection_color = "#ffddf0"
-	idtype = /obj/item/weapon/card/id/silver
+	idtype = /obj/item/weapon/card/id/cmo
 	req_admin_notify = 1
 	access = list(access_medical, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
@@ -52,6 +52,7 @@
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	idtype = /obj/item/weapon/card/id/medical
 	access = list(access_medical, access_morgue, access_surgery, access_virology)
 	minimal_access = list(access_medical, access_morgue, access_surgery, access_virology)
 	alt_titles = list("Surgeon","Emergency Physician","Nurse","Virologist")
@@ -113,6 +114,7 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	idtype = /obj/item/weapon/card/id/medical
 	access = list(access_medical, access_chemistry)
 	minimal_access = list(access_medical)
 
@@ -143,6 +145,7 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer and research director"
 	selection_color = "#ffeef0"
+	idtype = /obj/item/weapon/card/id/research
 	access = list(access_medical, access_morgue, access_genetics)
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
 
@@ -207,6 +210,7 @@
 	spawn_positions = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	idtype = /obj/item/weapon/card/id/medical
 	access = list(access_medical, access_psychiatrist)
 	minimal_access = list(access_medical, access_psychiatrist)
 	alt_titles = list("Psychologist")

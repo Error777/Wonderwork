@@ -7,6 +7,7 @@
 	spawn_positions = -1
 	supervisors = "absolutely everyone"
 	selection_color = "#dddddd"
+	idtype = /obj/item/weapon/card/id/civilian
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
 
