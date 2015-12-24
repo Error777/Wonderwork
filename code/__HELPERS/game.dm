@@ -9,6 +9,11 @@
 	src:Topic(href, href_list)
 	return null
 
+/proc/is_on_same_plane_or_station(var/z1, var/z2)
+	if(z1 == z2)
+		return 1
+	return 0
+
 /proc/get_area(O)
 	var/atom/location = O
 	var/i

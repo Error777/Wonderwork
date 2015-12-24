@@ -7,6 +7,9 @@
 	unacidable = 1
 	luminosity = 8
 
+	New()
+		ul_SetLuminosity(8,8,8)
+
 /**********************Miner Lockers**************************/
 
 /obj/structure/closet/secure_closet/miner

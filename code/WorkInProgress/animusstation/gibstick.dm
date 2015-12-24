@@ -1,4 +1,4 @@
-
+//FERNFLOWER STUFF//
 /obj/item/weapon/melee/gibstick
 	name = "Centcomm Manipulation Device"
 	desc = "Product of weird technology from deepest CentComm labs."

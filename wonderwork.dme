@@ -1355,6 +1355,7 @@
 #include "code\WorkInProgress\animusstation\turntable.dm"
 #include "code\WorkInProgress\animusstation\turntable_tracks.dm"
 #include "code\WorkInProgress\Apples\artifacts.dm"
+#include "code\WorkInProgress\Bay12\spydevice.dm"
 #include "code\WorkInProgress\Cael_Aislinn\meteor_battery.dm"
 #include "code\WorkInProgress\Cael_Aislinn\sculpture.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Economy\Accounts.dm"

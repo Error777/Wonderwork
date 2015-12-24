@@ -18,84 +18,112 @@ obj/structure/door_assembly
 		update_state()
 
 	door_assembly_com
+		icon_state = "door_as_com0"
 		base_icon_state = "com"
 		base_name = "Command Airlock"
 		glass_type = "/glass_command"
 		airlock_type = "/command"
 
 	door_assembly_sec
+		icon_state = "door_as_sec0"
 		base_icon_state = "sec"
 		base_name = "Security Airlock"
 		glass_type = "/glass_security"
 		airlock_type = "/security"
 
 	door_assembly_eng
+		icon_state = "door_as_eng0"
 		base_icon_state = "eng"
 		base_name = "Engineering Airlock"
 		glass_type = "/glass_engineering"
 		airlock_type = "/engineering"
 
 	door_assembly_min
+		icon_state = "door_as_min0"
 		base_icon_state = "min"
 		base_name = "Mining Airlock"
 		glass_type = "/glass_mining"
 		airlock_type = "/mining"
 
 	door_assembly_atmo
+		icon_state = "door_as_atmo0"
 		base_icon_state = "atmo"
 		base_name = "Atmospherics Airlock"
 		glass_type = "/glass_atmos"
 		airlock_type = "/atmos"
 
 	door_assembly_research
+		icon_state = "door_as_res0"
 		base_icon_state = "res"
 		base_name = "Research Airlock"
 		glass_type = "/glass_research"
 		airlock_type = "/research"
 
 	door_assembly_science
+		icon_state = "door_as_sci0"
 		base_icon_state = "sci"
 		base_name = "Science Airlock"
 		glass_type = "/glass_science"
 		airlock_type = "/science"
 
 	door_assembly_med
+		icon_state = "door_as_med0"
 		base_icon_state = "med"
 		base_name = "Medical Airlock"
 		glass_type = "/glass_medical"
 		airlock_type = "/medical"
 
 	door_assembly_mai
+		icon_state = "door_as_mai0"
 		base_icon_state = "mai"
 		base_name = "Maintenance Airlock"
 		airlock_type = "/maintenance"
 		glass = -1
 
 	door_assembly_ext
+		icon_state = "door_as_ext0"
 		base_icon_state = "ext"
 		base_name = "External Airlock"
 		airlock_type = "/external"
 		glass = -1
 
 	door_assembly_fre
+		icon_state = "door_as_fre0"
 		base_icon_state = "fre"
 		base_name = "Freezer Airlock"
 		airlock_type = "/freezer"
 		glass = -1
 
 	door_assembly_hatch
+		icon_state = "door_as_hatch0"
 		base_icon_state = "hatch"
 		base_name = "Airtight Hatch"
 		airlock_type = "/hatch"
 		glass = -1
 
 	door_assembly_mhatch
+		icon_state = "door_as_mhatch0"
 		base_icon_state = "mhatch"
 		base_name = "Maintenance Hatch"
 		airlock_type = "/maintenance_hatch"
 		glass = -1
 
+	door_assembly_oldstyle
+		icon_state = "door_as_oldstyle0"
+		base_icon_state = "oldstyle"
+		base_name = "Old Airlock"
+		airlock_type = "/oldstyle"
+		glass = -1
+
+	door_assembly_neweng
+		icon_state = "door_as_neweng0"
+		base_icon_state = "neweng"
+		base_name = "Engineering Airlock"
+		glass_type = "/glass_newengineering"
+		airlock_type = "/newengineering"
+
 	door_assembly_highsecurity // Borrowing this until WJohnston makes sprites for the assembly
+		icon_state = "door_as_highsec0"
 		base_icon_state = "highsec"
 		base_name = "High Security Airlock"
 		airlock_type = "/highsecurity"

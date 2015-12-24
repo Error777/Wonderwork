@@ -58,6 +58,27 @@
 			H.put_in_hands(S)
 			H.visible_message("\red [H] grabs [src] from the floor!", "\red You grab [src] from the floor!")
 
+/obj/structure/stool/barstool1/MouseDrop(atom/over_object)
+	if (istype(over_object, /mob/living/carbon/human) && (usr == over_object) && get_dist(over_object, src) <= 1)
+		var/mob/living/carbon/human/H = over_object
+		if (!H.restrained() && !H.stat)
+			var/obj/item/weapon/stool/barstool1/S = new/obj/item/weapon/stool/barstool1()
+			S.origin = src
+			src.loc = S
+			H.put_in_hands(S)
+			H.visible_message("\red [H] grabs [src] from the floor!", "\red You grab [src] from the floor!")
+
+/obj/structure/stool/barstool2/MouseDrop(atom/over_object)
+	if (istype(over_object, /mob/living/carbon/human) && (usr == over_object) && get_dist(over_object, src) <= 1)
+		var/mob/living/carbon/human/H = over_object
+		if (!H.restrained() && !H.stat)
+			var/obj/item/weapon/stool/barstool2/S = new/obj/item/weapon/stool/barstool2()
+			S.origin = src
+			src.loc = S
+			H.put_in_hands(S)
+			H.visible_message("\red [H] grabs [src] from the floor!", "\red You grab [src] from the floor!")
+
+
 /obj/item/weapon/stool
 	name = "stool"
 	desc = "Uh-hoh, bar is heating up."
@@ -67,6 +88,15 @@
 	throwforce = 10
 	w_class = 5.0
 	var/obj/structure/stool/origin = null
+
+/obj/item/weapon/stool/barstool
+	icon_state = "stool"
+
+/obj/item/weapon/stool/barstool1
+	icon_state = "barstool1"
+
+/obj/item/weapon/stool/barstool2
+	icon_state = "barstool2"
 
 /obj/item/weapon/stool/attack_self(mob/user as mob)
 	..()
@@ -87,3 +117,15 @@
 		T.apply_damage(20)
 		return
 	..()
+
+/obj/structure/stool/barstool
+	name = "barstool"
+	icon_state = "stool"
+
+/obj/structure/stool/barstool1
+	name = "barstool"
+	icon_state = "barstool1"
+
+/obj/structure/stool/barstool2
+	name = "barstool"
+	icon_state = "barstool2"

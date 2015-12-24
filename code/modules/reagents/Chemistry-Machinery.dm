@@ -224,6 +224,13 @@
 			if (player.machine == src && player.client)
 				updateWindow(player)
 
+/obj/machinery/chem_dispenser/advanced
+	name = "advanced chem dispenser"
+	energy = 200
+	max_energy = 200
+	dispensable_reagents = list("thermite","cyanide","lexorin","space_drugs","adminordrazine","lube","pacid","synaptizine","hyperzine","leporazine","tricordrazine","alkysine","dermaline","dexalinp","bicaridine","ryetalyn","cryoxadone","clonexadone","glycerol","chloralhydrate","zombiepowder","LSD","neurotoxin",)
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

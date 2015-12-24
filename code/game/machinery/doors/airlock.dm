@@ -109,6 +109,11 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	icon = 'icons/obj/doors/Dooreng.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 
+/obj/machinery/door/airlock/newengineering
+	name = "Airlock"
+	icon = 'icons/obj/doors/Doorneweng.dmi'
+	assembly_type = /obj/structure/door_assembly/door_assembly_neweng
+
 /obj/machinery/door/airlock/medical
 	name = "Airlock"
 	icon = 'icons/obj/doors/Doormed.dmi'
@@ -147,6 +152,12 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_fre
 
+/obj/machinery/door/airlock/old
+	name = "Old Airlock"
+	icon = 'icons/obj/doors/Doorold.dmi'
+	opacity = 1
+	assembly_type = /obj/structure/door_assembly/door_assembly_oldstyle
+
 /obj/machinery/door/airlock/hatch
 	name = "Airtight Hatch"
 	icon = 'icons/obj/doors/Doorhatchele.dmi'
@@ -173,11 +184,39 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	glass = 1
 
+/obj/machinery/door/airlock/glass_goonengineering
+	name = "Glass Airlock"
+	icon = 'icons/obj/doors/goonnewengdoor.dmi'
+	opacity = 0
+	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	glass = 1
+
+/obj/machinery/door/airlock/glass_goonmedical
+	name = "Glass Airlock"
+	icon = 'icons/obj/doors/goonnewmeddoor.dmi'
+	opacity = 0
+	assembly_type = /obj/structure/door_assembly/door_assembly_med
+	glass = 1
+
+/obj/machinery/door/airlock/glass_goonresearch
+	name = "Glass Airlock"
+	icon = 'icons/obj/doors/goonnewresdoor.dmi'
+	opacity = 0
+	assembly_type = /obj/structure/door_assembly/door_assembly_research
+	glass = 1
+
 /obj/machinery/door/airlock/glass_engineering
 	name = "Maintenance Hatch"
 	icon = 'icons/obj/doors/Doorengglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	glass = 1
+
+/obj/machinery/door/airlock/glass_newengineering
+	name = "Maintenance Hatch"
+	icon = 'icons/obj/doors/Doornewengglass.dmi'
+	opacity = 0
+	assembly_type = /obj/structure/door_assembly/door_assembly_neweng
 	glass = 1
 
 /obj/machinery/door/airlock/glass_security

@@ -55,6 +55,9 @@
 	var/automute_on = 0					//enables automuting/spam prevention
 	var/jobs_have_minimal_access = 0	//determines whether jobs use minimal access or expanded access.
 
+	var/achievement_hub = null
+	var/achievement_password = null
+
 	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
 	var/alien_to_human_ratio = 0.5
@@ -263,6 +266,12 @@
 
 				if ("serversuffix")
 					config.server_suffix = 1
+
+				if("achievement_hub")
+					achievement_hub = value
+
+				if("achievement_password")
+					achievement_password = value
 
 				if ("hostedby")
 					config.hostedby = value
