@@ -122,6 +122,41 @@ obj/structure/door_assembly
 		glass_type = "/glass_newengineering"
 		airlock_type = "/newengineering"
 
+	door_assembly_coma
+		icon_state = "door_as_coma0"
+		base_icon_state = "coma"
+		base_name = "Command Airlock"
+		glass_type = "/glass_commandalt"
+		airlock_type = "/commandalt"
+
+	door_assembly_hyd
+		icon_state = "door_as_hyd0"
+		base_icon_state = "hyd"
+		base_name = "Hydroponics Airlock"
+		glass_type = "/glass_hydroponics"
+		airlock_type = "/hydroponics"
+
+	door_assembly_blue
+		icon_state = "door_as_blue0"
+		base_icon_state = "blue"
+		base_name = "Blue Airlock"
+		glass_type = "/glass_blue"
+		airlock_type = "/blue"
+
+	door_assembly_shatch
+		icon_state = "door_as_shatch0"
+		base_icon_state = "shatch"
+		base_name = "Security Hatch"
+		airlock_type = "/security_hatch"
+		glass = -1
+
+	door_assembly_neweng
+		icon_state = "door_as_neweng0"
+		base_icon_state = "neweng"
+		base_name = "Engineering Airlock"
+		glass_type = "/glass_newengineering"
+		airlock_type = "/newengineering"
+
 	door_assembly_highsecurity // Borrowing this until WJohnston makes sprites for the assembly
 		icon_state = "door_as_highsec0"
 		base_icon_state = "highsec"

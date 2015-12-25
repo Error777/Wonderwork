@@ -5,16 +5,12 @@
 	icon_state = "eshield0"
 	item_state = "nothing"
 	layer = TURF_LAYER+0.2
-
-	flags = CONDUCT
-	force = 5.0
+	force = 1
 	w_class = 1.0
-	slot_flags = SLOT_EARS
-	throwforce = 5.0
+	throwforce = 1
 	throw_range = 15
 	throw_speed = 3
-
-	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
+	origin_tech = "engineering=1;programming=2;syndicate=3"
 
 	var/obj/item/device/radio/spy/radio
 	var/obj/machinery/camera/spy/camera
@@ -50,10 +46,8 @@
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
-
 	w_class = 2.0
-
-	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
+	origin_tech = "engineering=5;programming=2;syndicate=3"
 
 	var/operating = 0
 	var/obj/item/device/radio/spy/radio
@@ -131,7 +125,6 @@
 
 /obj/item/device/spy_monitor/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
 	return radio.hear_talk(M, msg, speaking)
-
 
 /obj/machinery/camera/spy
 	// These cheap toys are accessible from the mercenary camera console as well

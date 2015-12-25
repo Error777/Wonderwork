@@ -19,7 +19,8 @@
 Добавить столы из всех видов минералов
 Добавить кислородный урон при жажде.
 Добавить органосистему по принципу ренди.
-Добавить --
+Добавить и разнерфить новую ботанику с бея.
+Добавить ползанье по трубам с ТГ
 
  
 
@@ -28,16 +29,6 @@
 
 
 Runtimes
-
-runtime error: Cannot read null.log_adminwarn
-proc name: log adminwarn (/proc/log_adminwarn)
-  source file: logging.dm,72
-  usr: null
-  src: null
-  call stack:
-log adminwarn("<span cl...")
-message admins("<span cl...", 1)
-Centcomm Manipulation Device (/obj/item/weapon/melee/gibstick): New(the wooden floor (104,64,2) (/turf/unsimulated/floor))
 
 runtime error: Cannot read null.mode
 proc name: New (/obj/item/device/uplink/New)

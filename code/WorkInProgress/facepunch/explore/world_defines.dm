@@ -115,6 +115,7 @@
 			if(Obj:client)
 				mysound.status = SOUND_PAUSED | SOUND_UPDATE
 				Obj << mysound
+
 	proc/process()
 		set background = 1
 
