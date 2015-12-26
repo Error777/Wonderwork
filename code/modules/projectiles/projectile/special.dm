@@ -138,3 +138,71 @@
 			var/mob/living/carbon/human/M = target
 			M.adjustBrainLoss(20)
 			M.hallucination += 20
+
+//Kinetic Accelerator//
+
+/obj/item/projectile/energy/kinetic
+	name = "kinetic force"
+	icon_state = null
+	damage = 10
+	damage_type = BRUTE
+	flag = "bomb"
+	var/splash = 0
+	var/range = 3 //This will de-increment every step. When 0, it will delete the projectile.
+
+/obj/item/projectile/energy/kinetic/proc/Range()
+	range--
+	if(range <= 0 && loc)
+		on_range()
+
+/obj/item/projectile/energy/kinetic/proc/on_range() //if we want there to be effects when they reach the end of their range
+	del(src)
+
+
+/obj/item/projectile/energy/kinetic/super
+	damage = 11
+	range = 4
+
+/obj/item/projectile/energy/kinetic/hyper
+	damage = 12
+	range = 5
+	splash = 1
+
+/obj/item/projectile/energy/kinetic/New()
+	var/turf/proj_turf = get_turf(src)
+	if(!istype(proj_turf, /turf))
+		return
+	var/datum/gas_mixture/environment = proj_turf.return_air()
+	var/pressure = environment.return_pressure()
+	if(pressure < 50)
+		name = "full strength kinetic force"
+		damage *= 4
+	..()
+
+/obj/item/projectile/energy/kinetic/on_range()
+	new /obj/item/effect/kinetic_blast(src.loc)
+	..()
+
+/obj/item/projectile/energy/kinetic/on_hit(atom/target)
+	. = ..()
+	var/turf/target_turf= get_turf(target)
+	if(istype(target_turf, /turf/simulated/mineral))
+		var/turf/simulated/mineral/M = target_turf
+		M.gets_drilled(firer)
+	new /obj/item/effect/kinetic_blast(target_turf)
+	if(src.splash)
+		for(var/turf/T in range(splash, target_turf))
+			if(istype(T, /turf/simulated/mineral))
+				var/turf/simulated/mineral/M = T
+				M.gets_drilled(firer)
+
+
+/obj/item/effect/kinetic_blast
+	name = "kinetic explosion"
+	icon = 'icons/obj/projectiles.dmi'
+	icon_state = "kinetic_blast"
+	layer = 4.1
+
+/obj/item/effect/kinetic_blast/New()
+	spawn(4)
+		del(src)

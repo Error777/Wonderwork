@@ -15,7 +15,7 @@
 	var/quick_create_object_html = null
 	var/pathtext = null
 
-	pathtext = input("Select the path of the object you wish to create.", "Path", "/obj") as null|anything in list("/obj","/obj/structure","/obj/item","/obj/item/weapon","/obj/item/clothing","/obj/machinery","/obj/mecha")
+	pathtext = input("Select the path of the object you wish to create.", "Path", "/obj") as null|anything in list("/obj","/obj/structure","/obj/effect","/obj/item", "/obj/item/clothing","/obj/item/stack","/obj/item/device","/obj/item/weapon","/obj/item/seeds","/obj/item/ammo_magazine","/obj/item/weapon/reagent_containers","/obj/item/weapon/gun","/obj/item/weapon/card","/obj/item/weapon/bedsheet","/obj/item/weapon/stock_parts","/obj/item/wardrobe","/obj/item/clothing","/obj/machinery","/obj/mecha")
 	if(!pathtext)
 		return
 	var path = text2path(pathtext)
@@ -27,3 +27,4 @@
 		quick_create_object_html = replacetext(quick_create_object_html, "null /* object types */", "\"[objectjs]\"")
 
 	user << browse(replacetext(quick_create_object_html, "/* ref src */", "\ref[src]"), "window=quick_create_object;size=425x475")
+

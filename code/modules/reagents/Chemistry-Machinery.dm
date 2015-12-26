@@ -231,6 +231,12 @@
 	dispensable_reagents = list("thermite","cyanide","lexorin","space_drugs","adminordrazine","lube","pacid","synaptizine","hyperzine","leporazine","tricordrazine","alkysine","dermaline","dexalinp","bicaridine","ryetalyn","cryoxadone","clonexadone","glycerol","chloralhydrate","zombiepowder","LSD","neurotoxin",)
 
 
+/obj/machinery/chem_dispenser/goon
+	name = "good chem dispenser"
+	energy = 200
+	max_energy = 200
+	dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine","sodium","aluminium","silicon","phosphorus","sulfur","chlorine","potassium","iron","copper","mercury","radium","water","ethanol","sugar","sacid","welding_fuel","iodine","bromine","stable_plasma",)
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

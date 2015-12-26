@@ -1,7 +1,7 @@
 /obj/item/device/defibulator
 	name = "Cardiac Defibrillator"
 	icon = 'items.dmi'
-	icon_state = "shockpaddle" //Borrowing health scanners until I get a proper sprite
+	icon_state = "shockpaddle1" //Borrowing health scanners until I get a proper sprite
 	item_state = "analyzer"
 	desc = "A portable defibrillator used to revive paitents recently flatlined, CLEAR!"
 	flags = FPRINT | TABLEPASS | CONDUCT
@@ -13,7 +13,7 @@
 	m_amt = 300
 	g_amt = 100
 	var/charges = 1
-	origin_tech = "magnets=2;biotech=1"
+	origin_tech = "magnets=2;biotech=2"
 	var/mode = 1;
 
 /obj/item/device/defibulator/attack(mob/living/silicon/S as mob, mob/living/user as mob)
@@ -24,6 +24,7 @@
 	if((CLUMSY in user.mutations) && prob(50)) //Clumsy check. 50% chance to shock thyself. why ar'st thou shocking thyself?
 		if(charges > 0) //If we have charges left...
 			charges--
+			icon_state = "shockpaddle0"
 			user.visible_message("<span class='notice'> [user] grabs the defibrillator by the wrong end!","<span class='notice'> You grab the defibulator by the wrong end!")
 			user.apply_effect(40, AGONY, 0)
 			user.Weaken(30)
@@ -42,6 +43,7 @@
 			M.stat = 0 //IT LIVES
 			playsound(src.loc, "sparks", 75, 1, -1)
 			charges--
+			icon_state = "shockpaddle0"
 		else
 			user << "<span class='warning'>\The defibrillator is out of charge.</span>"
 		return//Get us out of here. We're done shocking
@@ -57,6 +59,7 @@
 			M.stat = 0 //IT LIVES
 			playsound(src.loc, "sparks", 75, 1, -1)
 			charges--
+			icon_state = "shockpaddle0"
 		else
 			user << "<span class='warning'>\The defibrillator is out of charge.</span>"
 		return//Get us out of here. We're done shocking
@@ -68,6 +71,7 @@
 			M.apply_effect(40, AGONY, 0) // OHGODWHYAREYOUDOINGTHISTOME... SHITCURITY!
 			M.Weaken(15) // Halp... i'm on the ground and can't comment
 			charges--
+			icon_state = "shockpaddle0"
 		else
 			user << "<span class='warning'>\The defibrillator is out of charge.</span>"
 		return//Get us out of here. We're done shocking
@@ -76,6 +80,7 @@
 			user.visible_message("<span class='notice'> [user] jabs the defibrillator into [M]'s chest, making them jolt a moment before falling limp.","<span class='notice'> You jab the defibulator into [M]'s chest, it doesn't seem to be working...")
 			playsound(src.loc, "sparks", 75, 1, -1)
 			charges--
+			icon_state = "shockpaddle0"
 		else
 			user << "<span class='warning'>\The defibrillator is out of charge.</span>"
 		return//Get us out of here. We're done shocking

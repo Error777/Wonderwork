@@ -42,6 +42,23 @@
 	var/list/allowed = null //suit storage stuff.
 	var/obj/item/device/uplink/hidden/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
 
+	var/list/can_be_placed_into = list(
+		/obj/structure/table,
+		/obj/structure/rack,
+		/obj/structure/closet,
+		/obj/item/weapon/storage,
+		/obj/structure/safe,
+		/obj/machinery/disposal,
+		/obj/machinery/r_n_d/destructive_analyzer,
+		/obj/machinery/autolathe
+	)
+
+/obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
+	if(((src in target) && !target_self) || ((!istype(target.loc, /turf)) && (!istype(target, /turf)) && (not_inside)) || is_type_in_list(target, can_be_placed_into))
+		return 0
+	else
+		return 1
+
 /obj/item/device
 	icon = 'icons/obj/device.dmi'
 

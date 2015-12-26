@@ -58,6 +58,19 @@
 		new /obj/item/clothing/gloves/latex(src)
 		new /obj/item/clothing/gloves/latex(src)
 
+/obj/item/weapon/storage/box/defib
+	name = "box of ñardiac defibrillators"
+	desc = "This box contains defibrillators."
+	New()
+		..()
+		new /obj/item/device/defibulator(src)
+		new /obj/item/device/defibulator(src)
+		new /obj/item/device/defibulator(src)
+		new /obj/item/device/defibulator(src)
+		new /obj/item/device/defibulator(src)
+		new /obj/item/device/defibulator(src)
+		new /obj/item/device/defibulator(src)
+
 /obj/item/weapon/storage/box/masks
 	name = "sterile masks"
 	desc = "This box contains masks of sterility."

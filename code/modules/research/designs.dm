@@ -1279,6 +1279,16 @@ datum/design/adv_mass_spectrometer
 	reliability_base = 74
 	build_path = /obj/item/device/mass_spectrometer/adv
 
+datum/design/defib
+	name = "Cardiac Defibrillator"
+	desc = "A portable defibrillator used to revive paitents."
+	id = "defib"
+	req_tech = list("biotech" = 3, "magnets" = 2)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 100, "$glass" = 120)
+	reliability_base = 74
+	build_path = /obj/item/device/defibulator
+
 datum/design/mmi
 	name = "Man-Machine Interface"
 	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity."
@@ -1342,6 +1352,25 @@ datum/design/nanopaste
 	build_type = PROTOLATHE
 	materials = list("$metal" = 7000, "$glass" = 7000)
 	build_path = /obj/item/stack/nanopaste
+
+datum/design/matsynthesizer
+	name = "Material Synthesizer"
+	desc = "A device capable of producing very little material with a great deal of investment."
+	id = "matsynthesizer"
+	req_tech = list("materials" = 4, "engineering" = 4)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 3000, "$glass" = 5000)
+	build_path = /obj/item/device/material_synth
+
+datum/design/advmatsynthesizer
+	name = "Advanced Material Synthesizer"
+	desc = "A advanced device capable of producing very little material with a great deal of investment."
+	id = "advmatsynthesizer"
+	req_tech = list("materials" = 4, "engineering" = 5)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 3000, "$glass" = 2000)
+	build_path = /obj/item/device/material_synth/adv
+
 /////////////////////////////////////////
 /////////////////Weapons/////////////////
 /////////////////////////////////////////
@@ -1533,6 +1562,16 @@ datum/design/drill_diamond
 	reliability_base = 79
 	build_path = /obj/item/weapon/pickaxe/diamonddrill
 
+datum/design/accelerator
+	name = "Proto-Kinetic Accelerator"
+	desc = "It's been modified for extreme power output to crush rocks!"
+	id = "accelerator"
+	req_tech = list("materials" = 6, "powerstorage" = 4, "engineering" = 6)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 6000, "$glass" = 3000, "$gold" = 500, "$diamond" = 5000) //Yes, a whole diamond is needed.
+	reliability_base = 72
+	build_path = /obj/item/weapon/gun/energy/kinetic_accelerator
+
 datum/design/mesons
 	name = "Optical Meson Scanners"
 	desc = "Used for seeing walls, floors, and stuff through anything."
@@ -1541,6 +1580,15 @@ datum/design/mesons
 	build_type = PROTOLATHE
 	materials = list("$metal" = 50, "$glass" = 50)
 	build_path = /obj/item/clothing/glasses/meson
+
+datum/design/resonator
+	name = "Resonator"
+	desc = "A handheld device that creates small fields of energy that resonate until they detonate, crushing rock."
+	id = "resonator"
+	req_tech = list("magnets" = 2, "engineering" = 3, "powerstorage" = 3)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 200, "$glass" = 150)
+	build_path = /obj/item/weapon/resonator
 
 /datum/design/thermals
 	name = "Optical Thermal Scanners"

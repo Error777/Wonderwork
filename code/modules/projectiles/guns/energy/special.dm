@@ -187,3 +187,38 @@ obj/item/weapon/gun/energy/staff/focus
 			user << "\red The [src.name] will now strike only a single person."
 			projectile_type = "/obj/item/projectile/forcebolt"
 	*/
+
+//Kinetic Accelerator//
+
+/obj/item/weapon/gun/energy/kinetic_accelerator
+	name = "proto-kinetic accelerator"
+	desc = "According to Nanotrasen accounting, this is mining equipment. It's been modified for extreme power output to crush rocks, but often serves as a miner's first defense against hostile alien life; it's not very powerful unless used in a low pressure environment."
+	icon_state = "kineticgun"
+	item_state = "kineticgun"
+	var/suppressed = 0	//whether or not a message is displayed when fired
+	var/overheat = 0
+	var/overheat_time = 16
+	var/recent_reload = 1
+	charge_cost = 100
+	origin_tech = "combat=2;materials=6;powerstorage=4;engineering=5"
+	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
+	projectile_type = "/obj/item/projectile/energy/kinetic"
+
+/obj/item/weapon/gun/energy/kinetic_accelerator/super
+	name = "super-kinetic accelerator"
+	desc = "An upgraded, superior version of the proto-kinetic accelerator."
+	icon_state = "kineticgun_u"
+	overheat_time = 15
+	origin_tech = "combat=3;powerstorage=2"
+	projectile_type = "/obj/item/projectile/energy/kinetic/super"
+
+/obj/item/weapon/gun/energy/kinetic_accelerator/hyper
+	name = "hyper-kinetic accelerator"
+	desc = "An upgraded, even more superior version of the proto-kinetic accelerator."
+	icon_state = "kineticgun_h"
+	overheat_time = 14
+	origin_tech = "combat=4;powerstorage=3"
+	projectile_type = "/obj/item/projectile/energy/kinetic/hyper"
+
+/obj/item/weapon/gun/energy/kinetic_accelerator/emp_act(severity)
+	return

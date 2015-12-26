@@ -26,14 +26,16 @@
 									  "plasteel" = /obj/item/stack/sheet/plasteel)
 	var/matter = 0
 
-/obj/item/device/material_synth/robot //Cyborg version, has less materials but can make rods n shit as well as scan.
+/obj/item/device/material_synth/adv
+	name = "advanced material synthesizer"
 	materials_scanned = list("metal" = /obj/item/stack/sheet/metal,
 							 "glass" = /obj/item/stack/sheet/glass,
 							 "reinforced glass" = /obj/item/stack/sheet/rglass,
 							 "floor tiles" = /obj/item/stack/tile/plasteel,
 							 "metal rods" = /obj/item/stack/rods)
 
-/obj/item/device/material_synth/robot/mommi //MoMMI version, more materials but cannot scan.
+/obj/item/device/material_synth/adv/centcomm
+	name = "centcomm material synthesizer"
 	materials_scanned = list("floor tile" = /obj/item/stack/tile/plasteel,
 							 "rods" = /obj/item/stack/rods,
 							 "metal" = /obj/item/stack/sheet/metal,
@@ -153,7 +155,7 @@
 
 /obj/item/device/material_synth/examine(mob/user)
 	..()
-	if(istype(src, /obj/item/device/material_synth/robot))
+	if(istype(src, /obj/item/device/material_synth/adv))
 		user << "It's been set to draw power from a power cell."
 	else
 		user << "It currently holds [matter]/[MAX_MATSYNTH_MATTER] matter-units."
@@ -211,14 +213,14 @@
 		matter -= round(spawned * modifier)
 
 //mommis matter synth lacks the capability to scan new materials.
-/obj/item/device/material_synth/robot/mommi/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/device/material_synth/adv/centcomm/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
 		return 0 //Not Adjacent
 	if(istype(target, /obj/item/stack/sheet))
 		user << "<span class='notice'>Your [src.name] does not contain this functionality.</span>"
 	return 0
 
-/obj/item/device/material_synth/robot/TakeCost(var/spawned, var/modifier, mob/user)
+/obj/item/device/material_synth/adv/TakeCost(var/spawned, var/modifier, mob/user)
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
 		return R.cell.use(spawned * modifier * MAT_SYNTH_ROBO)

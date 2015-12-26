@@ -5,7 +5,6 @@
 	damage_type = BURN
 	flag = "energy"
 
-
 /obj/item/projectile/energy/electrode
 	name = "electrode"
 	icon_state = "spark"
