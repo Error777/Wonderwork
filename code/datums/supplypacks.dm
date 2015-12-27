@@ -360,6 +360,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 					/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
 					/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
 					/obj/item/weapon/reagent_containers/glass/bottle/stoxin,
+					/obj/item/weapon/storage/box/defib,
 					/obj/item/weapon/storage/box/syringes,
 					/obj/item/weapon/storage/box/autoinjectors)
 	cost = 10
@@ -535,6 +536,46 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Particle Accelerator crate"
 	access = access_ce
+	group = "Engineering"
+
+/datum/supply_packs/engine/amrcontrol
+	name = "Antimatter control unit crate"
+	contains = list(/obj/machinery/power/am_control_unit)
+	cost = 30
+	containertype = /obj/structure/closet/crate/secure/large/reinforced
+	containername = "Antimatter Control Unit crate"
+	access = access_engine
+	group = "Engineering"
+
+/datum/supply_packs/engine/amrparts
+	name = "AMR Parts crate"
+	contains  = list(/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container,
+					/obj/item/device/am_shielding_container)
+	cost = 30
+	containertype = /obj/structure/closet/crate/secure/large/reinforced
+	containername = "packaged antimatter reactor crate"
+	access = access_engine
+	group = "Engineering"
+
+/datum/supply_packs/engine/amrcontainment
+	name = "Antimatter containment jar crate"
+	contains = list(/obj/item/weapon/am_containment,
+					/obj/item/weapon/am_containment,
+					/obj/item/weapon/am_containment)
+	cost = 15
+	containertype = /obj/structure/closet/crate/secure/large/reinforced
+	containername = "Antimatter containment jar crate"
+	access = access_engine
 	group = "Engineering"
 
 /datum/supply_packs/mecha_ripley

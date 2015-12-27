@@ -94,7 +94,7 @@
 		for(var/obj/machinery/am_shielding/AMS in linked_cores)
 			AMS.stability -= core_damage
 			AMS.check_stability(1)
-		playsound(get_turf(src), 'sound/effects/bang.ogg', 50, 1)
+		playsound(get_turf(src), 'sound/effects/EMPulse.ogg', 50, 1)
 	return
 
 

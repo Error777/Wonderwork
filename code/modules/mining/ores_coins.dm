@@ -54,6 +54,20 @@
 	icon_state = "Clown ore"
 	origin_tech = "materials=4"
 
+/obj/item/weapon/ore/aluminum
+	name = "Aluminum ore"
+	icon_state = "Aluminum ore"
+	origin_tech = "materials=4"
+
+/obj/item/weapon/ore/adamantine
+	name = "Adamantine ore"
+	icon_state = "Adamantine ore"
+	origin_tech = "materials=4"
+
+/obj/item/weapon/ore/phazon
+	name = "Phazon ore"
+	icon_state = "Phazon"
+	origin_tech = "materials=9"
 
 /obj/item/weapon/ore/triberium
 	name = "Triberium crystal"
@@ -86,8 +100,13 @@
 	desc = "A chunk of Cobryl, a somewhat valuable metal."
 	icon_state = "cobryl"
 
+/obj/item/weapon/ore/ice
+	name = "rotten ice"
+	desc = "a handful of Ice, a cold and wet ice."
+	icon_state = "ice"
+
 /obj/item/weapon/ore/char
-	name = "char ore"
+	name = "Char"
 	desc = "A heap of Char, a fossil energy source similar to coal."
 	icon_state = "char"
 // Rare Vein Ores

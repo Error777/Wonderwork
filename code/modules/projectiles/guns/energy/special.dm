@@ -204,6 +204,21 @@ obj/item/weapon/gun/energy/staff/focus
 	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
 	projectile_type = "/obj/item/projectile/energy/kinetic"
 
+/obj/item/weapon/gun/energy/kinetic_accelerator/attack_self(var/mob/living/user/L)
+	if(overheat || recent_reload)
+		return
+	power_supply.give(500)
+	playsound(src.loc, 'sound/weapons/Kenetic_reload.ogg', 60, 1)
+	recent_reload = 1
+	update_icon()
+	return
+
+/obj/item/weapon/gun/energy/kinetic_accelerator/update_icon()
+	if(power_supply.charge < 100)
+		icon_state = "[initial(icon_state)]_empty"
+	else
+		icon_state = initial(icon_state)
+
 /obj/item/weapon/gun/energy/kinetic_accelerator/super
 	name = "super-kinetic accelerator"
 	desc = "An upgraded, superior version of the proto-kinetic accelerator."

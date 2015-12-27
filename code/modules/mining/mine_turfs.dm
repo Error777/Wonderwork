@@ -260,7 +260,7 @@
 /turf/simulated/mineral/aluminum
 	name = "Aluminum deposit"
 	icon_state = "rock_Aluminum"
-	mineralName = "Triberium"
+	mineralName = "Aluminum"
 	mineralAmt = 5
 	spreadChance = 25
 	spread = 1
@@ -662,8 +662,14 @@ commented out in r5061, I left it because of the shroom thingies
 		O = new /obj/item/weapon/ore/diamond(src)
 	if (src.mineralName == "Clown")
 		O = new /obj/item/weapon/ore/clown(src)
+	if (src.mineralName == "Phazite")
+		O = new /obj/item/weapon/ore/phazon(src)
 	if (src.mineralName == "Triberium")
 		O = new /obj/item/weapon/ore/triberium(src)
+	if (src.mineralName == "Adamantine")
+		O = new /obj/item/weapon/ore/adamantine(src)
+	if (src.mineralName == "Aluminum")
+		O = new /obj/item/weapon/ore/aluminum(src)
 	if (src.mineralName == "Mauxite")
 		O = new /obj/item/weapon/ore/mauxite(src)
 	if (src.mineralName == "Molitz")
@@ -688,6 +694,8 @@ commented out in r5061, I left it because of the shroom thingies
 		O = new /obj/item/weapon/ore/cytine(src)
 	if (src.mineralName == "Uqill")
 		O = new /obj/item/weapon/ore/uqill(src)
+	if (src.mineralName == "Ice")
+		O = new /obj/item/weapon/ore/ice(src)
 	if (src.mineralName == "Coal")
 		O = new /obj/item/weapon/ore/coal(src)
 	if (src.mineralName == "Ruvium")
@@ -700,8 +708,6 @@ commented out in r5061, I left it because of the shroom thingies
 		O = new /obj/item/weapon/ore/martian(src)
 	if (src.mineralName == "Koshmarite")
 		O = new /obj/item/weapon/ore/eldritch(src)
-	if (src.mineralName == "Coal")
-		O = new /obj/item/weapon/ore/coal(src)
 	if(O)
 		src.geological_data.UpdateNearbyArtifactInfo(src)
 		O.geological_data = src.geological_data
