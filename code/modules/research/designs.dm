@@ -1566,11 +1566,20 @@ datum/design/accelerator
 	name = "Proto-Kinetic Accelerator"
 	desc = "It's been modified for extreme power output to crush rocks!"
 	id = "accelerator"
+	req_tech = list("materials" = 2, "powerstorage" = 3, "engineering" = 2)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 2500, "$glass" = 400, "$gold" = 500)
+	build_path = /obj/item/weapon/gun/energy/kinetic_accelerator
+
+datum/design/haccelerator
+	name = "Hyper-Kinetic Accelerator"
+	desc = "An upgraded, even more superior version of the proto-kinetic accelerator."
+	id = "haccelerator"
 	req_tech = list("materials" = 6, "powerstorage" = 4, "engineering" = 6)
 	build_type = PROTOLATHE
-	materials = list("$metal" = 6000, "$glass" = 3000, "$gold" = 500, "$diamond" = 5000) //Yes, a whole diamond is needed.
+	materials = list("$metal" = 6000, "$glass" = 3000, "$gold" = 500, "$diamond" = 5000)
 	reliability_base = 72
-	build_path = /obj/item/weapon/gun/energy/kinetic_accelerator
+	build_path = /obj/item/weapon/gun/energy/kinetic_accelerator/hyper
 
 datum/design/mesons
 	name = "Optical Meson Scanners"

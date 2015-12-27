@@ -200,7 +200,7 @@ obj/item/weapon/gun/energy/staff/focus
 	var/overheat_time = 16
 	var/recent_reload = 1
 	charge_cost = 100
-	origin_tech = "combat=2;materials=6;powerstorage=4;engineering=5"
+	origin_tech = "combat=4;powerstorage=3"
 	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
 	projectile_type = "/obj/item/projectile/energy/kinetic"
 
@@ -232,7 +232,7 @@ obj/item/weapon/gun/energy/staff/focus
 	desc = "An upgraded, even more superior version of the proto-kinetic accelerator."
 	icon_state = "kineticgun_h"
 	overheat_time = 14
-	origin_tech = "combat=4;powerstorage=3"
+	origin_tech = "combat=2;materials=6;powerstorage=4;engineering=5"
 	projectile_type = "/obj/item/projectile/energy/kinetic/hyper"
 
 /obj/item/weapon/gun/energy/kinetic_accelerator/emp_act(severity)

@@ -255,6 +255,31 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	origin_tech = "materials=4"
 	perunit = 2000
 
+
+/obj/item/stack/sheet/mineral/aluminum
+	name = "aluminum"
+	icon_state = "sheet-aluminum"
+	force = 5.0
+	throwforce = 5
+	w_class = 3.0
+	throw_speed = 3
+	throw_range = 3
+	origin_tech = "materials=1"
+	perunit = 2000
+
+
+/obj/item/stack/sheet/mineral/triberium
+	name = "triberium"
+	icon_state = "sheet-triberium"
+	force = 5.0
+	throwforce = 5
+	w_class = 3.0
+	throw_speed = 3
+	throw_range = 3
+	origin_tech = "materials=8"
+	perunit = 2000
+
+
 /obj/item/stack/sheet/mineral/pharosium
 	name = "pharosium"
 	icon_state = "sheet-pharosium"
@@ -265,6 +290,7 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	throw_range = 3
 	origin_tech = "materials=5"
 	perunit = 3750
+
 
 /obj/item/stack/sheet/mineral/char
 	name = "char"
@@ -298,7 +324,7 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	w_class = 3.0
 	throw_speed = 3
 	throw_range = 3
-	origin_tech = "materials=5"
+	origin_tech = "materials=6"
 	perunit = 3750
 
 
@@ -310,7 +336,7 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	w_class = 3.0
 	throw_speed = 3
 	throw_range = 3
-	origin_tech = "materials=5"
+	origin_tech = "materials=4"
 	perunit = 3750
 
 
@@ -334,7 +360,7 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	w_class = 3.0
 	throw_speed = 3
 	throw_range = 3
-	origin_tech = "materials=5"
+	origin_tech = "materials=6"
 	perunit = 3750
 
 
@@ -420,7 +446,7 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	origin_tech = "materials=9"
 
 /obj/item/stack/sheet/mineral/ice
-	name = "icee"
+	name = "ice"
 	icon_state = "sheet-ice"
 	force = 5.0
 	throwforce = 5
@@ -466,17 +492,6 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 /obj/item/stack/sheet/mineral/lovite
 	name = "lovite"
 	icon_state = "sheet-lovite"
-	force = 5.0
-	throwforce = 5
-	w_class = 3.0
-	throw_speed = 3
-	throw_range = 3
-	origin_tech = "materials=5"
-	perunit = 3750
-
-/obj/item/stack/sheet/mineral/ruvium
-	name = "ruvium"
-	icon_state = "sheet-ruvium"
 	force = 5.0
 	throwforce = 5
 	w_class = 3.0
