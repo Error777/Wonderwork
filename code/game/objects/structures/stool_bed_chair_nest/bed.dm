@@ -24,8 +24,8 @@
 	icon_state = "abed"
 
 /obj/structure/stool/bed/wood
-	name = "psych bed"
-	desc = "For prime comfort during psychiatric evaluations."
+	name = "wood bed"
+	desc = "Wood. Wood. Woodward!"
 	icon_state = "woodbed"
 
 /obj/structure/stool/bed/Del()
