@@ -203,11 +203,11 @@
 	desc = "A access keycard for safe."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "keycard"
-	item_state = "electronic"
 	w_class = 1
 	throwforce = 0
 	throw_speed = 4
 	throw_range = 20
+	var/id = 1
 /***/WIP/***/
 
 /obj/item/weapon/cane
