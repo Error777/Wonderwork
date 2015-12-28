@@ -434,7 +434,7 @@
 			if("r_ear")
 				target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their ear item ([target.r_ear]) removed by [source.name] ([source.ckey])</font>")
 				source.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [target.name]'s ([target.ckey]) ear item ([target.r_ear])</font>")
-				if(target.l_ear && !target.r_ear.canremove)
+				if(target.r_ear && !target.r_ear.canremove)
 					message = "\red <B>[source] fails to take off \a [target.r_ear] from [target]'s ears!</B>"
 					return
 				else

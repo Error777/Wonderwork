@@ -76,8 +76,12 @@ var/list/department_radio_keys = list(
 	if (!ishuman(src))
 		return
 	var/mob/living/carbon/human/H = src
-	if (H.l_ear)
-		var/obj/item/device/radio/headset/dongle = H.l_ear
+	if (H.l_ear || H.r_ear)
+		var/obj/item/device/radio/headset/dongle
+		if(istype(H.l_ear,/obj/item/device/radio/headset))
+			dongle = H.l_ear
+		else
+			dongle = H.r_ear
 		if(!istype(dongle)) return
 		if(dongle.translate_binary) return 1
 
@@ -85,8 +89,12 @@ var/list/department_radio_keys = list(
 	if (isalien(src)) return 1
 	if (!ishuman(src)) return
 	var/mob/living/carbon/human/H = src
-	if (H.l_ear)
-		var/obj/item/device/radio/headset/dongle = H.l_ear
+	if (H.l_ear || H.r_ear)
+		var/obj/item/device/radio/headset/dongle
+		if(istype(H.l_ear,/obj/item/device/radio/headset))
+			dongle = H.l_ear
+		else
+			dongle = H.r_ear
 		if(!istype(dongle)) return
 		if(dongle.translate_hive) return 1
 
@@ -198,10 +206,28 @@ var/list/department_radio_keys = list(
 
 	switch (message_mode)
 		if ("headset")
+			if (src:l_ear && istype(src:l_ear,/obj/item/device/radio))
+				src:l_ear.talk_into(src, message)
+				used_radios += src:l_ear
+			else if (src:r_ear)
+				src:r_ear.talk_into(src, message)
+				used_radios += src:r_ear
+
+			message_range = 1
+			italics = 1
+
+		if ("right ear")
+			if (src:r_ear)
+				src:r_ear.talk_into(src, message)
+				used_radios += src:r_ear
+
+			message_range = 1
+			italics = 1
+
+		if ("left ear")
 			if (src:l_ear)
 				src:l_ear.talk_into(src, message)
 				used_radios += src:l_ear
-				is_speaking_radio = 1
 
 			message_range = 1
 			italics = 1

@@ -21,9 +21,9 @@
 		if ("grassfootsteps") soundin = pick('sound/effects/footsteps/grass/grass1.wav','sound/effects/footsteps/grass/grass2.wav','sound/effects/footsteps/grass/grass3.wav','sound/effects/footsteps/grass/grass4.wav')
 		if ("dirtfootsteps") soundin = pick('sound/effects/footsteps/dirt/dirt1.wav','sound/effects/footsteps/dirt/dirt2.wav','sound/effects/footsteps/dirt/dirt3.wav','sound/effects/footsteps/dirt/dirt4.wav')
 		if ("waterfootsteps") soundin = pick('sound/effects/footsteps/water/slosh1.wav','sound/effects/footsteps/water/slosh2.wav','sound/effects/footsteps/water/slosh3.wav','sound/effects/footsteps/water/slosh4.wav')
-		if ("sandfootsteps") soundin = pick('sand_step1.ogg','sand_step2.ogg','sand_step3.ogg','sand_step4.ogg','sand_step5.ogg','sand_step6.ogg','sand_step7.ogg','sand_step8.ogg')
-		if ("woodfootsteps") soundin = pick('wood_step1.ogg','wood_step2.ogg','wood_step3.ogg','wood_step4.ogg','wood_step5.ogg','wood_step6.ogg','wood_step7.ogg','wood_step8.ogg')
-		if ("carpetfootsteps") soundin = pick('carpet_step1.ogg','carpet_step2.ogg','carpet_step3.ogg','carpet_step4.ogg','carpet_step5.ogg','carpet_step6.ogg','carpet_step7.ogg','carpet_step8.ogg')
+		if ("sandfootsteps") soundin = pick('sound/effects/footsteps/sand/sand_step1.ogg','sound/effects/footsteps/sand/sand_step2.ogg','sound/effects/footsteps/sand/sand_step3.ogg','sound/effects/footsteps/sand/sand_step4.ogg','sound/effects/footsteps/sand/sand_step5.ogg','sound/effects/footsteps/sand/sand_step6.ogg','sound/effects/footsteps/sand/sand_step7.ogg','sound/effects/footsteps/sand/sand_step8.ogg')
+		if ("woodfootsteps") soundin = pick('sound/effects/footsteps/wood/wood_step1.ogg','sound/effects/footsteps/wood/wood_step2.ogg','sound/effects/footsteps/wood/wood_step3.ogg','sound/effects/footsteps/wood/wood_step4.ogg','sound/effects/footsteps/wood/wood_step5.ogg','sound/effects/footsteps/wood/wood_step6.ogg','sound/effects/footsteps/wood/wood_step7.ogg','sound/effects/footsteps/wood/wood_step8.ogg')
+		if ("carpetfootsteps") soundin = pick('sound/effects/footsteps/carpet/carpet_step1.ogg','sound/effects/footsteps/carpet/carpet_step2.ogg','sound/effects/footsteps/carpet/carpet_step3.ogg','sound/effects/footsteps/carpet/carpet_step4.ogg','sound/effects/footsteps/carpet/carpet_step5.ogg','sound/effects/footsteps/carpet/carpet_step6.ogg','sound/effects/footsteps/carpet/carpet_step7.ogg','sound/effects/footsteps/carpet/carpet_step8.ogg')
 
 
 
