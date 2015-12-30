@@ -274,6 +274,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		user.ul_SetLuminosity(user.LuminosityRed - f_lum, user.LuminosityGreen - f_lum, user.LuminosityBlue - f_lum)
 		ul_SetLuminosity(f_lum, f_lum, f_lum)
 
+/obj/item/device/pda/on_enter_storage(mob/user)
+	if(fon)
+		user.ul_SetLuminosity(user.LuminosityRed - f_lum, user.LuminosityGreen - f_lum, user.LuminosityBlue - f_lum)
+		fon = 0
+	else if (isturf(src.loc))
+		ul_SetLuminosity(0)
+	..()
+	return
+
 /obj/item/device/pda/New()
 	..()
 	PDAs += src

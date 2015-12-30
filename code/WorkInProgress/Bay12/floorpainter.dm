@@ -5,8 +5,8 @@
 /obj/item/device/floor_painter
 	name = "floor painter"
 	icon = 'icons/obj/device.dmi'
-	icon_state = "forensic0"
-	item_state = "electronic"
+	icon_state = "floorpainter"
+	item_state = "syringegun"
 
 	var/mode_nice = "standard"
 	var/mode = "floor"

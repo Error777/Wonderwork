@@ -233,7 +233,7 @@
 /obj/structure/reagent_dispensers/chemtank
 	name = "Chemical Tank"
 	desc = "May contain dangerous chemicals."
-	icon = 'objects.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "chemtank"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,30,50,100)	//up to the big beaker, and not an unit further

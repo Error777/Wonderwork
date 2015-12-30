@@ -48,6 +48,8 @@
 		icon_state = initial(icon_state)
 		usr.ul_SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
 		on = 0
+	else if (isturf(src.loc))
+		ul_SetLuminosity(0)
 	..()
 	return
 

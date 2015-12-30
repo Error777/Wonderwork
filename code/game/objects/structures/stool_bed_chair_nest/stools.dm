@@ -118,10 +118,6 @@
 		return
 	..()
 
-/obj/structure/stool/barstool
-	name = "barstool"
-	icon_state = "stool"
-
 /obj/structure/stool/barstool1
 	name = "barstool"
 	icon_state = "barstool1"

@@ -169,3 +169,73 @@
 		spawn(0)
 			del(src)
 		return
+
+/obj/structure/stool/bed/couch
+	icon_state = "couch"
+	name = "couch"
+	desc = "A comfy couch, ideal for laying on."
+
+/obj/structure/stool/bed/couch/New()
+	src.verbs -= /atom/movable/verb/pull
+	if(src.dir == NORTH || src.dir == WEST)
+		src.layer = FLY_LAYER
+	else
+		src.layer = OBJ_LAYER
+	..()
+	return
+
+//BLACK//
+/obj/structure/stool/bed/couch/black
+	name = "black couch"
+	desc = "A comfy black couch, ideal for laying on."
+
+/obj/structure/stool/bed/couch/black/right
+	icon_state = "couchblack_right"
+
+/obj/structure/stool/bed/couch/black/left
+	icon_state = "couchblack_left"
+
+/obj/structure/stool/bed/couch/black/middle
+	icon_state = "couchblack_middle"
+
+//BROWN//
+/obj/structure/stool/bed/couch/brown
+	name = "brown couch"
+	desc = "A comfy brown couch, ideal for laying on."
+
+/obj/structure/stool/bed/couch/brown/right
+	icon_state = "couchbrown_right"
+
+/obj/structure/stool/bed/couch/brown/left
+	icon_state = "couchbrown_left"
+
+/obj/structure/stool/bed/couch/brown/middle
+	icon_state = "couchbrown_middle"
+
+//BEIGE//
+/obj/structure/stool/bed/couch/beige
+	name = "beige couch"
+	desc = "A comfy beige couch, ideal for laying on."
+
+/obj/structure/stool/bed/couch/beige/right
+	icon_state = "couchbeige_right"
+
+/obj/structure/stool/bed/couch/beige/left
+	icon_state = "couchbeige_left"
+
+/obj/structure/stool/bed/couch/beige/middle
+	icon_state = "couchbeige_middle"
+
+//TEAL//
+/obj/structure/stool/bed/couch/teal
+	name = "teal couch"
+	desc = "A comfy teal couch, ideal for laying on."
+
+/obj/structure/stool/bed/couch/teal/right
+	icon_state = "couchteal_right"
+
+/obj/structure/stool/bed/couch/teal/left
+	icon_state = "couchteal_left"
+
+/obj/structure/stool/bed/couch/teal/middle
+	icon_state = "couchteal_middle"

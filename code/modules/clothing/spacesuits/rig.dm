@@ -72,8 +72,10 @@
 		if(on)
 			usr.ul_SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
 			on = 0
-		icon_state = "rig[on]-[item_color]"
-		item_state = "rig[on]-[item_color]"
+			icon_state = "rig[on]-[item_color]"
+			item_state = "rig[on]-[item_color]"
+		else if (isturf(src.loc))
+			ul_SetLuminosity(0)
 		..()
 		return
 

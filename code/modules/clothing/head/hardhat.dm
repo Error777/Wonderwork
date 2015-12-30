@@ -28,12 +28,13 @@
 	pickup(mob/user)
 		if(on)
 			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-			ul_SetLuminosity(0)
+			src.ul_SetLuminosity(0)
 
 	dropped(mob/user)
 		if(on)
 			user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-			ul_SetLuminosity(brightness_on, brightness_on - 1, 0)
+			src.ul_SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+
 
 	on_enter_storage()
 		if(on)
@@ -41,6 +42,8 @@
 			on = 0
 			icon_state = "hardhat[on]_[item_color]"
 			item_state = "hardhat[on]_[item_color]"
+		else if (isturf(src.loc))
+			ul_SetLuminosity(0)
 		..()
 		return
 
