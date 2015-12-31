@@ -1,6 +1,6 @@
 /obj/item/device/defibulator
 	name = "Cardiac Defibrillator"
-	icon = 'items.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "shockpaddle1" //Borrowing health scanners until I get a proper sprite
 	item_state = "analyzer"
 	desc = "A portable defibrillator used to revive paitents recently flatlined, CLEAR!"

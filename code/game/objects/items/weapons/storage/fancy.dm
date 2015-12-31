@@ -254,3 +254,15 @@
 	..()
 	update_icon()
 
+/obj/item/weapon/storage/lockbox/adv
+	name = "metal box"
+	desc = "A metall locked box."
+	icon_state = "medalbox+l"
+	item_state = "syringe_kit"
+	w_class = 3
+	max_w_class = 2
+	storage_slots = 6
+	req_access = list(access_captain)
+	icon_locked = "medalbox+l"
+	icon_closed = "medalbox"
+	icon_broken = "medalbox+b"

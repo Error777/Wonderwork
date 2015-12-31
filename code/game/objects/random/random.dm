@@ -146,7 +146,6 @@
 					prob(3);/obj/item/weapon/chainsaw,\
 					prob(3);/obj/item/clothing/under/chameleon,\
 					prob(3);/obj/item/device/camera_bug,\
-					prob(1);/obj/item/weapon/storage/box/syndie_kit/imp_uplink,\
 					prob(1);/obj/item/device/multitool/uplink,\
 					prob(2);/obj/item/weapon/storage/toolbox/syndicate,\
 					prob(2);/obj/item/clothing/glasses/thermal/syndi,\

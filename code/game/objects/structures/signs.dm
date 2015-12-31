@@ -187,6 +187,22 @@
 	desc = "A warning sign which reads 'CHEMISTRY'"
 	icon_state = "chemistry1"
 
+/obj/structure/sign/radiation
+	name = "\improper RADIOACTIVE AREA"
+	desc = "A warning sign which reads 'RADIOACTIVE AREA'."
+	icon_state = "radiation"
+
+/obj/structure/sign/sovietradiation
+	name = "\improper RADIOACTIVE AREA"
+	desc = "A warning sign which reads 'RADIOACTIVE AREA'."
+	icon_state = "goonradiation"
+
+/obj/structure/sign/soviet
+	name = "\improper SOVIET SERP AND MOLOT"
+	desc = "In America, you can always find a party, in Soviet Russia, Party finds YOU!!"
+	icon_state = "sovietbanner"
+
+
 /obj/structure/sign/botany
 	name = "\improper HYDROPONICS"
 	desc = "A warning sign which reads 'HYDROPONICS'"
