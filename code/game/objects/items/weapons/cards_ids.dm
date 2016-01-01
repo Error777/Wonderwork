@@ -76,6 +76,7 @@
 	var/fingerprint_hash = "\[UNSET\]"
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
+	var/bans = null
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
 	var/dorm = 0		// determines if this ID has claimed a dorm already
@@ -267,7 +268,7 @@
 /obj/item/weapon/card/id/supply
 	name = "Supply ID"
 	registered_name = "Cargomen"
-	icon_state = "id_civ"
+	icon_state = "id_car"
 	desc = "ROH ROH! HEIL THE QUARTERMASTER!"
 
 /obj/item/weapon/card/id/engineering
