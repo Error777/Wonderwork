@@ -1,7 +1,7 @@
 /obj/item/device/tablet/laptop
 	name = "Laptop"
 	icon = 'icons/obj/Laptop.dmi'
-	icon_state = "Laptop_closed"
+	icon_state = "laptop_closed"
 	w_class = 3
 	slot_flags = SLOT_BELT
 
@@ -65,10 +65,10 @@
 		if(loc == usr) return
 		if(mounted)
 			mounted = 0
-			icon_state = "Laptop_closed"
+			icon_state = "laptop_closed"
 		else
 			mounted = 1
-			icon_state = "Laptop_open"
+			icon_state = "laptop_open"
 		check_alerts()
 
 	MouseDrop(obj/over_object as obj, src_location, over_location)

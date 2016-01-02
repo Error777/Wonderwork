@@ -206,3 +206,15 @@
 /obj/item/effect/kinetic_blast/New()
 	spawn(4)
 		del(src)
+
+/obj/item/projectile/energy/plasma
+	name ="unstable plasma clot"
+	icon_state = "plasma"
+	damage = 50
+	damage_type = BURN
+	flag = "energy"
+
+
+	on_hit(var/atom/target, var/blocked = 0)
+		explosion(target, -1, 0, 2)
+		return 1

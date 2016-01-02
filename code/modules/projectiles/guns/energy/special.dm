@@ -237,3 +237,14 @@ obj/item/weapon/gun/energy/staff/focus
 
 /obj/item/weapon/gun/energy/kinetic_accelerator/emp_act(severity)
 	return
+
+/obj/item/weapon/gun/energy/plasmagun
+	name = "plasma gun MX3"
+	desc = "A man portable fusion reactor with integrated Lawson chamber."
+	icon_state = "plasmagun"
+	fire_sound = 'sound/weapons/plasmagun.ogg'
+	origin_tech = "combat=4;magnets=5"
+	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY
+	slot_flags = SLOT_BACK
+	charge_cost = 100
+	projectile_type = "/obj/item/projectile/energy/plasma"
