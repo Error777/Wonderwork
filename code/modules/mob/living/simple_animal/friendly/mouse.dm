@@ -16,6 +16,7 @@
 	see_in_dark = 6
 	maxHealth = 5
 	health = 5
+	ventcrawler = 2
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
 	response_help  = "pets the"
 	response_disarm = "gently pushes aside the"

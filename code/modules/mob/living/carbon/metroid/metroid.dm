@@ -4,7 +4,7 @@
 	icon_state = "baby metroid"
 	pass_flags = PASSTABLE
 	speak_emote = list("hums")
-
+	ventcrawler = 0
 	layer = 5
 
 	health = 150

@@ -285,6 +285,7 @@
 					else
 						user.visible_message("[user] unwelds the vent.", "You unweld the vent.", "You hear welding.")
 						welded = 0
+						pipe_vision_img = image(src, loc, layer = 20, dir = dir)
 						update_icon()
 				else
 					user << "\blue The welding tool needs to be on to start this task."

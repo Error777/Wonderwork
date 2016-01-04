@@ -7,6 +7,7 @@
 	var/strength = 1
 	var/feral = 0
 	var/mut = 0
+	ventcrawler = 2
 	var/toxic = 0
 	var/turf/target_turf
 	var/mob/target_mob

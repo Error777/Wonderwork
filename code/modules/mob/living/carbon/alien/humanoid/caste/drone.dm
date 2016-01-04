@@ -5,6 +5,7 @@
 	health = 100
 	icon_state = "aliend_s"
 	plasma_rate = 15
+	ventcrawler = 1
 
 /mob/living/carbon/alien/humanoid/drone/New()
 	var/datum/reagents/R = new/datum/reagents(100)

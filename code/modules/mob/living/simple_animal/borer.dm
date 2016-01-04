@@ -44,6 +44,7 @@
 	attacktext = "nips"
 	friendly = "prods"
 	wander = 0
+	ventcrawler = 2
 	pass_flags = PASSTABLE
 
 	var/used_dominate

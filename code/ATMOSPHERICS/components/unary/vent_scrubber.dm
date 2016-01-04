@@ -262,6 +262,7 @@
 				"[user] unfastens \the [src].", \
 				"\blue You have unfastened \the [src].", \
 				"You hear ratchet.")
+			pipe_vision_img = image(src, loc, layer = 20, dir = dir)
 			new /obj/item/pipe(loc, make_from=src)
 			del(src)
 

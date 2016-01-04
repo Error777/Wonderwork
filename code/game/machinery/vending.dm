@@ -848,8 +848,8 @@
 	desc = "Pizza machine only on a PizzaFlat Ñorporation. With a taste of Italy."
 	icon_state = "pizzavend"
 	charge_type = "Snack"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita = 3,/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 4,/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 2,)
-	premium = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 1)
+	products = list(/obj/item/pizzabox/margherita = 3,/obj/item/pizzabox/meat = 4,/obj/item/pizzabox/mushroom = 2,)
+	premium = list(/obj/item/pizzabox/vegetable = 1)
 
 /obj/machinery/vending/security
 	name = "SecTech"
