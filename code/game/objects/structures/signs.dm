@@ -199,7 +199,7 @@
 
 /obj/structure/sign/soviet
 	name = "\improper SOVIET SERP AND MOLOT"
-	desc = "In America, you can always find a party, in Soviet Russia, Party finds YOU!!"
+	desc = "In NanoTrasen, you can always find a party, in Space Soviet Russia, Party finds YOU!!"
 	icon_state = "sovietbanner"
 
 

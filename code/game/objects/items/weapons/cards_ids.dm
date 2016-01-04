@@ -175,6 +175,7 @@
 	name = "syndicate ID card"
 	desc = "An ID straight from the Syndicate."
 	registered_name = "Syndicate"
+	icon_state = "syndicard"
 	assignment = "Syndicate Overlord"
 	access = list(access_syndicate, access_external_airlocks)
 
@@ -312,3 +313,10 @@
 	registered_name = "..."
 	icon_state = "id_mime"
 	desc = "..."
+
+/obj/item/weapon/id_wallet
+	name = "ID wallet"
+	icon = 'icons/obj/card.dmi'
+	icon_state = "passport1"
+	desc = "A wallet made of black leather, holding an ID and a gold badge that reads 'NT.'"
+

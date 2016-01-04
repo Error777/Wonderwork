@@ -132,6 +132,7 @@
 
 /obj/item/projectile/beam/mindflayer
 	name = "flayer ray"
+	icon_state = "grray"
 
 	on_hit(var/atom/target, var/blocked = 0)
 		if(ishuman(target))

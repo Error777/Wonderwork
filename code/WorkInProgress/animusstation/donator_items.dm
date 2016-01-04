@@ -54,7 +54,7 @@
 
 /datum/spawn_item/golden_pen
 	name = "Golden Pen"
-	path = /obj/item/weapon/pen/fluff/eugene_bissegger_1
+	path = /obj/item/weapon/pen/fluff/goldenpen
 	cost = 300
 	//category = "Personal Stuff"
 

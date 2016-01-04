@@ -98,29 +98,41 @@
 ////////// Usable Items //////////
 //////////////////////////////////
 
-/obj/item/weapon/folder/matthew_riebhardt //Matthew Riebhardt - ZekeSulastin
+/obj/item/weapon/folder/academic
 	name = "academic journal"
 	desc = "An academic journal, seemingly pertaining to medical genetics. This issue is for the second quarter of 2557. Paper flags demarcate some articles the owner finds interesting."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "matthewriebhardt"
 
-/obj/item/weapon/pen/fluff/multi //spaceman96: Trenna Seber
+/obj/item/weapon/pen/fluff/multi
 	name = "multicolor pen"
 	desc = "It's a cool looking pen. Lots of colors!"
 
-/obj/item/weapon/pen/fluff/fancypen //orangebottle: Lillian Levett, Lilliana Reade
+/obj/item/weapon/pen/fluff/feater
+	name = "feater pen"
+	icon_state = "fpen"
+
+/obj/item/weapon/pen/fluff/medicalpen
+	name = "medical pen"
+	icon_state = "mpen"
+
+/obj/item/weapon/pen/fluff/oldpen
+	name = "old pen"
+	icon_state = "randypen"
+
+/obj/item/weapon/pen/fluff/fancypen
 	name = "fancy pen"
 	desc = "A fancy metal pen. It uses blue ink. An inscription on one side reads,\"L.L. - L.R.\""
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "fancypen"
 
-/obj/item/weapon/pen/fluff/eugene_bissegger_1 //metamorp: eugene bisseger
+/obj/item/weapon/pen/fluff/goldenpen
 	name = "golden pen"
 	desc = "A golden pen that is gilded with a meager amount of gold material. The word 'NanoTrasen' is etched on the clip of the pen."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "eugene_pen"
 
-/obj/item/weapon/pen/fluff/fountainpen //paththegreat: Eli Stevens
+/obj/item/weapon/pen/fluff/fountainpen
 	name = "Engraved Fountain Pen"
 	desc = "An expensive looking pen with the initials E.S. engraved into the side."
 	icon = 'icons/obj/custom_items.dmi'

@@ -70,14 +70,24 @@
 		else
 			..()
 
-	syndicate
-		icon_state = "target_s"
-		desc = "A shooting target that looks like a syndicate scum."
-		hp = 2600 // i guess syndie targets are sturdier?
-	alien
-		icon_state = "target_q"
-		desc = "A shooting target that looks like a xenomorphic alien."
-		hp = 2350 // alium onest too kinda
+/obj/item/target/syndicate
+	icon_state = "target_s"
+	desc = "A shooting target that looks like a syndicate scum."
+	hp = 2600 // i guess syndie targets are sturdier?
+
+/obj/item/target/alien
+	icon_state = "target_q"
+	desc = "A shooting target that looks like a xenomorphic alien."
+	hp = 2350 // alium onest too kinda
+
+/obj/item/target/clown
+	icon_state = "target_c"
+	desc = "A shooting target that looks like a useless clown."
+	hp = 2000
+
+/obj/item/target/clown/bullet_act(obj/item/projectile/P)
+	..()
+	playsound(src.loc, 'sound/items/bikehorn.ogg', 50, 1)
 
 /obj/item/target/bullet_act(var/obj/item/projectile/Proj)
 	var/p_x = Proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"

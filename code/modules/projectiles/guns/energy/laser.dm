@@ -99,6 +99,7 @@ obj/item/weapon/gun/energy/laser/retro
 obj/item/weapon/gun/energy/laser/pilot
 	name ="Clown Pilot"
 	icon_state = "clownpilot"
+	w_class = 4.0
 	desc = "A high-power laser cannon capable of expelling concentrated piray blasts."
 	origin_tech = "combat=6;materials=3;magnets=3"
 	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY

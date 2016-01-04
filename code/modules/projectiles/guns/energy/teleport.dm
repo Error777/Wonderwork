@@ -1,9 +1,9 @@
 /obj/item/weapon/gun/energy/teleport_gun
-	name = "teleport gun"
+	name = "teleportation gun"
 	desc = "A hacked together combination of a taser and a handheld teleportation unit."
 	icon_state = "taser_h"
 	item_state = null	//so the human update icon uses the icon_state instead.
-	fire_sound = 'sound/weapons/Taser.ogg'
+	fire_sound = 'sound/weapons/wave.ogg'
 	charge_cost = 250
 	projectile_type = "/obj/item/projectile/energy/teleshot"
 	origin_tech = "combat=3;magnets=3;bluespace=3"
@@ -43,6 +43,7 @@
 /obj/item/projectile/energy/teleshot
 	nodamage = 1
 	name = "teleshot"
+	icon_state = "bluespace"
 
 /obj/item/projectile/energy/teleshot/on_hit(var/atom/A, var/blocked = 0)
 	var/failchance = 5

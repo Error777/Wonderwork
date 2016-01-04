@@ -164,6 +164,7 @@ obj/item/weapon/gun/energy/staff
 	name = "mind flayer"
 	desc = "A prototype weapon recovered from the ruins of Research-Station Epsilon."
 	icon_state = "xraycannon"
+	w_class = 4.0
 	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY
 	slot_flags = SLOT_BACK
 	projectile_type = "/obj/item/projectile/beam/mindflayer"
@@ -244,6 +245,7 @@ obj/item/weapon/gun/energy/staff/focus
 	icon_state = "plasmagun"
 	fire_sound = 'sound/weapons/plasmagun.ogg'
 	origin_tech = "combat=4;magnets=5"
+	w_class = 4.0
 	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY
 	slot_flags = SLOT_BACK
 	charge_cost = 100
