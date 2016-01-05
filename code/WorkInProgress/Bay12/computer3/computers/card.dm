@@ -320,11 +320,6 @@
 		computer.updateUsrDialog()
 		return
 
-
-
-
-
-
 /datum/file/program/card_comp/centcom
 	name = "CentCom identification console"
 	drm = 1

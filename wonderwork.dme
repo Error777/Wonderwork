@@ -1355,6 +1355,7 @@
 #include "code\WorkInProgress\SkyMarshal\wardrobes.dm"
 #include "code\WorkInProgress\Unity\defib.dm"
 #include "code\WorkInProgress\vgstation\mat_synth.dm"
+#include "code\WorkInProgress\vgstation\time.dm"
 #include "code\ZAS\Airflow.dm"
 #include "code\ZAS\Connection.dm"
 #include "code\ZAS\Debug.dm"

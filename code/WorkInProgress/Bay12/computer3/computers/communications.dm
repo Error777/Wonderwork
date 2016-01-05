@@ -19,6 +19,7 @@
 	var/const/STATE_STATUSDISPLAY = 7
 	var/const/STATE_ALERT_LEVEL = 8
 	var/const/STATE_CONFIRM_LEVEL = 9
+	var/const/STATE_CONFIRM_LEVEL = 9
 
 
 /datum/file/program/communications
