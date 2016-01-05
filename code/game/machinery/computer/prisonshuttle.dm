@@ -17,33 +17,58 @@ var/prison_shuttle_timeleft = 0
 	req_access = list(access_security)
 	circuit = "/obj/item/weapon/circuitboard/prison_shuttle"
 	var/temp = null
+	var/hacked = 0
 	var/allowedtocall = 0
 	var/prison_break = 0
-	light_color = LIGHT_COLOR_CYAN
+
 
 	attackby(I as obj, user as mob)
-		if(!..())
-			src.attack_hand(user)
+		return src.attack_hand(user)
+
 
 	attack_ai(var/mob/user as mob)
-		src.add_hiddenprint(user)
 		return src.attack_hand(user)
 
 
 	attack_paw(var/mob/user as mob)
 		return src.attack_hand(user)
 
-	emag(mob/user as mob)
-		emagged = 1
-		to_chat(user, "<span class='notice'>You disable the lock.</span>")
-		return
+
+	attackby(I as obj, user as mob)
+		if(istype(I, /obj/item/weapon/screwdriver))
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+			if(do_after(user, 20))
+				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
+				var/obj/item/weapon/circuitboard/prison_shuttle/M = new /obj/item/weapon/circuitboard/prison_shuttle( A )
+				for (var/obj/C in src)
+					C.loc = src.loc
+				A.circuit = M
+				A.anchored = 1
+
+				if (src.stat & BROKEN)
+					user << "\blue The broken glass falls out."
+					new /obj/item/weapon/shard( src.loc )
+					A.state = 3
+					A.icon_state = "3"
+				else
+					user << "\blue You disconnect the monitor."
+					A.state = 4
+					A.icon_state = "4"
+
+				del(src)
+		else if(istype(I,/obj/item/weapon/card/emag) && (!hacked))
+			hacked = 1
+			user << "\blue You disable the lock."
+		else
+			return src.attack_hand(user)
+
 
 	attack_hand(var/mob/user as mob)
-		if(!src.allowed(user) && (!emagged))
-			to_chat(user, "<span class='warning'>Access Denied.</span>")
+		if(!src.allowed(user) && (!hacked))
+			user << "\red Access Denied."
 			return
 		if(prison_break)
-			to_chat(user, "<span class='warning'>Unable to locate shuttle.</span>")
+			user << "\red Unable to locate shuttle."
 			return
 		if(..())
 			return
@@ -65,18 +90,18 @@ var/prison_shuttle_timeleft = 0
 
 	Topic(href, href_list)
 		if(..())
-			return 1
+			return
 
-		else
+		if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 			usr.set_machine(src)
 
 		if (href_list["sendtodock"])
 			if (!prison_can_move())
-				to_chat(usr, "<span class='warning'>The prison shuttle is unable to leave.</span>")
+				usr << "\red The prison shuttle is unable to leave."
 				return
 			if(!prison_shuttle_at_station|| prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 			post_signal("prison")
-			to_chat(usr, "<span class='notice'>The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds.</span>")
+			usr << "\blue The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds."
 			src.temp += "Shuttle sent.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			src.updateUsrDialog()
 			prison_shuttle_moving_to_prison = 1
@@ -86,11 +111,11 @@ var/prison_shuttle_timeleft = 0
 
 		else if (href_list["sendtostation"])
 			if (!prison_can_move())
-				to_chat(usr, "<span class='warning'>The prison shuttle is unable to leave.</span>")
+				usr << "\red The prison shuttle is unable to leave."
 				return
 			if(prison_shuttle_at_station || prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 			post_signal("prison")
-			to_chat(usr, "<span class='notice'>The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds.</span>")
+			usr << "\blue The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds."
 			src.temp += "Shuttle sent.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			src.updateUsrDialog()
 			prison_shuttle_moving_to_station = 1
@@ -131,7 +156,7 @@ var/prison_shuttle_timeleft = 0
 	proc/post_signal(var/command)
 		var/datum/radio_frequency/frequency = radio_controller.return_frequency(1311)
 		if(!frequency) return
-		var/datum/signal/status_signal = getFromPool(/datum/signal)
+		var/datum/signal/status_signal = new
 		status_signal.source = src
 		status_signal.transmission_method = 1
 		status_signal.data["command"] = command
@@ -158,7 +183,7 @@ var/prison_shuttle_timeleft = 0
 				if (prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 
 				if (!prison_can_move())
-					to_chat(usr, "<span class='warning'>The prison shuttle is unable to leave.</span>")
+					usr << "\red The prison shuttle is unable to leave."
 					return
 
 				var/area/start_location = locate(/area/shuttle/prison/prison)
@@ -179,8 +204,7 @@ var/prison_shuttle_timeleft = 0
 					for(var/atom/movable/AM as mob|obj in T)
 						AM.Move(D)
 					if(istype(T, /turf/simulated))
-						qdel(T)
-						T = null
+						del(T)
 				start_location.move_contents_to(end_location)
 
 			if(1)
@@ -188,7 +212,7 @@ var/prison_shuttle_timeleft = 0
 				if (prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 
 				if (!prison_can_move())
-					to_chat(usr, "<span class='warning'>The prison shuttle is unable to leave.</span>")
+					usr << "\red The prison shuttle is unable to leave."
 					return
 
 				var/area/start_location = locate(/area/shuttle/prison/station)
@@ -210,6 +234,13 @@ var/prison_shuttle_timeleft = 0
 					for(var/atom/movable/AM as mob|obj in T)
 						AM.Move(D)
 					if(istype(T, /turf/simulated))
-						qdel(T)
+						del(T)
+
+				for(var/mob/living/carbon/bug in end_location) // If someone somehow is still in the shuttle's docking area...
+					bug.gib()
+
+				for(var/mob/living/simple_animal/pest in end_location) // And for the other kind of bug...
+					pest.gib()
+
 				start_location.move_contents_to(end_location)
 		return

@@ -9,108 +9,96 @@ var/global/vox_shuttle_location
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "syndishuttle"
 	req_access = list(access_syndicate)
-	var/moving = FALSE
+	var/area/curr_location
+	var/moving = 0
 	var/lastMove = 0
+	var/warning //Warning about the end of the round.
 
-	light_color = LIGHT_COLOR_RED
+/obj/machinery/computer/vox_station/New()
+	curr_location= locate(/area/shuttle/vox/station)
 
-/obj/machinery/computer/vox_station/proc/vox_move_to(var/destination)
-	if(moving)
-		return
 
-	if(lastMove + VOX_SHUTTLE_COOLDOWN > world.time)
-		return
-
+/obj/machinery/computer/vox_station/proc/vox_move_to(area/destination as area)
+	if(moving)	return
+	if(lastMove + VOX_SHUTTLE_COOLDOWN > world.time)	return
 	var/area/dest_location = locate(destination)
+	if(curr_location == dest_location)	return
 
-	if(areaMaster == dest_location)
-		return
-
-	moving = TRUE
+	moving = 1
 	lastMove = world.time
 
-	if(areaMaster.z != dest_location.z)
+	if(curr_location.z != dest_location.z)
 		var/area/transit_location = locate(/area/vox_station/transit)
-		areaMaster.move_contents_to(transit_location)
-		areaMaster = transit_location // let do this while move_contents_to proc is not using Move()
+		curr_location.move_contents_to(transit_location)
+		curr_location = transit_location
 		sleep(VOX_SHUTTLE_MOVE_TIME)
 
-	areaMaster.move_contents_to(dest_location)
-	areaMaster = dest_location
-	moving = FALSE
+	curr_location.move_contents_to(dest_location)
+	curr_location = dest_location
+	moving = 0
 
 	return 1
 
+
 /obj/machinery/computer/vox_station/attackby(obj/item/I as obj, mob/user as mob)
-	if(!..())
-		return attack_hand(user)
+	return attack_hand(user)
 
 /obj/machinery/computer/vox_station/attack_ai(mob/user as mob)
-	src.add_hiddenprint(user)
 	return attack_hand(user)
 
 /obj/machinery/computer/vox_station/attack_paw(mob/user as mob)
 	return attack_hand(user)
 
 /obj/machinery/computer/vox_station/attack_hand(mob/user as mob)
-	if(!allowed(user) || issilicon(user))
-		to_chat(user, "<span class=\"warning\">Access Denied.</span>")
+	if(!allowed(user))
+		user << "\red Access Denied"
 		return
 
 	user.set_machine(src)
 
-	var/dat = {"
-		Location: [areaMaster]<br>
-		Ready to move[max(lastMove + VOX_SHUTTLE_COOLDOWN - world.time, 0) ? " in [max(round((lastMove + VOX_SHUTTLE_COOLDOWN - world.time) * 0.1), 0)] seconds" : ": now"]<br>
-		<a href='?src=\ref[src];move=start'>Return to dark space</a><br>
-		<a href='?src=\ref[src];move=solars_fore_port'>Fore port solar</a> |
-		<a href='?src=\ref[src];move=solars_aft_port'>Aft port solar</a> |
-		<a href='?src=\ref[src];move=solars_fore_starboard'>Fore starboard solar</a><br>
-		<a href='?src=\ref[src];move=solars_aft_starboard'>Aft starboard solar</a> |
-		<a href='?src=\ref[src];move=mining'>Mining Asteroid</a><br>
-		<a href='?src=\ref[user];mach_close=computer'>Close</a>
-	"}
+	var/dat = {"Location: [curr_location]<br>
+	Ready to move[max(lastMove + VOX_SHUTTLE_COOLDOWN - world.time, 0) ? " in [max(round((lastMove + VOX_SHUTTLE_COOLDOWN - world.time) * 0.1), 0)] seconds" : ": now"]<br>
+	<a href='?src=\ref[src];start=1'>Return to dark space</a><br>
+	<a href='?src=\ref[src];solars_fore_port=1'>Fore port solar</a> |
+	<a href='?src=\ref[src];solars_aft_port=1'>Aft port solar</a> |
+	<a href='?src=\ref[src];solars_fore_starboard=1'>Fore starboard solar</a><br>
+	<a href='?src=\ref[src];solars_aft_starboard=1'>Aft starboard solar</a> |
+	<a href='?src=\ref[src];mining=1'>Mining Asteroid</a><br>
+	<a href='?src=\ref[user];mach_close=computer'>Close</a>"}
 
 	user << browse(dat, "window=computer;size=575x450")
 	onclose(user, "computer")
-
-/obj/machinery/computer/vox_station/power_change()
 	return
 
+
 /obj/machinery/computer/vox_station/Topic(href, href_list)
-	if(..()) return 1
+	if(!isliving(usr))	return
+	var/mob/living/user = usr
 
-	var/mob/user = usr
-
-	user.set_machine(src)
+	if(in_range(src, user) || istype(user, /mob/living/silicon))
+		user.set_machine(src)
 
 	vox_shuttle_location = "station"
+	if(href_list["start"])
+		if(ticker && (istype(ticker.mode,/datum/game_mode/heist)))
+			if(!warning)
+				user << "\red Returning to dark space will end your raid and report your success or failure. If you are sure, press the button again."
+				warning = 1
+				return
+		vox_move_to(/area/shuttle/vox/station)
+		vox_shuttle_location = "start"
+	else if(href_list["solars_fore_starboard"])
+		vox_move_to(/area/vox_station/northeast_solars)
+	else if(href_list["solars_fore_port"])
+		vox_move_to(/area/vox_station/northwest_solars)
+	else if(href_list["solars_aft_starboard"])
+		vox_move_to(/area/vox_station/southeast_solars)
+	else if(href_list["solars_aft_port"])
+		vox_move_to(/area/vox_station/southwest_solars)
+	else if(href_list["mining"])
+		vox_move_to(/area/vox_station/mining)
 
-	switch(href_list["move"])
-		if("start")
-			if(ticker && istype(ticker.mode, /datum/game_mode/heist))
-				switch(alert("OOC INFO: Returning to dark space will end your raid and report your success or failure.", "Confirmation", "Yes", "No"))
-					if("Yes")
-						var/location = get_turf(user)
-						message_admins("[key_name_admin(user)] attempts to end the raid - [formatJumpTo(location)]")
-						log_admin("[key_name(user)] attempts to end the raid - [formatLocation(location)]")
-					if("No")
-						return
-
-			if(vox_move_to(/area/shuttle/vox/station) == 1)
-				vox_shuttle_location = "start"
-		if("solars_fore_starboard")
-			vox_move_to(/area/vox_station/northeast_solars)
-		if("solars_fore_port")
-			vox_move_to(/area/vox_station/northwest_solars)
-		if("solars_aft_starboard")
-			vox_move_to(/area/vox_station/southeast_solars)
-		if("solars_aft_port")
-			vox_move_to(/area/vox_station/southwest_solars)
-		if("mining")
-			vox_move_to(/area/vox_station/mining)
-
-	add_fingerprint(user)
+	add_fingerprint(usr)
 	updateUsrDialog()
 	return
 
