@@ -262,7 +262,11 @@
 		remove_fuel(1)
 		var/turf/location = get_turf(user)
 		if (istype(location, /turf))
-			location.hotspot_expose(100, 50, 1)
+			location.hotspot_expose(700, 50, 1)
+
+		if(isliving(O))
+			var/mob/living/L = O
+			L.IgniteMob()
 	return
 
 

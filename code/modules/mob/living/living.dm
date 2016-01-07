@@ -275,6 +275,7 @@
 		dead_mob_list -= src
 		living_mob_list += src
 	stat = CONSCIOUS
+	ExtinguishMob()
 	regenerate_icons()
 	..()
 	return

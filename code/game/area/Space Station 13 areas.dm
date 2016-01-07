@@ -362,15 +362,19 @@ proc/process_ghost_teleport_locs()
 
 /area/centcom/test
 	name = "\improper Centcom Testing Facility"
+	icon_state = "centtest"
 
 /area/centcom/living
 	name = "\improper Centcom Living Quarters"
+	icon_state = "centliv"
 
 /area/centcom/specops
 	name = "\improper Centcom Special Ops"
+	icon_state = "specops"
 
 /area/centcom/creed
 	name = "Creed's Office"
+	icon_state = "creed"
 
 /area/centcom/holding
 	name = "\improper Holding Facility"

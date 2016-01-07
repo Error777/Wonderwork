@@ -297,7 +297,14 @@
 		new /obj/item/clothing/shoes/orange( src )
 		return
 
-
+/obj/structure/closet/secure_closet/brig/oldstylesecure
+	name = " Old Brig Locker"
+	icon_state = "oldstylesecure1"
+	icon_closed = "oldstylesecure"
+	icon_locked = "oldstylesecure1"
+	icon_opened = "oldstylesecureopen"
+	icon_broken = "oldstylesecurebroken"
+	icon_off = "oldstylesecurebroken"
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "Courtroom Locker"

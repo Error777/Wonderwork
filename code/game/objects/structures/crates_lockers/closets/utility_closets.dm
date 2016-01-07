@@ -234,14 +234,3 @@
 	anchored = 1
 	icon_closed = "indiana"
 	icon_opened = "indianaopen"
-
-/*
- * Ñritter
- */
-
-/obj/structure/closet/secure_closet/critter
-	name = "critter crate"
-	desc = "A crate designed for safe transport of animals. Only openable from the the outside."
-	icon_state = "critter"
-	icon_opened = "critteropen"
-	icon_closed = "critter"

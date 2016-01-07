@@ -86,14 +86,15 @@
 	// Aliens are now weak to fire.
 
 	//After then, it reacts to the surrounding atmosphere based on your thermal protection
-	if(loc_temp > bodytemperature)
-		//Place is hotter than we are
-		var/thermal_protection = heat_protection //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
-		if(thermal_protection < 1)
-			bodytemperature += (1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)
-	else
-		bodytemperature += 1 * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)
-	//	bodytemperature -= max((loc_temp - bodytemperature / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
+	if(!on_fire) // If you're on fire, ignore local air temperature
+		if(loc_temp > bodytemperature)
+			//Place is hotter than we are
+			var/thermal_protection = heat_protection //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.
+			if(thermal_protection < 1)
+				bodytemperature += (1-thermal_protection) * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)
+		else
+			bodytemperature += 1 * ((loc_temp - bodytemperature) / BODYTEMP_HEAT_DIVISOR)
+		//	bodytemperature -= max((loc_temp - bodytemperature / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
 
 	// +/- 50 degrees from 310.15K is the 'safe' zone, where no damage is dealt.
 	if(bodytemperature > 360.15)
@@ -104,8 +105,12 @@
 				apply_damage(HEAT_DAMAGE_LEVEL_1, BURN)
 				fire_alert = max(fire_alert, 2)
 			if(400 to 1000)
-				apply_damage(HEAT_DAMAGE_LEVEL_2, BURN)
-				fire_alert = max(fire_alert, 2)
+				if(on_fire)
+					apply_damage(HEAT_DAMAGE_LEVEL_3, BURN)
+					fire_alert = max(fire_alert, 2)
+				else
+					apply_damage(HEAT_DAMAGE_LEVEL_2, BURN)
+					fire_alert = max(fire_alert, 2)
 			if(1000 to INFINITY)
 				apply_damage(HEAT_DAMAGE_LEVEL_3, BURN)
 				fire_alert = max(fire_alert, 2)
@@ -146,6 +151,12 @@
 
 /mob/living/carbon/alien/Process_Spaceslipping()
 	return 0 // Don't slip in space.
+
+/mob/living/carbon/alien/handle_fire()//Aliens on fire code
+	if(..())
+		return
+	bodytemperature += BODYTEMP_HEATING_MAX //If you're on fire, you heat up!
+	return
 
 /mob/living/carbon/alien/Stat()
 

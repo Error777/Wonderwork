@@ -200,16 +200,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/process()
 	var/turf/location = get_turf(src)
+	var/mob/living/M = loc
+	if(isliving(loc))
+		M.IgniteMob()
 	smoketime--
 	if(smoketime < 1)
-		new type_butt(location)
-		processing_objects.Remove(src)
-		if(ismob(loc))
-			var/mob/living/M = loc
-			M << "<span class='notice'>Your [name] goes out.</span>"
-			M.u_equip(src)	//un-equip it so the overlays can update
-			M.update_inv_wear_mask(0)
-		del(src)
+		die()
 		return
 	if(location)
 		location.hotspot_expose(700, 5)
@@ -223,7 +219,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			reagents.remove_any(REAGENTS_METABOLISM)
 	return
 
-
 /obj/item/clothing/mask/cigarette/attack_self(mob/user as mob)
 	if(lit == 1)
 		user.visible_message("<span class='notice'>[user] calmly drops and treads on the lit [src], putting it out instantly.</span>")
@@ -233,6 +228,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		del(src)
 	return ..()
 
+/obj/item/clothing/mask/cigarette/proc/die()
+	var/turf/T = get_turf(src)
+	var/obj/item/butt = new type_butt(T)
+	transfer_fingerprints_to(butt)
+	if(ismob(loc))
+		var/mob/living/M = loc
+		M << "<span class='notice'>Your [name] goes out.</span>"
+		M.u_equip(src)	//un-equip it so the overlays can update
+		M.update_inv_wear_mask(0)
+	processing_objects.Remove(src)
+	del(src)
 
 ///////////
 // JOINT //
@@ -439,9 +445,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 
 	attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-		if(!istype(M, /mob))
+		if(!isliving(M))
 			return
-
+		M.IgniteMob()
 		if(istype(M.wear_mask,/obj/item/clothing/mask/cigarette) && user.zone_sel.selecting == "mouth" && src.lit)
 			if(M == user)
 				M.wear_mask:light("\red With a single flick of their wrist, [user] smoothly lights their [M.wear_mask.name] with their [src.name]. Damn they're cool.")
