@@ -8,6 +8,7 @@
 	anchored = 1.0
 	req_access = list() //This doesn't determine PROGRAM req access, just the access needed to install/delete programs.
 	var/base_icon_state = "terminal" //Assembly creates a new computer2 and not a child typepath, so initial doesn't work!!
+	var/screen_size = "termframe"
 	var/datum/radio_frequency/radio_connection
 	var/obj/item/weapon/disk/data/fixed_disk/hd = null
 	var/datum/computer/file/computer_program/active_program
@@ -181,6 +182,7 @@
 
 	user << browse(dat,"window=comp2")
 	onclose(user,"comp2")
+	updateUsrDialog()
 	return
 
 /obj/machinery/terminal/Topic(href, href_list)
@@ -284,7 +286,7 @@
 			W.loc = src
 			src.diskette = W
 			user << "You insert [W]."
-			src.updateUsrDialog()
+			updateUsrDialog()
 			return
 
 	else if (istype(W, /obj/item/weapon/screwdriver))
@@ -296,11 +298,11 @@
 				user << "\blue The broken glass falls out."
 				new /obj/item/weapon/shard( src.loc )
 				A.state = 3
-				A.icon_state = "3"
+				A.icon_state = "[screen_size]3"
 			else
 				user << "\blue You disconnect the monitor."
 				A.state = 4
-				A.icon_state = "4"
+				A.icon_state = "[screen_size]4"
 
 			for (var/obj/item/weapon/peripheral/C in src.peripherals)
 				C.loc = A
