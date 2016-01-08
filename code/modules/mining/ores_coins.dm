@@ -223,6 +223,7 @@
 	force = 0.0
 	throwforce = 0.0
 	w_class = 1.0
+	var/value = 1
 	var/string_attached
 
 /obj/item/weapon/coin/attack_self(mob/user as mob)
@@ -239,38 +240,47 @@
 /obj/item/weapon/coin/gold
 	name = "Gold coin"
 	icon_state = "coin_gold"
+	value = 100
 
 /obj/item/weapon/coin/silver
 	name = "Silver coin"
 	icon_state = "coin_silver"
+	value = 30
 
 /obj/item/weapon/coin/diamond
 	name = "Diamond coin"
 	icon_state = "coin_diamond"
+	value = 200
 
 /obj/item/weapon/coin/iron
 	name = "Iron coin"
 	icon_state = "coin_iron"
+	value = 10
 
 /obj/item/weapon/coin/plasma
 	name = "Solid plasma coin"
 	icon_state = "coin_plasma"
+	value = 150
 
 /obj/item/weapon/coin/uranium
 	name = "Uranium coin"
 	icon_state = "coin_uranium"
+	value = 110
 
 /obj/item/weapon/coin/clown
 	name = "Bananaium coin"
 	icon_state = "coin_clown"
+	value = 9999
 
 /obj/item/weapon/coin/adamantine
 	name = "Adamantine coin"
 	icon_state = "coin_adamantine"
+	value = 500
 
 /obj/item/weapon/coin/mythril
 	name = "Mythril coin"
 	icon_state = "coin_mythril"
+	value = 1000
 
 /obj/item/weapon/coin/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/cable_coil) )

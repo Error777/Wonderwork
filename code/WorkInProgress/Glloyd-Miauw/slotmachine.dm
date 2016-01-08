@@ -4,314 +4,342 @@
 |	  Tgstation port by Miauw	|
 \*******************************/
 
-#define SPIN_PRICE 5
-#define SMALL_PRIZE 400
-#define BIG_PRIZE 1000
-#define JACKPOT 10000
-#define SPIN_TIME 65 //As always, deciseconds.
-#define REEL_DEACTIVATE_DELAY 7
-#define SEVEN "<font color='red'>7</font>"
+#ifdef DEBUG_SLOT_MACHINES
+	#warning Slot machines are being debugged! Turn this off in code/game/machinery/computer/slot_machine.dm
+#endif
+
+#define SEVEN		1
+#define DIAMOND		2
+#define CHERRY		3
+#define HEART		4
+#define MELON		5
+#define PLUM		6
+#define BELL		7
+#define MUSHROOM	8
+#define CHICKEN		9
+#define TREE		10
+
+#define MINIMUM_WIN_TO_BROADCAST	15000
+#define MINIMUM_MONEY_TO_PLAY		1000
 
 /obj/machinery/computer/slot_machine
-	name = "slot machine"
-	desc = "Gambling for the antisocial."
+	name = "one-armed bandit"
+	desc = "The arm is just for decoration."
 	icon = 'icons/obj/economy.dmi'
-	icon_state = "slots1"
-	anchored = 1
-	density = 1
-	use_power = 1
-	idle_power_usage = 50
-	circuit = /obj/item/weapon/circuitboard/slot_machine
-	var/money = 3000 //How much money it has CONSUMED
-	var/plays = 0
-	var/working = 0
-	var/balance = 0 //How much money is in the machine, ready to be CONSUMED.
-	var/jackpots = 0
-	var/list/coinvalues = list()
-	var/list/reels = list(list("", "", "") = 0, list("", "", "") = 0, list("", "", "") = 0, list("", "", "") = 0, list("", "", "") = 0)
-	var/list/symbols = list(SEVEN = 1, "<font color='orange'>&</font>" = 2, "<font color='yellow'>@</font>" = 2, "<font color='green'>$</font>" = 2, "<font color='blue'>?</font>" = 2, "<font color='grey'>#</font>" = 2, "<font color='white'>!</font>" = 2, "<font color='fuchsia'>%</font>" = 2) //if people are winning too much, multiply every number in this list by 2 and see if they are still winning too much.
+	icon_state = "slot"
+
+	var/show_name
+
+	var/image/overlay_1
+	var/image/overlay_2
+	var/image/overlay_3
+
+	var/value_1 = 1
+	var/value_2 = 1
+	var/value_3 = 1
+
+	//If rigged, the next spin will be a guaranteed win
+	var/rigged = 0
+
+	var/stored_money = 0 //Cash
+
+	var/spin_cost = 15 //How much it costs to play
+	var/spinning = 0
+
+	var/id = 0 //The slot machine's ID. Fluff mostly
+	var/datum/money_account/our_money_account
+
+	var/obj/item/device/radio/radio
 
 /obj/machinery/computer/slot_machine/New()
-	..()
-	jackpots = rand(1, 4) //false hope
-	plays = rand(75, 200)
+	.=..()
 
-	toggle_reel_spin(1) //The reels won't spin unless we activate them
+	id = rand(1,99999)
 
-	var/list/reel = reels[1]
-	for(var/i = 0, i < reel.len, i++) //Populate the reels.
-		randomize_reels()
+	our_money_account = create_account("slot machine ([id])", rand(30000,50000))
+	radio = new(src)
 
-	toggle_reel_spin(0)
+	update_icon()
 
-	for(var/cointype in typesof(/obj/item/weapon/coin))
-		var/obj/item/weapon/coin/C = new cointype(src)
-		coinvalues["[cointype]"] = C.value
-		del(C)
+/obj/machinery/computer/slot_machine/proc/remove_overlays()
+	overlays -= list(overlay_1,overlay_2,overlay_3)
 
-/obj/machinery/computer/slot_machine/process()
-	. = ..() //Sanity checks.
-	if(!.)
-		return .
+/obj/machinery/computer/slot_machine/proc/add_overlays()
+	overlays |= list(overlay_1,overlay_2,overlay_3)
 
-	money++ //SPESSH MAJICKS
+/obj/machinery/computer/slot_machine/proc/update_overlay_icon_state(var/image/I, var/new_icon_state)
+	overlays -= I
+	I.icon_state = new_icon_state
+	overlays |= I
+
+/obj/machinery/computer/slot_machine/proc/init_overlays()
+	overlay_1 = image('icons/obj/economy.dmi',icon_state="[value_1]",loc = src)
+
+	overlay_2 = image('icons/obj/economy.dmi',icon_state="[value_2]",loc = src)
+	overlay_2.pixel_x = 4
+
+	overlay_3 = image('icons/obj/economy.dmi',icon_state="[value_3]",loc = src)
+	overlay_3.pixel_x = 8
+
+	//The reason why there guys aren't actually added to the overlays list is that their icon_state has to be changed during the spin() proc,
+	//which would be impossible if they were in the overlays list
 
 /obj/machinery/computer/slot_machine/update_icon()
-	if(stat & NOPOWER)
-		icon_state = "slots0"
-
-	else if(stat & BROKEN)
-		icon_state = "slotsb"
-
-	else if(working)
-		icon_state = "slots2"
-
-	else
-		icon_state = "slots1"
-
-/obj/machinery/computer/slot_machine/power_change()
 	..()
-	update_icon()
+	var/initial_icon = initial(icon_state)
 
-/obj/machinery/computer/slot_machine/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/weapon/coin))
-		var/obj/item/weapon/coin/C = I
-		if(prob(2))
-			if(!user.drop_item())
-				return
-			C.loc = loc
-			C.throw_at(user, 3, 10)
-			if(prob(10))
-				balance = max(balance - SPIN_PRICE, 0)
-			user << "<span class='warning'>[src] spits your coin back out!</span>"
-
-		else
-			if(!user.drop_item())
-				return
-			user << "<span class='notice'>You insert a [C.cmineral] coin into [src]'s slot!</span>"
-			balance += C.value
-			del(C)
-
-		return
-
-	else if(!balance) //to prevent coins from magically disappearing
-		..()
-
-/obj/machinery/computer/slot_machine/emag_act()
-	if(!emagged)
-		emagged = 1
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
-		playsound(src.loc, "sparks", 50, 1)
-
-/obj/machinery/computer/slot_machine/attack_hand(mob/living/user)
-	. = ..() //Sanity checks.
-	if(.)
-		return .
-
-	interact(user)
-
-/obj/machinery/computer/slot_machine/interact(mob/living/user)
-	var/reeltext = {"<center><font face=\"courier new\">
-	/*****^*****^*****^*****^*****\\<BR>
-	| \[[reels[1][1]]\] | \[[reels[2][1]]\] | \[[reels[3][1]]\] | \[[reels[4][1]]\] | \[[reels[5][1]]\] |<BR>
-	| \[[reels[1][2]]\] | \[[reels[2][2]]\] | \[[reels[3][2]]\] | \[[reels[4][2]]\] | \[[reels[5][2]]\] |<BR>
-	| \[[reels[1][3]]\] | \[[reels[2][3]]\] | \[[reels[3][3]]\] | \[[reels[4][3]]\] | \[[reels[5][3]]\] |<BR>
-	\\*****v*****v*****v*****v*****/<BR>
-	</center></font>"}
-
-	var/dat
-	if(working)
-		dat = reeltext
-
+	if(stat & BROKEN)
+		icon_state = "[initial_icon]b"
+		remove_overlays()
+	else if(stat & NOPOWER)
+		icon_state = "[initial_icon]0"
+		remove_overlays()
 	else
-		dat = {"Five credits to play!<BR>
-		<B>Prize Money Available:</B> [money] (jackpot payout is ALWAYS 100%!)<BR>
-		<B>Credit Remaining:</B> [balance]<BR>
-		[plays] players have tried their luck today, and [jackpots] have won a jackpot!<BR>
-		<HR><BR>
-		<A href='?src=\ref[src];spin=1'>Play!</A><BR>
-		<BR>
-		[reeltext]
-		<BR>
-		<font size='1'><A href='?src=\ref[src];refund=1'>Refund balance</A><BR>"}
+		init_overlays()
+		add_overlays()
 
-	var/datum/browser/popup = new(user, "slotmachine", "Slot Machine")
-	popup.set_content(dat)
-	popup.set_title_image(user.browse_rsc_icon(icon, icon_state))
-	popup.open()
+		icon_state = initial_icon
 
-/obj/machinery/computer/slot_machine/Topic(href, href_list)
-	. = ..() //Sanity checks.
-	if(.)
-		return .
+/obj/machinery/computer/slot_machine/proc/spin_wheels(win = -1) //If win=-1, the result is pure randomness. If win=0, you NEVER win. If win is 1 to 10, you win.
+	while(1)
+		value_1 = rand(1,10)
+		value_2 = rand(1,10)
+		value_3 = rand(1,10)
 
-	if(href_list["spin"])
-		spin(usr)
-
-	else if(href_list["refund"])
-		give_coins(balance)
-		balance = 0
-
-/obj/machinery/computer/slot_machine/emp_act(severity)
-	if(stat & (NOPOWER|BROKEN))
-		return
-	if(prob(15 * severity))
-		return
-	if(prob(1)) // :^)
-		emagged = 1
-	var/severity_ascending = 4 - severity
-	money = max(rand(money - (200 * severity_ascending), money + (200 * severity_ascending)), 0)
-	balance = max(rand(balance - (50 * severity_ascending), balance + (50 * severity_ascending)), 0)
-	money -= max(0, give_coins(min(rand(-50, 100 * severity_ascending)), money)) //This starts at -50 because it shouldn't always dispense coins yo
-	spin()
+		switch(win)
+			if(-1)
+				return //Pure randomness!
+			if(0)
+				if(!(value_1 == value_2 && value_2 == value_3)) //If we're NOT winning
+					return //Else, run the loop again until the three values no longer match
+			if(1 to 10)
+				value_1 = win
+				value_2 = win
+				value_3 = win
+				return
+			else
+				return
 
 /obj/machinery/computer/slot_machine/proc/spin(mob/user)
-	if(!can_spin(user))
+	if(spinning) return
+
+	//Charge money:
+	if(stored_money >= spin_cost) //If there's cash in the machine
+		stored_money -= spin_cost
+	else
 		return
 
-	var/the_name
-	if(user)
-		the_name = user.real_name
-		visible_message("<span class='notice'>[user] pulls the lever and the slot machine starts spinning!</span>")
+	spinning = 1
+
+	//Overlays are shit and can't be modified, so remove all overlays
+	remove_overlays()
+
+
+	//Pre-calculate results
+	if(rigged)
+		value_1 = Clamp(rigged, 1, TREE)
+		value_2 = value_1
+		value_3 = value_1
+
+		rigged = 0
+
 	else
-		the_name = "Exaybachay"
+		var/victory = rand(1,10)
 
-	balance -= SPIN_PRICE
-	money += SPIN_PRICE
-	plays += 1
-	working = 1
+		#ifdef DEBUG_SLOT_MACHINES
+		to_chat(user, "Rolled [victory]!")
+		#endif
 
-	toggle_reel_spin(1)
-	update_icon()
-	updateDialog()
+		switch(victory)
+			if(1) //1 in 10 for a guaranteed small reward
+				spin_wheels(win = pick(BELL, MUSHROOM, TREE))
+			if(2 to 10) //Otherwise, a fully random spin (1/1000 to get jackpot, 1/100 to get other reward)
+				spin_wheels(win = -1)
 
-	spawn(0)
-		while(working)
-			randomize_reels()
-			updateDialog()
-			sleep(2)
+	//If there's only one icon_state for spinning, everything looks weird
+	var/list/spin_states = list("spin1","spin2","spin3")
+	overlay_1.icon_state=pick(spin_states)
+	spin_states -= overlay_1.icon_state
 
-	spawn(SPIN_TIME - (REEL_DEACTIVATE_DELAY * reels.len)) //WARNING: no sanity checking for user since it's not needed and would complicate things (machine should still spin even if user is gone), be wary of this if you're changing this code.
-		toggle_reel_spin(0, REEL_DEACTIVATE_DELAY)
-		working = 0
-		give_prizes(the_name, user)
-		update_icon()
-		updateDialog()
+	overlay_2.icon_state=pick(spin_states)
+	spin_states -= overlay_2.icon_state
 
-/obj/machinery/computer/slot_machine/proc/can_spin(mob/user)
-	if(stat & NOPOWER)
-		user << "<span class='warning'>The slot machine has no power!</span>"
-	if(stat & BROKEN)
-		user << "<span class='warning'>The slot machine is broken!</span>"
-	if(working)
-		user << "<span class='warning'>You need to wait until the machine stops spinning before you can play again!</span>"
+	overlay_3.icon_state=pick(spin_states)
+	spin_states -= overlay_3.icon_state
+
+	//Readd all overlays
+	add_overlays()
+
+	var/sound/sound_to_play = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
+	playsound(get_turf(src),sound(sound_to_play),30,-4)
+
+	var/sleep_time = 48
+
+	sleep(sleep_time/3)
+	update_overlay_icon_state(overlay_1,"[value_1]")
+	playsound(get_turf(src),'sound/machines/chime.ogg',50,-4)
+
+	sleep(sleep_time/3)
+	update_overlay_icon_state(overlay_2,"[value_2]")
+	playsound(get_turf(src),'sound/machines/chime.ogg',50,-4)
+
+	sleep(sleep_time/3)
+	update_overlay_icon_state(overlay_3,"[value_3]")
+	playsound(get_turf(src),'sound/machines/chime.ogg',50,-4)
+
+	check_victory(user)
+
+	spinning = 0
+
+/obj/machinery/computer/slot_machine/proc/check_victory(mob/user)
+	if(!our_money_account)
+		return
+
+	if((value_1 == value_2) && (value_1 == value_3))
+		var/win_image = image('icons/obj/economy.dmi', icon_state="win")
+		overlays |= win_image
+
+		var/win_value = 0
+
+		switch(value_1)
+			//1/1000 chance of winning the jackpot.
+			if(SEVEN)
+				win_value = our_money_account.money
+				broadcast("[user] has just won the JACKPOT ($[win_value])!")
+
+			//Roughly 6/1000 chance of winning either of the below six rewards. You spend 3000$
+			//Average gain: 2837,5$
+
+			if(CHICKEN)
+				win_value = 400 * spin_cost //6000$
+				var/mob/living/simple_animal/chicken/C = new(src.loc)
+				C.name = "Pomf chicken"
+				C.body_color = "white"
+				C.icon_state = "chicken_white"
+				C.icon_living = "chicken_white"
+				C.icon_dead = "chicken_white_dead"
+			if(DIAMOND)
+				win_value = 300 * spin_cost //4500$
+			if(CHERRY)
+				win_value = 200 * spin_cost //3000$
+			if(HEART)
+				win_value = 100 * spin_cost //1500$
+			if(MELON)
+				win_value = 75 * spin_cost //1125$
+			if(PLUM)
+				win_value = 60 * spin_cost //900$
+
+			//There is a 1/10 + 3/1000 chance of winning either of the below three rewards. This means you've got to play 10 times (and spend 150$) to get a
+			//chance of winning either 180$,150$ or 60$
+			//The rewards average to 130$, which means our machine comes out with 20$ profit!
+
+			if(BELL)
+				win_value = 12 * spin_cost //180$ by default
+			if(MUSHROOM)
+				win_value = 10 * spin_cost //150$ by default
+			if(TREE)
+				win_value = 4 * spin_cost //60$ by default
+
+		if(win_value)
+			win_value = min(win_value, our_money_account.money)
+
+			spawn(10)
+				if(our_money_account.charge(win_value,null,"Victory","one-armed bandit #[id]"))
+					dispense_cash(win_value, get_turf(src))
+					playsound(get_turf(src), "polaroid", 50, 1)
+
+					to_chat(user, "<span class='notice'>You win $[win_value]!</span>")
+				else
+					src.visible_message("<span class='danger'>[src]'s screen flashes red.</span>")
+
+		sleep(50)
+
+		overlays -= win_image
+
+//Broadcast something over the radio!
+/obj/machinery/computer/slot_machine/proc/broadcast(var/message)
+	if(!message) return
+
+	Broadcast_Message(radio, all_languages, null, radio, message, "[capitalize(src.name)]", "Money Snatcher", "Slot machine #[id]", 0, 0, list(0,1), 1459)
+
+/obj/machinery/computer/slot_machine/attack_hand(mob/user as mob)
+	if(..())
+		return
+
+	user.machine = src
+
+	var/dat = {"<h4><center>Current Jackpot: <b>[our_money_account ? "$[num2text(our_money_account.money)]" : "---ERROR---"]</b></center></h4><br>"}
+
+	if(stored_money > 0)
+		dat += {"There are <span style="color:[stored_money<spin_cost?"red":"green"]"><b>$[num2text(stored_money)]</b>
+			space credits insterted. <span style="color:blue"><a href='?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
+	else
+		dat += {"You need at least <b>$[spin_cost]</b> credits to play. Use a nearby ATM and retreive some cash from your money account!<br>"}
+
+	if(can_play())
+		if(stored_money >= spin_cost)
+			dat += {"<span style="color:yellow"><a href='?src=\ref[src];spin=1'>Play! (<b>$[spin_cost]</b>)</a></span><br>"}
+
+	else
+		dat += {"<b>OUT OF SERVICE</b><br>"}
+
+	src.updateUsrDialog()
+	user << browse(dat,"window=slotmachine")
+	onclose(user, "slotmachine")
+	return
+
+/obj/machinery/computer/slot_machine/Topic(href, href_list)
+	if(..())
+		return
+	if(spinning)
+		return
+
+	if(href_list["reclaim"])
+		dispense_cash(stored_money, get_turf(src))
+		stored_money = 0
+
+	else if(href_list["spin"])
+		if((stored_money >= spin_cost) && can_play())
+			spin(usr)
+
+	src.updateUsrDialog()
+	return
+
+/obj/machinery/computer/slot_machine/attackby(obj/item/I as obj, mob/user as mob)
+	..()
+
+	if(istype(I,/obj/item/weapon/spacecash))
+		if(!can_play())
+			to_chat(user, "<span class='notice'>[src] rejects your money.</span>")
+			return
+
+		var/obj/item/weapon/spacecash/S = I
+		var/money_add = S.amount * S.worth
+
+		if(user.drop_item(I))
+			del(I)
+
+			src.stored_money += money_add
+			src.updateUsrDialog()
+
+/obj/machinery/computer/slot_machine/proc/can_play() //If no money in OUR account, return 0
+	if(!our_money_account)
 		return 0
-	if(balance < SPIN_PRICE)
-		user << "<span class='warning'>Insufficient money to play!</span>"
+	if(our_money_account.money < MINIMUM_MONEY_TO_PLAY)
 		return 0
+
 	return 1
 
-/obj/machinery/computer/slot_machine/proc/toggle_reel_spin(value, delay = 0) //value is 1 or 0 aka on or off
-	for(var/list/reel in reels)
-		reels[reel] = value
-		sleep(delay)
-
-/obj/machinery/computer/slot_machine/proc/randomize_reels()
-
-	for(var/reel in reels)
-		if(reels[reel])
-			reel[3] = reel[2]
-			reel[2] = reel[1]
-			reel[1] = pick(symbols)
-
-/obj/machinery/computer/slot_machine/proc/give_prizes(usrname, mob/user)
-	var/linelength = get_lines()
-
-	if(reels[1][2] + reels[2][2] + reels[3][2] + reels[4][2] + reels[5][2] == "[SEVEN][SEVEN][SEVEN][SEVEN][SEVEN]")
-		visible_message("<b>[src]</b> says, 'JACKPOT! You win [money] credits worth of coins!'")
-		news_announcement("Congratulations to [user ? user.real_name : usrname] for winning the jackpot at the slot machine in [get_area(src)]!")
-		jackpots += 1
-		balance += money - give_coins(JACKPOT)
-		money = 0
-
-		for(var/i = 0, i < 5, i++)
-			var/cointype = pick(subtypesof(/obj/item/weapon/coin))
-			var/obj/item/weapon/coin/C = new cointype(loc)
-			random_step(C, 2, 50)
-
-	else if(linelength == 5)
-		visible_message("<b>[src]</b> says, 'Big Winner! You win a thousand credits worth of coins!'")
-		give_money(BIG_PRIZE)
-
-	else if(linelength == 4)
-		visible_message("<b>[src]</b> says, 'Winner! You win four hundred credits worth of coins!'")
-		give_money(SMALL_PRIZE)
-
-	else if(linelength == 3)
-		user << "<span class='notice'>You win three free games!</span>"
-		balance += SPIN_PRICE * 4
-		money = max(money - SPIN_PRICE * 4, money)
-
-	else
-		user << "<span class='warning'>No luck!</span>"
-
-/obj/machinery/computer/slot_machine/proc/get_lines()
-	var/amountthesame
-
-	for(var/i = 1, i <= 3, i++)
-		var/inputtext = reels[1][i] + reels[2][i] + reels[3][i] + reels[4][i] + reels[5][i]
-		for(var/symbol in symbols)
-			var/j = 3 //The lowest value we have to check for.
-			var/symboltext = symbol + symbol + symbol
-			while(j <= 5)
-				if(findtext(inputtext, symboltext))
-					amountthesame = max(j, amountthesame)
-				j++
-				symboltext += symbol
-
-			if(amountthesame)
-				break
-
-	return amountthesame
-
-/obj/machinery/computer/slot_machine/proc/give_money(amount)
-	var/amount_to_give = money >= amount ? amount : money
-	var/surplus = amount_to_give - give_coins(amount_to_give)
-	money = max(0, money - amount)
-	balance += surplus
-
-/obj/machinery/computer/slot_machine/proc/give_coins(amount)
-	var/cointype = emagged ? /obj/item/weapon/coin/iron : /obj/item/weapon/coin/silver
-
-	if(!emagged)
-		amount = dispense(amount, cointype, null, 0)
-
-	else
-		var/mob/living/target = locate() in range(2, src)
-
-		amount = dispense(amount, cointype, target, 1)
-
-	return amount
-
-/obj/machinery/computer/slot_machine/proc/dispense(amount = 0, cointype = /obj/item/weapon/coin/silver, mob/living/target, throwit = 0)
-	var/value = coinvalues["[cointype]"]
-
-
-	while(amount >= value)
-		var/obj/item/weapon/coin/C = new cointype(loc) //DOUBLE THE PAIN
-		amount -= value
-		if(throwit && target)
-			C.throw_at(target, 3, 10)
-		else
-			random_step(C, 2, 40)
-
-	return amount
+#undef MINIMUM_WIN_TO_BROADCAST
+#undef MINIMUM_MONEY_TO_PLAY
 
 #undef SEVEN
-#undef SPIN_TIME
-#undef JACKPOT
-#undef BIG_PRIZE
-#undef SMALL_PRIZE
-#undef SPIN_PRICE
+#undef DIAMOND
+#undef CHERRY
+#undef HEART
+#undef MELON
+#undef PLUM
+#undef BELL
+#undef MUSHROOM
+#undef CHICKEN
+#undef TREE

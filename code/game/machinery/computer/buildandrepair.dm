@@ -217,9 +217,13 @@
 	name = "Circuit board (Prison Shuttle)"
 	build_path = "/obj/machinery/computer/prison_shuttle"
 	origin_tech = "programming=2"
+/obj/item/weapon/circuitboard/slot_machine
+	name = "Circuit board (Slot Machine)"
+	build_path = "/obj/machinery/slot_machine"
+	origin_tech = "programming=2"
 /obj/item/weapon/circuitboard/fax
 	name = "Circuit board (Fax)"
-	build_path = "/obj/machinery/faxmachine"
+	build_path = "/obj/machinery/computer/faxmachine"
 	origin_tech = "programming=2"
 
 /obj/item/weapon/circuitboard/supplycomp/attackby(obj/item/I as obj, mob/user as mob)

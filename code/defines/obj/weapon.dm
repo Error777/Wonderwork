@@ -25,6 +25,14 @@
 	flags = TABLEPASS
 	w_class = 3.0
 
+var/global/list/moneytypes = list(
+	/obj/item/weapon/spacecash/c1000 = 1000,
+	/obj/item/weapon/spacecash/c100  = 100,
+	/obj/item/weapon/spacecash/c10   = 10,
+	/obj/item/weapon/spacecash       = 1,
+	// /obj/item/weapon/coin/plasma       = 0.1,
+	// /obj/item/weapon/coin/iron       = 0.01,
+)
 
 /obj/item/weapon/spacecash
 	name = "1 credit"
@@ -40,6 +48,7 @@
 	throw_speed = 1
 	throw_range = 2
 	w_class = 1.0
+	var/amount = 1 //Number of chips
 	var/access = list()
 	access = access_crate_cash
 	var/worth = 1
@@ -76,6 +85,22 @@
 		return user.put_in_inactive_hand(S)
 	else
 		S.loc = user.loc
+
+/proc/dispense_cash(var/amount, var/loc)
+	for(var/cashtype in moneytypes)
+		var/slice = moneytypes[cashtype]
+		var/dispense_count = Floor(amount/slice)
+		amount = amount % slice
+		while(dispense_count>0)
+			var/dispense_this_time = min(dispense_count,10)
+			if(dispense_this_time > 0)
+				new cashtype(loc,dispense_this_time)
+				dispense_count -= dispense_this_time
+
+/proc/count_cash(var/list/cash)
+	. = 0
+	for(var/obj/item/weapon/spacecash/C in cash)
+		. += C.amount * C.worth
 
 /obj/item/weapon/spacecash/c10
 	name = "10 credit"
