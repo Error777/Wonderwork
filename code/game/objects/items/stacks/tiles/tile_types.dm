@@ -55,8 +55,17 @@
 	max_amount = 60
 
 /*
- *	Other
+ * Fake Space
  */
-/obj/item/stack/tile/open_space
-	name = "underplating"
-	singular_name = "underplating"
+/obj/item/stack/tile/fakespace
+	name = "astral carpet"
+	singular_name = "astral carpet"
+	desc = "A piece of carpet with a convincing star pattern."
+	icon_state = "tile-space"
+	w_class = 3.0
+	force = 1.0
+	throwforce = 1.0
+	throw_speed = 5
+	throw_range = 20
+	flags = FPRINT | TABLEPASS | CONDUCT
+	max_amount = 60

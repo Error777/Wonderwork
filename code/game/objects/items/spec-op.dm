@@ -61,7 +61,7 @@
 	var/id4 = 0
 	var/id5 = 0
 
-/obj/item/token
+/obj/item/toy/token
 	name = "Lucky Corp Point Rewarder"
 	desc = "Lucky!"
 	icon = 'icons/obj/scooterstuff.dmi'

@@ -83,7 +83,7 @@
 					break
 
 			var/obj/structure/window/W
-			W = new /obj/structure/window/basic( user.loc, 0 )
+			W = new /obj/structure/window( user.loc, 0 )
 			W.dir = dir_to_set
 			W.ini_dir = W.dir
 			W.anchored = 0
@@ -98,9 +98,7 @@
 				user << "\red There is a window in the way."
 				return 1
 			var/obj/structure/window/W
-			W = new /obj/structure/window/basic( user.loc, 0 )
-			W.dir = SOUTHWEST
-			W.ini_dir = SOUTHWEST
+			W = new /obj/structure/window/full/( user.loc, 0 )
 			W.anchored = 0
 			src.use(2)
 	return 0
@@ -166,7 +164,7 @@
 
 			var/obj/structure/window/W
 			W = new /obj/structure/window/reinforced( user.loc, 1 )
-			W.state = 0
+			W.d_state = 0
 			W.dir = dir_to_set
 			W.ini_dir = W.dir
 			W.anchored = 0
@@ -182,10 +180,8 @@
 				user << "\red There is a window in the way."
 				return 1
 			var/obj/structure/window/W
-			W = new /obj/structure/window/reinforced( user.loc, 1 )
-			W.state = 0
-			W.dir = SOUTHWEST
-			W.ini_dir = SOUTHWEST
+			W = new /obj/structure/window/full/reinforced( user.loc, 1 )
+			W.d_state = 0
 			W.anchored = 0
 			src.use(2)
 
@@ -237,6 +233,29 @@
 
 
 	return 0
+
+/*
+ * Plasma Glass sheets
+ */
+
+/obj/item/stack/sheet/plasmaglass
+	name = "plasma glass"
+	desc = "A very strong and very resistant sheet of a plasma-glass alloy."
+	singular_name = "glass sheet"
+	icon_state = "sheet-plasmaglass"
+	origin_tech = "materials=3;plasmatech=2"
+	perunit = 2875 //average of plasma and glass
+
+/*
+ * Reinforced plasma glass sheets
+ */
+/obj/item/stack/sheet/plasmarglass
+	name = "reinforced plasma glass"
+	desc = "Plasma glass which seems to have rods or something stuck in them."
+	singular_name = "reinforced plasma glass sheet"
+	icon_state = "sheet-plasmarglass"
+	origin_tech = "materials=4;plasmatech=2"
+	perunit = 2875
 
 /*
  * Glass shards - TODO: Move this into code/game/object/item/weapons

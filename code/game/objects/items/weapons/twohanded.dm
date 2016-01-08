@@ -126,11 +126,11 @@
 			var/obj/structure/window/W = A
 
 			new /obj/item/weapon/shard( W.loc )
-			if(W.reinf) new /obj/item/stack/rods( W.loc)
+			if(W.reinforced) new /obj/item/stack/rods( W.loc)
 
 			if (W.dir == SOUTHWEST)
 				new /obj/item/weapon/shard( W.loc )
-				if(W.reinf) new /obj/item/stack/rods( W.loc)
+				if(W.reinforced) new /obj/item/stack/rods( W.loc)
 		del(A)
 
 

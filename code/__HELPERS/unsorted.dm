@@ -1445,3 +1445,7 @@ var/list/WALLITEMS = list(
 	while(loc && loc.loc && !istype(loc.loc, /turf/))
 		loc = loc.loc
 	return loc
+
+// Use this to send to a client's chat, no exceptions (except this proc itself).
+/proc/to_chat(var/thing, var/output)
+	thing << output

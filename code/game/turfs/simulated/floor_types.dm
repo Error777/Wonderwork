@@ -298,3 +298,14 @@
 	icon_state = "catwalk0"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
+
+/turf/simulated/floor/fakespace
+	name = "Astral Carpet"
+	icon = 'icons/turf/space.dmi'
+	icon_state = "0"
+	floor_tile = new/obj/item/stack/tile/fakespace
+
+	New()
+		floor_tile.New() //I guess New() isn't ran on objects spawned without the definition of a turf to house them, ah well.
+		icon_state = "[pick("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25")]"
+		..()

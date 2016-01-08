@@ -245,6 +245,12 @@ turf/simulated/floor/proc/update_icon()
 	else
 		return 0
 
+/turf/simulated/floor/is_fakespace_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/fakespace))
+		return 1
+	else
+		return 0
+
 /turf/simulated/floor/is_plating()
 	if(!floor_tile)
 		return 1
@@ -270,6 +276,9 @@ turf/simulated/floor/proc/update_icon()
 	else if(is_carpet_floor())
 		src.icon_state = "carpet-broken"
 		broken = 1
+	else if(is_fakespace_floor())
+		src.icon_state = "damaged[pick(1,2,3,4,5)]"
+		broken = 1
 	else if(is_grass_floor())
 		src.icon_state = "sand[pick("1","2","3")]"
 		broken = 1
@@ -293,6 +302,9 @@ turf/simulated/floor/proc/update_icon()
 	else if(is_carpet_floor())
 		src.icon_state = "carpet-broken"
 		burnt = 1
+	else if(is_fakespace_floor())
+		src.icon_state = "damaged[pick(1,2,3,4,5)]"
+		burnt = 1
 	else if(is_grass_floor())
 		src.icon_state = "sand[pick("1","2","3")]"
 		burnt = 1
@@ -307,6 +319,7 @@ turf/simulated/floor/proc/update_icon()
 			if(istype(get_step(src,direction),/turf/simulated/floor))
 				var/turf/simulated/floor/FF = get_step(src,direction)
 				FF.update_icon() //so siding get updated properly
+
 	else if(is_carpet_floor())
 		spawn(5)
 			if(src)
@@ -423,6 +436,24 @@ turf/simulated/floor/proc/update_icon()
 			return
 	//if you gave a valid parameter, it won't get thisf ar.
 	floor_tile = new/obj/item/stack/tile/carpet
+
+	update_icon()
+	levelupdate()
+
+//This proc will make a turf into a wood floor. Fun eh? Insert the wood tile to be used as the argument
+//If no argument is given a new one will be made.
+/turf/simulated/floor/proc/make_fakespace_floor(var/obj/item/stack/tile/fakespace/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/fakespace))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/fakespace
 
 	update_icon()
 	levelupdate()

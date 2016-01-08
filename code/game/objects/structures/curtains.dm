@@ -14,7 +14,7 @@
 	layer = CURTAIN_CLOSED_LAYER
 	opacity = 0
 
-/obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/curtain/bullet_act(var/obj/item/projectile/Proj)
 	del(src)
 
 /obj/structure/curtain/ex_act(severity)

@@ -756,3 +756,78 @@
 	icon_state = "warden"
 	toysay = "Seventeen minutes for coughing at an officer!"
 
+/obj/item/toy/figure/ghost
+	name = "Ghost action figure"
+	desc = "A \"Space Dead\" brand Ghost action figure."
+	icon_state = "ghost"
+	toysay = "B-o-o-o!"
+
+/*
+ * Fake nuke
+ */
+
+/obj/item/toy/nuke
+	name = "\improper Nuclear Fission Explosive toy"
+	desc = "A plastic model of a Nuclear Fission Explosive."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "nuketoyidle"
+	w_class = 2
+	var/cooldown = 0
+
+/obj/item/toy/nuke/attack_self(mob/user)
+	if (cooldown < world.time)
+		cooldown = world.time + 1800 //3 minutes
+		user.visible_message("<span class='warning'>[user] presses a button on [src].</span>", "<span class='notice'>You activate [src], it plays a loud noise!</span>", "<span class='italics'>You hear the click of a button.</span>")
+		sleep(5)
+		icon_state = "nuketoy"
+		playsound(src, 'sound/machines/Alarm.ogg', 100, 0)
+		sleep(135)
+		icon_state = "nuketoycool"
+		sleep(cooldown - world.time)
+		icon_state = "nuketoyidle"
+	else
+		var/timeleft = (cooldown - world.time)
+		user << "<span class='alert'>Nothing happens, and '</span>[round(timeleft/10)]<span class='alert'>' appears on a small display.</span>"
+
+/*
+ * Fake meteor
+ */
+
+/obj/item/toy/minimeteor
+	name = "\improper Mini-Meteor"
+	desc = "Relive the excitement of a meteor shower! SweetMeat-eor. Co is not responsible for any injuries, headaches or hearing loss caused by Mini-Meteor?"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "minimeteor"
+	w_class = 2
+
+/obj/item/toy/minimeteor/throw_impact(atom/target as mob|obj|turf|area)
+	if(!..())
+		playsound(src, 'sound/effects/meteorimpact.ogg', 40, 1)
+		for(var/mob/M in ultra_range(10, src))
+			if(!M.stat && !istype(M, /mob/living/silicon/ai))\
+				shake_camera(M, 3, 1)
+		del(src)
+
+/*
+ * Toy big red button
+ */
+/obj/item/toy/redbutton
+	name = "big red button"
+	desc = "A big, plastic red button. Reads 'From HonkCo Pranks?' on the back."
+	icon = 'icons/obj/assemblies.dmi'
+	icon_state = "bigred"
+	w_class = 2
+	var/cooldown = 0
+
+/obj/item/toy/redbutton/attack_self(mob/user)
+	if (cooldown < world.time)
+		cooldown = (world.time + 300) // Sets cooldown at 30 seconds
+		user.visible_message("<span class='warning'>[user] presses the big red button.</span>", "<span class='notice'>You press the button, it plays a loud noise!</span>", "<span class='italics'>The button clicks loudly.</span>")
+		playsound(src, 'sound/effects/explosionfar.ogg', 50, 0)
+		for(var/mob/M in ultra_range(10, src)) // Checks range
+			if(!M.stat && !istype(M, /mob/living/silicon/ai)) // Checks to make sure whoever's getting shaken is alive/not the AI
+				sleep(8) // Short delay to match up with the explosion sound
+				shake_camera(M, 2, 1) // Shakes player camera 2 squares for 1 second.
+
+	else
+		user << "<span class='alert'>Nothing happens.</span>"
