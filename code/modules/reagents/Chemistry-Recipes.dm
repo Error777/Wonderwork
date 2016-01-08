@@ -1573,7 +1573,7 @@ datum
 					/mob/living/simple_animal/hostile/retaliate,
 					/mob/living/simple_animal/poni,
 					/mob/living/simple_animal/vox,
-					/mob/living/simple_animal/bee,
+//					/mob/living/simple_animal/bee,
 					)// exclusion list for things you don't want the reaction to create.
 					//  must include all broken animals, all base types and all badminous shit
 

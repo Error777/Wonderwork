@@ -10,7 +10,7 @@
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "smashed")
 	var/perunit = 3750
 	var/sheettype = null //this is used for girders in the creation of walls/false walls
-
+	var/created_window = null
 
 // Since the sheetsnatcher was consolidated into weapon/storage/bag we now use
 // item/attackby() properly, making this unnecessary

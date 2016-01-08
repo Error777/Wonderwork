@@ -15,6 +15,7 @@
 	icon_state = "sheet-glass"
 	g_amt = 3750
 	origin_tech = "materials=1"
+	created_window = /obj/structure/window
 
 
 /obj/item/stack/sheet/glass/attack_self(mob/user as mob)
@@ -115,6 +116,7 @@
 	g_amt = 3750
 	m_amt = 1875
 	origin_tech = "materials=2"
+	created_window = /obj/structure/window/reinforced
 
 /obj/item/stack/sheet/rglass/cyborg
 	name = "reinforced glass"
@@ -245,6 +247,7 @@
 	icon_state = "sheet-plasmaglass"
 	origin_tech = "materials=3;plasmatech=2"
 	perunit = 2875 //average of plasma and glass
+	created_window = /obj/structure/window/plasma
 
 /*
  * Reinforced plasma glass sheets
@@ -256,6 +259,7 @@
 	icon_state = "sheet-plasmarglass"
 	origin_tech = "materials=4;plasmatech=2"
 	perunit = 2875
+	created_window = /obj/structure/window/reinforced/plasma
 
 /*
  * Glass shards - TODO: Move this into code/game/object/item/weapons

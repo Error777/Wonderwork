@@ -112,7 +112,7 @@
 								 "<span class='notice'>You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor.</span>")
 			return
 
-//window placing begin
+///window placing begin
 	else if( istype(W,/obj/item/stack/sheet/rglass) || istype(W,/obj/item/stack/sheet/glass) )
 		var/dir_to_set = 1
 		if(loc == user.loc)
@@ -145,7 +145,7 @@
 					return
 			var/obj/structure/window/WD
 			if(istype(W,/obj/item/stack/sheet/rglass))
-				WD = new/obj/structure/window(loc,1) //reinforced window
+				WD = new/obj/structure/window/reinforced(loc,1) //reinforced window
 			else
 				WD = new/obj/structure/window(loc,0) //normal window
 			WD.dir = dir_to_set
