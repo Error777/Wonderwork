@@ -143,9 +143,10 @@
 	name = "Crystal"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "crystal2"
-	listening_to_players = 0
-	speaking_to_players = 0
 
+/obj/item/weapon/talkingcrystal/chapelain/New()
+	listening_to_players = 1
+	speaking_to_players = 1
 
 /obj/item/weapon/talkingcrystal/bullet_act(var/obj/item/projectile/P)
 	if(istype(P,/obj/item/projectile/beam))

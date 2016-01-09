@@ -775,7 +775,11 @@
 	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs."
 	vend_delay = 34
 	icon_state = "cigs"
-	products = list(/obj/item/weapon/storage/fancy/cigarettes = 10,/obj/item/weapon/storage/box/matches = 10,/obj/item/weapon/lighter/random = 4)
+	products = list(/obj/item/weapon/storage/fancy/cigarettes = 10,/obj/item/weapon/storage/fancy/cigarettes/cigpack_uplift = 4,
+					/obj/item/weapon/storage/fancy/cigarettes/cigpack_robust = 5,/obj/item/weapon/storage/fancy/cigarettes/cigpack_robustgold = 2,
+					/obj/item/weapon/storage/fancy/cigarettes/cigpack_carp = 3,/obj/item/weapon/storage/fancy/cigarettes/cigpack_midori = 6,
+					/obj/item/weapon/storage/fancy/cigarettes/cigpack_shadyjims = 6,/obj/item/weapon/storage/fancy/cigarettes/chempacket = 4,
+					/obj/item/weapon/storage/box/matches = 10,/obj/item/weapon/lighter/random = 4)
 	contraband = list(/obj/item/weapon/lighter/zippo = 4)
 	premium = list(/obj/item/clothing/mask/cigarette/cigar/havana = 2)
 //	prices = list(/obj/item/weapon/storage/fancy/cigarettes = 60,/obj/item/weapon/storage/box/matches = 10,/obj/item/weapon/lighter/random = 60)
@@ -982,7 +986,7 @@
 	name = "Space Trader" //OCD had to be uppercase to look nice with the new formating
 	desc = "Robusted tool vending machine. Honk?"
 	icon_state = "spacetrader"
-	products = list(/obj/item/weapon/melee/classic_baton = 5,/obj/item/weapon/handcuffs = 10,/obj/item/weapon/flamethrower/full = 4)
+	products = list(/obj/item/weapon/melee/classic_baton = 5,/obj/item/weapon/handcuffs = 10,/obj/item/weapon/flamethrower/full = 4,/obj/item/weapon/storage/fancy/cigarettes/cigpack_syndicate)
 	contraband = list(/obj/item/weapon/chainsaw = 2)
 	premium = list(/obj/item/weapon/gun/projectile/automatic/pistol = 1)
 
