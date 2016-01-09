@@ -93,6 +93,6 @@
 /obj/item/weapon/reagent_containers/hypospray/combat/New()
 	..()
 	reagents.remove_reagent("tricordrazine", 30)
-	reagents.add_reagent("tricordrazine", 60)
+	reagents.add_reagent("omnizine", 60)
 	update_icon()
 	return

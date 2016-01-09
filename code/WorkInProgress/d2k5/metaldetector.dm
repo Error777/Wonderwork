@@ -164,35 +164,3 @@
 
 	else
 		return
-
-/obj/machinery/metaldetector/portable
-	name = "Mr. V.A.L.I.D. Portable Threat Detector"
-	desc = "This state of the art unit allows NT security personnel to contain a situation or secure an area better and faster."
-	icon_state = "portdetector0"
-	anchored = 0
-	var/locked = 0
-
-/obj/machinery/metaldetector/portable/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/wrench))
-		if(locked)
-			user << "The bolts are covered, unlocking this would retract the covers."
-			return
-		if(anchored)
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
-			user << "\blue You unsecure the [src] from the floor!"
-			anchored = 0
-		else
-			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
-			user << "\blue You secure the [src] to the floor!"
-			anchored = 1
-
-	else if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda))
-		if(src.allowed(user))
-			src.locked = !src.locked
-			user << "The controls are now [src.locked ? "locked." : "unlocked."]"
-		else
-			user << "\red Access denied."
-
-	else
-		..()

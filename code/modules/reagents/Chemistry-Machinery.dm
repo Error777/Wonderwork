@@ -91,7 +91,7 @@
 			winset(user, "chemdispenser_reagent_name[i]", list2params(newparams1))
 			winset(user, "chemdispenser_reagent_dispense[i]", list2params(newparams2))
 			i++
-	winset(user, "chemdispenser_reagents", "size=340x[8 + 40 * i]")
+	winset(user, "chemdispenser_reagents", "size=490x[8 + 40 * i]")
 
 /obj/machinery/chem_dispenser/SkinCmd(mob/user as mob, var/data as text)
 	if(stat & (BROKEN|NOPOWER)) return
@@ -233,8 +233,6 @@
 
 /obj/machinery/chem_dispenser/goon
 	name = "good chem dispenser"
-	energy = 200
-	max_energy = 200
 	dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine","sodium","aluminium","silicon","phosphorus","sulfur","chlorine","potassium","iron","copper","mercury","radium","water","ethanol","sugar","sacid","welding_fuel","iodine","bromine","stable_plasma",)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

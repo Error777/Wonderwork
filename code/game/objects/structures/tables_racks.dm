@@ -407,7 +407,7 @@
 	parts = /obj/item/weapon/table_parts/wood
 
 /*
- * Wooden tables
+ * Glass tables
  */
 /obj/structure/table/glass
 	tabletype = 4
@@ -415,16 +415,6 @@
 	desc = "What did I say about leaning on the glass tables? Now you need surgery."
 	icon_state = "glasstable"
 	parts = /obj/item/weapon/table_parts/glass
-
-/obj/structure/table/glass/attackby(obj/item/weapon/F as obj, mob/user as mob)
-	if (istype(F, /obj/item/weapon/wrench))
-		return
-	if (istype(F, /obj/item/weapon/screwdriver))
-		user << "\blue Now disassembling table"
-		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-		if(do_after(user,50))
-			destroy()
-		return
 
 /*
 /obj/structure/table/glass/tablepush(obj/item/I, mob/user)

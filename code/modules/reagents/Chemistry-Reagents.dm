@@ -368,8 +368,6 @@ datum
 				..()
 				return
 
-
-
 		tanatoxin
 			name = "Tanatizine"
 			id = "tanatoxin"
