@@ -142,6 +142,198 @@
 		..()
 		reagents.add_reagent("ammonia", 30)
 
+/obj/item/weapon/reagent_containers/glass/bottle/epinephrine
+	name = "epinephrine bottle"
+	desc = "A small bottle. Contains epinephrine - used to stabilize patients."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("epinephrine", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/morphine
+	name = "morphine bottle"
+	desc = "A small bottle of morphine."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle20"
+
+	New()
+		..()
+		reagents.add_reagent("morphine", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/charcoal
+	name = "charcoal bottle"
+	desc = "A small bottle of charcoal."
+	icon_state = "bottle17"
+
+	New()
+		..()
+		reagents.add_reagent("charcoal", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/synaptizine
+	name = "synaptizine bottle"
+	desc = "A small bottle of synaptizine."
+	icon_state = "bottle20"
+
+	New()
+		..()
+		reagents.add_reagent("synaptizine", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/facid
+	name = "Fluorosulfuric Acid Bottle"
+	desc = "A small bottle. Contains a small amount of Fluorosulfuric Acid"
+	icon_state = "bottle17"
+
+	New()
+		..()
+		reagents.add_reagent("facid", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/traitor
+	name = "syndicate bottle"
+	desc = "A small bottle. Contains a random nasty chemical."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle16"
+
+	New()
+		..()
+		var/extra_reagent = pick("polonium", "histamine", "formaldehyde", "venom", "neurotoxin2", "cyanide")
+		reagents.add_reagent("[extra_reagent]", 3)
+
+/obj/item/weapon/reagent_containers/glass/bottle/polonium
+	name = "polonium bottle"
+	desc = "A small bottle. Contains Polonium."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("polonium", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/venom
+	name = "venom bottle"
+	desc = "A small bottle. Contains Venom."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("venom", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/neurotoxin2
+	name = "neurotoxin bottle"
+	desc = "A small bottle. Contains Neurotoxin."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("neurotoxin2", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/formaldehyde
+	name = "formaldehyde bottle"
+	desc = "A small bottle. Contains Formaldehyde."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("formaldehyde", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/initropidril
+	name = "initropidril bottle"
+	desc = "A small bottle. Contains initropidril."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("initropidril", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/pancuronium
+	name = "pancuronium bottle"
+	desc = "A small bottle. Contains pancuronium."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("pancuronium", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/sodium_thiopental
+	name = "sodium thiopental bottle"
+	desc = "A small bottle. Contains sodium thiopental."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("sodium_thiopental", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/coniine
+	name = "coniine bottle"
+	desc = "A small bottle. Contains coniine."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("coniine", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/curare
+	name = "curare bottle"
+	desc = "A small bottle. Contains curare."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("curare", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/amanitin
+	name = "amanitin bottle"
+	desc = "A small bottle. Contains amanitin."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("amanitin", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/histamine
+	name = "histamine bottle"
+	desc = "A small bottle. Contains Histamine."
+	icon_state = "bottle16"
+
+	New()
+		..()
+		reagents.add_reagent("histamine", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/diphenhydramine
+	name = "antihistamine bottle"
+	desc = "A small bottle of diphenhydramine."
+	icon_state = "bottle20"
+
+	New()
+		..()
+		reagents.add_reagent("diphenhydramine", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/potass_iodide
+	name = "anti-radiation bottle"
+	desc = "A small bottle of potassium iodide."
+	icon_state = "bottle11"
+
+	New()
+		..()
+		reagents.add_reagent("potass_iodide", 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/salglu_solution
+	name = "saline-glucose solution bottle"
+	desc = "A small bottle of saline-glucose solution."
+	icon_state = "bottle1"
+
+	New()
+		..()
+		reagents.add_reagent("salglu_solution" = 30)
+
+/obj/item/weapon/reagent_containers/glass/bottle/atropine
+	name = "atropine bottle"
+	desc = "A small bottle of atropine."
+	icon_state = "bottle12"
+
+	New()
+		..()
+		reagents.add_reagent("atropine", 30)
+
 /obj/item/weapon/reagent_containers/glass/bottle/nanites
 	name = "Nanomachines Bottle"
 	desc = "A small bottle of microscopic construction robots!"

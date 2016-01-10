@@ -67,7 +67,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	<b><u>DNA</u></b>: [dna]
 	<b><u>Blood Type</u></b>: [bloodtype]
 	<b><u>Fingerprint</u></b>: [fingerprint]
-
+	<br>
 	<b><u>Black Marks</u></b>: <br> "}
 	for(var/A in marks)
 		text += "\red[A]<br>"
