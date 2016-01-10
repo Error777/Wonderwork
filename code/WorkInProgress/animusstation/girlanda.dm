@@ -1,6 +1,6 @@
 /* =================== CHRISTMAS SHIT  ===================  */
 /obj/structure/girlanda
-	name = "New Year lights"
+	name = "garland lights"
 	desc = "Flashy and pretty."
 	icon = 'icons/obj/christmas.dmi'
 	icon_state = "xmaslights"

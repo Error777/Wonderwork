@@ -18,7 +18,7 @@
 
 /obj/machinery/power/apc
 	name = "area power controller"
-
+	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc0"
 	anchored = 1
 	use_power = 0

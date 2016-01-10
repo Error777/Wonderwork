@@ -943,6 +943,26 @@
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
 		H << "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. [input].  Message ends.\""
 
+	else if(href_list["CentcommFaxView"])
+		var/obj/item/weapon/paper/P = locate(href_list["CentcommFaxView"])
+		var/info_2 = ""
+		usr << browse("<HTML><HEAD><TITLE>Centcomm Fax Message</TITLE></HEAD><BODY>[info_2][P.info][P.stamps]</BODY></HTML>", "window=Centcomm Fax Message")
+
+	else if(href_list["CentcommFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["CentcommFaxReply"])
+
+
+		var/sent = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null
+		if(!sent)	return
+
+		var/sentname = input(src.owner, "Pick a title for the report", "Title") as text|null
+
+		SendFax(sent, sentname, centcomm = 1)
+
+		to_chat(src.owner, "Message reply to transmitted successfully.")
+		log_admin("[key_name(src.owner)] replied to a fax message from [key_name(H)]: [sent]")
+		message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+
 	else if(href_list["jumpto"])
 		if(!check_rights(R_ADMIN))	return
 
