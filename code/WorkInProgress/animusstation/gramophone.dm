@@ -8,7 +8,6 @@
 	density = 1
 	var/playing = 0
 
-
 /obj/machinery/party/gramophone/attack_paw(user as mob)
 	return src.attack_hand(user)
 

@@ -219,3 +219,27 @@
 	on_hit(var/atom/target, var/blocked = 0)
 		explosion(target, -1, 0, 2)
 		return 1
+
+//*****D2K5 SHIT*****//
+/*
+/obj/item/projectile/phaser
+	name = "phaser shot"
+	icon_state = "spark"
+	nodamage = 1
+	damage_type = BURN
+	flag = "energy"
+	var/loaded_effect = "stun"
+	var/radius = 0.0
+	var/power = 25.0
+
+	proc/effect_tiles(turf/A, var/effect_type)
+		if(effect_type == "stun")
+			for (var/turf/phaseturf in range(radius,A))
+				for(var/mob/living/carbon/M in phaseturf)
+					M.stunned += power / 5
+					M.weakened += power / 5
+					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					s.set_up(5, 1, get_turf(A))
+					s.start()
+		return
+*/

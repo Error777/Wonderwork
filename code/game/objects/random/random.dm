@@ -197,3 +197,43 @@
 					prob(4);/obj/item/ammo_magazine/box/c38,\
 					prob(2);/obj/item/ammo_magazine/box/c38/e,\
 					prob(6);/obj/item/ammo_magazine/external/sm45)
+
+/obj/random/coin
+	name = "Random Coin"
+	desc = "This is a random coin"
+	icon_state = "coin"
+	item_to_spawn()
+		return pick(prob(4);/obj/item/weapon/coin/gold,\
+					prob(6);/obj/item/weapon/coin/silver,\
+					prob(1);/obj/item/weapon/coin/diamond,\
+					prob(1);/obj/item/weapon/coin/plasma,\
+					prob(1);/obj/item/weapon/coin/uranium,\
+					prob(12);/obj/item/weapon/coin/iron)
+
+/obj/random/bureaucracy
+	name = "Random Folders Or Pens"
+	desc = "This is a random desc clutter."
+	icon_state = "folder"
+	item_to_spawn()
+		return pick(
+					prob(4);/obj/item/weapon/folder,\
+					prob(4);/obj/item/weapon/folder/blue,\
+					prob(4);/obj/item/weapon/folder/red,\
+					prob(4);/obj/item/weapon/folder/yellow,\
+					prob(1);/obj/item/weapon/folder/white,\
+					prob(1);/obj/item/weapon/folder/indigo,\
+					prob(1);/obj/item/weapon/folder/black,\
+					prob(1);/obj/item/weapon/folder/green,\
+					prob(1);/obj/item/weapon/pen/blue,\
+					prob(1);/obj/item/weapon/pen/red,\
+					prob(3);/obj/item/weapon/pen,\
+					prob(3);/obj/item/weapon/paper)
+
+/obj/random/ashtray
+	name = "Random Ashtray"
+	desc = "This is a random ashtray."
+	icon_state = "ashtray"
+	item_to_spawn()
+		return pick(prob(1);/obj/item/ashtray/bronze,\
+					prob(3);/obj/item/ashtray/glass,\
+					prob(4);/obj/item/ashtray/plastic)

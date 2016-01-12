@@ -39,12 +39,12 @@
 			//shoes
 			if(istype(src, /turf/simulated/floor/grass || /turf/simulated/floor/holofloor/grass))
 				footstepsound = "grassfootsteps"
-			else if(istype(src, /turf/unsimulated/beach/sand || /turf/simulated/floor/plating/airless/asteroid))
+			else if(istype(src, /turf/unsimulated/beach/sand))
 				footstepsound = "sandfootsteps"
 			else if(istype(src, /turf/unsimulated/beach/water))
 				footstepsound = "waterfootsteps"
-//			else if(istype(src, /turf/simulated/floor/spacedome/concrete))
-//				footstepsound = "concretefootsteps"
+			else if(istype(src, /turf/simulated/floor/plating/airless/asteroid))
+				footstepsound = "sandfootsteps"
 			else if(istype(src, /turf/simulated/floor/wood))
 				footstepsound = "woodfootsteps"
 			else if(istype(src, /turf/simulated/floor/carpet))

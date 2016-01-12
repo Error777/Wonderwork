@@ -7,7 +7,7 @@ var/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","
 				"asteroid","asteroid_dug",
 				"asteroid0","asteroid1","asteroid2","asteroid3","asteroid4",
 				"asteroid5","asteroid6","asteroid7","asteroid8","asteroid9","asteroid10","asteroid11","asteroid12",
-				"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "wood-broken", "carpet",
+				"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "wood-broken", "fakespace",
 				"carpetcorner", "carpetside", "carpet", "ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5",
 				"ironsand6", "ironsand7", "ironsand8", "ironsand9", "ironsand10", "ironsand11",
 				"ironsand12", "ironsand13", "ironsand14", "ironsand15")
@@ -111,6 +111,10 @@ turf/simulated/floor/proc/update_icon()
 		if(!broken && !burnt)
 			if(!(icon_state in list("grass1","grass2","grass3","grass4")))
 				icon_state = "grass[pick("1","2","3","4")]"
+	else if(is_fakespace_floor())
+		if(!broken && !burnt)
+			if(!(icon_state in list("1","2","3","4")))
+				icon_state = "[pick("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25")]"
 	else if(is_carpet_floor())
 		if(!broken && !burnt)
 			if(icon_state == "carpet")

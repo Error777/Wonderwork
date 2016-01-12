@@ -239,6 +239,8 @@ obj/item/weapon/gun/energy/staff/focus
 /obj/item/weapon/gun/energy/kinetic_accelerator/emp_act(severity)
 	return
 
+//Plasma Gun//
+
 /obj/item/weapon/gun/energy/plasmagun
 	name = "plasma gun MX3"
 	desc = "A man portable fusion reactor with integrated Lawson chamber."
@@ -250,3 +252,85 @@ obj/item/weapon/gun/energy/staff/focus
 	slot_flags = SLOT_BACK
 	charge_cost = 100
 	projectile_type = "/obj/item/projectile/energy/plasma"
+
+//*****D2K5 SHIT*****//
+//Phaser//
+/*
+/obj/item/weapon/gun/energy/phaser
+	name = "phaser gun"
+	icon_state = "laser_h"
+	desc = "A weapon that can fire variable-size suppressive waves of energy."
+	fire_sound = 'sound/weapons/laser4.ogg'
+	charge_cost = 100
+	origin_tech = "combat=3;materials=3;magnets=3"
+	flags =  FPRINT | TABLEPASS | CONDUCT | USEDELAY
+	cell_type = "/obj/item/weapon/cell/crap"
+	projectile_type = "/obj/item/projectile/energy/phaser"
+	var/p_lock = 1	// Power lock, emagging lets you use more powerful shots
+	var/radius = 0.0
+	var/power = 25.0
+	var/loaded_effect = "stun"
+
+
+	New()
+		..()
+		AdjustPowerUse()
+
+	process_chambered()
+		if(in_chamber)
+			return 1
+		if(power_supply.charge <= charge_cost)
+			return 0
+		in_chamber = new /obj/item/projectile/phaser(src)
+		power_supply.use(charge_cost)
+		return 1
+
+
+	proc/AdjustPowerUse()
+		while(src)
+			sleep(10)
+			if(power)
+				charge_cost = ((power * 4) * (radius + 1))
+
+	attack_self(mob/living/user as mob)
+		user.machine = src
+		var/dat = {"<B>Phaser Gun Configuration: </B><BR>
+		Radius: <A href='?src=\ref[src];radius_adj=-1'>-</A> [radius+1] <A href='?src=\ref[src];radius_adj=1'>+</A><BR>
+		Power: <A href='?src=\ref[src];power_adj=-5'>-</A> [power] <A href='?src=\ref[src];power_adj=5'>+</A><BR>
+		Each shot will use [charge_cost] units of power!<BR>
+		<HR>
+		<A href='?src=\ref[user];mach_close=phaser'>Close</A><BR>
+		"}
+
+		user << browse(dat, "window=phaser;size=450x300")
+		onclose(user, "phaser")
+
+	Topic(href, href_list)
+		if (..())
+			return
+		usr.machine = src
+		if (href_list["radius_adj"])
+			var/rdiff = text2num(href_list["radius_adj"])
+			if(rdiff > 0)
+				radius += rdiff
+			else
+				radius -= rdiff
+			if(radius < 0)
+				radius = 0
+			if(radius > 2)
+				radius = 2
+		if (href_list["power_adj"])
+			var/pdiff = text2num(href_list["power_adj"])
+			if(pdiff > 0)
+				power += pdiff
+			else
+				power -= pdiff
+			if(power < 5)
+				power = 5
+			if(power > 40 && p_lock)
+				power = 40
+		if (istype(loc, /mob))
+			attack_self(loc)
+		AdjustPowerUse()
+		return
+*/
