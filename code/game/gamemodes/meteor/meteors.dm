@@ -90,6 +90,11 @@
 	var/dest
 	pass_flags = PASSTABLE
 
+/obj/effect/meteor/dust
+	name = "space dust"
+	icon_state = "dust"
+	pass_flags = PASSTABLE | PASSGRILLE
+
 /obj/effect/meteor/small
 	name = "small meteor"
 	icon_state = "smallf"
@@ -164,3 +169,118 @@
 		del(src)
 		return
 	..()
+
+//TG METEORS SYSTEM//
+/*
+//Dust
+/obj/effect/meteor/dust
+	name = "space dust"
+	icon_state = "dust"
+	pass_flags = PASSTABLE | PASSGRILLE
+	hits = 1
+	hitpwr = 3
+	meteorsound = 'sound/weapons/throwtap.ogg'
+	meteordrop = /obj/item/weapon/ore/glass
+
+//Medium-sized
+/obj/effect/meteor/medium
+	name = "meteor"
+	dropamt = 3
+
+/obj/effect/meteor/medium/meteor_effect()
+	..(heavy)
+	explosion(src.loc, 0, 1, 2, 3, 0)
+
+//Large-sized
+/obj/effect/meteor/big
+	name = "big meteor"
+	icon_state = "large"
+	hits = 6
+	heavy = 1
+	dropamt = 4
+
+/obj/effect/meteor/big/meteor_effect()
+	..(heavy)
+	explosion(src.loc, 1, 2, 3, 4, 0)
+
+//Flaming meteor
+/obj/effect/meteor/flaming
+	name = "flaming meteor"
+	icon_state = "flaming"
+	hits = 5
+	heavy = 1
+	meteorsound = 'sound/effects/bamf.ogg'
+	meteordrop = /obj/item/weapon/ore/plasma
+
+/obj/effect/meteor/flaming/meteor_effect()
+	..(heavy)
+	explosion(src.loc, 1, 2, 3, 4, 0, 0, 5)
+
+//Radiation meteor
+/obj/effect/meteor/irradiated
+	name = "glowing meteor"
+	icon_state = "glowing"
+	heavy = 1
+	meteordrop = /obj/item/weapon/ore/uranium
+
+
+/obj/effect/meteor/irradiated/meteor_effect()
+	..(heavy)
+	explosion(src.loc, 0, 0, 4, 3, 0)
+	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
+	radiation_pulse(get_turf(src), 2, 5, 50, 1)
+
+//Meaty Ore
+/obj/effect/meteor/meaty
+	name = "meaty ore"
+	icon_state = "meateor"
+	desc = "Just... don't think too hard about where this thing came from."
+	hits = 2
+	heavy = 1
+	meteorsound = 'sound/effects/blobattack.ogg'
+	meteordrop = /obj/item/weapon/reagent_containers/food/snacks/meat
+	var/meteorgibs = /obj/effect/gibspawner/generic
+
+/obj/effect/meteor/meaty/make_debris()
+	..()
+	new meteorgibs(get_turf(src))
+
+
+/obj/effect/meteor/meaty/ram_turf(turf/T)
+	if(!istype(T, /turf/space))
+		new /obj/effect/decal/cleanable/blood (T)
+
+/obj/effect/meteor/meaty/Bump(atom/A)
+	A.ex_act(hitpwr)
+	get_hit()
+
+//Meaty Ore Xeno edition
+/obj/effect/meteor/meaty/xeno
+	color = "#5EFF00"
+	meteordrop = /obj/item/weapon/reagent_containers/food/snacks/meat/slab/xeno
+	meteorgibs = /obj/effect/gibspawner/xeno
+
+/obj/effect/meteor/meaty/xeno/ram_turf(turf/T)
+	if(!istype(T, /turf/space))
+		new /obj/effect/decal/cleanable/xenoblood (T)
+
+//Station buster Tunguska
+/obj/effect/meteor/tunguska
+	name = "tunguska meteor"
+	icon_state = "flaming"
+	desc = "Your life briefly passes before your eyes the moment you lay them on this monstruosity"
+	hits = 30
+	hitpwr = 1
+	heavy = 1
+	meteorsound = 'sound/effects/bamf.ogg'
+	meteordrop = /obj/item/weapon/ore/plasma
+
+/obj/effect/meteor/tunguska/meteor_effect()
+	..(heavy)
+	explosion(src.loc, 5, 10, 15, 20, 0)
+
+/obj/effect/meteor/tunguska/Bump()
+	..()
+	if(prob(20))
+		explosion(src.loc,2,4,6,8)
+*/

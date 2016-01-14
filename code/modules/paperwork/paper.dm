@@ -25,6 +25,7 @@
 	var/list/stamped
 	var/rigged = 0
 	var/spam_flag = 0
+	var/paper_burning = 0 //Whether or not the paper is on fire
 
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
@@ -155,6 +156,14 @@
 	updateinfolinks()
 	update_icon()
 
+/obj/item/weapon/paper/attack_hand()
+	var/mob/living/carbon/M = usr
+	if(paper_burning)
+		M << "<span class='danger'>Picking up a burning paper seems awfully stupid.</span>"
+		return //Doesn't make any sense to pick up a burning paper
+	else //Probably isn't necessary but it's safer
+		..()
+
 
 /obj/item/weapon/paper/proc/parsepencode(var/t, var/obj/item/weapon/pen/P, mob/user as mob, var/iscrayon = 0)
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
@@ -277,6 +286,9 @@
 	if(user.mind && (user.mind.assigned_role == "Clown"))
 		clown = 1
 
+	if(burning)
+		return
+
 	if(istype(P, /obj/item/weapon/pen) || istype(P, /obj/item/toy/crayon))
 		if ( istype(P, /obj/item/weapon/pen/robopen) && P:mode == 2 )
 			P:RenamePaper(user,src)
@@ -310,6 +322,20 @@
 
 	add_fingerprint(user)
 	return
+
+/obj/item/weapon/paper/fire_act()
+	burn(1, 50)
+
+/obj/item/weapon/paper/proc/burn(var/showmsg, var/burntime)
+	if(showmsg)
+		src.visible_message("<span class='warning'>[src] catches on fire.</span>")
+	paper_burning = 1
+	icon_state = "paper_onfire"
+	info = "[stars(info)]"
+	sleep(burntime) //7 seconds
+	src.visible_message("<span class='warning'>[src] burns away, leaving behind a pile of ashes.</span>")
+	new /obj/effect/decal/cleanable/ash(src.loc)
+	del(src)
 
 /*
  * Premade paper

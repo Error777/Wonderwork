@@ -62,7 +62,7 @@
 		update_icon()
 	else
 		user << "<span class='notice'>Access Denied</span>"
-		playsound(src.loc, 'sound/machines/denied.ogg', 10, 1)
+		playsound(src.loc, 'sound/machines/denied.ogg', 100, 1)
 
 /obj/structure/closet/secure_closet/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(src.opened)

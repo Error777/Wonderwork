@@ -370,6 +370,7 @@ var/global/list/moneytypes = list(
 	name = "open space sign"
 	desc = "Caution! Open Space!"
 	icon_state = "spacecaution"
+	item_state = "bluecaution"
 
 /obj/item/weapon/rack_parts
 	name = "rack parts"

@@ -93,6 +93,8 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	normalspeed = 1
 	var/obj/item/weapon/airlock_electronics/electronics = null
 	var/hasShocked = 0 //Prevents multiple shocks from happening
+	var/open_sound_powered = 'sound/machines/airlock.ogg'
+	var/open_sound_unpowered = 'sound/machines/airlock_creaking.ogg'
 
 /obj/machinery/door/airlock/command
 	name = "Airlock"
@@ -132,6 +134,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
 	icon = 'icons/obj/doors/Doorglass.dmi'
+	open_sound_powered = 'sound/machines/windowdoor.ogg'
 	opacity = 0
 	glass = 1
 
@@ -188,6 +191,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	icon = 'icons/obj/doors/Doorweapglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	open_sound_powered = 'sound/machines/windowdoor.ogg'
 	glass = 1
 
 /obj/machinery/door/airlock/glass_goonengineering
@@ -195,6 +199,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	icon = 'icons/obj/doors/goonnewengdoor.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	open_sound_powered = 'sound/machines/windowdoor.ogg'
 	glass = 1
 
 /obj/machinery/door/airlock/glass_goonmedical
@@ -202,6 +207,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	icon = 'icons/obj/doors/goonnewmeddoor.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
+	open_sound_powered = 'sound/machines/windowdoor.ogg'
 	glass = 1
 
 /obj/machinery/door/airlock/glass_goonresearch
@@ -214,6 +220,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 /obj/machinery/door/airlock/glass_engineering
 	name = "Maintenance Hatch"
 	icon = 'icons/obj/doors/Doorengglass.dmi'
+	open_sound_powered = 'sound/machines/windowdoor.ogg'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 	glass = 1
@@ -1370,12 +1377,14 @@ About the new airlock wires panel:
 		if( !arePowerSystemsOn() || (stat & NOPOWER) || isWireCut(AIRLOCK_WIRE_OPEN_DOOR) )
 			return 0
 	use_power(50)
+
 	if(istype(src, /obj/machinery/door/airlock/glass))
 		playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	if(istype(src, /obj/machinery/door/airlock/clown))
 		playsound(src.loc, 'sound/items/bikehorn.ogg', 30, 1)
 	else
 		playsound(src.loc, 'sound/machines/airlock.ogg', 30, 1)
+
 	if(src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 		src.closeOther.close()
 	return ..()

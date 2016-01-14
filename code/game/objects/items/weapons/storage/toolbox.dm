@@ -82,3 +82,22 @@
 		new /obj/item/weapon/cable_coil(src,30,cable_color)
 		new /obj/item/weapon/wirecutters(src)
 		new /obj/item/device/multitool(src)
+
+/obj/item/weapon/storage/toolbox/medical
+	name = "white toolbox"
+	icon_state = "white"
+	item_state = "toolbox_medical"
+	origin_tech = "combat=1;biotech=1"
+	force = 7.0
+
+	New()
+		..()
+		new /obj/item/weapon/retractor(src)
+		new /obj/item/weapon/hemostat(src)
+		new /obj/item/weapon/cautery(src)
+		new /obj/item/weapon/surgicaldrill(src)
+		new /obj/item/weapon/scalpel(src)
+		new /obj/item/weapon/circular_saw(src)
+		new /obj/item/weapon/bonegel(src)
+		new /obj/item/weapon/FixOVein(src)
+		new /obj/item/weapon/bonesetter(src)

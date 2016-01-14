@@ -299,7 +299,7 @@
 /obj/item/weapon/card/id/ce
 	name = "Chief Engineer ID"
 	registered_name = "CE"
-	icon_state = "id_com"
+	icon_state = "id_ce"
 	desc = "The card has a faint aroma of autism."
 
 /obj/item/weapon/card/id/clown
