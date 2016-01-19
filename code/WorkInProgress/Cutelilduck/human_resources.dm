@@ -101,7 +101,7 @@
 		else if(bans != null)
 			user << "<span class='notice'>This card already has a microchip applied</span>"
 		else
-			icon_state = "centcom_old"
+			icon_state = "data"
 			bans = "9" //if get_region_accesses ever uses 9 we're fucked
 			del(DE)
 	else
@@ -141,7 +141,7 @@
 			if(bans == null)
 				user << "<span class='notice'>You require at least one stamp.</span>"
 				return
-			icon_state = "centcom_old"
+			icon_state = "soviet"
 			del(D)
 	else
 		return ..()

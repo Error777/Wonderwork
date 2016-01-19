@@ -301,6 +301,21 @@
 	desc = ""
 	icon_state = "bully"
 
+/obj/structure/sign/double/chan
+	name = "for chan poster"
+	icon_state = "4chan"
+
+/obj/structure/sign/double/chan/left1
+	icon_state = "chan0"
+
+/obj/structure/sign/double/chan/left2
+	icon_state = "chan1"
+
+/obj/structure/sign/double/chan/right1
+	icon_state = "chan2"
+
+/obj/structure/sign/double/chan/right2
+	icon_state = "chan3"
 
 /*####################DECK SIGNS####################*/
 /obj/structure/sign/deck/bridge
