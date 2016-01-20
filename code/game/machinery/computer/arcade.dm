@@ -32,6 +32,7 @@
 							/obj/item/toy/redbutton									= 2,
 							/obj/item/stack/tile/fakespace							= 2,
 							/obj/item/clothing/suit/syndicatefake					= 5, //vends all types, see vend_prize()
+							/obj/item/toy/figure									= 5, //vends all types, see vend_prize()
 							/obj/item/weapon/storage/fancy/crayons					= 2,
 							/obj/item/toy/spinningtoy								= 2,
 							/obj/item/toy/prize										= 6, //vends all types except base, see vend_prize()
@@ -185,6 +186,9 @@
 
 	else if(prize == /obj/item/toy/prize)
 		prize = pick(typesof(/obj/item/toy/prize) - /obj/item/toy/prize)
+
+	else if(prize == /obj/item/toy/figure)
+		prize = pick(typesof(/obj/item/toy/figure) - /obj/item/toy/figure)
 
 	else if(prize == /obj/item/toy/gun) //Ammo comes with the gun
 		new /obj/item/toy/ammo/gun(src.loc)

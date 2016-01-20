@@ -584,7 +584,7 @@ var/global/list/moneytypes = list(
 	throw_speed = 4
 	throw_range = 20
 
-/obj/item/weapon/camera_bug/attack_self(mob/usr as mob)
+/obj/item/weapon/device/camera_bug/attack_self(mob/usr as mob)
 	var/list/cameras = new/list()
 	for (var/obj/machinery/camera/C in cameranet.cameras)
 		if (C.bugged && C.status)

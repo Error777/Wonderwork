@@ -237,3 +237,27 @@
 		return pick(prob(1);/obj/item/ashtray/bronze,\
 					prob(3);/obj/item/ashtray/glass,\
 					prob(4);/obj/item/ashtray/plastic)
+
+/obj/random/charge
+	name = "Random Vending Charge"
+	desc = "This is a random vending charge."
+	icon_state = "charge"
+	item_to_spawn()
+		return pick(prob(2);/obj/item/weapon/vending_charge/generic,\
+					prob(4);/obj/item/weapon/vending_charge/medical,\
+					prob(1);/obj/item/weapon/vending_charge/chemistry,\
+					prob(1);/obj/item/weapon/vending_charge/genetics,\
+					prob(1);/obj/item/weapon/vending_charge/toxins,\
+					prob(4);/obj/item/weapon/vending_charge/robotics,\
+					prob(2);/obj/item/weapon/vending_charge/bar,\
+					prob(2);/obj/item/weapon/vending_charge/kitchen,\
+					prob(4);/obj/item/weapon/vending_charge/engineering,\
+					prob(2);/obj/item/weapon/vending_charge/security,\
+					prob(4);/obj/item/weapon/vending_charge/coffee,\
+					prob(4);/obj/item/weapon/vending_charge/snack,\
+					prob(1);/obj/item/weapon/vending_charge/cart,\
+					prob(4);/obj/item/weapon/vending_charge/cigarette,\
+					prob(2);/obj/item/weapon/vending_charge/hydroponics,\
+					prob(4);/obj/item/weapon/vending_charge/soda,\
+					prob(2);/obj/item/weapon/vending_charge/clothes,\
+					prob(1);/obj/item/weapon/vending_charge/liquid)

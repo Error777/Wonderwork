@@ -1,11 +1,12 @@
+#define STANDARD_CHARGE 1
+
 /datum/data/vending_product
 	var/product_name = "generic"
 	var/product_path = null
 	var/amount = 0
 	var/price = 0
+	var/max_amount = 0
 	var/display_color = "blue"
-
-
 
 /obj/machinery/vending
 	name = "Vendomat"
@@ -20,8 +21,6 @@
 	var/vend_delay = 10 //How long does it take to vend?
 	var/datum/data/vending_product/currently_vending = null // A /datum/data/vending_product instance of what we're paying for right now.
 	var/unwrenched = 0
-	var/charge_type = "Generic"
-
 	// To be filled out at compile time
 	var/list/products	= list() // For each, use the following pattern:
 	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
@@ -53,6 +52,8 @@
 	var/const/WIRE_SCANID = 2
 	var/const/WIRE_SHOCK = 3
 	var/const/WIRE_SHOOTINV = 4
+
+	var/obj/item/weapon/vending_charge/refill_canister = null		//The type of refill canisters used by this machine.
 
 	var/obj/machinery/account_database/linked_db
 	var/datum/money_account/linked_account
@@ -113,17 +114,19 @@
 
 	return
 
-/obj/machinery/vending/proc/build_inventory(var/list/productlist,hidden=0,req_coin=0)
+/obj/machinery/vending/proc/build_inventory(var/list/productlist,hidden=0,req_coin=0, start_empty = null)
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
 		var/price = prices[typepath]
-		if(isnull(amount)) amount = 1
-
+		if(isnull(amount))
+			amount = 0
 		var/atom/temp = new typepath(null)
 		var/datum/data/vending_product/R = new /datum/data/vending_product()
 		R.product_name = temp.name
 		R.product_path = typepath
-		R.amount = amount
+		if(!start_empty)
+			R.amount = amount
+		R.max_amount = amount
 		R.price = price
 		R.display_color = pick("red","blue","green")
 
@@ -135,18 +138,36 @@
 			product_records += R
 //		world << "Added: [R.product_name]] - [R.amount] - [R.product_path]"
 	return
-/*
+
 //WIP//
-/obj/machinery/vending/proc/DoCharge(obj/item/weapon/vending_charge/V as obj, mob/user as mob)
-	if(charge_type == V.charge_type)
-		var/datum/data/vending_product/R
-		for(var/i=1, i<=product_records.len, i++)
-			R = product_records[i]
-			R.amount += V.charge_amount
-			product_records[i] = R
-		del(V)
-		user << "You insert the charge into the machine."
-*/
+/obj/machinery/vending/proc/refill_inventory(var/obj/item/weapon/vending_charge/refill, datum/data/vending_product/machine)
+	var/total = 0
+
+	var/to_restock = 0
+	for(var/datum/data/vending_product/machine_content in machine)
+		if(machine_content.amount == 0 && refill.charges > 0)
+			machine_content.amount++
+			refill.charges--
+			total++
+		to_restock += machine_content.max_amount - machine_content.amount
+	if(to_restock <= refill.charges)
+		for(var/datum/data/vending_product/machine_content in machine)
+			machine_content.amount = machine_content.max_amount
+		refill.charges -= to_restock
+		total += to_restock
+	else
+		var/tmp_charges = refill.charges
+		for(var/datum/data/vending_product/machine_content in machine)
+			if(refill.charges == 0)
+				break
+			var/restock = Ceiling(((machine_content.max_amount - machine_content.amount)/to_restock)*tmp_charges)
+			if(restock > refill.charges)
+				restock = refill.charges
+			machine_content.amount += restock
+			refill.charges -= restock
+			total += restock
+	return total
+
 /obj/machinery/vending/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/card/emag))
 		src.emagged = 1
@@ -208,6 +229,39 @@
 				usr << "\icon[src]<span class='warning'>Unable to connect to linked account.</span>"
 		else
 			usr << "\icon[src]<span class='warning'>Unable to connect to accounts database.</span>"
+	else if(istype(W, refill_canister) && refill_canister != null)
+		if(stat & (BROKEN|NOPOWER))
+			user << "<span class='notice'>It does nothing.</span>"
+		else if(panel_open)
+			//if the panel is open we attempt to refill the machine
+			var/obj/item/weapon/vending_charge/canister = W
+			if(canister.charges == 0)
+				user << "<span class='notice'>This [canister.name] is empty!</span>"
+			else
+				var/transfered = refill_inventory(canister,product_records,user)
+				if(transfered)
+					user << "<span class='notice'>You loaded [transfered] items in \the [name].</span>"
+				else
+					user << "<span class='notice'>The [name] is fully stocked.</span>"
+			return;
+		else
+			user << "<span class='notice'>You should probably unscrew the service panel first.</span>"
+	else if (istype(W, /obj/item/weapon/crowbar))
+		var/list/all_products = product_records + hidden_records + coin_records
+		for(var/datum/data/vending_product/machine_content in all_products)
+			while(machine_content.amount !=0)
+				var/safety = 0 //to avoid infinite loop
+				for(var/obj/item/weapon/vending_charge/VR in component_parts)
+					safety++
+					if(VR.charges < initial(VR.charges))
+						VR.charges++
+						machine_content.amount--
+						if(!machine_content.amount)
+							break
+					else
+						safety--
+				if(safety <= 0)
+					break
 	else
 		..()
 
@@ -649,7 +703,7 @@
 	product_slogans = "Enjoy your meal.;Enough calories to support strenuous labor."
 	product_ads = "Sufficiently healthy.;Efficiently produced tofu!;Mmm! So good!;Have a meal.;You need food to live!;Have some more candy corn!;Try our new ice cups!"
 	icon_state = "sustenance"
-	charge_type = "Snack"
+	refill_canister = /obj/item/weapon/vending_charge/snack
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/tofu = 24,
 					/obj/item/weapon/reagent_containers/food/drinks/ice = 12,
 					/obj/item/weapon/reagent_containers/food/snacks/candy_corn = 6)
@@ -660,7 +714,7 @@
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	icon_state = "boozeomat"        //////////////18 drink entities below, plus the glasses, in case someone wants to edit the number of bottles
 	icon_deny = "boozeomat-deny"
-	charge_type = "Bar"
+	refill_canister = /obj/item/weapon/vending_charge/bar
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/gin = 5,/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla = 5,/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth = 5,/obj/item/weapon/reagent_containers/food/drinks/bottle/rum = 5,
@@ -690,7 +744,7 @@
 	product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies"
 	icon_state = "coffee"
 	icon_vend = "coffee-vend"
-	charge_type = "Coffee"
+	refill_canister = /obj/item/weapon/vending_charge/coffee
 	vend_delay = 34
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/coffee = 25,/obj/item/weapon/reagent_containers/food/drinks/tea = 25,/obj/item/weapon/reagent_containers/food/drinks/h_chocolate = 25)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/ice = 10)
@@ -705,7 +759,7 @@
 	product_slogans = "Try our new nougat bar!;Twice the calories for half the price!"
 	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
 	icon_state = "snack"
-	charge_type = "Snack"
+	refill_canister = /obj/item/weapon/vending_charge/snack
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/candy = 6,/obj/item/weapon/reagent_containers/food/drinks/dry_ramen = 6,/obj/item/weapon/reagent_containers/food/snacks/chips =6,
 					/obj/item/weapon/reagent_containers/food/snacks/sosjerky = 6,/obj/item/weapon/reagent_containers/food/snacks/no_raisin = 6,/obj/item/weapon/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers = 6)
@@ -720,7 +774,7 @@
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
 	icon_state = "Cola_Machine"
-	charge_type = "Soda"
+	refill_canister = /obj/item/weapon/vending_charge/soda
 	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/soda/cola = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/space_mountain_wind = 10,
@@ -735,7 +789,7 @@
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
 	icon_state = "spaceup"
-	charge_type = "Soda"
+	refill_canister = /obj/item/weapon/vending_charge/soda
 	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not spaceup?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/soda/cola = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/space_mountain_wind = 10,
@@ -747,7 +801,7 @@
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
 	icon_state = "spacewind"
-	charge_type = "Soda"
+	refill_canister = /obj/item/weapon/vending_charge/soda
 	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not spacewind?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/soda/cola = 10,/obj/item/weapon/reagent_containers/food/drinks/soda/space_mountain_wind = 10,
@@ -760,7 +814,7 @@
 	name = "PTech"
 	desc = "Cartridges for PDAs"
 	product_slogans = "Carts to go!"
-	charge_type = "Cart"
+	refill_canister = /obj/item/weapon/vending_charge/cart
 	icon_state = "cart"
 	icon_deny = "cart-deny"
 	products = list(/obj/item/weapon/cartridge/medical = 10,/obj/item/weapon/cartridge/engineering = 10,/obj/item/weapon/cartridge/security = 10,
@@ -775,6 +829,7 @@
 	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs."
 	vend_delay = 34
 	icon_state = "cigs"
+	refill_canister = /obj/item/weapon/vending_charge/cigarette
 	products = list(/obj/item/weapon/storage/fancy/cigarettes = 10,/obj/item/weapon/storage/fancy/cigarettes/cigpack_uplift = 4,
 					/obj/item/weapon/storage/fancy/cigarettes/cigpack_robust = 5,/obj/item/weapon/storage/fancy/cigarettes/cigpack_robustgold = 2,
 					/obj/item/weapon/storage/fancy/cigarettes/cigpack_carp = 3,/obj/item/weapon/storage/fancy/cigarettes/cigpack_midori = 6,
@@ -790,7 +845,7 @@
 	desc = "Medical drug dispenser."
 	icon_state = "med"
 	icon_deny = "med-deny"
-	charge_type = "Medical"
+	refill_canister = /obj/item/weapon/vending_charge/medical
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access_txt = "5"
 	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
@@ -804,7 +859,7 @@
 	name = "Blood'o'mate"
 	desc = "Blood dispenser."
 	icon_state = "bloodomate"
-	charge_type = "Medical"
+	refill_canister = /obj/item/weapon/vending_charge/medical
 	product_ads = "Go save some lives!; The best syntetic blood for your medbay.; Only the finest donors.; Viruses-free!; Need blood?; Red and liquid!"
 	req_access_txt = "5"
 	products = list(/obj/item/weapon/reagent_containers/blood/APlus = 4,/obj/item/weapon/reagent_containers/blood/AMinus = 4,
@@ -818,7 +873,7 @@
 /obj/machinery/vending/plasmaresearch
 	name = "Toximate 3000"
 	desc = "All the fine parts you need in one vending machine!"
-	charge_type = "Toxins"
+	refill_canister = /obj/item/weapon/vending_charge/toxins
 	products = list(/obj/item/clothing/under/rank/scientist = 6,/obj/item/clothing/suit/bio_suit = 6,/obj/item/clothing/head/bio_hood = 6,
 					/obj/item/device/transfer_valve = 6,/obj/item/device/assembly/timer = 6,/obj/item/device/assembly/signaler = 6,
 					/obj/item/device/assembly/prox_sensor = 6,/obj/item/device/assembly/igniter = 6)
@@ -829,7 +884,7 @@
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
-	charge_type = "Medical"
+	refill_canister = /obj/item/weapon/vending_charge/medical
 	req_access_txt = "5"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1)
@@ -840,7 +895,7 @@
 	desc = "Wall-mounted Medical Equipment dispenser."
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
-	charge_type = "Medical"
+	refill_canister = /obj/item/weapon/vending_charge/medical
 	req_access_txt = "5"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 5,/obj/item/weapon/reagent_containers/syringe/antitoxin = 3,/obj/item/stack/medical/bruise_pack = 3,
@@ -851,7 +906,7 @@
 	name = "PizzaFlat"
 	desc = "Pizza machine only on a PizzaFlat Ñorporation. With a taste of Italy."
 	icon_state = "pizzavend"
-	charge_type = "Snack"
+	refill_canister = /obj/item/weapon/vending_charge/snack
 	products = list(/obj/item/pizzabox/margherita = 3,/obj/item/pizzabox/meat = 4,/obj/item/pizzabox/mushroom = 2,)
 	premium = list(/obj/item/pizzabox/vegetable = 1)
 
@@ -861,7 +916,7 @@
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
-	charge_type = "Security"
+	refill_canister = /obj/item/weapon/vending_charge/security
 	req_access_txt = "1"
 	products = list(/obj/item/weapon/handcuffs = 8,/obj/item/weapon/grenade/flashbang = 4,/obj/item/device/flash = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6)
@@ -874,7 +929,7 @@
 	product_ads = "We like plants!;Don't you want some?;The greenest thumbs ever.;We like big plants.;Soft soil..."
 	icon_state = "nutri"
 	icon_deny = "nutri-deny"
-	charge_type = "Hydroponics"
+	refill_canister = /obj/item/weapon/vending_charge/hydroponics
 	products = list(/obj/item/beezeez = 45,/obj/item/nutrient/ez = 35,/obj/item/nutrient/l4z = 25,/obj/item/nutrient/rh = 15,/obj/item/weapon/pestspray = 20,
 					/obj/item/weapon/reagent_containers/syringe = 5,/obj/item/weapon/storage/bag/plants = 5)
 	contraband = list(/obj/item/weapon/reagent_containers/glass/bottle/ammonia = 10,/obj/item/weapon/reagent_containers/glass/bottle/diethylamine = 5)
@@ -885,7 +940,7 @@
 	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
-	charge_type = "Hydroponics"
+	refill_canister = /obj/item/weapon/vending_charge/hydroponics
 	products = list(/obj/item/seeds/bananaseed = 3,/obj/item/seeds/berryseed = 3,/obj/item/seeds/carrotseed = 3,/obj/item/seeds/chantermycelium = 3,/obj/item/seeds/chiliseed = 3,
 					/obj/item/seeds/cornseed = 3, /obj/item/seeds/eggplantseed = 3, /obj/item/seeds/potatoseed = 3, /obj/item/seeds/replicapod = 3,/obj/item/seeds/soyaseed = 3,
 					/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
@@ -913,7 +968,7 @@
 	desc = "A kitchen and restaurant equipment vendor"
 	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
-	charge_type = "Kitchen"
+	refill_canister = /obj/item/weapon/vending_charge/kitchen
 	products = list(/obj/item/weapon/tray = 8,/obj/item/weapon/kitchen/utensil/fork = 6,/obj/item/weapon/kitchenknife = 3,/obj/item/weapon/reagent_containers/food/drinks/drinkingglass = 8,/obj/item/clothing/suit/chef/classic = 2)
 	contraband = list(/obj/item/weapon/kitchen/utensil/spoon = 2,/obj/item/weapon/kitchen/utensil/knife = 2,/obj/item/weapon/kitchen/rollingpin = 2, /obj/item/weapon/butch = 2)
 
@@ -921,7 +976,7 @@
 	name = "BODA"
 	desc = "Old sweet water vending machine"
 	icon_state = "sovietsoda"
-	charge_type = "Soda"
+	refill_canister = /obj/item/weapon/vending_charge/soda
 	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/soda = 30)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/cola = 20)
@@ -931,6 +986,7 @@
 	desc = "Tools for tools."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
+	refill_canister = /obj/item/weapon/vending_charge/engineering
 	//req_access_txt = "12" //Maintenance access
 	products = list(/obj/item/weapon/cable_coil/random = 10,/obj/item/weapon/crowbar = 5,/obj/item/weapon/weldingtool = 3,/obj/item/weapon/wirecutters = 5,
 					/obj/item/weapon/wrench = 5,/obj/item/device/analyzer = 5,/obj/item/device/t_scanner = 5,/obj/item/weapon/screwdriver = 5)
@@ -942,7 +998,7 @@
 	desc = "Spare tool vending. What? Did you expect some witty description?"
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
-	charge_type = "Engineering"
+	refill_canister = /obj/item/weapon/vending_charge/engineering
 	req_access_txt = "11" //Engineering Equipment access
 	products = list(/obj/item/clothing/glasses/meson = 2,/obj/item/device/multitool = 4,/obj/item/weapon/airlock_electronics = 10,/obj/item/weapon/module/power_control = 10,
 					/obj/item/weapon/airalarm_electronics = 10,/obj/item/weapon/cell/high = 10, /obj/item/weapon/stock_parts/scanning_module = 5,/obj/item/weapon/stock_parts/micro_laser = 5,
@@ -956,7 +1012,7 @@
 	desc = "Everything you need for do-it-yourself station repair."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
-	charge_type = "Engineering"
+	refill_canister = /obj/item/weapon/vending_charge/engineering
 	req_access_txt = "11"
 	products = list(/obj/item/clothing/under/rank/chief_engineer = 4,/obj/item/clothing/under/rank/engineer = 4,/obj/item/clothing/shoes/orange = 4,/obj/item/clothing/head/hardhat = 4,
 					/obj/item/weapon/storage/belt/utility = 4,/obj/item/clothing/glasses/meson = 4,/obj/item/clothing/gloves/yellow = 4, /obj/item/weapon/screwdriver = 12,
@@ -974,7 +1030,7 @@
 	desc = "All the tools you need to create your own robot army."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
-	charge_type = "Robotics"
+	refill_canister = /obj/item/weapon/vending_charge/robotics
 	req_access_txt = "29"
 	products = list(/obj/item/clothing/suit/storage/labcoat = 4,/obj/item/clothing/under/rank/roboticist = 4,/obj/item/weapon/cable_coil = 4,/obj/item/device/flash = 4,
 					/obj/item/weapon/cell/high = 12, /obj/item/device/assembly/prox_sensor = 3,/obj/item/device/assembly/signaler = 3,/obj/item/device/healthanalyzer = 3,
@@ -983,85 +1039,31 @@
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 
 /obj/machinery/vending/trader
-	name = "Space Trader" //OCD had to be uppercase to look nice with the new formating
+	name = "Space Trader"
 	desc = "Robusted tool vending machine. Honk?"
 	icon_state = "spacetrader"
+	refill_canister = /obj/item/weapon/vending_charge/generic
 	products = list(/obj/item/weapon/melee/classic_baton = 5,/obj/item/weapon/handcuffs = 10,/obj/item/weapon/flamethrower/full = 4,/obj/item/weapon/storage/fancy/cigarettes/cigpack_syndicate)
 	contraband = list(/obj/item/weapon/chainsaw = 2)
 	premium = list(/obj/item/weapon/gun/projectile/automatic/pistol = 1)
 
-
-/obj/item/weapon/vending_charge
-	name = "Vending Charge"
-	icon = 'icons/obj/vending_restock.dmi'
-	icon_state = "generic-charge"
-	var/charge_type = "Generic"
-	var/charge_amount = 10
-
-/obj/item/weapon/vending_charge/New()
-	..()
-	name = "\improper [charge_type] charge unit"
-
-/obj/item/weapon/vending_charge/medical
-	charge_type = "Medical"
-	icon_state = "medical-charge"
-
-/obj/item/weapon/vending_charge/chemistry
-	charge_type = "Chemistry"
-	icon_state = "chemistry-charge"
-
-/obj/item/weapon/vending_charge/genetics
-	charge_type = "Genetics"
-	icon_state = "generic-charge"
-
-/obj/item/weapon/vending_charge/toxins
-	charge_type = "Toxins"
-	icon_state = "toxins-charge"
-
-/obj/item/weapon/vending_charge/robotics
-	charge_type = "Robotics"
-	icon_state = "robotics-charge"
-
-/obj/item/weapon/vending_charge/bar
-	charge_type = "Bar"
-	icon_state = "bar-charge"
-
-/obj/item/weapon/vending_charge/kitchen
-	charge_type = "Kitchen"
-	icon_state = "kitchen-charge"
-
-/obj/item/weapon/vending_charge/engineering
-	charge_type = "Engineering"
-	icon_state = "engineering-charge"
-
-/obj/item/weapon/vending_charge/security
-	charge_type = "Security"
-	icon_state = "security-charge"
-
-/obj/item/weapon/vending_charge/coffee
-	charge_type = "Coffee"
-	icon_state = "coffee-charge"
-
-/obj/item/weapon/vending_charge/snack
-	charge_type = "Snack"
-	icon_state = "snack-charge"
-
-/obj/item/weapon/vending_charge/cart
-	charge_type = "Cart"
-	icon_state = "cart-charge"
-
-/obj/item/weapon/vending_charge/cigarette
-	charge_type = "Cigarette"
-	icon_state = "cigarette-charge"
-
-/obj/item/weapon/vending_charge/hydroponics
-	charge_type = "Hydroponics"
-	icon_state = "hydroponics-charge"
-
-/obj/item/weapon/vending_charge/soda
-	charge_type = "Soda"
-	icon_state = "soda-charge"
-
-/obj/item/weapon/vending_charge/liquid
-	charge_type = "LiquidRation"
-	icon_state = "liquidfood-charge"
+/obj/machinery/vending/clothing
+	name = "ClothesMate" //renamed to make the slogan rhyme
+	desc = "A vending machine for clothing."
+	icon_state = "clothes"
+	refill_canister = /obj/item/weapon/vending_charge/clothes
+	product_ads = "Dress for success!;Prepare to look swagalicious!;Look at all this free swag!;Why leave style up to fate? Use the ClothesMate!"
+	vend_delay = 15
+	products = list(
+	/obj/item/clothing/head/that=2,/obj/item/clothing/under/color/white=5,/obj/item/clothing/shoes/white=5,
+	/obj/item/clothing/under/color/black=5,	/obj/item/clothing/shoes/black=5,
+	/obj/item/clothing/under/color/blue=5,/obj/item/clothing/shoes/blue,/obj/item/clothing/head/soft/blue=5,
+	/obj/item/clothing/under/color/yellow=5,/obj/item/clothing/shoes/yellow=5,/obj/item/clothing/head/soft/yellow=5,
+	/obj/item/clothing/under/color/green=5,/obj/item/clothing/shoes/green=5,/obj/item/clothing/head/soft/green=5,
+	/obj/item/clothing/under/color/orange=5,/obj/item/clothing/shoes/orange=5,/obj/item/clothing/head/soft/orange=5,
+	/obj/item/clothing/under/color/grey=5,/obj/item/clothing/head/soft/grey=5,/obj/item/clothing/under/color/pink=5,
+	/obj/item/clothing/suit/unathi/mantle=2,/obj/item/clothing/suit/unathi/robe=2,/obj/item/clothing/head/soft/purple=1,
+	/obj/item/clothing/head/soft/red=1,/obj/item/clothing/shoes/sandal=5,/obj/item/clothing/suit/storage/labcoat=4,
+	/obj/item/clothing/suit/bearcoat=1,/obj/item/clothing/shoes/bearboots=1)
+	contraband = list(/obj/item/clothing/head/ushanka=1,/obj/item/clothing/under/soviet=1)
+	premium = list(/obj/item/clothing/head/mailman=1,/obj/item/clothing/under/rank/mailman=1)
