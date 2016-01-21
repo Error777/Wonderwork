@@ -134,20 +134,20 @@
 		icon_state = "hardhat[on]_[item_color]"
 		item_state = "hardhat[on]_[item_color]"
 
-		if(on)	user.ul_SetLuminosity(user.luminosity + brightness_on)
-		else	user.ul_SetLuminosity(user.luminosity - brightness_on)
+		if(on)	user.AddLuminosity(user.luminosity + brightness_on)
+		else	user.AddLuminosity(user.luminosity - brightness_on)
 
 	pickup(mob/user)
 		if(on)
-			user.ul_SetLuminosity(user.luminosity + brightness_on)
+			user.AddLuminosity(user.luminosity + brightness_on)
 //			user.UpdateLuminosity()
-			ul_SetLuminosity(0)
+			SetLuminosity(0)
 
 	dropped(mob/user)
 		if(on)
-			user.ul_SetLuminosity(user.luminosity - brightness_on)
+			user.AddLuminosity(user.luminosity - brightness_on)
 //			user.UpdateLuminosity()
-			ul_SetLuminosity(brightness_on)
+			AddLuminosity(brightness_on)
 
 /*
  * Kitty ears

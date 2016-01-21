@@ -233,13 +233,13 @@
 
 	do_animate("opening")
 	icon_state = "door0"
-	src.ul_SetOpacity(0)
+	src.SetOpacity(0)
 	sleep(10)
 	src.layer = base_layer		//NO, FIREDOOR, NO!
 	src.density = 0
 	explosion_resistance = 0
 	update_icon()
-	ul_SetOpacity(0)
+	SetOpacity(0)
 	update_nearby_tiles()
 
 	if(operating)	operating = 0
@@ -266,7 +266,7 @@
 	sleep(10)
 	update_icon()
 	if(visible && !glass)
-		ul_SetOpacity(1)
+		SetOpacity(1)
 	operating = 0
 	update_nearby_tiles()
 

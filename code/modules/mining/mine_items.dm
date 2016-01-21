@@ -8,7 +8,7 @@
 	luminosity = 8
 
 	New()
-		ul_SetLuminosity(8,8,8)
+		AddLuminosity(8,8,8)
 
 /**********************Miner Lockers**************************/
 

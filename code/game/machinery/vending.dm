@@ -1057,7 +1057,7 @@
 	products = list(
 	/obj/item/clothing/head/that=2,/obj/item/clothing/under/color/white=5,/obj/item/clothing/shoes/white=5,
 	/obj/item/clothing/under/color/black=5,	/obj/item/clothing/shoes/black=5,
-	/obj/item/clothing/under/color/blue=5,/obj/item/clothing/shoes/blue,/obj/item/clothing/head/soft/blue=5,
+	/obj/item/clothing/under/color/blue=5,/obj/item/clothing/shoes/blue=5,/obj/item/clothing/head/soft/blue=5,
 	/obj/item/clothing/under/color/yellow=5,/obj/item/clothing/shoes/yellow=5,/obj/item/clothing/head/soft/yellow=5,
 	/obj/item/clothing/under/color/green=5,/obj/item/clothing/shoes/green=5,/obj/item/clothing/head/soft/green=5,
 	/obj/item/clothing/under/color/orange=5,/obj/item/clothing/shoes/orange=5,/obj/item/clothing/head/soft/orange=5,

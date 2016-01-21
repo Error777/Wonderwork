@@ -451,7 +451,7 @@ var/list/forbidden_varedit_object_types = list(
 			if(variable=="luminosity")
 				var/var_new = input("Enter new number:","Num",O.vars[variable]) as null|num
 				if(var_new == null) return
-				O.ul_SetLuminosity(var_new)
+				O.AddLuminosity(var_new)
 			else
 				var/var_new =  input("Enter new number:","Num",O.vars[variable]) as null|num
 				if(var_new==null) return

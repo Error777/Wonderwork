@@ -48,7 +48,7 @@ atom/var/LuminosityBlue = 0
 
 atom/var/ul_Extinguished = UL_I_ONZERO
 
-atom/proc/ul_SetLuminosity(var/Red, var/Green = Red, var/Blue = Red)
+atom/proc/SetLuminosity(var/Red, var/Green = Red, var/Blue = Red)
 
 	if(LuminosityRed == min(Red, ul_TopLuminosity) && LuminosityGreen == min(Green, ul_TopLuminosity) && LuminosityBlue == min(Blue, ul_TopLuminosity))
 		return //No point doing all that work if it won't have any effect anyways...
@@ -80,11 +80,11 @@ atom/proc/SetLuminocity_NewColor(var/textcolor = "")	//To use one var instead of
 	var/red = text2num(copytext(textcolor, 1, 2))
 	var/green = text2num(copytext(textcolor, 2, 3))
 	var/blue = text2num(copytext(textcolor, 3, 4))
-	ul_SetLuminosity(red, green, blue)
+	SetLuminosity(red, green, blue)
 	return
 
 atom/proc/AddLuminosity(var/Red, var/Green = Red, var/Blue = Red)
-	ul_SetLuminosity(LuminosityRed + Red, LuminosityGreen + Green, LuminosityBlue + Blue)
+	SetLuminosity(LuminosityRed + Red, LuminosityGreen + Green, LuminosityBlue + Blue)
 
 atom/proc/ul_Illuminate()
 	if (ul_Extinguished == UL_I_LIT)
@@ -210,7 +210,7 @@ atom/proc/ul_FalloffAmount(var/atom/ref)
 
 	return 0
 
-atom/proc/ul_SetOpacity(var/NewOpacity)
+atom/proc/SetOpacity(var/NewOpacity)
 	if(opacity != NewOpacity)
 
 		var/list/Blanked = ul_BlankLocal()
@@ -341,7 +341,7 @@ area/proc/ul_Light(var/Red = LightLevelRed, var/Green = LightLevelGreen, var/Blu
 
 	luminosity = LightLevelRed || LightLevelGreen || LightLevelBlue
 
-	ul_Overlay = image('ULIcons.dmi', , num2text(LightLevelRed) + "-" + num2text(LightLevelGreen) + "-" + num2text(LightLevelBlue), ul_Layer)
+	ul_Overlay = image('icons/effects/ULIcons.dmi', , num2text(LightLevelRed) + "-" + num2text(LightLevelGreen) + "-" + num2text(LightLevelBlue), ul_Layer)
 
 	overlays += ul_Overlay
 

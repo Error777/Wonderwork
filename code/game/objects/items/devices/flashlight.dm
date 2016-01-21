@@ -12,54 +12,63 @@
 	icon_action_button = "action_flashlight"
 	var/on = 0
 	var/brightness_on = 4 //luminosity when on
+	var/icon_on = "flashlight-on"
+	var/icon_off = "flashlight"
 
+/obj/item/device/flashlight/proc/Lighting()
+	update_brightness(src.loc)
 
 /obj/item/device/flashlight/attackby(var/obj/B, var/mob/user)
 	if (istype(B, /obj/item/weapon/storage/toolbox))
 		user << "You are silly? You can't insert this massive toolbox into flashlight."
-		return
+	return
 
 /obj/item/device/flashlight/initialize()
 	..()
 	if (on)
-		icon_state = "[initial(icon_state)]-on"
-		src.ul_SetLuminosity(brightness_on, brightness_on, 0)
+		icon_state = icon_on
+		src.AddLuminosity(brightness_on, brightness_on, 0)
 	else
-		icon_state = initial(icon_state)
-		src.ul_SetLuminosity(0)
+		icon_state = icon_off
+		src.SetLuminosity(0)
+
+/obj/item/device/flashlight/examine()
+	set src in usr
+	usr << text("\icon[src] A hand-held emergency light.")
+	return
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
 	if (on)
-		icon_state = "[initial(icon_state)]-on"
+		icon_state = icon_on
 		if(src.loc == user)
-			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+			user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
-			ul_SetLuminosity(brightness_on, brightness_on, 0)
-
+			SetLuminosity(brightness_on, brightness_on, 0)
 	else
-		icon_state = initial(icon_state)
+		icon_state = icon_off
 		if(src.loc == user)
-			user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+			user.AddLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
-			ul_SetLuminosity(0)
+			SetLuminosity(0)
 
 /obj/item/device/flashlight/on_enter_storage()
 	if(on)
-		icon_state = initial(icon_state)
-		usr.ul_SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
+		icon_state = icon_off
+		usr.AddLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
 		on = 0
 	else if (isturf(src.loc))
-		ul_SetLuminosity(0)
-	..()
-	return
+		SetLuminosity(0)
+		..()
+		return
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	if(!isturf(user.loc))
 		user << "You cannot turn the light on while in this [user.loc]." //To prevent some lighting anomalities.
 		return 0
 	on = !on
-	update_brightness(user)
+	update_brightness(src.loc)
 	return 1
+
 
 /obj/item/device/flashlight/attack(mob/M as mob, mob/user as mob)
 	src.add_fingerprint(user)
@@ -92,17 +101,16 @@
 	else
 		return ..()
 
-
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
-		user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
-		src.ul_SetLuminosity(0)
+		user.AddLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+		src.SetLuminosity(0)
 
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
-		user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
-		src.ul_SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+		src.AddLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
 
 
 /obj/item/device/flashlight/pen
@@ -112,7 +120,6 @@
 	item_state = ""
 	flags = FPRINT | TABLEPASS | CONDUCT
 	brightness_on = 2
-
 
 // the desk lamps are a bit special
 /obj/item/device/flashlight/lamp
@@ -127,14 +134,12 @@
 	g_amt = 0
 	on = 1
 
-
 // green-shaded desk lamp
 /obj/item/device/flashlight/lamp/green
 	desc = "A classic green-shaded desk lamp."
 	icon_state = "lampgreen"
 	item_state = "lampgreen"
 	brightness_on = 5
-
 
 /obj/item/device/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
@@ -145,7 +150,6 @@
 		attack_self(usr)
 
 // FLARES
-
 /obj/item/device/flashlight/flare
 	name = "flare"
 	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
@@ -185,7 +189,6 @@
 		update_brightness(null)
 
 /obj/item/device/flashlight/flare/attack_self(mob/user)
-
 	// Usual checks
 	if(!fuel)
 		user << "<span class='notice'>It's out of fuel.</span>"

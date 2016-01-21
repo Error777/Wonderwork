@@ -91,7 +91,6 @@ datum/controller/process/New(var/datum/controller/processScheduler/scheduler)
 	previousStatus = "idle"
 	idle()
 	name = "process"
-	schedule_interval = 50
 	sleep_interval = world.tick_lag / PROCESS_DEFAULT_SLEEP_INTERVAL
 	last_slept = 0
 	run_start = 0
@@ -164,6 +163,7 @@ datum/controller/process/proc/handleHung()
 	// If world.timeofday has rolled over, then we need to adjust.
 	if (TimeOfHour < run_start)
 		run_start -= 36000
+
 	var/msg = "[name] process hung at tick #[ticks]. Process was unresponsive for [(TimeOfHour - run_start) / 10] seconds and was restarted. Last task: [last_task]. Last Object Type: [lastObjType]"
 	logTheThing("debug", null, null, msg)
 	logTheThing("diary", null, null, msg, "debug")
@@ -180,6 +180,8 @@ datum/controller/process/proc/kill()
 
 		// Allow inheritors to clean up if needed
 		onKill()
+
+		killed = TRUE
 
 		// This should del
 		del(src)
@@ -227,7 +229,6 @@ datum/controller/process/proc/update()
 		setStatus(PROCESS_STATUS_PROBABLY_HUNG)
 	else if (elapsedTime > hang_warning_time)
 		setStatus(PROCESS_STATUS_MAYBE_HUNG)
-
 
 datum/controller/process/proc/getElapsedTime()
 	if (TimeOfHour < run_start)
@@ -314,3 +315,9 @@ datum/controller/process/proc/disable()
 
 datum/controller/process/proc/enable()
 	disabled = 0
+
+/datum/controller/process/proc/getLastRunTime()
+	return main.getProcessLastRunTime(src)
+
+/datum/controller/process/proc/getTicks()
+	return ticks

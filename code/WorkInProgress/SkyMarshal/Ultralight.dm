@@ -24,12 +24,10 @@
 #define ul_IsLuminous(A) (A.LuminosityRed || A.LuminosityGreen || A.LuminosityBlue)
 #define ul_Luminosity(A) max(A.LuminosityRed, A.LuminosityGreen, A.LuminosityBlue)
 
-
 #ifdef ul_LightingResolution
 var/ul_LightingResolutionSqrt = sqrt(ul_LightingResolution)
 #endif
 var/ul_SuppressLightLevelChanges = 0
-var/lighting_lumcount = 0
 
 
 var/list/ul_FastRoot = list(0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5,
@@ -49,7 +47,7 @@ atom/var/LuminosityBlue = 0
 
 atom/var/ul_Extinguished = UL_I_ONZERO
 
-atom/proc/ul_SetLuminosity(var/Red, var/Green = Red, var/Blue = Red)
+atom/proc/SetLuminosity(var/Red, var/Green = Red, var/Blue = Red)
 
 	if(LuminosityRed == min(Red, ul_TopLuminosity) && LuminosityGreen == min(Green, ul_TopLuminosity) && LuminosityBlue == min(Blue, ul_TopLuminosity))
 		return //No point doing all that work if it won't have any effect anyways...
@@ -74,6 +72,18 @@ atom/proc/ul_SetLuminosity(var/Red, var/Green = Red, var/Blue = Red)
 		ul_Illuminate()
 
 	return
+
+atom/proc/SetLuminocity_NewColor(var/textcolor = "")	//To use one var instead of three.
+	if(!textcolor)
+		return
+	var/red = text2num(copytext(textcolor, 1, 2))
+	var/green = text2num(copytext(textcolor, 2, 3))
+	var/blue = text2num(copytext(textcolor, 3, 4))
+	SetLuminosity(red, green, blue)
+	return
+
+atom/proc/AddLuminosity(var/Red, var/Green = Red, var/Blue = Red)
+	SetLuminosity(LuminosityRed + Red, LuminosityGreen + Green, LuminosityBlue + Blue)
 
 atom/proc/ul_Illuminate()
 	if (ul_Extinguished == UL_I_LIT)
@@ -171,6 +181,7 @@ atom/proc/ul_Extinguish()
 /*
  Calculates the correct lighting falloff value (used to calculate what brightness to set the turf to) to use,
   when called on a luminous atom and passed an atom in the turf to be lit.
+
  Supports multiple configurations, BS12 uses the circular falloff setting. This setting uses an array lookup
   to avoid the cost of the square root function.
 */
@@ -198,7 +209,7 @@ atom/proc/ul_FalloffAmount(var/atom/ref)
 
 	return 0
 
-atom/proc/ul_SetOpacity(var/NewOpacity)
+atom/proc/SetOpacity(var/NewOpacity)
 	if(opacity != NewOpacity)
 
 		var/list/Blanked = ul_BlankLocal()

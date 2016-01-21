@@ -4,15 +4,15 @@
  * This file contains constructs that the process scheduler expects to exist
  * in a standard ss13 fork.
  */
-
+/*
 /**
  * message_admins
  *
  * sends a message to admins
  */
 /proc/message_admins(msg)
-	world << msg
-
+	to_chat(world, msg)
+*/
 /**
  * logTheThing
  *
@@ -22,9 +22,9 @@
  */
 /proc/logTheThing(type, source, target, text, diaryType)
 	if(diaryType)
-		world << "Diary: \[[diaryType]:[type]] [text]"
+		to_chat(world, "Diary: \[[diaryType]:[type]] [text]")
 	else
-		world << "Log: \[[type]] [text]"
+		to_chat(world, "Log: \[[type]] [text]")
 
 /**
  * var/disposed
@@ -33,3 +33,6 @@
  * or the object is placed in an object pool (effectively out-of-play so to speak)
  */
 /datum/var/disposed
+// Garbage collection (controller).
+/datum/var/gcDestroyed
+/datum/var/timeDestroyed

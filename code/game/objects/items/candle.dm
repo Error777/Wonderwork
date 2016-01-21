@@ -48,7 +48,7 @@
 			//src.damtype = "fire"
 			for(var/mob/O in viewers(usr, null))
 				O.show_message(flavor_text, 1)
-			ul_SetLuminosity(CANDLE_LUM, CANDLE_LUM -2, 0)
+			AddLuminosity(CANDLE_LUM, CANDLE_LUM -2, 0)
 			processing_objects.Add(src)
 
 
@@ -71,16 +71,16 @@
 		if(lit)
 			lit = 0
 			update_icon()
-			ul_SetLuminosity(0)
-			user.ul_SetLuminosity(user.LuminosityRed - CANDLE_LUM, user.LuminosityGreen - (CANDLE_LUM - 2), user.LuminosityBlue)
+			SetLuminosity(0)
+			user.AddLuminosity(user.LuminosityRed - CANDLE_LUM, user.LuminosityGreen - (CANDLE_LUM - 2), user.LuminosityBlue)
 
 
 	pickup(mob/user)
 		if(lit)
-			ul_SetLuminosity(0)
-			user.ul_SetLuminosity(user.LuminosityRed + CANDLE_LUM, user.LuminosityGreen + (CANDLE_LUM - 2), user.LuminosityBlue)
+			SetLuminosity(0)
+			user.AddLuminosity(user.LuminosityRed + CANDLE_LUM, user.LuminosityGreen + (CANDLE_LUM - 2), user.LuminosityBlue)
 
 	dropped(mob/user)
 		if(lit)
-			user.ul_SetLuminosity(user.LuminosityRed - CANDLE_LUM, user.LuminosityGreen - (CANDLE_LUM - 2), user.LuminosityBlue)
-			src.ul_SetLuminosity(CANDLE_LUM, CANDLE_LUM, 0)
+			user.AddLuminosity(user.LuminosityRed - CANDLE_LUM, user.LuminosityGreen - (CANDLE_LUM - 2), user.LuminosityBlue)
+			src.AddLuminosity(CANDLE_LUM, CANDLE_LUM, 0)

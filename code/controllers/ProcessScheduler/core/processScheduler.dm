@@ -68,9 +68,10 @@ var/global/datum/controller/processScheduler/processScheduler
 /datum/controller/processScheduler/proc/setup()
 	// There can be only one
 	if(processScheduler && (processScheduler != src))
-		del(src)
-		return 0
-
+		del(processScheduler)
+		processScheduler = src
+	else if(!processScheduler)
+		processScheduler = src
 	var/process
 	// Add all the processes we can find, except for the ticker
 	for (process in typesof(/datum/controller/process) - /datum/controller/process)
@@ -114,6 +115,7 @@ var/global/datum/controller/processScheduler/processScheduler
 		// Check status changes
 		if(status != previousStatus)
 			//Status changed.
+
 			switch(status)
 				if(PROCESS_STATUS_PROBABLY_HUNG)
 					message_admins("Process '[p.name]' may be hung.")
@@ -323,6 +325,15 @@ var/global/datum/controller/processScheduler/processScheduler
 	if (hasProcess(processName))
 		var/datum/controller/process/process = nameToProcessMap[processName]
 		process.disable()
+
+/datum/controller/processScheduler/proc/getProcess(var/name)
+	return nameToProcessMap[name]
+
+/datum/controller/processScheduler/proc/getProcessLastRunTime(var/datum/controller/process/process)
+	return last_run_time[process]
+
+/datum/controller/processScheduler/proc/getIsRunning()
+	return isRunning
 
 /datum/controller/processScheduler/proc/getCurrentTickElapsedTime()
 	if (world.time > currentTick)

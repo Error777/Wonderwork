@@ -424,7 +424,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 						for(var/mob/O in viewers(user, null))
 							O.show_message("\red After a few attempts, \the [user] manages to light \the [src], they however burn themself in the process.", 1)
 
-				user.ul_SetLuminosity(user.LuminosityRed + 2, user.LuminosityGreen + 1, user.LuminosityBlue)
+				user.AddLuminosity(user.LuminosityRed + 2, user.LuminosityGreen + 1, user.LuminosityBlue)
 				processing_objects.Add(src)
 			else
 				src.lit = 0
@@ -437,7 +437,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					for(var/mob/O in viewers(user, null))
 						O.show_message("\red [user] quietly shuts off the [src].", 1)
 
-				user.ul_SetLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
+				user.AddLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
 				processing_objects.Remove(src)
 		else
 			return ..()
@@ -466,13 +466,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	pickup(mob/user)
 		if(lit)
-			ul_SetLuminosity(0)
-			user.ul_SetLuminosity(user.LuminosityRed + 2, user.LuminosityGreen + 1, user.LuminosityBlue)
+			SetLuminosity(0)
+			user.AddLuminosity(user.LuminosityRed + 2, user.LuminosityGreen + 1, user.LuminosityBlue)
 		return
 
 
 	dropped(mob/user)
 		if(lit)
-			user.ul_SetLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
-			ul_SetLuminosity(2,1,0)
+			user.AddLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
+			AddLuminosity(2,1,0)
 		return
