@@ -269,12 +269,6 @@
 /obj/machinery/light/New()
 	..()
 
-	processing_objects.Add(src)
-
-	var/area/A = get_area(src)
-	A.lights += src
-
-
 	spawn(2)
 		switch(fitting)
 			if("tube")
