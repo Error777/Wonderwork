@@ -21,7 +21,6 @@
 	throwpass = 1	//You can throw objects over this, despite it's density.")
 	var/parts = /obj/item/weapon/table_parts
 	var/dented = 0
-	var/icon/clicked
 	var/tabletype = 1
 /obj/structure/table/New()
 	..()
@@ -243,8 +242,6 @@
 		else
 			dir = 2
 
-	clicked = new/icon(src.icon, src.icon_state, src.dir)
-
 /obj/structure/table/ex_act(severity)
 	switch(severity)
 		if(1.0)
@@ -310,6 +307,7 @@
 
 
 /obj/structure/table/MouseDrop_T(obj/O as obj, mob/user as mob)
+
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(isrobot(user))
@@ -320,11 +318,7 @@
 	return
 
 
-/obj/structure/table/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
-	if (!W) return
-
-	var/list/params_list = params2list(params)
-
+/obj/structure/table/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
 		var/obj/item/weapon/grab/G = W
 		if(G.state<2)
@@ -398,13 +392,9 @@
 			O.show_message("\blue The [src] was sliced apart by [user]!", 1, "\red You hear [src] coming apart.", 2)
 		destroy()
 
-	if(user.drop_item(W, src.loc))
-		if(W.loc == src.loc && params_list.len)
-			var/clamp_x = clicked.Width() / 2
-			var/clamp_y = clicked.Height() / 2
-			W.pixel_x = Clamp(text2num(params_list["icon-x"]) - clamp_x, -clamp_x, clamp_x)
-			W.pixel_y = Clamp(text2num(params_list["icon-y"]) - clamp_y, -clamp_y, clamp_y)
+	user.drop_item(src)
 	return
+
 
 /*
  * Wooden tables
@@ -458,7 +448,7 @@
 	parts = /obj/item/weapon/table_parts/reinforced
 
 
-/obj/structure/table/reinforced/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
+/obj/structure/table/reinforced/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
@@ -497,7 +487,6 @@
 	flags = FPRINT
 	anchored = 1.0
 	throwpass = 1	//You can throw objects over this, despite it's density.
-	var/offset_step = 0
 
 /obj/structure/rack/ex_act(severity)
 	switch(severity)
@@ -546,32 +535,17 @@
 		step(O, get_dir(O, src))
 	return
 
-
 /obj/structure/rack/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/wrench))
 		new /obj/item/weapon/rack_parts( src.loc )
-		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		del(src)
 		return
-
 	if(isrobot(user))
 		return
-
-	if(user.drop_item(W, src.loc))
-		if(W.loc == src.loc)
-			switch(offset_step)
-				if(1)
-					W.pixel_x = -3
-					W.pixel_y = 3
-				if(2)
-					W.pixel_x = 0
-					W.pixel_y = 0
-				if(3)
-					W.pixel_x = 3
-					W.pixel_y = -3
-					offset_step = 0
-			offset_step++
-	return 1
+	user.drop_item()
+	if(W && W.loc)	W.loc = src.loc
+	return
 
 /obj/structure/rack/meteorhit(obj/O as obj)
 	del(src)

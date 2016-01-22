@@ -204,9 +204,9 @@
 		src.verbs -= x
 	return
 
-/atom/movable/overlay/attackby(a, b, c)
+/atom/movable/overlay/attackby(a, b)
 	if (src.master)
-		return src.master.attackby(a, b, c)
+		return src.master.attackby(a, b)
 	return
 
 /atom/movable/overlay/attack_paw(a, b, c)
