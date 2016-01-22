@@ -127,6 +127,15 @@
 	icon_opened = "radiationopen"
 	icon_closed = "radiation"
 
+/obj/structure/closet/crate/secure/radiation
+	desc = "A secure crate with a radiation sign on it."
+	name = "Radioactive gear crate"
+	icon = 'icons/obj/machines/reactor.dmi'
+	icon_state = "radcrate"
+	density = 1
+	icon_opened = "radcrateopen"
+	icon_closed = "radcrate"
+
 /obj/structure/closet/crate/secure/weapon
 	desc = "A secure weapons crate."
 	name = "Weapons crate"

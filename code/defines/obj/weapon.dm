@@ -901,6 +901,11 @@ var/global/list/moneytypes = list(
 /obj/item/weapon/research//Makes testing much less of a pain -Sieve
 	name = "research"
 	icon = 'icons/obj/stock_parts.dmi'
-	icon_state = "capacitor"
+	icon_state = "research_boost"
 	desc = "A debug item for research."
 	origin_tech = "materials=8;programming=8;magnets=8;powerstorage=8;bluespace=8;combat=8;biotech=8;syndicate=8"
+
+/obj/item/weapon/research/small//Makes testing much less of a pain -Sieve
+	name = "strange research part"
+	desc = "A strange item for research."
+	origin_tech = "materials=4;programming=4;magnets=4;powerstorage=4;bluespace=4;combat=4;biotech=4;syndicate=4"
