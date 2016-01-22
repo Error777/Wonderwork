@@ -226,7 +226,7 @@ its easier to just keep the beam vertical.
 	//usr << "[name]: Dn:[density] dir:[dir] cont:[contents] icon:[icon] is:[icon_state] loc:[loc]"
 	return
 
-/atom/proc/MouseDrop_T()
+/atom/proc/MouseDrop_T(atom/dropping, mob/user)
 	return
 
 /atom/proc/relaymove()
@@ -462,14 +462,13 @@ its easier to just keep the beam vertical.
 
 
 
-/atom/MouseDrop(atom/over_object as mob|obj|turf|area)
-	spawn(0)
-		if (istype(over_object, /atom))
-			over_object.MouseDrop_T(src, usr)
-		return
-	..()
-	return
+/atom/MouseDrop(atom/over)
+	if(!usr || !over) return
+	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
 
+	spawn(0)
+		over.MouseDrop_T(src,usr)
+	return
 
 /atom/Click(location,control,params)
 	//world << "atom.Click() on [src] by [usr] : src.type is [src.type]"
@@ -1193,7 +1192,7 @@ var/using_new_click_proc = 0 //TODO ERRORAGE (This is temporary, while the DblCl
 		dummies += D
 	usr << "[dummies.len] found!"
 */
-
+/*
 /atom/proc/Adjacent(atom/target)
 // ------- CLICKED OBJECT EXISTS IN GAME WORLD, DISTANCE FROM PERSON TO OBJECT IS 1 SQUARE OR THEY'RE ON THE SAME SQUARE -------
 
@@ -1299,3 +1298,4 @@ var/using_new_click_proc = 0 //TODO ERRORAGE (This is temporary, while the DblCl
 		// ------- TESTS ABOVE DETERMINED YOU CANNOT REACH THE TILE -------
 		return 0
 	return 1
+*/
