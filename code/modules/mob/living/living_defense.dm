@@ -162,3 +162,7 @@
 	adjust_fire_stacks(0.5)
 	IgniteMob()
 //END FIRE CODE
+
+/mob/living/proc/irradiate(amount)
+	if(amount)
+		apply_effect(amount, IRRADIATE, stunned)
