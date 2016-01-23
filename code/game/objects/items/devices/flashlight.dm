@@ -89,15 +89,16 @@
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
-		src.SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+		user.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - brightness_on, LuminosityBlue)
+		src.SetLuminosity(LuminosityRed + brightness_on, LuminosityGreen + brightness_on, LuminosityBlue)
+
 
 /obj/item/device/flashlight/on_enter_storage()
 	if(on)
 		icon_state = initial(icon_state)
-		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
+		usr.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - brightness_on, LuminosityBlue)
 		on = 0
-	else if (isturf(src.loc))
+	else if(isturf(src.loc))
 		SetLuminosity(0)
 		..()
 		return

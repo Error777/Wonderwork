@@ -145,7 +145,7 @@
 
 	dropped(mob/user)
 		if(on)
-			user.SetLuminosity(user.luminosity - brightness_on)
+			user.SetLuminosity(luminosity - brightness_on)
 //			user.UpdateLuminosity()
 			SetLuminosity(brightness_on)
 

@@ -32,13 +32,13 @@
 
 /obj/item/clothing/head/hardhat/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-		src.SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+		user.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - (brightness_on - 1), LuminosityBlue)
+		src.SetLuminosity(LuminosityRed + brightness_on, LuminosityGreen + (brightness_on - 1), LuminosityBlue)
 
 
 /obj/item/clothing/head/hardhat/on_enter_storage()
 	if(on)
-		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
+		usr.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - (brightness_on - 1), LuminosityBlue)
 		on = 0
 		icon_state = "hardhat[on]_[item_color]"
 		item_state = "hardhat[on]_[item_color]"

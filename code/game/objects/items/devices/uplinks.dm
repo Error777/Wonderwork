@@ -156,7 +156,9 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 // implant uplink (not the implant tool) and a preset headset uplink.
 
 /obj/item/device/radio/uplink/New()
+	..()
 	hidden_uplink = new(src)
+	hidden_uplink.uses = 10
 	icon_state = "radio"
 
 /obj/item/device/radio/uplink/attack_self(mob/user as mob)
@@ -164,7 +166,9 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 		hidden_uplink.trigger(user)
 
 /obj/item/device/multitool/uplink/New()
+	..()
 	hidden_uplink = new(src)
+	hidden_uplink.uses = 10
 
 /obj/item/device/multitool/uplink/attack_self(mob/user as mob)
 	if(hidden_uplink)

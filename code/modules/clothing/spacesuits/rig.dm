@@ -65,12 +65,12 @@
 
 /obj/item/clothing/head/helmet/space/rig/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+		user.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - (brightness_on - 1), LuminosityBlue)
 		SetLuminosity(brightness_on, brightness_on - 1, 0)
 
 /obj/item/clothing/head/helmet/space/rig/on_enter_storage()
 	if(on)
-		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
+		usr.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - (brightness_on - 1), LuminosityBlue)
 		on = 0
 		icon_state = "rig[on]-[item_color]"
 		item_state = "rig[on]-[item_color]"

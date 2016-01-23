@@ -467,7 +467,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/weapon/lighter/dropped(mob/user)
 	if(lit)
-		user.SetLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
+		user.SetLuminosity(LuminosityRed - 2, LuminosityGreen - 1, LuminosityBlue)
 		SetLuminosity(2,1,0)
 	return
 
@@ -475,6 +475,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(lit)
 		lit = 0
 		update_icon()
-		usr.SetLuminosity(usr.LuminosityRed - 2, usr.LuminosityGreen - 1, usr.LuminosityBlue)
+		usr.SetLuminosity(LuminosityRed - 2, LuminosityGreen - 1, LuminosityBlue)
 	..()
 	return
