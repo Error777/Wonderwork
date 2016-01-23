@@ -57,7 +57,7 @@
 			return
 		on = 1
 		user << "\blue You turn on the light"
-		AddLuminosity(brightness_on)
+		SetLuminosity(brightness_on)
 
 	updateicon()
 

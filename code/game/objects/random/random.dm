@@ -4,6 +4,7 @@
 	icon = 'icons/misc/random.dmi'
 	icon_state = "standart"
 	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
+	var/amount = 1
 
 
 // creates a new object and deletes itself
@@ -261,3 +262,85 @@
 					prob(4);/obj/item/weapon/vending_charge/soda,\
 					prob(2);/obj/item/weapon/vending_charge/clothes,\
 					prob(1);/obj/item/weapon/vending_charge/liquid)
+
+/obj/random/seeds
+	name = "Random Seed"
+	icon_state = "seeds"
+	item_to_spawn()
+		return pick(prob(2);/obj/item/seeds/amanitamycelium,\
+					prob(2);/obj/item/seeds/ambrosiadeusseed,\
+					prob(2);/obj/item/seeds/ambrosiavulgarisseed,\
+					prob(2);/obj/item/seeds/angelmycelium,\
+					prob(2);/obj/item/seeds/appleseed,\
+					prob(2);/obj/item/seeds/bananaseed,\
+					prob(2);/obj/item/seeds/berryseed,\
+					prob(2);/obj/item/seeds/bloodtomatoseed,\
+					prob(2);/obj/item/seeds/bluespacetomatoseed,\
+					prob(2);/obj/item/seeds/cabbageseed,\
+					prob(2);/obj/item/seeds/carrotseed,\
+					prob(2);/obj/item/seeds/chantermycelium,\
+					prob(2);/obj/item/seeds/cherryseed,\
+					prob(2);/obj/item/seeds/chiliseed,\
+					prob(2);/obj/item/seeds/cocoapodseed,\
+					prob(2);/obj/item/seeds/cornseed,\
+					prob(2);/obj/item/seeds/deathberryseed,\
+					prob(2);/obj/item/seeds/deathnettleseed,\
+					prob(2);/obj/item/seeds/eggplantseed,\
+					prob(2);/obj/item/seeds/eggyseed,\
+					prob(2);/obj/item/seeds/glowberryseed,\
+					prob(2);/obj/item/seeds/glowshroom,\
+					prob(2);/obj/item/seeds/goldappleseed,\
+					prob(2);/obj/item/seeds/grapeseed,\
+					prob(2);/obj/item/seeds/grassseed,\
+					prob(2);/obj/item/seeds/greengrapeseed,\
+					prob(2);/obj/item/seeds/harebell,\
+					prob(2);/obj/item/seeds/icepepperseed,\
+					prob(2);/obj/item/seeds/killertomatoseed,\
+					prob(2);/obj/item/seeds/kudzuseed,\
+					prob(2);/obj/item/seeds/lemonseed,\
+					prob(2);/obj/item/seeds/libertymycelium,\
+					prob(2);/obj/item/seeds/limeseed,\
+					prob(2);/obj/item/seeds/nettleseed,\
+					prob(2);/obj/item/seeds/orangeseed,\
+					prob(2);/obj/item/seeds/plastiseed,\
+					prob(2);/obj/item/seeds/plumpmycelium,\
+					prob(2);/obj/item/seeds/poisonberryseed,\
+					prob(2);/obj/item/seeds/poisonedappleseed,\
+					prob(2);/obj/item/seeds/poppyseed,\
+					prob(2);/obj/item/seeds/potatoseed,\
+					prob(2);/obj/item/seeds/pumpkinseed,\
+					prob(2);/obj/item/seeds/reishimycelium,\
+					prob(2);/obj/item/seeds/riceseed,\
+					prob(2);/obj/item/seeds/soyaseed,\
+					prob(2);/obj/item/seeds/sugarcaneseed,\
+					prob(2);/obj/item/seeds/sunflowerseed,\
+					//prob(2);/obj/item/seeds/synthbrainseed,
+					//prob(2);/obj/item/seeds/synthbuttseed,
+					//prob(2);/obj/item/seeds/synthmeatseed,
+					prob(2);/obj/item/seeds/tomatoseed,\
+					prob(2);/obj/item/seeds/towermycelium,\
+					prob(2);/obj/item/seeds/walkingmushroommycelium,\
+					prob(2);/obj/item/seeds/watermelonseed,\
+					prob(2);/obj/item/seeds/wheatseed,\
+					prob(2);/obj/item/seeds/whitebeetseed)
+
+/obj/random/dispensers
+	name = "Random Engie Dispenser"
+	icon_state = "engi_dispensers"
+	item_to_spawn()
+		return pick(prob(5);/obj/structure/reagent_dispensers/fueltank,\
+					prob(5);/obj/structure/reagent_dispensers/watertank)
+
+obj/random/materials
+	name = "engie materials spawner"
+	icon_state = "engi_materials"
+	item_to_spawn()
+		return pick(prob(5);/obj/item/stack/sheet/glass{amount=50},\
+					prob(4);/obj/item/stack/sheet/rglass{amount=50},\
+					prob(2);/obj/item/stack/sheet/plasmaglass{amount=50},\
+					prob(1);/obj/item/stack/sheet/plastic{amount=50},\
+					prob(5);/obj/item/stack/sheet/metal{amount=50},\
+					prob(2);/obj/item/stack/sheet/plasteel{amount=50},\
+					prob(2);/obj/item/stack/sheet/wood{amount=50},\
+					prob(5);/obj/item/stack/rods{amount=50},\
+					prob(3);/obj/item/stack/tile/grass{amount=50})

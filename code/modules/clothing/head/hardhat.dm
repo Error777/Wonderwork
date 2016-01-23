@@ -12,40 +12,40 @@
 	icon_action_button = "action_hardhat"
 	siemens_coefficient = 0.9
 
-	attack_self(mob/user)
-		if(!isturf(user.loc))
-			user << "You cannot turn the light on while in this [user.loc]" //To prevent some lighting anomalities.
-			return
-		on = !on
+/obj/item/clothing/head/hardhat/attack_self(mob/user)
+	if(!isturf(user.loc))
+		user << "You cannot turn the light on while in this [user.loc]" //To prevent some lighting anomalities.
+		return
+	on = !on
+	icon_state = "hardhat[on]_[item_color]"
+	item_state = "hardhat[on]_[item_color]"
+
+	if(on)
+		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+	else
+		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+
+/obj/item/clothing/head/hardhat/pickup(mob/user)
+	if(on)
+		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+		src.SetLuminosity(0)
+
+/obj/item/clothing/head/hardhat/dropped(mob/user)
+	if(on)
+		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+		src.SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+
+
+/obj/item/clothing/head/hardhat/on_enter_storage()
+	if(on)
+		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
+		on = 0
 		icon_state = "hardhat[on]_[item_color]"
 		item_state = "hardhat[on]_[item_color]"
-
-		if(on)
-			user.AddLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-		else
-			user.AddLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-
-	pickup(mob/user)
-		if(on)
-			user.AddLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-			src.SetLuminosity(0)
-
-	dropped(mob/user)
-		if(on)
-			user.AddLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-			src.AddLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
-
-
-	on_enter_storage()
-		if(on)
-			usr.AddLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
-			on = 0
-			icon_state = "hardhat[on]_[item_color]"
-			item_state = "hardhat[on]_[item_color]"
-		else if (isturf(src.loc))
-			SetLuminosity(0)
-		..()
-		return
+	else if (isturf(src.loc))
+		SetLuminosity(0)
+	..()
+	return
 
 /obj/item/clothing/head/hardhat/orange
 	icon_state = "hardhat0_orange"

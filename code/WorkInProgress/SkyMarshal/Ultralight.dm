@@ -82,9 +82,6 @@ atom/proc/SetLuminocity_NewColor(var/textcolor = "")	//To use one var instead of
 	SetLuminosity(red, green, blue)
 	return
 
-atom/proc/AddLuminosity(var/Red, var/Green = Red, var/Blue = Red)
-	SetLuminosity(LuminosityRed + Red, LuminosityGreen + Green, LuminosityBlue + Blue)
-
 atom/proc/ul_Illuminate()
 	if (ul_Extinguished == UL_I_LIT)
 		return

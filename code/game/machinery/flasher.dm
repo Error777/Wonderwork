@@ -22,20 +22,19 @@
 	base_state = "pflash"
 	density = 1
 
-/*
 /obj/machinery/flasher/New()
-	sleep(4)					//<--- What the fuck are you doing? D=
-	src.sd_SetLuminosity(2)
-*/
+	sleep(4)
+	SetLuminosity(0,2,0)
+
 /obj/machinery/flasher/power_change()
 	if ( powered() )
 		stat &= ~NOPOWER
 		icon_state = "[base_state]1"
-//		src.sd_SetLuminosity(2)
+		src.SetLuminosity(0,2,0)
 	else
 		stat |= ~NOPOWER
 		icon_state = "[base_state]1-p"
-//		src.sd_SetLuminosity(0)
+		src.SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
 /obj/machinery/flasher/attackby(obj/item/weapon/W as obj, mob/user as mob)

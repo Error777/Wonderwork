@@ -13,6 +13,7 @@
 	var/enrichment = 0
 	var/risk = 0
 	var/busy = 0
+	var/ores = 0
 
 /obj/machinery/power/reactor/process()
 	if(stat & BROKEN) return
@@ -62,64 +63,68 @@
 			busy = 0
 
 /obj/machinery/power/reactor/attackby(var/obj/item/weapon/ore/W as obj, mob/user as mob)
+	if(!istype(W) || !user)
+		..()
+		return
 	if(istype(W, /obj/item/weapon/ore/char))
-		src.fuel += (src.fuel + 600)
+		if(src.fuel > src.maxfuel)
+			src.fuel = src.maxfuel
+			user << "\blue The reactor is now full!"
+			return
+		src.fuel += (src.fuel + 10)
 		enrichment = 10
 		risk = 0
 		del W
-	else if (istype(W, /obj/item/weapon/ore/lovite))
-		src.fuel += (src.fuel + 600)
+	if (istype(W, /obj/item/weapon/ore/lovite))
+		if(src.fuel > src.maxfuel)
+			src.fuel = src.maxfuel
+			user << "\blue The reactor is now full!"
+			return
+		src.fuel += (src.fuel + 30)
 		enrichment = 1200
 		risk = 0
 		del W
-	if(src.fuel > src.maxfuel)
-		src.fuel = src.maxfuel
-		user << "\blue The reactor is now full!"
-		return
-	else if (istype(W, /obj/item/weapon/ore/cerenkite))
-		src.fuel += (src.fuel + 600)
+	if (istype(W, /obj/item/weapon/ore/cerenkite))
+		if(src.fuel > src.maxfuel)
+			src.fuel = src.maxfuel
+			user << "\blue The reactor is now full!"
+			return
+		src.fuel += (src.fuel + 50)
 		enrichment = 75
 		risk = 0
 		del W
-	if(src.fuel > src.maxfuel)
-		src.fuel = src.maxfuel
-		user << "\blue The reactor is now full!"
-		return
-	else if(istype(W, /obj/item/weapon/ore/plasma))
-		src.fuel += (src.fuel + 600)
+	if(istype(W, /obj/item/weapon/ore/plasma))
+		if(src.fuel > src.maxfuel)
+			src.fuel = src.maxfuel
+			user << "\blue The reactor is now full!"
+			return
+		src.fuel += (src.fuel + 100)
 		enrichment = 750
 		risk = 1
 		del W
-	if(src.fuel > src.maxfuel)
-		src.fuel = src.maxfuel
-		user << "\blue The reactor is now full!"
-		return
-	else if (istype(W, /obj/item/weapon/ore/uranium))
-		src.fuel = (src.fuel + 600)
+	if (istype(W, /obj/item/weapon/ore/uranium))
+		if(src.fuel > src.maxfuel)
+			src.fuel = src.maxfuel
+			user << "\blue The reactor is now full!"
+			return
+		src.fuel = (src.fuel + 200)
 		enrichment = 850
 		risk = 2
 		del W
-	if(src.fuel > src.maxfuel)
-		src.fuel = src.maxfuel
-		user << "\blue The reactor is now full!"
-		return
-	else if(istype(W, /obj/item/weapon/ore/erebite))
-		src.fuel = (src.fuel + 600)
+	if(istype(W, /obj/item/weapon/ore/erebite))
+		if(src.fuel > src.maxfuel)
+			src.fuel = src.maxfuel
+			user << "\blue The reactor is now full!"
+			return
+		src.fuel = (src.fuel + 300)
 		enrichment = 2000
 		risk = 7
 		del W
-	if(src.fuel > src.maxfuel)
-		src.fuel = src.maxfuel
-		user << "\blue The reactor is now full!"
-		return
-	/*else if(istype(W, /obj/item/metroid_core))	POWER OUTPUT TESTER, DON'T FUCK WITH THIS
+/*	if(istype(W, /obj/item/metroid_core))	POWER OUTPUT TESTER, DON'T FUCK WITH THIS
 		src.fuel = INFINITY
 		enrichment = 300
 		risk = 0.01
 		del W*/
-	else
-		..()
-		return
 
 /obj/machinery/power/reactor/proc/updateicon()
 	if(!src.active)

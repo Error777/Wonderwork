@@ -10,7 +10,7 @@
 /obj/machinery/artillerycontrol/process()
 	if(src.reload<180)
 		src.reload++
-/*
+
 /obj/structure/artilleryplaceholder
 	name = "artillery"
 	icon = 'icons/obj/machines/artillery.dmi'
@@ -19,7 +19,7 @@
 
 /obj/structure/artilleryplaceholder/decorative
 	density = 0
-*/
+
 /obj/machinery/artillerycontrol/attack_hand(mob/user as mob)
 	user.set_machine(src)
 	var/dat = "<B>Bluespace Artillery Control:</B><BR>"

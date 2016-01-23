@@ -93,14 +93,14 @@ turf/simulated/floor/proc/update_icon()
 			switch(T.state)
 				if(0)
 					icon_state = "light_on"
-					AddLuminosity(5)
+					SetLuminosity(5)
 				if(1)
 					var/num = pick("1","2","3","4")
 					icon_state = "light_on_flicker[num]"
-					AddLuminosity(5)
+					SetLuminosity(5)
 				if(2)
 					icon_state = "light_on_broken"
-					AddLuminosity(5)
+					SetLuminosity(5)
 				if(3)
 					icon_state = "light_off"
 					SetLuminosity(0)

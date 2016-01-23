@@ -45,39 +45,39 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
 	species_restricted = list("exclude","Unathi","Tajaran","Skrell","Diona","Vox")
 
-	attack_self(mob/user)
-		if(!isturf(user.loc))
-			user << "You cannot turn the light on while in this [user.loc]" //To prevent some lighting anomalities.
-			return
-		on = !on
+/obj/item/clothing/head/helmet/space/rig/attack_self(mob/user)
+	if(!isturf(user.loc))
+		user << "You cannot turn the light on while in this [user.loc]" //To prevent some lighting anomalities.
+		return
+	on = !on
+	icon_state = "rig[on]-[item_color]"
+	item_state = "rig[on]-[item_color]"
+
+	if(on)
+		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+	else
+		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+
+/obj/item/clothing/head/helmet/space/rig/pickup(mob/user)
+	if(on)
+		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+		SetLuminosity(0)
+
+/obj/item/clothing/head/helmet/space/rig/dropped(mob/user)
+	if(on)
+		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+		SetLuminosity(brightness_on, brightness_on - 1, 0)
+
+/obj/item/clothing/head/helmet/space/rig/on_enter_storage()
+	if(on)
+		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
+		on = 0
 		icon_state = "rig[on]-[item_color]"
 		item_state = "rig[on]-[item_color]"
-
-		if(on)
-			user.AddLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-		else
-			user.AddLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-
-	pickup(mob/user)
-		if(on)
-			user.AddLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-			SetLuminosity(0)
-
-	dropped(mob/user)
-		if(on)
-			user.AddLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-			AddLuminosity(brightness_on, brightness_on - 1, 0)
-
-	on_enter_storage()
-		if(on)
-			usr.AddLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
-			on = 0
-			icon_state = "rig[on]-[item_color]"
-			item_state = "rig[on]-[item_color]"
-		else if (isturf(src.loc))
-			SetLuminosity(0)
-		..()
-		return
+	else if (isturf(src.loc))
+		SetLuminosity(0)
+	..()
+	return
 
 /obj/item/clothing/suit/space/rig
 	name = "engineering hardsuit"

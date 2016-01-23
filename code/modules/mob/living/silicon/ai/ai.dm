@@ -461,7 +461,7 @@ var/list/ai_list = list()
 		current = A
 	..()
 	if(istype(A,/obj/machinery/camera))
-		if(camera_light_on)	A.AddLuminosity(AI_CAMERA_LUMINOSITY)
+		if(camera_light_on)	A.SetLuminosity(AI_CAMERA_LUMINOSITY)
 		else				A.SetLuminosity(0)
 
 
@@ -691,7 +691,7 @@ var/list/ai_list = list()
 				src.current.SetLuminosity(0)
 				if(!camera.light_disabled)
 					src.current = camera
-					src.current.AddLuminosity(AI_CAMERA_LUMINOSITY)
+					src.current.SetLuminosity(AI_CAMERA_LUMINOSITY)
 				else
 					src.current = null
 			else if(isnull(camera))
@@ -701,7 +701,7 @@ var/list/ai_list = list()
 			var/obj/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && !camera.light_disabled)
 				src.current = camera
-				src.current.AddLuminosity(AI_CAMERA_LUMINOSITY)
+				src.current.SetLuminosity(AI_CAMERA_LUMINOSITY)
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
 
 

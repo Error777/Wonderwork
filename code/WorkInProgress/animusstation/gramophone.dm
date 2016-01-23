@@ -1,9 +1,9 @@
 /obj/machinery/party/gramophone
 	name = "Gramophone"
-	desc = "Old-time styley ."
+	desc = "Old-time styley."
 	icon = 'icons/obj/musician.dmi'
 	icon_state = "gramophone"
-	layer = MOB_LAYER + 0.5
+	layer = MOB_LAYER + 0.2
 	anchored = 1
 	density = 1
 	var/playing = 0
@@ -14,7 +14,7 @@
 /obj/machinery/party/gramophone/attack_hand(mob/living/user as mob)
 
 	if (src.playing == 0)
-
+		user << "\blue You turn on the gramophone."
 		var/sound/S
 		S = sound('sound/turntable/valz2.ogg')
 		S.repeat = 1
@@ -40,6 +40,7 @@
 			return
 
 	else
+		user << "\blue You turn off the gramophone."
 		(src.playing) = 0
 		var/sound/S = sound(null)
 		S.channel = 10
@@ -50,5 +51,3 @@
 		playing = 0
 		var/area/A = src.loc.loc:master
 		for(var/area/RA in A.related)
-
-

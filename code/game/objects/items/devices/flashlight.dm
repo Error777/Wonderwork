@@ -12,11 +12,6 @@
 	icon_action_button = "action_flashlight"
 	var/on = 0
 	var/brightness_on = 4 //luminosity when on
-	var/icon_on = "flashlight-on"
-	var/icon_off = "flashlight"
-
-/obj/item/device/flashlight/proc/Lighting()
-	update_brightness(src.loc)
 
 /obj/item/device/flashlight/attackby(var/obj/B, var/mob/user)
 	if (istype(B, /obj/item/weapon/storage/toolbox))
@@ -25,41 +20,26 @@
 
 /obj/item/device/flashlight/initialize()
 	..()
-	if (on)
-		icon_state = icon_on
-		src.AddLuminosity(brightness_on, brightness_on, 0)
+	if(on)
+		icon_state = "[initial(icon_state)]-on"
+		SetLuminosity(brightness_on)
 	else
-		icon_state = icon_off
-		src.SetLuminosity(0)
-
-/obj/item/device/flashlight/examine()
-	set src in usr
-	usr << text("\icon[src] A hand-held emergency light.")
-	return
+		icon_state = initial(icon_state)
+		SetLuminosity(0)
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
 	if (on)
-		icon_state = icon_on
+		icon_state = "[initial(icon_state)]-on"
 		if(src.loc == user)
 			user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			SetLuminosity(brightness_on, brightness_on, 0)
 	else
-		icon_state = icon_off
+		icon_state = initial(icon_state)
 		if(src.loc == user)
-			user.AddLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+			user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			SetLuminosity(0)
-
-/obj/item/device/flashlight/on_enter_storage()
-	if(on)
-		icon_state = icon_off
-		usr.AddLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
-		on = 0
-	else if (isturf(src.loc))
-		SetLuminosity(0)
-		..()
-		return
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	if(!isturf(user.loc))
@@ -103,15 +83,24 @@
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
-		user.AddLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
 		src.SetLuminosity(0)
 
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
 		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
-		src.AddLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+		src.SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
 
+/obj/item/device/flashlight/on_enter_storage()
+	if(on)
+		icon_state = initial(icon_state)
+		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
+		on = 0
+	else if (isturf(src.loc))
+		SetLuminosity(0)
+		..()
+		return
 
 /obj/item/device/flashlight/pen
 	name = "penlight"
@@ -154,7 +143,6 @@
 	name = "flare"
 	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = 2.0
-//	brightness_on = 7 // Pretty bright.
 	icon_state = "flare"
 	item_state = "flare"
 	icon_action_button = null	//just pull it manually, neckbeard.
@@ -203,3 +191,52 @@
 		src.force = on_damage
 		src.damtype = "fire"
 		processing_objects += src
+
+
+/obj/item/device/flashlight/glowstick
+	name = "glowstick"
+	desc = "A plastic stick filled with luminescent liquid, this one is green."
+	icon_state = "glowstick"
+	item_state = "nothing"
+	w_class = 2
+	brightness_on = 4
+	icon_action_button = null
+	var/glowon = 0
+	var/glowfuel = 1600
+
+/obj/item/device/flashlight/glowstick/process()
+	glowfuel = max(glowfuel - 1, 0)
+	if(!glowfuel || !glowon)
+		turn_off()
+		if(!glowfuel)
+			src.icon_state = "[initial(icon_state)]"
+		processing_objects -= src
+
+/obj/item/device/flashlight/glowstick/proc/turn_off()
+	glowon = 0
+	if(ismob(loc))
+		var/mob/U = loc
+		update_brightness(U)
+	else
+		update_brightness(null)
+
+
+/obj/item/device/flashlight/glowstick/attack_self(mob/user)
+	// Usual checks
+	if(!glowfuel)
+		user << "<span class='notice'>It's out of fuel.</span>"
+		return
+
+	if(on)
+		return
+
+	. = ..()
+
+	if(.)
+		user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
+		processing_objects += src
+
+/obj/item/device/flashlight/glowstick/suicide_act(mob/user)
+	viewers(user) << "<span class='danger'>[user] is breaking open the [src.name] and eating the liquid inside! It looks like \he's  trying to commit suicide!</span>"
+	return (TOXLOSS)
+

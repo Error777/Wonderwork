@@ -193,7 +193,7 @@ obj/machinery/hydroponics/proc/updateicon()
 			overlays += image('icons/obj/hydroponics.dmi', icon_state="over_harvest3")
 
 	if(istype(myseed,/obj/item/seeds/glowshroom))
-		AddLuminosity(round(myseed.potency/10))
+		SetLuminosity(round(myseed.potency/10))
 	else
 		SetLuminosity(0)
 
@@ -955,7 +955,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
 		if(!luminosity)
 			if(istype(myseed,/obj/item/seeds/glowshroom))
-				AddLuminosity(round(myseed.potency/10))
+				SetLuminosity(round(myseed.potency/10))
 		else
 			SetLuminosity(0)
 		return

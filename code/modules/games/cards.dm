@@ -145,8 +145,8 @@
 		newcards += P
 		cards -= P
 	cards = newcards
-	user.visible_message("\The [user] shuffles [src].")
-	sleep(2)
+	user << "\The [user] shuffles [src]."
+	sleep(10)
 
 /obj/item/weapon/deck/MouseDrop(atom/over)
 	if(!usr || !over) return

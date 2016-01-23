@@ -19,7 +19,7 @@
 /obj/machinery/bot/proc/turn_on()
 	if(stat)	return 0
 	on = 1
-	AddLuminosity(initial(luminosity))
+	SetLuminosity(initial(luminosity))
 	return 1
 
 /obj/machinery/bot/proc/turn_off()

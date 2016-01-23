@@ -205,9 +205,9 @@
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	var/on = 0					// 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightnessred = 7				// luminosity when on, also used in power calculation
-	var/brightnessgreen = 7
-	var/brightnessblue = 7
+	var/brightnessred = 5				// luminosity when on, also used in power calculation
+	var/brightnessgreen = 5
+	var/brightnessblue = 3
 	var/redalert = 1
 
 	var/status = LIGHT_OK		// LIGHT_OK, _EMPTY, _BURNED or _BROKEN
@@ -227,9 +227,9 @@
 	icon_state = "bulb1"
 	base_state = "bulb"
 	fitting = "bulb"
-	brightnessred = 5
-	brightnessgreen = 5
-	brightnessblue = 4
+	brightnessred = 4
+	brightnessgreen = 4
+	brightnessblue = 1
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb
 
@@ -269,19 +269,21 @@
 /obj/machinery/light/New()
 	..()
 
+	processing_objects.Add(src)
+
 	spawn(2)
 		switch(fitting)
 			if("tube")
-				var/br = pick(7,9)
+				var/br = pick(5,7)
 				brightnessred = br
 				brightnessgreen = br
 				brightnessblue = br
 				if(prob(2))
 					broken(1)
 			if("bulb")
-				brightnessred = 5
-				brightnessgreen = 5
-				brightnessblue = 4
+				brightnessred = 4
+				brightnessgreen = 4
+				brightnessblue = 1
 
 				if(prob(5))
 					broken(1)

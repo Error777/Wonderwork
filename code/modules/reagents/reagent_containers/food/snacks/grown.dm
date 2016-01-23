@@ -258,16 +258,16 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/Del()
 	if(istype(loc,/mob))
-		loc.AddLuminosity(loc.LuminosityRed - potency/5, loc.LuminosityGreen - potency/5, loc.LuminosityBlue - potency/5)
+		loc.SetLuminosity(loc.LuminosityRed - potency/5, loc.LuminosityGreen - potency/5, loc.LuminosityBlue - potency/5)
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/pickup(mob/user)
 	SetLuminosity(0)
-	user.AddLuminosity(user.LuminosityRed + potency/5, user.LuminosityGreen + potency/5, user.LuminosityBlue + potency/5)
+	user.SetLuminosity(user.LuminosityRed + potency/5, user.LuminosityGreen + potency/5, user.LuminosityBlue + potency/5)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/dropped(mob/user)
-	user.AddLuminosity(user.LuminosityRed - potency/5, user.LuminosityGreen - potency/5, user.LuminosityBlue - potency/5)
-	AddLuminosity(potency/5)
+	user.SetLuminosity(user.LuminosityRed - potency/5, user.LuminosityGreen - potency/5, user.LuminosityBlue - potency/5)
+	SetLuminosity(potency/5)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cocoapod
 	seed = "/obj/item/seeds/cocoapodseed"
@@ -871,7 +871,7 @@
 		if(istype(src.loc,/mob))
 			pickup(src.loc)
 		else
-			src.AddLuminosity(round(potency/10,1))
+			src.SetLuminosity(round(potency/10,1))
 	lifespan = 120 //ten times that is the delay
 	endurance = 30
 	maturation = 15
@@ -895,16 +895,16 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/Del()
 	if(istype(loc,/mob))
-		loc.AddLuminosity(round(loc.luminosity - potency/10,1))
+		loc.SetLuminosity(round(loc.luminosity - potency/10,1))
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
 	SetLuminosity(0)
-	user.AddLuminosity(round(user.luminosity + (potency/10),1))
+	user.SetLuminosity(round(user.luminosity + (potency/10),1))
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.AddLuminosity(round(user.luminosity + (potency/10),1))
-	AddLuminosity(round(potency/10,1))
+	user.SetLuminosity(round(user.luminosity + (potency/10),1))
+	SetLuminosity(round(potency/10,1))
 
 
 // *************************************

@@ -8,7 +8,7 @@
 	luminosity = 8
 
 	New()
-		AddLuminosity(8,8,8)
+		SetLuminosity(8,8,8)
 
 /**********************Miner Lockers**************************/
 
