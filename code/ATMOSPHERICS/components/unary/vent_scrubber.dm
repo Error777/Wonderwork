@@ -25,6 +25,7 @@
 	var/area_uid
 	var/radio_filter_out
 	var/radio_filter_in
+
 	New()
 		initial_loc = get_area(loc)
 		if (initial_loc.master)
@@ -44,6 +45,10 @@
 				icon_state = "[level == 1 && istype(loc, /turf/simulated) ? "h" : "" ]on"
 			else
 				icon_state = "[level == 1 && istype(loc, /turf/simulated) ? "h" : "" ]in"
+
+		if(welded)
+			icon_state = "[level == 1 && istype(loc, /turf/simulated) ? "h" : "" ]welded"
+
 		else
 			icon_state = "[level == 1 && istype(loc, /turf/simulated) ? "h" : "" ]off"
 		return
@@ -240,6 +245,24 @@
 		update_icon()
 
 	attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+		if(istype(W, /obj/item/weapon/weldingtool))
+			var/obj/item/weapon/weldingtool/WT = W
+			if(WT.remove_fuel(0,user))
+				playsound(loc, 'sound/items/Welder.ogg', 40, 1)
+				user << "<span class='notice'>Now welding the scrubber.</span>"
+				if(do_after(user, 20))
+					if(!src || !WT.isOn())
+						return
+					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+					if(!welded)
+						user.visible_message("[user] welds the scrubber shut.","You weld the scrubber shut.", "You hear welding.")
+						welded = 1
+						update_icon()
+					else
+						user.visible_message("[user] unwelds the scrubber.", "You unweld the scrubber.", "You hear welding.")
+						welded = 0
+						update_icon()
+			return 1
 		if (!istype(W, /obj/item/weapon/wrench))
 			return ..()
 		if (!(stat & NOPOWER) && on)
@@ -272,3 +295,6 @@
 		initial_loc.air_scrub_names -= id_tag
 	..()
 	return
+
+/obj/machinery/atmospherics/unary/vent_scrubber/can_crawl_through()
+	return !welded

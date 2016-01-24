@@ -3,6 +3,7 @@ datum/pipeline
 
 	var/list/obj/machinery/atmospherics/pipe/members
 	var/list/obj/machinery/atmospherics/pipe/edges //Used for building networks
+	var/list/obj/machinery/atmospherics/components/other_atmosmch = list()
 
 	var/datum/pipe_network/network
 
@@ -215,3 +216,13 @@ datum/pipeline
 				air.temperature -= heat/total_heat_capacity
 		if(network)
 			network.update = 1
+
+/obj/machinery/atmospherics/proc/addMember(obj/machinery/atmospherics/A)
+	return
+
+/obj/machinery/atmospherics/pipe/addMember(obj/machinery/atmospherics/A)
+	parent.addMember(A, src)
+
+/obj/machinery/atmospherics/components/addMember(obj/machinery/atmospherics/A)
+	var/datum/pipeline/P = returnPipenet(A)
+	P.addMember(A, src)

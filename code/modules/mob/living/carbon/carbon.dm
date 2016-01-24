@@ -225,7 +225,7 @@
 	dna = newDNA
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
-
+/*
 /mob/living/carbon/proc/handle_ventcrawl() // -- TLE -- Merged by Carn
 
 	if(!stat)
@@ -315,7 +315,7 @@
 	else
 		src << "You must be conscious to do this!"
 	return
-
+*/
 
 /mob/living/carbon/clean_blood()
 	. = ..()
