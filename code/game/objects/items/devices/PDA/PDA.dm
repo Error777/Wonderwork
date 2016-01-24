@@ -266,17 +266,17 @@ var/global/list/obj/item/device/pda/PDAs = list()
  */
 /obj/item/device/pda/pickup(mob/user)
 	if(fon)
-		SetLuminosity(0)
+		src.SetLuminosity(0)
 		user.SetLuminosity(user.LuminosityRed + f_lum , user.LuminosityGreen + f_lum , user.LuminosityBlue + f_lum)
 
 /obj/item/device/pda/dropped(mob/user)
 	if(fon)
-		user.SetLuminosity(LuminosityRed - f_lum, LuminosityGreen - f_lum, LuminosityBlue - f_lum)
-		SetLuminosity(f_lum, f_lum, f_lum)
+		user.SetLuminosity(user.LuminosityRed - f_lum, user.LuminosityGreen - f_lum, user.LuminosityBlue - f_lum)
+		src.SetLuminosity(src.f_lum, src.f_lum, src.f_lum)
 
 /obj/item/device/pda/on_enter_storage()
 	if(fon)
-		usr.SetLuminosity(LuminosityRed - f_lum, LuminosityGreen - f_lum, LuminosityBlue - f_lum)
+		usr.SetLuminosity(usr.LuminosityRed - f_lum, usr.LuminosityGreen - f_lum, usr.LuminosityBlue - f_lum)
 		fon = 0
 	else if (isturf(src.loc))
 		SetLuminosity(0)

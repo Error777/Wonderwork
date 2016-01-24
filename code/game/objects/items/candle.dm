@@ -81,13 +81,13 @@
 
 /obj/item/candle/dropped(mob/user)
 	if(lit)
-		user.SetLuminosity(LuminosityRed - CANDLE_LUM, LuminosityGreen - (CANDLE_LUM - 2), LuminosityBlue)
-		src.SetLuminosity(CANDLE_LUM, CANDLE_LUM - 2, 0)
+		user.SetLuminosity(user.LuminosityRed - CANDLE_LUM, user.LuminosityGreen - (CANDLE_LUM - 2), user.LuminosityBlue)
+		SetLuminosity(CANDLE_LUM, CANDLE_LUM - 2, 0)
 
 /obj/item/candle/on_enter_storage()
 	if(lit)
 		lit = 0
 		update_icon()
-		usr.SetLuminosity(LuminosityRed - CANDLE_LUM, LuminosityGreen - (CANDLE_LUM - 2), LuminosityBlue)
+		usr.SetLuminosity(usr.LuminosityRed - CANDLE_LUM, usr.LuminosityGreen - (CANDLE_LUM - 2), usr.LuminosityBlue)
 	..()
 	return

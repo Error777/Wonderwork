@@ -1,147 +1,132 @@
-/obj/item/device/spy_bug
+var/global/list/camera_bugs = list()
+
+/obj/item/device/handtv
+	name = "PDA"
+	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
+	icon = 'icons/obj/pda.dmi'
+	icon_state = "pda"
+	item_state = "electronic"
+	w_class = 1.0
+	flags = FPRINT | TABLEPASS
+	slot_flags = SLOT_ID | SLOT_BELT
+	var/obj/item/device/camera_bug/current
+	var/network
+
+/obj/item/device/handtv/attack_self(mob/user as mob)
+	if(!network && user.mind)
+		network = "\ref[user.mind]"
+
+	var/list/cameras = list()
+
+	for(var/obj/item/device/camera_bug/C in camera_bugs)
+		if(C.network == network)
+			cameras += C
+
+	if(!cameras.len)
+		to_chat(user, "<span class='warning'>No camera bugs found.</span>")
+		return
+
+	var/list/friendly_cameras = new/list()
+
+	for (var/obj/item/device/camera_bug/C in cameras)
+		friendly_cameras.Add(C.c_tag)
+
+	var/target = input("Select the camera to observe", null) as null|anything in sortList(friendly_cameras)
+
+	if (!target)
+		user.unset_machine()
+		user.reset_view(user)
+		return
+	for(var/obj/item/device/camera_bug/C in cameras)
+		if (C.c_tag == target)
+			target = C
+			break
+
+	if(user.stat) return
+
+	if(target)
+		user.client.eye = target
+		user.set_machine(src)
+		src.current = target
+	else
+		user.unset_machine()
+		return
+
+/obj/item/device/handtv/check_eye(var/mob/user as mob)
+	if ( src.loc != user || user.get_active_hand() != src || !user.canmove || user.blinded || !current || !current.active )
+		return null
+	user.reset_view(current)
+	return 1
+
+/obj/item/device/camera_bug
 	name = "bug"
 	desc = ""	// Nothing to see here
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "eshield0"
 	item_state = "nothing"
-	layer = TURF_LAYER+0.2
 	force = 1
 	w_class = 1.0
 	throwforce = 1
 	throw_range = 15
 	throw_speed = 3
 	origin_tech = "engineering=1;programming=2;syndicate=3"
+	var/c_tag = ""
+	var/active = 0
+	var/network = ""
+	var/list/excludes = list(/turf/simulated/floor, /turf/space, /turf/simulated/shuttle, /mob/living/carbon, /obj/item/weapon/storage)
 
-	var/obj/item/device/radio/spy/radio
-	var/obj/machinery/camera/spy/camera
+/obj/item/device/camera_bug/attack_self(mob/user)
+	var/newtag = sanitize(input("Set camera tag") as null|text)
+	if(newtag)
+		c_tag = newtag
+		if(user.mind) network = "\ref[user.mind]"
 
-/obj/item/device/spy_bug/New()
+/obj/item/device/camera_bug/afterattack(atom/A, mob/user)
+	if(!c_tag || c_tag == "")
+		to_chat(user, "<span class='notice'>Set the tag first dumbass</span>")
+		return 0
+
+	if(is_type_in_list(src.excludes))
+		to_chat(user, "<span class='warning'>\The [src] won't stick!</span>")
+		return 0
+
+	if(istype(A, /obj/item))
+		var/obj/item/I = A
+		if(I.w_class < 3)
+			to_chat(user, "<span class='warning'>\The [I] is too small for \the [src]</span>")
+			return 0
+
+	if(user.drop_item(src, A))
+		to_chat(user, "<span class='notice'>You stealthily place \the [src] onto \the [A]</span>")
+		active = 1
+		camera_bugs += src
+		return 1
+
+/obj/item/device/camera_bug/emp_act(severity)
+	switch(severity)
+		if(3)
+			if(prob(10))
+				removed(message = "<span class='notice'>\The [src] deactivates and falls off!</span>", catastrophic = prob(1))
+		if(2)
+			if(prob(40))
+				removed(message = "<span class='notice'>\The [src] deactivates and falls off!</span>", catastrohpic = prob(5))
+		if(1)
+			removed(message = "<span class='notice'>\The [src] deactivates and falls off!</span>", catastrohpic = prob(30))
+
+/*
+  user is who removed it if possible
+  message is the displayed message on removal
+  catastrophic is whether it should explode on removal or not
+*/
+/obj/item/device/camera_bug/proc/removed(mob/user = null, message = "[user] pries \the [src] away from \the [loc]", catastrophic = 0)
+	active = 0
+	camera_bugs  -= src
+	loc = get_turf(src)
+	visible_message(message)
+	if(catastrophic)
+		spawn(5)
+			explosion(loc, 0, prob(15), 2, 0)
+
+/obj/item/device/camera_bug/Del()
+	camera_bugs -= src
 	..()
-	radio = new(src)
-	camera = new(src)
-
-/obj/item/device/spy_bug/examine(mob/user)
-	. = ..(user, 0)
-	if(.)
-		user << "It's a tiny camera, microphone, and transmission device in a happy union."
-		user << "Needs to be both configured and brought in contact with monitor device to be fully functional."
-
-/obj/item/device/spy_bug/attack_self(mob/user)
-	radio.attack_self(user)
-
-/obj/item/device/spy_bug/attackby(obj/W as obj, mob/living/user as mob)
-	if(istype(W, /obj/item/device/spy_monitor))
-		var/obj/item/device/spy_monitor/SM = W
-		SM.pair(src, user)
-	else
-		..()
-
-/obj/item/device/spy_bug/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
-	radio.hear_talk(M, msg, speaking)
-
-
-/obj/item/device/spy_monitor
-	name = "\improper PDA"
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
-	icon = 'icons/obj/pda.dmi'
-	icon_state = "pda"
-	item_state = "electronic"
-	w_class = 2.0
-	origin_tech = "engineering=5;programming=2;syndicate=3"
-
-	var/operating = 0
-	var/obj/item/device/radio/spy/radio
-	var/obj/machinery/camera/spy/selected_camera
-	var/list/obj/machinery/camera/spy/cameras = new()
-
-/obj/item/device/spy_monitor/New()
-	radio = new(src)
-
-/obj/item/device/spy_monitor/examine(mob/user)
-	. = ..(user, 1)
-	if(.)
-		user << "The time '12:00' is blinking in the corner of the screen and \the [src] looks very cheaply made."
-
-/obj/item/device/spy_monitor/attack_self(mob/user)
-	if(operating)
-		return
-
-	radio.attack_self(user)
-	view_cameras(user)
-
-/obj/item/device/spy_monitor/attackby(obj/W as obj, mob/living/user as mob)
-	if(istype(W, /obj/item/device/spy_bug))
-		pair(W, user)
-	else
-		return ..()
-
-/obj/item/device/spy_monitor/proc/pair(var/obj/item/device/spy_bug/SB, var/mob/living/user)
-	if(SB.camera in cameras)
-		user << "<span class='notice'>\The [SB] has been unpaired from \the [src].</span>"
-		cameras -= SB.camera
-	else
-		user << "<span class='notice'>\The [SB] has been paired with \the [src].</span>"
-		cameras += SB.camera
-
-/obj/item/device/spy_monitor/proc/view_cameras(mob/user)
-	if(!can_use_cam(user))
-		return
-
-	selected_camera = cameras[1]
-	view_camera(user)
-
-	operating = 1
-	while(selected_camera && Adjacent(user))
-		selected_camera = input("Select camera bug to view.") as null|anything in cameras
-	selected_camera = null
-	operating = 0
-
-/obj/item/device/spy_monitor/proc/view_camera(mob/user)
-	spawn(0)
-		while(selected_camera && Adjacent(user))
-			var/turf/T = get_turf(selected_camera)
-			if(!T || !is_on_same_plane_or_station(T.z, user.z) || !selected_camera.can_use())
-				user.unset_machine()
-				user.reset_view(null)
-				user << "<span class='notice'>[selected_camera] unavailable.</span>"
-				sleep(90)
-			else
-				user.set_machine(selected_camera)
-				user.reset_view(selected_camera)
-			sleep(10)
-		user.unset_machine()
-		user.reset_view(null)
-
-/obj/item/device/spy_monitor/proc/can_use_cam(mob/user)
-	if(operating)
-		return
-
-	if(!cameras.len)
-		user << "<span class='warning'>No paired cameras detected!</span>"
-		user << "<span class='warning'>Bring a bug in contact with this device to pair the camera.</span>"
-		return
-
-	return 1
-
-/obj/item/device/spy_monitor/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
-	return radio.hear_talk(M, msg, speaking)
-
-/obj/machinery/camera/spy
-	// These cheap toys are accessible from the mercenary camera console as well
-	network = list("MercurialNet")
-
-/obj/machinery/camera/spy/New()
-	..()
-	name = "DV-136ZB #[rand(1000,9999)]"
-	c_tag = name
-
-/obj/machinery/camera/spy/check_eye(var/mob/user as mob)
-	return 0
-
-/obj/item/device/radio/spy
-	listening = 0
-	frequency = 1473
-	broadcasting = 0
-	canhear_range = 1
-	name = "spy device"
-	icon_state = "syn_cypherkey"

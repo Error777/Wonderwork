@@ -13,19 +13,21 @@
 	var/charge = 0
 	req_access = list(access_security)
 
-	New()
-		processing_objects.Add(src)
-	Del()
-		processing_objects.Remove(src)
-	process()
-		if(charge >= RECHARGING_TIME)
-			if(gun_charge < GUN_LIMIT)
-				gun_charge += 1
-			if(ammo_charge < AMMO_LIMIT)
-				ammo_charge += min(AMMO_LIMIT, ammo_charge + 2)
-			charge = 0
-		if(charge < RECHARGING_TIME && ((gun_charge < GUN_LIMIT && gun_charge >= 0) || (ammo_charge < AMMO_LIMIT && ammo_charge >= 0)))
-			charge++
+/obj/machinery/weapon_dispenser/New()
+	processing_objects.Add(src)
+
+/obj/machinery/weapon_dispenser/Del()
+	processing_objects.Remove(src)
+
+/obj/machinery/weapon_dispenser/process()
+	if(charge >= RECHARGING_TIME)
+		if(gun_charge < GUN_LIMIT)
+			gun_charge += 1
+		if(ammo_charge < AMMO_LIMIT)
+			ammo_charge += min(AMMO_LIMIT, ammo_charge + 2)
+		charge = 0
+	if(charge < RECHARGING_TIME && ((gun_charge < GUN_LIMIT && gun_charge >= 0) || (ammo_charge < AMMO_LIMIT && ammo_charge >= 0)))
+		charge++
 
 /obj/machinery/weapon_dispenser/power_change()
 	if (powered())

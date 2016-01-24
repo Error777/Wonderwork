@@ -11,80 +11,80 @@
 	var/descriptor = "various clothing"
 	var/seal_torn = 0
 
-	attack_self(mob/user)
-		if(!contents.len)
-			user << "It's empty!"
-		else
-			user.visible_message("\blue [user] unwraps the clothing from the [src][seal_torn ? "" : ", tearing the seal"].")
-			seal_torn = 1
+/obj/item/wardrobe/attack_self(mob/user)
+	if(!contents.len)
+		user << "It's empty!"
+	else
+		user.visible_message("\blue [user] unwraps the clothing from the [src][seal_torn ? "" : ", tearing the seal"].")
+		seal_torn = 1
 
-			for(var/obj/item/I in src)
-				I.loc = get_turf(src)
-			update_icon()
-		return
-
-	attackby(var/obj/item/I as obj, var/mob/user as mob)
-		if(istype(I, /obj/item/wardrobe) || istype(I, /obj/item/weapon/evidencebag))
-			return
-		if(contents.len < 20)
-			if(istype(I, /obj/item/weapon/grab))
-				return
-			user.drop_item()
-
-			if(I)
-				I.loc = src
-
-			update_icon()
-		else
-			user << "\red There's not enough space to fit that!"
-		return
-
-	afterattack(atom/A as obj|turf, mob/user as mob)
-		if(A in user)
-			return
-		if(!istype(A.loc,/turf))
-			user << "It's got to be on the ground to do that!"
-			return
-		var/could_fill = 1
-		for (var/obj/O in locate(A.x,A.y,A.z))
-			if (contents.len < 20)
-				if(istype(O,/obj/item/wardrobe))
-					continue
-				if(O.anchored || O.density || istype(O,/obj/structure))
-					continue
-				contents += O;
-			else
-				could_fill = 0
-				break
-		if(could_fill)
-			user << "\blue You pick up all the items."
-		else
-			user << "\blue You try to pick up all of the items, but run out of space in the bag."
-		user.visible_message("\blue [user] gathers up[could_fill ? " " : " most of "]the pile of items and puts it into [src].")
+		for(var/obj/item/I in src)
+			I.loc = get_turf(src)
 		update_icon()
+	return
 
-	examine()
-		set src in view()
-		..()
-		if(src in usr)
-			usr << "It claims to contain [contents.len ? descriptor : descriptor + "... but it looks empty"]."
-			if(seal_torn && !contents.len)
-				usr << "The seal on the bag is broken."
-			else
-				usr << "The seal on the bag is[seal_torn ? ", however, not intact" : " intact"]."
+/obj/item/wardrobe/attackby(var/obj/item/I as obj, var/mob/user as mob)
+	if(istype(I, /obj/item/wardrobe) || istype(I, /obj/item/weapon/evidencebag))
 		return
+	if(contents.len < 20)
+		if(istype(I, /obj/item/weapon/grab))
+			return
+		user.drop_item()
 
-	update_icon()
-		if(contents.len)
-			icon_state = "wardrobe"
+		if(I)
+			I.loc = src
+
+		update_icon()
+	else
+		user << "\red There's not enough space to fit that!"
+	return
+
+/obj/item/wardrobe/afterattack(atom/A as obj|turf, mob/user as mob)
+	if(A in user)
+		return
+	if(!istype(A.loc,/turf))
+		user << "It's got to be on the ground to do that!"
+		return
+	var/could_fill = 1
+	for (var/obj/O in locate(A.x,A.y,A.z))
+		if (contents.len < 20)
+			if(istype(O,/obj/item/wardrobe))
+				continue
+			if(O.anchored || O.density || istype(O,/obj/structure))
+				continue
+			contents += O;
 		else
-			icon_state = "wardrobe_empty"
-		return
+			could_fill = 0
+			break
+	if(could_fill)
+		user << "\blue You pick up all the items."
+	else
+		user << "\blue You try to pick up all of the items, but run out of space in the bag."
+	user.visible_message("\blue [user] gathers up[could_fill ? " " : " most of "]the pile of items and puts it into [src].")
+	update_icon()
 
-	New()
-		..()
-		pixel_x = rand(0,4) -2
-		pixel_y = rand(0,4) -2
+/obj/item/wardrobe/examine()
+	set src in view()
+	..()
+	if(src in usr)
+		usr << "It claims to contain [contents.len ? descriptor : descriptor + "... but it looks empty"]."
+		if(seal_torn && !contents.len)
+			usr << "The seal on the bag is broken."
+		else
+			usr << "The seal on the bag is[seal_torn ? ", however, not intact" : " intact"]."
+	return
+
+/obj/item/wardrobe/update_icon()
+	if(contents.len)
+		icon_state = "wardrobe"
+	else
+		icon_state = "wardrobe_empty"
+	return
+
+/obj/item/wardrobe/New()
+	..()
+	pixel_x = rand(0,4) -2
+	pixel_y = rand(0,4) -2
 
 /obj/item/wardrobe/assistant
 	name = "\improper Assistant Wardrobe"

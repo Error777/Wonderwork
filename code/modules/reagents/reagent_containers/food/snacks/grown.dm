@@ -266,7 +266,7 @@
 	user.SetLuminosity(user.LuminosityRed + potency/5, user.LuminosityGreen + potency/5, user.LuminosityBlue + potency/5)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/dropped(mob/user)
-	user.SetLuminosity(LuminosityRed - potency/5, LuminosityGreen - potency/5, LuminosityBlue - potency/5)
+	user.SetLuminosity(user.LuminosityRed - potency/5, user.LuminosityGreen - potency/5, user.LuminosityBlue - potency/5)
 	SetLuminosity(potency/5)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cocoapod
@@ -903,7 +903,7 @@
 	user.SetLuminosity(round(user.luminosity + (potency/10),1))
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.SetLuminosity(round(luminosity + (potency/10),1))
+	user.SetLuminosity(round(user.luminosity + (potency/10),1))
 	SetLuminosity(round(potency/10,1))
 
 

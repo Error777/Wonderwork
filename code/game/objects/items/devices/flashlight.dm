@@ -22,10 +22,10 @@
 	..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		SetLuminosity(brightness_on)
+		src.SetLuminosity(brightness_on, brightness_on, 0)
 	else
 		icon_state = initial(icon_state)
-		SetLuminosity(0)
+		src.SetLuminosity(0)
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
 	if (on)
@@ -86,17 +86,15 @@
 		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
 		src.SetLuminosity(0)
 
-
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - brightness_on, LuminosityBlue)
-		src.SetLuminosity(LuminosityRed + brightness_on, LuminosityGreen + brightness_on, LuminosityBlue)
-
+		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+		src.SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
 
 /obj/item/device/flashlight/on_enter_storage()
 	if(on)
 		icon_state = initial(icon_state)
-		usr.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - brightness_on, LuminosityBlue)
+		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
 		on = 0
 	else if(isturf(src.loc))
 		SetLuminosity(0)
