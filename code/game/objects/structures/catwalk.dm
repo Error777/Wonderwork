@@ -1,6 +1,6 @@
 /obj/structure/catwalk
 	icon = 'icons/turf/catwalks.dmi'
-	icon_state = "catwalk0"
+	icon_state = "catwalk"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
 	density = 0
