@@ -17,17 +17,10 @@ obj/machinery/atmospherics
 	power_channel = ENVIRON
 	var/nodealert = 0
 	var/image/pipe_vision_img = null
-	var/welded = 0 //Used on pumps and scrubbers
+
 
 obj/machinery/atmospherics/var/initialize_directions = 0
 obj/machinery/atmospherics/var/pipe_color
-
-
-/obj/machinery/atmospherics/Del()
-	for(var/mob/living/L in src)
-		L.remove_ventcrawl()
-		L.forceMove(get_turf(src))
-	..()
 
 obj/machinery/atmospherics/process()
 	build_network()
@@ -62,10 +55,9 @@ obj/machinery/atmospherics/proc/disconnect(obj/machinery/atmospherics/reference)
 
 obj/machinery/atmospherics/update_icon()
 	return null
-
-
+/*
 //Find a connecting /obj/machinery/atmospherics in specified direction
-/obj/machinery/atmospherics/proc/findConnecting(var/direction)
+/obj/machinery/atmospherics/proc/findConnecting(direction)
 	for(var/obj/machinery/atmospherics/target in get_step(src, direction))
 		if(target.initialize_directions & get_dir(target,src))
 			return target
@@ -73,7 +65,7 @@ obj/machinery/atmospherics/update_icon()
 
 #define VENT_SOUND_DELAY 30
 
-/obj/machinery/atmospherics/relaymove(var/mob/living/user, var/direction)
+/obj/machinery/atmospherics/relaymove(mob/living/user, direction)
 	if(!(direction & initialize_directions)) //cant go this way.
 		return
 
@@ -84,6 +76,9 @@ obj/machinery/atmospherics/update_icon()
 			user.forceMove(target_move.loc) //handle entering and so on.
 			user.visible_message("<span class='notice'>You hear something squeezing through the ducts...</span>","<span class='notice'>You climb out the ventilation system.")
 		else if(target_move.can_crawl_through())
+			var/list/pipenetdiff = returnPipenets() ^ target_move.returnPipenets()
+			if(pipenetdiff.len)
+				user.update_pipe_vision(target_move)
 			user.loc = target_move
 			user.client.eye = target_move  //Byond only updates the eye every tick, This smooths out the movement
 			if(world.time - user.last_played_vent > VENT_SOUND_DELAY)
@@ -99,7 +94,7 @@ obj/machinery/atmospherics/update_icon()
 		user.canmove = 1
 
 
-/obj/machinery/atmospherics/AltClick(var/mob/living/L)
+/obj/machinery/atmospherics/AltClick(mob/living/L)
 	if(is_type_in_list(src, ventcrawl_machinery))
 		L.handle_ventcrawl(src)
 		return
@@ -108,3 +103,6 @@ obj/machinery/atmospherics/update_icon()
 
 /obj/machinery/atmospherics/proc/can_crawl_through()
 	return 1
+
+/obj/machinery/atmospherics/proc/returnPipenets()
+	return list()*/

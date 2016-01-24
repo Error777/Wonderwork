@@ -180,8 +180,9 @@ Doesn't work on other aliens/AI.*/
 	if(powerc())
 		if(stomach_contents.len)
 			for(var/mob/M in src)
-				stomach_contents.Remove(M)
-				M.loc = loc
-				M.update_pipe_vision()
+				if(M in stomach_contents)
+					stomach_contents.Remove(M)
+					M.loc = loc
+					//Paralyse(10)
 			src.visible_message("\green <B>[src] hurls out the contents of their stomach!</B>")
 	return

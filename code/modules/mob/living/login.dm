@@ -19,14 +19,6 @@
 					ticker.mode.update_all_synd_icons()
 	return .
 
-	//Vents
-	if(ventcrawler)
-		src << "<span class='notice'>You can ventcrawl! Use alt+click on vents to quickly travel about the station.</span>"
-	//Should update regardless of if we can ventcrawl, since we can end up in pipes in other ways.
-	update_pipe_vision()
-
-	return .
-
 //This stuff needs to be merged from cloning.dm but I'm not in the mood to be shouted at for breaking all the things :< ~Carn
 	/* clones
 	switch(ticker.mode.name)

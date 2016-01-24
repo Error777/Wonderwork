@@ -35,7 +35,6 @@
 	O.viruses = viruses
 	O.a_intent = "hurt"
 
-
 	for(var/datum/disease/D in O.viruses)
 		D.affected_mob = O
 
@@ -44,7 +43,6 @@
 	if(mind)
 		mind.transfer_to(O)
 
-	O.update_pipe_vision()
 	O << "<B>You are now [O]. </B>"
 
 	spawn(0)//To prevent the proc from returning null.
@@ -88,7 +86,7 @@
 		O.mind.original = O
 	else
 		O.key = key
-	O.update_pipe_vision()
+
 	var/obj/loc_landmark
 	for(var/obj/effect/landmark/start/sloc in landmarks_list)
 		if (sloc.name != "AI")
@@ -176,7 +174,7 @@
 
 	O.mmi = new /obj/item/device/mmi(O)
 	O.mmi.transfer_identity(src)//Does not transfer key/client.
-	O.update_pipe_vision()
+
 	O.Namepick()
 
 	spawn(0)//To prevent the proc from returning null.
@@ -209,7 +207,7 @@
 
 	new_xeno.a_intent = "hurt"
 	new_xeno.key = key
-	new_xeno.update_pipe_vision()
+
 	new_xeno << "<B>You are now an alien.</B>"
 	spawn(0)//To prevent the proc from returning null.
 		del(src)
@@ -245,7 +243,7 @@
 			new_metroid = new /mob/living/carbon/metroid(loc)
 	new_metroid.a_intent = "hurt"
 	new_metroid.key = key
-	new_metroid.update_pipe_vision()
+
 	new_metroid << "<B>You are now a metroid. Skreee!</B>"
 	spawn(0)//To prevent the proc from returning null.
 		del(src)
@@ -257,7 +255,6 @@
 	for(var/obj/item/W in src)
 		drop_from_inventory(W)
 	regenerate_icons()
-	update_pipe_vision()
 	monkeyizing = 1
 	canmove = 0
 	icon = null
@@ -268,7 +265,7 @@
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
 	new_corgi.a_intent = "hurt"
 	new_corgi.key = key
-	new_corgi.update_pipe_vision()
+
 	new_corgi << "<B>You are now a Corgi. Yap Yap!</B>"
 	spawn(0)//To prevent the proc from returning null.
 		del(src)
@@ -301,7 +298,7 @@
 
 	new_mob.key = key
 	new_mob.a_intent = "hurt"
-	new_mob.update_pipe_vision()
+
 
 	new_mob << "You suddenly feel more... animalistic."
 	spawn()
@@ -318,7 +315,7 @@
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
-	update_pipe_vision()
+
 	new_mob.key = key
 	new_mob.a_intent = "hurt"
 	new_mob << "You feel more... animalistic"
