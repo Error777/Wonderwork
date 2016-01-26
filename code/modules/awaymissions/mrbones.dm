@@ -7,10 +7,12 @@
 	density = 1
 	var/obj/effect/away/mrbones/lighting/linkedlight
 	var/lightout = 0
+
 /obj/structure/awaymission/mrbones/candle/New()
 	linkedlight = new/obj/effect/away/mrbones/lighting
 	linkedlight.loc = src
 	linkedlight.C = src
+
 /obj/structure/awaymission/mrbones/candle/HasProximity(atom/movable/AM as mob|obj)
 	if(ishuman(AM))
 		if(lightout == 0)

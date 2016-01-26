@@ -1,5 +1,5 @@
 
-/obj/structure/divine/trap
+/obj/structure/trap
 	name = "IT'S A TARP"
 	icon = 'icons/obj/hand_of_god_structures.dmi'
 	desc = "stepping on me is a guaranteed bad day"
@@ -14,7 +14,7 @@
 	var/time_between_triggers = 600 //takes a minute to recharge
 
 
-/obj/structure/divine/trap/Crossed(atom/movable/AM)
+/obj/structure/trap/Crossed(atom/movable/AM)
 	if(last_trigger + time_between_triggers > world.time)
 		return
 	alpha = 30
@@ -26,7 +26,7 @@
 		animate(src, alpha = 30, time = time_between_triggers)
 
 
-/obj/structure/divine/trap/examine(mob/user)
+/obj/structure/trap/examine(mob/user)
 	..()
 	if(!isliving(user)) //bad ghosts, stop trying to powergame from beyond the grave
 		return
@@ -35,17 +35,17 @@
 	animate(src, alpha = 30, time = time_between_triggers)
 
 
-/obj/structure/divine/trap/proc/trap_effect(mob/living/L)
+/obj/structure/trap/proc/trap_effect(mob/living/L)
 	return
 
 
-/obj/structure/divine/trap/stun
+/obj/structure/trap/stun
 	name = "shock trap"
 	desc = "A trap that will shock you, it will burn your flesh and render you immobile, You'd better avoid it."
 	icon_state = "trap-shock"
 
 
-/obj/structure/divine/trap/stun/trap_effect(mob/living/L)
+/obj/structure/trap/stun/trap_effect(mob/living/L)
 	L << "<span class='danger'><B>You are paralyzed from the intense shock!</B></span>"
 	L.Weaken(5)
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
@@ -54,13 +54,13 @@
 
 
 
-/obj/structure/divine/trap/fire
+/obj/structure/trap/fire
 	name = "flame trap"
 	desc = "A trap that will set you ablaze. You'd better avoid it."
 	icon_state = "trap-fire"
 
 
-/obj/structure/divine/trap/fire/trap_effect(mob/living/L)
+/obj/structure/trap/fire/trap_effect(mob/living/L)
 	L << "<span class='danger'><B>Spontaneous combustion!</B></span>"
 	L.Weaken(1)
 //	var/turf/Lturf = get_turf(L)
@@ -70,13 +70,13 @@
 	s.start() //sparks always.
 
 
-/obj/structure/divine/trap/chill
+/obj/structure/trap/frost
 	name = "frost trap"
 	desc = "A trap that will chill you to the bone. You'd better avoid it."
 	icon_state = "trap-frost"
 
 
-/obj/structure/divine/trap/chill/trap_effect(mob/living/L)
+/obj/structure/trap/frost/trap_effect(mob/living/L)
 	L << "<span class='danger'><B>You're frozen solid!</B></span>"
 	L.Weaken(1)
 	L.bodytemperature -= 300
@@ -85,24 +85,24 @@
 	s.start() //sparks always.
 
 
-/obj/structure/divine/trap/damage
+/obj/structure/trap/damage
 	name = "earth trap"
 	desc = "A trap that will summon a small earthquake, just for you. You'd better avoid it."
 	icon_state = "trap-earth"
 
 
-/obj/structure/divine/trap/damage/trap_effect(mob/living/L)
+/obj/structure/trap/damage/trap_effect(mob/living/L)
 	L << "<span class='danger'><B>The ground quakes beneath your feet!</B></span>"
 	L.Weaken(5)
 	L.adjustBruteLoss(35)
-//	var/turf/Lturf = get_turf(L)
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(5, 1, src)
 	s.start() //sparks always.
+//	var/turf/Lturf = get_turf(L)
 //	new /obj/structure/flora/rock(Lturf)
 
 
-/obj/structure/divine/trap/ward
+/obj/structure/trap/ward
 	name = "divine ward"
 	desc = "A divine barrier, It looks like you could destroy it with enough effort, or wait for it to dissipate..."
 	icon_state = "ward"
@@ -112,7 +112,7 @@
 	time_between_triggers = 1200 //Exists for 2 minutes
 
 
-/obj/structure/divine/trap/ward/New()
+/obj/structure/trap/ward/New()
 	..()
 	spawn(time_between_triggers)
 		if(src)
