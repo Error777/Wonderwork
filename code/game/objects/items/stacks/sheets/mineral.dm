@@ -30,6 +30,7 @@ Mineral Sheets
 var/global/list/datum/stack_recipe/sandstone_recipes = list ( \
 	new/datum/stack_recipe("pile of dirt", /obj/machinery/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("sandstone statue", /obj/structure/statue/sandstone/assistant, 10, one_per_turf = 1, on_floor = 1), \
 /*	new/datum/stack_recipe("sandstone wall", ???), \
 		new/datum/stack_recipe("sandstone floor", ???),\ */
 	)
@@ -81,6 +82,7 @@ var/global/list/datum/stack_recipe/diamond_recipes = list ( \
 
 var/global/list/datum/stack_recipe/uranium_recipes = list ( \
 	new/datum/stack_recipe("uranium door", /obj/structure/mineral_door/uranium, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("uranium statue", /obj/structure/statue/uranium/eng, 10, one_per_turf = 1, on_floor = 1), \
 	)
 
 /obj/item/stack/sheet/mineral/uranium/New(var/loc, var/amount=null)
@@ -106,6 +108,7 @@ var/global/list/datum/stack_recipe/uranium_recipes = list ( \
 
 var/global/list/datum/stack_recipe/plasma_recipes = list ( \
 	new/datum/stack_recipe("plasma door", /obj/structure/mineral_door/transparent/plasma, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("plasma statue", /obj/structure/statue/plasma/scientist, 10, one_per_turf = 1, on_floor = 1), \
 	)
 
 /obj/item/stack/sheet/mineral/plasma/New(var/loc, var/amount=null)
@@ -204,6 +207,10 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	origin_tech = "materials=4"
 	perunit = 2000
 	sheettype = "clown"
+
+var/global/list/datum/stack_recipe/clown_recipes = list ( \
+	new/datum/stack_recipe("bananium statue", /obj/structure/statue/bananium/clown, 10, one_per_turf = 1, on_floor = 1), \
+	)
 
 /obj/item/stack/sheet/mineral/clown/New(var/loc, var/amount=null)
 	pixel_x = rand(0,4)-4

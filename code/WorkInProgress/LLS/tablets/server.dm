@@ -26,7 +26,7 @@ var/global/list/obj/machinery/nanonet_router/nanonet_routers = list()
 	..()
 	return
 
-/obj/machinery/nanonet_server/Destroy()
+/obj/machinery/nanonet_server/Del()
 	nanonet_servers -= src
 	..()
 	return
@@ -79,7 +79,7 @@ var/global/list/obj/machinery/nanonet_router/nanonet_routers = list()
 	..()
 	return
 
-/obj/machinery/nanonet_router/Destroy()
+/obj/machinery/nanonet_router/Del()
 	nanonet_routers -= src
 	..()
 	return

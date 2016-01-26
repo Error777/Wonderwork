@@ -41,7 +41,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/used_equip = 0
 	var/used_light = 0
 	var/used_environ = 0
-
+	var/generated = 0
 	var/has_gravity = 1
 
 	var/no_air = null
@@ -58,9 +58,11 @@ var/list/teleportlocs = list()
 
 proc/process_teleport_locs()
 	for(var/area/AR in world)
-		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station)) continue
+		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station ) || istype(AR, /area/template )) continue
 		if(teleportlocs.Find(AR.name)) continue
-		var/turf/picked = pick(get_area_turfs(AR.type))
+		var/turf/picked = safepick(get_area_turfs(AR.type)) //Changed to safepick to resolve an error that was occuring where it would get asked to pick from an empty list. Runtime errors, man.
+		if(!picked) continue
+		if (AR.generated) continue
 		if (picked.z == 1)
 			teleportlocs += AR.name
 			teleportlocs[AR.name] = AR
@@ -84,8 +86,8 @@ proc/process_ghost_teleport_locs()
 		if(istype(AR, /area/turret_protected/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome))
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
-		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z == 1 || picked.z == 5 || picked.z == 3)
+		var/turf/picked = safepick(get_area_turfs(AR.type))
+		if (picked && (picked.z == 1 || picked.z == 5 || picked.z == 3))
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
@@ -298,6 +300,7 @@ proc/process_ghost_teleport_locs()
 /area/shuttle/thunderdome/redshuttle/station
 	name = "\improper RED Station"
 	icon_state = "shuttlered2"
+
 // === Trying to remove these areas:
 
 /area/shuttle/research
@@ -1708,7 +1711,35 @@ area/ship/eva
 	name = "\improper Telecommunications Satellite Lounge"
 	icon_state = "tcomsatlounge"
 
+//templates
+/area/template/
+	name = "Strange Location"
+	icon_state = "away"
 
+//all
+/area/template/gravity/powered/lit
+	requires_power = 0
+	luminosity = 1
+	ul_Lighting = 0
+	has_gravity = 1
+
+//variations
+/area/template/gravity
+	has_gravity = 1
+
+/area/template/gravity/lit
+	luminosity = 1
+	ul_Lighting = 0
+
+/area/template/gravity/powered
+	requires_power = 0
+
+/area/template/powered
+	requires_power = 0
+
+/area/template/powered/lit
+	luminosity = 1
+	ul_Lighting = 0
 
 // Away Missions
 /area/awaymission

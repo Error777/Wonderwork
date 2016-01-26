@@ -1453,3 +1453,140 @@ var/list/WALLITEMS = list(
 // Use this to send to a client's chat, no exceptions (except this proc itself).
 /proc/to_chat(var/thing, var/output)
 	thing << output
+
+/proc/copy_human(var/mob/living/carbon/human/from, var/mob/living/carbon/human/target, var/copyitems = 1, var/ignore_forbidden = 0, var/copyid = 1, var/copyhs = 0)
+
+	//Name and real name
+	target.name = from.name
+	target.real_name = from.real_name
+
+	//Hair colour and style
+	target.r_hair = from.r_hair
+	target.g_hair = from.g_hair
+	target.b_hair = from.b_hair
+	target.h_style = from.h_style
+
+	//Facial hair colour and style
+	target.r_facial = from.r_facial
+	target.g_facial = from.g_facial
+	target.b_facial = from.b_facial
+	target.f_style = from.f_style
+
+	//Eye colour
+	target.r_eyes = from.r_eyes
+	target.g_eyes = from.g_eyes
+	target.b_eyes = from.b_eyes
+
+	//Skin tone, age and blood type
+	target.s_tone = from.s_tone
+	target.age = from.age
+	target.b_type = from.b_type
+
+	//Gender and job
+	target.gender = from.gender
+	target.job = from.job
+
+	if(copyitems)
+		if(from.w_uniform)
+			target.equip_to_slot_or_del(new from.w_uniform.type(target), slot_w_uniform)
+		if(from.shoes)
+			target.equip_to_slot_or_del(new from.shoes.type(target), slot_shoes)
+		if(from.belt)
+			target.equip_to_slot_or_del(new from.belt.type(target), slot_belt)
+		if(from.gloves)
+			target.equip_to_slot_or_del(new from.gloves.type(target), slot_gloves)
+		if(from.glasses)
+			if(!istype(from.glasses, /obj/item/clothing/glasses/virtual))
+				target.equip_to_slot_or_del(new from.glasses.type(target), slot_glasses)
+		if(from.head)
+			target.equip_to_slot_or_del(new from.head.type(target), slot_head)
+		if(from.r_ear)
+			target.equip_to_slot_or_del(new from.r_ear.type(target), slot_r_ear)
+		if(from.l_ear)
+			target.equip_to_slot_or_del(new from.l_ear.type(target), slot_l_ear)
+	/*	if(copyhs)
+			if(from.from.r_ear)
+				target.equip_to_slot_or_del(new from.ears.type(target), slot_r_ear)
+			if(from.from.l_ear)
+				target.equip_to_slot_or_del(new from.ears.type(target), slot_l_ear)
+		else
+			if(target.r_ear)	del(target.r_ear)
+				target.equip_to_slot_or_del(new /obj/item/device/radio/headset/virtual(target), slot_r_ear)
+			if(target.l_ear)	del(target.l_ear)
+				target.equip_to_slot_or_del(new /obj/item/device/radio/headset/virtual(target), slot_l_ear)
+
+			// This really should never be false.
+			if(istype(target.ears, /obj/item/device/radio/headset/virtual))
+				if(istype(from.ears, /obj/item/device/radio/headset))
+					var/obj/item/device/radio/headset/virtual/V = target.ears
+					var/obj/item/device/radio/headset/H = from.ears
+
+					if(H.keyslot1)
+						V.keyslot1 = new H.keyslot1.type(V)
+					if(H.keyslot2)
+						V.keyslot2 = new H.keyslot2.type(V)*/
+
+		if(from.r_store)
+			target.equip_to_slot_or_del(new from.r_store.type(target), slot_r_store)
+		if(from.l_store)
+			target.equip_to_slot_or_del(new from.l_store.type(target), slot_l_store)
+		if(from.s_store)
+			target.equip_to_slot_or_del(new from.s_store.type(target), slot_s_store)
+		if(from.s_store)
+			target.equip_to_slot_or_del(new from.s_store.type(target), slot_s_store)
+		if(from.back)
+			var/obj/item/weapon/storage/backpack/B = new from.back.type()
+			for(var/obj/item/I in from.back)
+				if(I.type in vr_controller.forbidden_types)	continue
+				var/obj/item/O = new I.type()
+				B.contents += O
+			target.equip_to_slot_or_del(B, slot_back)
+		if(from.wear_suit)
+			target.equip_to_slot_or_del(new from.wear_suit.type(target), slot_wear_suit)
+		if(from.wear_mask)
+			target.equip_to_slot_or_del(new from.wear_mask.type(target), slot_wear_mask)
+		if(from.wear_id)
+			if(istype(from.wear_id, /obj/item/weapon/card/id) || (istype(from.wear_id, /obj/item/device/pda) && copyid))
+				if(!istype(from.wear_id, /obj/item/device/pda))
+					var/obj/item/weapon/card/id/X = from.wear_id
+					var/obj/item/weapon/card/id/W = new X.type()
+					W.name = X.name
+					W.assignment = X.assignment
+					W.access = X.access
+					W.registered_name = X.registered_name
+					W.icon_state = X.icon_state
+					target.equip_to_slot_or_del(W, slot_wear_id)
+				else
+					var/obj/item/device/pda/G = from.wear_id
+					if(G.id)
+						var/obj/item/weapon/card/id/I = new G.id.type()
+						I.name = G.id.name
+						I.assignment = G.id.assignment
+						I.access = G.id.access
+						I.registered_name = G.id.registered_name
+						I.icon_state = G.id.icon_state
+						target.equip_to_slot_or_del(I, slot_wear_id)
+
+			else if(istype(from.wear_id, /obj/item/device/pda))
+				var/obj/item/device/pda/G = from.wear_id
+				var/obj/item/device/pda/P = new G.type()
+				P.name = G.name
+				P.owner = G.owner
+				P.ownjob = G.ownjob
+				target.equip_to_slot_or_del(P, slot_wear_id)
+
+		for(var/obj/item/weapon/implant/I in from)
+			var/obj/item/weapon/implant/A = new I.type(target)
+			A.imp_in = target
+			A.implanted = 1
+	else
+		target.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(target), slot_w_uniform)
+		target.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(target), slot_shoes)
+//		target.equip_to_slot_or_del(new /obj/item/weapon/book/manual/security_space_law(target), slot_l_hand)
+	if(!ignore_forbidden)
+		for(var/obj/item/I in target.get_contents())
+			for(var/T in vr_controller.forbidden_types)
+				if(istype(I, T))
+					del(I)
+	target.update_icons()
+	target.update_hud()

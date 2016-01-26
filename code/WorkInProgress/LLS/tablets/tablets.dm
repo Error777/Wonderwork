@@ -66,7 +66,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 		A.tablet = src
 		core.programs.Add(A)
 
-/obj/item/device/tablet/Destroy()
+/obj/item/device/tablet/Del()
 	tablets_list.Remove(src)
 	if(src.id)
 		src.id.loc = get_turf(src.loc)
@@ -75,11 +75,11 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 /obj/item/device/tablet/pickup(mob/user)
 	if(fon)
 		SetLuminosity(0)
-		user.AddLuminosity(f_lum)
+		user.SetLuminosity(f_lum)
 
 /obj/item/device/tablet/dropped(mob/user)
 	if(fon)
-		user.AddLuminosity(-f_lum)
+		user.SetLuminosity(-f_lum)
 		SetLuminosity(f_lum)
 
 /obj/item/device/tablet/attack_self(mob/living/user)
@@ -186,11 +186,11 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 			if("Light")
 				if(fon)
 					fon = 0
-					if(src in U.contents)	U.AddLuminosity(-f_lum)
+					if(src in U.contents)	U.SetLuminosity(-f_lum)
 					else					SetLuminosity(0)
 				else
 					fon = 1
-					if(src in U.contents)	U.AddLuminosity(f_lum)
+					if(src in U.contents)	U.SetLuminosity(f_lum)
 					else					SetLuminosity(f_lum)
 			if("eject_pai")
 				if(pai)
@@ -614,7 +614,7 @@ obj/item/device/tablet/verb/verb_remove_pen()
 		..()
 		core.programs.Add(new /datum/program/notekeeper)
 		core.programs.Add(new /datum/program/signaller)
-
+/*
 /obj/item/device/tablet/medical
 	icon_state = "tablet-medical"
 	New()
@@ -948,7 +948,7 @@ obj/item/device/tablet/verb/verb_remove_pen()
 		core.programs.Add(new /datum/program/brigcontrol)
 		core.programs.Add(new /datum/program/notekeeper)
 		core.programs.Add(new /datum/program/crewmanifest)
-
+*/
 /obj/item/device/tablet/ai
 	can_eject = 0
 	can_detonate = 0
@@ -970,3 +970,4 @@ obj/item/device/tablet/verb/verb_remove_pen()
 		new /obj/item/device/tablet_core(src)
 		new /obj/item/device/tablet_core(src)
 		new /obj/item/device/tablet_core(src)
+

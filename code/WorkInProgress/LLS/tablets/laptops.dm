@@ -112,7 +112,7 @@
 		..()
 
 //Laptop flavors//
-
+/*
 /obj/item/device/tablet/laptop/cargo
 	name = "Cargo Laptop"
 	can_eject = 0
@@ -235,3 +235,4 @@
 		core.programs.Add(new /datum/program/notekeeper)
 		core.programs.Add(new /datum/program/crewmanifest)
 		update_label()
+*/

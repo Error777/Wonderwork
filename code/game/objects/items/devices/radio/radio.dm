@@ -19,6 +19,7 @@ var/GLOBAL_RADIO_TYPE = 1 // radio type to use
 	var/b_stat = 0
 	var/broadcasting = 0
 	var/listening = 1
+	var/prison_radio = 0 //VR stuff
 	var/freerange = 0 // 0 - Sanitize frequencies, 1 - Full range
 	var/list/channels = list() //see communications.dm for full list. First channes is a "default" for :h
 	var/subspace_transmission = 0

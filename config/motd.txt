@@ -2,4 +2,8 @@
 
 -<i>This server is running <a href="http://baystation12.net/">Baystation 12's</a> modification of the <a href="http://ss13.eu/">/tg/station13</a> SS13 code.</i>
 <br><br>
-<strong>Bugtracker:</strong> <a href="https://github.com/BlueCabaret/Wonderwork/issues">https://github.com/BlueCabaret/Wonderwork/issues</a>
+<strong>Bugs:</strong> <a href="https://github.com/BlueCabaret/Wonderwork/issues">Bugtracker</a>
+<br>
+<strong>Rules and roleplaying tips:</strong> <a href="http://baystation12.net/wiki/index.php/Rules">http://baystation12.net/wiki/index.php/Rules</a> or the Rules command.
+<br><br>
+This is a roleplaying server, so don't forget to remain in character while playing. Make sure to read and abide by the rules and if you have any questions, feel free to adminhelp!

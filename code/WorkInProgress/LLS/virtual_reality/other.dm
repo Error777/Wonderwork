@@ -20,5 +20,3 @@
 
 /obj/item/device/radio/headset/virtual
 	name = "virtual headset"
-
-	prison_radio = 1

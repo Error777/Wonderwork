@@ -32,7 +32,8 @@
 		if(!done)
 			var/obj/item/darts/H = AM
 			for(var/mob/M in range(src,5))
-				M.playsound_local(src, 'sound/effects/dartboard.ogg', 5, 1, 1, falloff = 5)
+				M.playsound_local(src, 'sound/effects/dartboard.ogg', 5, 1, 1)
+
 			if(!dart1 && darts <= 0)
 				dart1 = darts()
 				if(dart1 == 50)
@@ -48,6 +49,7 @@
 
 				del(H)
 				return
+
 			if(!dart2 && darts <= 1)
 				dart2 = darts()
 				if(dart2 == 50 && dart1 == 50)
@@ -62,6 +64,7 @@
 				darts++
 				del(H)
 				return
+
 			if(!dart3 && darts >= 2)
 				dart3 = darts()
 				if(dart3 == 50 && dart2 == 50 && dart1 == 50)

@@ -6,9 +6,9 @@
 	name = "virtual reality"
 	icon_state = "red2"
 
-	requires_power = 1
-	has_gravity = 1
-	power_equip = 1
+	requires_power = 0
+	luminosity = 1
+	ul_Lighting = 0
 
 	// This is here so it is available at this scope.
 
@@ -81,7 +81,7 @@
 					for(var/obj/item/I in L.get_contents())
 						for(var/_type in thunderdome_items)
 							if(istype(I, _type))
-								L.unEquip(I, 1)
+								L.u_equip(I, 1)
 								del(I)
 
 		Enter(var/atom/movable/O, var/atom/oldloc)

@@ -81,6 +81,7 @@ var/datum/virtual_reality_controller/vr_controller = new()
 
 		return new_mob
 
+
 	proc/GetGogglesFromClient(var/client/C)
 		if(C in contained_clients)
 			for(var/obj/item/clothing/glasses/virtual/V in goggles)
@@ -158,7 +159,7 @@ var/datum/virtual_reality_controller/vr_controller = new()
 
 	proc/HandleVREnter(var/obj/item/clothing/glasses/virtual/V, var/mob/living/carbon/human/H)
 		if(!can_enter)
-			if(H.client && H.client.holder && H.client.holder.rank.rights & R_PRIMARYADMIN)
+			if(H.client && H.client.holder && H.client.holder.rights & R_ADMIN)
 				if(alert(H, "Entering the VR is currently admin blocked. Do you want to enter anyway?", "Confirmation", "Yes", "No") == "Yes")	return 1
 				else	return 0
 			H << "\red <b>Entering the VR is currently disabled.</b>"
