@@ -8,6 +8,7 @@
 	src.blinded = null
 
 	//Status updates, death etc.
+	UpdateLuminosity()
 	clamp_values()
 	handle_regular_status_updates()
 

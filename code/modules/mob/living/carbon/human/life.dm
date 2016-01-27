@@ -97,6 +97,7 @@
 	handle_environment(environment)
 
 	//Status updates, death etc.
+	UpdateLuminosity()
 	handle_regular_status_updates()		//TODO: optimise ~Carn
 	update_canmove()
 
@@ -111,6 +112,10 @@
 	for(var/obj/item/weapon/grab/G in src)
 		G.process()
 
+	if(isturf(loc) && rand(1,1000) == 1) //0.1% chance of playing a scary sound to someone who's in complete darkness
+		var/turf/currentTurf = get_turf(src)
+		if(!max(currentTurf.ul_GetRed(), currentTurf.ul_GetGreen(), currentTurf.ul_GetBlue()))
+			playsound_local(src,pick(scarySounds),50, 1, -1)
 
 /mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
 	..()

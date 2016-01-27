@@ -59,6 +59,7 @@
 		handle_environment(environment)
 
 	//Status updates, death etc.
+	UpdateLuminosity()
 	handle_regular_status_updates()
 	update_canmove()
 
