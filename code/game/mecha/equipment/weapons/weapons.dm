@@ -273,32 +273,33 @@
 	var/missile_speed = 2
 	var/missile_range = 30
 
-	action(target)
-		if(!action_checks(target)) return
-		set_ready_state(0)
-		var/obj/item/missile/M = new projectile(chassis.loc)
-		M.primed = 1
-		playsound(chassis, fire_sound, 50, 1)
-		M.throw_at(target, missile_range, missile_speed)
-		projectiles--
-		log_message("Fired from [src.name], targeting [target].")
-		do_after_cooldown()
-		return
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/action(target)
+	if(!action_checks(target)) return
+	set_ready_state(0)
+	var/obj/item/missile/M = new projectile(chassis.loc)
+	M.primed = 1
+	playsound(chassis, fire_sound, 50, 1)
+	M.throw_at(target, missile_range, missile_speed)
+	projectiles--
+	log_message("Fired from [src.name], targeting [target].")
+	do_after_cooldown()
+	return
 
 
 /obj/item/missile
+	name = "missile"
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "missile"
 	var/primed = null
 	throwforce = 15
 
-	throw_impact(atom/hit_atom)
-		if(primed)
-			explosion(hit_atom, 0, 0, 2, 4)
-			del(src)
-		else
-			..()
-		return
+/obj/item/missile/throw_impact(atom/hit_atom)
+	if(primed)
+		explosion(hit_atom, 0, 0, 2, 4)
+		del(src)
+	else
+		..()
+	return
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang
 	name = "SGL-6 Grenade Launcher"

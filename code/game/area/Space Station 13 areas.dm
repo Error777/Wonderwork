@@ -1653,8 +1653,6 @@ area/ship/eva
 
 //Misc
 
-
-
 /area/wreck/ai
 	name = "\improper AI Chamber"
 	icon_state = "ai"
@@ -1675,7 +1673,9 @@ area/ship/eva
 	name = "Unknown"
 	icon_state = "storage"
 
-
+/area/retard
+	name = "Retard Zone"
+	icon_state = "retard"
 
 // Telecommunications Satellite
 

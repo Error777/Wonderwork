@@ -14,6 +14,240 @@
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
 
+/obj/structure/closet/crate/can_open()
+	return 1
+
+/obj/structure/closet/crate/can_close()
+	return 1
+
+/obj/structure/closet/crate/open()
+	if(src.opened)
+		return 0
+	if(!src.can_open())
+		return 0
+
+	if(rigged && locate(/obj/item/device/radio/electropack) in src)
+		if(isliving(usr))
+			var/mob/living/L = usr
+			if(L.electrocute_act(17, src))
+				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+				s.set_up(5, 1, src)
+				s.start()
+				return 2
+
+	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
+	for(var/obj/O in src)
+		O.loc = get_turf(src)
+	icon_state = icon_opened
+	src.opened = 1
+	return 1
+
+/obj/structure/closet/crate/close()
+	if(!src.opened)
+		return 0
+	if(!src.can_close())
+		return 0
+
+	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
+	var/itemcount = 0
+	for(var/obj/O in get_turf(src))
+		if(itemcount >= storage_capacity)
+			break
+		if(O.density || O.anchored || istype(O,/obj/structure/closet))
+			continue
+		if(istype(O, /obj/structure/stool/bed)) //This is only necessary because of rollerbeds and swivel chairs.
+			var/obj/structure/stool/bed/B = O
+			if(B.buckled_mob)
+				continue
+		O.loc = src
+		itemcount++
+
+	icon_state = icon_closed
+	src.opened = 0
+	return 1
+
+/obj/structure/closet/crate/attack_hand(mob/user as mob)
+	if(opened)
+		close()
+	else
+		if(rigged && locate(/obj/item/device/radio/electropack) in src)
+			if(isliving(user))
+				var/mob/living/L = user
+				if(L.electrocute_act(17, src))
+					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					s.set_up(5, 1, src)
+					s.start()
+					return
+		open()
+	return
+
+/obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
+	if(locked && !broken)
+		if (allowed(user))
+			user << "<span class='notice'>You unlock [src].</span>"
+			src.locked = 0
+			overlays.Cut()
+			overlays += greenlight
+			return
+		else
+			user << "<span class='notice'>[src] is locked.</span>"
+			return
+	else
+		..()
+
+/obj/structure/closet/crate/secure/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/weapon/card) && src.allowed(user) && !locked && !opened && !broken)
+		user << "<span class='notice'>You lock \the [src].</span>"
+		src.locked = 1
+		overlays.Cut()
+		overlays += redlight
+		return
+	else if ( (istype(W, /obj/item/weapon/card/emag)||istype(W, /obj/item/weapon/melee/energy/blade)) && locked &&!broken)
+		overlays.Cut()
+		overlays += emag
+		overlays += sparks
+		spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+		playsound(src.loc, "sparks", 60, 1)
+		src.locked = 0
+		src.broken = 1
+		user << "<span class='notice'>You unlock \the [src].</span>"
+		return
+
+	else if(istype(W, /obj/item/device/multitool) && !src.broken)
+		var/obj/item/device/multitool/multi = W
+		if(multi.is_used)
+			user << "\red This multitool is already in use!"
+			return
+		multi.is_used = 1
+		user << "\red Resetting circuitry(0/6)..."
+		playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
+		var/obj/structure/closet/crate/secure/crat = src
+		src = null
+		if(do_mob(user, crat, 200))
+			user << "\red Resetting circuitry(1/6)..."
+			for(var/mob/O in viewers(world.view, user))
+				if(O != user)
+					O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
+			if(do_mob(user, crat, 200))
+				user << "\red Resetting circuitry(2/6)..."
+				for(var/mob/O in viewers(world.view, user))
+					if(O != user)
+						O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
+				if(do_mob(user, crat, 200))
+					user << "\red Resetting circuitry(3/6)..."
+					for(var/mob/O in viewers(world.view, user))
+						if(O != user)
+							O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
+					if(do_mob(user, crat, 200))
+						user << "\red Resetting circuitry(4/6)..."
+						for(var/mob/O in viewers(world.view, user))
+							if(O != user)
+								O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
+						if(do_mob(user, crat, 200))
+							user << "\red Resetting circuitry(5/6)..."
+							for(var/mob/O in viewers(world.view, user))
+								if(O != user)
+									O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
+							if(do_mob(user, crat, 200))
+								crat.locked = !crat.locked
+								if(crat.locked)
+									crat.overlays = null
+									crat.overlays += crat.redlight
+									user << "\blue You enable the locking modules."
+									for(var/mob/O in viewers(world.view, user))
+										if(O != user)
+											O.show_message(text("\red <B>[] locks [] with a multitool.</B>", user, crat), 1)
+								else
+									crat.overlays = null
+									crat.overlays += crat.greenlight
+									user << "\blue You disable the locking modules."
+									for(var/mob/O in viewers(world.view, user))
+										if(O != user)
+											O.show_message(text("\red <B>[] unlocks [] with a multitool.</B>", user, crat), 1)
+		multi.is_used = 0
+		return
+
+	return ..()
+
+/obj/structure/closet/crate/attack_paw(mob/user as mob)
+	return attack_hand(user)
+
+/obj/structure/closet/crate/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(opened)
+		if(isrobot(user))
+			return
+		user.drop_item()
+		if(W)
+			W.loc = src.loc
+	else if(istype(W, /obj/item/weapon/packageWrap))
+		return
+	else if(istype(W, /obj/item/weapon/cable_coil))
+		if(rigged)
+			user << "<span class='notice'>[src] is already rigged!</span>"
+			return
+		user  << "<span class='notice'>You rig [src].</span>"
+		user.drop_item()
+		del(W)
+		rigged = 1
+		return
+	else if(istype(W, /obj/item/device/radio/electropack))
+		if(rigged)
+			user  << "<span class='notice'>You attach [W] to [src].</span>"
+			user.drop_item()
+			W.loc = src
+			return
+	else if(istype(W, /obj/item/weapon/wirecutters))
+		if(rigged)
+			user  << "<span class='notice'>You cut away the wiring.</span>"
+			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
+			rigged = 0
+			return
+	else return attack_hand(user)
+
+/obj/structure/closet/crate/secure/emp_act(severity)
+	for(var/obj/O in src)
+		O.emp_act(severity)
+	if(!broken && !opened  && prob(50/severity))
+		if(!locked)
+			src.locked = 1
+			overlays.Cut()
+			overlays += redlight
+		else
+			overlays.Cut()
+			overlays += emag
+			overlays += sparks
+			spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+			playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
+			src.locked = 0
+	if(!opened && prob(20/severity))
+		if(!locked)
+			open()
+		else
+			src.req_access = list()
+			src.req_access += pick(get_all_accesses())
+	..()
+
+
+/obj/structure/closet/crate/ex_act(severity)
+	switch(severity)
+		if(1.0)
+			for(var/obj/O in src.contents)
+				del(O)
+			del(src)
+			return
+		if(2.0)
+			for(var/obj/O in src.contents)
+				if(prob(50))
+					del(O)
+			del(src)
+			return
+		if(3.0)
+			if (prob(50))
+				del(src)
+			return
+		else
+	return
+
 /obj/structure/closet/crate/pcrate
 	name = "plastic crate"
 	desc = "A rectangular plastic crate."
@@ -90,23 +324,23 @@
 	var/target_temp = T0C - 40
 	var/cooling_power = 40
 
-	return_air()
-		var/datum/gas_mixture/gas = (..())
-		if(!gas)	return null
-		var/datum/gas_mixture/newgas = new/datum/gas_mixture()
-		newgas.oxygen = gas.oxygen
-		newgas.carbon_dioxide = gas.carbon_dioxide
-		newgas.nitrogen = gas.nitrogen
-		newgas.toxins = gas.toxins
-		newgas.volume = gas.volume
-		newgas.temperature = gas.temperature
-		if(newgas.temperature <= target_temp)	return
+/obj/structure/closet/crate/freezer/return_air()
+	var/datum/gas_mixture/gas = (..())
+	if(!gas)	return null
+	var/datum/gas_mixture/newgas = new/datum/gas_mixture()
+	newgas.oxygen = gas.oxygen
+	newgas.carbon_dioxide = gas.carbon_dioxide
+	newgas.nitrogen = gas.nitrogen
+	newgas.toxins = gas.toxins
+	newgas.volume = gas.volume
+	newgas.temperature = gas.temperature
+	if(newgas.temperature <= target_temp)	return
 
-		if((newgas.temperature - cooling_power) > target_temp)
-			newgas.temperature -= cooling_power
-		else
-			newgas.temperature = target_temp
-		return newgas
+	if((newgas.temperature - cooling_power) > target_temp)
+		newgas.temperature -= cooling_power
+	else
+		newgas.temperature = target_temp
+	return newgas
 
 
 /obj/structure/closet/crate/bin
@@ -265,25 +499,12 @@
 	density = 1
 
 /obj/structure/closet/crate/hydroponics/prespawned
-	//This exists so the prespawned hydro crates spawn with their contents.
-/*	name = "Hydroponics crate"
-	desc = "All you need to destroy those pesky weeds and pests."
-	icon = 'icons/obj/storage.dmi'
-	icon_state = "hydrocrate"
-	icon_opened = "hydrocrateopen"
-	icon_closed = "hydrocrate"
-	density = 1*/
+
 	New()
 		..()
 		new /obj/item/weapon/reagent_containers/spray/plantbgone(src)
 		new /obj/item/weapon/reagent_containers/spray/plantbgone(src)
 		new /obj/item/weapon/minihoe(src)
-//		new /obj/item/weapon/weedspray(src)
-//		new /obj/item/weapon/weedspray(src)
-//		new /obj/item/weapon/pestspray(src)
-//		new /obj/item/weapon/pestspray(src)
-//		new /obj/item/weapon/pestspray(src)
-
 
 /obj/structure/closet/crate/secure/New()
 	..()
@@ -311,219 +532,3 @@
 	new /obj/item/clothing/head/radiation(src)
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)
-
-/obj/structure/closet/crate/open()
-	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
-
-	for(var/obj/O in src)
-		O.loc = get_turf(src)
-
-	icon_state = icon_opened
-	src.opened = 1
-
-/obj/structure/closet/crate/close()
-	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
-
-	var/itemcount = 0
-
-	for(var/obj/O in get_turf(src))
-		if(itemcount >= storage_capacity)
-			break
-
-		if(O.density || O.anchored || istype(O,/obj/structure/closet))
-			continue
-
-		if(istype(O, /obj/structure/stool/bed)) //This is only necessary because of rollerbeds and swivel chairs.
-			var/obj/structure/stool/bed/B = O
-			if(B.buckled_mob)
-				continue
-
-		O.loc = src
-		itemcount++
-
-	icon_state = icon_closed
-	src.opened = 0
-
-/obj/structure/closet/crate/attack_hand(mob/user as mob)
-	if(opened)
-		close()
-	else
-		if(rigged && locate(/obj/item/device/radio/electropack) in src)
-			if(isliving(user))
-				var/mob/living/L = user
-				if(L.electrocute_act(17, src))
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
-					s.set_up(5, 1, src)
-					s.start()
-					return
-		open()
-	return
-
-/obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
-	if(locked && !broken)
-		if (allowed(user))
-			user << "<span class='notice'>You unlock [src].</span>"
-			src.locked = 0
-			overlays.Cut()
-			overlays += greenlight
-			return
-		else
-			user << "<span class='notice'>[src] is locked.</span>"
-			return
-	else
-		..()
-
-/obj/structure/closet/crate/secure/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/card) && src.allowed(user) && !locked && !opened && !broken)
-		user << "<span class='notice'>You lock \the [src].</span>"
-		src.locked = 1
-		overlays.Cut()
-		overlays += redlight
-		return
-	else if ( (istype(W, /obj/item/weapon/card/emag)||istype(W, /obj/item/weapon/melee/energy/blade)) && locked &&!broken)
-		overlays.Cut()
-		overlays += emag
-		overlays += sparks
-		spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
-		playsound(src.loc, "sparks", 60, 1)
-		src.locked = 0
-		src.broken = 1
-		user << "<span class='notice'>You unlock \the [src].</span>"
-		return
-
-	else if(istype(W, /obj/item/device/multitool) && !src.broken)
-		var/obj/item/device/multitool/multi = W
-		if(multi.is_used)
-			user << "\red This multitool is already in use!"
-			return
-		multi.is_used = 1
-		user << "\red Resetting circuitry(0/6)..."
-		playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
-		var/obj/structure/closet/crate/secure/crat = src
-		src = null
-		if(do_mob(user, crat, 200))
-			user << "\red Resetting circuitry(1/6)..."
-			for(var/mob/O in viewers(world.view, user))
-				if(O != user)
-					O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
-			if(do_mob(user, crat, 200))
-				user << "\red Resetting circuitry(2/6)..."
-				for(var/mob/O in viewers(world.view, user))
-					if(O != user)
-						O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
-				if(do_mob(user, crat, 200))
-					user << "\red Resetting circuitry(3/6)..."
-					for(var/mob/O in viewers(world.view, user))
-						if(O != user)
-							O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
-					if(do_mob(user, crat, 200))
-						user << "\red Resetting circuitry(4/6)..."
-						for(var/mob/O in viewers(world.view, user))
-							if(O != user)
-								O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
-						if(do_mob(user, crat, 200))
-							user << "\red Resetting circuitry(5/6)..."
-							for(var/mob/O in viewers(world.view, user))
-								if(O != user)
-									O.show_message(text("\red <B>[] picks in wires of the [] with a multitool.</B>", user, crat), 1)
-							if(do_mob(user, crat, 200))
-								crat.locked = !crat.locked
-								if(crat.locked)
-									crat.overlays = null
-									crat.overlays += crat.redlight
-									user << "\blue You enable the locking modules."
-									for(var/mob/O in viewers(world.view, user))
-										if(O != user)
-											O.show_message(text("\red <B>[] locks [] with a multitool.</B>", user, crat), 1)
-								else
-									crat.overlays = null
-									crat.overlays += crat.greenlight
-									user << "\blue You disable the locking modules."
-									for(var/mob/O in viewers(world.view, user))
-										if(O != user)
-											O.show_message(text("\red <B>[] unlocks [] with a multitool.</B>", user, crat), 1)
-		multi.is_used = 0
-		return
-
-	return ..()
-
-/obj/structure/closet/crate/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
-/obj/structure/closet/crate/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(opened)
-		if(isrobot(user))
-			return
-		user.drop_item()
-		if(W)
-			W.loc = src.loc
-	else if(istype(W, /obj/item/weapon/packageWrap))
-		return
-	else if(istype(W, /obj/item/weapon/cable_coil))
-		if(rigged)
-			user << "<span class='notice'>[src] is already rigged!</span>"
-			return
-		user  << "<span class='notice'>You rig [src].</span>"
-		user.drop_item()
-		del(W)
-		rigged = 1
-		return
-	else if(istype(W, /obj/item/weapon/cargotele))
-		return
-	else if(istype(W, /obj/item/device/radio/electropack))
-		if(rigged)
-			user  << "<span class='notice'>You attach [W] to [src].</span>"
-			user.drop_item()
-			W.loc = src
-			return
-	else if(istype(W, /obj/item/weapon/wirecutters))
-		if(rigged)
-			user  << "<span class='notice'>You cut away the wiring.</span>"
-			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
-			rigged = 0
-			return
-	else return attack_hand(user)
-
-/obj/structure/closet/crate/secure/emp_act(severity)
-	for(var/obj/O in src)
-		O.emp_act(severity)
-	if(!broken && !opened  && prob(50/severity))
-		if(!locked)
-			src.locked = 1
-			overlays.Cut()
-			overlays += redlight
-		else
-			overlays.Cut()
-			overlays += emag
-			overlays += sparks
-			spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
-			playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
-			src.locked = 0
-	if(!opened && prob(20/severity))
-		if(!locked)
-			open()
-		else
-			src.req_access = list()
-			src.req_access += pick(get_all_accesses())
-	..()
-
-
-/obj/structure/closet/crate/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			for(var/obj/O in src.contents)
-				del(O)
-			del(src)
-			return
-		if(2.0)
-			for(var/obj/O in src.contents)
-				if(prob(50))
-					del(O)
-			del(src)
-			return
-		if(3.0)
-			if (prob(50))
-				del(src)
-			return
-		else
-	return

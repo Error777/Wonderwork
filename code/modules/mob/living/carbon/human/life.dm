@@ -1386,6 +1386,11 @@
 					O.process_hud(src)
 					if(!druggy)
 						see_invisible = SEE_INVISIBLE_LIVING
+				else if(istype(glasses, /obj/item/clothing/glasses/virtual))
+					var/obj/item/clothing/glasses/virtual/O = glasses
+					O.equipped(src)
+					if(!druggy)
+						see_invisible = SEE_INVISIBLE_LIVING
 				else
 					see_invisible = SEE_INVISIBLE_LIVING
 			else if(!seer)
