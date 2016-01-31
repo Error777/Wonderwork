@@ -7,8 +7,8 @@
 	unacidable = 1
 	luminosity = 8
 
-	New()
-		SetLuminosity(8,8,8)
+/obj/effect/light_emitter/New()
+	SetLuminosity(8,8,8)
 
 /**********************Miner Lockers**************************/
 

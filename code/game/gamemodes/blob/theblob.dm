@@ -13,13 +13,6 @@
 	var/brute_resist = 4
 	var/fire_resist = 1
 	var/blob_type = "blob"
-	/*Types
-	Blob
-	Node
-	Core
-	Factory
-	Shield
-		*/
 
 
 	New(loc, var/h = 30)

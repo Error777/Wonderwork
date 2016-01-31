@@ -245,15 +245,6 @@
 	anchored = 1
 	unacidable = 1//temporary until I decide whether the borg can be removed. -veyveyr
 
-/obj/structure/tombstone
-	name = "tombstone"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "tombstone"
-	desc = "An old tombstone marking a grave of a Black Tyranny."
-	density = 1
-	anchored = 1
-	unacidable = 1
-
 /obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
 /obj/item/weapon/beach_ball

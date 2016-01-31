@@ -257,6 +257,12 @@
 	desc = "A warning sign which reads 'HYDROPONICS'"
 	icon_state = "hydro1"
 
+/obj/structure/sign/tombstone
+	name = "\improper tombstone"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "tombstone"
+	desc = "An old tombstone marking a grave of a Black Tyranny."
+
 /*####################D2 SIGNS####################*/
 /*obj/structure/sign/noshitlers
 	name = "No shitlers!"
@@ -316,6 +322,12 @@
 
 /obj/structure/sign/double/chan/right2
 	icon_state = "chan3"
+
+/obj/structure/sign/medicalarrow
+	name = "Medical Arrow"
+	desc = ""
+	icon_state = "medicalfs"
+
 
 /*####################DECK SIGNS####################*/
 /obj/structure/sign/deck/bridge
@@ -582,3 +594,25 @@
 	name = "escape arm"
 	desc = "A direction sign, pointing out which way the escape shuttle dock is."
 	icon_state = "direction_evac"
+
+/*####################GEMINI SIGNS####################*/
+
+/obj/structure/sign/minerscape
+	name = "escape arrow"
+	desc = "The marker of direction to escape shuttle"
+	icon_state = "whitescape"
+
+/obj/structure/sign/minerscape/red
+	color = "red"
+
+/obj/structure/sign/minerscape/green
+	color = "green"
+
+/obj/structure/sign/minerscape/yellow
+	color = "yellow"
+
+/obj/structure/sign/minerscape/blue
+	color = "blue"
+
+/obj/structure/sign/minerscape/cyan
+	color = "cyan"
