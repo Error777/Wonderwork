@@ -190,6 +190,28 @@
 	fixture_type = "bulb"
 	sheets_refunded = 1
 
+/obj/machinery/light_construct/small/floor
+	name = "small floor light fixture frame"
+	desc = "A small floor light fixture under construction."
+	icon = 'icons/obj/lighting.dmi'
+	icon_state = "floorbulb-construct-stage1"
+	anchored = 1
+	layer = TURF_LAYER + 0.2
+	stage = 1
+	fixture_type = "floorbulb"
+	sheets_refunded = 1
+
+/obj/machinery/light_construct/floor
+	name = "floor light fixture frame"
+	desc = "A floor light fixture under construction."
+	icon = 'icons/obj/lighting.dmi'
+	icon_state = "floortube-construct-stage1"
+	anchored = 1
+	layer = TURF_LAYER + 0.2
+	stage = 1
+	fixture_type = "floortube"
+	sheets_refunded = 1
+
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
@@ -247,6 +269,28 @@
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb/fire
 
+/obj/machinery/light/small/floor
+	icon_state = "floorbulb1"
+	base_state = "floorbulb"
+	fitting = "floor bulb"
+	layer = TURF_LAYER + 0.2
+	brightnessred = 4
+	brightnessgreen = 5
+	brightnessblue = 1
+	desc = "A small floor lighting fixture."
+	light_type = /obj/item/weapon/light/bulb/floor
+
+/obj/machinery/light/floor
+	icon_state = "floortube1"
+	base_state = "floortube"
+	fitting = "floor tube"
+	layer = TURF_LAYER + 0.2
+	brightnessred = 7
+	brightnessgreen = 7
+	brightnessblue = 7
+	desc = "A tube floor lighting fixture."
+	light_type = /obj/item/weapon/light/tube/floor
+
 /obj/machinery/light/spot
 	name = "spotlight"
 	fitting = "large tube"
@@ -286,6 +330,20 @@
 				brightnessblue = 1
 
 				if(prob(5))
+					broken(1)
+			if("floor bulb")
+				brightnessred = 4
+				brightnessgreen = 5
+				brightnessblue = 1
+
+				if(prob(5))
+					broken(1)
+			if("floor tube")
+				brightnessred = 5
+				brightnessgreen = 6
+				brightnessblue = 5
+
+				if(prob(2))
 					broken(1)
 		spawn(1)
 			update(0)
@@ -752,8 +810,6 @@
 	var/brightnessgreen = 2
 	var/brightnessblue = 2
 
-
-
 /obj/item/weapon/light/tube
 	name = "light tube"
 	desc = "A replacement light tube."
@@ -768,9 +824,15 @@
 /obj/item/weapon/light/tube/large
 	w_class = 2
 	name = "large light tube"
-	brightnessred = 15	//how much light it gives off
+	brightnessred = 15
 	brightnessgreen = 15
 	brightnessblue = 15
+
+/obj/item/weapon/light/tube/floor
+	name = "floor light tube"
+	brightnessred = 8
+	brightnessgreen = 8
+	brightnessblue = 8
 
 /obj/item/weapon/light/bulb
 	name = "light bulb"
@@ -797,6 +859,13 @@
 	brightnessred = 5
 	brightnessgreen = 2
 	brightnessblue = 2
+
+/obj/item/weapon/light/bulb/floor
+	name = "floor light bulb"
+	desc = "A replacement floor light bulb."
+	brightnessred = 6
+	brightnessgreen = 6
+	brightnessblue = 5
 
 // update the icon state and description of the light
 

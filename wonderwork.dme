@@ -1363,6 +1363,7 @@
 #include "code\WorkInProgress\facepunch\explore\exploring.dm"
 #include "code\WorkInProgress\facepunch\explore\gate.dm"
 #include "code\WorkInProgress\facepunch\explore\world_defines.dm"
+#include "code\WorkInProgress\gemini\humancloner.dm"
 #include "code\WorkInProgress\Glloyd-Miauw\slotmachine.dm"
 #include "code\WorkInProgress\kilakk\fax.dm"
 #include "code\WorkInProgress\LLS\art.dm"

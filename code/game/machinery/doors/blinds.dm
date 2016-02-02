@@ -3,10 +3,11 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "plasticblind-close"
 	power_channel = ENVIRON
+	layer = 3
 
 /obj/machinery/door/poddoor/plasticblind/New()
 	..()
-	layer = 3.2
+	layer = 3
 
 /obj/machinery/door/poddoor/shutters/attackby(obj/item/weapon/C as obj, mob/user as mob)
 	add_fingerprint(user)

@@ -999,3 +999,6 @@ mob/verb/yank_out_object()
 		if(!pinned.len)
 			anchored = 0
 	return 1
+
+/mob/proc/update_clothing()
+	return

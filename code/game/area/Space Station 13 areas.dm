@@ -1621,29 +1621,23 @@ area/ship/eva
 	name = "\improper AI Satellite"
 	icon_state = "ai"
 
+//MALF AI BUG-FUCKING AREA!!!
+
 /area/turret_protected/AIsatextFP
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	luminosity = 1
-	ul_Lighting = 0
 
 /area/turret_protected/AIsatextFS
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	luminosity = 1
-	ul_Lighting = 0
 
 /area/turret_protected/AIsatextAS
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	luminosity = 1
-	ul_Lighting = 0
 
 /area/turret_protected/AIsatextAP
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	luminosity = 1
-	ul_Lighting = 0
 
 /area/turret_protected/NewAIMain
 	name = "\improper AI Main New"

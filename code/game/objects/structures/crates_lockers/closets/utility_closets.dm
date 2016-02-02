@@ -225,7 +225,6 @@
 /*
  * Indiana Shelter
  */
-
 /obj/structure/closet/indianashelter
 	desc = "It's a broken fridge."
 	name = "Broken Fridge"
