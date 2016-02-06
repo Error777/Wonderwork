@@ -113,6 +113,9 @@
 	Weaken(10)
 	return shock_damage
 
+/mob/living/carbon/proc/is_mouth_covered(mob/living/carbon/human/M as mob, head_only = 0, mask_only = 0)
+	if( (!mask_only && M.head && (M.head.flags & HEADCOVERSMOUTH)) || (!head_only && M.wear_mask && (M.wear_mask.flags & MASKCOVERSMOUTH)) )
+		return 1
 
 /mob/living/carbon/proc/swap_hand()
 	var/obj/item/item_in_hand = src.get_active_hand()

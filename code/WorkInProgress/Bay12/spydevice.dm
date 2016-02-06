@@ -1,6 +1,6 @@
 var/global/list/camera_bugs = list()
 
-/obj/item/device/handtv
+/obj/item/device/spydevice
 	name = "PDA"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
 	icon = 'icons/obj/pda.dmi'
@@ -12,7 +12,7 @@ var/global/list/camera_bugs = list()
 	var/obj/item/device/camera_bug/current
 	var/network
 
-/obj/item/device/handtv/attack_self(mob/user as mob)
+/obj/item/device/spydevice/attack_self(mob/user as mob)
 	if(!network && user.mind)
 		network = "\ref[user.mind]"
 
@@ -52,7 +52,7 @@ var/global/list/camera_bugs = list()
 		user.unset_machine()
 		return
 
-/obj/item/device/handtv/check_eye(var/mob/user as mob)
+/obj/item/device/spydevice/check_eye(var/mob/user as mob)
 	if ( src.loc != user || user.get_active_hand() != src || !user.canmove || user.blinded || !current || !current.active )
 		return null
 	user.reset_view(current)

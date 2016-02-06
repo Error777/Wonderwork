@@ -176,9 +176,9 @@
 	if(opened)
 		if(isrobot(user))
 			return
-		user.drop_item()
+		user.drop_item(src)
 		if(W)
-			W.loc = src.loc
+			W.Move(src.loc)
 	else if(istype(W, /obj/item/weapon/packageWrap))
 		return
 	else if(istype(W, /obj/item/weapon/cable_coil))

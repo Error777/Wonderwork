@@ -47,3 +47,23 @@
 			data += "[R.id]([R.volume] units); " //Using IDs because SOME chemicals(I'm looking at you, chlorhydrate-beer) have the same names as other chemicals.
 		return data
 	else return "No reagents"
+
+/obj/item/weapon/reagent_containers/proc/canconsume(mob/eater, mob/user)
+	if(!iscarbon(eater))
+		return 0
+	var/mob/living/carbon/C = eater
+	var/covered = ""
+	if(C.is_mouth_covered(head_only = 1))
+		covered = "headgear"
+	else if(C.is_mouth_covered(mask_only = 1))
+		covered = "mask"
+	if(covered)
+		var/who = (isnull(user) || eater == user) ? "your" : "their"
+		user << "<span class='warning'>You have to remove [who] [covered] first!</span>"
+		return 0
+	return 1
+
+/obj/item/weapon/reagent_containers/fire_act()
+	reagents.chem_temp += 30
+	reagents.handle_reactions()
+	..()

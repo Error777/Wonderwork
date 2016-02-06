@@ -9,12 +9,67 @@ Fill rest with super hot gas from separated canisters, they should be about 125C
 Attach to transfer valve and open. BOOM.
 
 */
-
+/atom
+	var/autoignition_temperature = 0 // In Kelvin.  0 = Not flammable
+	var/on_fire=0
+	var/fire_dmi = 'icons/effects/fire.dmi'
+	var/fire_sprite = "fire"
+	var/fire_overlay = null
+	var/ashtype = /obj/effect/decal/cleanable/ash
+	var/melt_temperature=0
+	var/molten = 0
 
 //Some legacy definitions so fires can be started.
 atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	return null
 
+/atom/proc/ashify()
+	if(!on_fire)
+		return
+	new ashtype(src.loc)
+	del(src)
+
+/atom/proc/extinguish()
+	on_fire=0
+	if(fire_overlay)
+		overlays -= fire_overlay
+
+/atom/proc/ignite(var/temperature)
+	on_fire=1
+	//visible_message("\The [src] bursts into flame!")
+	if(fire_dmi && fire_sprite)
+		fire_overlay = image(fire_dmi,fire_sprite)
+		overlays += fire_overlay
+
+/atom/proc/melt()
+	return //lolidk
+
+/atom/proc/solidify()
+	return //lolidk
+
+/atom/proc/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+	if(autoignition_temperature && !on_fire && exposed_temperature > autoignition_temperature)
+		ignite(exposed_temperature)
+		return 1
+	return 0
+
+/turf
+	var/soot_type = /obj/effect/decal/cleanable/soot
+
+/turf/simulated/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+	var/obj/effect/E = null
+	if(soot_type)
+		E = locate(soot_type) in src
+	if(..())
+		return 1
+	if(molten || on_fire)
+		if(istype(E))
+			del(E)
+		return 0
+	if(!E && soot_type && prob(25))
+		new soot_type(src)
+
+	return 0
 
 turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0, atom/source=null)
 
@@ -61,6 +116,17 @@ turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh, atom/sou
 	layer = TURF_LAYER
 
 	var/firelevel = 10000 //Calculated by gas_mixture.calculate_firelevel()
+
+/obj/fire/proc/Extinguish()
+	var/turf/simulated/S=loc
+
+	if(istype(S))
+		S.extinguish()
+
+	for(var/atom/A in loc)
+		A.extinguish()
+
+	del(src)
 
 /obj/fire/process()
 	. = 1

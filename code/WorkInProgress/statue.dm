@@ -218,7 +218,7 @@
 		hardness -= toxinsToDeduce/100
 		CheckHardness()
 
-/obj/structure/statue/plasma/proc/ignite(exposed_temperature)
+/obj/structure/statue/plasma/ignite(exposed_temperature)
 	if(exposed_temperature > 300)
 		PlasmaBurn(exposed_temperature)
 

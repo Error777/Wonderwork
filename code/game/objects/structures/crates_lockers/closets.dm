@@ -198,7 +198,7 @@
 		usr.drop_item()
 
 		if(W)
-			W.loc = src.loc
+			W.Move(src.loc)
 
 	else if(istype(W, /obj/item/weapon/packageWrap))
 		return

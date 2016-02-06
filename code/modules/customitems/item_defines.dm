@@ -326,20 +326,20 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,50,150)
 
-/obj/item/weapon/storage/pill_bottle/fluff/listermedbottle //compactninja: Lister Black
+/obj/item/weapon/storage/pill_bottle/listermedbottle //compactninja: Lister Black
 	name = "Pill bottle (anti-depressants)"
 	desc = "Contains pills used to deal with depression. They appear to be prescribed to Lister Black"
 	New()
 		..()
-		new /obj/item/weapon/reagent_containers/pill/fluff/listermed( src )
-		new /obj/item/weapon/reagent_containers/pill/fluff/listermed( src )
-		new /obj/item/weapon/reagent_containers/pill/fluff/listermed( src )
-		new /obj/item/weapon/reagent_containers/pill/fluff/listermed( src )
-		new /obj/item/weapon/reagent_containers/pill/fluff/listermed( src )
-		new /obj/item/weapon/reagent_containers/pill/fluff/listermed( src )
-		new /obj/item/weapon/reagent_containers/pill/fluff/listermed( src )
+		new /obj/item/weapon/reagent_containers/pill/listermed( src )
+		new /obj/item/weapon/reagent_containers/pill/listermed( src )
+		new /obj/item/weapon/reagent_containers/pill/listermed( src )
+		new /obj/item/weapon/reagent_containers/pill/listermed( src )
+		new /obj/item/weapon/reagent_containers/pill/listermed( src )
+		new /obj/item/weapon/reagent_containers/pill/listermed( src )
+		new /obj/item/weapon/reagent_containers/pill/listermed( src )
 
-/obj/item/weapon/reagent_containers/pill/fluff/listermed
+/obj/item/weapon/reagent_containers/pill/listermed
 	name = "anti-depressant pill"
 	desc = "Used to deal with depression."
 	icon_state = "pill9"

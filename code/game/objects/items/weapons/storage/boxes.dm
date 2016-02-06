@@ -175,6 +175,19 @@
 		new /obj/item/weapon/grenade/empgrenade(src)
 		new /obj/item/weapon/grenade/empgrenade(src)
 
+/obj/item/weapon/storage/box/patchs
+	name = "box of medical patchs"
+	desc = "A box with 6 medical patchs."
+	icon_state = "patchbox"
+
+	New()
+		..()
+		new /obj/item/weapon/reagent_containers/pill/patch/styptic(src)
+		new /obj/item/weapon/reagent_containers/pill/patch/styptic(src)
+		new /obj/item/weapon/reagent_containers/pill/patch/styptic(src)
+		new /obj/item/weapon/reagent_containers/pill/patch/silver_sulf(src)
+		new /obj/item/weapon/reagent_containers/pill/patch/silver_sulf(src)
+		new /obj/item/weapon/reagent_containers/pill/patch/silver_sulf(src)
 
 /obj/item/weapon/storage/box/trackimp
 	name = "tracking implant kit"

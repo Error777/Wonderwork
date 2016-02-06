@@ -263,6 +263,12 @@
 	icon_state = "tombstone"
 	desc = "An old tombstone marking a grave of a Black Tyranny."
 
+/obj/structure/sign/casino
+	name = "Casino Night"
+	desc = "Come on in and have a drink!."
+	icon = 'icons/obj/scooterstuff.dmi'
+	icon_state = "casino"
+
 /*####################D2 SIGNS####################*/
 /*obj/structure/sign/noshitlers
 	name = "No shitlers!"

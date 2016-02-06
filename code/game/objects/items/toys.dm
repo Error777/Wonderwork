@@ -438,6 +438,12 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "zlofenix"
 
+/obj/item/toy/gnome
+	name = "Garden gnome"
+	desc = "My little gnome - joker garden."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "gnome"
+
 /obj/item/toy/newyeartree
 	name = "Miniature New Year tree"
 	desc = "Tiny cute New Year tree."

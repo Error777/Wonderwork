@@ -248,16 +248,6 @@
 			tank.explode()
 		return
 
-	if(istype(O, /obj/item/weapon/reagent_containers/glass/backpack/weld) && get_dist(src,O) <= 1)
-		var/obj/item/weapon/reagent_containers/glass/backpack/weld/tank = O
-		if (!src.welding)
-			tank.reagents.trans_to(src, max_fuel)
-			user << "\blue Welder refueled"
-			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
-		else
-			tank.explode(user)
-		return
-
 	if (src.welding)
 		remove_fuel(1)
 		var/turf/location = get_turf(user)

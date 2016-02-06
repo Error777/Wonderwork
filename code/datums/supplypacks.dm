@@ -1036,92 +1036,155 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	access = access_hydroponics
 	group = "Hydroponics"
 
-/datum/supply_packs/charge
+/datum/supply_packs/charge_medical
+	name = "Medical Charge"
 	cost = 10
 	containertype = "/obj/structure/closet/crate"
-	group = "Charges"
-
-/datum/supply_packs/charge/medical
-	name = "Medical Charge"
-	contains = list(/obj/item/weapon/vending_charge/medical)
+	contains = list(/obj/item/weapon/vending_charge/medical,
+					/obj/item/weapon/vending_charge/medical)
 	containername = "Medical charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/chemistry
+/datum/supply_packs/charge_chemistry
 	name = "Chemistry Charge"
-	contains = list(/obj/item/weapon/vending_charge/chemistry)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/chemistry,
+					/obj/item/weapon/vending_charge/chemistry)
 	containername = "Chemistry charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/toxins
+/datum/supply_packs/charge_toxins
 	name = "Toxins Research Charge"
-	contains = list(/obj/item/weapon/vending_charge/toxins)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/toxins,
+					/obj/item/weapon/vending_charge/toxins)
 	containername = "Toxins Reasearch charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/genetics
+/datum/supply_packs/charge_genetics
 	name = "Genetics Research Charge"
-	contains = list(/obj/item/weapon/vending_charge/genetics)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/genetics,
+					/obj/item/weapon/vending_charge/genetics)
 	containername = "Genetics charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/robotics
+/datum/supply_packs/charge_robotics
 	name = "Robotics Charge"
-	contains = list(/obj/item/weapon/vending_charge/robotics)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/robotics,
+					/obj/item/weapon/vending_charge/robotics)
 	containername = "Robotics charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/bar
+/datum/supply_packs/charge_bar
 	name = "Bar Charge"
-	contains = list(/obj/item/weapon/vending_charge/bar)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/bar,
+					/obj/item/weapon/vending_charge/bar)
 	containername = "Bar charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/kitchen
+/datum/supply_packs/charge_kitchen
 	name = "Kitchen Charge"
-	contains = list(/obj/item/weapon/vending_charge/kitchen)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/kitchen,
+					/obj/item/weapon/vending_charge/kitchen)
 	containername = "Kitchen charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/engineering
+/datum/supply_packs/charge_engineering
 	name = "Engineering Charge"
-	contains = list(/obj/item/weapon/vending_charge/engineering)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/engineering,
+					/obj/item/weapon/vending_charge/engineering)
 	containername = "Engineering charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/security
+/datum/supply_packs/charge_security
 	name = "Security Charge"
-	contains = list(/obj/item/weapon/vending_charge/security)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/security,
+					/obj/item/weapon/vending_charge/security)
 	containername = "Security charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/coffee
+/datum/supply_packs/charge_coffee
 	name = "Coffee Charge"
-	contains = list(/obj/item/weapon/vending_charge/coffee)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/coffee,
+					/obj/item/weapon/vending_charge/coffee)
 	containername = "Coffee charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/snack
+/datum/supply_packs/charge_snack
 	name = "Snack Charge"
-	contains = list(/obj/item/weapon/vending_charge/snack)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/snack,
+					/obj/item/weapon/vending_charge/snack)
 	containername = "Snack charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/liquidfood
+/datum/supply_packs/charge_liquidfood
 	name = "\"LiquidFood\" Charge"
-	contains = list(/obj/item/weapon/vending_charge/liquid)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/liquid,
+					/obj/item/weapon/vending_charge/liquid)
 	containername = "LiquidFood charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/cart
+/datum/supply_packs/charge_cart
 	name = "PDA Cart Charge"
-	contains = list(/obj/item/weapon/vending_charge/cart)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/cart,
+					/obj/item/weapon/vending_charge/cart)
 	containername = "PDA Cart charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/cigarette
+/datum/supply_packs/charge_cigarette
 	name = "Cigarette Charge"
-	contains = list(/obj/item/weapon/vending_charge/cigarette)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/cigarette,
+					/obj/item/weapon/vending_charge/cigarette)
 	containername = "Cigarette charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/soda
+/datum/supply_packs/charge_soda
 	name = "Soda Charge"
-	contains = list(/obj/item/weapon/vending_charge/soda)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/soda,
+					/obj/item/weapon/vending_charge/soda)
 	containername = "Soda machine charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/hydroponics
+/datum/supply_packs/charge_hydroponics
 	name = "Hydroponics Charge"
-	contains = list(/obj/item/weapon/vending_charge/hydroponics)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/hydroponics,
+					/obj/item/weapon/vending_charge/hydroponics)
 	containername = "Hydroponics charge crate"
+	group = "Operations"
 
-/datum/supply_packs/charge/clothes
+/datum/supply_packs/charge_clothes
 	name = "Ñlothes Charge"
-	contains = list(/obj/item/weapon/vending_charge/clothes)
+	cost = 10
+	containertype = "/obj/structure/closet/crate"
+	contains = list(/obj/item/weapon/vending_charge/clothes,
+					/obj/item/weapon/vending_charge/clothes)
 	containername = "Clothes charge crate"
+	group = "Operations"

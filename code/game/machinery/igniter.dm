@@ -93,7 +93,7 @@
 	else
 		return
 
-/obj/machinery/sparker/proc/ignite()
+/obj/machinery/sparker/ignite()
 	if (!(powered()))
 		return
 

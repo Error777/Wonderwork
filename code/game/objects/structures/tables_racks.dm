@@ -544,7 +544,7 @@
 	if(isrobot(user))
 		return
 	user.drop_item()
-	if(W && W.loc)	W.loc = src.loc
+	if(W && W.loc)	W.Move(src.loc)
 	return
 
 /obj/structure/rack/meteorhit(obj/O as obj)

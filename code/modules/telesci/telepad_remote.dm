@@ -2,6 +2,7 @@
 	icon = 'icons/obj/hacktool.dmi'
 	name = "telepad remote control"
 	icon_state = "hacktool_alt"
+	item_state = "electronic"
 	flags = FPRINT | TABLEPASS | CONDUCT
 	w_class = 2.0
 	m_amt = 50

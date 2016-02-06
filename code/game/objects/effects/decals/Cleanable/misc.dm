@@ -16,13 +16,6 @@
 	icon_state = "ash"
 	anchored = 1
 
-/obj/effect/decal/cleanable/greenglow
-
-	New()
-		..()
-		spawn(1200)// 2 minutes
-			del(src)
-
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
 	desc = "Someone should clean that up."
@@ -53,6 +46,12 @@
 	luminosity = 1
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
+
+	New()
+		..()
+		SetLuminosity(0,3,0)
+		spawn(1200)// 2 minutes
+			del(src)
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"
