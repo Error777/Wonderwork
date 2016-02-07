@@ -24,7 +24,7 @@
 	if(loc != S)
 		if(ismob(src.loc))
 			var/mob/M = src.loc
-			M.unEquip(src)
+			M.u_equip(src)
 
 	src.loc = S
 	src.parent = S

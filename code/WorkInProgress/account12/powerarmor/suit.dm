@@ -226,7 +226,7 @@
 
 	else if(istype(W, /obj/item/weapon/stock_parts/cell))
 		user << "\blue You insert power cell into [src]."
-		user.unEquip(W)
+		user.u_equip(W)
 		powercell = W
 		powercell.loc = src
 		return
