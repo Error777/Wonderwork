@@ -421,7 +421,7 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "odysseus_spec_id"
 
-/obj/item/device/flashlight/fluff/thejesster14_1 //thejesster14: Rosa Wolff
+/obj/item/device/flashlight/oldred //thejesster14: Rosa Wolff
 	name = "old red flashlight"
 	desc = "A very old, childlike flashlight."
 	icon = 'icons/obj/custom_items.dmi'

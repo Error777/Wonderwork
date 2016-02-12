@@ -230,6 +230,7 @@
 							"engineering",
 							"command",
 							"ce",
+							"cmo",
 							"clown",
 							"civilian",
 							"prison",
@@ -430,7 +431,7 @@
 /obj/item/weapon/card/id/cmo
 	name = "Chief Medical Officer ID"
 	registered_name = "CMO"
-	icon_state = "command"
+	icon_state = "cmo"
 	desc = "It gives off the faint smell of chloral, mixed with a backdraft of shittery."
 
 /obj/item/weapon/card/id/rd
