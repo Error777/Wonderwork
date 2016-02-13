@@ -286,6 +286,11 @@
 	if(user.mind && (user.mind.assigned_role == "Clown"))
 		clown = 1
 
+	if(istype(P, /obj/item/weapon/tape_roll))
+		var/obj/item/weapon/tape_roll/tape = P
+		tape.stick(src, user)
+		return
+
 	if(burning)
 		return
 
