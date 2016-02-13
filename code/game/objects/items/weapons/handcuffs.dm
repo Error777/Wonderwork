@@ -146,3 +146,11 @@
 
 /obj/item/weapon/handcuffs/cyborg
 	dispenser = 1
+
+/obj/item/weapon/handcuffs/cable/tape
+	name = "tape restraints"
+	desc = "DIY!"
+	icon_state = "tape_cross"
+	item_state = null
+	icon = 'icons/obj/bureaucracy.dmi'
+	breakouttime = 200
