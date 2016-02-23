@@ -270,10 +270,14 @@
 	icon_state = "casino"
 
 /*####################D2 SIGNS####################*/
-/*obj/structure/sign/noshitlers
+/*
+obj/structure/sign/noshitlers
 	name = "No shitlers!"
 	desc = "A warning sign which reads 'No shitlers allowed!'"
-	icon_state = "noshitlers"*/ //Sometime
+	icon_state = "noshitlers"
+*/
+
+//Sometime
 
 /obj/structure/sign/cleanhands
 	name = "CLEAN HANDS!"
@@ -295,6 +299,7 @@
 	desc = "A warning sign which reads 'People DIE if you KILL!'"
 	icon_state = "noshit"
 
+/*
 /obj/structure/sign/double/laundromat
 	name = "Laundromat"
 	icon = 'icons/obj/barsigns.dmi'
@@ -312,6 +317,7 @@
 	icon = 'icons/obj/barsigns.dmi'
 	desc = ""
 	icon_state = "bully"
+*/
 
 /obj/structure/sign/double/chan
 	name = "for chan poster"
@@ -600,6 +606,11 @@
 	name = "escape arm"
 	desc = "A direction sign, pointing out which way the escape shuttle dock is."
 	icon_state = "direction_evac"
+
+/obj/structure/sign/chemtable
+	name = "The Periodic Table"
+	desc = "A very colorful and detailed table of all the chemical elements you could blow up or burn down a chemistry laboratory with, titled 'The Space Periodic Table - To be continued'. Just the mere sight of it makes you feel smarter."
+	icon_state = "periodic"
 
 /*####################GEMINI SIGNS####################*/
 
