@@ -31,6 +31,7 @@
 
 		if (ismob(AM))
 			var/mob/tmob = AM
+			//tmob.Move(src.loc)
 			tmob.LAssailant = src
 
 		if (!now_pushing)

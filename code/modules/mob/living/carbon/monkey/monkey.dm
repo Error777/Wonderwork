@@ -122,7 +122,7 @@
 			if(!(tmob.status_flags & CANPUSH))
 				now_pushing = 0
 				return
-
+			//tmob.Move(src.loc)
 			tmob.LAssailant = src
 		now_pushing = 0
 		..()
