@@ -18,14 +18,21 @@
 	var/production = 0
 	var/yield = 0
 	var/potency = -1
+	dried_type = -1 //bit different. saves us from having to define each stupid grown's dried_type as itself. If you don't want a plant to be driable (watermelons) set this to null in the time definition.
 	var/plant_type = 0
 	icon = 'icons/obj/harvest.dmi'
-	New(newloc,newpotency)
-		if (!isnull(newpotency))
-			potency = newpotency
-		..()
-		src.pixel_x = rand(-5.0, 5)
-		src.pixel_y = rand(-5.0, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/New(newloc,newpotency)
+	..()
+	potency = newpotency
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
+
+	if(!isnull(newpotency))
+		potency = newpotency
+
+	if(dried_type == -1)
+		dried_type = src.type
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	..()
@@ -423,6 +430,7 @@
 	desc = "It's full of watery goodness."
 	icon_state = "watermelon"
 	potency = 10
+	dried_type = null
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/watermelonslice
 	slices_num = 5
 	New()
@@ -736,6 +744,7 @@
 	name = "reishi"
 	desc = "<I>Ganoderma lucidum</I>: A special fungus believed to help relieve stress."
 	icon_state = "reishi"
+	dried_type = /obj/item/weapon/reagent_containers/food/snacks/no_raisin
 	potency = 10
 	New()
 		..()

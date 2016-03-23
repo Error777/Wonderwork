@@ -3,6 +3,7 @@
 	desc = "You sit in this. Either by will or force."
 	icon_state = "chair"
 	anchored = 0
+	var/rotatable = 0
 
 /obj/structure/stool/bed/chair/evac
 	name = "comfy chair"
@@ -48,19 +49,20 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(config.ghost_interaction)
-		src.dir = turn(src.dir, 90)
-		handle_rotation()
-		return
-	else
-		if(!usr || !isturf(usr.loc))
+	if(rotatable)
+		if(config.ghost_interaction)
+			src.dir = turn(src.dir, 90)
+			handle_rotation()
 			return
-		if(usr.stat || usr.restrained())
-			return
+		else
+			if(!usr || !isturf(usr.loc))
+				return
+			if(usr.stat || usr.restrained())
+				return
 
-		src.dir = turn(src.dir, 90)
-		handle_rotation()
-		return
+			src.dir = turn(src.dir, 90)
+			handle_rotation()
+			return
 
 /obj/structure/stool/bed/chair/MouseDrop_T(mob/M as mob, mob/user as mob)
 	if(!istype(M)) return

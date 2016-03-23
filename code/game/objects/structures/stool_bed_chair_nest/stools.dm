@@ -6,6 +6,7 @@
 	anchored = 1.0
 	flags = FPRINT | CONDUCT
 	pressure_resistance = 15
+	var/deconstructable = 1
 
 /obj/structure/stool/verb/Use()
 	set name = "Use"
@@ -42,7 +43,7 @@
 		del(src)
 
 /obj/structure/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/wrench))
+	if(istype(W, /obj/item/weapon/wrench) && src.deconstructable)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		new /obj/item/stack/sheet/metal(src.loc)
 		del(src)
@@ -125,3 +126,12 @@
 /obj/structure/stool/barstool2
 	name = "barstool"
 	icon_state = "barstool2"
+
+/obj/structure/stool/holo
+	deconstructable = 0
+
+/obj/structure/stool/barstool2/holo
+	deconstructable = 0
+
+/obj/structure/stool/barstool1/holo
+	deconstructable = 0

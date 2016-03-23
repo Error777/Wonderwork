@@ -170,72 +170,146 @@
 			del(src)
 		return
 
-/obj/structure/stool/bed/couch
-	icon_state = "couch"
-	name = "couch"
-	desc = "A comfy couch, ideal for laying on."
+/* ================================================= */
+/* -------------------- Benches -------------------- */
+/* ================================================= */
 
-/obj/structure/stool/bed/couch/New()
-	src.verbs -= /atom/movable/verb/pull
-	if(src.dir == NORTH || src.dir == WEST)
-		src.layer = FLY_LAYER
-	else
-		src.layer = OBJ_LAYER
+/obj/structure/stool/bench
+	name = "bench"
+	desc = "It's a bench! You can sit on it!"
+	icon = 'icons/obj/bench.dmi'
+	icon_state = "0"
+	anchored = 1
+	var/auto = 0
+	var/auto_path = null
+
+/obj/structure/stool/bench/New()
+	if (src.auto)
+		spawn(1)
+			src.set_up(1)
 	..()
-	return
+
+/obj/structure/stool/bench/proc/set_up(var/setup_others = 0)
+	if (!src.auto || !ispath(src.auto_path))
+		return
+	var/dirs = 0
+	for (var/dir in cardinal)
+		var/turf/T = get_step(src, dir)
+		if (locate(src.auto_path) in T)
+			dirs |= dir
+	icon_state = num2text(dirs)
+	if (setup_others)
+		for (var/obj/structure/stool/bench/B in orange(1))
+			if (istype(B, src.auto_path))
+				B.set_up()
+
+/obj/structure/stool/bench/auto
+	auto = 1
+	auto_path = /obj/structure/stool/bench/auto
+
+/* ---------- Red ---------- */
+
+/obj/structure/stool/bench/red
+	icon = 'icons/obj/bench_red.dmi'
+
+/obj/structure/stool/bench/red/auto
+	auto = 1
+	auto_path = /obj/structure/stool/bench/red/auto
+
+/* ---------- Blue ---------- */
+
+/obj/structure/stool/bench/blue
+	icon = 'icons/obj/bench_blue.dmi'
+
+/obj/structure/stool/bench/blue/auto
+	auto = 1
+	auto_path = /obj/structure/stool/bench/blue/auto
+
+/* ---------- Green ---------- */
+
+/obj/structure/stool/bench/green
+	icon = 'icons/obj/bench_green.dmi'
+
+/obj/structure/stool/bench/green/auto
+	auto = 1
+	auto_path = /obj/structure/stool/bench/green/auto
+
+/* ---------- Yellow ---------- */
+
+/obj/structure/stool/bench/yellow
+	icon = 'icons/obj/bench_yellow.dmi'
+
+/obj/structure/stool/bench/yellow/auto
+	auto = 1
+	auto_path = /obj/structure/stool/bench/yellow/auto
+
+/* ================================================= */
+/* -------------------- Couches -------------------- */
+/* ================================================= */
+
+/obj/structure/stool/bed/chair/couch
+	name = "comfy brown couch"
+	desc = "You've probably lost some space credits in these things before."
+	icon_state = "comfychair_brown"
+	rotatable = 0
+	deconstructable = 0
 
 //BLACK//
-/obj/structure/stool/bed/couch/black
+/obj/structure/stool/bed/chair/couch/black
 	name = "black couch"
 	desc = "A comfy black couch, ideal for laying on."
+	icon_state = "comfychair_black"
 
-/obj/structure/stool/bed/couch/black/right
+/obj/structure/stool/bed/chair/couch/black/right
 	icon_state = "couchblack_right"
 
-/obj/structure/stool/bed/couch/black/left
+/obj/structure/stool/bed/chair/couch/black/left
 	icon_state = "couchblack_left"
 
-/obj/structure/stool/bed/couch/black/middle
+/obj/structure/stool/bed/chair/couch/black/middle
 	icon_state = "couchblack_middle"
 
 //BROWN//
-/obj/structure/stool/bed/couch/brown
+/obj/structure/stool/bed/chair/couch/brown
 	name = "brown couch"
 	desc = "A comfy brown couch, ideal for laying on."
+	icon_state = "comfychair_brown"
 
-/obj/structure/stool/bed/couch/brown/right
+/obj/structure/stool/bed/chair/couch/brown/right
 	icon_state = "couchbrown_right"
 
-/obj/structure/stool/bed/couch/brown/left
+/obj/structure/stool/bed/chair/couch/brown/left
 	icon_state = "couchbrown_left"
 
-/obj/structure/stool/bed/couch/brown/middle
+/obj/structure/stool/bed/chair/couch/brown/middle
 	icon_state = "couchbrown_middle"
 
 //BEIGE//
-/obj/structure/stool/bed/couch/beige
+/obj/structure/stool/bed/chair/couch/beige
 	name = "beige couch"
 	desc = "A comfy beige couch, ideal for laying on."
+	icon_state = "comfychair_beige"
 
-/obj/structure/stool/bed/couch/beige/right
+/obj/structure/stool/bed/chair/couch/beige/right
 	icon_state = "couchbeige_right"
 
-/obj/structure/stool/bed/couch/beige/left
+/obj/structure/stool/bed/chair/couch/beige/left
 	icon_state = "couchbeige_left"
 
-/obj/structure/stool/bed/couch/beige/middle
+/obj/structure/stool/bed/chair/couch/beige/middle
 	icon_state = "couchbeige_middle"
 
 //TEAL//
-/obj/structure/stool/bed/couch/teal
+/obj/structure/stool/bed/chair/couch/teal
 	name = "teal couch"
 	desc = "A comfy teal couch, ideal for laying on."
+	icon_state = "comfychair_teal"
 
-/obj/structure/stool/bed/couch/teal/right
+/obj/structure/stool/bed/chair/couch/teal/right
 	icon_state = "couchteal_right"
 
-/obj/structure/stool/bed/couch/teal/left
+/obj/structure/stool/bed/chair/couch/teal/left
 	icon_state = "couchteal_left"
 
-/obj/structure/stool/bed/couch/teal/middle
+/obj/structure/stool/bed/chair/couch/teal/middle
 	icon_state = "couchteal_middle"
