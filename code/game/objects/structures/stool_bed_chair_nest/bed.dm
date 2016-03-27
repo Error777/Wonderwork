@@ -189,6 +189,9 @@
 			src.set_up(1)
 	..()
 
+/obj/structure/stool/bench/MouseDrop(atom/over_object)
+	return
+
 /obj/structure/stool/bench/proc/set_up(var/setup_others = 0)
 	if (!src.auto || !ispath(src.auto_path))
 		return
