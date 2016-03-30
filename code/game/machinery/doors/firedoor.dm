@@ -3,7 +3,7 @@
 /var/const/CLOSED = 2
 /obj/machinery/door/firedoor
 	name = "\improper Firelock"
-	desc = "Apply crowbar"
+	desc = "Apply crowbar."
 	icon = 'icons/obj/doors/Doorfire.dmi'
 	icon_state = "door_open"
 	opacity = 0
