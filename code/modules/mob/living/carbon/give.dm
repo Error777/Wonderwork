@@ -4,22 +4,29 @@ mob/living/carbon/verb/give()
 	set src in view(1)
 	if(src.stat == 2 || usr.stat == 2|| src.client == null)
 		return
+
 	if(src == usr)
 		usr << "I feel stupider, suddenly."
 		return
+
 	var/obj/item/I
 	if(!usr.hand && usr.r_hand == null)
 		usr << "You don't have anything in your right hand to give to [src.name]"
 		return
+
 	if(usr.hand && usr.l_hand == null)
 		usr << "You don't have anything in your left hand to give to [src.name]"
 		return
+
 	if(usr.hand)
-		I = usr.l_hand
+		I.Move(usr.l_hand)
+
 	else if(!usr.hand)
-		I = usr.r_hand
+		I.Move(usr.r_hand)
+
 	if(!I)
 		return
+
 	if(src.r_hand == null)
 		switch(alert(src,"[usr] wants to give you \a [I]?",,"Yes","No"))
 			if("Yes")
