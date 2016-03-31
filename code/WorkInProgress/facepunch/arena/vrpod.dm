@@ -1,6 +1,22 @@
 //This is so we can access it easily
 var/global/list/mob/living/carbon/arenaplayers = list()
 
+/obj/structure/literal_firewall
+	name = "system firewall"
+	desc = "Man, your port doesn't feel like it's allowed through there! If only there was a way to open it."
+	icon = 'icons/obj/vrstuff.dmi'
+	icon_state = "vwall"
+	density = 1
+	opacity = 1
+	anchored = 1
+
+/obj/structure/literal_firewall/attackby(var/obj/item/W, var/mob/user)
+	if (istype(W, /obj/item/weapon/keycard))
+		to_chat(user, "<span style=\"color:blue\">keycard -c 'ufw allow 2323/stcp from ::1'</span>")
+		del(src)
+	else
+		return
+
 /obj/machinery/vrpod
 	name = "Virtual Realityator"
 	icon = 'icons/obj/vrpods.dmi'
