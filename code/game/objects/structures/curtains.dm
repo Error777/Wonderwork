@@ -1,5 +1,5 @@
 #define CURTAIN_OPEN_LAYER OBJ_LAYER + 0.4
-#define CURTAIN_CLOSED_LAYER MOB_LAYER + 0.1
+#define CURTAIN_CLOSED_LAYER MOB_LAYER + 0.2
 
 /obj/structure/curtain
 	name = "curtain"
