@@ -71,8 +71,6 @@ atom/proc/SetLuminosity(var/Red, var/Green = Red, var/Blue = Red)
 	if (ul_IsLuminous(src))
 		ul_Illuminate()
 
-
-
 	return
 
 atom/proc/SetLuminocity_NewColor(var/textcolor = "")	//To use one var instead of three.

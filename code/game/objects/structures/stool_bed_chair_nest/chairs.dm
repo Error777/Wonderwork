@@ -85,6 +85,7 @@
 	desc = "Its chapell chair."
 	icon_state = "capchair"
 	anchored = 1
+	rotatable = 0
 
 /obj/structure/stool/bed/chair/wood/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))
