@@ -534,3 +534,9 @@
 				playsound(loc, "chimpers", 25, 1, 1)//So aliens can hiss while they hiss yo/N
 			return ..(message)
 
+
+/mob/living/carbon/monkey/deempisi
+	name = "Mr.Deempisi"
+	voice_name = "Mr.Deempisi"
+	icon_state = "punpun1"
+	ico = "punpun"

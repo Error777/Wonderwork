@@ -1735,6 +1735,25 @@ area/ship/eva
 	luminosity = 1
 	ul_Lighting = 0
 
+// Elevators
+
+/area/shuttle/elevator
+	name = "\improper Heavy Elevator"
+	music = "sounds/music/escape.wav"
+
+/area/shuttle/elevator/cargo/first
+	icon_state = "shuttle2"
+
+/area/shuttle/elevator/cargo/second
+	icon_state = "shuttle"
+
+
+/area/shuttle/elevator/medbay/first
+	icon_state = "shuttle2"
+
+/area/shuttle/elevator/medbay/second
+	icon_state = "shuttle"
+
 // Away Missions
 /area/awaymission
 	name = "\improper Strange Location"

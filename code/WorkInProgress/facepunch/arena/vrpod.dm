@@ -165,7 +165,7 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 		icon_state = "med_1"
 		if(occupant)
 			occupant.client.lastknownmob = usr
-			var/mob/living/carbon/human/virtualreality/S1 = new/mob/living/carbon/human/virtualreality
+			var/mob/living/carbon/human/virtual/S1 = new/mob/living/carbon/human/virtual
 			S1.prevmob = usr.client.mob
 			S1.prevname = usr.client.mob.real_name
 			linkedmob = S1

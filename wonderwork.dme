@@ -1368,6 +1368,7 @@
 #include "code\WorkInProgress\facepunch\explore\world_defines.dm"
 #include "code\WorkInProgress\gemini\humancloner.dm"
 #include "code\WorkInProgress\Glloyd-Miauw\slotmachine.dm"
+#include "code\WorkInProgress\Guap6512\elevator.dm"
 #include "code\WorkInProgress\kilakk\fax.dm"
 #include "code\WorkInProgress\LLS\art.dm"
 #include "code\WorkInProgress\LLS\virtual_reality\areas.dm"

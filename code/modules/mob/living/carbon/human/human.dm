@@ -1295,10 +1295,7 @@ mob/living/carbon/human/yank_out_object()
 	else
 		return 0
 
-var/global/team1points = 0
-var/global/team2points = 0
-
-/mob/living/carbon/human/virtualreality
+/mob/living/carbon/human/virtual
 	real_name = "Player"
 	var/mob/living/carbon/human/prevmob
 	var/obj/machinery/vrpod/linkedmachine
@@ -1311,29 +1308,23 @@ var/global/team2points = 0
 		var/r = rand(1,999)
 		name = "Player [r]"
 		real_name = name
+		species = new /datum/species/virtual(src)
 
 	Life()
 		..()
-		if(stat == 2)
-			if(src.test == 0)
-				switch(teamtype)
-					if(1)
-						team2points++
-					if(2)
-						team1points++
-				test = 1
-				spawn(20)
-					src.name = src.prevname//Make the name the old bodies name if the body doesn't exist
-					src.real_name = src.prevname // same
-					src.client.mob = src.prevmob
-					src << "You are thrust back into your body. Re-enter to respawn."
-					spawn(20)
-						gib()
-		if(z == 2)//Are they in z6?
+		if(z == 2)//Are they in z2?
 			return
 		else
 			stat = 2//Die
-		..()
+		if(stat == 2)
+			spawn(20)
+				src.name = src.prevname//Make the name the old bodies name if the body doesn't exist
+				src.real_name = src.prevname // same
+				src.client.mob = src.prevmob
+				src << "You are thrust back into your body. Re-enter to respawn."
+				spawn(20)
+					gib()
+
 /*
 			src.name = prevname//Make the name the old bodies name if the body doesn't exist
 			src.real_name = prevname // same

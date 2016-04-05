@@ -105,4 +105,12 @@
 	burn_resist
 
 
-	flags = HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | NO_EAT | NO_BREATHE | NO_SCAN
+	flags = WHITELISTED | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | NO_EAT | NO_BREATHE | NO_SCAN
+
+/datum/species/virtual
+	name = "Player"
+	icobase = 'icons/mob/human_races/r_virtual.dmi'
+	deform = 'icons/mob/human_races/r_def_virtual.dmi'
+	attack_verb = "cracks"
+
+	flags = HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | NO_BREATHE | NO_SCAN

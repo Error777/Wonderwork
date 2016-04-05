@@ -627,7 +627,7 @@
 		if(stat != 2)
 			stabilize_temperature_from_calories()
 
-		log_debug("Adjusting to atmosphere.")
+		//log_debug("Adjusting to atmosphere.")
 		//After then, it reacts to the surrounding atmosphere based on your thermal protection
 		if(loc_temp < BODYTEMP_COLD_DAMAGE_LIMIT)			//Place is colder than we are
 			var/thermal_protection = get_cold_protection(loc_temp) //This returns a 0 - 1 value, which corresponds to the percentage of protection based on what you're wearing and what you're exposed to.

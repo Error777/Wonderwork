@@ -3496,7 +3496,7 @@
 "bpl" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{color = "red"; dir = 1; icon_state = "manifold-f"; initialize_directions = 13; level = 1; name = "Scrubbers pipe manifold"},/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
 "bpm" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/structure/stool/barstool2{dir = 4; icon_state = "barstool2"; tag = ""},/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
 "bpn" = (/obj/structure/table/reinforced,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
-"bpo" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/mob/living/carbon/monkey{icon_state = "punpun1"; name = "Mr.Deempisi"},/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
+"bpo" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/mob/living/carbon/monkey/deempisi,/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
 "bpp" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 10},/obj/machinery/camera{c_tag = "Cafeteria centre"; dir = 8; name = "security camera - zone 2"; network = list("SS13")},/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
 "bpq" = (/obj/machinery/vending/boozeomat,/turf/simulated/wall,/area/crew_quarters/cafeteria)
 "bpr" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor/plating,/area/maintenance/asmaint)

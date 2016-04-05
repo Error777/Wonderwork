@@ -20,6 +20,7 @@
 	layer = 2.8
 	throwpass = 1	//You can throw objects over this, despite it's density.")
 	var/parts = /obj/item/weapon/table_parts
+	var/icon/clicked
 	var/dented = 0
 	var/tabletype = 1
 /obj/structure/table/New()
@@ -319,6 +320,8 @@
 
 
 /obj/structure/table/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
+	if (!W) return
+
 	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
 		var/obj/item/weapon/grab/G = W
 		if(G.state<2)
@@ -394,17 +397,15 @@
 
 //	user.drop_item(src)
 //	return
+	var/list/params_list = params2list(params)
 
-	if(!(W.flags & ABSTRACT)) //rip more parems rip in peace ;_;
-		if(user.drop_item())
-			W.Move(loc)
-			var/list/click_params = params2list(params)
-			//Center the icon where the user clicked.
-			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
-				return
-			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-			W.pixel_x = Clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-			W.pixel_y = Clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+	if(user.drop_item(W, src.loc))
+		if(W.Move(src.loc && params_list.len))
+			var/clamp_x = clicked.Width() / 2
+			var/clamp_y = clicked.Height() / 2
+			W.pixel_x = Clamp(text2num(params_list["icon-x"]) - clamp_x, -clamp_x, clamp_x)
+			W.pixel_y = Clamp(text2num(params_list["icon-y"]) - clamp_y, -clamp_y, clamp_y)
+	return
 
 /*
  * Wooden tables
