@@ -115,8 +115,8 @@
 	else
 		dat = "<TT><b>Thinktronic BIOS V1.4</b><br><br>"
 
-		dat += "Current ID: <a href='?src=\ref[src];id=auth'>[src.authid ? "[src.authid.name]" : "----------"]</a><br>"
-		dat += "Auxiliary ID: <a href='?src=\ref[src];id=aux'>[src.auxid ? "[src.auxid.name]" : "----------"]</a><br><br>"
+		dat += "Current ID: <a href='byond://?src=\ref[src];id=auth'>[src.authid ? "[src.authid.name]" : "----------"]</a><br>"
+		dat += "Auxiliary ID: <a href='byond://?src=\ref[src];id=aux'>[src.auxid ? "[src.auxid.name]" : "----------"]</a><br><br>"
 
 		var/progdat
 		if((src.hd) && (src.hd.root))
@@ -182,7 +182,7 @@
 
 	user << browse(dat,"window=comp2")
 	onclose(user,"comp2")
-	updateUsrDialog()
+	src.updateUsrDialog()
 	return
 
 /obj/machinery/terminal/Topic(href, href_list)
@@ -249,8 +249,8 @@
 				I.loc = src
 				src.diskette = I
 */
-	src.add_fingerprint(usr)
-	src.updateUsrDialog()
+	add_fingerprint(usr)
+	updateUsrDialog()
 	return
 
 /obj/machinery/terminal/process()
@@ -286,7 +286,7 @@
 			W.loc = src
 			src.diskette = W
 			user << "You insert [W]."
-			updateUsrDialog()
+			src.updateUsrDialog()
 			return
 
 	else if (istype(W, /obj/item/weapon/screwdriver))

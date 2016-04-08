@@ -397,15 +397,26 @@
 
 //	user.drop_item(src)
 //	return
-	var/list/params_list = params2list(params)
 
-	if(user.drop_item(W, src.loc))
-		if(W.Move(src.loc && params_list.len))
-			var/clamp_x = clicked.Width() / 2
-			var/clamp_y = clicked.Height() / 2
-			W.pixel_x = Clamp(text2num(params_list["icon-x"]) - clamp_x, -clamp_x, clamp_x)
-			W.pixel_y = Clamp(text2num(params_list["icon-y"]) - clamp_y, -clamp_y, clamp_y)
+	if(!isrobot(user) && !(W.flags & ABSTRACT)) //rip more parems rip in peace ;_;
+		user.drop_item()
+		if (W && W.loc)
+			W.Move(src.loc)
+			if (islist(params) && params["icon-y"] && params["icon-x"])
+				W.pixel_x = text2num(params["icon-x"]) - 16
+				W.pixel_y = text2num(params["icon-y"]) - 16
 	return
+
+//	if(!(W.flags & ABSTRACT)) //rip more parems rip in peace ;_;
+//		var/list/click_params = params2list(params)
+//		if(user.drop_item(W, src.loc))
+//			W.Move(src.loc && click_params.len)
+//			//Center the icon where the user clicked.
+//			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+//				return
+//			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
+//			W.pixel_x = Clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+//			W.pixel_y = Clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
 
 /*
  * Wooden tables

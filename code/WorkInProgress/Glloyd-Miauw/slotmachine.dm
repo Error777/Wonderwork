@@ -272,13 +272,13 @@
 
 	if(stored_money > 0)
 		dat += {"There are <span style="color:[stored_money<spin_cost?"red":"green"]"><b>$[num2text(stored_money)]</b>
-			space credits insterted. <span style="color:blue"><a href='?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
+			space credits insterted. <span style="color:blue"><a href='byond://?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
 	else
 		dat += {"You need at least <b>$[spin_cost]</b> credits to play. Use a nearby ATM and retreive some cash from your money account!<br>"}
 
 	if(can_play())
 		if(stored_money >= spin_cost)
-			dat += {"<span style="color:yellow"><a href='?src=\ref[src];spin=1'>Play! (<b>$[spin_cost]</b>)</a></span><br>"}
+			dat += {"<span style="color:yellow"><a href='byond://?src=\ref[src];spin=1'>Play! (<b>$[spin_cost]</b>)</a></span><br>"}
 
 	else
 		dat += {"<b>OUT OF SERVICE</b><br>"}
@@ -302,11 +302,13 @@
 		if((stored_money >= spin_cost) && can_play())
 			spin(usr)
 
-	src.updateUsrDialog()
+	updateUsrDialog()
 	return
 
 /obj/machinery/computer/slot_machine/attackby(obj/item/I as obj, mob/user as mob)
 	..()
+
+	user.machine = src
 
 	if(istype(I,/obj/item/weapon/spacecash))
 		if(!can_play())

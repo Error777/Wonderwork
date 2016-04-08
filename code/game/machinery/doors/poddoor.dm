@@ -18,6 +18,9 @@
 /obj/machinery/door/poddoor/newicon
 	icon = 'icons/obj/doors/blastdoor.dmi'
 
+/obj/machinery/door/poddoor/shd
+	icon = 'icons/obj/doors/shd_pdoor.dmi'
+
 /obj/machinery/door/poddoor/glass
 	name = "Glass Podlock"
 	icon = 'icons/obj/doors/pdoorglass.dmi'
