@@ -1367,8 +1367,20 @@ area/ship/eva
 	icon_state = "head_quarters"
 
 /area/toxins/supermatter
-	name = "\improper Supermatter Lab"
-	icon_state = "toxlab"
+	name = "\improper Supermatter Laboratory"
+	icon_state = "supermatter"
+
+/area/toxins/supermatter/engine
+	name = "\improper Supermatter Engine"
+	icon_state = "supa_engine"
+
+/area/toxins/supermatter/turbine
+	name = "\improper Supermatter Engine Power Generator"
+	icon_state = "supa_turbine"
+
+/area/toxins/supermatter/hallway
+	name = "\improper Supermatter Engine Hallway"
+	icon_state = "supa_hallway"
 
 /area/toxins/xenobiology
 	name = "\improper Xenobiology Lab"
