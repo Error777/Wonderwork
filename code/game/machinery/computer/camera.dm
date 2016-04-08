@@ -190,6 +190,12 @@
 	icon_state = "telescreenold"
 	network = list("Research")
 
+/obj/machinery/computer/security/telescreen/sec
+	name = "Security Monitor"
+	desc = "Used for watching the securetron goons from the safety of his office."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "telescreenold"
+
 /obj/machinery/computer/security/wooden_tv
 	name = "Security Cameras"
 	desc = "An old TV hooked into the stations camera network."
