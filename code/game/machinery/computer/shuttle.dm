@@ -7,7 +7,7 @@
 
 	New()
 		..()
-		loc.SetLuminosity(loc.luminosity + brightness_on)
+		loc.set_light(loc.luminosity + brightness_on)
 
 	attackby(var/obj/item/weapon/card/W as obj, var/mob/user as mob)
 		if(stat & (BROKEN|NOPOWER))	return

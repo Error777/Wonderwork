@@ -362,13 +362,13 @@
 					status = LIGHT_BURNED
 					icon_state = "[base_state]-burned"
 					on = 0
-					SetLuminosity(0)
+					set_light(0)
 			else
 				use_power = 2
-				SetLuminosity(brightness)
+				set_light(brightness)
 	else
 		use_power = 1
-		SetLuminosity(0)
+		set_light(0)
 
 	active_power_usage = (luminosity * 10)
 	if(on != on_gs)
@@ -431,7 +431,7 @@
 				user << "You insert the [L.name]."
 				switchcount = L.switchcount
 				rigged = L.rigged
-				l_color = L.color
+				light_color = L.color
 				brightness = L.brightness
 
 				on = has_power()
@@ -581,7 +581,7 @@
 	L.status = status
 	L.rigged = rigged
 	L.brightness = src.brightness
-	L.color = l_color
+	L.color = light_color
 	// light item inherits the switchcount, then zero it
 	L.switchcount = switchcount
 	switchcount = 0
@@ -693,7 +693,7 @@
 
 /obj/machinery/light/proc/set_blue()
 	if(on)
-		SetLuminosity(9)
+		set_light(9)
 		brightness = 6
 		if(cmptext(base_state,"tube"))
 			atmosalarmed = 1

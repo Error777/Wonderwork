@@ -8,7 +8,7 @@
 
 /obj/machinery/computer/aifixer/New()
 	src.overlays += image('icons/obj/computer.dmi', "ai-fixer-empty")
-	loc.SetLuminosity(loc.luminosity + brightness_on)
+	loc.set_light(loc.luminosity + brightness_on)
 
 /obj/machinery/computer/aifixer/attackby(I as obj, user as mob)
 /*

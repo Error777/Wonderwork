@@ -265,12 +265,12 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/Del()
 	if(istype(loc,/mob))
-		loc.SetLuminosity(loc.luminosity - potency/5)
+		loc.set_light(loc.luminosity - potency/5)
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/pickup(mob/user)
-	SetLuminosity(0)
-	user.SetLuminosity(user.luminosity + potency/5)
+	set_light(0)
+	user.set_light(user.luminosity + potency/5)
 
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cocoapod
@@ -877,7 +877,7 @@
 		if(istype(src.loc,/mob))
 			pickup(src.loc)
 		else
-			src.SetLuminosity(round(potency/10,1))
+			src.set_light(round(potency/10,1))
 	lifespan = 120 //ten times that is the delay
 	endurance = 30
 	maturation = 15
@@ -901,16 +901,16 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/Del()
 	if(istype(loc,/mob))
-		loc.SetLuminosity(round(loc.luminosity - potency/10,1))
+		loc.set_light(round(loc.luminosity - potency/10,1))
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
-	SetLuminosity(0)
-	user.SetLuminosity(round(user.luminosity + (potency/10),1))
+	set_light(0)
+	user.set_light(round(user.luminosity + (potency/10),1))
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.SetLuminosity(round(user.luminosity + (potency/10),1))
-	SetLuminosity(round(potency/10,1))
+	user.set_light(round(user.luminosity + (potency/10),1))
+	set_light(round(potency/10,1))
 
 
 // *************************************

@@ -48,7 +48,7 @@
 		//src.damtype = "fire"
 		for(var/mob/O in viewers(usr, null))
 			O.show_message(flavor_text, 1)
-		SetLuminosity(CANDLE_LUM)
+		set_light(CANDLE_LUM)
 		processing_objects.Add(src)
 
 /obj/item/candle/process()
@@ -70,16 +70,16 @@
 	if(lit)
 		lit = 0
 		update_icon()
-		SetLuminosity(0)
-		user.SetLuminosity(luminosity - CANDLE_LUM)
+		set_light(0)
+		user.set_light(luminosity - CANDLE_LUM)
 
 
 /obj/item/candle/pickup(mob/user)
 	if(lit)
-		SetLuminosity(0)
-		user.SetLuminosity(user.luminosity + CANDLE_LUM)
+		set_light(0)
+		user.set_light(user.luminosity + CANDLE_LUM)
 
 /obj/item/candle/dropped(mob/user)
 	if(lit)
-		user.SetLuminosity(user.luminosity - CANDLE_LUM)
-		SetLuminosity(CANDLE_LUM)
+		user.set_light(user.luminosity - CANDLE_LUM)
+		set_light(CANDLE_LUM)

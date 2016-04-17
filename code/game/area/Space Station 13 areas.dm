@@ -231,14 +231,12 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Alien Shuttle Base"
 	requires_power = 1
 	luminosity = 0
-	lighting_use_dynamic = 1
 
 /area/shuttle/alien/mine
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Mine"
 	requires_power = 1
 	luminosity = 0
-	lighting_use_dynamic = 1
 
 /area/shuttle/prison
 	name = "\improper Prison Shuttle"
@@ -317,7 +315,6 @@ proc/process_ghost_teleport_locs()
 	icon_state = "yellow"
 	requires_power = 0
 	luminosity = 1
-	lighting_use_dynamic = 0
 
 /area/airtunnel1/      // referenced in airtunnel.dm:759
 

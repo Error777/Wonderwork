@@ -421,7 +421,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					for(var/mob/O in viewers(user, null))
 						O.show_message("\red After a few attempts, \the [user] manages to light \the [src], they however burn themself in the process.", 1)
 
-			user.SetLuminosity(user.luminosity + 2)
+			user.set_light(user.luminosity + 2)
 			processing_objects.Add(src)
 		else
 			src.lit = 0
@@ -434,7 +434,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				for(var/mob/O in viewers(user, null))
 					O.show_message("\red [user] quietly shuts off the [src].", 1)
 
-			user.SetLuminosity(user.luminosity - 2)
+			user.set_light(user.luminosity - 2)
 			processing_objects.Remove(src)
 	else
 		return ..()
@@ -461,12 +461,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/weapon/lighter/pickup(mob/user)
 	if(lit)
-		src.SetLuminosity(0)
-		user.SetLuminosity(user.luminosity + 2)
+		src.set_light(0)
+		user.set_light(user.luminosity + 2)
 	return
 
 /obj/item/weapon/lighter/dropped(mob/user)
 	if(lit)
-		user.SetLuminosity(user.luminosity - 2)
-		SetLuminosity(2)
+		user.set_light(user.luminosity - 2)
+		set_light(2)
 	return

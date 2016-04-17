@@ -54,28 +54,28 @@
 	item_state = "rig[on]-[item_color]"
 
 	if(on)
-		user.SetLuminosity(user.luminosity + brightness_on)
+		user.set_light(user.luminosity + brightness_on)
 	else
-		user.SetLuminosity(user.luminosity - brightness_on)
+		user.set_light(user.luminosity - brightness_on)
 
 /obj/item/clothing/head/helmet/space/rig/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(user.luminosity + brightness_on)
-		SetLuminosity(0)
+		user.set_light(user.luminosity + brightness_on)
+		set_light(0)
 
 /obj/item/clothing/head/helmet/space/rig/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.luminosity - brightness_on)
-		SetLuminosity(brightness_on)
+		user.set_light(user.luminosity - brightness_on)
+		set_light(brightness_on)
 /*
 /obj/item/clothing/head/helmet/space/rig/on_enter_storage()
 	if(on)
-		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
+		usr.set_light(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
 		on = 0
 		icon_state = "rig[on]-[item_color]"
 		item_state = "rig[on]-[item_color]"
 	else if (isturf(src.loc))
-		SetLuminosity(0)
+		set_light(0)
 	..()
 	return
 */
