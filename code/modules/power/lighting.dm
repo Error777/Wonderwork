@@ -227,9 +227,7 @@
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	var/on = 0					// 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightnessred = 5				// luminosity when on, also used in power calculation
-	var/brightnessgreen = 5
-	var/brightnessblue = 3
+	var/brightness = 5				// luminosity when on, also used in power calculation
 	var/redalert = 1
 
 	var/status = LIGHT_OK		// LIGHT_OK, _EMPTY, _BURNED or _BROKEN
@@ -249,9 +247,7 @@
 	icon_state = "bulb1"
 	base_state = "bulb"
 	fitting = "bulb"
-	brightnessred = 4
-	brightnessgreen = 4
-	brightnessblue = 1
+	brightness = 4
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb
 
@@ -263,9 +259,7 @@
 	icon_state = "firelight1"
 	base_state = "firelight"
 	fitting = "bulb"
-	brightnessred = 5
-	brightnessgreen = 2
-	brightnessblue = 2
+	brightness = 5
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb/fire
 
@@ -274,9 +268,7 @@
 	base_state = "floorbulb"
 	fitting = "floor bulb"
 	layer = TURF_LAYER + 0.2
-	brightnessred = 4
-	brightnessgreen = 5
-	brightnessblue = 1
+	brightness = 5
 	desc = "A small floor lighting fixture."
 	light_type = /obj/item/weapon/light/bulb/floor
 
@@ -285,9 +277,7 @@
 	base_state = "floortube"
 	fitting = "floor tube"
 	layer = TURF_LAYER + 0.2
-	brightnessred = 7
-	brightnessgreen = 7
-	brightnessblue = 7
+	brightness = 7
 	desc = "A tube floor lighting fixture."
 	light_type = /obj/item/weapon/light/tube/floor
 
@@ -295,9 +285,7 @@
 	name = "spotlight"
 	fitting = "large tube"
 	light_type = /obj/item/weapon/light/tube/large
-	brightnessred = 15
-	brightnessgreen = 15
-	brightnessblue = 15
+	brightness = 15
 
 /obj/machinery/light/built/New()
 	status = LIGHT_EMPTY
@@ -313,37 +301,15 @@
 /obj/machinery/light/New()
 	..()
 
-	processing_objects.Add(src)
-
 	spawn(2)
 		switch(fitting)
 			if("tube")
-				var/br = pick(5,7)
-				brightnessred = br
-				brightnessgreen = br
-				brightnessblue = br
+				brightness = 8
 				if(prob(2))
 					broken(1)
 			if("bulb")
-				brightnessred = 4
-				brightnessgreen = 4
-				brightnessblue = 1
-
+				brightness = 4
 				if(prob(5))
-					broken(1)
-			if("floor bulb")
-				brightnessred = 4
-				brightnessgreen = 5
-				brightnessblue = 1
-
-				if(prob(5))
-					broken(1)
-			if("floor tube")
-				brightnessred = 5
-				brightnessgreen = 6
-				brightnessblue = 5
-
-				if(prob(2))
 					broken(1)
 		spawn(1)
 			update(0)
@@ -381,12 +347,8 @@
 /obj/machinery/light/proc/update(var/trigger = 1)
 
 	update_icon()
-
 	if(on)
-
-		SetLuminosity(on * brightnessred, on * brightnessgreen * !isalert(), on * brightnessblue * !isalert())		// *UL*
-
-		if(luminosity != ul_Luminosity(src))
+		if(luminosity != brightness)
 			switchcount++
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
@@ -400,16 +362,18 @@
 					status = LIGHT_BURNED
 					icon_state = "[base_state]-burned"
 					on = 0
-					SetLuminosity(0, 0, 0)
+					SetLuminosity(0)
 			else
 				use_power = 2
+				SetLuminosity(brightness)
 	else
 		use_power = 1
-		SetLuminosity(0, 0, 0)
+		SetLuminosity(0)
 
 	active_power_usage = (luminosity * 10)
 	if(on != on_gs)
 		on_gs = on
+
 
 /obj/machinery/light/proc/isalert()
 	return 0
@@ -467,10 +431,8 @@
 				user << "You insert the [L.name]."
 				switchcount = L.switchcount
 				rigged = L.rigged
-
-				brightnessred = L.brightnessred
-				brightnessgreen = L.brightnessgreen
-				brightnessblue = L.brightnessblue
+				l_color = L.color
+				brightness = L.brightness
 
 				on = has_power()
 				update()
@@ -618,10 +580,8 @@
 	var/obj/item/weapon/light/L = new light_type()
 	L.status = status
 	L.rigged = rigged
-	L.brightnessred = src.brightnessred
-	L.brightnessgreen = src.brightnessgreen
-	L.brightnessblue = src.brightnessblue
-
+	L.brightness = src.brightness
+	L.color = l_color
 	// light item inherits the switchcount, then zero it
 	L.switchcount = switchcount
 	switchcount = 0
@@ -680,9 +640,7 @@
 	if(status == LIGHT_OK)
 		return
 	status = LIGHT_OK
-	brightnessred = initial(brightnessred)
-	brightnessgreen = initial(brightnessgreen)
-	brightnessblue = initial(brightnessblue)
+	brightness = initial(brightness)
 
 	on = 1
 	update()
@@ -735,10 +693,8 @@
 
 /obj/machinery/light/proc/set_blue()
 	if(on)
-		SetLuminosity(3, 3, 9)
-		brightnessred   = 3
-		brightnessgreen = 4
-		brightnessblue  = 6
+		SetLuminosity(9)
+		brightness = 6
 		if(cmptext(base_state,"tube"))
 			atmosalarmed = 1
 			firealarmed = 0
@@ -746,9 +702,7 @@
 
 /obj/machinery/light/proc/set_red()
 	if(on)
-		brightnessred   = 9
-		brightnessgreen = 4
-		brightnessblue  = 4
+		brightness = 9
 		if(cmptext(base_state,"tube"))
 			firealarmed = 1
 			atmosalarmed = 0
@@ -756,15 +710,11 @@
 
 /obj/machinery/light/proc/reset_color()
 	if(on)
-		brightnessred   = initial(brightnessred)
-		brightnessgreen = initial(brightnessgreen)
-		brightnessblue  = initial(brightnessblue)
+		brightness = initial(brightness)
 		if(cmptext(base_state,"tube"))
 			firealarmed = 0
 			atmosalarmed = 0
 		update()
-
-
 
 // called when area power state changes
 /obj/machinery/light/power_change()

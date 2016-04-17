@@ -252,7 +252,7 @@ proc/AirflowSpace(zone/A)
 					if(src:shoes:magpulse)
 						return
 		src << "\red You are sucked away by airflow!"
-	var/airflow_falloff = 9 - ul_FalloffAmount(airflow_dest) //It's a fast falloff calc.  Very useful.
+	var/airflow_falloff = 9 - sqrt((x - airflow_dest.x) ** 2 + (y - airflow_dest.y) ** 2) //It's a fast falloff calc.  Very useful.
 	if(airflow_falloff < 1)
 		airflow_dest = null
 		return
@@ -316,7 +316,7 @@ proc/AirflowSpace(zone/A)
 					return
 		src << "\red You are pushed away by airflow!"
 		last_airflow = world.time
-	var/airflow_falloff = 9 - ul_FalloffAmount(airflow_dest) //It's a fast falloff calc.  Very useful.
+	var/airflow_falloff = 9 - sqrt((x - airflow_dest.x) ** 2 + (y - airflow_dest.y) ** 2) //It's a fast falloff calc.  Very useful.
 	if(airflow_falloff < 1)
 		airflow_dest = null
 		return

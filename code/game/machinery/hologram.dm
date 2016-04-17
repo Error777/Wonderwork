@@ -95,7 +95,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
 	hologram.anchored = 1//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	SetLuminosity(0,0,1)	//hologram lighting
+	SetLuminosity(1)	//hologram lighting
 	icon_state = "holopad1"
 	A.current = src
 	master = A//AI is the master.

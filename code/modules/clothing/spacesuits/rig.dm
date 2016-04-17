@@ -54,20 +54,20 @@
 	item_state = "rig[on]-[item_color]"
 
 	if(on)
-		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+		user.SetLuminosity(user.luminosity + brightness_on)
 	else
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+		user.SetLuminosity(user.luminosity - brightness_on)
 
 /obj/item/clothing/head/helmet/space/rig/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+		user.SetLuminosity(user.luminosity + brightness_on)
 		SetLuminosity(0)
 
 /obj/item/clothing/head/helmet/space/rig/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-		SetLuminosity(brightness_on, brightness_on - 1, 0)
-
+		user.SetLuminosity(user.luminosity - brightness_on)
+		SetLuminosity(brightness_on)
+/*
 /obj/item/clothing/head/helmet/space/rig/on_enter_storage()
 	if(on)
 		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
@@ -78,7 +78,7 @@
 		SetLuminosity(0)
 	..()
 	return
-
+*/
 /obj/item/clothing/suit/space/rig
 	name = "engineering hardsuit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding."

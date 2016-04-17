@@ -265,16 +265,13 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/Del()
 	if(istype(loc,/mob))
-		loc.SetLuminosity(loc.LuminosityRed - potency/5, loc.LuminosityGreen - potency/5, loc.LuminosityBlue - potency/5)
+		loc.SetLuminosity(loc.luminosity - potency/5)
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/pickup(mob/user)
 	SetLuminosity(0)
-	user.SetLuminosity(user.LuminosityRed + potency/5, user.LuminosityGreen + potency/5, user.LuminosityBlue + potency/5)
+	user.SetLuminosity(user.luminosity + potency/5)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/dropped(mob/user)
-	user.SetLuminosity(user.LuminosityRed - potency/5, user.LuminosityGreen - potency/5, user.LuminosityBlue - potency/5)
-	SetLuminosity(potency/5)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cocoapod
 	seed = "/obj/item/seeds/cocoapodseed"

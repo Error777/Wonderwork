@@ -580,6 +580,7 @@ var/list/slot_equipment_priority = list( \
 //	..()
 	return
 
+/*
 /mob/proc/UpdateLuminosity()//Current hardcode max at 7, should likely be a const somewhere else
 	if (LuminosityRed < 0)
 		SetLuminosity(LuminosityRed - LuminosityRed, LuminosityGreen, LuminosityBlue)
@@ -588,7 +589,7 @@ var/list/slot_equipment_priority = list( \
 	if (LuminosityBlue < 0)
 		SetLuminosity(LuminosityRed, LuminosityGreen, LuminosityBlue - LuminosityGreen)
 	return 1
-
+*/
 
 /mob/proc/pull_damage()
 	if(ishuman(src))
