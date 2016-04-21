@@ -292,6 +292,7 @@ turf/proc/ul_UpdateLight()
 
 			NewArea.ul_Light(ul_GetRed(), ul_GetGreen(), ul_GetBlue())
 
+
 		NewArea.contents += src
 
 	return

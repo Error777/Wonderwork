@@ -80,13 +80,6 @@ obj/structure/door_assembly
 		airlock_type = "/maintenance"
 		glass = -1
 
-	door_assembly_one
-		icon_state = "door_as_gglassnew0"
-		base_icon_state = "one"
-		base_name = "Maintenance Airlock"
-		airlock_type = "/one"
-		glass = -1
-
 	door_assembly_ext
 		icon_state = "door_as_ext0"
 		base_icon_state = "ext"

@@ -194,14 +194,6 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	open_sound_powered = 'sound/machines/windowdoor.ogg'
 	glass = 1
 
-/obj/machinery/door/airlock/glass_new
-	name = "Maintenance Hatch"
-	icon = 'icons/obj/doors/Doorglassone.dmi'
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_one
-	open_sound_powered = 'sound/machines/windowdoor.ogg'
-	glass = 1
-
 /obj/machinery/door/airlock/glass_goonengineering
 	name = "Glass Airlock"
 	icon = 'icons/obj/doors/goonnewengdoor.dmi'
