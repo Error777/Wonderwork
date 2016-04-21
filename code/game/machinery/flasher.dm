@@ -24,13 +24,13 @@
 
 /obj/machinery/flasher/New()
 	sleep(4)
-	SetLuminosity(2)
+	SetLuminosity(0,2,0)
 
 /obj/machinery/flasher/power_change()
 	if ( powered() )
 		stat &= ~NOPOWER
 		icon_state = "[base_state]1"
-		src.SetLuminosity(2)
+		src.SetLuminosity(0,2,0)
 	else
 		stat |= ~NOPOWER
 		icon_state = "[base_state]1-p"

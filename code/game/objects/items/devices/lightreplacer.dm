@@ -148,7 +148,9 @@
 				var/obj/item/weapon/light/L1 = new target.light_type(target.loc)
 				L1.status = target.status
 				L1.rigged = target.rigged
-				L1.brightness = target.brightness
+				L1.brightnessred = target.brightnessred
+				L1.brightnessgreen = target.brightnessgreen
+				L1.brightnessblue = target.brightnessblue
 				L1.switchcount = target.switchcount
 				target.switchcount = 0
 				L1.update()
@@ -161,7 +163,9 @@
 			target.status = L2.status
 			target.switchcount = L2.switchcount
 			target.rigged = emagged
-			target.brightness = L2.brightness
+			target.brightnessred = L2.brightnessred
+			target.brightnessgreen = L2.brightnessgreen
+			target.brightnessblue = L2.brightnessblue
 			target.on = target.has_power()
 			target.update()
 			del(L2)

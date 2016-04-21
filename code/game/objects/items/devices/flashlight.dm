@@ -18,27 +18,26 @@
 		user << "You are silly? You can't insert this massive toolbox into flashlight."
 	return
 
-
 /obj/item/device/flashlight/initialize()
 	..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		SetLuminosity(brightness_on)
+		src.SetLuminosity(brightness_on, brightness_on, 0)
 	else
 		icon_state = initial(icon_state)
-		SetLuminosity(0)
+		src.SetLuminosity(0)
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
 	if (on)
 		icon_state = "[initial(icon_state)]-on"
 		if(src.loc == user)
-			user.SetLuminosity(user.luminosity + brightness_on)
+			user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			SetLuminosity(brightness_on, brightness_on, 0)
 	else
 		icon_state = initial(icon_state)
 		if(src.loc == user)
-			user.SetLuminosity(user.luminosity - brightness_on)
+			user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			SetLuminosity(0)
 
@@ -84,25 +83,24 @@
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(user.luminosity + brightness_on)
-		SetLuminosity(0)
-
+		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+		src.SetLuminosity(0)
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.luminosity - brightness_on)
-		SetLuminosity(brightness_on)
-/*
+		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+		src.SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+
 /obj/item/device/flashlight/on_enter_storage()
 	if(on)
 		icon_state = initial(icon_state)
-		usr.SetLuminosity(usr.luminosity - brightness_on)
+		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
 		on = 0
 	else if(isturf(src.loc))
 		SetLuminosity(0)
 		..()
 		return
-*/
+
 /obj/item/device/flashlight/pen
 	name = "penlight"
 	desc = "A pen-sized light, used by medical staff."
@@ -140,18 +138,17 @@
 		attack_self(usr)
 
 // FLARES
-
 /obj/item/device/flashlight/flare
 	name = "flare"
 	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = 2.0
-	brightness_on = 7 // Pretty bright.
 	icon_state = "flare"
 	item_state = "flare"
 	icon_action_button = null	//just pull it manually, neckbeard.
 	var/fuel = 0
 	var/on_damage = 7
 	var/produce_heat = 1500
+	brightness_on = 6
 
 /obj/item/device/flashlight/flare/New()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
@@ -179,7 +176,6 @@
 		update_brightness(null)
 
 /obj/item/device/flashlight/flare/attack_self(mob/user)
-
 	// Usual checks
 	if(!fuel)
 		user << "<span class='notice'>It's out of fuel.</span>"
@@ -194,6 +190,7 @@
 		src.force = on_damage
 		src.damtype = "fire"
 		processing_objects += src
+
 
 /obj/item/device/flashlight/glowstick
 	name = "glowstick"

@@ -112,7 +112,7 @@ turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh, atom/sou
 
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
-	l_color = "#ED9200"
+
 	layer = TURF_LAYER
 
 	var/firelevel = 10000 //Calculated by gas_mixture.calculate_firelevel()
@@ -154,13 +154,16 @@ turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh, atom/sou
 
 	if(firelevel > 6)
 		icon_state = "3"
-		SetLuminosity(7)
+		if(LuminosityRed != 11)
+			SetLuminosity(11,9,0)
 	else if(firelevel > 2.5)
 		icon_state = "2"
-		SetLuminosity(5)
+		if(LuminosityRed != 8)
+			SetLuminosity(8,7,0)
 	else
 		icon_state = "1"
-		SetLuminosity(3)
+		if(LuminosityRed != 5)
+			SetLuminosity(5,4,0)
 
 	//im not sure how to implement a version that works for every creature so for now monkeys are firesafe
 	for(var/mob/living/carbon/human/M in loc)
