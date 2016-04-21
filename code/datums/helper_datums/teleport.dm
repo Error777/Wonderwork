@@ -109,7 +109,7 @@
 		playSpecials(curturf,effectin,soundin)
 
 		var/prevlum = teleatom.luminosity
-		teleatom.set_light(0)
+		teleatom.SetLuminosity(0)
 
 		if(force_teleport)
 			teleatom.forceMove(destturf)
@@ -119,7 +119,7 @@
 				playSpecials(destturf,effectout,soundout)
 
 		// Re-Apply lum
-		teleatom.set_light(prevlum)
+		teleatom.SetLuminosity(prevlum)
 
 		destarea.Entered(teleatom)
 

@@ -61,7 +61,7 @@
 			network = list()
 			cameranet.removeCamera(src)
 			stat |= EMPED
-			set_light(0)
+			SetLuminosity(0)
 			triggerCameraAlarm()
 			spawn(900)
 				network = previous_network

@@ -93,19 +93,19 @@ turf/simulated/floor/proc/update_icon()
 			switch(T.state)
 				if(0)
 					icon_state = "light_on"
-					set_light(5)
+					SetLuminosity(5)
 				if(1)
 					var/num = pick("1","2","3","4")
 					icon_state = "light_on_flicker[num]"
-					set_light(5)
+					SetLuminosity(5)
 				if(2)
 					icon_state = "light_on_broken"
-					set_light(5)
+					SetLuminosity(5)
 				if(3)
 					icon_state = "light_off"
-					set_light(0)
+					SetLuminosity(0)
 		else
-			set_light(0)
+			SetLuminosity(0)
 			icon_state = "light_off"
 	else if(is_grass_floor())
 		if(!broken && !burnt)
@@ -335,7 +335,7 @@ turf/simulated/floor/proc/update_icon()
 	if(!floor_tile) return
 	del(floor_tile)
 	icon_plating = "plating"
-	set_light(0)
+	SetLuminosity(0)
 	floor_tile = null
 	intact = 0
 	broken = 0
@@ -351,7 +351,7 @@ turf/simulated/floor/proc/update_icon()
 	broken = 0
 	burnt = 0
 	intact = 1
-	set_light(0)
+	SetLuminosity(0)
 	if(T)
 		if(istype(T,/obj/item/stack/tile/plasteel))
 			floor_tile = T

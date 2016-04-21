@@ -28,11 +28,6 @@
 		spawn( 0 )
 			src.Entered(AM)
 			return
-
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
 	return
 
 /turf/DblClick()

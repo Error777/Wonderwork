@@ -217,13 +217,13 @@
 
 	do_animate("opening")
 	icon_state = "door0"
-	//src.SetOpacity(0)
+	src.SetOpacity(0)
 	sleep(10)
 	src.layer = base_layer
 	src.density = 0
 	explosion_resistance = 0
 	update_icon()
-	opacity = 0
+	SetOpacity(0)
 	update_nearby_tiles()
 
 	if(operating)	operating = 0
@@ -250,7 +250,7 @@
 	sleep(10)
 	update_icon()
 	if(visible && !glass)
-		opacity = 1	//caaaaarn!
+		SetOpacity(1)	//caaaaarn!
 	operating = 0
 	update_nearby_tiles()
 

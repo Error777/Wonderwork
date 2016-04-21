@@ -21,19 +21,19 @@
 	item_state = "hardhat[on]_[item_color]"
 
 	if(on)
-		user.set_light(user.luminosity + brightness_on)
+		user.SetLuminosity(user.luminosity + brightness_on)
 	else
-		user.set_light(user.luminosity - brightness_on)
+		user.SetLuminosity(user.luminosity - brightness_on)
 
 /obj/item/clothing/head/hardhat/pickup(mob/user)
 	if(on)
-		user.set_light(user.luminosity + brightness_on)
-		set_light(0)
+		user.SetLuminosity(user.luminosity + brightness_on)
+		SetLuminosity(0)
 
 /obj/item/clothing/head/hardhat/dropped(mob/user)
 	if(on)
-		user.set_light(luminosity - brightness_on)
-		set_light(luminosity + brightness_on)
+		user.SetLuminosity(luminosity - brightness_on)
+		SetLuminosity(luminosity + brightness_on)
 
 /obj/item/clothing/head/hardhat/orange
 	icon_state = "hardhat0_orange"

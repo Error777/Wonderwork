@@ -33,6 +33,22 @@
 #define LIGHTING_LAYER 10									//Drawing layer for lighting overlays
 #define LIGHTING_ICON 'icons/effects/ss13_dark_alpha6.dmi'	//Icon used for lighting shading effects
 
+/proc/GetRedPart(const/hexa)
+	return hex2num(copytext(hexa,2,4))
+
+/proc/GetGreenPart(const/hexa)
+	return hex2num(copytext(hexa,4,6))
+
+/proc/GetBluePart(const/hexa)
+	return hex2num(copytext(hexa,6,8))
+
+/proc/GetHexColors(const/hexa)
+	return list(
+			GetRedPart(hexa),
+			GetGreenPart(hexa),
+			GetBluePart(hexa)
+		)
+
 /proc/MixColors(const/list/colors)
 	var/list/reds = list()
 	var/list/blues = list()

@@ -25,7 +25,7 @@
 		if(cell.charge <= 0)
 			on = 0
 			updateicon()
-			set_light(0)
+			SetLuminosity(0)
 			src.visible_message("<span class='warning'>[src] shuts down due to lack of power!</span>")
 			return
 
@@ -49,7 +49,7 @@
 	if(on)
 		on = 0
 		user << "\blue You turn off the light"
-		set_light(0)
+		SetLuminosity(0)
 	else
 		if(!cell)
 			return
@@ -57,7 +57,7 @@
 			return
 		on = 1
 		user << "\blue You turn on the light"
-		set_light(brightness_on)
+		SetLuminosity(brightness_on)
 
 	updateicon()
 

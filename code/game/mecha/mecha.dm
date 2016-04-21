@@ -951,9 +951,9 @@
 		return
 	lights = !lights
 	if(lights)
-		set_light(luminosity + lights_power)
+		SetLuminosity(luminosity + lights_power)
 	else
-		set_light(luminosity - lights_power)
+		SetLuminosity(luminosity - lights_power)
 	src.log_message("Toggled lights.")
 	return
 

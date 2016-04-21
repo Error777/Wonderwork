@@ -20,7 +20,7 @@
 			icon_state = "plasticblind-open"
 			sleep(15)
 			density = 0
-			opacity = 0
+			SetOpacity(0)
 			operating = 0
 			return
 	return
@@ -36,7 +36,7 @@
 	icon_state = "plasticblind-open"
 	sleep(10)
 	density = 0
-	opacity = 0
+	SetOpacity(0)
 	update_nearby_tiles()
 
 	if(operating == 1) //emag again
@@ -54,7 +54,7 @@
 	icon_state = "plasticblind-close"
 	density = 1
 	if(visible)
-		opacity = 1
+		SetOpacity(1)
 	update_nearby_tiles()
 
 	sleep(10)

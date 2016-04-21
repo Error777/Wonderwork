@@ -583,11 +583,11 @@ var/list/slot_equipment_priority = list( \
 /*
 /mob/proc/UpdateLuminosity()//Current hardcode max at 7, should likely be a const somewhere else
 	if (LuminosityRed < 0)
-		set_light(LuminosityRed - LuminosityRed, LuminosityGreen, LuminosityBlue)
+		SetLuminosity(LuminosityRed - LuminosityRed, LuminosityGreen, LuminosityBlue)
 	if (LuminosityGreen < 0)
-		set_light(LuminosityRed, LuminosityGreen - LuminosityGreen, LuminosityBlue)
+		SetLuminosity(LuminosityRed, LuminosityGreen - LuminosityGreen, LuminosityBlue)
 	if (LuminosityBlue < 0)
-		set_light(LuminosityRed, LuminosityGreen, LuminosityBlue - LuminosityGreen)
+		SetLuminosity(LuminosityRed, LuminosityGreen, LuminosityBlue - LuminosityGreen)
 	return 1
 */
 
