@@ -11,8 +11,8 @@
 
 #define TUBE_BRIGHT_MIN 7
 #define TUBE_BRIGHT_MAX 9
-#define BULB_BRIGHT_MIN 4
-#define BULB_BRIGHT_MAX 5
+#define BULB_BRIGHT_MIN 3
+#define BULB_BRIGHT_MAX 4
 
 #define LARGETUBE_BRIGHT 15
 
@@ -249,8 +249,8 @@
 	icon_state = "bulb1"
 	base_state = "bulb"
 	fitting = "bulb"
-	brightnessred = 4
-	brightnessgreen = 4
+	brightnessred = 3
+	brightnessgreen = 3
 	brightnessblue = 1
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb

@@ -1,9 +1,9 @@
 <h1>Welcome to Space Station Thirteen!</h1>
-
+<br>
 -<i>This server is running a Wonderwork build.</i>
 <br>
-<strong>Bugs:</strong> <a href="https://github.com/BlueCabaret/Wonderwork/issues">Bugtracker</a>
-<br>
-<strong>Rules and roleplaying tips:</strong> <a href="http://baystation12.net/wiki/index.php/Rules">http://baystation12.net/wiki/index.php/Rules</a> or the Rules command.
+<strong><b>Rule 0:</b> Don't be a dick. 
 <br>
 This is a roleplaying server, so don't forget to remain in character while playing. Make sure to read and abide by the rules and if you have any questions, feel free to adminhelp!
+<br>
+<center><b>Important Links: <a href="http://neonmaniacs.uk/viewforum.php?f=6">Forums!</a> <a href="https://github.com/BlueCabaret/Wonderwork/issues/new">Bug Reports!</a> <a href="https://github.com/BlueCabaret/Wonderwork">Github Repo!</a> <a href="http://discord.gg/0uD0vPbbEgxlP1aA">Discord!</a></b></center></p>
