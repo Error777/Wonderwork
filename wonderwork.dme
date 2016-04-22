@@ -1347,6 +1347,7 @@
 #include "code\WorkInProgress\Cael_Aislinn\Supermatter\SuperMatter.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Supermatter\ZeroPointLaser.dm"
 #include "code\WorkInProgress\Chinsky\ashtray.dm"
+#include "code\WorkInProgress\Chinsky\guestpass.dm"
 #include "code\WorkInProgress\Cib\MedicalSideEffects.dm"
 #include "code\WorkInProgress\computer2\airlock_control.dm"
 #include "code\WorkInProgress\computer2\arcade.dm"

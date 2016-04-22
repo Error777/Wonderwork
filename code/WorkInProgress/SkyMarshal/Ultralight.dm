@@ -289,7 +289,6 @@ turf/proc/ul_UpdateLight()
 		NewArea.contents += src
 	return
 
-
 turf/proc/ul_Recalculate()
 
 	ul_SuppressLightLevelChanges++

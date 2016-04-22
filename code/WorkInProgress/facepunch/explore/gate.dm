@@ -299,8 +299,3 @@
 					spawn(10)
 						del(L)
 		return
-
-
-
-
-/obj/machinery/stargate/center/special

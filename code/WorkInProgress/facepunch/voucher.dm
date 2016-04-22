@@ -134,3 +134,5 @@ var/global/vouchers = 0 //So badmins can't change this
 		var/obj/machinery/stargate/center/P = pick(L)
 		if(P)
 			tempcode = P.code
+
+/obj/machinery/stargate/center/special

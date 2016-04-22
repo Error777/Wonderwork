@@ -728,7 +728,6 @@
 	if(on)
 		use_power(luminosity * LIGHTING_POWER_FACTOR, LIGHT)
 
-
 /obj/machinery/light/proc/update_redalert()
 	if(on)
 		on = 0
