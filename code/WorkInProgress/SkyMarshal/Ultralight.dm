@@ -264,7 +264,7 @@ turf/proc/ul_GetBlue()
 	if(MaxBlue)
 		return ul_Clamp(max(MaxBlue))
 	return 0
-/*
+
 turf/proc/ul_UpdateLight()
 	var/area/CurrentArea = loc
 
@@ -288,32 +288,7 @@ turf/proc/ul_UpdateLight()
 			NewArea.ul_Light(ul_GetRed(), ul_GetGreen(), ul_GetBlue())
 		NewArea.contents += src
 	return
-*/
-turf/proc/ul_UpdateLight()
-	var/area/CurrentArea = loc
 
-	if(!isarea(CurrentArea) || !CurrentArea.ul_Lighting)
-		return
-
-	var/LightingTag = copytext(CurrentArea.tag, 1, findtext(CurrentArea.tag, ":UL")) + ":UL[ul_GetRed()]_[ul_GetGreen()]_[ul_GetBlue()]"
-	if (findtext(LightingTag, ":UL") == 1)
-		LightingTag = CurrentArea.type + ":UL[ul_GetRed()]_[ul_GetGreen()]_[ul_GetBlue()]"
-	else
-		LightingTag = copytext(CurrentArea.tag, 1, findtext(CurrentArea.tag, ":UL")) + ":UL[ul_GetRed()]_[ul_GetGreen()]_[ul_GetBlue()]"
-	if(CurrentArea.tag != LightingTag)
-		var/area/NewArea = locate(LightingTag)
-		if(!NewArea)
-			NewArea = new CurrentArea.type()
-			NewArea.tag = LightingTag
-			for(var/V in CurrentArea.vars - "contents")
-				if(issaved(CurrentArea.vars[V]))
-					NewArea.vars[V] = CurrentArea.vars[V]
-			NewArea.tag = LightingTag
-			NewArea.ul_Light(ul_GetRed(), ul_GetGreen(), ul_GetBlue())
-
-		NewArea.contents += src
-
-	return
 
 turf/proc/ul_Recalculate()
 

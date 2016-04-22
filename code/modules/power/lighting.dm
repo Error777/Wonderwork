@@ -382,34 +382,38 @@
 
 	update_icon()
 
-	if(on)
-
-		SetLuminosity(on * brightnessred, on * brightnessgreen * !isalert(), on * brightnessblue * !isalert())		// *UL*
-
-		if(luminosity != ul_Luminosity(src))
-			switchcount++
-			if(rigged)
-				if(status == LIGHT_OK && trigger)
-
-					log_admin("LOG: Rigged light explosion, last touched by [fingerprintslast]")
-					message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
-
-					explode()
-			else if( prob( min(60, switchcount*switchcount*0.01) ) )
-				if(status == LIGHT_OK && trigger)
-					status = LIGHT_BURNED
-					icon_state = "[base_state]-burned"
-					on = 0
-					SetLuminosity(0, 0, 0)
-			else
-				use_power = 2
-	else
+	if(!on)
 		use_power = 1
-		SetLuminosity(0, 0, 0)
+	else
+		use_power = 2
 
-	active_power_usage = (luminosity * 10)
-	if(on != on_gs)
-		on_gs = on
+	SetLuminosity(on * brightnessred, on * brightnessgreen * !isalert(), on * brightnessblue * !isalert())		// *UL*
+
+	if(luminosity != ul_Luminosity(src))
+		switchcount++
+
+		if(rigged)
+			if(status == LIGHT_OK && trigger)
+
+				log_admin("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+				message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+
+				explode()
+		else if( prob( min(60, switchcount*switchcount*0.01) ) )
+			if(status == LIGHT_OK && trigger)
+				status = LIGHT_BURNED
+				icon_state = "[base_state]-burned"
+				on = 0
+				SetLuminosity(0, 0, 0)
+//		else
+//			use_power = 2
+//	else
+//		use_power = 1
+//		SetLuminosity(0, 0, 0)
+
+	active_power_usage = (luminosity * 20)
+//	if(on != on_gs)
+//		on_gs = on
 
 /obj/machinery/light/proc/isalert()
 	return 0
