@@ -6,14 +6,14 @@
 
 	var/sealed = 0
 
-	var/suit_max = FIRE_SUIT_MAX_TEMP_PROTECT
-	var/suit_min = SPACE_SUIT_MIN_TEMP_PROTECT
+	var/suit_max = FIRESUIT_MAX_HEAT_PROTECITON_TEMPERATURE
+	var/suit_min = SPACE_SUIT_MIN_COLD_PROTECITON_TEMPERATURE
 
-	var/helmet_max = FIRE_HELM_MAX_TEMP_PROTECT
-	var/helmet_min = SPACE_HELM_MIN_TEMP_PROTECT
+	var/helmet_max = FIRE_HELMET_MAX_HEAT_PROTECITON_TEMPERATURE
+	var/helmet_min = SPACE_HELMET_MIN_COLD_PROTECITON_TEMPERATURE
 
-	var/boots_max = SHOES_MAX_TEMP_PROTECT
-	var/boots_min = SHOES_MIN_TEMP_PROTECT
+	var/boots_max = SHOE_MAX_HEAT_PROTECITON_TEMPERATURE
+	var/boots_min = SHOE_MIN_COLD_PROTECITON_TEMPERATURE
 
 /obj/item/weapon/powerarmor/atmoseal/toggle(sudden = 0)
 	switch(parent.active)
@@ -86,8 +86,8 @@
 	desc = "Keeps the vacuum out."
 	origin_tech = "materials=2;engineering=2"
 
-	suit_max = SPACE_SUIT_MAX_TEMP_PROTECT
-	helmet_max = SPACE_HELM_MAX_TEMP_PROTECT
+	suit_max = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
+	helmet_max = HELMET_MAX_HEAT_PROTECITON_TEMPERATURE
 
 
 
@@ -121,7 +121,7 @@
 			return
 		if(!helm.parent)
 			user << "\blue Helmet locked."
-			helm.flags |= NODROP
+			helm.canremove = 0
 			parent.helm = helm
 			helm.parent = parent
 			sleep(20)
@@ -156,7 +156,7 @@
 				if(manual)
 					sleep(20)
 					user << "\blue Helmet unlocked."
-				helm.flags &= ~NODROP
+				helm.canremove = 0
 				parent.helm = null
 				helm.parent = null
 
@@ -165,5 +165,5 @@
 	desc = "Keeps the vacuum out, but lets you remove your helmet without having to turn the whole suit off."
 	origin_tech = "materials=2;engineering=3"
 
-	suit_max = SPACE_SUIT_MAX_TEMP_PROTECT
-	helmet_max = SPACE_HELM_MAX_TEMP_PROTECT
+	suit_max = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
+	helmet_max = HELMET_MAX_HEAT_PROTECITON_TEMPERATURE

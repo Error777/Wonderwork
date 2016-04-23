@@ -39,7 +39,7 @@
 
 /obj/item/clothing/suit/powered/syndie/supercell/New()
 	..()
-	powercell = new /obj/item/weapon/stock_parts/cell/super(src)
+	powercell = new /obj/item/weapon/cell/high(src)
 
 /*
 // HEV

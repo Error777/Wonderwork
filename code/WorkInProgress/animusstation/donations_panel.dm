@@ -275,7 +275,7 @@ var/list/datum/spawn_item/donator_items = list()
 	dat += "Santabag: <A href='?src=\ref[src];item=/obj/item/weapon/storage/backpack/santabag;cost=4000'>4000</A><br>"
 	dat += "Sunglasses: <A href='?src=\ref[src];item=/obj/item/clothing/glasses/sunglasses;cost=600'>600</A><br>"
 //	dat += "Soul stone shard: <A href='?src=\ref[src];item=/obj/item/device/soulstone;cost=1500'>1500</A><br>"
-//	dat += "Plastic balisong knife: <A href='?src=\ref[src];item=/obj/item/weapon/kitchenknife/b_knife;cost=800'>800</A><br>"
+	dat += "Plastic balisong knife: <A href='?src=\ref[src];item=/obj/item/weapon/kitchenknife/b_knife;cost=800'>800</A><br>"
 */
 	usr << browse(dat, "window=donatorpanel;size=250x400")
 

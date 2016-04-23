@@ -48,12 +48,12 @@
 	togglearmor = list(melee = 15, bullet = 10, laser = 15, energy = 10, bomb = 15, bio = 50, rad = 60)
 	slowdown = 2
 
-	var/list/upgrades = list("diamond" = 0, "goliath" = 0, "plasteel" = 0,
+	var/list/upgrades = list("diamond" = 0, "radiation" = 0, "plasteel" = 0,
 							"xenochitin" = 0, "welder" = 0, "screwdriver" = 0)
 
 /obj/item/weapon/powerarmor/reactive/standard/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/asteroid/goliath_hide) && upgrades["goliath"] < 4)
-		upgrades["goliath"]++
+	if(istype(W, /obj/item/taperoll/police) && upgrades["radiation"] < 4)
+		upgrades["radiation"]++
 		add_armor(list(melee = 10, bullet = 4, laser = 2, bomb = 5, rad = 8))
 		user << "<span class='info'>You strengthen [src], improving its resistance against radiation and melee attacks.</span>"
 		user.u_equip(W)

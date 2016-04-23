@@ -5,9 +5,9 @@
 	item_state = "swat"
 	w_class = 4//bulky item
 
-	heat_protection = CHEST|GROIN|LEGS|ARMS
-	cold_protection = CHEST|GROIN|LEGS|ARMS
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	armor = list(melee = 40, bullet = 30, laser = 20,energy = 15, bomb = 25, bio = 10, rad = 10)
 	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/gun, /obj/item/weapon/handcuffs, /obj/item/weapon/tank)
 	slowdown = 6
@@ -36,7 +36,7 @@
 
 /obj/item/clothing/suit/powered/New()
 	button = new(null, src, "Toggle armor")
-	powercell = new /obj/item/weapon/stock_parts/cell/high(src)
+	powercell = new /obj/item/weapon/cell/high(src)
 
 /obj/item/clothing/suit/powered/proc/get_power()
 	if(!powercell)		return 0
@@ -92,13 +92,13 @@
 	user << "\blue Suit interlocks engaged."
 	if(helmrequired)
 		helm = user.head
-		helm.flags |= NODROP
+		helm.canremove = 0
 	gloves = user.gloves
-	gloves.flags |= NODROP
+	gloves.canremove = 0
 	if(shoesrequired)
 		shoes = user.shoes
-		shoes.flags |= NODROP
-	flags |= NODROP
+		shoes.canremove = 0
+	canremove = 0
 	sleep(40)
 
 	if(atmoseal)
@@ -148,15 +148,15 @@
 	if(!sudden)
 		usr << "\blue Suit interlocks disengaged."
 		if(helm)
-			helm.flags &= ~NODROP
+			helm.canremove = 0
 			helm = null
 		if(gloves)
-			gloves.flags &= ~NODROP
+			gloves.canremove = 0
 			gloves = null
 		if(shoes)
-			shoes.flags &= ~NODROP
+			shoes.canremove = 0
 			gloves = null
-		flags &= ~NODROP
+		canremove = 0
 		//Not a tabbing error, the thing only unlocks if you intentionally power-down the armor. --NEO
 	sleep(delay)
 
@@ -224,7 +224,7 @@
 			powercell = null
 			return
 
-	else if(istype(W, /obj/item/weapon/stock_parts/cell))
+	else if(istype(W, /obj/item/weapon/cell))
 		user << "\blue You insert power cell into [src]."
 		user.u_equip(W)
 		powercell = W

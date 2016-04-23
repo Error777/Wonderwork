@@ -153,8 +153,6 @@
 		parent.slowdown += toggleslowdown
 		parent.shoes.flags |= NOSLIP
 
-	user.update_gravity(user.mob_has_gravity())
-
 	active = !active
 
 /obj/item/weapon/powerarmor/grip/magnetic/stat_button(var/name)
