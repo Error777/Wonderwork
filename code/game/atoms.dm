@@ -66,6 +66,9 @@
 /atom/proc/on_reagent_change()
 	return
 
+/atom/proc/on_mob_move()
+	return
+
 /atom/proc/Bumped(AM as mob|obj)
 	return
 

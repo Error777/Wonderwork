@@ -26,7 +26,7 @@
 	if(!istype(suit)) return 0
 	return suit.active
 
-/obj/item/clothing/gloves/powered/Touch(A, proximity, var/mob/living/carbon/user)
+/obj/item/clothing/gloves/powered/proc/Touch(A, proximity, var/mob/living/carbon/user)
 	var/obj/item/clothing/suit/powered/parmor = get_armor()
 
 	if(!user)			return 0

@@ -32,7 +32,7 @@
 	var/obj/item/weapon/powerarmor/weapon/ranged/ranged_l
 	var/obj/item/weapon/powerarmor/weapon/ranged/ranged_r
 
-	var/obj/item/weapon/stock_parts/cell/powercell
+	var/obj/item/weapon/cell/powercell
 
 /obj/item/clothing/suit/powered/New()
 	button = new(null, src, "Toggle armor")
