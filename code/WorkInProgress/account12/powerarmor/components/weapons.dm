@@ -47,7 +47,7 @@
 	var/fire_sound = 'sound/weapons/Gunshot.ogg'
 
 
-
+/*
 // ENERGY
 /obj/item/weapon/powerarmor/weapon/ranged/energy
 	name = "mounted laser gun"
@@ -98,7 +98,7 @@
 	gun_name = "rapid proto-kinetic accelerator"
 	origin_tech = "combat=2;magnets=2;materials=2"
 	ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
-
+*/
 // PROJECTILE
 /obj/item/weapon/powerarmor/weapon/ranged/proj
 	name = "mounted Bulldog"
@@ -108,7 +108,7 @@
 	shot_cost = 60
 	gun_name = "\improper Bulldog shotgun"
 
-	var/mag_type = /obj/item/ammo_box/magazine/m12g
+	var/mag_type = /obj/item/ammo_magazine/external/m12mm
 
 
 /obj/item/weapon/powerarmor/weapon/ranged/proj/pattack(var/atom/A, var/mob/living/carbon/user)
@@ -119,7 +119,7 @@
 /obj/item/weapon/powerarmor/weapon/ranged/proj/load(var/obj/item/I, var/mob/user)
 	var/obj/item/weapon/gun/projectile/automatic/powersuit/proj_gun = gun
 	if(!proj_gun.magazine && istype(I, mag_type))
-		var/obj/item/ammo_box/magazine/magazine = I
+		var/obj/item/ammo_magazine/external/magazine = I
 		if(magazine.ammo_count())
 			var/tenp = gun.attackby(magazine, user)
 			return tenp
@@ -151,7 +151,6 @@
 
 /obj/item/weapon/gun/projectile/automatic/powersuit
 	name = "powersuit gun"
-	trigger_guard = 0
 	clumsy_check = 0
 	var/obj/item/weapon/powerarmor/weapon/ranged/proj/holder
 
@@ -186,5 +185,5 @@
 
 	shot_cost = 25
 	gun_name = "L6 SAW"
-	mag_type = /obj/item/ammo_box/magazine/m762
+	mag_type = /obj/item/ammo_magazine/external/m762
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'

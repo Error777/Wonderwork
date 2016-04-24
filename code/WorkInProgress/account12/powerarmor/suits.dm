@@ -34,8 +34,8 @@
 	var/obj/item/weapon/powerarmor/weapon/ranged/proj/P = ranged_l
 	var/obj/item/weapon/gun/projectile/automatic/powersuit/gun = P.gun
 	del(gun.chambered)
-	gun.magazine = new /obj/item/ammo_box/magazine/m12g/dragon(gun)
-	gun.process_chamber()
+	gun.magazine = new /obj/item/ammo_magazine/external/m12mm(gun)
+	gun.process_chambered()
 
 /obj/item/clothing/suit/powered/syndie/supercell/New()
 	..()
