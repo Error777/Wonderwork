@@ -81,6 +81,7 @@
 	master_controller = new /datum/controller/game_controller()
 	spawn(1)
 		master_controller.setup()
+		processScheduler.setup()
 
 	process_teleport_locs()			//Sets up the wizard teleport locations
 	process_ghost_teleport_locs()	//Sets up ghost teleport locations.
@@ -158,24 +159,23 @@
 			C << link("byond://[config.server]")
 		else
 			C << link("byond://[world.address]:[world.port]")
-
+	processScheduler.stop()
 	..(reason)
 
 
 #define INACTIVITY_KICK	6000	//10 minutes in ticks (approx.)
 /world/proc/KickInactiveClients()
 	spawn(-1)
-		set background = 1
+		//set background = 1
 		while(1)
 			sleep(INACTIVITY_KICK)
 			for(var/client/C in clients)
 				if(C.is_afk(INACTIVITY_KICK))
 					if(!istype(C.mob, /mob/dead))
 						log_access("AFK: [key_name(C)]")
-						C << "\red You have been inactive for more than 10 minutes and have been disconnected."
+						to_chat(C, "<span class='warning'>You have been inactive for more than 10 minutes and have been disconnected.</span>")
 						del(C)
-#undef INACTIVITY_KICK
-
+//#undef INACTIVITY_KICK
 
 /world/proc/load_mode()
 	var/list/Lines = file2list("data/mode.txt")

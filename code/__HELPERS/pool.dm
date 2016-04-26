@@ -3,7 +3,7 @@
 //It was also pretty explicitly and shamelessly stolen from regular object pooling, thanks esword
 
 //#define DEBUG_DATUM_POOL
-/datum/var/disposed
+//datum/var/disposed
 #define MAINTAINING_OBJECT_POOL_COUNT 500
 
 // Read-only or compile-time vars and special exceptions.

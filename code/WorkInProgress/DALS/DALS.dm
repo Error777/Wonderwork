@@ -192,6 +192,7 @@ atom/movable/Del()
 //If we are setting luminosity to 0 the light will be cleaned up by the controller and garbage collected once all its
 //queues are complete.
 //if we have a light already it is merely updated, rather than making a new one.
+/*
 atom/proc/SetLuminosity(new_luminosity, trueLum = FALSE)
 	if(new_luminosity < 0)
 		new_luminosity = 0
@@ -242,7 +243,7 @@ turf/SetOpacity(new_opacity)
 			var/turf/T = loc
 			if(T.lighting_lumcount)		//only bother with an update if our turf is currently affected by a light
 				UpdateAffectingLights()
-
+*/
 
 turf
 	var/lighting_lumcount = 0
@@ -254,8 +255,8 @@ turf
 	var/lumcount_b = 0
 	var/light_col_sources = 0
 
-turf/space
-	lighting_lumcount = 4		//starlight
+//turf/space
+//	lighting_lumcount = 4		//starlight
 
 turf/proc/update_lumcount(amount, col_r, col_g, col_b, removing = 0)
 	lighting_lumcount += amount

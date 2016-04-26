@@ -780,6 +780,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define HAS_UNDERWEAR 1024
 #define HAS_TAIL 2048
 #define IS_PLANT 4096
+#define calculateticks(x)	x * world.tick_lag // Converts your ticks to proper tenths.
 
 //Language flags.
 #define WHITELISTED 1  // Language is available if the speaker is whitelisted.

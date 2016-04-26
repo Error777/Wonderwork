@@ -1,3 +1,5 @@
+var/global/list/html_machines = new/list() //for checking when we should update a mob based on race specific conditions
+
 /datum/processSchedulerView
 	var/datum/html_interface/interface
 

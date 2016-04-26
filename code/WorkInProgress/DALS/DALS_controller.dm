@@ -5,7 +5,6 @@ datum/controller/lighting
 	var/processing_interval = 5	//setting this too low will probably kill the server. Don't be silly with it!
 	var/process_cost = 0
 	var/iteration = 0
-
 	var/lighting_states = 7
 
 	var/list/lights = list()

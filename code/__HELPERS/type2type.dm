@@ -97,8 +97,128 @@
 		count++
 	return newText
 
+/*
+ * Holds procs designed to change one type of value, into another.
+ * Contains:
+ *			text2list & list2text
+ *			file2list
+ *			angle2dir
+ *			angle2text
+ *			worldtime2text
+ */
+
+// Concatenates a list of strings into a single string.  A seperator may optionally be provided.
+/proc/list2text(list/ls, sep)
+	if(ls && ls.len <= 1) // Early-out code for empty or singleton lists.
+		return (ls && ls.len) ? ls[1] : ""
+
+	var/l = ls.len // Made local for sanic speed.
+	var/i = 0 // Incremented every time a list index is accessed.
+
+	if(sep != null)
+		// Macros expand to long argument lists like so: sep, ls[++i], sep, ls[++i], sep, ls[++i], etc...
+		#define S1    sep, ls[++i]
+		#define S4    S1,  S1,  S1,  S1
+		#define S16   S4,  S4,  S4,  S4
+		#define S64   S16, S16, S16, S16
+
+		. = "[ls[++i]]" // Make sure the initial element is converted to text.
+
+		// Having the small concatenations come before the large ones boosted speed by an average of at least 5%.
+		if(l-1 & 0x01) // 'i' will always be 1 here.
+			. = text("[][][]", ., S1) // Append 1 element if the remaining elements are not a multiple of 2.
+		if(l-i & 0x02)
+			. = text("[][][][][]", ., S1, S1) // Append 2 elements if the remaining elements are not a multiple of 4.
+		if(l-i & 0x04)
+			. = text("[][][][][][][][][]", ., S4) // And so on....
+		if(l-i & 0x08)
+			. = text("[][][][][][][][][][][][][][][][][]", ., S4, S4)
+		if(l-i & 0x10)
+			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S16)
+		if(l-i & 0x20)
+			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S16, S16)
+		if(l-i & 0x40)
+			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64)
+		while(l > i) // Chomp through the rest of the list, 128 elements at a time.
+			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64, S64)
+
+		#undef S64
+		#undef S16
+		#undef S4
+		#undef S1
+
+	else
+		// Macros expand to long argument lists like so: ls[++i], ls[++i], ls[++i], etc...
+		#define S1    ls[++i]
+		#define S4    S1,  S1,  S1,  S1
+		#define S16   S4,  S4,  S4,  S4
+		#define S64   S16, S16, S16, S16
+
+		. = "[ls[++i]]" // Make sure the initial element is converted to text.
+
+		if(l-1 & 0x01) // 'i' will always be 1 here.
+			. += "[S1]" // Append 1 element if the remaining elements are not a multiple of 2.
+		if(l-i & 0x02)
+			. = text("[][][]", ., S1, S1) // Append 2 elements if the remaining elements are not a multiple of 4.
+		if(l-i & 0x04)
+			. = text("[][][][][]", ., S4) // And so on...
+		if(l-i & 0x08)
+			. = text("[][][][][][][][][]", ., S4, S4)
+		if(l-i & 0x10)
+			. = text("[][][][][][][][][][][][][][][][][]", ., S16)
+		if(l-i & 0x20)
+			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S16, S16)
+		if(l-i & 0x40)
+			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64)
+		while(l > i) // Chomp through the rest of the list, 128 elements at a time.
+			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
+	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64, S64)
+
+		#undef S64
+		#undef S16
+		#undef S4
+		#undef S1
+
+//slower then list2text, but correctly processes associative lists.
+proc/tg_list2text(list/list, glue = ",")
+	if(!istype(list) || !list.len)
+		return
+	for(var/i=1 to list.len)
+		. += (i != 1 ? glue : null)+	\
+		(!isnull(list["[list[i]]"]) ?	\
+		"[list["[list[i]]"]]" :			\
+		"[list[i]]")
+	return .
+
+// Yeah, so list2text doesn't do assoc values, tg_list2text only does assoc values if they're available, and NTSL needs to stay relatively simple.
+/proc/vg_list2text(var/list/list, var/glue = ", ", var/assoc_glue = " = ")
+	if(!islist(list) || !list.len)
+		return // Valid lists you nerd.
+
+	for(var/i = 1 to list.len)
+		if(isnull(list[list[i]]))
+			. += "[list[i]][glue]"
+		else
+			. += "[list[i]][assoc_glue][list[list[i]]][glue]"
+
+	. = copytext(., 1, length(.) - length(glue) + 1) // Shush. (cut out the glue which is added to the end.)
 
 //slower then dd_list2text, but correctly processes associative lists.
+/*
 proc/tg_list2text(list/list, glue=",")
 	if(!istype(list) || !list.len)
 		return
@@ -106,7 +226,7 @@ proc/tg_list2text(list/list, glue=",")
 	for(var/i=1 to list.len)
 		output += (i!=1? glue : null)+(!isnull(list["[list[i]]"])?"[list["[list[i]]"]]":"[list[i]]")
 	return output
-
+*/
 
 //Converts a text string into a list by splitting the string at each seperator found in text (discarding the seperator)
 //Returns an empty list if the text cannot be split, or the split text in a list.
