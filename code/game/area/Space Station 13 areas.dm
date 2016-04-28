@@ -988,6 +988,9 @@ area/ship/eva
 	name = "\improper Chief Engineer's office"
 	icon_state = "engine_control"
 
+/area/engine/cooling
+	name = "\improper Cooling Area"
+	icon_state = "engine"
 
 //Solars
 
@@ -999,6 +1002,14 @@ area/ship/eva
 	icon_state = "panelsA"
 
 /area/solar/auxstarboard
+	name = "\improper Fore Starboard Solar Array"
+	icon_state = "panelsA"
+
+/area/solar/fport
+	name = "\improper Fore Port Solar Array"
+	icon_state = "panelsA"
+
+/area/solar/fstarboard
 	name = "\improper Fore Starboard Solar Array"
 	icon_state = "panelsA"
 
@@ -1238,6 +1249,14 @@ area/ship/eva
 /area/security/range
 	name = "\improper Firing Range"
 	icon_state = "firingrange"
+
+/area/security/gas_chamber
+	name = "\improper Execution Chamber"
+	icon_state = "gaschamber" // Because it's all parties from here on.
+
+/area/security/medical
+	name = "\improper Brig Medbay"
+	icon_state = "medbay4"
 
 /*
 	New()
