@@ -1728,6 +1728,10 @@ area/ship/eva
 	name = "\improper Telecommunications Satellite East Wing"
 	icon_state = "tcomsateast"
 
+/area/tcommsat/storage
+	name = "\improper Telecoms Storage"
+	icon_state = "tcomsatcomp"
+
 /area/tcommsat/computer
 	name = "\improper Telecoms Control Room"
 	icon_state = "tcomsatcomp"
