@@ -88,7 +88,7 @@
 		var/safety = M:eyecheck()
 		if(safety <= 0)
 			M.Weaken(12)
-			flick("e_flash", M.flash)
+			M.flash_eyes()
 
 			if(ishuman(M) && ishuman(user) && M.stat!=DEAD)
 				if(user.mind && user.mind in ticker.mode.head_revolutionaries)
@@ -187,7 +187,7 @@
 		var/safety = M:eyecheck()
 		if(!safety)
 			if(!M.blinded)
-				flick("flash", M.flash)
+				M.flash_eyes()
 
 	return
 

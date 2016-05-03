@@ -415,7 +415,9 @@
 
 /mob/living/simple_animal/ex_act(severity)
 	if(!blinded)
-		flick("flash", flash)
+		flash_eyes()
+		clear_fullscreen("blind", 0)
+
 	switch (severity)
 		if (1.0)
 			adjustBruteLoss(500)

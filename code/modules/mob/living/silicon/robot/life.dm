@@ -249,7 +249,7 @@
 		if(src.blinded)
 			src.blind.layer = 18
 		else
-			src.blind.layer = 0
+			clear_fullscreen("blind", 0)
 			if (src.disabilities & NEARSIGHTED)
 				src.client.screen += global_hud.vimpaired
 

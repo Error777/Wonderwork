@@ -100,6 +100,7 @@
 			if(laser.freq+amt>0)
 				laser.freq+=amt
 		src.updateDialog()
+
 /obj/machinery/computer/lasercon/process()
 	if(!(stat & (NOPOWER|BROKEN)) )
 		use_power(250)

@@ -223,7 +223,7 @@ proc/checkhtml(var/t)
  * Text modification
  */
 
-/proc/replacetext(text, find, replacement)
+/proc/replacetext_old(text, find, replacement)
 	var/find_len = length(find)
 	if(find_len < 1)	return text
 	. = ""
@@ -237,7 +237,7 @@ proc/checkhtml(var/t)
 			continue
 		return .
 
-/proc/replacetextEx(text, find, replacement)
+/proc/replacetextEx_old(text, find, replacement)
 	var/find_len = length(find)
 	if(find_len < 1)	return text
 	. = ""
@@ -250,6 +250,7 @@ proc/checkhtml(var/t)
 			last_found = found + find_len
 			continue
 		return .
+
 
 //Adds 'u' number of zeros ahead of the text 't'
 /proc/add_zero(t, u)

@@ -10715,7 +10715,7 @@
 "dYc" = (/obj/machinery/atmospherics/pipe/simple{dir = 5; icon_state = "intact-f"},/turf/simulated/floor,/area/mine/eva)
 "dYd" = (/obj/structure/dispenser/oxygen,/obj/machinery/atmospherics/pipe/simple{dir = 4; level = 1},/turf/simulated/floor,/area/mine/eva)
 "dYe" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/machinery/atmospherics/pipe/simple{dir = 4; level = 1},/turf/simulated/floor/plating,/area/mine/eva)
-"dYf" = (/obj/machinery/status_display{layer = 4; pixel_x = 0; pixel_y = 32},/obj/machinery/light/small{dir = 1},/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 8; frequency = 1379; id_tag = "mining_east_pump"},/turf/simulated/floor{icon_state = "floorgrime"},/area/mine/eva)
+"dYf" = (/obj/machinery/status_display{layer = 4; pixel_x = 0; pixel_y = 32},/obj/machinery/light/small{dir = 1},/obj/machinery/atmospherics/unary/vent_pump/high_volume{dir = 8; frequency = 1379; id_tag = "mining_east_pump"},/obj/machinery/mininglaser,/turf/simulated/floor{icon_state = "floorgrime"},/area/mine/eva)
 "dYg" = (/obj/structure/closet/emcloset,/turf/simulated/floor{dir = 4; icon_state = "warning"},/area/mine/eva)
 "dYh" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/mine/eva)
 "dYi" = (/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor,/area/mine/west_outpost)

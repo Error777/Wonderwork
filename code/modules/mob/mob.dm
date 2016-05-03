@@ -1002,3 +1002,19 @@ mob/verb/yank_out_object()
 
 /mob/proc/update_clothing()
 	return
+
+/mob/proc/instant_vision_update(state=null, atom/A)
+	if(!client || isnull(state))
+		return
+
+	switch(state)
+		if(0)
+			if(!blinded)
+				clear_fullscreen("blind", 0)
+			client.eye = client.mob
+			client.perspective = MOB_PERSPECTIVE
+		if(1)
+			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			if(A)
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = A

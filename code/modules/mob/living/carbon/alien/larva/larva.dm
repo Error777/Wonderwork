@@ -70,7 +70,8 @@
 
 /mob/living/carbon/alien/larva/ex_act(severity)
 	if(!blinded)
-		flick("flash", flash)
+		flash_eyes()
+		clear_fullscreen("blind", 0)
 
 	var/b_loss = null
 	var/f_loss = null

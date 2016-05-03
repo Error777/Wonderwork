@@ -50,34 +50,45 @@
 	return 1
 
 
-/obj/item/device/flashlight/attack(mob/M as mob, mob/user as mob)
-	src.add_fingerprint(user)
-	if(src.on && user.zone_sel.selecting == "eyes")
+/obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
+	add_fingerprint(user)
+	if(on && user.zone_sel.selecting == "eyes")
 
-		if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")//don't have dexterity
-			usr.show_message("\red You don't have the dexterity to do this!",1)
+		if(((CLUMSY in user.mutations) || user.getBrainLoss() >= 60) && prob(50))	//too dumb to use flashlight properly
+			return ..()	//just hit them in the head
+
+		if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")	//don't have dexterity
+			user << "<span class='notice'>You don't have the dexterity to do this!</span>"
 			return
 
-		var/mob/living/carbon/human/H = M//mob has protective eyewear
+		var/mob/living/carbon/human/H = M	//mob has protective eyewear
 		if(istype(M, /mob/living/carbon/human) && ((H.head && H.head.flags & HEADCOVERSEYES) || (H.wear_mask && H.wear_mask.flags & MASKCOVERSEYES) || (H.glasses && H.glasses.flags & GLASSESCOVERSEYES)))
-			user << text("\blue You're going to need to remove that [] first.", ((H.head && H.head.flags & HEADCOVERSEYES) ? "helmet" : ((H.wear_mask && H.wear_mask.flags & MASKCOVERSEYES) ? "mask": "glasses")))
+			user << "<span class='notice'>You're going to need to remove that [(H.head && H.head.flags & HEADCOVERSEYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags & MASKCOVERSEYES) ? "mask": "glasses"] first.</span>"
 			return
 
-		for(var/mob/O in viewers(M, null))//echo message
-			if ((O.client && !(O.blinded )))
-				O.show_message("\blue [(O==user?"You direct":"[user] directs")] [src] to [(M==user? "your":"[M]")] eyes", 1)
+		if(M == user)	//they're using it on themselves
+			if(!M.blinded)
+				M.flash_eyes()
+				M.visible_message("<span class='notice'>[M] directs [src] to \his eyes.</span>", \
+									 "<span class='notice'>You wave the light in front of your eyes! Trippy!</span>")
+			else
+				M.visible_message("<span class='notice'>[M] directs [src] to \his eyes.</span>", \
+									 "<span class='notice'>You wave the light in front of your eyes.</span>")
+			return
 
-		if(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/carbon/monkey))//robots and aliens are unaffected
-			if(M.stat > 1 || M.disabilities & 128)//mob is dead or fully blind
-				if(M!=user)
-					user.show_message(text("\red [] pupils does not react to the light!", M),1)
-			else if(XRAY in M.mutations)//mob has X-RAY vision
-				if(M!=user)
-					user.show_message(text("\red [] pupils give an eerie glow!", M),1)
-			else //nothing wrong
-				flick("flash", M.flash)//flash the affected mob
-				if(M!=user)
-					user.show_message(text("\blue [] pupils narrow", M),1)
+		user.visible_message("<span class='notice'>[user] directs [src] to [M]'s eyes.</span>", \
+							 "<span class='notice'>You direct [src] to [M]'s eyes.</span>")
+
+		if(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/carbon/monkey))	//robots and aliens are unaffected
+			if(M.stat == DEAD || M.sdisabilities & BLIND)	//mob is dead or fully blind
+				user << "<span class='notice'>[M] pupils does not react to the light!</span>"
+			else if(XRAY in M.mutations)	//mob has X-RAY vision
+				M.flash_eyes() //Yes, you can still get flashed wit X-Ray.
+				user << "<span class='notice'>[M] pupils give an eerie glow!</span>"
+			else	//they're okay!
+				if(!M.blinded)
+					M.flash_eyes()	//flash the affected mob
+					user << "<span class='notice'>[M]'s pupils narrow.</span>"
 	else
 		return ..()
 

@@ -71,7 +71,8 @@
 
 /mob/living/carbon/alien/humanoid/ex_act(severity)
 	if(!blinded)
-		flick("flash", flash)
+		flash_eyes()
+		clear_fullscreen("blind", 0)
 
 	var/shielded = 0
 

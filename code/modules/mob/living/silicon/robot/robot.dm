@@ -427,7 +427,8 @@
 
 /mob/living/silicon/robot/ex_act(severity)
 	if(!blinded)
-		flick("flash", flash)
+		flash_eyes()
+		clear_fullscreen("blind", 0)
 
 	switch(severity)
 		if(1.0)
