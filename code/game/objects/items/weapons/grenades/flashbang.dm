@@ -47,8 +47,7 @@
 
 //Flashing everyone
 		if(eye_safety < 1)
-			flick("e_flash", M.flash)
-			M.eye_stat += rand(1, 3)
+			M.flash_eyes()
 			M.Stun(2)
 			M.Weaken(10)
 

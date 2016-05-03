@@ -113,6 +113,7 @@
 
 	else if(issilicon(M))
 		M.Weaken(rand(5,10))
+		M.flash_eyes()
 	else
 		flashfail = 1
 
@@ -130,7 +131,7 @@
 	if(!flashfail)
 		flick("flash2", src)
 		if(!issilicon(M))
-
+			M.flash_eyes()
 			user.visible_message("<span class='disarm'>[user] blinds [victim] with the flash!</span>")
 		else
 

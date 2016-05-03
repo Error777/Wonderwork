@@ -36,4 +36,4 @@
 							"<span class='danger'>Your face burns up, and shortly after the fire you realise you have the face of a horse!</span>")
 	target.equip_to_slot(magichead, slot_wear_mask)
 
-	flick("e_flash", target.flash)
+	target.flash_eyes()

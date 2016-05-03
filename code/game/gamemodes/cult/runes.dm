@@ -1088,7 +1088,7 @@ var/list/sacrificed = list()
 
 					else if(iscarbon(T))
 						var/mob/living/carbon/C = T
-						flick("e_flash", C.flash)
+						C.flash_eyes()
 						if (!(HULK in C.mutations))
 							C.silent += 15
 						C.Weaken(25)

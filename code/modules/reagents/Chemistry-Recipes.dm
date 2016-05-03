@@ -372,7 +372,7 @@ datum
 								if(istype(M:glasses, /obj/item/clothing/glasses/sunglasses))
 									continue
 
-							flick("e_flash", M.flash)
+							M.flash_eyes()
 							M.Weaken(15)
 
 						if(4 to 5)
@@ -380,7 +380,7 @@ datum
 								if(istype(M:glasses, /obj/item/clothing/glasses/sunglasses))
 									continue
 
-							flick("e_flash", M.flash)
+							M.flash_eyes()
 							M.Stun(5)
 
 		napalm
@@ -823,7 +823,7 @@ datum
 					var/list/flashers = list()
 					for(var/mob/living/carbon/human/M in viewers(TO, null))
 						if(M:eyecheck() <= 0)
-							flick("e_flash", M.flash) // flash dose faggots
+							M.flash_eyes() // flash dose faggots
 							flashers += M
 
 					var/y_distance = TO.y - FROM.y
@@ -907,7 +907,7 @@ datum
 
 				for(var/mob/living/carbon/human/M in viewers(get_turf_loc(holder.my_atom), null))
 					if(M:eyecheck() <= 0)
-						flick("e_flash", M.flash)
+						M.flash_eyes()
 
 				for(var/i = 1, i <= created_volume + rand(1,2), i++)
 					var/chosen = pick(borks)
@@ -1389,6 +1389,7 @@ datum
 			result_amount = 1
 			required_container = /obj/item/metroid_core/t1
 			required_other = 1
+
 		metroidfrost
 			name = "Metroid Frost Oil"
 			id = "m_frostoil"
@@ -1397,6 +1398,7 @@ datum
 			result_amount = 1
 			required_container = /obj/item/metroid_core/t1
 			required_other = 1
+
 		metroidglycerol
 			name = "Metroid Glycerol"
 			id = "m_glycerol"
@@ -1453,6 +1455,7 @@ datum
 			result_amount = 2
 			required_container = /obj/item/metroid_core/t3
 			required_other = 3
+
 		metroidplasma
 			name = "Metroid Plasma"
 			id = "m_plasma"
@@ -1461,6 +1464,7 @@ datum
 			result_amount = 2
 			required_container = /obj/item/metroid_core/t3
 			required_other = 3
+
 		metroidvirus
 			name = "Metroid Virus"
 			id = "m_virus"
@@ -1517,7 +1521,7 @@ datum
 					var/list/flashers = list()
 					for(var/mob/living/carbon/human/M in viewers(TO, null))
 						if(M:eyecheck() <= 0)
-							flick("e_flash", M.flash) // flash dose faggots
+							M.flash_eyes() // flash dose faggots
 							flashers += M
 
 					var/y_distance = TO.y - FROM.y
@@ -1583,7 +1587,7 @@ datum
 
 				for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
 					if(M:eyecheck() <= 0)
-						flick("e_flash", M.flash)
+						M.flash_eyes()
 
 				for(var/i = 1, i <= created_volume, i++)
 					var/chosen = pick(critters)
@@ -1613,7 +1617,7 @@ datum
 
 				for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
 					if(M:eyecheck() <= 0)
-						flick("e_flash", M.flash)
+						M.flash_eyes()
 
 				for(var/i = 1, i <= created_volume + rand(1,2), i++)
 					var/chosen = pick(borks)
@@ -1634,6 +1638,7 @@ datum
 			result_amount = 2
 			required_container = /obj/item/metroid_core/t5
 			required_other = 5
+
 		metroidretro
 			name = "Metroid Retro"
 			id = "m_xeno"
@@ -1647,6 +1652,7 @@ datum
 				var/datum/disease/F = new /datum/disease/dna_retrovirus(0)
 				var/list/data = list("viruses"= list(F))
 				holder.add_reagent("blood", 20, data)
+
 		metroidfoam
 			name = "Metroid Foam"
 			id = "m_foam"
