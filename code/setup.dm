@@ -646,7 +646,19 @@ var/list/TAGGERLOCATIONS = list("Disposals",
 
 #define ROUNDSTART_LOGOUT_REPORT_TIME 6000 //Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
 
+//////////////////MATERIAL DEFINES/////////////////
 
+#define MAT_IRON		"$iron"
+#define MAT_GLASS		"$glass"
+#define MAT_GOLD		"$gold"
+#define MAT_SILVER		"$silver"
+#define MAT_URANIUM		"$uranium"
+#define MAT_DIAMOND		"$diamond"
+#define MAT_PHAZON		"$phazon"
+#define MAT_PLASMA		"$plasma"
+#define MAT_CLOWN		"$clown"
+#define MAT_PLASTIC		"$plastic"
+#define MAT_CARDBOARD   "$cardboard"
 
 //Please don't edit these values without speaking to Errorage first	~Carn
 //Admin Permissions

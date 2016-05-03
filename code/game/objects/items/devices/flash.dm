@@ -131,7 +131,7 @@
 	if(!flashfail)
 		flick("flash2", src)
 		if(!issilicon(M))
-			M.flash_eyes()
+
 			user.visible_message("<span class='disarm'>[user] blinds [victim] with the flash!</span>")
 		else
 
