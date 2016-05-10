@@ -1776,18 +1776,23 @@ area/ship/eva
 	name = "\improper Heavy Elevator"
 	music = "sounds/music/escape.wav"
 
+/area/shuttle/elevator/test/first
+	icon_state = "elevator2"
+
+/area/shuttle/elevator/test/second
+	icon_state = "elevator"
+
 /area/shuttle/elevator/cargo/first
-	icon_state = "shuttle2"
+	icon_state = "elevator2"
 
 /area/shuttle/elevator/cargo/second
-	icon_state = "shuttle"
+	icon_state = "elevator"
 
+/area/shuttle/elevator/mining/first
+	icon_state = "elevator2"
 
-/area/shuttle/elevator/medbay/first
-	icon_state = "shuttle2"
-
-/area/shuttle/elevator/medbay/second
-	icon_state = "shuttle"
+/area/shuttle/elevator/mining/second
+	icon_state = "elevator"
 
 // Away Missions
 /area/awaymission

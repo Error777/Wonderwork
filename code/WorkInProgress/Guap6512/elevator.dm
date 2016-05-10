@@ -3,15 +3,17 @@
 #define FIRST 1
 #define SECOND 0
 
+//DATUMS//
+
 /datum/elevator
 	var/elevator_tickstomove = 30
 	var/elevator_moving = 0
 	var/elevator_location = FIRST
 
-	var/area_first = /area/shuttle/elevator/cargo/first
-	var/area_second = /area/shuttle/elevator/cargo/second
+	var/area_first = /area/shuttle/elevator/test/first
+	var/area_second = /area/shuttle/elevator/test/second
 
-	var/elevator_tag = "cargo"
+	var/elevator_tag = "test"
 
 /datum/elevator/New()
 	..()
@@ -88,12 +90,15 @@
 		elevator_moving = 0
 	return
 
+/datum/elevator/mining
+	elevator_tag = "mining"
+	area_first = /area/shuttle/elevator/mining/first
+	area_second = /area/shuttle/elevator/mining/second
 
-/datum/elevator/rnd
-	elevator_tag = "rnd"
-	area_first = /area/shuttle/elevator/medbay/first
-	area_second = /area/shuttle/elevator/medbay/second
-
+/datum/elevator/cargo
+	elevator_tag = "cargo"
+	area_first = /area/shuttle/elevator/cargo/first
+	area_second = /area/shuttle/elevator/cargo/second
 
 #undef FIRST
 #undef SECOND
@@ -107,7 +112,7 @@
 	power_channel = ENVIRON
 
 	var/on = 1
-	var/elevator_tag = "cargo"
+	var/elevator_tag = "test"
 	var/datum/elevator/controlled
 
 
@@ -127,5 +132,9 @@
 
 	flick("access_button_cycle", src)
 
-/obj/machinery/elevator_button/rnd
-	elevator_tag = "rnd"
+/obj/machinery/elevator_button/mining
+	elevator_tag = "mining"
+
+/obj/machinery/elevator_button/cargo
+	elevator_tag = "cargo"
+

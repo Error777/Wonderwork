@@ -67,6 +67,9 @@
 	var/wikiurl = "http://wiki.ss13.ru"
 	var/forumurl = "http://forum.ss13.ru"
 
+	var/media_base_url = "" // http://ss13.nexisonline.net/media
+	var/media_secret_key = "" // Random string
+
 	//Alert level description
 	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
 	var/alert_desc_blue_upto = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."

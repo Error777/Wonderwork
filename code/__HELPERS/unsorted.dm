@@ -1454,6 +1454,49 @@ var/list/WALLITEMS = list(
 /proc/to_chat(var/thing, var/output)
 	thing << output
 
+
+//Global chat procs
+/*
+/var/list/bicon_cache = list()
+
+//Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
+// exporting it as text, and then parsing the base64 from that.
+// (This relies on byond automatically storing icons in savefiles as base64)
+/proc/icon2base64(var/icon/icon, var/iconKey = "misc")
+	if (!isicon(icon)) return 0
+
+	iconCache[iconKey] << icon
+	var/iconData = iconCache.ExportText(iconKey)
+	var/list/partial = splittext(iconData, "{")
+	return replacetext(copytext(partial[2], 3, -5), "\n", "")
+
+/proc/bicon(var/obj)
+	if (!obj)
+		return
+
+	if (isicon(obj))
+		if (!bicon_cache["\ref[obj]"]) // Doesn't exist yet, make it.
+			bicon_cache["\ref[obj]"] = icon2base64(obj)
+
+		return "<img class='icon misc' src='data:image/png;base64,[bicon_cache["\ref[obj]"]]'>"
+
+	// Either an atom or somebody fucked up and is gonna get a runtime, which I'm fine with.
+	var/atom/A = obj
+	var/key = "[istype(A.icon, /icon) ? "\ref[A.icon]" : A.icon]:[A.icon_state]"
+	if (!bicon_cache[key]) // Doesn't exist, make it.
+		var/icon/I = icon(A.icon, A.icon_state, SOUTH, 1)
+		if (ishuman(obj)) // Shitty workaround for a BYOND issue.
+			var/icon/temp = I
+			I = icon()
+			I.Insert(temp, dir = SOUTH)
+		bicon_cache[key] = icon2base64(I, key)
+
+	return "<img class='icon [A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
+
+//Aliases for bicon
+/proc/bi(obj)
+	bicon(obj)
+*/
 /proc/copy_human(var/mob/living/carbon/human/from, var/mob/living/carbon/human/target, var/copyitems = 1, var/ignore_forbidden = 0, var/copyid = 1, var/copyhs = 0)
 
 	//Name and real name
