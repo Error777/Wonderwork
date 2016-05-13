@@ -1,6 +1,11 @@
 #define FORWARD -1
 #define BACKWARD 1
 
+#define isclient(A) (istype(A, /client))
+
+#define isatom(A) (istype(A, /atom))
+
+
 /datum/construction
 	var/list/steps
 	var/atom/holder

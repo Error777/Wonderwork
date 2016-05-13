@@ -318,6 +318,7 @@
 		..()
 		for(var/i = 1; i <= storage_slots; i++)
 			new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped(src)
+
 /obj/item/weapon/storage/box/farwacubes
 	name = "farwa cube box"
 	desc = "Drymate brand farwa cubes. Just add water!"

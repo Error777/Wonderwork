@@ -1450,11 +1450,6 @@ var/list/WALLITEMS = list(
 		loc = loc.loc
 	return loc
 
-// Use this to send to a client's chat, no exceptions (except this proc itself).
-/proc/to_chat(var/thing, var/output)
-	thing << output
-
-
 //Global chat procs
 /*
 /var/list/bicon_cache = list()

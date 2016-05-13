@@ -3,15 +3,15 @@ For the main html chat area
 *********************************/
 
 /var/list/chatResources = list(
-	"code/WorkInProgress/goonstation/html/jquery.min.js",
-	"code/WorkInProgress/goonstation/browserassets/js/json2.min.js",
-	"code/WorkInProgress/goonstation/browserassets/js/browserOutput.js",
-	"code/WorkInProgress/goonstation/browserassets/css/fonts/fontawesome-webfont.eot",
-	"code/WorkInProgress/goonstation/browserassets/css/fonts/fontawesome-webfont.svg",
-	"code/WorkInProgress/goonstation/browserassets/css/fonts/fontawesome-webfont.ttf",
-	"code/WorkInProgress/goonstation/browserassets/css/fonts/fontawesome-webfont.woff",
-	"code/WorkInProgress/goonstation/browserassets/css/font-awesome.css",
-	"code/WorkInProgress/goonstation/browserassets/css/browserOutput.css"
+	"code/modules/html_interface/jquery.min.js",
+	"goon/browserassets/js/json2.min.js",
+	"goon/browserassets/js/browserOutput.js",
+	"goon/browserassets/css/fonts/fontawesome-webfont.eot",
+	"goon/browserassets/css/fonts/fontawesome-webfont.svg",
+	"goon/browserassets/css/fonts/fontawesome-webfont.ttf",
+	"goon/browserassets/css/fonts/fontawesome-webfont.woff",
+	"goon/browserassets/css/font-awesome.css",
+	"goon/browserassets/css/browserOutput.css"
 )
 
 //Precaching a bunch of shit
@@ -62,7 +62,7 @@ For the main html chat area
 			owner << browse_rsc(file(asset))
 
 		// world.log << "Sending main chat window to client [owner.ckey]"
-		owner << browse(file("code/WorkInProgress/goonstation/browserassets/html/browserOutput.html"), "window=browseroutput")
+		owner << browse(file("goon/browserassets/html/browserOutput.html"), "window=browseroutput")
 		sleep(20 SECONDS)
 		if(!owner || loaded)
 			break
@@ -119,9 +119,7 @@ For the main html chat area
 	set waitfor = FALSE
 
 	while (owner)
-		if (!owner.is_afk(29 SECONDS))
-			ehjax_send(data = "pang")
-
+		ehjax_send(data = owner.is_afk(29 SECONDS) ? "softPang" : "pang") // SoftPang isn't handled anywhere but it'll always reset the opts.lastPang.
 		sleep(30 SECONDS)
 
 /datum/chatOutput/proc/ehjax_send(var/client/C = owner, var/window = "browseroutput", var/data)
@@ -189,7 +187,7 @@ For the main html chat area
 
 	iconCache[iconKey] << icon
 	var/iconData = iconCache.ExportText(iconKey)
-	var/list/partial = text2list(iconData, "{")
+	var/list/partial = splittext(iconData, "{")
 	return replacetext(copytext(partial[2], 3, -5), "\n", "")
 
 /proc/bicon(var/obj)

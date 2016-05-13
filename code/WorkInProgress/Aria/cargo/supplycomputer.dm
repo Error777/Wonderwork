@@ -32,10 +32,11 @@
 
 /obj/machinery/computer/supplycompnew
 	name = "Supply shuttle console"
-	icon = 'computer.dmi'
+	icon = 'icons/obj/computer.dmi'
 	icon_state = "supply"
-	//req_access = list(ACCESS_CARGO)
+	req_access = list(access_cargo)
 	circuit = "/obj/item/weapon/circuitboard/supplycomp"
+
 	var/list/catalogue = list()
 	var/list/catalogue_items = list()
 	var/list/containers = list()
@@ -202,6 +203,7 @@
 	winset(user, "supplywindow.gridContent", "cells=\"[count]\"")
 
 /obj/machinery/computer/supplycompnew/proc/updateWindow(mob/user as mob)
+
 	var/searchtext = winget(user,"supplywindow.inputSearchCatalog","text")
 	var/searchitemtext = winget(user,"supplywindow.inputSearchContent","text")
 
@@ -209,11 +211,11 @@
 	updateCrates(user)
 	updateContent(user,searchitemtext)
 
-	if(supply_shuttle_moving)
+	if(moving)
 		winset(user,"supplywindow.buttonConfirm","is-disabled=1;text=\"Moving...\"")
-	else if(supply_shuttle_at_station)
+	else if(at_station)
 		winset(user,"supplywindow.buttonConfirm","is-disabled=0;text=\"Return Shuttle\"")
-	else if(!supply_shuttle_at_station)
+	else if(!at_station)
 		winset(user,"supplywindow.buttonConfirm","is-disabled=0;text=\"Confirm Order\"")
 
 	var/budget = internalcard ? internalcard.money : 0
@@ -262,7 +264,7 @@
 
 	//From Station to Centcomm
 /obj/machinery/computer/supplycompnew/proc/return_supply()
-	if(!supply_shuttle_at_station || supply_shuttle_moving) return
+	if(!at_station || moving) return
 
 	if (!supply_can_move())
 		usr << "\red The supply shuttle can not transport station employees, exosuits, classified nuclear codes or homing beacons."
@@ -285,25 +287,25 @@
 
 	//From Centcomm to Station
 /obj/machinery/computer/supplycompnew/proc/call_supply()
-	if(supply_shuttle_at_station || supply_shuttle_moving) return
+	if(at_station || moving) return
 
 	if (!supply_can_move())
 		usr << "\red The supply shuttle can not transport station employees, exosuits, classified nuclear codes or homing beacons."
 		return
 
 	post_signal("supply")
-	usr << "\blue The supply shuttle has been called and will arrive in [round(((SUPPLY_MOVETIME/10)/60))] minutes."
+	usr << "\blue The supply shuttle has been called and will arrive in [round(supply_shuttle.movetime/600,1)] minutes."
 
 	//src.temp = "Shuttle sent.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 	//src.updateUsrDialog()
 
-	supply_shuttle_moving = 1
+	moving = 1
 
 	process_order()
 
-	supply_shuttle_time = world.timeofday + SUPPLY_MOVETIME
+	supply_shuttle_time = world.timeofday + supply_shuttle.movetime
 	spawn(0)
-		supply_process()
+		datum/controller/supply_shuttle/process()
 
 /obj/machinery/computer/supplycompnew/proc/post_signal(var/command)
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
@@ -426,7 +428,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /obj/machinery/computer/supplycompnew/proc/process_order()
-	var/shuttleat = supply_shuttle_at_station ? SUPPLY_STATION_AREATYPE : SUPPLY_DOCK_AREATYPE
+	var/shuttleat = at_station ? SUPPLY_STATION_AREATYPE : SUPPLY_DOCK_AREATYPE
 
 	var/list/markers = new/list()
 

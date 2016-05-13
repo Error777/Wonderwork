@@ -1,4 +1,15 @@
 /mob/living/silicon/ai/Life()
+
+	if(!nterm)
+		for (var/obj/machinery/power/netterm/term in loc)
+			netconnect(term)
+			break
+	else
+		if(nterm.netid == "00000000")
+			nterm.requestid()
+		else
+			nterm.nettype = "NEURALCOMP"
+
 	if (src.stat == 2)
 		return
 	else //I'm not removing that shitton of tabs, unneeded as they are. -- Urist

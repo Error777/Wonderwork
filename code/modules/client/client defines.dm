@@ -42,3 +42,7 @@
 
 	// Used by html_interface module.
 	var/hi_last_pos
+
+	// Their chat window, sort of important.
+	// See /goon/code/datums/browserOutput.dm
+	var/datum/chatOutput/chatOutput

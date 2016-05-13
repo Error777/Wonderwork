@@ -153,11 +153,11 @@
 	cost = 3
 	//category = "Devices and Tools"
 
-///datum/spawn_item/hacktool
-//	name = "Hacktool (Slow, but stealthy.  Unlimited uses)"
-//	path = /obj/item/device/hacktool
-//	cost = 4
-//	category = "Devices and Tools"
+/datum/spawn_item/hacktool
+	name = "Hacktool (Slow, but stealthy.  Unlimited uses)"
+	path = /obj/item/device/debugger
+	cost = 4
+	//category = "Devices and Tools"
 
 /datum/spawn_item/toolbox
 	name = "Fully Loaded Toolbox;"
