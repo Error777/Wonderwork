@@ -30,6 +30,6 @@
 	if(cloning)
 		cloning -= 1
 		if(!cloning)
-			new /mob/living/carbon/monkey(src.loc, icon_state = "infant")  //need insert infant here
+			new /mob/living/carbon/monkey(src.loc)  //need insert infant here
 			icon_state = "hc_0"
 	return
