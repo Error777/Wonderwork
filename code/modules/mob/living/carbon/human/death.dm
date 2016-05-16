@@ -92,7 +92,6 @@
 			explosion(location, 0, 0, 3, 4)
 
 		update_canmove()
-		if(client)	blind.layer = 0
 
 	tod = worldtime2text()		//weasellos time of death patch
 	if(mind)	mind.store_memory("Time of death: [tod]", 0)

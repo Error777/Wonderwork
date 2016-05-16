@@ -76,10 +76,13 @@
 
 	sleep_offline = 1
 
+	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
+
 	spawn(1)
-		master_controller.setup()
 		processScheduler.setup()
+		master_controller.setup()
+
 
 	process_teleport_locs()			//Sets up the wizard teleport locations
 	process_ghost_teleport_locs()	//Sets up ghost teleport locations.
