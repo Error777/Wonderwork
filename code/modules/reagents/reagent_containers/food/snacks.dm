@@ -2437,17 +2437,21 @@
 	..()
 
 /obj/item/pizzabox/margherita/New()
+	name = "[boxtag] pizza box"
 	pizza = new /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita(src)
 	boxtag = "Margherita Deluxe"
 
 /obj/item/pizzabox/vegetable/New()
+	name = "[boxtag] pizza box"
 	pizza = new /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza(src)
 	boxtag = "Gourmet Vegatable"
 
 /obj/item/pizzabox/mushroom/New()
+	name = "[boxtag] pizza box"
 	pizza = new /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushroompizza(src)
 	boxtag = "Mushroom Special"
 
 /obj/item/pizzabox/meat/New()
+	name = "[boxtag] pizza box"
 	pizza = new /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza(src)
 	boxtag = "Meatlover's Supreme"

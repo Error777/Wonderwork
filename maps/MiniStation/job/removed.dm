@@ -94,7 +94,3 @@
 	..()
 	total_positions = 0
 	spawn_positions = 0
-
-/datum/job/mechanic
-	total_positions = 0
-	spawn_positions = 0

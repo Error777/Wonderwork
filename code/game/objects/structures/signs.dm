@@ -269,6 +269,32 @@
 	icon = 'icons/obj/scooterstuff.dmi'
 	icon_state = "casino"
 
+//Tau Ceti hell signs
+/obj/structure/sign/velocity
+	name = "Direction sign"
+	icon = 'icons/obj/decals2.dmi'
+	icon_state = "tablo01"
+
+/obj/structure/sign/dock
+	name = "LED Display"
+	icon = 'icons/obj/decals2.dmi'
+	icon_state = "dock1"
+
+/obj/structure/sign/dock/tablo2
+	icon_state = "dock2"
+
+/obj/structure/sign/dock/tablo3
+	icon_state = "dock3"
+
+/obj/structure/sign/dock/tablo4
+	icon_state = "dock4"
+
+/obj/structure/sign/dock/tablo5
+	icon_state = "dock5"
+
+/obj/structure/sign/dock/arrival
+	icon_state = "arrival"
+
 /*####################D2 SIGNS####################*/
 /*
 obj/structure/sign/noshitlers
