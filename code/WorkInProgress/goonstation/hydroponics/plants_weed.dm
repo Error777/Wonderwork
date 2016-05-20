@@ -137,7 +137,7 @@
 
 		if (POT.growth > (P.harvtime + DNA.harvtime) && prob(10))
 			var/obj/overlay/B = new /obj/overlay( POT.loc )
-			B.icon = 'icons/obj/hydroponics/hydromisc.dmi'
+			B.icon = 'icons/obj/hydroponics/hydro_goon/hydromisc.dmi'
 			B.icon_state = "radpulse"
 			B.name = "radioactive pulse"
 			B.anchored = 1

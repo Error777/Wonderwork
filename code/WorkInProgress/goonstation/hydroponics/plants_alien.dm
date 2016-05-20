@@ -1,6 +1,6 @@
 /datum/plant/artifact
 	name = "Unknown"
-	special_dmi = 'icons/obj/hydroponics/hydro_alien.dmi'
+	special_dmi = 'icons/obj/hydroponics/hydro_goon/hydro_alien.dmi'
 	cantscan = 1
 	vending = 0
 
