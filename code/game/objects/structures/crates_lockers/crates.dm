@@ -181,6 +181,8 @@
 			W.Move(src.loc)
 	else if(istype(W, /obj/item/weapon/packageWrap))
 		return
+	else if(istype(W, /obj/item/weapon/cargotele))
+		return
 	else if(istype(W, /obj/item/weapon/cable_coil))
 		if(rigged)
 			user << "<span class='notice'>[src] is already rigged!</span>"
