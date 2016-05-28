@@ -1380,7 +1380,6 @@
 #include "code\WorkInProgress\Cael_Aislinn\Economy\Job_Departments.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\areas.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\circuits_and_design.dm"
-#include "code\WorkInProgress\Cael_Aislinn\Rust\core_control.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\core_field.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\core_gen.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\core_monitor.dm"
@@ -1391,7 +1390,6 @@
 #include "code\WorkInProgress\Cael_Aislinn\Rust\fuel_compressor_construction.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\fuel_control.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\fuel_injector.dm"
-#include "code\WorkInProgress\Cael_Aislinn\Rust\fusion_reactions.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\gyrotron.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\gyrotron_controller.dm"
 #include "code\WorkInProgress\Cael_Aislinn\Rust\radiation.dm"
@@ -1468,5 +1466,4 @@
 #include "goon\code\datums\browserOutput.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
-#include "maps\fernflower_1.4.2.dmm"
 // END_INCLUDE

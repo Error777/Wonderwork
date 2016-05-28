@@ -52,7 +52,7 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 			del(src)
 
 		//create the gimmicky things to handle field collisions
-		var/obj/machinery/rust/particle_catcher/catcher
+		var/obj/effects/rust/particle_catcher/catcher
 		//
 		catcher = new (locate(src.x,src.y,src.z))
 		catcher.parent = src
@@ -214,7 +214,7 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 	Del()
 		..()
 		//radiate everything in one giant burst
-		for(var/obj/machinery/rust/particle_catcher/catcher in particle_catchers)
+		for(var/obj/effects/rust/particle_catcher/catcher in particle_catchers)
 			del (catcher)
 		RadiateAll()
 
@@ -269,7 +269,7 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 				changed = 1
 			if(3)
 				size = 3
-				icon = '96x96.dmi'
+				icon = 'icons/effects/96x96.dmi'
 				icon_state = "emfield_s3"
 				//
 				var/turf/newloc = get_turf(owned_core)
@@ -279,7 +279,7 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 				changed = 3
 			if(5)
 				size = 5
-				icon = '160x160.dmi'
+				icon = 'icons/effects/160x160.dmi'
 				icon_state = "emfield_s5"
 				//
 				var/turf/newloc = get_turf(owned_core)
@@ -290,7 +290,7 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 				changed = 5
 			if(7)
 				size = 7
-				icon = '224x224.dmi'
+				icon = 'icons/effects/224x224.dmi'
 				icon_state = "emfield_s7"
 				//
 				var/turf/newloc = get_turf(owned_core)
@@ -301,7 +301,7 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 				//
 				changed = 7
 
-		for(var/obj/machinery/rust/particle_catcher/catcher in particle_catchers)
+		for(var/obj/effects/rust/particle_catcher/catcher in particle_catchers)
 			catcher.UpdateSize()
 		return changed
 

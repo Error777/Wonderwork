@@ -9,6 +9,7 @@
 
 /obj/machinery/power/netterm
 	name = "network terminal"
+	icon = 'icons/obj/adv_stock_parts.dmi'
 	icon_state = "nterm"
 	desc = "A connection port for network equipment."
 	level = 2

@@ -969,7 +969,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	access = access_engine
 
 /datum/supply_packs/rust_core
-	contains = list(/obj/machinery/power/rust_core)
+	contains = list(/obj/machinery/rust/core)
 	name = "RUST Tokamak Core"
 	cost = 75
 	containertype = /obj/structure/closet/crate/secure/large
