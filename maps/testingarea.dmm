@@ -245,7 +245,7 @@
 "eK" = (/obj/machinery/computer/card,/turf/simulated/shuttle/floor{icon_state = "floor4"},/area/centcom/evac)
 "eL" = (/turf/simulated/shuttle/wall{icon_state = "swallc3"; tag = "icon-swallc3"},/area/centcom/evac)
 "eM" = (/turf/simulated/shuttle/wall{tag = "icon-swall12"; icon_state = "swall12"; dir = 2},/area/centcom/evac)
-"eN" = (/turf/simulated/shuttle/wall{tag = "icon-swall11"; icon_state = "swall11"; dir = 2},/area/centcom/evac)
+"eN" = (/turf/simulated/shuttle/wall{icon_state = "swallc4"; tag = "icon-swallc4"},/area/centcom/evac)
 "eO" = (/turf/unsimulated/wall{icon = 'icons/obj/vrstuff.dmi'; icon_state = "vwall"; name = "system wall"},/area/start)
 "eP" = (/turf/unsimulated/floor{icon = 'icons/obj/vrstuff.dmi'; icon_state = "largetile1"},/area/start)
 "eQ" = (/turf/unsimulated/floor{icon = 'icons/obj/vrstuff.dmi'; icon_state = "vfloor_tiles"},/area/start)

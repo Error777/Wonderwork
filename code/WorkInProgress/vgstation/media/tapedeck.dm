@@ -272,7 +272,7 @@
 			update_icon()
 
 	if (href_list["add_song"])
-		var/song_uri=input(
+		var/song_uri=input()
 
 	if (href_list["mode"])
 		loop_mode = (loop_mode % JUKEMODE_COUNT) + 1

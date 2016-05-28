@@ -942,7 +942,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	group = "Operations"
 
 /datum/supply_packs/rust_injector
-	contains = list(/obj/machinery/power/rust_fuel_injector)
+	contains = list(/obj/machinery/rust/fuel_injector)
 	name = "RUST fuel injector"
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/large

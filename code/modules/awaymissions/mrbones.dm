@@ -15,7 +15,7 @@
 	desc = "2SPOOKY 4 U"
 	icon = 'icons/awaymissions/cave.dmi'
 
-/obj/effect/away/mrbones/draw
+/turf/simulated/floor/draw
 	name = "Draw Bridge"
 	desc = "Lavely helps you get past otherwise deadly lava."
 	icon = 'icons/awaymissions/mrbones.dmi'
