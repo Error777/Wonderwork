@@ -28,3 +28,5 @@
 /area/engine/control
 
 /area/engine/electrical_storage
+
+/area/engine/locker
