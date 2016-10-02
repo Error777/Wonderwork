@@ -106,8 +106,8 @@ max volume of plasma storeable by the field = the total volume of a number of ti
 			Shutdown()
 		return
 		//
-		luminosity = round(owned_field.field_strength/10)
-		luminosity = max(luminosity,1)
+		//luminosity = round(owned_field.field_strength/10)
+		//luminosity = max(luminosity,1)
 		//
 		if(stat & (NOPOWER|BROKEN))
 			Shutdown()
