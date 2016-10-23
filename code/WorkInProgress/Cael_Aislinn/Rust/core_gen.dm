@@ -56,64 +56,61 @@ max volume of plasma storeable by the field = the total volume of a number of ti
 	idle_power_usage = 10
 	active_power_usage = 300
 
-
-	Topic(href, href_list)
-		..()
-		if( href_list["startup"] )
-			Startup()
+/obj/machinery/rust/core/Topic(href, href_list)
+	..()
+	if( href_list["startup"] )
+		Startup()
+		return
+	if( href_list["shutdown"] )
+		Shutdown()
+		return
+	if( href_list["modify_field_strength"] )
+		var/new_field_str = text2num(input("Enter new field strength", "Modifying field strength", owned_field.field_strength))
+		if(!new_field_str)
+			usr << "\red That's not a valid number."
 			return
-		if( href_list["shutdown"] )
-			Shutdown()
-			return
-		if( href_list["modify_field_strength"] )
-			var/new_field_str = text2num(input("Enter new field strength", "Modifying field strength", owned_field.field_strength))
-			if(!new_field_str)
-				usr << "\red That's not a valid number."
-				return
-			field_strength = max(new_field_str,0.1)
-			field_strength = min(new_field_str,50)
-			if(owned_field)
-				owned_field.ChangeFieldStrength(field_strength)
-			return
-
-	proc/Startup()
-		if(owned_field)
-			return
-		on = 1
-		owned_field = new(src.loc)
+		field_strength = max(new_field_str,0.1)
+		field_strength = min(new_field_str,50)
 		if(owned_field)
 			owned_field.ChangeFieldStrength(field_strength)
-			icon_state = "core1"
-		luminosity = 1
-		return 1
-
-	proc/Shutdown()
-		icon_state = "core0"
-		on = 0
-		del(owned_field)
-		luminosity = 0
-
-	proc/AddParticles(var/name, var/quantity = 1)
-		if(owned_field)
-			owned_field.AddParticles(name, quantity)
-			return 1
-		return 0
-
-	process()
-		..()
-		use_power(100 * field_strength + 500)
-		if(on && !owned_field)
-			Shutdown()
 		return
-		//
-		luminosity = round(owned_field.field_strength/10)
-		luminosity = max(luminosity,1)
-		//
-		if(stat & (NOPOWER|BROKEN))
-			Shutdown()
 
-	bullet_act(var/obj/item/projectile/Proj)
-		if(Proj.flag != "bullet" && owned_field)
-			var/obj/item/projectile/beam/laserbeam = Proj
-			owned_field.AddEnergy(0, laserbeam.damage / 5000, laserbeam.frequency)
-		return 0
+/obj/machinery/rust/core/proc/Startup()
+	if(owned_field)
+		return
+	on = 1
+	owned_field = new(src.loc)
+	if(owned_field)
+		owned_field.ChangeFieldStrength(field_strength)
+		icon_state = "core1"
+	luminosity = 1
+	return 1
+
+/obj/machinery/rust/core/proc/Shutdown()
+	icon_state = "core0"
+	on = 0
+	del(owned_field)
+	luminosity = 0
+
+/obj/machinery/rust/core/proc/AddParticles(var/name, var/quantity = 1)
+	if(owned_field)
+		owned_field.AddParticles(name, quantity)
+		return 1
+	return 0
+
+/obj/machinery/rust/core/process()
+
+	if(on && !owned_field)
+		Shutdown()
+	return
+
+	luminosity = max(1,2,1)
+
+	if(stat & (NOPOWER|BROKEN))
+		Shutdown()
+
+/obj/machinery/rust/core/bullet_act(var/obj/item/projectile/Proj)
+	if(Proj.flag != "bullet" && owned_field)
+		var/obj/item/projectile/beam/laserbeam = Proj
+		owned_field.AddEnergy(0, laserbeam.damage / 5000, laserbeam.frequency)
+	return 0
