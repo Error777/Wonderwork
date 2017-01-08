@@ -2841,7 +2841,7 @@
 "bcG" = (/obj/structure/extinguisher_cabinet{pixel_x = 27; pixel_y = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/floor,/area/hallway/secondary/entry)
 "bcH" = (/obj/machinery/conveyor{dir = 1; id = "garbagebelt"},/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/maintenance/disposal)
 "bcI" = (/obj/machinery/conveyor{dir = 4; id = "garbagebelt"},/turf/simulated/floor/plating,/area/maintenance/disposal)
-"bcJ" = (/obj/machinery/conveyor{dir = 4; id = "garbagebelt"},/obj/machinery/recycler,/turf/simulated/floor/plating,/area/maintenance/disposal)
+"bcJ" = (/obj/machinery/conveyor{dir = 4; id = "garbagebelt"},/obj/machinery/recycler{dir = 4; icon_state = "grinder-o1"},/turf/simulated/floor/plating,/area/maintenance/disposal)
 "bcK" = (/obj/structure/disposalpipe/trunk{dir = 4},/obj/structure/disposaloutlet{dir = 8},/turf/simulated/floor/plating,/area/maintenance/disposal)
 "bcL" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/wall,/area/maintenance/disposal)
 "bcM" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/obj/structure/disposalpipe/segment{dir = 4},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/turf/simulated/floor/plating,/area/maintenance/port)
