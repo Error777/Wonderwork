@@ -2010,7 +2010,7 @@
 "aMH" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 10},/turf/simulated/floor/wood,/area/crew_quarters/theatre)
 "aMI" = (/obj/machinery/atmospherics/unary/vent_pump{on = 1},/obj/item/device/radio/intercom{name = "Station Intercom (General)"; pixel_x = 32; pixel_y = 0},/turf/simulated/floor/wood,/area/crew_quarters/theatre)
 "aMJ" = (/obj/machinery/atmospherics/unary/vent_scrubber{on = 1; scrub_N2O = 0; scrub_Toxins = 0},/turf/simulated/floor/carpet{dir = 2; icon_state = "grimy"; tag = "icon-grimy"},/area/crew_quarters/theatre)
-"aMK" = (/obj/structure/grille,/obj/structure/window/reinforced/tinted{dir = 1},/obj/structure/window/reinforced/tinted,/turf/simulated/floor{icon_state = "dark"},/area/chapel/main)
+"aMK" = (/obj/structure/grille,/obj/structure/window/reinforced/tinted{dir = 1},/obj/structure/window/reinforced/tinted,/turf/simulated/floor/plating,/area/chapel/main)
 "aML" = (/obj/machinery/camera{c_tag = "Chapel centre"; dir = 4; name = "security camera - zone 2"; network = list("SS13")},/turf/simulated/floor{icon_state = "dark"},/area/chapel/main)
 "aMM" = (/obj/structure/disposalpipe/segment,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor{dir = 8; icon_state = "chapel"},/area/chapel/main)
 "aMN" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor{icon_state = "chapel"},/area/chapel/main)

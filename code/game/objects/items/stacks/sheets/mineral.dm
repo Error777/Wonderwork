@@ -485,6 +485,17 @@ var/global/list/datum/stack_recipe/clown_recipes = list ( \
 	origin_tech = "materials=5"
 	perunit = 3750
 
+/obj/item/stack/sheet/mineral/coal
+	name = "coal"
+	icon_state = "sheet-char"
+	force = 5.0
+	throwforce = 5
+	w_class = 3.0
+	throw_speed = 3
+	throw_range = 3
+	origin_tech = "materials=2"
+	perunit = 3750
+
 /obj/item/stack/sheet/mineral/martian
 	name = "martian"
 	icon_state = "sheet-martian"

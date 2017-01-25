@@ -1,8 +1,11 @@
 // BEGIN_INTERNALS
 /*
-LAST_COMPILE_TIME: 1483834496
+LAST_COMPILE_TIME: 1485330162
+DIR: code code\game code\game\objects code\game\objects\items code\game\objects\items\stacks code\game\objects\items\stacks\sheets code\modules code\modules\mining maps 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
-LAST_COMPILE_VERSION: 511.1366
+LAST_COMPILE_VERSION: 511.1369
+WINDOW: maps\fernflower_1.4.2.dmm
+FILE: maps\fernflower_1.4.2.dmm
 */
 // END_INTERNALS
