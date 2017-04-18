@@ -11,24 +11,24 @@ obj/item/weapon/gun/energy/freezegun
 	origin_tech = null
 	var/charge_tick = 0
 
-	New()
-		..()
-		processing_objects.Add(src)
+obj/item/weapon/gun/energy/freezegun/New()
+	..()
+	processing_objects.Add(src)
 
 
-	Del()
-		processing_objects.Remove(src)
-		..()
+obj/item/weapon/gun/energy/freezegun/Del()
+	processing_objects.Remove(src)
+	..()
 
 
-	process()
-		charge_tick++
-		if(charge_tick < 4) return 0
-		charge_tick = 0
-		if(!power_supply) return 0
-		power_supply.give(500)
-		update_icon()
-		return 1
+obj/item/weapon/gun/energy/freezegun/process()
+	charge_tick++
+	if(charge_tick < 4) return 0
+	charge_tick = 0
+	if(!power_supply) return 0
+	power_supply.give(500)
+	update_icon()
+	return 1
 
 /obj/item/projectile/freezeball
 	name = "freeze beam"
@@ -39,9 +39,9 @@ obj/item/weapon/gun/energy/freezegun
 	flag = "energy"
 
 
-	on_hit(var/atom/freezetg)
-		icon = null
-		freezemob(freezetg)
+/obj/item/projectile/freezeball/on_hit(var/atom/freezetg)
+	icon = null
+	freezemob(freezetg)
 
 /obj/machinery/freezer/freezer_platform
 
@@ -60,48 +60,48 @@ obj/item/weapon/gun/energy/freezegun
 	var/datum/gas_mixture/incide_air
 //	var/sighn_of_life = 0
 
-	New()
-		..()
-		generate_air()
-		processing_objects.Add(src)
+/obj/structure/freezedmob/New()
+	..()
+	generate_air()
+	processing_objects.Add(src)
 
-	Del()
-		processing_objects.Remove(src)
-		..()
+/obj/structure/freezedmob/Del()
+	processing_objects.Remove(src)
+	..()
 
-	process() // soooo uglycode!
-		if(!occupant)
-			del(src)
-		if(occupant.stat != 2)
-			occupant:adjustOxyLoss(-4) // 4 critguys
-			occupant.weakened= 2
-			occupant.bodytemperature = 1
-		if(ice<=200)
-			freeze_tick++
-			if(freeze_tick < 4) return 0
-			freeze_tick = 0
-			var/turf/location = src.loc //optimisation shit
-			if (istype(location, /turf/space))
-				ice += 25
-				icecheck()
-				return 1
-			if (istype(location, /turf/unsimulated)) // possible centcomm or smth
-				ice -= 9
-				icecheck()
-				return 1
-			if (!istype(location, /turf/simulated))
-				return 0
-			var/datum/gas_mixture/environment = location.return_air()
-			var/check = 0
-			for(var/obj/machinery/freezer/freezer_platform/O in src.loc)
-				if(O.on)
-					check = 1
-					if(ice <= 120)
-						ice += min(120 - ice, 5)
-					break
-			if(!check)
-				ice -= (environment.temperature-273)/2
+/obj/structure/freezedmob/process() // soooo uglycode!
+	if(!occupant)
+		del(src)
+	if(occupant.stat != 2)
+		occupant:adjustOxyLoss(-4) // 4 critguys
+		occupant.weakened= 2
+		occupant.bodytemperature = 1
+	if(ice<=200)
+		freeze_tick++
+		if(freeze_tick < 4) return 0
+		freeze_tick = 0
+		var/turf/location = src.loc //optimisation shit
+		if (istype(location, /turf/space))
+			ice += 25
 			icecheck()
+			return 1
+		if (istype(location, /turf/unsimulated)) // possible centcomm or smth
+			ice -= 9
+			icecheck()
+			return 1
+		if (!istype(location, /turf/simulated))
+			return 0
+		var/datum/gas_mixture/environment = location.return_air()
+		var/check = 0
+		for(var/obj/machinery/freezer/freezer_platform/O in src.loc)
+			if(O.on)
+				check = 1
+				if(ice <= 120)
+					ice += min(120 - ice, 5)
+				break
+		if(!check)
+			ice -= (environment.temperature-273)/2
+		icecheck()
 
 /obj/structure/freezedmob/return_air()
 	return incide_air
