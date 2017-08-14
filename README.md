@@ -1,6 +1,8 @@
 # Wonderwork
 
-[Сайт] (http://ss13.ru) - [Репозиторий] (https://github.com/BlueCabaret/Wonderwork) - [Конференция] (spacestation13@conference.jabber.ru)
+[Сайт](http://ss13.ru)
+[Репозиторий](https://github.com/BlueCabaret/Wonderwork)
+[Конференция](spacestation13@conference.jabber.ru)
 
 ---
 
