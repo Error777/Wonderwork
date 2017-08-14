@@ -257,7 +257,7 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	use_power(250)
-	updateDialog()
+
 	for(var/datum/computer/file/computer_program/P in src.processing_programs)
 		P.process()
 

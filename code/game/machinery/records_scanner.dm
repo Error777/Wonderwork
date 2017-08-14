@@ -26,7 +26,6 @@ obj/machinery/scanner/New()
 	if(stat & NOPOWER)
 		return
 	use_power(50)
-	updateDialog()
 
 /obj/machinery/scanner/power_change()
 	if(!powered())

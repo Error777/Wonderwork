@@ -22,7 +22,7 @@
 		usr.drop_item()
 		O.loc = src
 		update()
-		updateDialog()
+	src.updateUsrDialog()
 
 /obj/machinery/copier/attack_paw(user as mob)
 	return src.attack_hand(user)
@@ -31,11 +31,16 @@
 	return src.attack_hand(user)
 
 /obj/machinery/copier/attack_hand(mob/user as mob)
-	// da UI
-	var/dat
 	if(..())
 		return
+
 	user.machine = src
+	interact(user)
+	return
+
+/obj/machinery/copier/interact(var/mob/user)
+	var/dat = ""
+	user.set_machine(src)
 
 	if(src.stat)
 		user << "[name] does not seem to be responding to your button mashing."
@@ -45,21 +50,21 @@
 
 	if(copying)
 		dat += "[job_num_copies] copies remaining.<br><br>"
-		dat += "<A href='?src=\ref[src];cancel=1'>Cancel</A>"
+		dat += "<a href='byond://?src=\ref[src];cancel=1'>Cancel</A>"
 	else
 		if(template)
-			dat += "<A href='?src=\ref[src];open=1'>Open Lid</A>"
+			dat += "<a href='byond://?src=\ref[src];open=1'>Open Lid</A>"
 		else
 			dat += "<b>No paper to be copied.<br>"
 			dat += "Please place a paper or photograph on top and close the lid.</b>"
 
 
 		dat += "<br><br>Number of Copies: "
-		dat += "<A href='?src=\ref[src];num=-10'>-</A>"
-		dat += "<A href='?src=\ref[src];num=-1'>-</A>"
+		dat += "<a href='byond://?src=\ref[src];num=-10'>-</A>"
+		dat += "<a href='byond://?src=\ref[src];num=-1'>-</A>"
 		dat += " [num_copies] "
-		dat += "<A href='?src=\ref[src];num=1'>+</A>"
-		dat += "<A href='?src=\ref[src];num=10'>+</A><br>"
+		dat += "<a href='byond://?src=\ref[src];num=1'>+</A>"
+		dat += "<a href='byond://?src=\ref[src];num=10'>+</A><br>"
 
 		if(template)
 			dat += "<A href='?src=\ref[src];copy=1'>Copy</a>"
@@ -75,10 +80,10 @@
 	else
 		icon_state = "copier_o"
 
+
 /obj/machinery/copier/Topic(href, href_list)
 	if(..())
 		return
-	usr.machine = src
 
 	if(href_list["num"])
 		num_copies += text2num(href_list["num"])
@@ -86,13 +91,13 @@
 			num_copies = 1
 		else if(num_copies > max_copies)
 			num_copies = max_copies
-		updateDialog()
+		updateUsrDialog()
 	if(href_list["open"])
 		if(copying)
 			return
 		template.loc = src.loc
 		template = null
-		updateDialog()
+		updateUsrDialog()
 		update()
 	if(href_list["copy"])
 		if(copying)
@@ -103,11 +108,12 @@
 
 	if(href_list["cancel"])
 		job_num_copies = 0
+		updateUsrDialog()
 
 /obj/machinery/copier/proc/do_copy(mob/user)
 	if(!copying && job_num_copies > 0)
 		copying = 1
-		updateDialog()
+		updateUsrDialog()
 		while(job_num_copies > 0)
 			if(stat)
 				copying = 0
@@ -138,8 +144,8 @@
 
 			sleep(30)
 			job_num_copies -= 1
-			updateDialog()
+
 		for(var/mob/O in hearers(src))
 			O.show_message("[name] beeps happily.", 2)
 		copying = 0
-		updateDialog()
+		updateUsrDialog()

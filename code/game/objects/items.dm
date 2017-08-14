@@ -394,7 +394,16 @@
 /obj/item/proc/attack_self()
 	return
 
-/obj/item/proc/afterattack()
+/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, params)
+	if(istype(target, /obj/structure/table))
+		var/list/click_params = params2list(params)
+		//Center the icon where the user clicked.
+		pixel_x = (text2num(click_params["icon-x"]) - 16)
+		pixel_y = (text2num(click_params["icon-y"]) - 16)
+		layer = user.layer + 0.1
+
+		if(!isnum(click_params))
+			return
 	return
 
 /obj/item/proc/talk_into(mob/M as mob, text)

@@ -84,9 +84,6 @@
 	//The reason why there guys aren't actually added to the overlays list is that their icon_state has to be changed during the spin() proc,
 	//which would be impossible if they were in the overlays list
 
-/obj/machinery/computer/slot_machine/process()
-	updateDialog()
-
 /obj/machinery/computer/slot_machine/update_icon()
 	..()
 	var/initial_icon = initial(icon_state)
@@ -306,7 +303,6 @@
 			spin(usr)
 
 	updateUsrDialog()
-	updateDialog()
 	return
 
 /obj/machinery/computer/slot_machine/attackby(obj/item/I as obj, mob/user as mob)
@@ -335,7 +331,6 @@
 		return 0
 
 	return 1
-	src.updateUsrDialog()
 
 #undef MINIMUM_WIN_TO_BROADCAST
 #undef MINIMUM_MONEY_TO_PLAY
