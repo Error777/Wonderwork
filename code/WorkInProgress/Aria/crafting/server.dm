@@ -81,7 +81,7 @@ var/list/researchblacklist = list(/datum/researchprogram,/datum/researchprogram/
 		user << browse_rsc('nano/images/pulse.png', "pulse.png")
 		//user << imagename
 
-		dat += text("[wire] Wire: <span style='margin-left:5em'><A href='?src=\ref[src];wire=[wire];act=wire'><IMG SRC='[imagename]'/></A> <A href='?src=\ref[src];wire=[wire];act=pulse'><IMG SRC='pulse.png'/></A></span><BR>")
+		dat += text("[wire] Wire: <span style='margin-left:5em'><a href='byond://?src=\ref[src];wire=[wire];act=wire'><IMG SRC='[imagename]'/></a> <a href='byond://?src=\ref[src];wire=[wire];act=pulse'><IMG SRC='pulse.png'/></a></span><BR>")
 
 	dat += "<BR>"
 	dat += text("The red light is [src.disabled ? "off" : "on"].<BR>")
@@ -92,8 +92,8 @@ var/list/researchblacklist = list(/datum/researchprogram,/datum/researchprogram/
 /obj/machinery/algorithm_server/proc/regular_win(mob/user as mob)
 	var/dat as text
 	dat = text("<HR>")
-	dat += "<A href='?src=\ref[src];menu=0.0'>Main Menu</A>"
-	//dat += "<A href='?src=\ref[src];menu=1.0'>Research Storage</A><HR>"
+	dat += "<a href='byond://?src=\ref[src];menu=0.0'>Main Menu</a>"
+	//dat += "<A href='?src=\ref[src];menu=1.0'>Research Storage</a><HR>"
 
 	switch(screen)
 		if(0.0)
@@ -107,7 +107,7 @@ var/list/researchblacklist = list(/datum/researchprogram,/datum/researchprogram/
 				dat += "[program.name] "
 				if(program in workingprograms)
 					dat += "([100-eta]%) "
-					dat += "\[<A href='?src=\ref[src];stop=\ref[program]'>Stop</A>]"
+					dat += "\[<a href='byond://?src=\ref[src];stop=\ref[program]'>Stop</a>]"
 				else if(program in unlockedprograms)
 					dat += "(Completed) "
 					if(program.switching)
@@ -115,14 +115,14 @@ var/list/researchblacklist = list(/datum/researchprogram,/datum/researchprogram/
 					else if(program.enabled == -1)
 						dat += ""
 					else if(program.enabled)
-						dat += "\[<A href='?src=\ref[src];disable=\ref[program]'>Disable</A>]"
+						dat += "\[<a href='byond://?src=\ref[src];disable=\ref[program]'>Disable</a>]"
 					else
-						dat += "\[<A href='?src=\ref[src];enable=\ref[program]'>Enable</A>]"
+						dat += "\[<a href='byond://?src=\ref[src];enable=\ref[program]'>Enable</a>]"
 					dat += "<BR>"
 					dat += "<SMALL>[program.desc]</SMALL><BR>"
 				else
 					dat += "([100-eta]%) "
-					dat += "\[<A href='?src=\ref[src];start=\ref[program]'>Start</A>]"
+					dat += "\[<a href='byond://?src=\ref[src];start=\ref[program]'>Start</a>]"
 
 				dat += tabulacore.getprogressbar(eta)
 				dat += "<BR>"

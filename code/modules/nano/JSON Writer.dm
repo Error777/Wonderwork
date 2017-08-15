@@ -2,8 +2,7 @@
 json_writer
 	proc
 		WriteObject(list/L)
-			. = list()
-			. += "{"
+			. = "{"
 			var/i = 1
 			for(var/k in L)
 				var/val = L[k]
@@ -11,7 +10,6 @@ json_writer
 				if(i++ < L.len)
 					. += ","
 			.+= "}"
-			. = list2text(.)
 
 		write(val)
 			if(isnum(val))
@@ -27,20 +25,18 @@ json_writer
 				. += write_string("[val]")
 
 		write_array(list/L)
-			. = list()
-			. += "\["
+			. = "\["
 			for(var/i = 1 to L.len)
 				. += write(L[i])
 				if(i < L.len)
 					. += ","
 			. += "]"
-			. = list2text(.)
 
 		write_string(txt)
 			var/static/list/json_escape = list("\\", "\"", "'", "\n")
 			for(var/targ in json_escape)
 				var/start = 1
-				while(start <= length(txt))
+				while(start <= lentext(txt))
 					var/i = findtext(txt, targ, start)
 					if(!i)
 						break

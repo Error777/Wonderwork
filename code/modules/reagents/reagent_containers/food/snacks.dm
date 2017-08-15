@@ -99,7 +99,16 @@
 
 	return 0
 
-/obj/item/weapon/reagent_containers/food/snacks/afterattack(obj/target, mob/user , flag)
+/obj/item/weapon/reagent_containers/food/snacks/afterattack(obj/target, mob/user , proximity_flag, flag, params)
+	if(istype(target, /obj/structure/table))
+		var/list/click_params = params2list(params)
+		//Center the icon where the user clicked.
+		pixel_x = (text2num(click_params["icon-x"]) - 16)
+		pixel_y = (text2num(click_params["icon-y"]) - 16)
+		layer = user.layer + 0.1
+
+		if(!isnum(click_params))
+			return
 	return
 
 /obj/item/weapon/reagent_containers/food/snacks/examine()

@@ -10,7 +10,7 @@
 /obj/machinery/power/netterm
 	name = "network terminal"
 	icon = 'icons/obj/adv_stock_parts.dmi'
-	icon_state = "nterm"
+	icon_state = "ninterface"
 	desc = "A connection port for network equipment."
 	level = 2
 	layer = TURF_LAYER
