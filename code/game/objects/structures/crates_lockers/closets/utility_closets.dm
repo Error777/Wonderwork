@@ -142,7 +142,7 @@
 
 
 /*
- * Radiation Closet
+ * Radiation Closets
  */
 /obj/structure/closet/radiation
 	name = "radiation suit closet"
@@ -155,6 +155,20 @@
 	..()
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)
+
+/obj/structure/closet/radcloset
+	name = "radiation materials closet"
+	desc = "It's a storage unit for radiation materials."
+	icon_state = "radcloset"
+	icon_opened = "radclosetopen"
+	icon_closed = "radcloset"
+
+/obj/structure/closet/radcloset/hazard
+	name = "radiation materials closet"
+	desc = "It's a storage unit for radiation materials."
+	icon_state = "radclosetnew"
+	icon_opened = "radclosetnewopen"
+	icon_closed = "radclosetnew"
 
 /*
  * Bombsuit closet

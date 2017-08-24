@@ -3,6 +3,8 @@
 
 obj/machinery/anomaly/accelerator
 	name = "Accelerator spectrometer"
+	icon = 'icons/obj/machines/research.dmi'
+	icon_state = "anoscan"
 
 obj/machinery/anomaly/accelerator/ScanResults()
 	var/results = "The scan was inconclusive. Check sample integrity and carrier consistency."

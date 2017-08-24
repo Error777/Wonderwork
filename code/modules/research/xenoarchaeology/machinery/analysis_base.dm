@@ -15,7 +15,7 @@
 	desc = "A specialised, complex analysis machine."
 	anchored = 1
 	density = 1
-	icon = 'icons/obj/virology.dmi'
+	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "analyser"
 
 	idle_power_usage = 20 //watts

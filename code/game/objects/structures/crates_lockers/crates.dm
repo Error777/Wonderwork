@@ -363,10 +363,28 @@
 	icon_opened = "radiationopen"
 	icon_closed = "radiation"
 
+/obj/structure/closet/crate/handmadecrate
+	desc = "Hand-hand-hand-made crate."
+	name = "Hand-made crate."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "handmadecrate"
+	density = 1
+	icon_closed = "handmadecrate"
+	icon_opened = "handmadecrate_open"
+
+/obj/structure/closet/crate/secure/engineering
+	name = "Engenering crate"
+	desc = "Plates, screens and all for repair wall machinery"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "engineering_crate"
+	density = 1
+	icon_opened = "engineering_crate_open"
+	icon_closed = "engineering_crate"
+
 /obj/structure/closet/crate/secure/radiation
 	desc = "A secure crate with a radiation sign on it."
 	name = "Radioactive gear crate"
-	icon = 'icons/obj/machines/reactor.dmi'
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "radcrate"
 	density = 1
 	icon_opened = "radcrateopen"
