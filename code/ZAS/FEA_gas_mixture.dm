@@ -93,6 +93,7 @@ What are the archived variables for?
 /datum/gas_mixture/proc/thermal_energy()
 	return temperature*heat_capacity()
 
+
 ///////////////////////////////
 //PV=nRT - related procedures//
 ///////////////////////////////

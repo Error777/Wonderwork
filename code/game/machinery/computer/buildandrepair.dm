@@ -225,6 +225,8 @@
 	name = "Circuit board (Fax)"
 	build_path = "/obj/machinery/computer/faxmachine"
 	origin_tech = "programming=2"
+/obj/item/weapon/circuitboard/mecha/pod
+	name = "Circuit Board (Space Pod Mainboard)"
 
 /obj/item/weapon/circuitboard/supplycomp/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/device/multitool))

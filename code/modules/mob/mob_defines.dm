@@ -140,7 +140,7 @@
 
 	var/coughedtime = null
 
-	var/inertia_dir = 0
+	inertia_dir = 0
 
 	var/music_lastplayed = "null"
 
