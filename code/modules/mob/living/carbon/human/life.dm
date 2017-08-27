@@ -1622,9 +1622,7 @@
 
 	proc/handle_vision()
 		if(client)
-			if(loc && !isturf(loc))
-				overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
-			else if(blinded)
+			if(blinded)
 				overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 			else
 				clear_fullscreen("blind", 0)
