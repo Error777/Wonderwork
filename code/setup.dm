@@ -778,6 +778,18 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 	"NUKE"
 	)
 
+// Camera networks
+#define NETWORK_ENGINEERING "Engineering"
+#define NETWORK_ERT "ERT"
+#define NETWORK_STATION "SS13"
+#define NETWORK_MEDICAL "Medical"
+#define NETWORK_NUKE "NUKE"
+#define NETWORK_MINE "Mining"
+#define NETWORK_RESEARCH "Research"
+#define NETWORK_ROBOTS "Robots"
+#define NETWORK_SECURITY "Security"
+#define NETWORK_THUNDER "thunder"
+
 //Species flags.
 #define NO_EAT 1
 #define NO_BREATHE 2

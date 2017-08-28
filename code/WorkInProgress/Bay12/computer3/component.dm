@@ -63,7 +63,7 @@
 					if(busy)
 						user << "\red <b>ERROR</b>: \black Reconstruction in progress."
 						return
-					card.grab_ai(comp_ai, user)
+					card.transfer_ai("AICORE", "AICARD", comp_ai, user)
 					if(!(locate(/mob/living/silicon/ai) in src)) occupant = null
 				else if(istype(card_ai))
 					load_ai(card_ai,card,user)
@@ -90,8 +90,8 @@
 	transfer.control_disabled = 1
 	occupant = transfer
 
-	if(card)
-		card.clear()
+	//if(card)
+		//card.clear()
 
 
 /*

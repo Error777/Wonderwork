@@ -378,8 +378,6 @@
 							src.active1.fields["p_stat"] = "Physically Unfit"
 						if("disabled")
 							src.active1.fields["p_stat"] = "Disabled"
-					if(PDA_Manifest.len)
-						PDA_Manifest.Cut()
 
 			if (href_list["m_stat"])
 				if (src.active1)
@@ -413,7 +411,6 @@
 							src.active2.fields["b_type"] = "AB+"
 						if("op")
 							src.active2.fields["b_type"] = "O+"
-
 
 			if (href_list["del_r"])
 				if (src.active2)

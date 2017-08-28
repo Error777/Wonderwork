@@ -6,6 +6,7 @@
 	layer = 2.9
 	anchored = 1
 	density = 1
+	var/obj/machinery/account_database/linked_db
 	var/datum/browser/popup = null
 	var/obj/machinery/computer3/laptop/vended/newlap = null
 	var/obj/item/device/laptop/relap = null
@@ -210,14 +211,14 @@
 
 /obj/machinery/lapvend/proc/scan_id(var/obj/item/weapon/card/id/C, var/obj/item/I)
 	visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
-	var/datum/money_account/CH = get_account(C.associated_account_number)
+	var/datum/money_account/CH = linked_db.get_account(C.associated_account_number)
 	if(!CH)
 		usr << "\icon[src]<span class='warning'>No valid account number is associated with this card.</span>"
 		return
 	if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 		if(vendor_account)
 			var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-			var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
+			var/datum/money_account/D = linked_db.attempt_account_access(C.associated_account_number, attempt_pin, 2)
 			if(D)
 				transfer_and_vend(D, C)
 			else
@@ -311,8 +312,8 @@
 		newlap.spawn_files += (/datum/file/program/atmos_alert)
 	if(access_change_ids in C.access)
 		newlap.spawn_files += (/datum/file/program/card_comp)
-	if(access_heads in C.access)
-		newlap.spawn_files += (/datum/file/program/communications)
+	//if(access_heads in C.access)
+		//newlap.spawn_files += (/datum/file/program/communications)
 	if((access_medical in C.access) || (access_forensics_lockers in C.access)) //Gives detective the medical records program, but not the crew monitoring one.
 		newlap.spawn_files += (/datum/file/program/med_data)
 		if (access_medical in C.access)
@@ -359,14 +360,14 @@
 
 /obj/machinery/lapvend/proc/reimburse_id(var/obj/item/weapon/card/id/C, var/obj/item/I)
 	visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
-	var/datum/money_account/CH = get_account(C.associated_account_number)
+	var/datum/money_account/CH = linked_db.get_account(C.associated_account_number)
 	if(!CH)
 		usr << "\icon[src]<span class='warning'>No valid account number is associated with this card.</span>"
 		return 0
 	if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 		if(vendor_account)
 			var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-			var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
+			var/datum/money_account/D = linked_db.attempt_account_access(C.associated_account_number, attempt_pin, 2)
 			if(D)
 				transfer_and_reimburse(D)
 				return 1

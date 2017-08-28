@@ -172,6 +172,11 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	if(DirBlocked(B,rdir)) return 1
 	return 0
 
+/proc/topic_link(var/datum/D, var/arglist, var/content)
+	if(istype(arglist,/list))
+		arglist = list2params(arglist)
+	return "<a href='?src=\ref[D];[arglist]'>[content]</a>"
+
 
 /proc/DirBlocked(turf/loc,var/dir)
 	for(var/obj/structure/window/D in loc)

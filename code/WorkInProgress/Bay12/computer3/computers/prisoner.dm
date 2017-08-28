@@ -43,13 +43,13 @@
 				if(!T.implanted) continue
 				var/loc_display = "Unknown"
 				var/mob/living/carbon/M = T.imp_in
-				if(M.z in config.station_levels && !istype(M.loc, /turf/space))
-					var/turf/mob_loc = get_turf(M)
+				if(M.z == 1 && !istype(M.loc, /turf/space))
+					var/turf/mob_loc = get_turf_loc(M)
 					loc_display = mob_loc.loc
 				if(T.malfunction)
 					loc_display = pick(teleportlocs)
 				dat += "ID: [T.id] | Location: [loc_display]<BR>"
-				dat += "<A href='?src=\ref[src];warn=\ref[T]'>(<i>Send Message</i></font>)</A> |<BR>"
+				dat += "<A href='?src=\ref[src];warn=\ref[T]'>(<font color=red><i>Message Holder</i></font>)</A> |<BR>"
 				dat += "********************************<BR>"
 			dat += "<HR><A href='?src=\ref[src];lock=1'>Lock Console</A>"
 
