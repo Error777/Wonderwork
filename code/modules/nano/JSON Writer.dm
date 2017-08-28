@@ -1,7 +1,7 @@
 
 json_writer
 	proc
-		WriteObject(list/L)
+		WriteObject(list/L, cached_data = null)
 			. = "{"
 			var/i = 1
 			for(var/k in L)
@@ -9,7 +9,9 @@ json_writer
 				. += {"\"[k]\":[write(val)]"}
 				if(i++ < L.len)
 					. += ","
-			.+= "}"
+			if(cached_data)
+				. = copytext(., 1, lentext(.)) + ",\"cached\":[cached_data]}"
+			. += "}"
 
 		write(val)
 			if(isnum(val))
@@ -44,12 +46,12 @@ json_writer
 						txt = copytext(txt, 1, i) + "\\n" + copytext(txt, i+2)
 						start = i + 1 // 1 character added
 					if(targ == "'")
-						txt = copytext(txt, 1, i) + "`" + copytext(txt, i+1) // apostrophes fuck shit up...
+						txt = copytext(txt, 1, i) + "`" + copytext(txt, i+1) // apostrophies fuck shit up...
 						start = i + 1 // 1 character added
 					else
 						txt = copytext(txt, 1, i) + "\\" + copytext(txt, i)
 						start = i + 2 // 2 characters added
-
+					
 			return {""[txt]""}
 
 		is_associative(list/L)

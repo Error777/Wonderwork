@@ -25,7 +25,6 @@ var/global/list/global_map = null
 	//3 - AI satellite
 	//5 - empty space
 
-
 	//////////////
 var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre",	\
 	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col",	\
@@ -204,6 +203,21 @@ var/list/AAlarmWireColorToIndex
 #define shuttle_time_in_station 1800 // 3 minutes in the station
 #define shuttle_time_to_arrive 6000 // 10 minutes to arrive
 
+// computer3 error codes, move lower in the file when it passes dev -Sayu
+#define PROG_CRASH          0x1  // Generic crash.
+#define MISSING_PERIPHERAL  0x2  // Missing hardware.
+#define BUSTED_ASS_COMPUTER 0x4  // Self-perpetuating error.  BAC will continue to crash forever.
+#define MISSING_PROGRAM     0x8  // Some files try to automatically launch a program. This is that failing.
+#define FILE_DRM            0x10 // Some files want to not be copied/moved. This is them complaining that you tried.
+#define NETWORK_FAILURE     0x20
+
+// NanoUI flags
+#define STATUS_INTERACTIVE 2 // GREEN Visability
+#define STATUS_UPDATE 1 // ORANGE Visability
+#define STATUS_DISABLED 0 // RED Visability
+#define STATUS_CLOSE -1 // Close the interface
+
+#define NANO_IGNORE_DISTANCE 1
 	//away missions
 var/list/awaydestinations = list()	//a list of landmarks that the warpgate can take you to
 

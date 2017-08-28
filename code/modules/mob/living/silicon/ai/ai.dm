@@ -32,6 +32,8 @@ var/list/ai_list = list()
 	var/obj/item/device/pda/ai/aiPDA = null
 	var/obj/item/device/multitool/aiMulti = null
 	var/custom_sprite = 0 //For our custom sprites
+	var/apc_override = 0 //hack for letting the AI use its APC even when visionless
+
 //Hud stuff
 
 	//MALFUNCTION
@@ -679,7 +681,8 @@ var/list/ai_list = list()
 	else
 		src.lightNearbyCamera()
 
-
+/mob/living/silicon/ai/proc/is_in_chassis()
+	return istype(loc, /turf)
 
 // Handled camera lighting, when toggled.
 // It will get the nearest camera from the eyeobj, lighting it.

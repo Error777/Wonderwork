@@ -94,6 +94,7 @@
 /obj/machinery/commarray
 	name = "communication array"
 	desc = "Connects the local network to the bluespace network."
+	icon = 'icons/obj/adv_stock_parts.dmi'
 	icon_state = "commarray"
 	density = 1
 	anchored = 1.0

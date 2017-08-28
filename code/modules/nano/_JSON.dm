@@ -7,11 +7,6 @@ proc
 		var/static/json_reader/_jsonr = new()
 		return _jsonr.ReadObject(_jsonr.ScanJson(json))
 
-	list2json(list/L)
+	list2json(list/L, var/cached_data = null)
 		var/static/json_writer/_jsonw = new()
-		// Detect if it's just a list of things, or an associative list
-		// (Used to just assume associative, which broke things.)
-		if(_jsonw.is_associative(L))
-			return _jsonw.WriteObject(L)
-		else
-			return _jsonw.write_array(L)
+		return _jsonw.WriteObject(L, cached_data)
