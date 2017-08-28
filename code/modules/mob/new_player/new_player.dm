@@ -31,8 +31,7 @@
 
 		if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
 			if(!ready)	output += "<p><a href='byond://?src=\ref[src];ready=1'>Declare Ready</A></p>"
-			else	output += "<p><b>You are ready</b> (<a href='byond://?src=\ref[src];ready=2'>Cancel</A>)</p>"
-
+			else	output += "You are ready."
 		else
 			output += "<a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</A><br><br>"
 			output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A></p>"
@@ -114,9 +113,13 @@
 		if(href_list["show_preferences"])
 			client.prefs.ShowChoices(src)
 			return 1
-
 		if(href_list["ready"])
-			ready = !ready
+			if(!ready)
+				if(alert(src,"Are you sure you are ready? This will lock-in your preferences.","Player Setup","Yes","No") == "Yes")
+					ready = 1
+
+		//if(href_list["ready"])
+			//ready = !ready
 
 		if(href_list["refresh"])
 			src << browse(null, "window=playersetup") //closes the player setup window
