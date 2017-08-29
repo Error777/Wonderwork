@@ -140,7 +140,7 @@
 		return
 
 	proc/verify_user()
-		deptlist = job_master.GetDeptList(tablet.ownjob)
+		deptlist = job_master.GetJob(tablet.ownjob)
 		if(!deptlist || !deptlist.len)
 			deptlist = list("None")
 		command = 0
@@ -159,8 +159,8 @@
 				continue
 			if(T.ownjob == "Captain") //Captain can only add himself
 				continue
-			var/list/my_depts = job_master.GetDeptList(tablet.ownjob)
-			var/list/their_depts = job_master.GetDeptList(T.ownjob)
+			var/list/my_depts = job_master.GetJob(tablet.ownjob)
+			var/list/their_depts = job_master.GetJob(T.ownjob)
 			if(!my_depts || !their_depts)
 				continue
 			if(length(my_depts & their_depts))
