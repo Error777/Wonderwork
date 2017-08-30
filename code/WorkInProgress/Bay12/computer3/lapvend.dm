@@ -7,11 +7,11 @@
 	anchored = 1
 	density = 1
 	var/obj/machinery/account_database/linked_db
+	var/datum/money_account/linked_account
 	var/datum/browser/popup = null
 	var/obj/machinery/computer3/laptop/vended/newlap = null
 	var/obj/item/device/laptop/relap = null
 	var/vendmode = 0
-
 
 	var/cardreader = 0
 	var/floppy = 0
@@ -25,24 +25,32 @@
 	..()
 	spawn(4)
 		power_change()
+		reconnect_database()
+		linked_account = vendor_account
 		return
 	return
 
-
-/obj/machinery/lapvend/blob_act()
-	if (prob(50))
-		spawn(0)
-			del(src)
-		return
-
-	return
-
+/obj/machinery/lapvend/proc/reconnect_database()
+	for(var/obj/machinery/account_database/DB in world)
+		if(DB.z != 2)
+			linked_db = DB
+			break
 
 /obj/machinery/lapvend/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/obj/item/weapon/card/id/I = W.GetID()
-
 	if(vendmode == 1 && I)
-		scan_id(I, W)
+		if(istype(W, /obj/item/weapon/card))
+			//attempt to connect to a new db, and if that doesn't work then fail
+			if(!linked_db)
+				reconnect_database()
+			if(linked_db)
+				if(linked_account)
+					//var/obj/item/weapon/card/I = W
+					scan_card(I)
+				else
+					usr << "\icon[src]<span class='warning'>Unable to connect to linked account.</span>"
+			else
+				usr << "\icon[src]<span class='warning'>Unable to connect to accounts database.</span>"
 		vendmode = 0
 	if(vendmode == 3 && I)
 		if(reimburse_id(I, W))
@@ -112,15 +120,15 @@
 		else
 			dat += "<A href='?src=\ref[src];choice=super_rem'>Power source: Unreal (250)</a><br>"
 
-	//if(vendmode == 0)
+	if(vendmode == 0)
 		dat += "<br><A href='?src=\ref[src];choice=vend'>Vend Laptop</a>"
 
-	//if(vendmode == 1)
-		//dat += "Please swipe your card and enter your PIN to complete the transaction"
+	if(vendmode == 1)
+		dat += "Please swipe your card and enter your PIN to complete the transaction"
 
-	//if(vendmode == 3)
-		//dat += "Please swipe your card and enter your PIN to be finish returning your computer<br>"
-		//dat += "<a href='?src=\ref[src];choice=cancel'>Cancel</a>"
+	if(vendmode == 3)
+		dat += "Please swipe your card and enter your PIN to be finish returning your computer<br>"
+		dat += "<a href='?src=\ref[src];choice=cancel'>Cancel</a>"
 
 
 
@@ -209,7 +217,65 @@
 
 	newlap.spawn_parts()
 
-/obj/machinery/lapvend/proc/scan_id(var/obj/item/weapon/card/id/C, var/obj/item/I)
+/obj/machinery/lapvend/proc/scan_card(var/obj/item/weapon/card/I)
+	if (istype(I, /obj/item/weapon/card/id))
+		var/obj/item/weapon/card/id/C = I
+		visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
+		if(linked_account)
+			var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
+			var/datum/money_account/D = linked_db.attempt_account_access(C.associated_account_number, attempt_pin, 2)
+			if(D)
+				var/transaction_amount = total()
+				if(transaction_amount <= D.money)
+
+					//transfer the money
+					D.money -= transaction_amount
+					linked_account.money += transaction_amount
+
+					//create entries in the two account transaction logs
+					var/datum/transaction/T = new()
+					T.target_name = "[linked_account.owner_name] (via [src.name])"
+					T.purpose = "Purchase of Laptop"
+					if(transaction_amount > 0)
+						T.amount = "([transaction_amount])"
+					else
+						T.amount = "[transaction_amount]"
+					T.source_terminal = src.name
+					T.date = current_date_string
+					T.time = worldtime2text()
+					D.transaction_log.Add(T)
+					//
+					T = new()
+					T.target_name = D.owner_name
+					T.purpose = "Purchase of Laptop"
+					T.amount = "[transaction_amount]"
+					T.source_terminal = src.name
+					T.date = current_date_string
+					T.time = worldtime2text()
+					linked_account.transaction_log.Add(T)
+
+					// Vend the item
+					newlap = new /obj/machinery/computer3/laptop/vended(src.loc)
+
+					choose_progs(C)
+					vend()
+					popup.close()
+					newlap.close_laptop()
+					newlap = null
+					cardreader = 0
+					floppy = 0
+					radionet = 0
+					camera = 0
+					network = 0
+					power = 0
+				else
+					usr << "\icon[src]<span class='warning'>You don't have that much money!</span>"
+			else
+				usr << "\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>"
+		else
+			usr << "\icon[src]<span class='warning'>EFTPOS is not connected to an account.</span>"
+/*
+/obj/machinery/lapvend/proc/scan_card(var/obj/item/weapon/card/id/C, var/obj/item/I)
 	visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	var/datum/money_account/CH = linked_db.get_account(C.associated_account_number)
 	if(!CH)
@@ -274,7 +340,7 @@
 		power = 0
 	else
 		usr << "\icon[src]<span class='warning'>You don't have that much money!</span>"
-
+*/
 /obj/machinery/lapvend/proc/total()
 	var/total = 0
 
