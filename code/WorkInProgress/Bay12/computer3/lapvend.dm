@@ -112,15 +112,15 @@
 		else
 			dat += "<A href='?src=\ref[src];choice=super_rem'>Power source: Unreal (250)</a><br>"
 
-	if(vendmode == 0)
+	//if(vendmode == 0)
 		dat += "<br><A href='?src=\ref[src];choice=vend'>Vend Laptop</a>"
 
-	if(vendmode == 1)
-		dat += "Please swipe your card and enter your PIN to complete the transaction"
+	//if(vendmode == 1)
+		//dat += "Please swipe your card and enter your PIN to complete the transaction"
 
-	if(vendmode == 3)
-		dat += "Please swipe your card and enter your PIN to be finish returning your computer<br>"
-		dat += "<a href='?src=\ref[src];choice=cancel'>Cancel</a>"
+	//if(vendmode == 3)
+		//dat += "Please swipe your card and enter your PIN to be finish returning your computer<br>"
+		//dat += "<a href='?src=\ref[src];choice=cancel'>Cancel</a>"
 
 
 

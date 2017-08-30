@@ -774,7 +774,7 @@ obj/item/device/tablet/verb/verb_remove_pen()
 	icon_state = "tablet-engineer"
 	New()
 		..()
-		core.programs.Add(new /datum/program/enginebuddy)
+		//core.programs.Add(new /datum/program/enginebuddy)
 		core.programs.Add(new /datum/program/notekeeper)
 		core.programs.Add(new /datum/program/powermonitor)
 
