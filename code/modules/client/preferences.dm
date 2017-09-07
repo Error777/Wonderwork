@@ -111,6 +111,10 @@ datum/preferences
 	var/metadata = ""
 	var/slot_name = ""
 
+	// SPAAAACE PARALAX
+	var/parallax_speed = 2
+	var/parallax_togs = PARALLAX_SPACE | PROGRESS_BARS
+
 /datum/preferences/New(client/C)
 	b_type = pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
 	if(istype(C))
@@ -238,9 +242,11 @@ datum/preferences
 
 		dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
 		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
-
 		dat += "<br>"
 		dat += "<b>UI Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
+		dat += "<b>Space Parallax:</b> <a href='?_src_=prefs;preference=parallax'><b>[toggles & PARALLAX_SPACE]</b></a><br>"
+		dat += "<b>Parallax Speed:</b> <a href='?_src_=prefs;preference=p_speed'><b>[parallax_speed]</b></a><br>"
+		dat += "<b>Space Dust:</b> <a href='?_src_=prefs;preference=dust'><b>[toggles & PARALLAX_DUST]</b></a><br>"
 		dat += "<b>Play admin midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 		dat += "<b>Play lobby music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 		dat += "<b>Ghost ears:</b> <a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles & CHAT_GHOSTEARS) ? "Nearest Creatures" : "All Speech"]</b></a><br>"

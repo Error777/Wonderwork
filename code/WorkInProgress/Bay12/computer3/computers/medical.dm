@@ -154,6 +154,7 @@
 					else
 			else
 				dat += text("<A href='?src=\ref[];login=1'>{Log In}</A>", src)
+
 		popup.width = 600
 		popup.height = 400
 		popup.set_content(dat)

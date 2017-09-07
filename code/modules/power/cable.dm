@@ -25,6 +25,9 @@
 
 // the power cable object
 
+/obj/structure/cable
+	var/obj/machinery/power/breakerbox/breaker_box
+
 /obj/structure/cable/New()
 	..()
 
@@ -91,6 +94,10 @@
 //			return
 
 		if (shock(user, 50))
+			return
+
+		if (breaker_box)
+			user << "\red This cable is connected to nearby breaker box. Use breaker box to interact with it."
 			return
 
 		if(src.d1)	// 0-X cables are 1 unit, X-X cables are 2 units long
@@ -468,7 +475,50 @@
 				powernet.cables += src
 
 
+//handles merging diagonally matching cables
+//for info : direction^3 is flipping horizontally, direction^12 is flipping vertically
+/obj/structure/cable/proc/mergeDiagonalsNetworks(var/direction)
 
+	//search for and merge diagonally matching cables from the first direction component (north/south)
+	var/turf/T  = get_step(src, direction&3)//go north/south
+
+	for(var/obj/structure/cable/C in T)
+
+		if(!C)
+			continue
+
+		if(src == C)
+			continue
+
+		if(C.d1 == (direction^3) || C.d2 == (direction^3)) //we've got a diagonally matching cable
+			if(!C.powernet) //if the matching cable somehow got no powernet, make him one (should not happen for cables)
+				var/datum/powernet/newPN = new()
+				newPN.add_cable(C)
+
+			if(powernet) //if we already have a powernet, then merge the two powernets
+				merge_powernets(powernet,C.powernet)
+			else
+				C.powernet.add_cable(src) //else, we simply connect to the matching cable powernet
+
+	//the same from the second direction component (east/west)
+	T  = get_step(src, direction&12)//go east/west
+
+	for(var/obj/structure/cable/C in T)
+
+		if(!C)
+			continue
+
+		if(src == C)
+			continue
+		if(C.d1 == (direction^12) || C.d2 == (direction^12)) //we've got a diagonally matching cable
+			if(!C.powernet) //if the matching cable somehow got no powernet, make him one (should not happen for cables)
+				var/datum/powernet/newPN = new()
+				newPN.add_cable(C)
+
+			if(powernet) //if we already have a powernet, then merge the two powernets
+				merge_powernets(powernet,C.powernet)
+			else
+				C.powernet.add_cable(src) //else, we simply connect to the matching cable powernet
 
 /obj/structure/cable/proc/mergeConnectedNetworksOnTurf()
 	if(!powernet)

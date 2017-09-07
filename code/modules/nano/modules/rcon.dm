@@ -1,6 +1,5 @@
-/obj/nano_module/rcon
+/datum/nano_module/rcon
 	name = "Power RCON"
-
 	var/list/known_SMESs = null
 	var/list/known_breakers = null
 	// Allows you to hide specific parts of the UI
@@ -8,24 +7,9 @@
 	var/hide_SMES_details = 0
 	var/hide_breakers = 0
 
-/obj/nano_module/rcon/ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=1)
+/datum/nano_module/rcon/ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=1, var/datum/topic_state/state = default_state)
 	FindDevices() // Update our devices list
-	var/data[0]
-
-	// SMES DATA (simplified view)
-	var/list/smeslist[0]
-	for(var/obj/machinery/power/smes/buildable/SMES in known_SMESs)
-		smeslist.Add(list(list(
-		"charge" = round(SMES.Percentage()),
-		"input_set" = SMES.input_attempt,
-		"input_val" = round(SMES.input_level),
-		"output_set" = SMES.output_attempt,
-		"output_val" = round(SMES.output_level),
-		"output_load" = round(SMES.output_used),
-		"RCON_tag" = SMES.RCon_tag
-		)))
-
-	data["smes_info"] = sortByKey(smeslist, "RCON_tag")
+	var/list/data = host.initial_data()
 
 	// BREAKER DATA (simplified view)
 	var/list/breakerlist[0]
@@ -41,7 +25,9 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "rcon.tmpl", "RCON Console", 600, 400)
+		ui = new(user, src, ui_key, "rcon.tmpl", "RCON Console", 600, 400, state = state)
+		if(host.update_layout()) // This is necessary to ensure the status bar remains updated along with rest of the UI.
+			ui.auto_update_layout = 1
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
@@ -49,28 +35,9 @@
 // Proc: Topic()
 // Parameters: 2 (href, href_list - allows us to process UI clicks)
 // Description: Allows us to process UI clicks, which are relayed in form of hrefs.
-/obj/nano_module/rcon/Topic(href, href_list)
+/datum/nano_module/rcon/Topic(href, href_list)
 	if(..())
 		return
-
-	if(href_list["smes_in_toggle"])
-		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_in_toggle"])
-		if(SMES)
-			SMES.toggle_input()
-	if(href_list["smes_out_toggle"])
-		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_out_toggle"])
-		if(SMES)
-			SMES.toggle_output()
-	if(href_list["smes_in_set"])
-		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_in_set"])
-		if(SMES)
-			var/inputset = input(usr, "Enter new input level (0-[SMES.input_level_max])", "SMES Input Power Control") as num
-			SMES.set_input(inputset)
-	if(href_list["smes_out_set"])
-		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_out_set"])
-		if(SMES)
-			var/outputset = input(usr, "Enter new output level (0-[SMES.output_level_max])", "SMES Input Power Control") as num
-			SMES.set_output(outputset)
 
 	if(href_list["toggle_breaker"])
 		var/obj/machinery/power/breakerbox/toggle = null
@@ -79,7 +46,7 @@
 				toggle = breaker
 		if(toggle)
 			if(toggle.update_locked)
-				to_chat(usr, "The breaker box was recently toggled. Please wait before toggling it again.")
+				usr << "The breaker box was recently toggled. Please wait before toggling it again."
 			else
 				toggle.auto_toggle()
 	if(href_list["hide_smes"])
@@ -93,20 +60,20 @@
 // Proc: GetSMESByTag()
 // Parameters: 1 (tag - RCON tag of SMES we want to look up)
 // Description: Looks up and returns SMES which has matching RCON tag
-/obj/nano_module/rcon/proc/GetSMESByTag(tag)
+/datum/nano_module/rcon/proc/GetSMESByTag(var/tag)
 	if(!tag)
 		return
 
-	for(var/obj/machinery/power/smes/buildable/S in known_SMESs)
+	for(var/obj/machinery/power/smes/S in known_SMESs)
 		if(S.RCon_tag == tag)
 			return S
 
 // Proc: FindDevices()
 // Parameters: None
 // Description: Refreshes local list of known devices.
-/obj/nano_module/rcon/proc/FindDevices()
+/datum/nano_module/rcon/proc/FindDevices()
 	known_SMESs = new /list()
-	for(var/obj/machinery/power/smes/buildable/SMES in machines)
+	for(var/obj/machinery/power/smes/SMES in machines)
 		if(SMES.RCon_tag && (SMES.RCon_tag != "NO_TAG") && SMES.RCon)
 			known_SMESs.Add(SMES)
 

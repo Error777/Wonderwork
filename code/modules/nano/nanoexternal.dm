@@ -37,8 +37,12 @@
   *
   * @return nothing
   */
-/atom/movable/proc/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/nano_ui/master_ui = null, datum/topic_state/custom_state = null)
+///atom/movable/proc/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/nano_ui/master_ui = null, datum/topic_state/custom_state = null)
+	//return
+
+/datum/proc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/nano_ui/master_ui = null, var/datum/topic_state/state = default_state)
 	return
+
 
 // Used by the Nano UI Manager (/datum/nanomanager) to track UIs opened by this mob
 /mob/var/list/open_uis = list()

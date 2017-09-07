@@ -1,12 +1,12 @@
-/atom/movable/proc/nano_host()
-	return src
+///atom/movable/proc/nano_host()
+	//return src
 
 /obj/nano_module/nano_host()
 	return loc
 
 
-/atom/movable/proc/CanUseTopic(mob/user, href_list, datum/topic_state/custom_state)
-	return user.can_use_topic(nano_host(), custom_state)
+///atom/movable/proc/CanUseTopic(mob/user, href_list, datum/topic_state/custom_state)
+	//return user.can_use_topic(nano_host(), custom_state)
 
 
 /mob/proc/can_use_topic(mob/user, datum/topic_state/custom_state)
@@ -137,5 +137,5 @@
 /datum/topic_state
 	var/flags = 0
 
-/datum/topic_state/proc/href_list(mob/user)
-	return list()
+///datum/topic_state/proc/href_list(mob/user)
+	//return list()

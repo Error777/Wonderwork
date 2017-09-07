@@ -11,7 +11,7 @@
 /obj/structure/computer2frame
 	density = 1
 	anchored = 0
-	name = "terminal frame"
+	name = "terminal-frame"
 	icon = 'icons/obj/computer4.dmi'
 	icon_state = "termframe0"
 	var/screen_size = "termframe"

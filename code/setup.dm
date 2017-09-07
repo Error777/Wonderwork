@@ -120,6 +120,13 @@
 #define FIRE_PLASMA_ENERGY_RELEASED	 3000000 //Amount of heat released per mole of burnt plasma into the tile
 #define FIRE_GROWTH_RATE			40000 //For small fires
 
+//PARALAX PLANE SYSTEM
+
+#define PLANE_SPACE_BACKGROUND -98
+#define PLANE_SPACE_PARALLAX (PLANE_SPACE_BACKGROUND + 1) // -97
+#define PLANE_SPACE_DUST (PLANE_SPACE_PARALLAX + 1) // -96
+#define PLANE_ABOVE_PARALLAX (PLANE_SPACE_BACKGROUND + 3) // -95
+
 //#define WATER_BOIL_TEMP 393
 
 //Bay lighting engine shit, not in /code/modules/lighting because BYOND is being shit about it
@@ -715,6 +722,11 @@ var/list/TAGGERLOCATIONS = list("Disposals",
 #define BE_RAIDER		4096
 #define BE_PLANT		8192
 
+#define PARALLAX_SPACE 1
+#define PARALLAX_DUST  2
+#define PROGRESS_BARS  4
+#define PARALLAX_IS_STATIC 8
+
 var/list/be_special_flags = list(
 	"Traitor" = BE_TRAITOR,
 	"Operative" = BE_OPERATIVE,
@@ -771,6 +783,13 @@ var/list/bradycardics = list("neurotoxin", "cryoxadone", "clonexadone", "space_d
 //proc/get_pulse methods
 #define GETPULSE_HAND	0	//less accurate (hand)
 #define GETPULSE_TOOL	1	//more accurate (med scanner, sleeper, etc)
+
+//supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
+#define RANGE_TURFS(RADIUS, CENTER) \
+  block( \
+    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
+    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
+  )
 
 var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.
 	"thunder",

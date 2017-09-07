@@ -25,7 +25,7 @@
 /obj/structure/computer3frame
 	density = 1
 	anchored = 0
-	name = "metacomputer frame"
+	name = "metacomputer-frame"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "0"
 	var/state = 0
