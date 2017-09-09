@@ -96,9 +96,9 @@
 		if (shock(user, 50))
 			return
 
-		if (breaker_box)
-			user << "\red This cable is connected to nearby breaker box. Use breaker box to interact with it."
-			return
+//		if (breaker_box)
+//			user << "\red This cable is connected to nearby breaker box. Use breaker box to interact with it."
+//			return
 
 		if(src.d1)	// 0-X cables are 1 unit, X-X cables are 2 units long
 			new/obj/item/weapon/cable_coil(T, 2, cable_color)

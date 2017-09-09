@@ -123,7 +123,7 @@
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = 1)
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = 2)
 	feedback_add_details("admin_verb","TAmbi") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
+/*
 /client/verb/toggle_space_parallax()
 	set name = "Show/Hide Space Parallax"
 	set category = "Preferences"
@@ -179,7 +179,7 @@
 		src << "Space will no longer move."
 	else
 		src << "Space will now move."
-
+*/
 //be special
 /client/verb/toggle_be_special(role in be_special_flags)
 	set name = "Toggle SpecialRole Candidacy"

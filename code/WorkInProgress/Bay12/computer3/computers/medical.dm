@@ -10,7 +10,7 @@
 /obj/machinery/computer3/med_data
 	default_prog	= /datum/file/program/med_data
 	spawn_parts		= list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/cardslot,/obj/item/part/computer/networking/radio)
-
+	icon_state = "frame-med"
 
 /obj/machinery/computer3/laptop/medical
 	spawn_parts = list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/cardslot,/obj/item/part/computer/networking/radio)

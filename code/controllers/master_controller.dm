@@ -200,13 +200,8 @@ datum/controller/game_controller/proc/process()
 				ticker.process()
 				ticker_cost = (world.timeofday - timer) / 10
 
-				//PARALLAX
-				timer = world.timeofday
-				create_global_parallax_icons()
-				parallax_cost = (world.timeofday - timer) / 10
-
 				//TIMING
-				total_cost = air_cost + sun_cost + mobs_cost + diseases_cost + machines_cost + objects_cost + networks_cost + powernets_cost + events_cost + ticker_cost + parallax_cost
+				total_cost = air_cost + sun_cost + mobs_cost + diseases_cost + machines_cost + objects_cost + networks_cost + powernets_cost + events_cost + ticker_cost
 
 				var/end_time = world.timeofday
 				if(end_time < start_time)
