@@ -88,8 +88,8 @@
 					if(4.0)
 						dat += "<CENTER><B>Medical Record</B></CENTER><BR>"
 						if ((istype(src.active1, /datum/data/record) && data_core.general.Find(src.active1)))
-							var/icon/front = active1.fields["photo_front"]
-							var/icon/side = active1.fields["photo_side"]
+							var/icon/front = new(active1.fields["photo"], dir = SOUTH)
+							var/icon/side = new(active1.fields["photo"], dir = WEST)
 							usr << browse_rsc(front, "front.png")
 							usr << browse_rsc(side, "side.png")
 

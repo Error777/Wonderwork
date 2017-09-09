@@ -11,6 +11,21 @@
 	FindDevices() // Update our devices list
 	var/list/data = host.initial_data()
 
+	// SMES DATA (simplified view)
+	var/list/smeslist[0]
+	for(var/obj/machinery/power/smes/buildable/SMES in known_SMESs)
+		smeslist.Add(list(list(
+		"charge" = round(SMES.Percentage()),
+		"input_set" = SMES.input_attempt,
+		"input_val" = round(SMES.input_level),
+		"output_set" = SMES.output_attempt,
+		"output_val" = round(SMES.output_level),
+		"output_load" = round(SMES.output_used),
+		"RCON_tag" = SMES.RCon_tag
+		)))
+
+	data["smes_info"] = sortByKey(smeslist, "RCON_tag")
+
 	// BREAKER DATA (simplified view)
 	var/list/breakerlist[0]
 	for(var/obj/machinery/power/breakerbox/BR in known_breakers)
@@ -39,6 +54,25 @@
 	if(..())
 		return
 
+	if(href_list["smes_in_toggle"])
+		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_in_toggle"])
+		if(SMES)
+			SMES.toggle_input()
+	if(href_list["smes_out_toggle"])
+		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_out_toggle"])
+		if(SMES)
+			SMES.toggle_output()
+	if(href_list["smes_in_set"])
+		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_in_set"])
+		if(SMES)
+			var/inputset = input(usr, "Enter new input level (0-[SMES.input_level_max])", "SMES Input Power Control") as num
+			SMES.set_input(inputset)
+	if(href_list["smes_out_set"])
+		var/obj/machinery/power/smes/buildable/SMES = GetSMESByTag(href_list["smes_out_set"])
+		if(SMES)
+			var/outputset = input(usr, "Enter new output level (0-[SMES.output_level_max])", "SMES Input Power Control") as num
+			SMES.set_output(outputset)
+
 	if(href_list["toggle_breaker"])
 		var/obj/machinery/power/breakerbox/toggle = null
 		for(var/obj/machinery/power/breakerbox/breaker in known_breakers)
@@ -64,7 +98,7 @@
 	if(!tag)
 		return
 
-	for(var/obj/machinery/power/smes/S in known_SMESs)
+	for(var/obj/machinery/power/smes/buildable/S in known_SMESs)
 		if(S.RCon_tag == tag)
 			return S
 
@@ -73,7 +107,7 @@
 // Description: Refreshes local list of known devices.
 /datum/nano_module/rcon/proc/FindDevices()
 	known_SMESs = new /list()
-	for(var/obj/machinery/power/smes/SMES in machines)
+	for(var/obj/machinery/power/smes/buildable/SMES in machines)
 		if(SMES.RCon_tag && (SMES.RCon_tag != "NO_TAG") && SMES.RCon)
 			known_SMESs.Add(SMES)
 

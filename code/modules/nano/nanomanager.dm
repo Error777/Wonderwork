@@ -3,6 +3,33 @@
 /datum/nanomanager
 	// a list of current open /nanoui UIs, grouped by src_object and ui_key
 	var/open_uis[0]
+	// a list of current open /nanoui UIs, not grouped, for use in processing
+	var/list/processing_uis = list()
+	// a list of asset filenames which are to be sent to the client on user logon
+	var/list/asset_files = list()
+
+ /**
+  * Create a new nanomanager instance.
+  * This proc generates a list of assets which are to be sent to each client on connect
+  *
+  * @return /nanomanager new nanomanager object
+  */
+/datum/nanomanager/New()
+	var/list/nano_asset_dirs = list(\
+		"nano/css/",\
+		"nano/images/",\
+		"nano/js/",\
+		"nano/templates/"\
+	)
+
+	var/list/filenames = null
+	for (var/path in nano_asset_dirs)
+		filenames = flist(path)
+		for(var/filename in filenames)
+			if(copytext(filename, length(filename)) != "/") // filenames which end in "/" are actually directories, which we want to ignore
+				if(fexists(path + filename))
+					asset_files.Add(fcopy_rsc(path + filename)) // add this file to asset_files for sending to clients when they connect
+	return
 
  /**
   * Get an open /nanoui ui for the current user, src_object and ui_key and try to update it with data
@@ -16,7 +43,7 @@
   *
   * @return /nanoui Returns the found ui, for null if none exists
   */
-/datum/nanomanager/proc/try_update_ui(mob/user, src_object, ui_key, datum/nanoui/ui, data, force_open = 0)
+/datum/nanomanager/proc/try_update_ui(var/mob/user, src_object, ui_key, var/datum/nanoui/ui, data, var/force_open = 0)
 	if (isnull(ui)) // no ui has been passed, so we'll search for one
 	{
 		ui = get_open_ui(user, src_object, ui_key)
@@ -27,8 +54,9 @@
 			ui.push_data(data)
 			return ui
 		else
-			//testing("nanomanager/try_update_ui mob [user.name] [src_object:name] [ui_key] [force_open] - forcing opening of ui")
-			ui.close()
+			ui.reinitialise(new_initial_data=data)
+			return ui
+
 	return null
 
  /**
@@ -40,7 +68,7 @@
   *
   * @return /nanoui Returns the found ui, or null if none exists
   */
-/datum/nanomanager/proc/get_open_ui(mob/user, src_object, ui_key)
+/datum/nanomanager/proc/get_open_ui(var/mob/user, src_object, ui_key)
 	var/src_object_key = "\ref[src_object]"
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		//testing("nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - there are no uis open")
@@ -105,7 +133,7 @@
   *
   * @return int The number of uis updated
   */
-/datum/nanomanager/proc/update_user_uis(mob/user, src_object = null, ui_key = null)
+/datum/nanomanager/proc/update_user_uis(var/mob/user, src_object = null, ui_key = null)
 	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
 		return 0 // has no open uis
 
@@ -126,7 +154,7 @@
   *
   * @return int The number of uis closed
   */
-/datum/nanomanager/proc/close_user_uis(mob/user, src_object = null, ui_key = null)
+/datum/nanomanager/proc/close_user_uis(var/mob/user, src_object = null, ui_key = null)
 	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
 		//testing("nanomanager/close_user_uis mob [user.name] has no open uis")
 		return 0 // has no open uis
@@ -149,18 +177,18 @@
   *
   * @return nothing
   */
-/datum/nanomanager/proc/ui_opened(datum/nanoui/ui)
+/datum/nanomanager/proc/ui_opened(var/datum/nanoui/ui)
 	var/src_object_key = "\ref[ui.src_object]"
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		open_uis[src_object_key] = list(ui.ui_key = list())
 	else if (isnull(open_uis[src_object_key][ui.ui_key]) || !istype(open_uis[src_object_key][ui.ui_key], /list))
 		open_uis[src_object_key][ui.ui_key] = list();
 
-	ui.user.open_uis.Add(ui)
+	ui.user.open_uis |= ui
 	var/list/uis = open_uis[src_object_key][ui.ui_key]
-	uis.Add(ui)
-	//START_PROCESSING(SSnano, ui)
-	//testing("nanomanager/ui_opened mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [ui.user.open_uis.len] | uis [uis.len] | processing_uis [SSnano.processing.len]")
+	uis |= ui
+	processing_uis |= ui
+	//testing("nanomanager/ui_opened mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [ui.user.open_uis.len] | uis [uis.len] | processing_uis [processing_uis.len]")
 
  /**
   * Remove a /nanoui ui from the list of open uis
@@ -170,20 +198,20 @@
   *
   * @return int 0 if no ui was removed, 1 if removed successfully
   */
-/datum/nanomanager/proc/ui_closed(datum/nanoui/ui)
+/datum/nanomanager/proc/ui_closed(var/datum/nanoui/ui)
 	var/src_object_key = "\ref[ui.src_object]"
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		return 0 // wasn't open
 	else if (isnull(open_uis[src_object_key][ui.ui_key]) || !istype(open_uis[src_object_key][ui.ui_key], /list))
 		return 0 // wasn't open
 
-	//STOP_PROCESSING(SSnano, ui)
+	processing_uis.Remove(ui)
 	if(ui.user)	// Sanity check in case a user has been deleted (say a blown up borg watching the alarm interface)
-		ui.user.open_uis -= ui
+		ui.user.open_uis.Remove(ui)
 	var/list/uis = open_uis[src_object_key][ui.ui_key]
-	uis -= ui
+	uis.Remove(ui)
 
-	//testing("nanomanager/ui_closed mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [ui.user.open_uis.len] | uis [uis.len] | processing_uis [SSnano.processing.len]")
+	//testing("nanomanager/ui_closed mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [ui.user.open_uis.len] | uis [uis.len] | processing_uis [processing_uis.len]")
 
 	return 1
 
@@ -197,7 +225,7 @@
   */
 
 //
-/datum/nanomanager/proc/user_logout(mob/user)
+/datum/nanomanager/proc/user_logout(var/mob/user)
 	//testing("nanomanager/user_logout user [user.name]")
 	return close_user_uis(user)
 
@@ -210,7 +238,7 @@
   *
   * @return nothing
   */
-/datum/nanomanager/proc/user_transferred(mob/oldMob, mob/newMob)
+/datum/nanomanager/proc/user_transferred(var/mob/oldMob, var/mob/newMob)
 	//testing("nanomanager/user_transferred from mob [oldMob.name] to mob [newMob.name]")
 	if (!oldMob || isnull(oldMob.open_uis) || !istype(oldMob.open_uis, /list) || open_uis.len == 0)
 		//testing("nanomanager/user_transferred mob [oldMob.name] has no open uis")

@@ -1,6 +1,7 @@
 /obj/machinery/computer3/arcade
 	default_prog	= /datum/file/program/arcade
 	spawn_parts		= list(/obj/item/part/computer/toybox) //NO HDD - the game is loaded on the circuitboard's OS slot
+	icon_state			= "frame-arc"
 
 /obj/item/part/computer/toybox
 	var/list/prizes = list(	/obj/item/weapon/storage/box/toy/snappops		= 2,
@@ -40,7 +41,7 @@
 	desc = "The best arcade game ever produced by Nanotrasen's short-lived entertainment divison."
 	//headcanon: they also ported E.T. for the atari 2600, superman 64, and basically every other movie tie-in game ever
 
-	active_state = "generic"
+	active_state = "arcade"
 
 	var/turtle = 0
 	var/enemy_name = "Space Villian"
