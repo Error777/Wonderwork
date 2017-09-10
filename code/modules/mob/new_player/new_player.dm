@@ -118,9 +118,6 @@
 				if(alert(src,"Are you sure you are ready? This will lock-in your preferences.","Player Setup","Yes","No") == "Yes")
 					ready = 1
 
-		//if(href_list["ready"])
-			//ready = !ready
-
 		if(href_list["refresh"])
 			src << browse(null, "window=playersetup") //closes the player setup window
 			new_player_panel_proc()

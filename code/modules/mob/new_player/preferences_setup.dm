@@ -185,7 +185,7 @@ datum/preferences
 			eyes_s.Blend(facial_s, ICON_OVERLAY)
 
 		var/icon/clothes_s = null
-		if(job_civilian_low & ASSISTANT)//This gives the preview icon clothes depending on which job(if any) is set to 'high'
+		if(job_civilian_5 & ASSISTANT)//This gives the preview icon clothes depending on which job(if any) is set to 'high'
 			clothes_s = new /icon('icons/mob/uniform.dmi', "grey_s")
 			clothes_s.Blend(new /icon('icons/mob/feet.dmi', "black"), ICON_UNDERLAY)
 			if(backbag == 2)
@@ -193,8 +193,8 @@ datum/preferences
 			else if(backbag == 3 || backbag == 4)
 				clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
 
-		else if(job_civilian_high)//I hate how this looks, but there's no reason to go through this switch if it's empty
-			switch(job_civilian_high)
+		else if(job_civilian_1)//I hate how this looks, but there's no reason to go through this switch if it's empty
+			switch(job_civilian_1)
 				if(HOP)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "hop_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "brown"), ICON_UNDERLAY)
@@ -338,8 +338,8 @@ datum/preferences
 						if(4)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
 
-		else if(job_medsci_high)
-			switch(job_medsci_high)
+		else if(job_medsci_1)
+			switch(job_medsci_1)
 				if(RD)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "director_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "brown"), ICON_UNDERLAY)
@@ -435,8 +435,8 @@ datum/preferences
 						if(4)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
 
-		else if(job_engsec_high)
-			switch(job_engsec_high)
+		else if(job_engsec_1)
+			switch(job_engsec_1)
 				if(CAPTAIN)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "captain_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "brown"), ICON_UNDERLAY)
