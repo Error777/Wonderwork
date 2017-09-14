@@ -1269,6 +1269,16 @@ datum/design/autolathe
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = /obj/item/weapon/circuitboard/autolathe
 
+datum/design/experimentor
+	name = "Experimentor Board"
+	desc = "The circuit board for a experimentor."
+	id = "experimentor"
+	req_tech = list("programming" = 2, "engineering" = 2)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = /obj/item/weapon/circuitboard/experimentor
+
+
 datum/design/rdservercontrol
 	name = "R&D Server Control Console Board"
 	desc = "The circuit board for a R&D Server Control Console"

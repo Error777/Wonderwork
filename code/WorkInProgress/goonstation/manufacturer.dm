@@ -3,7 +3,7 @@
 /obj/machinery/manufacturer
 	name = "Manufacturing Unit"
 	desc = "A standard fabricator unit capable of producing certain items from various materials."
-	icon = 'icons/obj/manufacturer.dmi'
+	icon = 'icons/obj/machines/mechanic.dmi'
 	icon_state = "fab"
 	var/icon_base = null
 	density = 1
@@ -83,9 +83,9 @@
 		R.maximum_volume = 1000
 		R.my_atom = src
 
-		src.work_display = image('icons/obj/manufacturer.dmi', "")
-		src.activity_display = image('icons/obj/manufacturer.dmi', "")
-		src.panel_sprite = image('icons/obj/manufacturer.dmi', "")
+		src.work_display = image('icons/obj/machines/mechanic.dmi', "")
+		src.activity_display = image('icons/obj/machines/mechanic.dmi', "")
+		src.panel_sprite = image('icons/obj/machines/mechanic.dmi', "")
 		spawn(0)
 			src.build_icon()
 
@@ -568,7 +568,7 @@
 					if (src.manuf_zap(usr, 100))
 						return
 				var/twire = text2num(href_list["cutwire"])
-				if (!( istype(usr.equipped(), /obj/item/wirecutters) ))
+				if (!( istype(usr.equipped(), /obj/item/weapon/wirecutters) ))
 					boutput(usr, "You need wirecutters!")
 					return
 				else if (src.isWireColorCut(twire))
@@ -736,7 +736,7 @@
 			playsound(src.loc, "sound/items/Wirecutter.ogg", 50, 1)
 			src.dismantle_stage = 3
 			src.stat |= NOPOWER
-			var/obj/item/cable_coil/cut/C = new /obj/item/cable_coil/cut(src.loc)
+			var/obj/item/cable_coil/cut/C = new /obj/item/weapon/cable_coil/cut(src.loc)
 			C.amount = 1
 			src.build_icon()
 

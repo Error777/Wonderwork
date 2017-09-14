@@ -1545,6 +1545,8 @@
 #include "code\WorkInProgress\SkyMarshal\portalathe.dm"
 #include "code\WorkInProgress\SkyMarshal\Ultralight.dm"
 #include "code\WorkInProgress\SkyMarshal\wardrobes.dm"
+#include "code\WorkInProgress\tgstation\experimentor.dm"
+#include "code\WorkInProgress\tgstation\radiation.dm"
 #include "code\WorkInProgress\tgstation\service_bell.dm"
 #include "code\WorkInProgress\tgstation\traps.dm"
 #include "code\WorkInProgress\Unity\defib.dm"

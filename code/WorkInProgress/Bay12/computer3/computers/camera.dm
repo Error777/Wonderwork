@@ -79,7 +79,7 @@
 /datum/file/camnet_key/New()
 	for(var/N in networks)
 		if(N == "SS13")
-			networks = list(NETWORK_STATION)
+			networks = list("SS13")
 			break
 	return ..()
 
@@ -134,7 +134,7 @@
 	name = "Camera Network Key"
 	title = "%!#BUFFER OVERFLOW"
 	desc = "Connects to security cameras."
-	networks = list("ALL")
+	networks = list("SS13")
 	hidden_file = 1
 
 

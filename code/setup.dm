@@ -798,12 +798,12 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 	)
 
 // Camera networks
-#define NETWORK_ENGINEERING "Engineering"
+#define NETWORK_ENGINEERING "Power Alarms","Atmosphere Alarms","Fire Alarms"
 #define NETWORK_ERT "ERT"
 #define NETWORK_STATION "SS13"
 #define NETWORK_MEDICAL "Medical"
 #define NETWORK_NUKE "NUKE"
-#define NETWORK_MINE "Mining"
+#define NETWORK_MINE "MINE"
 #define NETWORK_RESEARCH "Research"
 #define NETWORK_ROBOTS "Robots"
 #define NETWORK_SECURITY "Security"

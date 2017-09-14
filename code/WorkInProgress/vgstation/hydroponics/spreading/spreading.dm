@@ -35,7 +35,7 @@
 /obj/effect/plantsegment/single
 	spread_chance = 0
 
-/obj/effect/plantsegment/Destroy()
+/obj/effect/plantsegment/Del()
 	if(plant_controller)
 		plant_controller.remove_plant(src)
 	for(var/obj/effect/plantsegment/neighbor in range(1,src)) //i ded, tell my neighbors to wake up so they can take up my space
@@ -54,14 +54,14 @@
 		sleep(250) // ugly hack, should mean roundstart plants are fine.
 	if(!plant_controller)
 		error("<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-		qdel(src)
+		del(src)
 		return
 
 	if(!istype(newseed))
 		newseed = plant_controller.seeds[DEFAULT_SEED]
 	seed = newseed
 	if(!seed)
-		qdel(src)
+		del(src)
 		return
 
 	name = "[seed.seed_name] vines"
