@@ -83,6 +83,10 @@
 	src.operating = 0
 	return
 
+/obj/machinery/door/poddoor/four_tile_ver/podlock
+	autoclose = 1
+	icon = 'icons/obj/doors/1x4blast_pod_vert.dmi'
+
 /*
 /obj/machinery/door/poddoor/two_tile_hor/open()
 	if (src.operating == 1) //doors can still open when emag-disabled

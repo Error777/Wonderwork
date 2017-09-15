@@ -36,6 +36,9 @@ var/global/list/underwear_m = list("White", "Grey", "Green", "Blue", "Black", "M
 var/global/list/underwear_f = list("Red", "White", "Yellow", "Blue", "Black", "Thong", "Babydoll", "Baby-Blue", "Green", "Pink", "Kinky", "None")
 	//Backpacks
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt")
+	//Airalarms
+var/global/list/priority_air_alarms = list()
+var/global/list/minor_air_alarms = list()
 
 //////////////////////////
 /////Initial Building/////

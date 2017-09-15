@@ -8,10 +8,29 @@
 //	temperature = T0C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 700000
+	plane = PLANE_SPACE_BACKGROUND
+
+	var/static/list/dust_cache
+
+/turf/space/proc/build_dust_cache()
+	if (!dust_cache) dust_cache = list()
+	for (var/i in 0 to 25)
+		var/image/im = image('icons/turf/space_parallax1.dmi',"[i]")
+		im.plane = PLANE_SPACE_DUST
+		im.alpha = 80
+		im.blend_mode = BLEND_ADD
+		dust_cache["[i]"] = im
 
 /turf/space/New()
 	if(!istype(src, /turf/space/transit))
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+
+	if (!dust_cache)
+		build_dust_cache()
+
+	overlays += dust_cache[icon_state]
+	//add_overlay(dust_cache[icon_state])
+	//update_starlight()
 
 /turf/space/attack_paw(mob/user as mob)
 	return src.attack_hand(user)

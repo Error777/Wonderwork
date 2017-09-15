@@ -225,7 +225,7 @@
 			programs.Add(new /datum/program/hackingtools)
 			programs.Add(new /datum/program/crewmanifest)
 			programs.Add(new /datum/program/setstatus)
-
+/*
 	perseus
 		name = "PercTech Cartridge"
 		icon_state = "cart-perc"
@@ -235,3 +235,4 @@
 			programs.Add(new /datum/program/percimplants)
 			programs.Add(new /datum/program/percmissions)
 			programs.Add(new /datum/program/percshuttlelock)
+*/

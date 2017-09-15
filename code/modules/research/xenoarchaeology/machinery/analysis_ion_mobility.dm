@@ -4,8 +4,8 @@
 obj/machinery/anomaly/ion_mobility
 	name = "Ion Mobility Spectrometer"
 	desc = "A specialised, complex analysis machine."
-	icon = 'icons/obj/virology.dmi'
-	icon_state = "analyser"
+	icon = 'icons/obj/machines/research.dmi'
+	icon_state = "ion_analyser"
 
 obj/machinery/anomaly/ion_mobility/ScanResults()
 	var/results = "The scan was inconclusive. Check sample integrity and carrier consistency."

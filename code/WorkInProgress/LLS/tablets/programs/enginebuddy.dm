@@ -12,7 +12,7 @@
 		for(var/obj/machinery/the_singularitygen/gen in orange(15, tablet.loc))
 			if(gen.anchored)
 				dat += "Anchored Singularity Generator found!<br>"
-				for(var/obj/machinery/field/generator/F in orange(7, gen))
+				for(var/obj/machinery/field_generator/F in orange(7, gen))
 					if(!F.connected_gens.len)
 						dat += "<font color='red'>Singularity Generator is NOT contained</font><br>"
 						break
@@ -20,7 +20,7 @@
 						dat += "<font color='green'>Singularity Generator is contained</font><br>"
 						break
 		for(var/obj/machinery/singularity/loose in orange(15, tablet.loc))
-			for(var/obj/machinery/field/generator/F in orange(7, loose))
+			for(var/obj/machinery/field_generator/F in orange(7, loose))
 				if(!F.connected_gens)
 					dat += "<font color='red'>SINGULARITY IS LOOSE</font><br>"
 					break
@@ -31,16 +31,16 @@
 		dat += "<h4>SMES units</h4>"
 		for(var/obj/machinery/power/smes/SMES in orange(14, tablet.loc))
 			dat += "SMES -"
-			if(!SMES.inputting)
+			if(!SMES.charging)
 				dat += " <font color='red'>Not Charging</font> - <br>"
-			if(SMES.inputting)
+			if(SMES.charging)
 				dat += " <font color='green'>Charging</font> - <br>"
-			dat += "[SMES.input_level >= 99999?"<font color='green'>In: [SMES.input_level]</font> - ":"<font color='red'>In: [SMES.input_level]</font> - "]"
-			dat += "[SMES.output_level >= 99999?"<font color='green'>Out: [SMES.output_level]</font> - ":"<font color='red'>Out: [SMES.output_level]</font> - "]"
-			if(!SMES.input_attempt)
-				dat += "<font color='red'>Turn Input On!</font><br>"
-			else
-				dat += "<br>"
+			dat += "[SMES.charge >= 99999?"<font color='green'>In: [SMES.charge]</font> - ":"<font color='red'>In: [SMES.charge]</font> - "]"
+			dat += "[SMES.output >= 99999?"<font color='green'>Out: [SMES.output]</font> - ":"<font color='red'>Out: [SMES.output]</font> - "]"
+			//if(!SMES.input_attempt)
+				//dat += "<font color='red'>Turn Input On!</font><br>"
+			//else
+				//dat += "<br>"
 
 		dat += "<h4>Particle Accelerator</h4>"
 		for(var/obj/machinery/particle_accelerator/PA in orange(7, tablet.loc))

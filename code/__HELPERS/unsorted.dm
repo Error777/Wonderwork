@@ -172,6 +172,11 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	if(DirBlocked(B,rdir)) return 1
 	return 0
 
+/proc/topic_link(var/datum/D, var/arglist, var/content)
+	if(istype(arglist,/list))
+		arglist = list2params(arglist)
+	return "<a href='?src=\ref[D];[arglist]'>[content]</a>"
+
 
 /proc/DirBlocked(turf/loc,var/dir)
 	for(var/obj/structure/window/D in loc)
@@ -570,7 +575,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 // Optionally, specify the "ref" parameter as the controlled atom (usually src)
 // to pass a "close=1" parameter to the atom's Topic() proc for special handling.
 // Otherwise, the user mob's machine var will be reset directly.
-//
+/*
 /proc/onclose(mob/user, windowid, var/atom/ref=null)
 	if(!user.client) return
 	var/param = "null"
@@ -580,13 +585,13 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	winset(user, windowid, "on-close=\".windowclose [param]\"")
 
 	//world << "OnClose [user]: [windowid] : ["on-close=\".windowclose [param]\""]"
-
+*/
 
 // the on-close client verb
 // called when a browser popup window is closed after registering with proc/onclose()
 // if a valid atom reference is supplied, call the atom's Topic() with "close=1"
 // otherwise, just reset the client mob's machine var.
-//
+/*
 /client/verb/windowclose(var/atomref as text)
 	set hidden = 1						// hide this verb from the user's panel
 	set name = ".windowclose"			// no autocomplete on cmd line
@@ -607,7 +612,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		//world << "[src] was [src.mob.machine], setting to null"
 		src.mob.unset_machine()
 	return
-
+*/
 //Will return the location of the turf an atom is ultimatly sitting on
 /proc/get_turf_loc(var/atom/movable/M) //gets the location of the turf that the atom is on, or what the atom is in is on, etc
 	//in case they're in a closet or sleeper or something

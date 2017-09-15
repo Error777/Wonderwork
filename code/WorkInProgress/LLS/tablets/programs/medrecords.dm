@@ -57,10 +57,16 @@
 		if (!..()) return
 		switch(href_list["choice"])
 			if("Medical Records")
-				active1 = find_record("id", href_list["target"], data_core.general)
-				if(active1)
-					active2 = find_record("id", href_list["target"], data_core.medical)
+				var/datum/data/record/R = locate(href_list["target"])
+				var/datum/data/record/M = locate(href_list["target"])
 				mode = 2
+				if (R in data_core.general)
+					for (var/datum/data/record/E in data_core.medical)
+						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
+							M = E
+							break
+					active1 = R
+					active2 = M
 				if(!active2)
 					active1 = null
 			if("CloseRecord")

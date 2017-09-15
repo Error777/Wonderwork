@@ -22,6 +22,8 @@
 	var/chargelevel = 50000
 	var/online = 1
 	var/n_tag = null
+	var/RCon = 1				// Cut to disable AI and remote control.
+	var/RCon_tag = "NO_TAG"		// RCON tag, change to show it on SMES Remote control console.
 	var/obj/machinery/power/terminal/terminal = null
 
 

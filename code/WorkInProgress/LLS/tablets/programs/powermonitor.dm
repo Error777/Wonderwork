@@ -1,7 +1,7 @@
 /datum/program/powermonitor
 	name = "Power Monitor"
 	app_id = "powermonitor"
-	var/obj/machinery/computer/monitor/powmonitor = null // Power Monitor
+	var/obj/machinery/power/monitor/powmonitor = null // Power Monitor
 	var/list/powermonitors = list()
 	var/mode = 1
 
@@ -14,7 +14,7 @@
 
 
 
-			for(var/obj/machinery/computer/monitor/pMon in world)
+			for(var/obj/machinery/power/monitor/pMon in world)
 				if(!(pMon.stat & (NOPOWER|BROKEN)) )
 					powercount++
 					powermonitors += pMon
@@ -26,7 +26,7 @@
 
 
 				var/count = 0
-				for(var/obj/machinery/computer/monitor/pMon in powermonitors)
+				for(var/obj/machinery/power/monitor/pMon in powermonitors)
 					if(!pMon.z == 1) continue
 					count++
 					dat += "<a href='byond://?src=\ref[src];choice=Power Select;target=[count]'> [pMon] </a><BR>"

@@ -180,9 +180,8 @@
 
 		dat += "</TT>"
 
-	user << browse(dat,"window=comp2")
+	user << browse(text("<HEAD><TITLE>Medical Records</TITLE></HEAD><TT>[]</TT>", dat), "window=comp2")
 	onclose(user,"comp2")
-	src.updateUsrDialog()
 	return
 
 /obj/machinery/terminal/Topic(href, href_list)
@@ -249,8 +248,8 @@
 				I.loc = src
 				src.diskette = I
 */
-	add_fingerprint(usr)
-	updateUsrDialog()
+	src.add_fingerprint(usr)
+	src.updateUsrDialog()
 	return
 
 /obj/machinery/terminal/process()

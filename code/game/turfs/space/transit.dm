@@ -1,5 +1,6 @@
 /turf/space/transit
 	var/pushdirection // push things that get caught in the transit tile this direction
+	plane = 0
 
 /turf/space/transit/New()
 	var/dira=""

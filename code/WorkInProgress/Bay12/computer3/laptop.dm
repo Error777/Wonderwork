@@ -177,7 +177,7 @@
 		else
 			stat &= ~NOPOWER
 
-	Destroy()
+	Del()
 		if(istype(loc,/obj/item/device/laptop))
 			var/obj/O = loc
 			spawn(5)

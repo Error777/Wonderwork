@@ -24,6 +24,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 	var/laptop = 0
 
 	var/obj/item/weapon/card/id/id = null //Making it possible to slot an ID card into the tablet so it can function as both.
+	var/obj/item/radio/integrated/radio = null
 	var/obj/item/radio/integrated/signal/s_radio = null
 	var/obj/item/radio/integrated/mule/m_radio = null
 	var/obj/item/radio/integrated/beepsky/b_radio = null
@@ -49,11 +50,11 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 	new /obj/item/weapon/pen(src)
 	tablets_list.Add(src)
 	s_radio = new /obj/item/radio/integrated/signal(src)
-	s_radio.tablet = src
+	//s_radio.tablet = src
 	m_radio = new /obj/item/radio/integrated/mule(src)
-	m_radio.tablet = src
+	//m_radio.tablet = src
 	b_radio = new /obj/item/radio/integrated/beepsky(src)
-	b_radio.tablet = src
+	//b_radio.tablet = src
 	core = new /obj/item/device/tablet_core/(src)
 	core.programs.Add(new /datum/program/atmosscan)
 	core.programs.Add(new /datum/program/assignments)
@@ -116,7 +117,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 							<center>
 							Owner: [core.owner], [core.ownjob]<br>
 							ID: <A href='?src=\ref[src];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]</A><A href='?src=\ref[src];choice=UpdateInfo'>[id ? "Update Tablet Info" : ""]</A><br>
-							[time2text(world.realtime, "MMM DD")] [year_integer+540]<br>[worldtime2text()]<br>
+							[time2text(world.realtime, "MMM DD")] [game_year]<br>[worldtime2text()]<br>
 							"}
 					for(var/datum/program/P in apps_builtin)
 						dat += "<a href='byond://?src=\ref[src];choice=load;target=\ref[P]'>[P.name][P.notifications ? " \[[P.notifications]\]" : ""]</a>"
@@ -361,10 +362,10 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 				expand.usedup = 1
 		if(istype(C, /obj/item/weapon/spacecash))
 			var/obj/item/weapon/spacecash/S = C
-			core.cash += S.credits
+			core.cash += S.worth
 			del(C)
 			updateSelfDialog()//For the non-input related code.
-			if(S.credits)
+			if(S.worth)
 				user << "<span class='notice'>You convert the Space Cash into digital currency in your E-Wallet</span>"
 			else
 				user << "<span class='notice'>ERROR: Counterfeit Space Cash detected. Currency declined</span>"
@@ -403,9 +404,30 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 		switch(scanmode)
 
 			if("Health")
-				user.visible_message(text("<span class='alert'>[] has analyzed []'s vitals!</span>", user, C))
-				healthscan(user, C, 1)
-				src.add_fingerprint(user)
+
+				for (var/mob/O in viewers(C, null))
+					O.show_message("\red [user] has analyzed [C]'s vitals!", 1)
+
+				user.show_message("\blue Analyzing Results for [C]:")
+				user.show_message("\blue \t Overall Status: [C.stat > 1 ? "dead" : "[C.health - C.halloss]% healthy"]", 1)
+				user.show_message("\blue \t Damage Specifics: [C.getOxyLoss() > 50 ? "\red" : "\blue"][C.getOxyLoss()]-[C.getToxLoss() > 50 ? "\red" : "\blue"][C.getToxLoss()]-[C.getFireLoss() > 50 ? "\red" : "\blue"][C.getFireLoss()]-[C.getBruteLoss() > 50 ? "\red" : "\blue"][C.getBruteLoss()]", 1)
+				user.show_message("\blue \t Key: Suffocation/Toxin/Burns/Brute", 1)
+				user.show_message("\blue \t Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)", 1)
+				if(C.tod && (C.stat == DEAD || (C.status_flags & FAKEDEATH)))
+					user.show_message("\blue \t Time of Death: [C.tod]")
+				if(istype(C, /mob/living/carbon/human))
+					var/mob/living/carbon/human/H = C
+					var/list/damaged = H.get_damaged_organs(1,1)
+					user.show_message("\blue Localized Damage, Brute/Burn:",1)
+					if(length(damaged)>0)
+						for(var/datum/organ/external/org in damaged)
+							user.show_message(text("\blue \t []: []\blue-[]",capitalize(org.display_name),(org.brute_dam > 0)?"\red [org.brute_dam]":0,(org.burn_dam > 0)?"\red [org.burn_dam]":0),1)
+					else
+						user.show_message("\blue \t Limbs are OK.",1)
+
+				for(var/datum/disease/D in C.viruses)
+					if(!D.hidden[SCANNER])
+						user.show_message(text("\red <b>Warning: [D.form] Detected</b>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]"))
 
 			if("Radiation")
 				for (var/mob/O in viewers(C, null))
@@ -434,21 +456,62 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 				user << "\blue No significant chemical agents found in [A]."
 
 		if("Gas")
-			if (istype(A, /obj/item/weapon/tank))
-				var/obj/item/weapon/tank/T = A
-				atmosanalyzer_scan(T.air_contents, user, T)
-			else if (istype(A, /obj/machinery/portable_atmospherics))
-				var/obj/machinery/portable_atmospherics/T = A
-				atmosanalyzer_scan(T.air_contents, user, T)
-			else if (istype(A, /obj/machinery/atmospherics/pipe))
-				var/obj/machinery/atmospherics/pipe/T = A
-				atmosanalyzer_scan(T.parent.air, user, T)
-			else if (istype(A, /obj/machinery/power/rad_collector))
-				var/obj/machinery/power/rad_collector/T = A
-				if(T.P) atmosanalyzer_scan(T.P.air_contents, user, T)
-			else if (istype(A, /obj/item/weapon/flamethrower))
-				var/obj/item/weapon/flamethrower/T = A
-				if(T.ptank) atmosanalyzer_scan(T.ptank.air_contents, user, T)
+			if((istype(A, /obj/item/weapon/tank)) || (istype(A, /obj/machinery/portable_atmospherics)))
+				var/obj/icon = A
+				for (var/mob/O in viewers(user, null))
+					O << "\red [user] has used [src] on \icon[icon] [A]"
+				var/pressure = A:air_contents.return_pressure()
+
+				var/total_moles = A:air_contents.total_moles()
+
+				user << "\blue Results of analysis of \icon[icon]"
+				if (total_moles>0)
+					var/o2_concentration = A:air_contents.oxygen/total_moles
+					var/n2_concentration = A:air_contents.nitrogen/total_moles
+					var/co2_concentration = A:air_contents.carbon_dioxide/total_moles
+					var/plasma_concentration = A:air_contents.toxins/total_moles
+
+					var/unknown_concentration =  1-(o2_concentration+n2_concentration+co2_concentration+plasma_concentration)
+
+					user << "\blue Pressure: [round(pressure,0.1)] kPa"
+					user << "\blue Nitrogen: [round(n2_concentration*100)]%"
+					user << "\blue Oxygen: [round(o2_concentration*100)]%"
+					user << "\blue CO2: [round(co2_concentration*100)]%"
+					user << "\blue Plasma: [round(plasma_concentration*100)]%"
+					if(unknown_concentration>0.01)
+						user << "\red Unknown: [round(unknown_concentration*100)]%"
+					user << "\blue Temperature: [round(A:air_contents.temperature-T0C)]&deg;C"
+				else
+					user << "\blue Tank is empty!"
+
+			if (istype(A, /obj/machinery/atmospherics/pipe/tank))
+				var/obj/icon = A
+				for (var/mob/O in viewers(user, null))
+					O << "\red [user] has used [src] on \icon[icon] [A]"
+
+				var/obj/machinery/atmospherics/pipe/tank/T = A
+				var/pressure = T.parent.air.return_pressure()
+				var/total_moles = T.parent.air.total_moles()
+
+				user << "\blue Results of analysis of \icon[icon]"
+				if (total_moles>0)
+					var/o2_concentration = T.parent.air.oxygen/total_moles
+					var/n2_concentration = T.parent.air.nitrogen/total_moles
+					var/co2_concentration = T.parent.air.carbon_dioxide/total_moles
+					var/plasma_concentration = T.parent.air.toxins/total_moles
+
+					var/unknown_concentration =  1-(o2_concentration+n2_concentration+co2_concentration+plasma_concentration)
+
+					user << "\blue Pressure: [round(pressure,0.1)] kPa"
+					user << "\blue Nitrogen: [round(n2_concentration*100)]%"
+					user << "\blue Oxygen: [round(o2_concentration*100)]%"
+					user << "\blue CO2: [round(co2_concentration*100)]%"
+					user << "\blue Plasma: [round(plasma_concentration*100)]%"
+					if(unknown_concentration>0.01)
+						user << "\red Unknown: [round(unknown_concentration*100)]%"
+					user << "\blue Temperature: [round(T.parent.air.temperature-T0C)]&deg;C"
+				else
+					user << "\blue Tank is empty!"
 	if(istype(A, /obj/item/weapon/paper))
 		var/obj/item/weapon/paper/P = A
 		var/exists = 0
@@ -614,7 +677,7 @@ obj/item/device/tablet/verb/verb_remove_pen()
 		..()
 		core.programs.Add(new /datum/program/notekeeper)
 		core.programs.Add(new /datum/program/signaller)
-/*
+
 /obj/item/device/tablet/medical
 	icon_state = "tablet-medical"
 	New()
@@ -691,17 +754,27 @@ obj/item/device/tablet/verb/verb_remove_pen()
 		core.programs.Add(new /datum/program/honk)
 		core.programs.Add(new /datum/program/spacebattle)
 		core.programs.Add(new /datum/program/theoriontrail)
+
 	Crossed(AM as mob|obj) //Clown Tablet is slippery.
 		if (istype(AM, /mob/living/carbon))
-			var/mob/living/carbon/M = AM
-			M.slip(8, 5, src, NO_SLIP_WHEN_WALKING)
+			var/mob/M =	AM
+			if ((istype(M, /mob/living/carbon/human) && (istype(M:shoes, /obj/item/clothing/shoes) && M:shoes.flags&NOSLIP)) || M.m_intent == "walk")
+				return
+
+			M.stop_pulling()
+			M << "\blue You slipped on the tablet!"
+			playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
+			M.Stun(8)
+			M.Weaken(5)
+			spawn(2)
+				step(M, M.dir)
 
 
 /obj/item/device/tablet/engineer
 	icon_state = "tablet-engineer"
 	New()
 		..()
-		core.programs.Add(new /datum/program/enginebuddy)
+		//core.programs.Add(new /datum/program/enginebuddy)
 		core.programs.Add(new /datum/program/notekeeper)
 		core.programs.Add(new /datum/program/powermonitor)
 
@@ -932,14 +1005,13 @@ obj/item/device/tablet/verb/verb_remove_pen()
 		core.programs.Add(new /datum/program/signaller)
 		core.programs.Add(new /datum/program/poddoor)
 		update_label()
-
+/*
 /obj/item/device/tablet/perseus
 	icon_state = "tablet-perc"
 	messengeron = 0
 	New()
 		..()
 		core.neton = 0
-		implantlocked = /obj/item/weapon/implant/enforcer
 		core.programs.Add(new /datum/program/percblastdoors)
 		core.programs.Add(new /datum/program/percimplants)
 		core.programs.Add(new /datum/program/percmissions)

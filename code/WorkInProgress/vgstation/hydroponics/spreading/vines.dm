@@ -25,7 +25,7 @@
 /obj/effect/plantsegment/New()
 	..()
 
-/obj/effect/plantsegment/Destroy()
+/obj/effect/plantsegment/Del()
 	if(reagents)
 		reagents.my_atom = null
 		reagents = null
@@ -37,26 +37,26 @@
 /obj/effect/plantsegment/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (!W || !user || !W.type) return
 	switch(W.type) //This is absolutely terrible AND copypasted from biomass (or other way around)
-		if(/obj/item/weapon/circular_saw) qdel(src)
-		if(/obj/item/weapon/kitchen/utensil/knife) qdel(src)
-		if(/obj/item/weapon/fireaxe) qdel(src)
-		if(/obj/item/weapon/hatchet) qdel(src)
-		if(/obj/item/weapon/melee/energy) qdel(src)
-		if(/obj/item/weapon/pickaxe/plasmacutter) qdel(src)
+		if(/obj/item/weapon/circular_saw) del(src)
+		if(/obj/item/weapon/kitchen/utensil/knife) del(src)
+		if(/obj/item/weapon/fireaxe) del(src)
+		if(/obj/item/weapon/hatchet) del(src)
+		if(/obj/item/weapon/melee/energy) del(src)
+		if(/obj/item/weapon/pickaxe/plasmacutter) del(src)
 
 		// Less effective weapons
 		if(/obj/item/weapon/wirecutters)
-			if(prob(25)) qdel(src)
+			if(prob(25)) del(src)
 		if(/obj/item/weapon/shard)
-			if(prob(25)) qdel(src)
+			if(prob(25)) del(src)
 
 		// Weapons with subtypes
 		else
-			if(istype(W, /obj/item/weapon/melee/energy/sword)) qdel(src)
-			else if(istype(W, /obj/item/weapon/scalpel)) qdel(src)
+			if(istype(W, /obj/item/weapon/melee/energy/sword)) del(src)
+			else if(istype(W, /obj/item/weapon/scalpel)) del(src)
 			else if(istype(W, /obj/item/weapon/weldingtool))
 				var/obj/item/weapon/weldingtool/WT = W
-				if(WT.remove_fuel(0, user)) qdel(src)
+				if(WT.remove_fuel(0, user)) del(src)
 			else
 				manual_unbuckle(user)
 				return
@@ -254,12 +254,12 @@
 
 // Hotspots kill vines.
 /obj/effect/plantsegment/fire_act(null, temp, volume)
-	qdel(src)
+	del(src)
 
 /obj/effect/plantsegment/proc/die()
 	if(seed && harvest)
 		if(rand(5))seed.harvest(src,1)
-		qdel(src)
+		del(src)
 
 /obj/effect/plantsegment/proc/life()
 	if(timestopped) return 0 //under effects of time magick
@@ -322,7 +322,7 @@
 /obj/effect/plant_controller/New()
 	..()
 	if(!istype(src.loc,/turf/simulated/floor))
-		qdel(src)
+		del(src)
 
 	spawn(0)
 		spawn_piece(src.loc)
@@ -330,7 +330,7 @@
 
 	processing_objects.Add(src)
 
-/obj/effect/plant_controller/Destroy()
+/obj/effect/plant_controller/Del()
 	processing_objects.Remove(src)
 	..()
 
@@ -349,12 +349,12 @@
 
 	// Space vines exterminated. Remove the controller
 	if(!vines.len)
-		qdel(src)
+		del(src)
 		return
 
 	// Sanity check.
 	if(!growth_queue)
-		qdel(src)
+		del(src)
 		return
 
 	// Check if we're too big for our own good.

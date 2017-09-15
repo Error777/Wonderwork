@@ -32,6 +32,8 @@ var/list/ai_list = list()
 	var/obj/item/device/pda/ai/aiPDA = null
 	var/obj/item/device/multitool/aiMulti = null
 	var/custom_sprite = 0 //For our custom sprites
+	var/apc_override = 0 //hack for letting the AI use its APC even when visionless
+
 //Hud stuff
 
 	//MALFUNCTION
@@ -679,7 +681,8 @@ var/list/ai_list = list()
 	else
 		src.lightNearbyCamera()
 
-
+/mob/living/silicon/ai/proc/is_in_chassis()
+	return istype(loc, /turf)
 
 // Handled camera lighting, when toggled.
 // It will get the nearest camera from the eyeobj, lighting it.
@@ -704,7 +707,6 @@ var/list/ai_list = list()
 				src.current = camera
 				src.current.SetLuminosity(AI_CAMERA_LUMINOSITY)
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
-
 
 /mob/living/silicon/ai/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))

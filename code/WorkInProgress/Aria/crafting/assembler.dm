@@ -326,7 +326,7 @@ var/list/assembler_recipes = list()
 	var/dat as text
 	dat += "Assembler Wires:<BR>"
 	for(var/wire in src.wires)
-		dat += text("[wire] Wire: <A href='?src=\ref[src];wire=[wire];act=wire'>[src.wires[wire] ? "Mend" : "Cut"]</A> <A href='?src=\ref[src];wire=[wire];act=pulse'>Pulse</A><BR>")
+		dat += text("[wire] Wire: <a href='byond://?src=\ref[src];wire=[wire];act=wire'>[src.wires[wire] ? "Mend" : "Cut"]</a> <A href='byond://?src=\ref[src];wire=[wire];act=pulse'>Pulse</a><BR>")
 
 	dat += text("The red light is [src.disabled ? "off" : "on"].<BR>")
 	dat += text("The green light is [src.shocked ? "off" : "on"].<BR>")
@@ -337,25 +337,25 @@ var/list/assembler_recipes = list()
 /obj/machinery/assembler/proc/regular_win(mob/user as mob)
 	var/dat as text
 	dat = text("<HR>")
-	dat += "<A href='?src=\ref[src];menu=0.0'>Main Menu</A> || "
-	dat += "<A href='?src=\ref[src];menu=1.0'>Component Storage</A> || "
-	dat += "<A href='?src=\ref[src];menu=2.0'>Material Storage</A> || "
-	dat += "<A href='?src=\ref[src];menu=3.0'>Blueprint Storage</A> || "
-	dat += "<A href='?src=\ref[src];menu=4.0'>Crafting Queue: [craftingqueue.len] processes</A><HR>"
+	dat += "<a href='byond://?src=\ref[src];menu=0.0'>Main Menu</a> || "
+	dat += "<a href='byond://?src=\ref[src];menu=1.0'>Component Storage</a> || "
+	dat += "<a href='byond://?src=\ref[src];menu=2.0'>Material Storage</a> || "
+	dat += "<a href='byond://?src=\ref[src];menu=3.0'>Blueprint Storage</a> || "
+	dat += "<a href='byond://?src=\ref[src];menu=4.0'>Crafting Queue: [craftingqueue.len] processes</a><HR>"
 	dat += "ETA: [getcompletiontime()]<HR>"
 
 	switch(screen)
 		if(0.0)
-			dat += "EJECTION: <A href='?src=\ref[src];mode=1'>[capitalize(eject == 0 ? "no eject" : (eject == 1 ? "manual" : "auto"))]</A> "
-			dat += "INLET: <A href='?src=\ref[src];inlet=1'>[capitalize(dir2text(indir))]</A> "
-			dat += "OUTLET: <A href='?src=\ref[src];outlet=1'>[capitalize(dir2text(outdir))]</A>"
-			dat += " (<A href='?src=\ref[src];swapdir=1'>SWAP</A>)</TT><HR>"
+			dat += "EJECTION: <a href='byond://?src=\ref[src];mode=1'>[capitalize(eject == 0 ? "no eject" : (eject == 1 ? "manual" : "auto"))]</a> "
+			dat += "INLET: <a href='byond://?src=\ref[src];inlet=1'>[capitalize(dir2text(indir))]</a> "
+			dat += "OUTLET: <a href='byond://?src=\ref[src];outlet=1'>[capitalize(dir2text(outdir))]</a>"
+			dat += " (<a href='byond://?src=\ref[src];swapdir=1'>SWAP</a>)</TT><HR>"
 			dat += "<BR>"
 			//var/testi = 0
 			for(var/datum/assemblerprint/recipe in possiblerecipes)
 				var/imagename = recipe.getrecipeicon(user)
 				dat += "<IMG SRC='[imagename]'/> "
-				dat += "<A href='?src=\ref[src];make=\ref[recipe]'>[recipe.name]</A><BR>"
+				dat += "<A href='byond://?src=\ref[src];make=\ref[recipe]'>[recipe.name]</a><BR>"
 				//if(testi++ > 10) break
 		if(0.1)
 			if(selectedrecipe)
@@ -363,47 +363,47 @@ var/list/assembler_recipes = list()
 				dat += "<IMG SRC='[imagename]'/> "
 				dat += "[selectedrecipe.name]<BR><BR>"
 				dat += "[selectedrecipe.desc]<BR><BR>"
-				dat += "<A href='?src=\ref[src];build=1'>BUILD</A> "
-				dat += "<A href='?src=\ref[src];build=5'>x5</A> "
-				dat += "<A href='?src=\ref[src];build=10'>x10</A> "
-				dat += "<A href='?src=\ref[src];build=20'>x20</A> "
-				dat += "<A href='?src=\ref[src];build=30'>x30</A> "
-				dat += "<A href='?src=\ref[src];build=50'>x50</A> <BR>"
-				dat += "<A href='?src=\ref[src];enqueue=1'>ENQUEUE</A> "
-				dat += "<A href='?src=\ref[src];enqueue=5'>x5</A> "
-				dat += "<A href='?src=\ref[src];enqueue=10'>x10</A> "
-				dat += "<A href='?src=\ref[src];enqueue=20'>x20</A> "
-				dat += "<A href='?src=\ref[src];enqueue=30'>x30</A> "
-				dat += "<A href='?src=\ref[src];enqueue=50'>x50</A> <BR>"
+				dat += "<a href='byond://?src=\ref[src];build=1'>BUILD</a> "
+				dat += "<a href='byond://?src=\ref[src];build=5'>x5</a> "
+				dat += "<a href='byond://?src=\ref[src];build=10'>x10</a> "
+				dat += "<a href='byond://?src=\ref[src];build=20'>x20</a> "
+				dat += "<a href='byond://?src=\ref[src];build=30'>x30</a> "
+				dat += "<a href='byond://?src=\ref[src];build=50'>x50</a> <BR>"
+				dat += "<a href='byond://?src=\ref[src];enqueue=1'>ENQUEUE</a> "
+				dat += "<a href='byond://?src=\ref[src];enqueue=5'>x5</a> "
+				dat += "<a href='byond://?src=\ref[src];enqueue=10'>x10</a> "
+				dat += "<a href='byond://?src=\ref[src];enqueue=20'>x20</a> "
+				dat += "<a href='byond://?src=\ref[src];enqueue=30'>x30</a> "
+				dat += "<a href='byond://?src=\ref[src];enqueue=50'>x50</a> <BR>"
 		if(0.2)
 			if(error)
 				dat += "[error]<BR><BR>"
-				dat += "<A href='?src=\ref[src];menu=0.0'>Main Menu</A>"
+				dat += "<a href='byond://?src=\ref[src];menu=0.0'>Main Menu</a>"
 		if(1.0)
 			dat += "Component Storage<BR><HR>"
 			for(var/obj/O in contents)
 				if(O == recipedisk)
 					continue
 				dat += "[O.name] "
-				dat += "<A href='?src=\ref[src];eject=\ref[O]'>(Eject)</A><BR>"
+				dat += "<a href='byond://?src=\ref[src];eject=\ref[O]'>(Eject)</a><BR>"
 		if(2.0)
 			dat += "Material Storage<BR><HR>"
 			for(var/datum/reagent/R in reagents.reagent_list)
 				dat += "Name: [R.name] | Units: [R.volume] "
-				dat += "<A href='?src=\ref[src];disposeP=[R.id]'>(Purge)</A><BR>"
-			dat += "<A href='?src=\ref[src];disposeallP=1'><U>Disposal All Materials in Storage</U></A><BR>"
+				dat += "<a href='byond://?src=\ref[src];disposeP=[R.id]'>(Purge)</a><BR>"
+			dat += "<a href='byond://?src=\ref[src];disposeallP=1'><U>Disposal All Materials in Storage</U></a><BR>"
 		if(3.0)
 			dat += "Blueprint Storage<BR><HR>"
-			dat += "<A href='?src=\ref[src];menu=3.1'>Internal Storage</A><BR>"
+			dat += "<a href='byond://?src=\ref[src];menu=3.1'>Internal Storage</a><BR>"
 			if(recipedisk)
-				dat += "<A href='?src=\ref[src];menu=3.2'>External Storage</A> "
-				dat += "<A href='?src=\ref[src];eject=\ref[recipedisk]'>(Eject)</A><BR>"
+				dat += "<a href='byond://?src=\ref[src];menu=3.2'>External Storage</a> "
+				dat += "<a href='byond://?src=\ref[src];eject=\ref[recipedisk]'>(Eject)</a><BR>"
 			else
 				dat += "NO BLUEPRINT DISK INSERTED<BR>"
 		if(3.1)
 			dat += "Internal Blueprint Storage<BR><HR>"
 			if(recipedisk)
-				dat += "<A href='?src=\ref[src];saveall=1'>Save All</A><BR>"
+				dat += "<a href='byond://?src=\ref[src];saveall=1'>Save All</a><BR>"
 			else
 				dat += "Save All<BR>"
 			for(var/datum/assemblerprint/R in possiblerecipes)
@@ -411,24 +411,24 @@ var/list/assembler_recipes = list()
 				dat += "<IMG SRC='[imagename]'/> "
 				dat += "[R.name] "
 				if(recipedisk)
-					dat += "<A href='?src=\ref[src];save=\ref[R]'>Save</A>||"
+					dat += "<a href='byond://?src=\ref[src];save=\ref[R]'>Save</a>||"
 				else
 					dat += "Save||"
-				dat += "<A href='?src=\ref[src];deleteP=\ref[R]'>Delete</A><BR>"
+				dat += "<a href='byond://?src=\ref[src];deleteP=\ref[R]'>Delete</a><BR>"
 		if(3.2)
 			dat += "External Blueprint Storage<BR><HR>"
-			dat += "<A href='?src=\ref[src];clear=1'>Clear Disk</A>||"
-			dat += "<A href='?src=\ref[src];loadall=1'>Load All</A><BR>"
+			dat += "<a href='byond://?src=\ref[src];clear=1'>Clear Disk</a>||"
+			dat += "<a href='byond://?src=\ref[src];loadall=1'>Load All</a><BR>"
 			for(var/datum/assemblerprint/R in recipedisk.recipes)
 				var/imagename = R.getrecipeicon(user)
 				dat += "<IMG SRC='[imagename]'/> "
 				dat += "[R.name] "
-				dat += "<A href='?src=\ref[src];load=\ref[R]'>Load</A>||"
-				dat += "<A href='?src=\ref[src];delete=\ref[R]'>Delete</A><BR>"
+				dat += "<a href='byond://?src=\ref[src];load=\ref[R]'>Load</a>||"
+				dat += "<a href='byond://?src=\ref[src];delete=\ref[R]'>Delete</a><BR>"
 		if(4.0)
 			dat += "Crafting Queue<BR><HR>"
-			dat += "Automatic Queue Processing: <A href='?src=\ref[src];autoqueue=1'>[autoqueue ? "ON" : "OFF"]</A>||"
-			dat += "<A href='?src=\ref[src];clearqueue=1'>Clear Queue</A><BR>"
+			dat += "Automatic Queue Processing: <a href='byond://?src=\ref[src];autoqueue=1'>[autoqueue ? "ON" : "OFF"]</a>||"
+			dat += "<a href='byond://?src=\ref[src];clearqueue=1'>Clear Queue</a><BR>"
 
 			if(craftingqueue.len)
 				for(var/datum/assemblerprint/R in craftingqueue)
@@ -454,6 +454,7 @@ var/list/assembler_recipes = list()
 		user << "\red You press the button, but nothing happens."
 		return
 	regular_win(user)
+	onclose(user, "assembler_regular")
 	return
 
 /obj/machinery/assembler/attackby(var/obj/item/O as obj, var/mob/user as mob)
