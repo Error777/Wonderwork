@@ -79,6 +79,8 @@
 	for(var/mob/M in viewers(src))
 		M.show_message( message, 1, blind_message, 2)
 
+/mob/proc/setClickCooldown(var/timeout)
+	next_move = max(world.time + timeout, next_move)
 
 //This is awful
 /mob/attackby(obj/item/weapon/W as obj, mob/user as mob)

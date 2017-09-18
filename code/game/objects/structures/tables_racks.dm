@@ -36,6 +36,8 @@
 					new /obj/item/weapon/table_parts/wood( get_turf(src.loc), 2 )
 				if (4)
 					new /obj/item/weapon/table_parts/glass( get_turf(src.loc), 2 )
+				if (5)
+					new /obj/item/weapon/table_parts/woodreinforced( get_turf(src.loc), 2 )
 			del(T)
 	update_icon()
 	for(var/direction in list(1,2,4,8,5,6,9,10))
@@ -221,6 +223,22 @@
 					icon_state = "glasstable_dir2"
 				if(6)
 					icon_state = "glasstable_dir3"
+		else if(istype(src,/obj/structure/table/woodreinforced))
+			switch(table_type)
+				if(0)
+					icon_state = "reinfwood_table"
+				if(1)
+					icon_state = "reinfwood_1tileendtable"
+				if(2)
+					icon_state = "reinfwood_1tilethick"
+				if(3)
+					icon_state = "reinfwood_tabledir"
+				if(4)
+					icon_state = "reinfwood_middle"
+				if(5)
+					icon_state = "reinfwood_tabledir2"
+				if(6)
+					icon_state = "reinfwood_tabledir3"
 
 		else
 			switch(table_type)
@@ -483,6 +501,42 @@
 					src.status = 1
 			else
 				user << "\blue Now strengthening the reinforced table"
+				playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
+				if (do_after(user, 50))
+					if(!src || !WT.isOn()) return
+					user << "\blue Table strengthened"
+					src.status = 2
+			return
+		return
+
+	if (istype(W, /obj/item/weapon/wrench))
+		if(src.status == 2)
+			return
+
+	..()
+
+/obj/structure/table/woodreinforced
+	tabletype = 2
+	name = "wood reinforced table"
+	desc = "A version of the four legged table. It is stronger."
+	icon_state = "reinfwood_table"
+	var/status = 2
+	parts = /obj/item/weapon/table_parts/woodreinforced
+
+
+/obj/structure/table/woodreinforced/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/weapon/weldingtool))
+		var/obj/item/weapon/weldingtool/WT = W
+		if(WT.remove_fuel(0, user))
+			if(src.status == 2)
+				user << "\blue Now weakening the wood reinforced table"
+				playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
+				if (do_after(user, 50))
+					if(!src || !WT.isOn()) return
+					user << "\blue Table weakened"
+					src.status = 1
+			else
+				user << "\blue Now strengthening the wood reinforced table"
 				playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 				if (do_after(user, 50))
 					if(!src || !WT.isOn()) return

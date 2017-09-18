@@ -92,7 +92,7 @@
 	///////////
 /client/New(TopicData)
 	TopicData = null							//Prevent calls to client.Topic from connect
-
+	chatOutput = new /datum/chatOutput(src) // Right off the bat.
 	if(connection != "seeker")					//Invalid connection type.
 		return null
 	if(byond_version < MIN_CLIENT_VERSION)		//Out of date client.
