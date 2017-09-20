@@ -140,7 +140,7 @@
 		return
 
 	proc/verify_user()
-		deptlist = job_master.GetJob(tablet.ownjob)
+		deptlist = job_master.GetDeptList(tablet.ownjob)
 		if(!deptlist || !deptlist.len)
 			deptlist = list("None")
 		command = 0

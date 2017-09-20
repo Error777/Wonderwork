@@ -17,7 +17,7 @@
 			dat = {"<a href='byond://?src=\ref[src];choice=CloseRecord'>Close Record</a>"}
 			dat += "<h4>Medical Record</h4>"
 
-			if(active1 in data_core.general)
+			if ((istype(src.active1, /datum/data/record) && data_core.general.Find(src.active1)))
 				dat += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<br>"
 				dat += "Sex: [active1.fields["sex"]]<br>"
 				dat += "Age: [active1.fields["age"]]<br>"
@@ -31,7 +31,7 @@
 			dat += "<br>"
 
 			dat += "<h4>Medical Data</h4>"
-			if(active2 in data_core.medical)
+			if ((istype(src.active2, /datum/data/record) && data_core.medical.Find(src.active2)))
 				dat += "Blood Type: [active2.fields["blood_type"]]<br><br>"
 
 				dat += "Minor Disabilities: [active2.fields["mi_dis"]]<br>"
