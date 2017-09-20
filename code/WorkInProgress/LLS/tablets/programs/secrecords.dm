@@ -18,7 +18,7 @@
 			dat = {"<a href='byond://?src=\ref[src];choice=CloseRecord'>Close Record</a>"}
 			dat += "<h4>Security Record</h4>"
 
-			if (istype(active1, /datum/data/record) && (active1 in data_core.general))
+			if ((istype(active1, /datum/data/record) && data_core.general.Find(active1)))
 				dat += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<br>"
 				dat += "Sex: [active1.fields["sex"]]<br>"
 				dat += "Age: [active1.fields["age"]]<br>"
@@ -32,16 +32,16 @@
 			dat += "<br>"
 
 			dat += "<h4>Security Data</h4>"
-			if (istype(active3, /datum/data/record) && (active3 in data_core.security))
-				dat += "Criminal Status: [active3.fields["criminal"]]<br>"
+			if ((istype(active2, /datum/data/record) && data_core.security.Find(active2)))
+				dat += "Criminal Status: [active2.fields["criminal"]]<br>"
 
-				dat += "Minor Crimes: [active3.fields["mi_crim"]]<br>"
-				dat += "Details: [active3.fields["mi_crim"]]<br><br>"
-				dat += "Major Crimes: [active3.fields["ma_crim"]]<br>"
-				dat += "Details: [active3.fields["ma_crim_d"]]<br><br>"
+				dat += "Minor Crimes: [active2.fields["mi_crim"]]<br>"
+				dat += "Details: [active2.fields["mi_crim"]]<br><br>"
+				dat += "Major Crimes: [active2.fields["ma_crim"]]<br>"
+				dat += "Details: [active2.fields["ma_crim_d"]]<br><br>"
 
 				dat += "Important Notes:<br>"
-				dat += "[active3.fields["notes"]]"
+				dat += "[active2.fields["notes"]]"
 			else
 				dat += "<b>Record Lost!</b><br>"
 

@@ -2,6 +2,7 @@
 	title = "Assistant"
 	flag = ASSISTANT
 	department_flag = CIVILIAN
+	departments = list("Civilian")
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
