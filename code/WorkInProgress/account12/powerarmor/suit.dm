@@ -143,7 +143,7 @@
 	if(helm && helm.on)
 		helm.on = 0
 		helm.update_icon()
-		user.SetLuminosity(user.luminosity - helm.brightness_on)
+		user.set_light(0)
 
 	if(!sudden)
 		usr << "\blue Suit interlocks disengaged."

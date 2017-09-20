@@ -21,28 +21,28 @@
 	item_state = "hardhat[on]_[item_color]"
 
 	if(on)
-		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+		user.set_light(brightness_on)
 	else
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+		user.set_light(0)
 
 /obj/item/clothing/head/hardhat/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-		SetLuminosity(0)
+		user.set_light(brightness_on)
+		set_light(0)
 
 /obj/item/clothing/head/hardhat/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - (brightness_on - 1), LuminosityBlue)
-		SetLuminosity(LuminosityRed + brightness_on, LuminosityGreen + (brightness_on - 1), LuminosityBlue)
+		user.set_light(0)
+		set_light(brightness_on)
 
 /obj/item/clothing/head/hardhat/on_enter_storage()
 	if(on)
-		usr.SetLuminosity(LuminosityRed - brightness_on, LuminosityGreen - (brightness_on - 1), LuminosityBlue)
+		usr.set_light(0)
 		on = 0
 		icon_state = "hardhat[on]_[item_color]"
 		item_state = "hardhat[on]_[item_color]"
 	else if (isturf(src.loc))
-		SetLuminosity(0)
+		set_light(0)
 	..()
 	return
 

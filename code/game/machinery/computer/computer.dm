@@ -20,11 +20,11 @@
 
 /obj/machinery/computer/process()
 	if(stat & (NOPOWER|BROKEN))
-		SetLuminosity(0,0,0)
+		set_light(0)
 		return 0
 	else
 		if(!istype(src,/obj/machinery/computer/centrifuge) && !istype(src,/obj/machinery/computer/security/wooden_tv) && !istype(src,/obj/machinery/computer/security/telescreen))
-			SetLuminosity(0,0,4)
+			set_light(4)
 	return 1
 
 /obj/machinery/computer/meteorhit(var/obj/O as obj)

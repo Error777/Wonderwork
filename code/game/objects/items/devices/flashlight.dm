@@ -22,24 +22,24 @@
 	..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		src.SetLuminosity(brightness_on, brightness_on, 0)
+		src.set_light(brightness_on)
 	else
 		icon_state = initial(icon_state)
-		src.SetLuminosity(0)
+		src.set_light(0)
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
 	if (on)
 		icon_state = "[initial(icon_state)]-on"
 		if(src.loc == user)
-			user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+			user.set_light(brightness_on)
 		else if (isturf(src.loc))
-			SetLuminosity(brightness_on, brightness_on, 0)
+			set_light(0)
 	else
 		icon_state = initial(icon_state)
 		if(src.loc == user)
-			user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+			user.set_light(brightness_on)
 		else if (isturf(src.loc))
-			SetLuminosity(0)
+			set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	if(!isturf(user.loc))
@@ -94,21 +94,21 @@
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
-		src.SetLuminosity(0)
+		user.set_light(brightness_on)
+		src.set_light(0)
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
-		src.SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
+		user.set_light(brightness_on)
+		src.set_light(brightness_on)
 
 /obj/item/device/flashlight/on_enter_storage()
 	if(on)
 		icon_state = initial(icon_state)
-		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - brightness_on, usr.LuminosityBlue)
+		usr.set_light(brightness_on)
 		on = 0
 	else if(isturf(src.loc))
-		SetLuminosity(0)
+		set_light(0)
 		..()
 		return
 

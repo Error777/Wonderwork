@@ -8,7 +8,7 @@
 	luminosity = 8
 
 /obj/effect/light_emitter/New()
-	SetLuminosity(8,8,8)
+	set_light(8)
 
 /**********************Miner Lockers**************************/
 

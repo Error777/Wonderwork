@@ -8,7 +8,7 @@
 
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 	// This is here so it is available at this scope.
 

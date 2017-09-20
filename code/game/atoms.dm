@@ -10,7 +10,7 @@
 	var/pass_flags = 0
 	var/throwpass = 0
 	var/germ_level = 0 // The higher the germ level, the more germ on the atom.
-
+	var/ignoreinvert = 0
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -302,6 +302,12 @@ its easier to just keep the beam vertical.
 
 /atom/proc/hitby(atom/movable/AM as mob|obj)
 	return
+
+/atom/proc/change_area(var/area/oldarea, var/area/newarea)
+	change_area_name(oldarea.name, newarea.name)
+
+/atom/proc/change_area_name(var/oldname, var/newname)
+	name = replacetext(name,oldname,newname)
 
 /atom/proc/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
 	if (!(istype(W, /obj/item/weapon/grab) ) && !(istype(W, /obj/item/weapon/plastique)) && !(istype(W, /obj/item/weapon/reagent_containers/spray)) && !(istype(W, /obj/item/weapon/packageWrap)) && !istype(W, /obj/item/device/detective_scanner))

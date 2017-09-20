@@ -8,7 +8,7 @@
 
 /obj/structure/awaymission/mrbones/candle/New()
 	..()
-	SetLuminosity(5,2,2)
+	set_light(5)
 
 /obj/structure/awaymission/mrbones/sign
 	name = "SPOOKY CAVE"

@@ -49,7 +49,7 @@
 
 	New()
 		..()
-		SetLuminosity(0,3,0)
+		set_light(3)
 		spawn(1200)// 2 minutes
 			del(src)
 
