@@ -42,6 +42,10 @@
 							/obj/item/metroid_core/t3	= 2,
 							/obj/item/metroid_core/t4	= 2,
 							/obj/item/metroid_core/t5	= 2,
+							/obj/item/metroid_core/t6	= 2,
+							/obj/item/metroid_core/t7	= 2,
+							/obj/item/metroid_core/t8	= 2,
+							/obj/item/metroid_core/t9	= 1,
 							/obj/item/metroid_core		= 3)
 //	var/coretype = /obj/item/metroid_core
 
