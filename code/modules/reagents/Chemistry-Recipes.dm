@@ -1684,7 +1684,153 @@ datum
 				holder.clear_reagents()
 				return
 
+/////////////////////////////////////////////SUPER NEW METROID CORE REACTIONS/////////////////////////////////////////////
 
+
+		metroidspawn
+			name = "Metroid Spawn"
+			id = "m_spawn"
+			result = null
+			required_reagents = list("plasma" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t6
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				for(var/mob/O in viewers(get_turf_loc(holder.my_atom), null))
+					O.show_message(text("\red Infused with plasma, the core begins to quiver and grow, and soon a new baby slime emerges from it!"), 1)
+				var/mob/living/carbon/metroid/S = new /mob/living/carbon/metroid
+				S.loc = get_turf_loc(holder.my_atom)
+
+		metroidmonkey
+			name = "Metroid Monkey"
+			id = "m_monkey"
+			result = null
+			required_reagents = list("blood" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t6
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				for(var/i = 1, i <= 3, i++)
+					var /obj/item/weapon/reagent_containers/food/snacks/monkeycube/M = new /obj/item/weapon/reagent_containers/food/snacks/monkeycube
+					M.loc = get_turf_loc(holder.my_atom)
+
+		metroidmetal
+			name = "Metroid Metal"
+			id = "m_metal"
+			result = null
+			required_reagents = list("metal" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t6
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				var/obj/item/stack/sheet/metal/M = new /obj/item/stack/sheet/metal
+				M.amount = 15
+				M.loc = get_turf_loc(holder.my_atom)
+				var/obj/item/stack/sheet/plasteel/P = new /obj/item/stack/sheet/plasteel
+				P.amount = 5
+				P.loc = get_turf_loc(holder.my_atom)
+
+		metroidfreeze
+			name = "Metroid Freeze"
+			id = "m_freeze"
+			result = null
+			required_reagents = list("anti_toxin" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t7
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				for(var/mob/O in viewers(get_turf_loc(holder.my_atom), null))
+					O.show_message(text("\red The slime extract begins to vibrate violently !"), 1)
+				sleep(50)
+				playsound(get_turf_loc(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
+				for(var/mob/living/M in range (get_turf_loc(holder.my_atom), 7))
+					M.bodytemperature -= 140
+					M << "\blue You feel a chill!"
+
+		metroidfire
+			name = "Metroid fire"
+			id = "m_fire"
+			result = null
+			required_reagents = list("plasma" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t7
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				for(var/mob/O in viewers(get_turf_loc(holder.my_atom), null))
+					O.show_message(text("\red The slime extract begins to vibrate violently !"), 1)
+				sleep(50)
+				var/turf/location = get_turf(holder.my_atom.loc)
+				for(var/turf/simulated/floor/target_tile in range(0,location))
+
+					var/datum/gas_mixture/napalm = new
+
+					napalm.toxins = 25
+					napalm.temperature = 1400
+
+					target_tile.assume_air(napalm)
+					spawn (0) target_tile.hotspot_expose(700, 400)
+
+		metroidoverload
+			name = "Metroid EMP"
+			id = "m_emp"
+			result = null
+			required_reagents = list("stoxin" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t7
+			required_other = 1
+			on_reaction(var/datum/reagents/holder, var/created_volume)
+				empulse(get_turf_loc(holder.my_atom), 3, 7)
+
+		metroidcell
+			name = "Metroid Powercell"
+			id = "m_cell"
+			result = null
+			required_reagents = list("plasma" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t8
+			required_other = 1
+			on_reaction(var/datum/reagents/holder, var/created_volume)
+				var/obj/item/weapon/cell/metroid/P = new /obj/item/weapon/cell/metroid
+				P.loc = get_turf_loc(holder.my_atom)
+
+		metroidglow
+			name = "Metroid Glow"
+			id = "m_glow"
+			result = null
+			required_reagents = list("water" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t8
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				for(var/mob/O in viewers(get_turf_loc(holder.my_atom), null))
+					O.show_message(text("\red The slime begins to emit a soft light."), 1)
+
+		metroidplasma
+			name = "Metroid Plasma"
+			id = "m_plasma"
+			result = null
+			required_reagents = list("plasma" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t9
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				var/obj/item/stack/sheet/mineral/plasma/P = new /obj/item/stack/sheet/mineral/plasma
+				P.amount = 10
+				P.loc = get_turf_loc(holder.my_atom)
+
+		metroidexplosion
+			name = "Metroid Explosion"
+			id = "m_explosion"
+			result = null
+			required_reagents = list("hot_coco" = 5)
+			result_amount = 1
+			required_container = /obj/item/metroid_core/t9
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+				for(var/mob/O in viewers(get_turf_loc(holder.my_atom), null))
+					O.show_message(text("\red The slime extract begins to vibrate violently !"), 1)
+				sleep(50)
+				explosion(get_turf_loc(holder.my_atom), 1 ,3, 6)
 
 //////////////////////////////////////////FOOD MIXTURES////////////////////////////////////
 

@@ -296,6 +296,10 @@
 /obj/item/metroid_core/t3
 /obj/item/metroid_core/t4
 /obj/item/metroid_core/t5
+/obj/item/metroid_core/t6
+/obj/item/metroid_core/t7
+/obj/item/metroid_core/t8
+/obj/item/metroid_core/t9
 // see Chemistry-Recipes.dm
 
 /obj/effect/spawner
