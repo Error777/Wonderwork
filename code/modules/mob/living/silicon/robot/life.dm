@@ -114,6 +114,7 @@
 
 	if ((src.sdisabilities & BLIND))
 		src.blinded = 1
+
 	if ((src.sdisabilities & DEAF))
 		src.ear_deaf = 1
 
@@ -131,10 +132,10 @@
 		radio.on = 1
 
 	if(is_component_functioning("camera"))
-		src.blinded = 0
+		if(!src.eye_blind)
+			src.blinded = 0
 	else
 		src.blinded = 1
-
 
 	return 1
 
@@ -247,17 +248,17 @@
 
 	if ((src.blind && src.stat != 2))
 		if(src.blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/, 1)
-		else
-			clear_fullscreen("blind")
-			if (src.disabilities & NEARSIGHTED)
-				src.client.screen += global_hud.vimpaired
+			src.overlay_fullscreen("blind", /obj/screen/fullscreen/, 1)
+		else src.clear_fullscreen("blind")
 
-			if (src.eye_blurry)
-				src.client.screen += global_hud.blurry
+		if (src.disabilities & NEARSIGHTED)
+			src.client.screen += global_hud.vimpaired
 
-			if (src.druggy)
-				src.client.screen += global_hud.druggy
+		if (src.eye_blurry)
+			src.client.screen += global_hud.blurry
+
+		if (src.druggy)
+			src.client.screen += global_hud.druggy
 
 	if (src.stat != 2)
 		if (src.machine)

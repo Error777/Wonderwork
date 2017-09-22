@@ -298,10 +298,10 @@ datum/preferences
 		dat += "<p><span class='leftcol'>Eye Color:</span><a href='?_src_=prefs;preference=eyes;task=input'><font class='color' style='background-color:rgb([r_eyes],[g_eyes],[b_eyes])'>&nbsp;</font><span>The color of your character's eyes</span></a><a href='?_src_=prefs;preference=eyes;task=random'>~<span>pick a random eye color.</span></a></p>"
 		dat += "<p><span class='leftcol'>Nanotrasen Relation:</span><a href ='?_src_=prefs;preference=nt_relation;task=input'>[nanotrasen_relation]<span>Choose your relation to NT. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.</span></a></p>"
 		dat += "<p><span class='leftcol'>Flavor Text:</span><a href='?_src_=prefs;preference=flavor_text;task=input'>~<span>Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!</span></a></p>"
-		//if(jobban_isbanned(C, "Records"))
-			//dat += "<p><span class='leftcol'>You are banned from using character records.</span></p>"
-		//else
-		dat += "<p><span class='leftcol'>Character Records:</span><a href='?_src_=prefs;preference=records;record=1\'>~<span>Ðÿÿÿÿÿ...</span></a></p>"
+		if(jobban_isbanned(C, "Records"))
+			dat += "<p><span class='leftcol'>You are banned from using character records.</span></p>"
+		else
+			dat += "<p><span class='leftcol'>Character Records:</span><a href='?_src_=prefs;preference=records;record=1\'>~<span>Ðÿÿÿÿÿ...</span></a></p>"
 
 
 		dat += "<hr>"
