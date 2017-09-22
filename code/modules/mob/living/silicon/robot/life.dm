@@ -247,9 +247,9 @@
 
 	if ((src.blind && src.stat != 2))
 		if(src.blinded)
-			src.blind.layer = 18
+			overlay_fullscreen("blind", /obj/screen/fullscreen/, 1)
 		else
-			clear_fullscreen("blind", 0)
+			clear_fullscreen("blind")
 			if (src.disabilities & NEARSIGHTED)
 				src.client.screen += global_hud.vimpaired
 

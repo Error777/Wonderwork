@@ -448,7 +448,7 @@ datum/preferences
 			else
 				HTML += " <font color=red>\[NEVER]</font>"
 			if(job.alt_titles)
-				HTML += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'><a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
+				HTML += "</a></td></tr>ñ<a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
 			HTML += "</a></td></tr>"
 
 		HTML += "</td'></tr></table>"
