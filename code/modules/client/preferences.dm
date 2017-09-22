@@ -297,12 +297,13 @@ datum/preferences
 		dat += "<p><span class='leftcol'>Facial Hair:</span><a href='?_src_=prefs;preference=facial;task=input'><font class='color' style='background-color:rgb([r_facial],[g_facial],[b_facial])'>&nbsp;</font><span>The color of your character's facial hair</span></a><a href='?_src_=prefs;preference=facial;task=random'>~<span>pick a random facial hair color.</span></a><a href='?_src_=prefs;preference=f_style;task=input'>[f_style]<span>The style of your character's facial hair</span></a><a href='?_src_=prefs;preference=f_style;task=random'>~<span>pick a random facial hair style.</span></a></p>"
 		dat += "<p><span class='leftcol'>Eye Color:</span><a href='?_src_=prefs;preference=eyes;task=input'><font class='color' style='background-color:rgb([r_eyes],[g_eyes],[b_eyes])'>&nbsp;</font><span>The color of your character's eyes</span></a><a href='?_src_=prefs;preference=eyes;task=random'>~<span>pick a random eye color.</span></a></p>"
 		dat += "<p><span class='leftcol'>Nanotrasen Relation:</span><a href ='?_src_=prefs;preference=nt_relation;task=input'>[nanotrasen_relation]<span>Choose your relation to NT. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.</span></a></p>"
-		dat += "<p><span class='leftcol'>Flavor Text:</span><a href='?_src_=prefs;preference=flavor_text;task=input'>Set this shit!<span>Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!</span></a></p>"
+		dat += "<p><span class='leftcol'>Flavor Text:</span><a href='?_src_=prefs;preference=flavor_text;task=input'>~<span>Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!</span></a></p>"
 		//if(jobban_isbanned(C, "Records"))
 			//dat += "<p><span class='leftcol'>You are banned from using character records.</span></p>"
 		//else
-		dat += "<p><span class='leftcol'>Character Records:</span><a href='?_src_=prefs;preference=records;record=1\">~<span>Blah-blah-blah...</span></a></p>"
-		dat += "</p>"
+		dat += "<p><span class='leftcol'>Character Records:</span><a href='?_src_=prefs;preference=records;record=1\'>~<span>Ðÿÿÿÿÿ...</span></a></p>"
+
+
 		dat += "<hr>"
 
 			//special-character preferences
@@ -340,6 +341,8 @@ datum/preferences
 
 		var/dat = "<table style='width:100%'><tr><td>"
 		var/colgroup = "<colgroup><col style='width:40%;text-align:center'><col style='width:60%'></colgroup>"
+		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
+
 		if(job_master)
 			dat += "<table>[colgroup]" // Table within a table for alignment, also allows you to easily add more colomns.
 
@@ -378,7 +381,6 @@ datum/preferences
 						dat += " <a href='?_src_=prefs;preference=job;task=input;text=[rank];level=5'><font color=red>\[No\]</font>"
 					dat += "</a></td></tr>"
 					continue
-
 				if(GetJobDepartment(job, 6) & job.flag)
 					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=6'>N</a>:"
 				else
@@ -403,7 +405,8 @@ datum/preferences
 					dat += "<font color=green>\[1\]</font>"
 				else
 					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=1'>1</a>"
-
+				if(job.alt_titles)
+					dat += "<a href='?_src_=prefs;preference=job;task=alt_title;job=\ref[job]\'>\[[GetPlayerAltTitle(job)]\]</a>"
 				dat += "</td></tr>"
 
 			dat += "</table>"
@@ -716,7 +719,14 @@ datum/preferences
 					if("all")
 						randomize_appearance_for()	//no params needed
 						update_preview_icon(1)
-
+			if ("alt_title")
+				var/datum/job/job = locate(href_list["job"])
+				if (job)
+					var/choices = list(job.title) + job.alt_titles
+					var/choice = input("Pick a title for [job.title].", "Character Generation", GetPlayerAltTitle(job)) as anything in choices | null
+					if(choice)
+						SetPlayerAltTitle(job, choice)
+						//SetChoices(user)
 			if("input")
 				switch(href_list["preference"])
 					if("job")
