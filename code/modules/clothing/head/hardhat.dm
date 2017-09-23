@@ -22,7 +22,7 @@
 	item_state = "hardhat[on]_[item_color]"
 
 	if(on)
-		user.set_light(brightness_on)
+		user.set_light(brightness_on,light_power,light_color)
 	else
 		user.set_light(0)
 

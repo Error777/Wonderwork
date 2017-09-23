@@ -136,14 +136,14 @@
 	item_state = "hardhat[on]_[item_color]"
 
 	if(on)
-		user.set_light(brightness_on)
+		user.set_light(brightness_on,light_power,light_color)
 	else
 		user.set_light(0)
 
 /obj/item/clothing/head/pumpkinhead/pickup(mob/user)
 	if(on)
 		set_light(0)
-		user.set_light(CANDLE_LUM)
+		user.set_light(brightness_on)
 
 /obj/item/clothing/head/pumpkinhead/dropped(mob/user)
 	if(on)

@@ -1461,23 +1461,29 @@
 			else
 				clear_fullscreen("high")
 
-			//var/masked = 0
 
-			/*if( istype(head, /obj/item/clothing/head/welding) || istype(head, /obj/item/clothing/head/helmet/space/unathi))
+			var/masked = 0
+
+			if( istype(head, /obj/item/clothing/head/welding) || istype(head, /obj/item/clothing/head/helmet/space/unathi))
 				var/obj/item/clothing/head/welding/O = head
 				if(!O.up && tinted_weldhelh)
-					client.screen += global_hud.darkMask
+					overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, 2)
 					masked = 1
 
 			if(!masked && istype(glasses, /obj/item/clothing/glasses/welding) )
 				var/obj/item/clothing/glasses/welding/O = glasses
 				if(!O.up && tinted_weldhelh)
-					client.screen += global_hud.darkMask*/
+					overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, 2)
+					masked = 1
+
+			if(!masked)
+				clear_fullscreen("tint")
 
 			if(eye_stat > 20)
-				if(eye_stat > 30)	client.screen += global_hud.darkMask
-				else				client.screen += global_hud.vimpaired
-
+				if(eye_stat > 30)	overlay_fullscreen("eye", /obj/screen/fullscreen/blurry)
+				else				overlay_fullscreen("eye", /obj/screen/fullscreen/impaired, 2)
+			if(eye_stat < 20)
+				clear_fullscreen("eye")
 			if(machine)
 				if(!machine.check_eye(src))		reset_view(null)
 			else
@@ -1626,6 +1632,21 @@
 				overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 			else
 				clear_fullscreen("blind", 0)
+
+				if(disabilities & NEARSIGHTED)
+					overlay_fullscreen("impaired", /obj/screen/fullscreen/impaired, 1)
+				else
+					clear_fullscreen("impaired")
+
+				if(eye_blurry)
+					overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)
+				else
+					clear_fullscreen("blurry")
+
+				if(druggy)
+					overlay_fullscreen("high", /obj/screen/fullscreen/high)
+				else
+					clear_fullscreen("high")
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

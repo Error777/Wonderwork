@@ -594,11 +594,11 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				fon = (!fon)
 				if (src in U.contents)
 					if (fon)
-						U.set_light(f_lum)
+						U.set_light(f_lum,light_power,light_color)
 					else
 						U.set_light(0)
 				else
-					set_light(fon * f_lum)
+					set_light(fon * f_lum,light_power,light_color)
 			if("Medical Scan")
 				if(scanmode == 1)
 					scanmode = 0

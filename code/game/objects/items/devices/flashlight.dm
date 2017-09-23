@@ -32,13 +32,13 @@
 	if (on)
 		icon_state = "[initial(icon_state)]-on"
 		if(src.loc == user)
-			user.set_light(brightness_on)
+			user.set_light(brightness_on,light_power,light_color)
 		else if (isturf(src.loc))
 			set_light(0)
 	else
 		icon_state = initial(icon_state)
 		if(src.loc == user)
-			user.set_light(brightness_on)
+			user.set_light(brightness_on,light_power,light_color)
 		else if (isturf(src.loc))
 			set_light(0)
 

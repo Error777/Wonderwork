@@ -1,4 +1,3 @@
-
 // the light switch
 // can have multiple per area
 // can also operate on non-loc area through "otherarea" var
@@ -12,31 +11,25 @@
 	var/area/area = null
 	var/otherarea = null
 
+
 /obj/machinery/light_switch/New()
 	..()
-	spawn(5)
-		src.area = get_area(src)
+	src.area = get_area(src)
 
-		if(otherarea)
-			src.area = locate(text2path("/area/[otherarea]"))
+	if(otherarea)
+		src.area = locate(text2path("/area/[otherarea]"))
 
-		if(!name)
-			name = "light switch ([area.name])"
+	if(!name)
+		name = "light switch ([area.name])"
 
-		src.on = src.area.lightswitch
-		updateicon()
-
-
+	src.on = src.area.lightswitch
+	updateicon()
 
 /obj/machinery/light_switch/proc/updateicon()
 	if(stat & NOPOWER)
 		icon_state = "light-p"
-		set_light(0)
-		layer = OBJ_LAYER
 	else
 		icon_state = "light[on]"
-		set_light(2, 1.5, on ? "#82FF4C" : "#F86060")
-		layer = 5+0.1
 
 /obj/machinery/light_switch/examine(mob/user)
 	if(..(user, 1))
@@ -52,6 +45,15 @@
 	for(var/obj/machinery/light_switch/L in area)
 		L.on = on
 		L.updateicon()
+
+	for(var/obj/machinery/light/L in area)
+		if(on)
+			L.on = 0
+			L.update(0)
+
+		else
+			L.on = 1
+			L.update(0)
 
 	area.power_change()
 
