@@ -43,6 +43,7 @@
 			set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
+	playsound(src.loc, 'sound/items/flashlight.ogg', 75, 1)
 	if(!isturf(user.loc))
 		user << "You cannot turn the light on while in this [user.loc]." //To prevent some lighting anomalities.
 		return 0

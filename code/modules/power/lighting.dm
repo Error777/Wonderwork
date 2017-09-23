@@ -249,7 +249,7 @@
 	icon_state = "bulb1"
 	base_state = "bulb"
 	fitting = "bulb"
-	brightness_range = 4
+	brightness_range = 3
 	brightness_power = 1
 	brightness_color = LIGHT_COLOR_TUNGSTEN
 	desc = "A small lighting fixture."
@@ -797,7 +797,7 @@
 	base_state = "lbulb"
 	item_state = "contvapour"
 	g_amt = 100
-	brightness_range = 5
+	brightness_range = 4
 	brightness_power = 2
 	brightness_color = LIGHT_COLOR_TUNGSTEN
 
