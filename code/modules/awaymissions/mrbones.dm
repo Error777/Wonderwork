@@ -3,6 +3,7 @@
 	desc = "TOO SPOOKY!!!"
 	icon = 'icons/awaymissions/mrbones.dmi'
 	icon_state = "candle"
+	light_color = LIGHT_COLOR_ORANGE
 	anchored = 1
 	density = 1
 

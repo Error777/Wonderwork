@@ -1,101 +1,87 @@
-/var/list/all_lighting_overlays = list() // Global list of lighting overlays.
+/var/list/lighting_update_overlays  = list()    // List of lighting overlays queued for update.
 
 /atom/movable/lighting_overlay
-	name          = ""
+	name             = ""
 
-	anchored      = 1
-	ignoreinvert  = 1
-
-	icon             = LIGHTING_ICON
+	icon             = 'icons/effects/lighting_overlay.dmi'
 	color            = LIGHTING_BASE_MATRIX
-	//plane            = LIGHTING_PLANE
+
 	mouse_opacity    = 0
-	//layer            = LIGHTING_LAYER
+	layer            = 11
 	invisibility     = INVISIBILITY_LIGHTING
 
-	blend_mode    = BLEND_MULTIPLY
+	anchored = 1
+	flags = NOREACT
 
-	var/needs_update = 0
+	blend_mode       = BLEND_MULTIPLY
 
-	transform = matrix(32 / 32, 0, (32 - 32) / 2, 0, 32 / 32, (32 - 32) / 2)
+	var/needs_update = FALSE
 
-/atom/movable/lighting_overlay/New(var/atom/loc, var/no_update = 0)
+/atom/movable/lighting_overlay/New(var/atom/loc, var/no_update = FALSE)
 	. = ..()
 	verbs.Cut()
 	global.all_lighting_overlays += src
 
 	var/turf/T         = loc // If this runtimes atleast we'll know what's creating overlays in things that aren't turfs.
 	T.lighting_overlay = src
-	T.luminosity       = 0
+	T.luminosity       = FALSE
 
-	if (no_update)
+	if(no_update)
 		return
 
 	update_overlay()
 
 /atom/movable/lighting_overlay/Del()
-	global.all_lighting_overlays        -= src
-	global.lighting_update_overlays     -= src
-
 	var/turf/T   = loc
-	if (istype(T))
+	if(istype(T))
 		T.lighting_overlay = null
-		T.luminosity = 1
+
+		T.luminosity = TRUE
+
+	lighting_update_overlays -= src;
 
 	..()
 
 /atom/movable/lighting_overlay/proc/update_overlay()
 	var/turf/T = loc
-	if (!istype(T)) // Erm...
-		if (loc)
+	if(!istype(T)) // Erm...
+		if(loc)
 			warning("A lighting overlay realised its loc was NOT a turf (actual loc: [loc], [loc.type]) in update_overlay() and got pooled!")
 
 		else
 			warning("A lighting overlay realised it was in nullspace in update_overlay() and got pooled!")
 
-		returnToPool(src)
-		return
+		del(src)
 
-	// To the future coder who sees this and thinks
-	// "Why didn't he just use a loop?"
-	// Well my man, it's because the loop performed like shit.
-	// And there's no way to improve it because
-	// without a loop you can make the list all at once which is the fastest you're gonna get.
-	// Oh it's also shorter line wise.
-	// Including with these comments.
+	var/list/L = src.color:Copy() // For some dumb reason BYOND won't allow me to use [] on a colour matrix directly.
+	var/anylums = 0
 
-	// See LIGHTING_CORNER_DIAGONAL in lighting_corner.dm for why these values are what they are.
-	// No I seriously cannot think of a more efficient method, fuck off Comic.
-	var/datum/lighting_corner/cr  = T.corners[3] || dummy_lighting_corner
-	var/datum/lighting_corner/cg  = T.corners[2] || dummy_lighting_corner
-	var/datum/lighting_corner/cb  = T.corners[4] || dummy_lighting_corner
-	var/datum/lighting_corner/ca  = T.corners[1] || dummy_lighting_corner
+	for(var/datum/lighting_corner/C in T.corners)
+		var/i = 0
 
-	var/max = max(cr.cache_mx, cg.cache_mx, cb.cache_mx, ca.cache_mx)
+		// Huge switch to determine i based on D.
+		switch(turn(C.masters[T], 180))
+			if(NORTHEAST)
+				i = AR
 
-	color  = list(
-		cr.cache_r, cr.cache_g, cr.cache_b, 0,
-		cg.cache_r, cg.cache_g, cg.cache_b, 0,
-		cb.cache_r, cb.cache_g, cb.cache_b, 0,
-		ca.cache_r, ca.cache_g, ca.cache_b, 0,
-		0, 0, 0, 1
-	)
-	luminosity = max > LIGHTING_SOFT_THRESHOLD
+			if(SOUTHEAST)
+				i = GR
 
-// Variety of overrides so the overlays don't get affected by weird things.
+			if(SOUTHWEST)
+				i = RR
 
-/atom/movable/lighting_overlay/ex_act(severity)
-	return 0
+			if(NORTHWEST)
+				i = BR
 
-/atom/movable/lighting_overlay/blob_act()
-	return
+		var/mx = max(C.lum_r, C.lum_g, C.lum_b) // Scale it so 1 is the strongest lum, if it is above 1.
+		anylums += mx
+		. = 1 // factor
+		if(mx > 1)
+			. = 1 / mx
 
-// Override here to prevent things accidentally moving around overlays.
-/atom/movable/lighting_overlay/forceMove(atom/destination, var/no_tp=0, var/harderforce = 0)
-	if(harderforce)
-		. = ..()
+		L[i + 0]   = C.lum_r * .
+		L[i + 1]   = C.lum_g * .
+		L[i + 2]   = C.lum_b * .
 
-/atom/movable/lighting_overlay/resetVariables(...)
-	color = LIGHTING_BASE_MATRIX
-
-	return ..("color")
+	src.color  = L
+	luminosity = (anylums > 0)

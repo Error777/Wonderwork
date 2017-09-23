@@ -382,6 +382,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "lighter-g"
 	var/icon_on = "lighter-g-on"
 	var/icon_off = "lighter-g"
+	light_color = LIGHT_COLOR_ORANGE
 	w_class = 1
 	throwforce = 4
 	flags = TABLEPASS | CONDUCT
@@ -458,18 +459,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(location)
 		location.hotspot_expose(700, 5)
 	return
-
 /obj/item/weapon/lighter/pickup(mob/user)
 	if(lit)
-		src.set_light(0)
+		set_light(0)
 		user.set_light(3)
-	return
 
 /obj/item/weapon/lighter/dropped(mob/user)
 	if(lit)
 		user.set_light(0)
 		set_light(3)
-	return
 
 /obj/item/weapon/lighter/on_enter_storage()
 	if(lit)

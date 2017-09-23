@@ -4,6 +4,7 @@
 	name = "Mounted flash"
 	desc = "A wall-mounted flashbulb device."
 	icon = 'icons/obj/stationobjs.dmi'
+	light_color = LIGHT_COLOR_GREEN
 	icon_state = "mflash1"
 	var/id = null
 	var/range = 2 //this is roughly the size of brig cell

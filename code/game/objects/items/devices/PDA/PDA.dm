@@ -12,6 +12,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	w_class = 1.0
 	flags = FPRINT | TABLEPASS
 	slot_flags = SLOT_ID | SLOT_BELT
+	light_color = LIGHT_COLOR_TUNGSTEN
 
 	//Main variables
 	var/owner = null
@@ -266,13 +267,13 @@ var/global/list/obj/item/device/pda/PDAs = list()
  */
 /obj/item/device/pda/pickup(mob/user)
 	if(fon)
-		src.set_light(0)
+		set_light(0)
 		user.set_light(f_lum)
 
 /obj/item/device/pda/dropped(mob/user)
 	if(fon)
 		user.set_light(0)
-		src.set_light(f_lum)
+		set_light(f_lum)
 
 /obj/item/device/pda/on_enter_storage()
 	if(fon)

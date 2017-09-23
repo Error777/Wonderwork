@@ -212,8 +212,6 @@
 	fixture_type = "floortube"
 	sheets_refunded = 1
 
-var/global/list/obj/machinery/light/alllights = list()
-
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
@@ -229,7 +227,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	var/on = 0					// 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness_range = 8	// luminosity when on, also used in power calculation
+	var/brightness_range = 5	// luminosity when on, also used in power calculation
 	var/brightness_power = 1
 	var/brightness_color = null
 	var/redalert = 1
@@ -251,7 +249,9 @@ var/global/list/obj/machinery/light/alllights = list()
 	icon_state = "bulb1"
 	base_state = "bulb"
 	fitting = "bulb"
-	brightness_power = 3
+	brightness_range = 4
+	brightness_power = 1
+	brightness_color = LIGHT_COLOR_TUNGSTEN
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb
 
@@ -263,7 +263,9 @@ var/global/list/obj/machinery/light/alllights = list()
 	icon_state = "firelight1"
 	base_state = "firelight"
 	fitting = "bulb"
-	brightness_power = 5
+	brightness_range = 4
+	brightness_power = 1
+	brightness_color = LIGHT_COLOR_RED
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb/fire
 
@@ -272,7 +274,8 @@ var/global/list/obj/machinery/light/alllights = list()
 	base_state = "floorbulb"
 	fitting = "floor bulb"
 	layer = TURF_LAYER + 0.2
-	brightness_power = 4
+	brightness_range = 4
+	brightness_power = 1
 	desc = "A small floor lighting fixture."
 	light_type = /obj/item/weapon/light/bulb/floor
 
@@ -281,7 +284,8 @@ var/global/list/obj/machinery/light/alllights = list()
 	base_state = "floortube"
 	fitting = "floor tube"
 	layer = TURF_LAYER + 0.2
-	brightness_power = 7
+	brightness_range = 5
+	brightness_power = 1
 	desc = "A tube floor lighting fixture."
 	light_type = /obj/item/weapon/light/tube/floor
 
@@ -289,7 +293,8 @@ var/global/list/obj/machinery/light/alllights = list()
 	name = "spotlight"
 	fitting = "large tube"
 	light_type = /obj/item/weapon/light/tube/large
-	brightness_power = 15
+	brightness_range = 8
+	brightness_power = 1
 
 /obj/machinery/light/built/New()
 	status = LIGHT_EMPTY
@@ -301,50 +306,31 @@ var/global/list/obj/machinery/light/alllights = list()
 	update(0)
 	..()
 
-// create a new lighting fixture
 /obj/machinery/light/New()
 	..()
-	alllights += src
-	processing_objects.Add(src)
 
-	spawn(2)
-		switch(fitting)
-			if("tube")
-				var/br = pick(5,7)
-				brightness_power = br
-				if(prob(2))
-					broken(1)
-			if("bulb")
-				brightness_power = 4
-				if(prob(5))
-					broken(1)
-			if("floor bulb")
-				brightness_power = 4
-				if(prob(5))
-					broken(1)
-			if("floor tube")
-				brightness_power = 6
-				if(prob(2))
-					broken(1)
-		spawn(1)
-			update(0)
+	on = has_power()
+//	spawn(2)
+//		var/area/A = get_new_area(src)
+//		if(A && !A.requires_power)
+//			on = 1
 
-/obj/machinery/light/Del()
-	processing_objects.Remove(src)
-	alllights -= src
-	var/area/A = get_area(src)
-	if(A)
-		on = 0
-//		A.update_lights()
-	..()
+//		if(src.z == 1 || src.z == 5)
+	switch(fitting)
+		if("tube","bulb","floor bulb","floor tube")
+			if(prob(2))
+				broken(1)
+
+//		spawn(1)
+	update(0)
 
 /obj/machinery/light/update_icon()
 
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
-			if(firealarmed == 1 && on && cmptext(base_state,"tube"))
+			if(firealarmed && on && cmptext(base_state,"tube"))
 				icon_state = "[base_state]_alert"
-			else if(atmosalarmed == 1 && on && cmptext(base_state,"tube"))
+			else if(atmosalarmed && on && cmptext(base_state,"tube"))
 				icon_state = "[base_state]_alert_atmos"
 			else
 				icon_state = "[base_state][on]"
@@ -360,33 +346,27 @@ var/global/list/obj/machinery/light/alllights = list()
 	return
 
 // update the icon_state and luminosity of the light depending on its state
+
 /obj/machinery/light/proc/update(var/trigger = 1)
 
 	update_icon()
 
-	if(!on)
-		use_power = 1
-	else
-		use_power = 2
+	if(on)
+		if(light_range != brightness_range || light_power != brightness_power || light_color != brightness_color)
+			switchcount++
+			if(rigged)
+				if(status == LIGHT_OK && trigger)
 
-	set_light(on * brightness_range * !isalert())		// *UL*
+					log_admin("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+					message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
-	if(light_range != brightness_range || light_power != brightness_power || light_color != brightness_color)
-		switchcount++
-
-		if(rigged)
-			if(status == LIGHT_OK && trigger)
-
-				log_admin("LOG: Rigged light explosion, last touched by [fingerprintslast]")
-				message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
-
-				explode()
-		else if( prob( min(60, switchcount*switchcount*0.01) ) )
-			if(status == LIGHT_OK && trigger)
-				status = LIGHT_BURNED
-				icon_state = "[base_state]-burned"
-				on = 0
-				set_light(0)
+					explode()
+			else if( prob( min(60, switchcount*switchcount*0.01) ) )
+				if(status == LIGHT_OK && trigger)
+					status = LIGHT_BURNED
+					icon_state = "[base_state]-burned"
+					on = 0
+					set_light(0)
 			else
 				use_power = 2
 				set_light(brightness_range, brightness_power, brightness_color)
@@ -394,9 +374,9 @@ var/global/list/obj/machinery/light/alllights = list()
 		use_power = 1
 		set_light(0)
 
-	active_power_usage = (luminosity * 20)
-//	if(on != on_gs)
-//		on_gs = on
+	active_power_usage = ((light_range + light_power) * 10)
+	if(on != on_gs)
+		on_gs = on
 
 /obj/machinery/light/proc/isalert()
 	return 0
@@ -457,6 +437,7 @@ var/global/list/obj/machinery/light/alllights = list()
 
 				brightness_range = L.brightness_range
 				brightness_power = L.brightness_power
+				brightness_color = L.brightness_color
 
 				on = has_power()
 				update()
@@ -490,7 +471,7 @@ var/global/list/obj/machinery/light/alllights = list()
 			if(on && (W.flags & CONDUCT))
 				//if(!user.mutations & COLD_RESISTANCE)
 				if (prob(12))
-					electrocute_mob(user, get_area(src), src, 0.3)
+					electrocute_mob(user, get_new_area(src), src, 0.3)
 			broken()
 
 		else
@@ -526,14 +507,14 @@ var/global/list/obj/machinery/light/alllights = list()
 			s.start()
 			//if(!user.mutations & COLD_RESISTANCE)
 			if (prob(75))
-				electrocute_mob(user, get_area(src), src, rand(0.7,1.0))
+				electrocute_mob(user, get_new_area(src), src, rand(0.7,1.0))
 
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
-	var/area/A = src.loc.loc
-	return A.master.lightswitch && A.master.power_light
+	var/area/A = get_new_area(src)
+	return A && A.lightswitch && (!A.requires_power || A.power_light)
 
 /obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
 	if(flickering) return
@@ -544,7 +525,7 @@ var/global/list/obj/machinery/light/alllights = list()
 				if(status != LIGHT_OK) break
 				on = !on
 				update(0)
-				sleep(rand(3, 15))
+				sleep(rand(5, 15))
 			on = (status == LIGHT_OK)
 			update(0)
 		flickering = 0
@@ -604,7 +585,9 @@ var/global/list/obj/machinery/light/alllights = list()
 	var/obj/item/weapon/light/L = new light_type()
 	L.status = status
 	L.rigged = rigged
+	L.brightness_range = src.brightness_range
 	L.brightness_power = src.brightness_power
+	L.brightness_color = src.brightness_color
 
 	// light item inherits the switchcount, then zero it
 	L.switchcount = switchcount
@@ -664,9 +647,9 @@ var/global/list/obj/machinery/light/alllights = list()
 	if(status == LIGHT_OK)
 		return
 	status = LIGHT_OK
-	brightness_range = initial(brightness_range)
-	brightness_power = initial(brightness_power)
-	brightness_color = initial(brightness_color)
+//	brightnessred = initial(brightnessred)
+//	brightnessgreen = initial(brightnessgreen)
+//	brightnessblue = initial(brightnessblue)
 
 	on = 1
 	update()
@@ -718,7 +701,7 @@ var/global/list/obj/machinery/light/alllights = list()
 
 /obj/machinery/light/proc/set_blue()
 	if(on)
-		set_light(8)
+		brightness_color = LIGHT_COLOR_BLUE
 		if(cmptext(base_state,"tube"))
 			atmosalarmed = 1
 			firealarmed = 0
@@ -726,7 +709,7 @@ var/global/list/obj/machinery/light/alllights = list()
 
 /obj/machinery/light/proc/set_red()
 	if(on)
-		set_light(8)
+		brightness_color = LIGHT_COLOR_RED
 		if(cmptext(base_state,"tube"))
 			firealarmed = 1
 			atmosalarmed = 0
@@ -734,7 +717,7 @@ var/global/list/obj/machinery/light/alllights = list()
 
 /obj/machinery/light/proc/reset_color()
 	if(on)
-		brightness_power   = initial(brightness_power)
+		brightness_color = null
 		if(cmptext(base_state,"tube"))
 			firealarmed = 0
 			atmosalarmed = 0
@@ -781,10 +764,10 @@ var/global/list/obj/machinery/light/alllights = list()
 	var/switchcount = 0	// number of times switched
 	m_amt = 60
 	var/rigged = 0		// true if rigged to explode
+	var/brightness = 2
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
 	var/brightness_color = null
-
 
 /obj/item/weapon/light/tube
 	name = "light tube"
@@ -805,7 +788,7 @@ var/global/list/obj/machinery/light/alllights = list()
 /obj/item/weapon/light/tube/floor
 	name = "floor light tube"
 	brightness_range = 8
-	brightness_power = 4
+	brightness_power = 3
 
 /obj/item/weapon/light/bulb
 	name = "light bulb"
@@ -816,6 +799,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	g_amt = 100
 	brightness_range = 5
 	brightness_power = 2
+	brightness_color = LIGHT_COLOR_TUNGSTEN
 
 /obj/item/weapon/light/throw_impact(atom/hit_atom)
 	..()
@@ -834,7 +818,7 @@ var/global/list/obj/machinery/light/alllights = list()
 /obj/item/weapon/light/bulb/floor
 	name = "floor light bulb"
 	desc = "A replacement floor light bulb."
-	brightness_range = 6
+	brightness_range = 5
 	brightness_power = 2
 
 // update the icon state and description of the light

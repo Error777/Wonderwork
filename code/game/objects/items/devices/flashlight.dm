@@ -7,6 +7,7 @@
 	w_class = 2
 	flags = FPRINT | TABLEPASS | CONDUCT
 	slot_flags = SLOT_BELT
+	light_color = LIGHT_COLOR_TUNGSTEN
 	m_amt = 50
 	g_amt = 20
 	icon_action_button = "action_flashlight"
@@ -94,13 +95,14 @@
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
+		set_light(0)
 		user.set_light(brightness_on)
-		src.set_light(0)
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
-		user.set_light(brightness_on)
-		src.set_light(brightness_on)
+		user.set_light(0)
+		set_light(brightness_on)
+
 
 /obj/item/device/flashlight/on_enter_storage()
 	if(on)
@@ -160,6 +162,7 @@
 	var/on_damage = 7
 	var/produce_heat = 1500
 	brightness_on = 6
+	light_color = LIGHT_COLOR_FLARE
 
 /obj/item/device/flashlight/flare/New()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.

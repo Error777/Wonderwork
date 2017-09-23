@@ -2,6 +2,7 @@
 	name = "Shuttle"
 	desc = "For shuttle control."
 	icon_state = "shuttle"
+	light_color = LIGHT_COLOR_BLUE
 	var/auth_need = 3.0
 	var/list/authorized = list(  )
 

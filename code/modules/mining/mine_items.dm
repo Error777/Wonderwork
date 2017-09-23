@@ -6,9 +6,10 @@
 	anchored = 1
 	unacidable = 1
 	luminosity = 8
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/effect/light_emitter/New()
-	set_light(8)
+	set_light(luminosity)
 
 /**********************Miner Lockers**************************/
 

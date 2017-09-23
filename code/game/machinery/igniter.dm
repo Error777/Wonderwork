@@ -52,6 +52,7 @@
 	desc = "A wall-mounted ignition device."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "migniter"
+	light_color = LIGHT_COLOR_TUNGSTEN
 	var/id = null
 	var/disable = 0
 	var/last_spark = 0

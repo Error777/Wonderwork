@@ -6,6 +6,7 @@
 	use_power = 1
 	idle_power_usage = 300
 	active_power_usage = 300
+	light_color = LIGHT_COLOR_GREEN
 	var/obj/item/weapon/circuitboard/circuit = null //if circuit==null, computer can't disassembly
 	var/processing = 0
 	var/brightness_on = 3 //luminosity when on

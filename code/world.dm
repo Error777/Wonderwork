@@ -78,7 +78,7 @@
 
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
-	lighting_controller = new /datum/controller/lighting()
+//	lighting_controller = new /datum/controller/lighting()
 
 	spawn(1)
 		processScheduler.setup()

@@ -254,6 +254,7 @@
 	seed = "/obj/item/seeds/glowberryseed"
 	name = "bunch of glow-berries"
 	desc = "Nutritious!"
+	light_color = LIGHT_COLOR_BLUE
 	var/on = 1
 	var/brightness_on = 2 //luminosity when on
 	icon_state = "glowberrypile"
@@ -872,6 +873,7 @@
 	seed = "/obj/item/seeds/glowshroom"
 	name = "glowshroom cluster"
 	desc = "<I>Mycena Bregprox</I>: This species of mushroom glows in the dark. Or does it?"
+	light_color = LIGHT_COLOR_GREEN
 	icon_state = "glowshroom"
 	New()
 		..()
@@ -904,16 +906,16 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/Del()
 	if(istype(loc,/mob))
-		loc.set_light(round(loc.luminosity - potency/10,1))
+		loc.set_light(round(loc.luminosity - potency/10))
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
 	set_light(0)
-	user.set_light(round(user.luminosity + (potency/10),1))
+	user.set_light(round(user.luminosity + (potency/10)))
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.set_light(round(user.luminosity + (potency/10),1))
-	set_light(round(potency/10,1))
+	user.set_light(round(user.luminosity + (potency/10)))
+	set_light(round(potency/10))
 
 
 // *************************************

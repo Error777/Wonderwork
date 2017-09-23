@@ -38,6 +38,7 @@
 	allowed = list(/obj/item/device/flashlight)
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
+	light_color = LIGHT_COLOR_TUNGSTEN
 	item_color = "engineering" //Determines used sprites: rig[on]-[color] and rig[on]-[color]2 (lying down sprite)
 	icon_action_button = "action_hardhat"
 	flags_inv = 0
@@ -60,8 +61,8 @@
 
 /obj/item/clothing/head/helmet/space/rig/pickup(mob/user)
 	if(on)
-		user.set_light(brightness_on)
 		set_light(0)
+		user.set_light(brightness_on)
 
 /obj/item/clothing/head/helmet/space/rig/dropped(mob/user)
 	if(on)

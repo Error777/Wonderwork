@@ -95,7 +95,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
 	hologram.anchored = 1//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	set_light(1)	//hologram lighting
+	hologram.set_light(1)	//hologram lighting
 	icon_state = "holopad1"
 	A.current = src
 	master = A//AI is the master.
@@ -103,7 +103,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	return 1
 
 /obj/machinery/hologram/holopad/proc/clear_holo()
-//	hologram.set_light(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
+	hologram.set_light(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
 	del(hologram)//Get rid of hologram.
 	if(master.current == src)
 		master.current = null

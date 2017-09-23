@@ -4,6 +4,7 @@
 	icon_state = "hardhat0_yellow"
 	flags = FPRINT | TABLEPASS
 	item_state = "hardhat0_yellow"
+	light_color = LIGHT_COLOR_TUNGSTEN
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
 	item_color = "yellow" //Determines used sprites: hardhat[on]_[color] and hardhat[on]_[color]2 (lying down sprite)
@@ -27,8 +28,8 @@
 
 /obj/item/clothing/head/hardhat/pickup(mob/user)
 	if(on)
-		user.set_light(brightness_on)
 		set_light(0)
+		user.set_light(brightness_on)
 
 /obj/item/clothing/head/hardhat/dropped(mob/user)
 	if(on)

@@ -4,6 +4,7 @@
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
 	item_state = "candle1"
+	light_color = LIGHT_COLOR_TUNGSTEN
 	w_class = 1
 
 	var/wax = 200
@@ -72,7 +73,6 @@
 		update_icon()
 		set_light(0)
 		user.set_light(CANDLE_LUM)
-
 
 /obj/item/candle/pickup(mob/user)
 	if(lit)
