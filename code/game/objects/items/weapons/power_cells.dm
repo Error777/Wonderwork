@@ -72,7 +72,7 @@
 	name = "hyper-capacity power cell"
 	origin_tech = "powerstorage=6"
 	icon_state = "hpcell"
-	maxcharge = 30000
+	maxcharge = 29000
 	g_amt = 80
 	construction_cost = list("metal"=500,"glass"=150,"gold"=200,"silver"=200)
 
@@ -102,13 +102,13 @@
 	minor_fault = 1
 
 
-///obj/item/weapon/cell/metroid
-//	name = "charged metroid core"
-//	desc = "A yellow metroid core infused with plasma, it crackles with power."
-//	origin_tech = "powerstorage=2;biotech=4"
-//	icon = 'icons/mob/metroids.dmi' //'icons/obj/harvest.dmi'
-//	icon_state = "yellow metroid extract" //"potato_battery"
-//	maxcharge = 10000
-//	maxcharge = 10000
-//	m_amt = 0
-//	g_amt = 0
+/obj/item/weapon/cell/metroid
+	name = "charged metroid core"
+	desc = "A yellow metroid core infused with plasma, it crackles with power."
+	origin_tech = "powerstorage=2;biotech=4"
+	icon = 'icons/obj/surgery.dmi' //'icons/obj/harvest.dmi'
+	icon_state = "metroid cell" //"potato_battery"
+	charge = 9000
+	maxcharge = 10000
+	m_amt = 0
+	g_amt = 0

@@ -38,6 +38,7 @@
 	var/Ticklag = 0.4
 	var/Tickcomp = 0
 
+	var/vehicle_delay_multiplier = 1
 	var/list/mode_names = list()
 	var/list/modes = list()				// allowed modes
 	var/list/votable_modes = list()		// votable modes

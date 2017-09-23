@@ -526,6 +526,14 @@ var/global/list/moneytypes = list(
 	g_amt = 7500
 	flags = FPRINT | TABLEPASS| CONDUCT
 
+/obj/item/weapon/table_parts/woodreinforced
+	name = "wood reinforced table parts"
+	desc = "Hard wood table parts. Well...harder..."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "woodreinf_tableparts"
+	m_amt = 7500
+	flags = FPRINT | TABLEPASS| CONDUCT
+
 /obj/item/weapon/wire
 	desc = "This is just a simple piece of regular insulated wire."
 	name = "wire"
