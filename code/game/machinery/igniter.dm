@@ -42,8 +42,6 @@
 /obj/machinery/igniter/New()
 	..()
 	icon_state = "igniter[on]"
-	sleep(4)
-	set_light(light_range_on,light_power_on)
 
 /obj/machinery/igniter/power_change()
 	if(!( stat & NOPOWER) )

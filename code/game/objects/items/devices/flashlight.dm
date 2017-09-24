@@ -21,35 +21,16 @@
 
 /obj/item/device/flashlight/initialize()
 	..()
-	if(on)
-		icon_state = "[initial(icon_state)]-on"
-		src.set_light(brightness_on)
-	else
-		icon_state = initial(icon_state)
-		src.set_light(0)
+	update_brightness()
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user = null)
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		set_light(brightness_on)
+		set_light(brightness_on,light_power,light_color)
 	else
 		icon_state = initial(icon_state)
 		set_light(0)
-/*
-/obj/item/device/flashlight/proc/update_brightness(var/mob/user)
-	if (on)
-		icon_state = "[initial(icon_state)]-on"
-		if(src.loc == user)
-			user.set_light(brightness_on,light_power,light_color)
-		else if (isturf(src.loc))
-			set_light(0)
-	else
-		icon_state = initial(icon_state)
-		if(src.loc == user)
-			user.set_light(brightness_on,light_power,light_color)
-		else if (isturf(src.loc))
-			set_light(0)
-*/
+
 /obj/item/device/flashlight/attack_self(mob/user)
 	if(!isturf(user.loc))
 		user << "You cannot turn the light on while in this [user.loc]." //To prevent some lighting anomalities.
@@ -102,7 +83,7 @@
 					user << "<span class='notice'>[M]'s pupils narrow.</span>"
 	else
 		return ..()
-
+/*
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
 		set_light(0)
@@ -112,7 +93,7 @@
 	if(on)
 		user.set_light(0)
 		set_light(brightness_on)
-
+*/
 /obj/item/device/flashlight/pen
 	name = "penlight"
 	desc = "A pen-sized light, used by medical staff."
