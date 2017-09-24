@@ -14,20 +14,20 @@
 	pixel_x = rand(0,12)-6
 	pixel_y = rand(0,12)-6
 
-/obj/item/weapon/gascartridge
+/obj/item/weapon/tank/plasma/gascartridge
 	icon = 'icons/obj/tank.dmi'
 	name = "plasma cartridge"
 	icon_state = "plasma_s"
+	item_state = "	plasma-c"
 	w_class = 3.0
-	var/volume = 45
-	var/datum/gas_mixture/air_contents = null
+	volume = 45
 	pressure_resistance = ONE_ATMOSPHERE*2.5
 	force = 5.0
 	throwforce = 10.0
 	throw_speed = 1
 	throw_range = 4
 
-/obj/item/weapon/gascartridge/New()
+/obj/item/weapon/tank/plasma/gascartridge/New()
 	src.air_contents = new /datum/gas_mixture()
 	src.air_contents.volume = volume //liters
 	src.air_contents.temperature = T20C
