@@ -123,6 +123,7 @@
 	return
 
 /obj/item/weapon/tank/plasma/heavy
+	name = "heavy plasma tank"
 	icon_state = "plasma_m"
 	item_state = "plasma_m"
 	volume = 14

@@ -7425,7 +7425,7 @@
 "cMO" = (/obj/machinery/door/airlock/centcom{name = "Special Operations"; opacity = 1; req_access_txt = "103"},/turf/unsimulated/floor{icon_state = "delivery"},/area/centcom/specops)
 "cMP" = (/obj/machinery/door/airlock/centcom{name = "Bridge"; opacity = 1; req_access_txt = "109"},/turf/unsimulated/floor{icon_state = "floor"},/area/centcom/control)
 "cMQ" = (/obj/structure/stool/bed/chair,/turf/unsimulated/floor{icon_state = "floor"},/area/centcom/control)
-"cMR" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/box/syringes,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
+"cMR" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/toolbox/medical{pixel_x = 4; pixel_y = 4},/obj/item/weapon/storage/box/syringes,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
 "cMS" = (/obj/structure/table/reinforced,/obj/item/clothing/glasses/hud/health,/obj/item/clothing/glasses/hud/health,/obj/item/clothing/glasses/hud/health,/obj/item/clothing/glasses/hud/health,/obj/item/clothing/glasses/hud/health,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
 "cMT" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/firstaid/adv{pixel_x = -2; pixel_y = -2},/obj/item/weapon/storage/firstaid/regular{pixel_x = -2; pixel_y = 2},/obj/item/weapon/storage/firstaid/o2{pixel_x = 2; pixel_y = 2},/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
 "cMU" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/belt/medical,/obj/item/weapon/storage/belt/medical,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
