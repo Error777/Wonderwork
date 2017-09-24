@@ -1385,6 +1385,7 @@
 #include "code\WorkInProgress\Aria\network\machine.dm"
 #include "code\WorkInProgress\Aria\network\packets.dm"
 #include "code\WorkInProgress\Aria\ui\core.dm"
+#include "code\WorkInProgress\atlasstation\mapscreen.dm"
 #include "code\WorkInProgress\Bay12\floorpainter.dm"
 #include "code\WorkInProgress\Bay12\shredder.dm"
 #include "code\WorkInProgress\Bay12\spydevice.dm"

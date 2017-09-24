@@ -40,6 +40,18 @@ var/const/HOLOPAD_MODE = 0
 	light_power_on = 1
 	light_range_on = 3
 
+/obj/machinery/hologram/holopad/New()
+	sleep(4)
+	set_light(light_range_on,light_power_on)
+
+/obj/machinery/hologram/holopad/power_change()
+	if ( powered() )
+		stat &= ~NOPOWER
+		src.set_light(light_range_on,light_power_on)
+	else
+		stat |= ~NOPOWER
+		src.set_light(0)
+
 /obj/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
 		return
@@ -151,12 +163,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/obj/effect/overlay/hologram//The projection itself. If there is one, the instrument is on, off otherwise.
-
-/obj/machinery/hologram/power_change()
-	if (powered())
-		stat &= ~NOPOWER
-	else
-		stat |= ~NOPOWER
 
 //Destruction procs.
 /obj/machinery/hologram/ex_act(severity)

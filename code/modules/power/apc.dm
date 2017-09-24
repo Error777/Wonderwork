@@ -1252,16 +1252,17 @@
 // overload all the lights in this APC area
 
 /obj/machinery/power/apc/proc/overload_lighting()
-	if(/* !get_connection() || */ !operating || shorted)
+	if(!operating || shorted)
 		return
 	if( cell && cell.charge>=20)
 		cell.use(20);
 		spawn(0)
-			for(var/area/A in area.related)
-				for(var/obj/machinery/light/L in A)
-					L.on = 1
-					L.broken()
-					sleep(1)
+//			for(var/area/A in area.related)
+			for(var/obj/machinery/light/L in area)
+				L.on = 0
+				L.broken(1)
+				L.update(0)
+				sleep(1)
 
 /obj/machinery/power/apc/Del()
 	if(malfai && operating && cell)

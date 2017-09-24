@@ -28,6 +28,14 @@
 		icon_state = initial(icon_state)
 		src.set_light(0)
 
+/obj/item/device/flashlight/proc/update_brightness(var/mob/user = null)
+	if(on)
+		icon_state = "[initial(icon_state)]-on"
+		set_light(brightness_on)
+	else
+		icon_state = initial(icon_state)
+		set_light(0)
+/*
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
 	if (on)
 		icon_state = "[initial(icon_state)]-on"
@@ -41,11 +49,12 @@
 			user.set_light(brightness_on,light_power,light_color)
 		else if (isturf(src.loc))
 			set_light(0)
-
+*/
 /obj/item/device/flashlight/attack_self(mob/user)
 	if(!isturf(user.loc))
 		user << "You cannot turn the light on while in this [user.loc]." //To prevent some lighting anomalities.
 		return 0
+
 	on = !on
 	playsound(src.loc, 'sound/items/flashlight.ogg', 75, 1)
 	update_brightness(src.loc)

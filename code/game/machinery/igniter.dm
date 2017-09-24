@@ -6,7 +6,11 @@
 	var/id = null
 	var/on = 1.0
 	anchored = 1.0
+	light_color = LIGHT_COLOR_FIRE
+	anchored = 1
 	use_power = 1
+	light_power_on = 1
+	light_range_on = 3
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -38,12 +42,16 @@
 /obj/machinery/igniter/New()
 	..()
 	icon_state = "igniter[on]"
+	sleep(4)
+	set_light(light_range_on,light_power_on)
 
 /obj/machinery/igniter/power_change()
 	if(!( stat & NOPOWER) )
 		icon_state = "igniter[src.on]"
+		src.set_light(light_range_on,light_power_on)
 	else
 		icon_state = "igniter0"
+		src.set_light(0)
 
 // Wall mounted remote-control igniter.
 

@@ -286,8 +286,10 @@
 	power_change()
 		if( !powered(power_channel) && (!battery || battery.charge <= 0) )
 			stat |= NOPOWER
+			src.set_light(light_range_on,light_power_on)
 		else
 			stat &= ~NOPOWER
+			src.set_light(0)
 
 	process()
 		auto_use_power()

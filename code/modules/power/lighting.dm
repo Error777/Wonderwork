@@ -212,6 +212,7 @@
 	fixture_type = "floortube"
 	sheets_refunded = 1
 
+var/global/list/obj/machinery/light/alllights = list()
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
@@ -309,20 +310,20 @@
 /obj/machinery/light/New()
 	..()
 
-	on = has_power()
-//	spawn(2)
-//		var/area/A = get_new_area(src)
-//		if(A && !A.requires_power)
-//			on = 1
+	alllights += src
 
-//		if(src.z == 1 || src.z == 5)
+	on = has_power()
 	switch(fitting)
 		if("tube","bulb","floor bulb","floor tube")
 			if(prob(2))
 				broken(1)
 
-//		spawn(1)
 	update(0)
+
+/obj/machinery/light/Del()
+	..()
+	seton(0)
+	alllights -= src
 
 /obj/machinery/light/update_icon()
 
@@ -384,6 +385,12 @@
 /obj/machinery/light/small/isalert()		//I don't want them to change to red
 	return 0
 
+/obj/machinery/light/proc/fix()
+	if(status == LIGHT_OK)
+		return
+	status = LIGHT_OK
+	on = has_power()
+	update(0)
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
@@ -640,18 +647,8 @@
 			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
+
 	status = LIGHT_BROKEN
-	update()
-
-/obj/machinery/light/proc/fix()
-	if(status == LIGHT_OK)
-		return
-	status = LIGHT_OK
-//	brightnessred = initial(brightnessred)
-//	brightnessgreen = initial(brightnessgreen)
-//	brightnessblue = initial(brightnessblue)
-
-	on = 1
 	update()
 
 // explosion effect
