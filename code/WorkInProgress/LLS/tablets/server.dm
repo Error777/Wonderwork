@@ -112,6 +112,7 @@ var/global/list/obj/machinery/nanonet_router/nanonet_routers = list()
 	name = "ThinkTronic Server console"
 	desc = "Used to administrate the crew's ThinkTronic server"
 	icon_state = "comm_logs"
+	light_color = LIGHT_COLOR_GREEN
 	circuit = /obj/item/weapon/circuitboard/thinktronic_monitor
 	//Server linked to.
 	var/obj/machinery/nanonet_server/linkedServer = null

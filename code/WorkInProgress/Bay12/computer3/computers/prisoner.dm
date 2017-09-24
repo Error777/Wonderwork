@@ -1,5 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 /obj/machinery/computer3/prisoner
+	light_color = LIGHT_COLOR_RED
 	default_prog = /datum/file/program/prisoner
 	spawn_parts = list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/networking/radio)
 	icon_state = "frame-sec"
@@ -8,7 +9,6 @@
 	name = "Prisoner Management Console"
 	active_state = "explosive"
 	req_access = list(access_armory)
-
 	var/id = 0.0
 	var/temp = null
 	var/status = 0

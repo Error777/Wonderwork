@@ -275,15 +275,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		user.set_light(0)
 		set_light(f_lum)
 
-/obj/item/device/pda/on_enter_storage()
-	if(fon)
-		usr.set_light(f_lum)
-		fon = 0
-	else if (isturf(src.loc))
-		set_light(0)
-	..()
-	return
-
 /obj/item/device/pda/New()
 	..()
 	PDAs += src

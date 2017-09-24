@@ -36,17 +36,6 @@
 		user.set_light(0)
 		set_light(brightness_on)
 
-/obj/item/clothing/head/hardhat/on_enter_storage()
-	if(on)
-		usr.set_light(0)
-		on = 0
-		icon_state = "hardhat[on]_[item_color]"
-		item_state = "hardhat[on]_[item_color]"
-	else if (isturf(src.loc))
-		set_light(0)
-	..()
-	return
-
 /obj/item/clothing/head/hardhat/orange
 	icon_state = "hardhat0_orange"
 	item_state = "hardhat0_orange"

@@ -67,9 +67,11 @@
 										// can override if needed
 	if(powered(power_channel))
 		stat &= ~NOPOWER
+		set_light(light_range_on, light_power_on)
 	else
 
 		stat |= NOPOWER
+		set_light(0)
 	return
 
 

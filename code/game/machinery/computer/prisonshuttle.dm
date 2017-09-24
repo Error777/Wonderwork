@@ -15,6 +15,7 @@ var/prison_shuttle_timeleft = 0
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "shuttle"
 	req_access = list(access_security)
+	light_color = LIGHT_COLOR_RED
 	circuit = "/obj/item/weapon/circuitboard/prison_shuttle"
 	var/temp = null
 	var/hacked = 0

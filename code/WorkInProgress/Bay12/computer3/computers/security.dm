@@ -1,5 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 /obj/machinery/computer3/secure_data
+	light_color = LIGHT_COLOR_RED
 	default_prog = /datum/file/program/secure_data
 	spawn_parts = list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/cardslot,/obj/item/part/computer/networking/radio)
 	icon_state = "frame-sec"
@@ -15,7 +16,6 @@
 	desc 		= "Used to view and edit personnel's security records"
 	active_state = "security"
 	image			= 'icons/ntos/records.png'
-
 	req_one_access = list(access_security, access_forensics_lockers)
 
 	var/obj/item/weapon/card/id/scan = null

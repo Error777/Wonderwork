@@ -108,6 +108,8 @@ Class Procs:
 	var/uid
 	var/manual = 0
 	var/global/gl_uid = 1
+	var/light_power_on = 0
+	var/light_range_on = 0
 
 /obj/machinery/New()
 	..()

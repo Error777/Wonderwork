@@ -11,7 +11,7 @@
 	spawn_parts			= list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/networking/cameras)
 	spawn_files 		= list(/datum/file/camnet_key)
 	icon_state			= "frame-sec"
-
+	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/computer3/security/wooden_tv
 	name				= "security cameras"

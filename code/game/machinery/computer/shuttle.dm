@@ -2,13 +2,9 @@
 	name = "Shuttle"
 	desc = "For shuttle control."
 	icon_state = "shuttle"
-	light_color = LIGHT_COLOR_BLUE
+	light_color = LIGHT_COLOR_CYAN
 	var/auth_need = 3.0
 	var/list/authorized = list(  )
-
-	New()
-		..()
-		loc.set_light(brightness_on)
 
 	attackby(var/obj/item/weapon/card/W as obj, var/mob/user as mob)
 		if(stat & (BROKEN|NOPOWER))	return

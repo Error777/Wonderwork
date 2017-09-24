@@ -357,6 +357,7 @@ proc/freezemob(mob/M as mob in world)
 	desc = "Used to access the freezer pad."
 	circuit = "/obj/item/weapon/circuitboard/atmos_alert"
 	icon_state = "alert:0"
+	light_color = LIGHT_COLOR_CYAN
 	var/obj/machinery/freezer/freezer_platform/slave = null
 
 

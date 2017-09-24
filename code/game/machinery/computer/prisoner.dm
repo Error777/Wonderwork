@@ -4,6 +4,7 @@
 	name = "Prisoner Management"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "explosive"
+	light_color = LIGHT_COLOR_RED
 	req_access = list(access_armory)
 	circuit = "/obj/item/weapon/circuitboard/prisoner"
 	var/id = 0.0

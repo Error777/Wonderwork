@@ -43,11 +43,11 @@
 			set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
-	playsound(src.loc, 'sound/items/flashlight.ogg', 75, 1)
 	if(!isturf(user.loc))
 		user << "You cannot turn the light on while in this [user.loc]." //To prevent some lighting anomalities.
 		return 0
 	on = !on
+	playsound(src.loc, 'sound/items/flashlight.ogg', 75, 1)
 	update_brightness(src.loc)
 	return 1
 
@@ -103,17 +103,6 @@
 	if(on)
 		user.set_light(0)
 		set_light(brightness_on)
-
-
-/obj/item/device/flashlight/on_enter_storage()
-	if(on)
-		icon_state = initial(icon_state)
-		usr.set_light(brightness_on)
-		on = 0
-	else if(isturf(src.loc))
-		set_light(0)
-		..()
-		return
 
 /obj/item/device/flashlight/pen
 	name = "penlight"

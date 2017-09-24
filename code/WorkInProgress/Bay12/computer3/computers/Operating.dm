@@ -2,6 +2,7 @@
 	default_prog = /datum/file/program/op_monitor
 	spawn_parts = list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/networking/prox)
 	icon_state = "frame-med"
+	light_color = LIGHT_COLOR_BLUE
 
 /datum/file/program/op_monitor
 	name = "operating table monitor"

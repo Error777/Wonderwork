@@ -150,16 +150,6 @@
 		user.set_light(0)
 		set_light(brightness_on)
 
-/obj/item/clothing/head/pumpkinhead/on_enter_storage()
-	if(on)
-		icon_state = initial(icon_state)
-		usr.set_light(brightness_on)
-		on = 0
-	else if(isturf(src.loc))
-		set_light(0)
-		..()
-		return
-
 /*
  * Kitty ears
  */

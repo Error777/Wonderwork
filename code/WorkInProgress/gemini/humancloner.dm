@@ -4,6 +4,9 @@
 	icon_state = "hc_0"
 	density = 1
 	anchored = 1
+	light_color = LIGHT_COLOR_BLUE
+	light_power_on = 1
+	light_range_on = 3
 	var/cloning = 0
 
 /obj/machinery/humancloner/attack_hand()

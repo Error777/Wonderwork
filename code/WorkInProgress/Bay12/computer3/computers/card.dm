@@ -1,4 +1,5 @@
 /obj/machinery/computer3/card
+	light_color = LIGHT_COLOR_BLUE
 	default_prog = /datum/file/program/card_comp
 	spawn_parts = list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/cardslot/dual)
 /obj/machinery/computer3/card/hop

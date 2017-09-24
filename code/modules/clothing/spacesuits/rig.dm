@@ -69,17 +69,6 @@
 		user.set_light(0)
 		set_light(brightness_on)
 
-/obj/item/clothing/head/helmet/space/rig/on_enter_storage()
-	if(on)
-		usr.set_light(0)
-		on = 0
-		icon_state = "rig[on]-[item_color]"
-		item_state = "rig[on]-[item_color]"
-	else if (isturf(src.loc))
-		set_light(0)
-	..()
-	return
-
 /obj/item/clothing/suit/space/rig
 	name = "engineering hardsuit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding."

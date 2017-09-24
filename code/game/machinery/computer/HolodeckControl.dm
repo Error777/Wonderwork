@@ -2,6 +2,7 @@
 	name = "Holodeck Control Computer"
 	desc = "A computer used to control a nearby holodeck."
 	icon_state = "holocontrol"
+	light_color = LIGHT_COLOR_CYAN
 	var/area/linkedholodeck = null
 	var/area/target = null
 	var/active = 0

@@ -542,6 +542,7 @@
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
+	light_color = LIGHT_COLOR_BLUE
 	use_power = 1
 	idle_power_usage = 20
 	var/temphtml = ""

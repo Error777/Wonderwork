@@ -31,6 +31,7 @@
 	desc = "A computer to remotely control a gas turbine"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "airtunnel0e"
+	light_color = LIGHT_COLOR_BLUE
 	anchored = 1
 	density = 1
 	var/obj/machinery/compressor/compressor

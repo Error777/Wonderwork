@@ -9,7 +9,8 @@
 	light_color = LIGHT_COLOR_GREEN
 	var/obj/item/weapon/circuitboard/circuit = null //if circuit==null, computer can't disassembly
 	var/processing = 0
-	var/brightness_on = 3 //luminosity when on
+	light_power_on = 1
+	light_range_on = 3
 
 /obj/machinery/computer/New()
 	..()
@@ -18,15 +19,6 @@
 
 /obj/machinery/computer/initialize()
 	power_change()
-
-/obj/machinery/computer/process()
-	if(stat & (NOPOWER|BROKEN))
-		set_light(0)
-		return 0
-	else
-		if(!istype(src,/obj/machinery/computer/centrifuge) && !istype(src,/obj/machinery/computer/security/wooden_tv) && !istype(src,/obj/machinery/computer/security/telescreen))
-			set_light(4)
-	return 1
 
 /obj/machinery/computer/meteorhit(var/obj/O as obj)
 	for(var/x in verbs)
@@ -76,7 +68,6 @@
 			verbs -= x
 		set_broken()
 		density = 0
-		brightness_on = 0
 
 /obj/machinery/computer/update_icon()
 	..()
@@ -84,13 +75,11 @@
 	// Broken
 	if(stat & BROKEN)
 		icon_state += "b"
-		brightness_on = 0
 
 	// Powered
 	else if(stat & NOPOWER)
 		icon_state = initial(icon_state)
 		icon_state += "0"
-		brightness_on = 0
 
 
 

@@ -83,11 +83,3 @@
 	if(lit)
 		user.set_light(0)
 		set_light(CANDLE_LUM)
-
-/obj/item/candle/on_enter_storage()
-	if(lit)
-		lit = 0
-		update_icon()
-		usr.set_light(0)
-	..()
-	return

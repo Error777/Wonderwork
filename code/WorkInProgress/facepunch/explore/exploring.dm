@@ -10,6 +10,7 @@
 	name = "Gate Control Computer"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "teleport"
+	light_color = LIGHT_COLOR_BLUE
 	var/obj/machinery/stargate/center/gate = null
 	var/dial = 0
 	use_power = 1

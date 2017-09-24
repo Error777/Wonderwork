@@ -2,6 +2,7 @@
 	default_prog	= /datum/file/program/arcade
 	spawn_parts		= list(/obj/item/part/computer/toybox) //NO HDD - the game is loaded on the circuitboard's OS slot
 	icon_state			= "frame-arc"
+	light_color = LIGHT_COLOR_ORANGE
 
 /obj/item/part/computer/toybox
 	var/list/prizes = list(	/obj/item/weapon/storage/box/toy/snappops		= 2,

@@ -468,11 +468,3 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(lit)
 		user.set_light(0)
 		set_light(3)
-
-/obj/item/weapon/lighter/on_enter_storage()
-	if(lit)
-		lit = 0
-		update_icon()
-		set_light(0)
-	..()
-	return

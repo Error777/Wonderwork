@@ -2,6 +2,9 @@
 obj/machinery/scanner
 	name = "Identity Analyser"
 	var/outputdir = 0
+	light_color = LIGHT_COLOR_GREEN
+	light_power_on = 1
+	light_range_on = 2
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "bioreader_idle"
 	density = 1

@@ -27,7 +27,7 @@
 	desc = "The arm is just for decoration."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "slot"
-
+	light_color = LIGHT_COLOR_PINK
 	var/show_name
 
 	var/image/overlay_1

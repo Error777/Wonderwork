@@ -2,6 +2,7 @@
 /obj/machinery/computer/rust/gyrotron_controller
 	name = "Gyrotron Remote Controller"
 	icon_state = "power"
+	light_color = LIGHT_COLOR_ORANGE
 	var/updating = 1
 
 	New()

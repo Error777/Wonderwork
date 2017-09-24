@@ -68,6 +68,7 @@ proc/move_research_shuttle()
 	name = "Research Shuttle Console"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "shuttle"
+	light_color = LIGHT_COLOR_CYAN
 	req_access = list(access_research)
 	circuit = "/obj/item/weapon/circuitboard/research_shuttle"
 	var/hacked = 0

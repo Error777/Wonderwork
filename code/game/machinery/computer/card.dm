@@ -4,6 +4,7 @@
 	name = "Identification Computer"
 	desc = "You can use this to change ID's."
 	icon_state = "id"
+	light_color = LIGHT_COLOR_BLUE
 	req_access = list(access_change_ids)
 	circuit = "/obj/item/weapon/circuitboard/card"
 	var/obj/item/weapon/card/id/scan = null
