@@ -996,6 +996,7 @@ area/ship/eva
 
 /area/solar
 	requires_power = 0
+	dynamic_lighting = 0
 
 /area/solar/auxport
 	name = "\improper Fore Port Solar Array"
