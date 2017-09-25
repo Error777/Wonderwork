@@ -89,33 +89,24 @@ var/list/parallax_icon[(3**2)*3]
 
 /datum/hud/proc/update_parallax()
 	var/client/C = mymob.client
-	if(C.prefs.parallax_togs & PARALLAX_SPACE)
-		for(var/obj/screen/parallax/bgobj in C.parallax)
-			C.screen |= bgobj
-		C.screen |= C.parallax_master
-		C.screen |= C.parallax_spacemaster
-		if(C.prefs.parallax_togs & PARALLAX_DUST)
-			C.parallax_dustmaster.color = list(
-			1,0,0,0,
-			0,1,0,0,
-			0,0,1,0,
-			0,0,0,1)
-		else
-			C.parallax_dustmaster.color = list(0,0,0,0)
-	else
-		for(var/obj/screen/parallax/bgobj in C.parallax)
-			C.screen -= bgobj
-		C.screen -= C.parallax_master
-		C.screen -= C.parallax_spacemaster
-		C.parallax_dustmaster.color = list(0,0,0,0)
+
+	for(var/obj/screen/parallax/bgobj in C.parallax)
+		C.screen |= bgobj
+	C.screen |= C.parallax_master
+	C.screen |= C.parallax_spacemaster
+	C.parallax_dustmaster.color = list(
+	1,0,0,0,
+	0,1,0,0,
+	0,0,1,0,
+	0,0,0,1)
 
 /datum/hud/proc/update_parallax_values()
 	var/client/C = mymob.client
 	//if(!parallax_initialized)
 		//return
 
-	if (C.prefs.parallax_togs & PARALLAX_IS_STATIC)
-		return
+//	if (C.prefs.parallax_togs & PARALLAX_IS_STATIC)
+//		return
 
 	//ACTUALLY MOVING THE PARALLAX
 	var/turf/posobj = C.eye ? C.eye:loc : C.mob:loc
@@ -134,8 +125,8 @@ var/list/parallax_icon[(3**2)*3]
 
 	C.previous_turf = posobj
 
-	var/offsetx = C.parallax_offset_x * C.prefs.parallax_speed
-	var/offsety = C.parallax_offset_y * C.prefs.parallax_speed
+	var/offsetx = C.parallax_offset_x * 2
+	var/offsety = C.parallax_offset_y * 2
 
 	for(var/thing in C.parallax_movable)
 		var/obj/screen/parallax/bgobj = thing

@@ -66,6 +66,7 @@ datum/controller/game_controller/proc/setup()
 	setupgenetics()
 	setupfactions()
 	setup_economy()
+	create_global_parallax_icons()
 
 	for(var/i=0, i<max_secret_rooms, i++)
 		make_mining_asteroid_secret()

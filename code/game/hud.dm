@@ -372,5 +372,7 @@ var/datum/global_hud/global_hud = new()
 
 	else if(isobserver(mymob))
 		ghost_hud()
+
+	update_parallax_existence()
 	return
 
