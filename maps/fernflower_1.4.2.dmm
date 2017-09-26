@@ -3027,7 +3027,7 @@
 "bgk" = (/obj/machinery/camera{c_tag = "Arrivals Auxiliary Docking"; dir = 8; network = list("SS13")},/turf/simulated/floor,/area/hallway/secondary/entry)
 "bgl" = (/turf/simulated/floor/plating,/area/maintenance/disposal)
 "bgm" = (/obj/machinery/conveyor_switch{conveyors = -1; id = "garbagebelt"},/turf/simulated/floor/plating,/area/maintenance/disposal)
-"bgn" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/maintenance/disposal)
+"bgn" = (/obj/machinery/light/small{dir = 1},/obj/structure/rack,/obj/item/weapon/paper/recycler,/turf/simulated/floor/plating,/area/maintenance/disposal)
 "bgo" = (/obj/item/weapon/cigbutt,/turf/simulated/floor/plating,/area/maintenance/port)
 "bgp" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/structure/disposalpipe/segment,/turf/simulated/floor/plating,/area/maintenance/port)
 "bgq" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area/maintenance/port)
