@@ -26,8 +26,8 @@
 		var/datum/gas_mixture/air = new()
 		air.temperature = T20C
 		air.volume = volume
-		air.gasses[OXYGEN] = (O2STANDARD * volume) / (R_IDEAL_GAS_EQUATION * air.temperature)
-		air.gasses[NITROGEN] = (N2STANDARD * volume) / (R_IDEAL_GAS_EQUATION * air.temperature)
+		air.oxygen = (O2STANDARD * volume) / (R_IDEAL_GAS_EQUATION * air.temperature)
+		air.nitrogen = (N2STANDARD * volume) / (R_IDEAL_GAS_EQUATION * air.temperature)
 		return air
 
 	proc/HasTraction()
@@ -43,7 +43,7 @@
 		return new /obj/machinery/portable_atmospherics/canister/air(src)
 
 	proc/GetPowercell()
-		return new /obj/item/weapon/stock_parts/cell/high(src)
+		return new /obj/item/weapon/cell/high(src)
 
 	// This has to happen because byond's lists interact weird with bitflags. (I know why, but its stupid either way, gib enums plox)
 	proc/Hardpoint2Text(var/hardpoint = 0)

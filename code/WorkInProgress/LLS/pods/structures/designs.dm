@@ -52,13 +52,13 @@
 		build_type = PODFAB
 		build_path = /obj/item/weapon/pod_attachment/primary/projectile/taser
 
-	p_disabler/
-		name = "disabler carbine"
-		id = "pdisabler"
-		req_tech = list("combat" = 1, "materials" = 1, "engineering" = 1)
+	p_plasma/
+		name = "plasma carbine"
+		id = "pplasma"
+		req_tech = list("combat" = 5, "materials" = 5, "engineering" = 5)
 		category = "Weapons"
 		build_type = PODFAB
-		build_path = /obj/item/weapon/pod_attachment/primary/projectile/disabler
+		build_path = /obj/item/weapon/pod_attachment/primary/projectile/plasma
 
 	p_phaser/
 		name = "phaser carbine"
@@ -98,7 +98,7 @@
 		category = "Weapons"
 		req_tech = list("combat" = 4, "materials" = 4, "engineering" = 4)
 		build_type = PODFAB
-		build_path = /obj/item/weapon/pod_attachment/primary/projectile/bullet/r10mm
+		build_path = /obj/item/weapon/pod_attachment/primary/projectile/bullet/r12mm
 
 	p_r75/
 		name = ".75 HE repeater"
@@ -150,7 +150,7 @@
 		req_tech = list("combat" = 2, "materials" = 2, "engineering" = 2)
 		category = "Ammunition"
 		build_type = PODFAB
-		build_path = /obj/item/ammo_box/c45
+		build_path = /obj/item/ammo_magazine/box/c45
 
 	p_9mm_ammo/
 		name = "9mm ammo box"
@@ -158,15 +158,15 @@
 		req_tech = list("combat" = 3, "materials" = 3, "engineering" = 3)
 		category = "Ammunition"
 		build_type = PODFAB
-		build_path = /obj/item/ammo_box/c9mm
+		build_path = /obj/item/ammo_magazine/box/c9mm
 
-	p_10mm_ammo/
+	p_12mm_ammo/
 		name = "10mm ammo box"
 		id = "p10mmammo"
 		req_tech = list("combat" = 4, "materials" = 4, "engineering" = 4)
 		category = "Ammunition"
 		build_type = PODFAB
-		build_path = /obj/item/ammo_box/c10mm
+		build_path = /obj/item/ammo_magazine/external/m12mm
 
 	p_75_ammo/
 		name = ".75 HE ammo box"
@@ -174,7 +174,7 @@
 		req_tech = list("combat" = 5, "illegal" = 4, "materials" = 5, "engineering" = 5)
 		category = "Ammunition"
 		build_type = PODFAB
-		build_path = /obj/item/ammo_box/magazine/m75
+		build_path = /obj/item/ammo_magazine/external/m75
 
 	/*
 	* Shield

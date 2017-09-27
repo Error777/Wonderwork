@@ -2,7 +2,7 @@ var/list/pod_list = list()
 
 /obj/pod
 	name = "Pod"
-	icon = 'icons/obj/pod-1-1.dmi'
+	icon = 'icons/pods/pod-1-1.dmi'
 	icon_state = "miniputt"
 	density = 1
 	anchored = 1
@@ -12,7 +12,7 @@ var/list/pod_list = list()
 	var/list/size = list(1, 1)
 	var/obj/machinery/portable_atmospherics/canister/internal_canister
 	var/datum/gas_mixture/internal_air
-	var/obj/item/weapon/stock_parts/cell/power_source
+	var/obj/item/weapon/cell/power_source
 	var/inertial_direction = NORTH
 	var/turn_direction = NORTH
 	var/last_move_time = 0
@@ -76,8 +76,8 @@ var/list/pod_list = list()
 		sparks.set_up(5, 0, src)
 		sparks.attach(src)
 
-		if(fexists("icons/obj/pod-[size[1]]-[size[2]].dmi"))
-			icon = file("icons/obj/pod-[size[1]]-[size[2]].dmi")
+		if(fexists("icons/pods/pod-[size[1]]-[size[2]].dmi"))
+			icon = file("icons/pods/pod-[size[1]]-[size[2]].dmi")
 
 		// Place attachments / batteries under the pod and they'll get attached (map editor)
 		spawn(10)
@@ -86,7 +86,7 @@ var/list/pod_list = list()
 					if(CanAttach(P))
 						P.OnAttach(src, 0)
 
-				var/obj/item/weapon/stock_parts/cell/cell = locate() in T
+				var/obj/item/weapon/cell/cell = locate() in T
 				if(cell)
 					del(power_source)
 					cell.loc = src
@@ -209,11 +209,17 @@ var/list/pod_list = list()
 			if(attachment.PodHandleDropAction(dropping, user))
 				return 0
 
+	Move(NewLoc, Dir = 0, step_x = 0, step_y = 0)
+		..()
+		if(dir == 1 || dir == 4)
+			src.loc.Entered(src)
+
 	relaymove(var/mob/user, var/_dir)
 		if(user == pilot)
 			DoMove(user, _dir)
 
 	proc/DoMove(var/mob/user, var/_dir)
+
 		if(user != pilot)
 			return 0
 
@@ -289,6 +295,29 @@ var/list/pod_list = list()
 
 		last_move_time = world.time
 
+	proc/Process_Spacemove(var/movement_dir = 0, var/check_drift = 0, mob/user)
+
+		if(pulledby)
+			return 1
+
+		if(locate(/obj/structure/catwalk) in orange(1, get_turf(src))) //Not realistic but makes pushing things in space easier
+			return 1
+		if(locate(/obj/structure/lattice) in orange(1, get_turf(src))) //Not realistic but makes pushing things in space easier
+			return 1
+
+		var/dense_object = 0
+		if(!user)
+			for(var/direction in list(NORTH, NORTHEAST, EAST))
+				var/turf/cardinal = get_step(src, direction)
+				if(istype(cardinal, /turf/space))
+					continue
+				dense_object++
+				break
+		if(!dense_object)
+			return 0
+		inertia_dir = 0
+		return 1
+
 	attack_hand(var/mob/living/user)
 		if(user.a_intent == "grab")
 			var/list/possible_targets = list()
@@ -347,14 +376,14 @@ var/list/pod_list = list()
 		if(user.a_intent == "harm")
 			goto Damage
 
-		if(istype(I, /obj/item/weapon/stock_parts/cell))
+		if(istype(I, /obj/item/weapon/cell))
 			if(power_source)
 				user << "<span class='warning'>There is already a cell installed.</span>"
 				return 0
 			else
 				user << "<span class='notice'>You start to install \the [I] into \the [src].</span>"
 				if(do_after(user, 20))
-					user.unEquip(I, 1)
+					user.u_equip(I, 1)
 					I.loc = src
 					power_source = I
 					user << "<span class='notice'>You install \the [I] into \the [src].</span>"
@@ -456,7 +485,7 @@ var/list/pod_list = list()
 		if(I.force)
 			user << "<span class='attack'>You hit \the [src] with the [I].</span>"
 			TakeDamage(I.force, 0, I, user)
-			add_logs(user, (pilot ? pilot : 0), "attacked a space pod", 1, I, " (REMHP: [health])")
+//			add_logs(user, (pilot ? pilot : 0), "attacked a space pod", 1, I, " (REMHP: [health])")
 			user.changeNext_move(8)
 
 		update_icon()
@@ -528,8 +557,8 @@ var/list/pod_list = list()
 				PrintSystemNotice("Fire extinguished.")
 		..()
 
-	CtrlShiftClick(var/mob/user)
-		if(!check_rights(R_SECONDARYADMIN))
+	ShiftClick(var/mob/user)
+		if(!check_rights(R_ADMIN))
 			return ..()
 
 		if(user.client)

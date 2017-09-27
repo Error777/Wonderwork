@@ -22,7 +22,7 @@
 					</tr>
 				"}
 
-	var/show_dbg = check_rights(R_PRIMARYADMIN)
+	var/show_dbg = check_rights(R_ADMIN|R_FUN)
 
 	dat += "<center>"
 
@@ -58,7 +58,7 @@
 	proc/OpenDebugMenu(var/mob/user)
 		var/dat
 
-		var/show_actions = check_rights(R_PRIMARYADMIN)
+		var/show_actions = check_rights(R_ADMIN)
 		var/actions
 		if(show_actions)
 			actions = "<a href='?src=\ref[src];action=damage'>Damage</a>|<a href='?src=\ref[src];action=heal'>Heal</a>"

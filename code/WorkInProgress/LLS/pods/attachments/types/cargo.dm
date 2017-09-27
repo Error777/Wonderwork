@@ -45,7 +45,7 @@
 		PodAttackbyAction(var/obj/item/I, var/mob/living/user)
 			if(user.a_intent != "harm")
 				if(HasRoom())
-					user.unEquip(I)
+					user.u_equip(I)
 					var/result = PlaceInto(I)
 					if(result == P_CARGOERROR_CLEAR)
 						user << "<span class='info'>You place the [I] into the [src] of the [attached_to].</span>"

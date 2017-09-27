@@ -15,7 +15,6 @@
 		has_menu = 1
 		can_detach = 0
 
-		var/health = 100
 		var/damage_reduction_multiplier = 0.95
 		var/temperature_damage_minimum = PLASMA_MINIMUM_BURN_TEMPERATURE
 

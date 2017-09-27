@@ -64,15 +64,15 @@
 		construction_cost = list("metal" = 4000, "plasma" = 1500)
 		origin_tech = "combat=1;materials=1;engineering=1"
 
-	disabler/
-		name = "disabler carbine"
-		overlay_icon_state = "pod_weapon_disabler"
+	plasma/
+		name = "plasma carbine"
+		overlay_icon_state = "pod_weapon_plasma"
 		power_usage = 50
 		cooldown = 5
 		use_sound = 'sound/weapons/taser2.ogg'
-		projectile = /obj/item/projectile/energy/disabler
+		projectile = /obj/item/projectile/energy/plasma
 		construction_cost = list("metal" = 4000, "plasma" = 1500)
-		origin_tech = "combat=1;materials=1;engineering=1"
+		origin_tech = "combat=5;materials=5;engineering=5"
 
 	phaser/
 		name = "phaser carbine"
@@ -108,9 +108,9 @@
 			if(mag_type)
 				var/obj/item/weapon/pod_attachment/cargo/cargo = attached_to.GetAttachmentOnHardpoint(P_HARDPOINT_CARGO_HOLD)
 				var/list/magazines = cargo.GetListFromType(mag_type)
-				var/obj/item/ammo_box/magazine/mag = locate(mag_type) in cargo.GetListFromType(mag_type)
+				var/obj/item/ammo_magazine/mag = locate(mag_type) in cargo.GetListFromType(mag_type)
 				if(length(magazines) > 1)
-					for(var/obj/item/ammo_box/magazine/M in magazines)
+					for(var/obj/item/ammo_magazine/M in magazines)
 						if(length(M.stored_ammo) > length(mag.stored_ammo))
 							mag = M
 
@@ -140,22 +140,22 @@
 		r45/
 			name = ".45 repeater"
 			cooldown = 5
-			mag_type = /obj/item/ammo_box/c45
+			mag_type = /obj/item/ammo_magazine/box/c45
 			construction_cost = list("metal" = 4000, "uranium" = 200)
 			origin_tech = "combat=2;materials=2;engineering=2"
 
 		r9mm/
 			name = "9mm repeater"
 			cooldown = 7.5
-			mag_type = /obj/item/ammo_box/c9mm
+			mag_type = /obj/item/ammo_magazine/box/c9mm
 			construction_cost = list("metal" = 4000, "silver" = 400, "uranium" = 400)
 			origin_tech = "combat=3;materials=3;engineering=3"
 
-		r10mm/
-			name = "10mm repeater"
+		r12mm/
+			name = "12mm repeater"
 			cooldown = 10
 			minimum_pod_size = list(2, 2)
-			mag_type = /obj/item/ammo_box/c10mm
+			mag_type = /obj/item/ammo_magazine/external/m12mm
 			construction_cost = list("metal" = 4000, "silver" = 600, "uranium" = 600)
 			origin_tech = "combat=4;materials=4;engineering=4"
 
@@ -163,7 +163,7 @@
 			name = ".75 HE repeater"
 			cooldown = 15
 			minimum_pod_size = list(2, 2)
-			mag_type = /obj/item/ammo_box/magazine/m75
+			mag_type = /obj/item/ammo_magazine/external/m75
 			construction_cost = list("metal" = 4000, "silver" = 800, "uranium" = 800)
 			origin_tech = "combat=5;materials=5;engineering=5;illegal=4"
 

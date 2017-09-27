@@ -9,7 +9,9 @@
 	w_class = 1.0
 	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/projectile_type					//The bullet type to create when New() is called
-	var/obj/item/projectile/BB = null 	//The loaded bullet
+	var/obj/item/projectile/BB = null 			//The loaded bullet
+	var/pellets = 0								//Pellets for spreadshot
+	var/variance = 0							//Variance for inaccuracy fundamental to the casing
 
 	New()
 		..()

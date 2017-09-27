@@ -37,7 +37,7 @@ var/list/pod_logs = list()
 			log += ", (dragged out by [key_name(dragged_by)]"
 		else if(dragged_by && entered)
 			log += ", (dragged into by [key_name(dragged_by)])"
-			add_logs(dragged_by, occupant, "dragged into a pod", src)
+			//add_logs(dragged_by, occupant, "dragged into a pod", src)
 		log += "."
 		occupancy_log.Add(Stamp() + "<font color='[as_pilot ? "blue" : "orange"]'>[log]</font>")
 

@@ -10,9 +10,6 @@
 		if(!attached_to)
 			return 0
 
-		if(!user.canUseTopic(attached_to))
-			return 0
-
 		var/dat
 
 		if(length(GetAvailableKeybinds()) > 0)
@@ -49,8 +46,6 @@
 		if(!attached_to)
 			return 0
 
-		if(!usr.canUseTopic(attached_to))
-			return 0
 
 		if(!href_list["action"])
 			return 0
