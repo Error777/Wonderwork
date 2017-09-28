@@ -353,7 +353,7 @@
 	mymob.pullin.name = "pull"
 	mymob.pullin.screen_loc = ui_pull_resist
 	src.hotkeybuttons += mymob.pullin
-
+/*
 	mymob.noise1 = new /obj/screen()
 	mymob.noise1.icon = 'icons/mob/noise.dmi'
 	mymob.noise1.icon_state = pick("1", "2", "3")
@@ -361,7 +361,7 @@
 	mymob.noise1.screen_loc = "1,1 to 15,15"
 	mymob.noise1.mouse_opacity = 0
 	mymob.noise1.layer = 18
-
+*/
 	mymob.damageoverlay = new /obj/screen()
 	mymob.damageoverlay.icon = 'icons/mob/screen1_full.dmi'
 	mymob.damageoverlay.icon_state = "oxydamageoverlay0"
@@ -379,7 +379,7 @@
 
 	mymob.client.screen = null
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.damageoverlay, mymob.noise1) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
+	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.damageoverlay) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
 	mymob.client.screen += src.adding + src.hotkeybuttons
 	inventory_shown = 0
 
