@@ -301,7 +301,7 @@ datum/preferences
 		if(jobban_isbanned(C, "Records"))
 			dat += "<p><span class='leftcol'>You are banned from using character records.</span></p>"
 		else
-			dat += "<p><span class='leftcol'>Character Records:</span><a href='?_src_=prefs;preference=records;record=1\'>~<span>Ðÿÿÿÿÿ...</span></a></p>"
+			dat += "<p><span class='leftcol'>Character Records:</span><a href='?_src_=prefs;preference=records;record=1\'>~<span>??????...</span></a></p>"
 
 
 		dat += "<hr>"
