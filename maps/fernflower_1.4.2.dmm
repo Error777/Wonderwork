@@ -5396,7 +5396,7 @@
 "bZN" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/structure/extinguisher_cabinet{dir = 1; pixel_y = 27},/turf/simulated/floor{dir = 9; icon_state = "caution"},/area/engine/break_room)
 "bZO" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor{dir = 1; icon_state = "caution"},/area/engine/break_room)
 "bZP" = (/turf/simulated/floor{dir = 5; icon_state = "caution"},/area/engine/break_room)
-"bZQ" = (/obj/machinery/camera{c_tag = "Engineering lobby north"; dir = 4; name = "security camera - zone 6"; network = list("Atmos")},/turf/simulated/floor,/area/engine/break_room)
+"bZQ" = (/obj/machinery/camera{c_tag = "Engineering lobby north"; dir = 4; name = "security camera - zone 6"; network = list("Atmos")},/obj/structure/flora/kirbyplants{icon_state = "plant-29"},/turf/simulated/floor,/area/engine/break_room)
 "bZR" = (/turf/simulated/floor,/area/engine/break_room)
 "bZS" = (/obj/structure/table,/obj/item/weapon/storage/toolbox/electrical{pixel_x = 1; pixel_y = 6},/obj/item/weapon/storage/toolbox/mechanical{pixel_x = -2; pixel_y = -1},/turf/simulated/floor{tag = "icon-cautioncorner (EAST)"; icon_state = "cautioncorner"; dir = 4},/area/engine/break_room)
 "bZT" = (/obj/machinery/portable_atmospherics/scrubber,/turf/simulated/floor{dir = 4; icon_state = "warning"},/area/atmos)
