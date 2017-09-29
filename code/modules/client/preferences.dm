@@ -174,7 +174,7 @@ datum/preferences
 	proc/ShowChoices(client/C)
 		if(!C)	return
 
-		var/dat = "<html><head><link rel='stylesheet' type='text/css' href='preferences.css'></head><body>"
+		var/dat = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"preferences.css\" /></head><body>"
 
 
 		//top-bar
