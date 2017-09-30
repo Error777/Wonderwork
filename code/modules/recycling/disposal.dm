@@ -70,11 +70,11 @@
 				var/obj/item/weapon/weldingtool/W = I
 				if(W.remove_fuel(0,user))
 					playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
-					user << "You start slicing the floorweld off the disposal unit."
+					user << "You start slicing the floorweld off the [name]."
 
 					if(do_after(user,20))
 						if(!src || !W.isOn()) return
-						user << "You sliced the floorweld off the disposal unit."
+						user << "You sliced the floorweld off the [name]."
 						var/obj/structure/disposalconstruct/C = new (src.loc)
 						src.transfer_fingerprints_to(C)
 						C.ptype = 6 // 6 = disposal unit
@@ -88,7 +88,7 @@
 					return
 
 		if(istype(I, /obj/item/weapon/melee/energy/blade))
-			user << "You can't place that item inside the disposal unit."
+			user << "You can't place that item inside the [name]."
 			return
 
 		if(istype(I, /obj/item/weapon/storage/bag/trash))
@@ -105,7 +105,7 @@
 			if(ismob(G.affecting))
 				var/mob/GM = G.affecting
 				for (var/mob/V in viewers(usr))
-					V.show_message("[usr] starts putting [GM.name] into the disposal.", 3)
+					V.show_message("[usr] starts putting [GM.name] into the [name].", 3)
 				if(do_after(usr, 20))
 					if (GM.client)
 						GM.client.perspective = EYE_PERSPECTIVE
@@ -114,11 +114,11 @@
 					for (var/mob/C in viewers(src))
 						C.show_message("\red [GM.name] has been placed in the [src] by [user].", 3)
 					del(G)
-					usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [GM.name] ([GM.ckey]) in disposals.</font>")
-					GM.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [usr.name] ([usr.ckey])</font>")
+					usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [GM.name] ([GM.ckey]) in [name].</font>")
+					GM.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in [name] by [usr.name] ([usr.ckey])</font>")
 					//msg_admin_attack("[usr] ([usr.ckey]) placed [GM] ([GM.ckey]) in a disposals unit. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[usr.x];Y=[usr.y];Z=[usr.z]'>JMP</a>)")
-					msg_admin_attack("[user] ([user.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[user]'>JMP</A>) placed [GM.name] ([GM.ckey]) in a disposals unit at [get_area(src)]", 0)
-					log_attack("[user.name] ([user.ckey]) placed [GM.name] ([GM.ckey]) in a disposals unit at [src.x],[src.y],[src.z] in area ([get_area(src)])")
+					msg_admin_attack("[user] ([user.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[user]'>JMP</A>) placed [GM.name] ([GM.ckey]) in a [name] at [get_area(src)]", 0)
+					log_attack("[user.name] ([user.ckey]) placed [GM.name] ([GM.ckey]) in a [name] unit at [src.x],[src.y],[src.z] in area ([get_area(src)])")
 			return
 
 		if(!I)	return
@@ -146,10 +146,10 @@
 		var/msg
 		for (var/mob/V in viewers(usr))
 			if(target == user && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
-				V.show_message("[usr] starts climbing into the disposal.", 3)
+				V.show_message("[usr] starts climbing into the [name].", 3)
 			if(target != user && !user.restrained() && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
 				if(target.anchored) return
-				V.show_message("[usr] starts stuffing [target.name] into the disposal.", 3)
+				V.show_message("[usr] starts stuffing [target.name] into the [name].", 3)
 		if(!do_after(usr, 20))
 			return
 		if(target_loc != target.loc)
@@ -162,11 +162,11 @@
 			msg = "[user.name] stuffs [target.name] into the [src]!"
 			user << "You stuff [target.name] into the [src]!"
 
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [target.name] ([target.ckey]) in disposals.</font>")
-			target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user.name] ([user.ckey])</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [target.name] ([target.ckey]) in [name].</font>")
+			target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in [name] by [user.name] ([user.ckey])</font>")
 			//msg_admin_attack("[user] ([user.ckey]) placed [target] ([target.ckey]) in a disposals unit. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-			msg_admin_attack("[user] ([user.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[user]'>JMP</A>) placed [target.name] ([target.ckey]) in a disposals unit at [get_area(src)]", 0)
-			log_attack("[user.name] ([user.ckey]) placed [target.name] ([target.ckey]) in a disposals unit at [src.x],[src.y],[src.z] in area ([get_area(src)])")
+			msg_admin_attack("[user] ([user.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[user]'>JMP</A>) placed [target.name] ([target.ckey]) in a [name] at [get_area(src)]", 0)
+			log_attack("[user.name] ([user.ckey]) placed [target.name] ([target.ckey]) in a [name] at [src.x],[src.y],[src.z] in area ([get_area(src)])")
 		else
 			return
 		if (target.client)
@@ -271,7 +271,7 @@
 			return
 
 		if(mode==-1 && !href_list["eject"]) // only allow ejecting if mode is -1
-			usr << "\red The disposal units power is disabled."
+			usr << "\red The [name] power is disabled."
 			return
 		..()
 		src.add_fingerprint(usr)
@@ -492,6 +492,10 @@
 
 		else
 			return
+
+	attack_hand(mob/user as mob)
+		return
+
 
 	update()
 		overlays = null

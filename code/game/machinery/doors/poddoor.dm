@@ -19,7 +19,17 @@
 	icon = 'icons/obj/doors/blastdoor.dmi'
 
 /obj/machinery/door/poddoor/shd
+	layer = 3.2
 	icon = 'icons/obj/doors/shd_pdoor.dmi'
+
+/obj/machinery/door/poddoor/shd/left
+	icon = 'icons/obj/doors/shd_left.dmi'
+
+/obj/machinery/door/poddoor/shd/right
+	icon = 'icons/obj/doors/shd_right.dmi'
+
+/obj/machinery/door/poddoor/shd/center
+	icon = 'icons/obj/doors/shd_center.dmi'
 
 /obj/machinery/door/poddoor/glass
 	name = "Glass Podlock"

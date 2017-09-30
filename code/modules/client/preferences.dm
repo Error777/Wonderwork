@@ -20,7 +20,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 	"diona" = 1,                                         // 12
 )
 
-var/const/MAX_SAVE_SLOTS = 5
+var/const/MAX_SAVE_SLOTS = 10
 
 //used for alternate_option
 #define GET_RANDOM_JOB 0
@@ -34,14 +34,10 @@ datum/preferences
 	var/savefile_version = 0
 
 	//non-preference stuff
-	var/ckey							//not saved
 	var/warns = 0
 	var/muted = 0
-	var/last_ip							//not saved currently
-	var/last_id							//not saved currently
-	var/list/jobbans = list()			//not saved - simply fetched from banning system on New()
-	var/points = 0
-	var/date_first_joined
+	var/last_ip
+	var/last_id
 
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
@@ -73,33 +69,22 @@ datum/preferences
 	var/species = "Human"
 	var/language = "None"				//Secondary language
 
-	//pai/clown/ai character preferences - part of game preferences
-	var/pai_name
-	var/pai_description
-	var/clown_name
-	var/ai_name
-
 		//Mob preview
 	var/icon/preview_icon_front = null
 	var/icon/preview_icon_side = null
 
-	var/job_civilian_1 = 0
-	var/job_civilian_2 = 0
-	var/job_civilian_3 = 0
-	var/job_civilian_4 = 0
-	var/job_civilian_5 = 0
+		//Jobs, uses bitflags
+	var/job_civilian_high = 0
+	var/job_civilian_med = 0
+	var/job_civilian_low = 0
 
-	var/job_engsec_1 = 0
-	var/job_engsec_2 = 0
-	var/job_engsec_3 = 0
-	var/job_engsec_4 = 0
-	var/job_engsec_5 = 0
+	var/job_medsci_high = 0
+	var/job_medsci_med = 0
+	var/job_medsci_low = 0
 
-	var/job_medsci_1 = 0
-	var/job_medsci_2 = 0
-	var/job_medsci_3 = 0
-	var/job_medsci_4 = 0
-	var/job_medsci_5 = 0
+	var/job_engsec_high = 0
+	var/job_engsec_med = 0
+	var/job_engsec_low = 0
 
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = 0
@@ -126,90 +111,164 @@ datum/preferences
 	var/metadata = ""
 	var/slot_name = ""
 
+//	SPAAAACE PARALAX
+//	var/parallax_speed = 2
+//	var/parallax_togs = PARALLAX_SPACE | PROGRESS_BARS
+
 /datum/preferences/New(client/C)
 	b_type = pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
-	date_first_joined = world.realtime
-
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
-
-			//cache jobbans here - will be much faster than accessing badly designed jobban database directly
-			for(var/role in special_roles)
-				if(jobban_isbanned(C.mob, role))
-					jobbans += role
-			for(var/datum/job/job in job_master.occupations)
-				if(jobban_isbanned(C.mob, job.title))
-					jobbans += job.title
-
 			if(load_preferences())
 				if(load_character())
 					return
-/*
-	if(istype(C))
-		ckey = C.ckey
-		if(!IsGuestKey(C.key))
-			path = load_path()
-
-			//cache jobbans here - will be much faster than accessing badly designed jobban database directly
-			for(var/role in special_roles)
-				if(jobban_isbanned(C.mob, role))
-					jobbans += role
-			for(var/datum/job/job in job_master.occupations)
-				if(jobban_isbanned(C.mob, job.title))
-					jobbans += job.title
-
-			if(load_preferences())
-				if(load_character())
-					//successfully loaded a compatible savefile (or an old one was updated successfully)
-					return
-*/
-	//if we failed to successfully load a character (or any preferences at all) we do this:
-	gender = pick(MALE, FEMALE)
-	randomize_appearance_for()
-	//this should only really ever happen for guests
+	//gender = pick(MALE, FEMALE)
+	real_name = random_name(gender)
 
 /datum/preferences
+	proc/ZeroSkills(var/forced = 0)
+		for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
+			if(!skills.Find(S.ID) || forced)
+				skills[S.ID] = SKILL_NONE
+	proc/CalculateSkillPoints()
+		used_skillpoints = 0
+		for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
+			var/multiplier = 1
+			switch(skills[S.ID])
+				if(SKILL_NONE)
+					used_skillpoints += 0 * multiplier
+				if(SKILL_BASIC)
+					used_skillpoints += 1 * multiplier
+				if(SKILL_ADEPT)
+					// secondary skills cost less
+					if(S.secondary)
+						used_skillpoints += 1 * multiplier
+					else
+						used_skillpoints += 3 * multiplier
+				if(SKILL_EXPERT)
+					// secondary skills cost less
+					if(S.secondary)
+						used_skillpoints += 3 * multiplier
+					else
+						used_skillpoints += 6 * multiplier
 
-	proc/ShowChoices(client/C)
-		if(!C)	return
+	proc/GetSkillClass(points)
+		// skill classes describe how your character compares in total points
+		var/original_points = points
+		points -= min(round((age - 20) / 2.5), 4) // every 2.5 years after 20, one extra skillpoint
+		if(age > 30)
+			points -= round((age - 30) / 5) // every 5 years after 30, one extra skillpoint
+		if(original_points > 0 && points <= 0) points = 1
+		switch(points)
+			if(0)
+				return "Unconfigured"
+			if(1 to 3)
+				return "Terrifying"
+			if(4 to 6)
+				return "Below Average"
+			if(7 to 10)
+				return "Average"
+			if(11 to 14)
+				return "Above Average"
+			if(15 to 18)
+				return "Exceptional"
+			if(19 to 24)
+				return "Genius"
+			if(24 to 1000)
+				return "God"
 
-		var/dat = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"preferences.css\" /></head><body>"
+	proc/SetSkills(mob/user)
+		if(SKILLS == null)
+			setup_skills()
+
+		if(skills.len == 0)
+			ZeroSkills()
 
 
-		//top-bar
-		dat += "<div id='slots' class='panel'>"
+		var/HTML = "<body>"
+		HTML += "<b>Select your Skills</b><br>"
+		HTML += "Current skill level: <b>[GetSkillClass(used_skillpoints)]</b> ([used_skillpoints])<br>"
+		HTML += "<a href=\"byond://?src=\ref[user];preference=skills;preconfigured=1;\">Use preconfigured skillset</a><br>"
+		HTML += "<table>"
+		for(var/V in SKILLS)
+			HTML += "<tr><th colspan = 5><b>[V]</b>"
+			HTML += "</th></tr>"
+			for(var/datum/skill/S in SKILLS[V])
+				var/level = skills[S.ID]
+				HTML += "<tr style='text-align:left;'>"
+				HTML += "<th><a href='byond://?src=\ref[user];preference=skills;skillinfo=\ref[S]'>[S.name]</a></th>"
+				HTML += "<th><a href='byond://?src=\ref[user];preference=skills;setskill=\ref[S];newvalue=[SKILL_NONE]'><font color=[(level == SKILL_NONE) ? "red" : "black"]>\[Untrained\]</font></a></th>"
+				// secondary skills don't have an amateur level
+				if(S.secondary)
+					HTML += "<th></th>"
+				else
+					HTML += "<th><a href='byond://?src=\ref[user];preference=skills;setskill=\ref[S];newvalue=[SKILL_BASIC]'><font color=[(level == SKILL_BASIC) ? "red" : "black"]>\[Amateur\]</font></a></th>"
+				HTML += "<th><a href='byond://?src=\ref[user];preference=skills;setskill=\ref[S];newvalue=[SKILL_ADEPT]'><font color=[(level == SKILL_ADEPT) ? "red" : "black"]>\[Trained\]</font></a></th>"
+				HTML += "<th><a href='byond://?src=\ref[user];preference=skills;setskill=\ref[S];newvalue=[SKILL_EXPERT]'><font color=[(level == SKILL_EXPERT) ? "red" : "black"]>\[Professional\]</font></a></th>"
+				HTML += "</tr>"
+		HTML += "</table>"
+		HTML += "<a href=\"byond://?src=\ref[user];preference=skills;cancel=1;\">\[Done\]</a>"
+
+		user << browse(null, "window=preferences")
+		user << browse(HTML, "window=show_skills;size=600x800")
+		return
+
+	proc/ShowChoices(mob/user)
+		if(!user || !user.client)	return
+		update_preview_icon()
+		user << browse_rsc(preview_icon_front, "previewicon.png")
+		user << browse_rsc(preview_icon_side, "previewicon2.png")
+		var/dat = "<html><body><center>"
+
 		if(path)
-			var/savefile/S = new /savefile(path,1)
-			if(S)
-				var/name
-				for(var/i=1, i<=MAX_SAVE_SLOTS, ++i)
-					S.cd = "/character[i]"
-					S["real_name"] >> name
-					if(!name)	name = "Character[i]"
-					dat += "<a[(i==default_slot) ? " style='font-weight:bold'" : ""] href='?_src_=prefs;preference=changeslot;num=[i]'>[name]</a>"
+			dat += "<center>"
+			dat += "Slot <b>[slot_name]</b> - "
+			dat += "<a href=\"byond://?src=\ref[user];preference=open_load_dialog\">Load slot</a> - "
+			dat += "<a href=\"byond://?src=\ref[user];preference=save\">Save slot</a> - "
+			dat += "<a href=\"byond://?src=\ref[user];preference=reload\">Reload slot</a>"
+			dat += "</center>"
+
 		else
-			dat += "Please create a byond account to save your preferences."
-		dat += "</div>"
+			dat += "Please create an account to save your preferences."
 
+		dat += "</center><hr><table><tr><td width='340px' height='320px'>"
 
-			//left (general-preferences)
-		dat += "<div id='general' class='panel'>"
-		dat += "<p class='header'><a href='#'>General Preferences<span>Options which will affect all of your characters</span></a></p>"
-		dat += "<p><span class='leftcol'>Reward Points:</span><a href='#'>[points]<span>Reward points you have earned, these points may be spent on special rewards</span></a></p>"
-		dat += "<p><span class='leftcol'>UI Style:</span><a href='?_src_=prefs;preference=ui'>[UI_style]<span>Which icon-set will be used for your in-game HUD</span></a></p>"
-		dat += "<p><span class='leftcol'>Admin Midis:</span><a href='?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? "On" : "Off"]<span>Whether you will hear uploaded sound files from other clients</span></a></p>"
-		dat += "<p><span class='leftcol'>Lobby Music:</span><a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "On" : "Off"]<span>Whether you will hear music in the pregame-lobby</span></a></p>"
-		dat += "<p><span class='leftcol'>Ambience:</span><a href='?_src_=prefs;preference=ambience'>[(toggles & SOUND_AMBIENCE) ? "On" : "Off"]<span>Whether you will hear ambient sound-effects/music</span></a></p>"
-		dat += "<p><span class='leftcol'>Ghost Ears:</span><a href='?_src_=prefs;preference=ghost_ears'>[(toggles & CHAT_GHOSTEARS) ? "Nearest Creatures" : "All Speech"]<span>Whether, as an observer, you will hear all speech or only speech happening near you</span></a></p>"
-		dat += "<p><span class='leftcol'>Ghost Sight:</span><a href='?_src_=prefs;preference=ghost_sight'>[(toggles & CHAT_GHOSTSIGHT) ? "Nearest Creatures" : "All Emotes"]<span>Whether, as an observer, you will see all emotes or only those happening near you</span></a></p>"
-		dat += "<p><span class='leftcol'>OOC:</span><a href='?_src_=prefs;preference=ooc'>[(toggles & CHAT_OOC) ? "On" : "Off"]<span>Whether you will see OOC chat.</span></a></p>"
+		dat += "<b>Name:</b> "
+		dat += "<a href='?_src_=prefs;preference=name;task=input'><b>[real_name]</b></a><br>"
+		dat += "(<a href='?_src_=prefs;preference=name;task=random'>Random Name</A>) "
+		dat += "(<a href='?_src_=prefs;preference=name'>Always Random Name: [be_random_name ? "Yes" : "No"]</a>)"
+		dat += "<br>"
 
-		dat += "<hr>"
+		dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
+		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
+		dat += "<br>"
+		dat += "<b>UI Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
+		//dat += "<b>Space Parallax:</b> <a href='?_src_=prefs;preference=parallax'><b>[toggles & PARALLAX_SPACE]</b></a><br>"
+		//dat += "<b>Parallax Speed:</b> <a href='?_src_=prefs;preference=p_speed'><b>[parallax_speed]</b></a><br>"
+		//dat += "<b>Space Dust:</b> <a href='?_src_=prefs;preference=dust'><b>[toggles & PARALLAX_DUST]</b></a><br>"
+		dat += "<b>Play admin midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
+		dat += "<b>Play lobby music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
+		dat += "<b>Ghost ears:</b> <a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles & CHAT_GHOSTEARS) ? "Nearest Creatures" : "All Speech"]</b></a><br>"
+		dat += "<b>Ghost sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles & CHAT_GHOSTSIGHT) ? "Nearest Creatures" : "All Emotes"]</b></a><br>"
 
-		dat += "<p class='header'><a href='#'>Limbs and Glasses<span>These options are responsible for your shortcomings</span></a></p>"
-		dat += "<p><span class='leftcol'>Needs Glasses:</span><a href='?_src_=prefs;preference=disabilities'><b>[disabilities == 0 ? "No" : "Yes"]<span>Blah-blah-blah</span></a></p>"
-		dat += "<p><span class='leftcol'>Limbs:</span><a href='?_src_=prefs;preference=limbs;task=input'>~<span>Blah-blah-blah</span></a></p>"
+		if(config.allow_Metadata)
+			dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"
+
+		dat += "<br><b>Occupation Choices</b><br>"
+		dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Preferences</b></a><br>"
+
+		dat += "<br><table><tr><td><b>Body</b> "
+		dat += "(<a href='?_src_=prefs;preference=all;task=random'>&reg;</A>)"
+		dat += "<br>"
+		//dat += "Species: <a href='byond://?src=\ref[user];preference=species;task=input'>[species]</a><br>"
+		//dat += "Secondary Language:<br><a href='byond://?src=\ref[user];preference=language;task=input'>[language]</a><br>"
+		dat += "Blood Type: <a href='byond://?src=\ref[user];preference=b_type;task=input'>[b_type]</a><br>"
+		dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>"
+		dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>"
+		//dat += "Skin pattern: <a href='byond://?src=\ref[user];preference=skin_style;task=input'>Adjust</a><br>"
+		dat += "Needs Glasses: <a href='?_src_=prefs;preference=disabilities'><b>[disabilities == 0 ? "No" : "Yes"]</b></a><br>"
+		dat += "Limbs: <a href='byond://?src=\ref[user];preference=limbs;task=input'>Adjust</a><br>"
 
 		//display limbs below
 		var/ind = 0
@@ -246,175 +305,171 @@ datum/preferences
 					dat += ", "
 				dat += "\tAmputated [organ_name]"
 		if(!ind)
-			dat += "\[...\]<p></p><p></p>"
+			dat += "\[...\]<br><br>"
 		else
-			dat += "<p></p><p></p>"
+			dat += "<br><br>"
 
-		dat += "<p></p>"
+		if(gender == MALE)
+			dat += "Underwear: <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_m[underwear]]</b></a><br>"
+		else
+			dat += "Underwear: <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_f[underwear]]</b></a><br>"
 
-		dat += "</div>"
+		dat += "Backpack Type:<br><a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
 
-			//job-preferences
-		dat += "<div id='jobs' class='panel'>"
-		dat += "<p class='header'><a href='#' >Job Preferences<span>These detail which jobs this character may be selected for. Priorities range from N=never to 1=most-likely. It is wise to enter several jobs as there are a limited number of positions for each. These settings apply only to the current character.</span></a></p>"
-		dat += jobtable()
+		dat += "Nanotrasen Relation:<br><a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
 
-		dat += "<hr>"
+		dat += "</td><td><b>Preview</b><br><img src=previewicon.png height=64 width=64><img src=previewicon2.png height=64 width=64></td></tr></table>"
 
-			//special roles
-		dat += "<p class='header'><a href='#'>Special Role Candidacy<span>These options dictate whether you will be chosen for special roles and events. They apply to all of your characters.</span></a></p>"
-		dat += "<table><tr><td>"
-		var/n = 0
-		for(var/i in special_roles)
-			dat += "<p><span class='leftcol'>[i]:</span>"
-			if(isJobbanned(i))
-				dat += "<a color='red'>Jobbanned<span>You have been jobbanned from this role. You can either wait for it to expire or prove to an admin you have learned from your mistakes.</span></a>"
-			else if(special_roles[i])
-				dat += "<a href='?_src_=prefs;preference=be_special;num=[n]'>[be_special&(1<<n) ? "Yes" : "No"]</a>"
+		dat += "</td><td width='300px' height='300px'>"
+
+		if(jobban_isbanned(user, "Records"))
+			dat += "<b>You are banned from using character records.</b><br>"
+		else
+			dat += "<b><a href=\"byond://?src=\ref[user];preference=records;record=1\">Character Records</a></b><br>"
+
+		dat += "\t<a href=\"byond://?src=\ref[user];preference=skills\"><b>Set Skills</b> (<i>[GetSkillClass(used_skillpoints)][used_skillpoints > 0 ? " [used_skillpoints]" : "0"])</i></a><br>"
+
+		dat += "<a href='byond://?src=\ref[user];preference=flavor_text;task=input'><b>Set Flavor Text</b></a><br>"
+		if(lentext(flavor_text) <= 40)
+			if(!lentext(flavor_text))
+				dat += "\[...\]"
 			else
-				dat += "<a color='grey'>Not available</a>"
-			dat += "</p>"
-			++n
-			if(n == 5)
-				dat += "</td><td>"
-		dat += "</td></tr></table>"
-
-		dat += "</div>"
-
-			//character-preferences
-		dat += "<div id='character' class='panel'>"
-
-		dat += "<p class='header'><a href='#'>Human Character Preferences<span>These settings affect only the currently selected character</span></a></p>"
-		dat += "<p class='header'><img src=previewicon.png height=64 width=64><img src=previewicon2.png height=64 width=64><a href='?_src_=prefs;preference=all;task=random'>~<span>Completely randomise your character's body.</span></a></p>"
-		dat += "<p><span class='leftcol'>Name:</span><a href='?_src_=prefs;preference=name;task=input'>[real_name ? real_name : "*random*"]<span>Your character's name. This should contain only letters and common punctuation such as space, hyphen and apostrophes. Enter an empty name in order to randomise your name each round.</span></a><a href='?_src_=prefs;preference=name;task=random'>~<span>Pick a random name</span></a></p>"
-		dat += "<p><span class='leftcol'>Gender:</span><a href='?_src_=prefs;preference=gender'>[(gender == MALE) ? "Male" : "Female"]<span>The gender of your character. This will affect customisations available to your character</span></a><a href='?_src_=prefs;preference=gender;task=random'>~<span>Pick a random gender.</span></a></p>"
-		dat += "<p><span class='leftcol'>Age:</span><a href='?_src_=prefs;preference=age;task=input'>[age]<span>The age of your character</span></a><a href='?_src_=prefs;preference=age;task=random'>~<span>Pick a random age</span></a></p>"
-		dat += "<p><span class='leftcol'>Blood Type:</span><a href='#'>[b_type]<span>Your character's blood-type. You cannot change this value</span></a></p>"
-		dat += "<p><span class='leftcol'>Skin Tone:</span><a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<span>The color of your character's skin</span></a><a href='?_src_=prefs;preference=s_tone;task=random'>~<span>Pick a random skin-tone.</span></a></p>"
-		dat += "<p><span class='leftcol'>Underwear:</span><a href='?_src_=prefs;preference=underwear;task=input'>[(gender == MALE) ? underwear_m[underwear] : underwear_f[underwear]]<span>The underwear worn by your character</span></a><a href='?_src_=prefs;preference=underwear;task=random'>~<span>Pick random underwear</span></a></p>"
-		dat += "<p><span class='leftcol'>Backpack:</span><a href='?_src_=prefs;preference=bag;task=input'>[backbaglist[backbag]]<span>The type of bag your character spawns with</span></a><a href='?_src_=prefs;preference=bag;task=random'>~<span>Pick a random bag</span></a></p>"
-		dat += "<p><span class='leftcol'>Hair:</span><a href='?_src_=prefs;preference=hair;task=input'><font class='color' style='background-color:rgb([r_hair],[g_hair],[b_hair])'>&nbsp;</font><span>Your character's hair color</span></a><a href='?_src_=prefs;preference=hair;task=random'>~<span>pick a random hair color.</span></a><a href='?_src_=prefs;preference=h_style;task=input'>[h_style]<span>Your character's style of hair</span></a><a href='?_src_=prefs;preference=h_style;task=random'>~<span>pick a random hair style.</span></a></p>"
-		dat += "<p><span class='leftcol'>Facial Hair:</span><a href='?_src_=prefs;preference=facial;task=input'><font class='color' style='background-color:rgb([r_facial],[g_facial],[b_facial])'>&nbsp;</font><span>The color of your character's facial hair</span></a><a href='?_src_=prefs;preference=facial;task=random'>~<span>pick a random facial hair color.</span></a><a href='?_src_=prefs;preference=f_style;task=input'>[f_style]<span>The style of your character's facial hair</span></a><a href='?_src_=prefs;preference=f_style;task=random'>~<span>pick a random facial hair style.</span></a></p>"
-		dat += "<p><span class='leftcol'>Eye Color:</span><a href='?_src_=prefs;preference=eyes;task=input'><font class='color' style='background-color:rgb([r_eyes],[g_eyes],[b_eyes])'>&nbsp;</font><span>The color of your character's eyes</span></a><a href='?_src_=prefs;preference=eyes;task=random'>~<span>pick a random eye color.</span></a></p>"
-		dat += "<p><span class='leftcol'>Nanotrasen Relation:</span><a href ='?_src_=prefs;preference=nt_relation;task=input'>[nanotrasen_relation]<span>Choose your relation to NT. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.</span></a></p>"
-		dat += "<p><span class='leftcol'>Flavor Text:</span><a href='?_src_=prefs;preference=flavor_text;task=input'>~<span>Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!</span></a></p>"
-		if(jobban_isbanned(C, "Records"))
-			dat += "<p><span class='leftcol'>You are banned from using character records.</span></p>"
+				dat += "[flavor_text]"
 		else
-			dat += "<p><span class='leftcol'>Character Records:</span><a href='?_src_=prefs;preference=records;record=1\'>~<span>??????...</span></a></p>"
+			dat += "[copytext(flavor_text, 1, 37)]...<br>"
+		dat += "<br>"
+
+		dat += "<br><b>Hair</b><br>"
+		dat += "<a href='?_src_=prefs;preference=hair;task=input'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair, 2)]'><table style='display:inline;' bgcolor='#[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair)]'><tr><td>__</td></tr></table></font> "
+		dat += " Style: <a href='?_src_=prefs;preference=h_style;task=input'>[h_style]</a><br>"
+
+		dat += "<br><b>Facial</b><br>"
+		dat += "<a href='?_src_=prefs;preference=facial;task=input'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial)]'><tr><td>__</td></tr></table></font> "
+		dat += " Style: <a href='?_src_=prefs;preference=f_style;task=input'>[f_style]</a><br>"
+
+		dat += "<br><b>Eyes</b><br>"
+		dat += "<a href='?_src_=prefs;preference=eyes;task=input'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(r_eyes, 2)][num2hex(g_eyes, 2)][num2hex(b_eyes, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(r_eyes, 2)][num2hex(g_eyes, 2)][num2hex(b_eyes)]'><tr><td>__</td></tr></table></font>"
+
+		dat += "<br><br>"
+		if(jobban_isbanned(user, "Syndicate"))
+			dat += "<b>You are banned from antagonist roles.</b>"
+			src.be_special = 0
+		else
+			var/n = 0
+			for (var/i in special_roles)
+				if(special_roles[i]) //if mode is available on the server
+					if(jobban_isbanned(user, i))
+						dat += "<b>Be [i]:</b> <font color=red><b> \[BANNED]</b></font><br>"
+					else if(i == "pai candidate")
+						if(jobban_isbanned(user, "pAI"))
+							dat += "<b>Be [i]:</b> <font color=red><b> \[BANNED]</b></font><br>"
+					else
+						dat += "<b>Be [i]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[src.be_special&(1<<n) ? "Yes" : "No"]</b></a><br>"
+				n++
+		dat += "</td></tr></table><hr><center>"
+
+		if(!IsGuestKey(user.key))
+			dat += "<a href='?_src_=prefs;preference=load'>Undo</a> - "
+			dat += "<a href='?_src_=prefs;preference=save'>Save Setup</a> - "
+
+		dat += "<a href='?_src_=prefs;preference=reset_all'>Reset Setup</a>"
+		dat += "</center></body></html>"
+
+		user << browse(dat, "window=preferences;size=560x580")
+
+	proc/SetChoices(mob/user, limit = 16, list/splitJobs = list("Chief Medical Officer"), width = 550, height = 550)
+		if(!job_master)
+			return
+
+		//limit 	 - The amount of jobs allowed per column. Defaults to 17 to make it look nice.
+		//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
+		//width	 - Screen' width. Defaults to 550 to make it look nice.
+		//height 	 - Screen's height. Defaults to 500 to make it look nice.
 
 
-		dat += "<hr>"
-
-			//special-character preferences
-		dat += "<p class='header'><a href='#'>AI/pAI/Clown Preferences<span>These options will affect all of your characters and are only applied when you recieve one of these particular roles</span></a></p>"
-		dat += "<p><span class='leftcol'>AI Name:</span><a href='?_src_=prefs;task=input;preference=ai_name'>[ai_name ? ai_name : "*random*"]<span>This is the name that will be given to any AI character you play.</span></a></p>"
-		dat += "<p><span class='leftcol'>pAI Name:</span><a href='?_src_=prefs;task=input;preference=pai_name'>[pai_name ? pai_name : "*random*"]<span>This is the name that will be given to your pAI character, should you be selected for such a role. You will only become a pAI if you are not currently playing in a round (i.e. you're observing/ghosted)</span></a></p>"
-		dat += "<p><span class='leftcol'>pAI Desc.:</span><a href='?_src_=prefs;task=input;preference=pai_description'>[pai_description ? "*click to read*" : "*none*"]<span>This is a brief IC description of your pAI personality, so that you can help attract people to choosing you over the other candidates.</span></a></p>"
-		dat += "<p><span class='leftcol'>Clown Name:</span><a href='?_src_=prefs;task=input;preference=clown_name'>[clown_name ? clown_name : "*random*"]<span>This is the 'stage-name' that will be given to your character if you recieve the clown job. It replaces your regular human name.</span></a></p>"
-
-		dat += "</div>"
-
-
-		//bottom (save/load/reset)
-		dat += "<div id='special' class='panel'>"
-		if(!IsGuestKey(C.key))
-			dat += "<a href='?_src_=prefs;preference=load'>Reload All</a>"
-			dat += "<a href='?_src_=prefs;preference=character;task=reset'>Reload Character</a>"
-			dat += "<a href='?_src_=prefs;preference=save'>Save All</a>"
-		dat += "<a href='?_src_=prefs;preference=job;task=reset'>Reset Jobs</a>"
-		dat += "<a href='?_src_=prefs;preference=general;task=reset'>Reset General Preferences</a>"
-		dat += "</div>"
-
-
-		dat += "</body></html>"
-
-		if(!preview_icon_front || !preview_icon_side)
-			update_preview_icon()
-
-		C << browse_rsc(preview_icon_front, "previewicon.png")
-		C << browse_rsc(preview_icon_side, "previewicon2.png")
-		C << browse(dat, "window=preferences;size=1000x720")
-
-	proc/jobtable(limit=17)
+		var/HTML = "<body>"
+		HTML += "<tt><center>"
+		HTML += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br><br>"
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>\[Done\]</a></center><br>" // Easier to press up here.
+		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
+		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 		var/index = -1
 
-		var/dat = "<table style='width:100%'><tr><td>"
-		var/colgroup = "<colgroup><col style='width:40%;text-align:center'><col style='width:60%'></colgroup>"
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
+		var/datum/job/lastJob
+		if (!job_master)		return
+		for(var/datum/job/job in job_master.occupations)
 
-		if(job_master)
-			dat += "<table>[colgroup]" // Table within a table for alignment, also allows you to easily add more colomns.
+			index += 1
+			if((index >= limit) || (job.title in splitJobs))
+				if((index < limit) && (lastJob != null))
+					//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
+					//the last job's selection color. Creating a rather nice effect.
+					for(var/i = 0, i < (limit - index), i += 1)
+						HTML += "<tr bgcolor='[lastJob.selection_color]'><td width='60%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
+				HTML += "</table></td><td width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
+				index = 0
 
-			for(var/datum/job/job in job_master.occupations)
-				if(++index >= limit)
-					dat += "</table></td><td><table>[colgroup]"
-					index = 0
+			HTML += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>"
+			var/rank = job.title
+			lastJob = job
+			if(jobban_isbanned(user, rank))
+				HTML += "<del>[rank]</del></td><td><b> \[BANNED]</b></td></tr>"
+				continue
+			if(!job.player_old_enough(user.client))
+				var/available_in_days = job.available_in_days(user.client)
+				HTML += "<del>[rank]</del></td><td> \[IN [(available_in_days)] DAYS]</td></tr>"
+				continue
+			if((job_civilian_low & ASSISTANT) && (rank != "Assistant"))
+				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
+				continue
+			if((rank in command_positions) || (rank == "AI"))//Bold head jobs
+				HTML += "<b>[rank]</b>"
+			else
+				HTML += "[rank]"
 
-				dat += "<tr style='background-color:[job.selection_color]'><td>"
-				var/rank = job.title
+			HTML += "</td><td width='40%'>"
 
-				if(isJobbanned(rank))
-					dat += "<font color=red>[rank]</font></td><td><font color=red><b> \[BANNED]</b></font></td></tr>"
-					continue
+			HTML += "<a href='?_src_=prefs;preference=job;task=input;text=[rank]'>"
 
-				var/timeToWait = job.available_in_days(src)
-				if(timeToWait)
-					dat += "<font color=red>[rank]</font></td><td><font color=red> \[IN [(timeToWait)] DAYS]</font></td></tr>"
-					continue
-
-				if((job_civilian_5 & ASSISTANT) && (rank != "Assistant"))
-					dat += "<font color=orange>[rank]</font></td><td></td></tr>"
-					continue
-
-				if((rank in command_positions) || (rank == "AI"))//Bold head jobs
-					dat += "<b>[rank]</b>"
+			if(rank == "Assistant")//Assistant is special
+				if(job_civilian_low & ASSISTANT)
+					HTML += " <font color=green>\[Yes]</font>"
 				else
-					dat += "[rank]"
+					HTML += " <font color=red>\[No]</font>"
+				HTML += "</a></td></tr>"
+				continue
 
-				dat += "</td><td>"
+			if(GetJobDepartment(job, 1) & job.flag)
+				HTML += " <font color=blue>\[High]</font>"
+			else if(GetJobDepartment(job, 2) & job.flag)
+				HTML += " <font color=green>\[Medium]</font>"
+			else if(GetJobDepartment(job, 3) & job.flag)
+				HTML += " <font color=orange>\[Low]</font>"
+			else
+				HTML += " <font color=red>\[NEVER]</font>"
+			if(job.alt_titles)
+				HTML += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'><a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
+			HTML += "</a></td></tr>"
 
-				if(rank == "Assistant")//Assistant is special
-					if(job_civilian_5 & ASSISTANT)
-						dat += " <a href='?_src_=prefs;preference=job;task=input;text=[rank];level=6'><font color=green>\[Yes\]</font>"
-					else
-						dat += " <a href='?_src_=prefs;preference=job;task=input;text=[rank];level=5'><font color=red>\[No\]</font>"
-					dat += "</a></td></tr>"
-					continue
-				if(GetJobDepartment(job, 6) & job.flag)
-					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=6'>N</a>:"
-				else
-					dat += "<font color=red>\[N\]</font>:"
-				if(GetJobDepartment(job, 5) & job.flag)
-					dat += "<font color=green>\[5\]</font>:"
-				else
-					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=5'>5</a>:"
-				if(GetJobDepartment(job, 4) & job.flag)
-					dat += "<font color=green>\[4\]</font>:"
-				else
-					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=4'>4</a>:"
-				if(GetJobDepartment(job, 3) & job.flag)
-					dat += "<font color=green>\[3\]</font>:"
-				else
-					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=3'>3</a>:"
-				if(GetJobDepartment(job, 2) & job.flag)
-					dat += "<font color=green>\[2\]</font>:"
-				else
-					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=2'>2</a>:"
-				if(GetJobDepartment(job, 1) & job.flag)
-					dat += "<font color=green>\[1\]</font>"
-				else
-					dat += "<a href='?_src_=prefs;preference=job;task=input;text=[rank];level=1'>1</a>"
-				if(job.alt_titles)
-					dat += "<a href='?_src_=prefs;preference=job;task=alt_title;job=\ref[job]\'>\[[GetPlayerAltTitle(job)]\]</a>"
-				dat += "</td></tr>"
+		HTML += "</td'></tr></table>"
 
-			dat += "</table>"
-		dat += "</td></tr></table>"
+		HTML += "</center></table>"
 
+		switch(alternate_option)
+			if(GET_RANDOM_JOB)
+				HTML += "<center><br><u><a href='?_src_=prefs;preference=job;task=random'><font color=green>Get random job if preferences unavailable</font></a></u></center><br>"
+			if(BE_ASSISTANT)
+				HTML += "<center><br><u><a href='?_src_=prefs;preference=job;task=random'><font color=red>Be assistant if preference unavailable</font></a></u></center><br>"
+			if(RETURN_TO_LOBBY)
+				HTML += "<center><br><u><a href='?_src_=prefs;preference=job;task=random'><font color=purple>Return to lobby if preference unavailable</font></a></u></center><br>"
 
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>\[Reset\]</a></center>"
+		HTML += "</tt>"
 
-		return dat
+		user << browse(null, "window=preferences")
+		user << browse(HTML, "window=mob_occupation;size=[width]x[height]")
+		return
 
 	proc/SetDisabilities(mob/user)
 		var/HTML = "<body>"
@@ -483,32 +538,45 @@ datum/preferences
 		if(job.title != new_title)
 			player_alt_titles[job.title] = new_title
 
-	proc/SetJob(role, level)
-		SetJobDepartment(job_master.GetJob(role), level)
-		return 1
+	proc/SetJob(mob/user, role)
+		var/datum/job/job = job_master.GetJob(role)
+		if(!job)
+			user << browse(null, "window=mob_occupation")
+			ShowChoices(user)
+			return
 
+		if(role == "Assistant")
+			if(job_civilian_low & job.flag)
+				job_civilian_low &= ~job.flag
+			else
+				job_civilian_low |= job.flag
+			SetChoices(user)
+			return 1
+
+		if(GetJobDepartment(job, 1) & job.flag)
+			SetJobDepartment(job, 1)
+		else if(GetJobDepartment(job, 2) & job.flag)
+			SetJobDepartment(job, 2)
+		else if(GetJobDepartment(job, 3) & job.flag)
+			SetJobDepartment(job, 3)
+		else//job = Never
+			SetJobDepartment(job, 4)
+
+		SetChoices(user)
+		return 1
 
 	proc/ResetJobs()
-		update_preview_icon(1)	//setting a job from 1 to 3 etc. would change the clothing of the preview
+		job_civilian_high = 0
+		job_civilian_med = 0
+		job_civilian_low = 0
 
-		job_civilian_1 = 0
-		job_civilian_2 = 0
-		job_civilian_3 = 0
-		job_civilian_4 = 0
-		job_civilian_5 = 0
+		job_medsci_high = 0
+		job_medsci_med = 0
+		job_medsci_low = 0
 
-		job_engsec_1 = 0
-		job_engsec_2 = 0
-		job_engsec_3 = 0
-		job_engsec_4 = 0
-		job_engsec_5 = 0
-
-		job_medsci_1 = 0
-		job_medsci_2 = 0
-		job_medsci_3 = 0
-		job_medsci_4 = 0
-		job_medsci_5 = 0
-		return 1
+		job_engsec_high = 0
+		job_engsec_med = 0
+		job_engsec_low = 0
 
 
 	proc/GetJobDepartment(var/datum/job/job, var/level)
@@ -517,120 +585,147 @@ datum/preferences
 			if(CIVILIAN)
 				switch(level)
 					if(1)
-						return job_civilian_1
+						return job_civilian_high
 					if(2)
-						return job_civilian_2
+						return job_civilian_med
 					if(3)
-						return job_civilian_3
-					if(4)
-						return job_civilian_4
-					if(5)
-						return job_civilian_5
-					if(6)
-						return job_civilian_1 + job_civilian_2 + job_civilian_3 + job_civilian_4 + job_civilian_5
+						return job_civilian_low
 			if(MEDSCI)
 				switch(level)
 					if(1)
-						return job_medsci_1
+						return job_medsci_high
 					if(2)
-						return job_medsci_2
+						return job_medsci_med
 					if(3)
-						return job_medsci_3
-					if(4)
-						return job_medsci_4
-					if(5)
-						return job_medsci_5
-					if(6)
-						return job_medsci_1 + job_medsci_2 + job_medsci_3 + job_medsci_4 + job_medsci_5
+						return job_medsci_low
 			if(ENGSEC)
 				switch(level)
 					if(1)
-						return job_engsec_1
+						return job_engsec_high
 					if(2)
-						return job_engsec_2
+						return job_engsec_med
 					if(3)
-						return job_engsec_3
-					if(4)
-						return job_engsec_4
-					if(5)
-						return job_engsec_5
-					if(6)
-						return job_engsec_1 + job_engsec_2 + job_engsec_3 + job_engsec_4 + job_engsec_5
-
+						return job_engsec_low
 		return 0
-
 
 	proc/SetJobDepartment(var/datum/job/job, var/level)
 		if(!job || !level)	return 0
-		if(level == 1)//Changing something to level 1 so clear any existing level 1s by placing it in level 2
-			job_civilian_2 |= job_civilian_1
-			job_medsci_2 |= job_medsci_1
-			job_engsec_2 |= job_engsec_1
-			job_civilian_1 = 0
-			job_medsci_1 = 0
-			job_engsec_1 = 0
+		switch(level)
+			if(1)//Only one of these should ever be active at once so clear them all here
+				job_civilian_high = 0
+				job_medsci_high = 0
+				job_engsec_high = 0
+				return 1
+			if(2)//Set current highs to med, then reset them
+				job_civilian_med |= job_civilian_high
+				job_medsci_med |= job_medsci_high
+				job_engsec_med |= job_engsec_high
+				job_civilian_high = 0
+				job_medsci_high = 0
+				job_engsec_high = 0
 
 		switch(job.department_flag)
-			if(CIVILIAN)//First clear the job out of any existing levels
-				job_civilian_1 &= ~job.flag
-				job_civilian_2 &= ~job.flag
-				job_civilian_3 &= ~job.flag
-				job_civilian_4 &= ~job.flag
-				job_civilian_5 &= ~job.flag
-				switch(level)//Then add it to the level it should be in
-					if(1)
-						job_civilian_1 |= job.flag
+			if(CIVILIAN)
+				switch(level)
 					if(2)
-						job_civilian_2 |= job.flag
+						job_civilian_high = job.flag
+						job_civilian_med &= ~job.flag
 					if(3)
-						job_civilian_3 |= job.flag
-					if(4)
-						job_civilian_4 |= job.flag
-					if(5)
-						job_civilian_5 |= job.flag
-						//no 6 needed because 6 means never and we dont store things set to never
+						job_civilian_med |= job.flag
+						job_civilian_low &= ~job.flag
+					else
+						job_civilian_low |= job.flag
 			if(MEDSCI)
-				job_medsci_1 &= ~job.flag
-				job_medsci_2 &= ~job.flag
-				job_medsci_3 &= ~job.flag
-				job_medsci_4 &= ~job.flag
-				job_medsci_5 &= ~job.flag
 				switch(level)
-					if(1)
-						job_medsci_1 |= job.flag
 					if(2)
-						job_medsci_2 |= job.flag
+						job_medsci_high = job.flag
+						job_medsci_med &= ~job.flag
 					if(3)
-						job_medsci_3 |= job.flag
-					if(4)
-						job_medsci_4 |= job.flag
-					if(5)
-						job_medsci_5 |= job.flag
+						job_medsci_med |= job.flag
+						job_medsci_low &= ~job.flag
+					else
+						job_medsci_low |= job.flag
 			if(ENGSEC)
-				job_engsec_1 &= ~job.flag
-				job_engsec_2 &= ~job.flag
-				job_engsec_3 &= ~job.flag
-				job_engsec_4 &= ~job.flag
-				job_engsec_5 &= ~job.flag
 				switch(level)
-					if(1)
-						job_engsec_1 |= job.flag
 					if(2)
-						job_engsec_2 |= job.flag
+						job_engsec_high = job.flag
+						job_engsec_med &= ~job.flag
 					if(3)
-						job_engsec_3 |= job.flag
-					if(4)
-						job_engsec_4 |= job.flag
-					if(5)
-						job_engsec_5 |= job.flag
+						job_engsec_med |= job.flag
+						job_engsec_low &= ~job.flag
+					else
+						job_engsec_low |= job.flag
 		return 1
-
 
 	proc/process_link(mob/user, list/href_list)
 		if(!user)	return
 
 		if(!istype(user, /mob/new_player))	return
-		if(href_list["preference"] == "records")
+		if(href_list["preference"] == "job")
+			switch(href_list["task"])
+				if("close")
+					user << browse(null, "window=mob_occupation")
+					ShowChoices(user)
+				if("reset")
+					ResetJobs()
+					SetChoices(user)
+				if("random")
+					if(alternate_option == GET_RANDOM_JOB || alternate_option == BE_ASSISTANT)
+						alternate_option += 1
+					else if(alternate_option == RETURN_TO_LOBBY)
+						alternate_option = 0
+					else
+						return 0
+					SetChoices(user)
+				if ("alt_title")
+					var/datum/job/job = locate(href_list["job"])
+					if (job)
+						var/choices = list(job.title) + job.alt_titles
+						var/choice = input("Pick a title for [job.title].", "Character Generation", GetPlayerAltTitle(job)) as anything in choices | null
+						if(choice)
+							SetPlayerAltTitle(job, choice)
+							SetChoices(user)
+				if("input")
+					SetJob(user, href_list["text"])
+				else
+					SetChoices(user)
+			return 1
+		else if(href_list["preference"] == "skills")
+			if(href_list["cancel"])
+				user << browse(null, "window=show_skills")
+				ShowChoices(user)
+			else if(href_list["skillinfo"])
+				var/datum/skill/S = locate(href_list["skillinfo"])
+				var/HTML = "<b>[S.name]</b><br>[S.desc]"
+				user << browse(HTML, "window=\ref[user]skillinfo")
+			else if(href_list["setskill"])
+				var/datum/skill/S = locate(href_list["setskill"])
+				var/value = text2num(href_list["newvalue"])
+				skills[S.ID] = value
+				CalculateSkillPoints()
+				SetSkills(user)
+			else if(href_list["preconfigured"])
+				var/selected = input(user, "Select a skillset", "Skillset") as null|anything in SKILL_PRE
+				if(!selected) return
+
+				ZeroSkills(1)
+				for(var/V in SKILL_PRE[selected])
+					if(V == "field")
+						skill_specialization = SKILL_PRE[selected]["field"]
+						continue
+					skills[V] = SKILL_PRE[selected][V]
+				CalculateSkillPoints()
+
+				SetSkills(user)
+			else if(href_list["setspecialization"])
+				skill_specialization = href_list["setspecialization"]
+				CalculateSkillPoints()
+				SetSkills(user)
+			else
+				SetSkills(user)
+			return 1
+
+		else if(href_list["preference"] == "records")
 			if(text2num(href_list["record"]) >= 1)
 				SetRecords(user)
 				return
@@ -666,17 +761,6 @@ datum/preferences
 					SetRecords(user)
 
 		switch(href_list["task"])
-			if("reset")
-				switch(href_list["preference"])
-					if("job")
-						ResetJobs()
-					if("character")
-						load_character()
-					if("general")
-						ooccolor = initial(ooccolor)
-						be_special = initial(be_special)
-						UI_style = initial(UI_style)
-						toggles = initial(toggles)
 			if("random")
 				switch(href_list["preference"])
 					if("name")
@@ -687,78 +771,34 @@ datum/preferences
 						r_hair = rand(0,255)
 						g_hair = rand(0,255)
 						b_hair = rand(0,255)
-						update_preview_icon(1)
 					if("h_style")
 						h_style = random_hair_style(gender)
-						update_preview_icon(1)
 					if("facial")
 						r_facial = rand(0,255)
 						g_facial = rand(0,255)
 						b_facial = rand(0,255)
-						update_preview_icon(1)
 					if("f_style")
 						f_style = random_facial_hair_style(gender)
-						update_preview_icon(1)
 					if("underwear")
 						underwear = rand(1,underwear_m.len)
-						update_preview_icon(1)
+						ShowChoices(user)
 					if("eyes")
 						r_eyes = rand(0,255)
 						g_eyes = rand(0,255)
 						b_eyes = rand(0,255)
-						update_preview_icon(1)
 					if("s_tone")
 						s_tone = random_skin_tone()
-						update_preview_icon(1)
 					if("bag")
-						backbag = rand(1,3)
-						update_preview_icon(1)
-					if("gender")
-						gender = pick(MALE,FEMALE)
-						update_preview_icon(1)
+						backbag = rand(1,4)
+					/*if("skin_style")
+						h_style = random_skin_style(gender)*/
 					if("all")
 						randomize_appearance_for()	//no params needed
-						update_preview_icon(1)
-			if ("alt_title")
-				var/datum/job/job = locate(href_list["job"])
-				if (job)
-					var/choices = list(job.title) + job.alt_titles
-					var/choice = input("Pick a title for [job.title].", "Character Generation", GetPlayerAltTitle(job)) as anything in choices | null
-					if(choice)
-						SetPlayerAltTitle(job, choice)
-						//SetChoices(user)
 			if("input")
 				switch(href_list["preference"])
-					if("job")
-						SetJob(href_list["text"], text2num(href_list["level"]))
-						update_preview_icon(1)
-					if("clown_name")
-						var/new_name = reject_bad_name( input(user, "Choose your honktastic clown stage name:\n(leave empty for always random names)", "Clown Preference") as text|null)
-						if(new_name != null)
-							clown_name = new_name
-						else
-							user << "<font color='red'>Invalid name. Your clown name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may contain letters. Some symbols are forbidden.</font>"
-
-					if("ai_name")
-						var/new_name = reject_bad_name( input(user, "Choose a name for your AI personality:\n(leave empty for always random names)", "AI Preference") as text|null, 1 )
-						if(new_name != null)
-							ai_name = new_name
-						else
-							user << "<font color='red'>Invalid name. Your AI name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may contain letters and numbers. Some symbols are forbidden.</font>"
-
-					if("pai_name")
-						var/new_name = reject_bad_name( input(user, "Choose a name for your pAI personality:\n(leave empty for always random names)", "pAI Preference") as text|null, 1 )
-						if(new_name != null)
-							pai_name = new_name
-						else
-							user << "<font color='red'>Invalid name. Your pAI name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may contain letters and numbers. Some symbols are forbidden.</font>"
-
-					if("pai_description")
-						pai_description = reject_bad_text( input(user, "Describe your pAI personality:", "pAI Preference", pai_description) as text|null )
-
 					if("name")
 						var/new_name = reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null )
-						if(new_name != null)
+						if(new_name)
 							real_name = new_name
 						else
 							user << "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>"
@@ -767,20 +807,120 @@ datum/preferences
 						var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null
 						if(new_age)
 							age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
+					if("species")
+
+						var/list/new_species = list("Human")
+						var/prev_species = species
+						var/whitelisted = 0
+
+						if(config.usealienwhitelist) //If we're using the whitelist, make sure to check it!
+							for(var/S in whitelisted_species)
+								if(is_alien_whitelisted(user,S))
+									new_species += S
+									whitelisted = 1
+							if(!whitelisted)
+								alert(user, "You cannot change your species as you need to be whitelisted. If you wish to be whitelisted contact an admin in-game, on the forums, or on IRC.")
+						else //Not using the whitelist? Aliens for everyone!
+							new_species = whitelisted_species
+
+						species = input("Please select a species", "Character Generation", null) in new_species
+
+						if(prev_species != species)
+							//grab one of the valid hair styles for the newly chosen species
+							var/list/valid_hairstyles = list()
+							for(var/hairstyle in hair_styles_list)
+								var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+								if(gender == MALE && S.gender == FEMALE)
+									continue
+								if(gender == FEMALE && S.gender == MALE)
+									continue
+								if( !(species in S.species_allowed))
+									continue
+								valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+
+							if(valid_hairstyles.len)
+								h_style = pick(valid_hairstyles)
+							else
+								//this shouldn't happen
+								h_style = hair_styles_list["Bald"]
+
+							//grab one of the valid facial hair styles for the newly chosen species
+							var/list/valid_facialhairstyles = list()
+							for(var/facialhairstyle in facial_hair_styles_list)
+								var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+								if(gender == MALE && S.gender == FEMALE)
+									continue
+								if(gender == FEMALE && S.gender == MALE)
+									continue
+								if( !(species in S.species_allowed))
+									continue
+
+								valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+
+							if(valid_facialhairstyles.len)
+								f_style = pick(valid_facialhairstyles)
+							else
+								//this shouldn't happen
+								f_style = facial_hair_styles_list["Shaved"]
+
+							//reset hair colour and skin colour
+							r_hair = 0//hex2num(copytext(new_hair, 2, 4))
+							g_hair = 0//hex2num(copytext(new_hair, 4, 6))
+							b_hair = 0//hex2num(copytext(new_hair, 6, 8))
+
+							s_tone = 0
+
+					if("language")
+						var/languages_available
+						var/list/new_languages = list("None")
+
+						if(config.usealienwhitelist)
+							for(var/L in all_languages)
+								var/datum/language/lang = all_languages[L]
+								if((!(lang.flags & RESTRICTED)) && (is_alien_whitelisted(user, L)||(!( lang.flags & WHITELISTED ))))
+									new_languages += lang
+									languages_available = 1
+
+							if(!(languages_available))
+								alert(user, "There are not currently any available secondary languages.")
+						else
+							for(var/L in all_languages)
+								var/datum/language/lang = all_languages[L]
+								if(!(lang.flags & RESTRICTED))
+									new_languages += lang
+
+						language = input("Please select a secondary language", "Character Generation", null) in new_languages
+
+					if("metadata")
+						var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
+						if(new_metadata)
+							metadata = sanitize(copytext(new_metadata,1,MAX_MESSAGE_LEN))
+
+					if("b_type")
+						var/new_b_type = input(user, "Choose your character's blood-type:", "Character Preference") as null|anything in list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" )
+						if(new_b_type)
+							b_type = new_b_type
 
 					if("hair")
-						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference") as color|null
-						if(new_hair)
-							r_hair = hex2num(copytext(new_hair, 2, 4))
-							g_hair = hex2num(copytext(new_hair, 4, 6))
-							b_hair = hex2num(copytext(new_hair, 6, 8))
-							update_preview_icon(1)
+						if(species == "Human" || species == "Unathi" || species == "Android")
+							var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference") as color|null
+							if(new_hair)
+								r_hair = hex2num(copytext(new_hair, 2, 4))
+								g_hair = hex2num(copytext(new_hair, 4, 6))
+								b_hair = hex2num(copytext(new_hair, 6, 8))
 
 					if("h_style")
-						var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in hair_styles_list
+						var/list/valid_hairstyles = list()
+						for(var/hairstyle in hair_styles_list)
+							var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+							if( !(species in S.species_allowed))
+								continue
+
+							valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+
+						var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in valid_hairstyles
 						if(new_h_style)
 							h_style = new_h_style
-							update_preview_icon(1)
 
 					if("facial")
 						var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference") as color|null
@@ -788,13 +928,23 @@ datum/preferences
 							r_facial = hex2num(copytext(new_facial, 2, 4))
 							g_facial = hex2num(copytext(new_facial, 4, 6))
 							b_facial = hex2num(copytext(new_facial, 6, 8))
-							update_preview_icon(1)
 
 					if("f_style")
-						var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in facial_hair_styles_list
+						var/list/valid_facialhairstyles = list()
+						for(var/facialhairstyle in facial_hair_styles_list)
+							var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+							if(gender == MALE && S.gender == FEMALE)
+								continue
+							if(gender == FEMALE && S.gender == MALE)
+								continue
+							if( !(species in S.species_allowed))
+								continue
+
+							valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+
+						var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in valid_facialhairstyles
 						if(new_f_style)
 							f_style = new_f_style
-							update_preview_icon(1)
 
 					if("underwear")
 						var/list/underwear_options
@@ -806,7 +956,7 @@ datum/preferences
 						var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in underwear_options
 						if(new_underwear)
 							underwear = underwear_options.Find(new_underwear)
-							update_preview_icon(1)
+						ShowChoices(user)
 
 					if("eyes")
 						var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference") as color|null
@@ -814,13 +964,13 @@ datum/preferences
 							r_eyes = hex2num(copytext(new_eyes, 2, 4))
 							g_eyes = hex2num(copytext(new_eyes, 4, 6))
 							b_eyes = hex2num(copytext(new_eyes, 6, 8))
-							update_preview_icon(1)
 
 					if("s_tone")
+						if(species != "Human" || "Android")
+							return
 						var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
 						if(new_s_tone)
 							s_tone = 35 - max(min( round(new_s_tone), 220),1)
-							update_preview_icon(1)
 
 					if("ooccolor")
 						var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null
@@ -831,7 +981,6 @@ datum/preferences
 						var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in backbaglist
 						if(new_backbag)
 							backbag = backbaglist.Find(new_backbag)
-							update_preview_icon(1)
 
 					if("nt_relation")
 						var/new_relation = input(user, "Choose your relation to NT. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
@@ -906,6 +1055,10 @@ datum/preferences
 								if(second_limb)
 									organ_data[second_limb] = "cyborg"
 
+					if("skin_style")
+						var/skin_style_name = input(user, "Select a new skin style") as null|anything in list("default1", "default2", "default3")
+						if(!skin_style_name) return
+
 			else
 				switch(href_list["preference"])
 					if("gender")
@@ -913,7 +1066,9 @@ datum/preferences
 							gender = FEMALE
 						else
 							gender = MALE
-						update_preview_icon(1)
+
+					if("disabilities")				//please note: current code only allows nearsightedness as a disability
+						disabilities = !disabilities//if you want to add actual disabilities, code that selects them should be here
 
 					if("hear_adminhelps")
 						toggles ^= SOUND_ADMINHELP
@@ -924,31 +1079,22 @@ datum/preferences
 								UI_style = "Orange"
 							if("Orange")
 								UI_style = "old"
+							if("old")
+								UI_style = "Inferno"
+							if("Inferno")
+								UI_style = "Cooldown"
 							else
 								UI_style = "Midnight"
-
-					if("disabilities")				//please note: current code only allows nearsightedness as a disability
-						disabilities = !disabilities//if you want to add actual disabilities, code that selects them should be here
 
 					if("be_special")
 						var/num = text2num(href_list["num"])
 						be_special ^= (1<<num)
 
-					if("radio")
-						toggles ^= CHAT_RADIO
-
-					if("deadchat")
-						toggles ^= CHAT_DEAD
-
-					if("prayers")
-						toggles ^= CHAT_PRAYER
+					if("name")
+						be_random_name = !be_random_name
 
 					if("hear_midis")
 						toggles ^= SOUND_MIDI
-						if(!(toggles & SOUND_MIDI))
-							var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = 777)
-							break_sound.priority = 250
-							user << break_sound	//breaks the client's sound output on channel 777
 
 					if("lobby_music")
 						toggles ^= SOUND_LOBBY
@@ -956,15 +1102,6 @@ datum/preferences
 							user << sound(ticker.login_music, repeat = 0, wait = 0, volume = 85, channel = 1)
 						else
 							user << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1)
-
-					if("ambience")
-						toggles ^= SOUND_AMBIENCE
-						if(!(toggles & SOUND_AMBIENCE))
-							user << sound(null, repeat = 0, wait = 0, volume = 0, channel = 1)
-							user << sound(null, repeat = 0, wait = 0, volume = 0, channel = 2)
-
-					if("ooc")
-						toggles ^= CHAT_OOC
 
 					if("ghost_ears")
 						toggles ^= CHAT_GHOSTEARS
@@ -991,24 +1128,30 @@ datum/preferences
 						load_character(text2num(href_list["num"]))
 						close_load_dialog(user)
 
-		ShowChoices(user.client)
+		ShowChoices(user)
 		return 1
 
 	proc/copy_to(mob/living/carbon/human/character, safety = 0)
-		var/name = real_name ? real_name : random_name(gender)
+		if(be_random_name)
+			real_name = random_name(gender)
 
 		if(config.humans_need_surnames)
-			var/firstspace = findtext(name, " ")
-			var/name_length = length(name)
+			var/firstspace = findtext(real_name, " ")
+			var/name_length = length(real_name)
 			if(!firstspace)	//we need a surname
-				name += " [pick(last_names)]"
+				real_name += " [pick(last_names)]"
 			else if(firstspace == name_length)
-				name += "[pick(last_names)]"
+				real_name += "[pick(last_names)]"
 
-		character.real_name = name
-		character.name = name
+		character.real_name = real_name
+		character.name = character.real_name
 		if(character.dna)
-			character.dna.real_name = name
+			character.dna.real_name = character.real_name
+
+		character.flavor_text = flavor_text
+		character.med_record = med_record
+		character.sec_record = sec_record
+		character.gen_record = gen_record
 
 		character.gender = gender
 		character.age = age
@@ -1031,8 +1174,34 @@ datum/preferences
 		character.h_style = h_style
 		character.f_style = f_style
 
+
+		character.skills = skills
+
+		// Destroy/cyborgize organs
+		for(var/name in organ_data)
+			var/datum/organ/external/O = character.organs_by_name[name]
+			if(!O) continue
+
+			var/status = organ_data[name]
+			if(status == "amputated")
+				O.amputated = 1
+				O.status |= ORGAN_DESTROYED
+				O.destspawn = 1
+			else if(status == "cyborg")
+				O.status |= ORGAN_ROBOT
+		if(underwear > underwear_m.len || underwear < 1)
+			underwear = 1 //I'm sure this is 100% unnecessary, but I'm paranoid... sue me.
 		character.underwear = underwear
+
+		if(backbag > 4 || backbag < 1)
+			backbag = 1 //Same as above
 		character.backbag = backbag
+
+		//Debugging report to track down a bug, which randomly assigned the plural gender to people.
+		if(character.gender in list(PLURAL, NEUTER))
+			if(isliving(src)) //Ghosts get neuter by default
+				message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
+				character.gender = MALE
 
 	proc/open_load_dialog(mob/user)
 		var/dat = "<body>"
@@ -1057,29 +1226,3 @@ datum/preferences
 
 	proc/close_load_dialog(mob/user)
 		user << browse(null, "window=saves")
-
-/datum/preferences/proc/isJobbanned(role)
-	if(role in jobbans)
-		return 1
-	return 0
-
-proc/get_preferred_ai_name(ckey)
-	if(ckey)
-		var/datum/preferences/P = preferences_datums[ckey]
-		if(P && P.ai_name)	return P.ai_name
-	if(ai_names.len)		return pick_n_take(ai_names)
-	return "AI v[rand(0,9)].[rand(0,1000)]"
-
-proc/get_preferred_clown_name(ckey)
-	if(ckey)
-		var/datum/preferences/P = preferences_datums[ckey]
-		if(P && P.clown_name)	return P.clown_name
-	if(clown_names.len)			return pick_n_take(clown_names)
-	return "Clown [rand(1,1000)]"
-
-proc/get_preferred_pai_name(ckey)
-	if(ckey)
-		var/datum/preferences/P = preferences_datums[ckey]
-		if(P && P.pai_name)	return P.pai_name
-	if(ai_names.len)		return pick_n_take(ai_names)
-	return "pAI [rand(1,1000)]"

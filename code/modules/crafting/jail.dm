@@ -105,7 +105,6 @@
 			else src.jailer = 0
 		else src.jailer = 0
 
-
 	attackby(obj/item/weapon/W as obj, mob/user as mob)
 		..()
 		if (istype(W, /obj/item/weapon/paperspoon))
@@ -118,6 +117,14 @@
 				digproc(user)
 			else
 				usr << "\red I can't. It's wall is busy."
+
+/turf/simulated/wall/jail/r_wall/rusted
+	icon_state = "rrust"
+	walltype = "rrust"
+
+/turf/simulated/wall/jail/rusted
+	icon_state = "arust"
+	walltype = "arust"
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
 	if (istype(O, /obj/item/weapon/paper))

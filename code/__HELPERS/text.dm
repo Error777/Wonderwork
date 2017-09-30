@@ -524,3 +524,4 @@ proc/Ellipsis(original_msg, chance = 25)
 
 /proc/format_text(text)
 	return replacetext(replacetext(text,"\proper ",""),"\improper ","")
+

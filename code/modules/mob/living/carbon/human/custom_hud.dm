@@ -24,8 +24,8 @@
 	"storage1" = "SOUTH-1,EAST-5",
 	"storage2" = "SOUTH-1,EAST-4",
 
-	"throw" = "SOUTH,EAST",
-	"resist" = "SOUTH,EAST-1",
+	"throw" = "SOUTH-1,EAST-3",
+	"resist" = "SOUTH-1,EAST-2",
 	"acti" = "SOUTH-1,EAST-1",
 	"movi" = "SOUTH-1,EAST-2",
 	"zonesel" = "SOUTH-1,EAST",
@@ -35,8 +35,8 @@
 	"head" = "SOUTH,WEST+1",
 	"gloves" = "SOUTH,WEST+2",
 	"l_ear" = "SOUTH,WEST+3",
-	"r_ear" = "SOUTH-1,WEST+3",
-	"glasses" = "SOUTH,WEST+4",
+	"r_ear" = "SOUTH,WEST+4",
+	"glasses" = "SOUTH,WEST+5",
 
 	"filler" = "SOUTH-1,WEST to SOUTH-1,EAST",
 

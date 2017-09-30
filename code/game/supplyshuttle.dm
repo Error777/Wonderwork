@@ -93,7 +93,6 @@ var/list/mechtoys = list(
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "supply"
 	req_access = list(access_cargo)
-	light_color = LIGHT_COLOR_TUNGSTEN
 	circuit = "/obj/item/weapon/circuitboard/supplycomp"
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
@@ -104,7 +103,6 @@ var/list/mechtoys = list(
 /obj/machinery/computer/ordercomp
 	name = "Supply ordering console"
 	icon = 'icons/obj/computer.dmi'
-	light_color = LIGHT_COLOR_YELLOW
 	icon_state = "request"
 	circuit = "/obj/item/weapon/circuitboard/ordercomp"
 	var/temp = null
@@ -724,7 +722,3 @@ var/list/mechtoys = list(
 	status_signal.data["command"] = command
 
 	frequency.post_signal(src, status_signal)
-
-
-
-
