@@ -1484,6 +1484,7 @@
 #include "code\WorkInProgress\facepunch\armorysafe.dm"
 #include "code\WorkInProgress\facepunch\darts.dm"
 #include "code\WorkInProgress\facepunch\voucher.dm"
+#include "code\WorkInProgress\facepunch\achievements\achievement_procs.dm"
 #include "code\WorkInProgress\facepunch\arena\vrpod.dm"
 #include "code\WorkInProgress\facepunch\explore\exploring.dm"
 #include "code\WorkInProgress\facepunch\explore\gate.dm"

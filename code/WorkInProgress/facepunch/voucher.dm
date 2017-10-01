@@ -5,7 +5,7 @@
 	name = "test"
 	cost = 3
 
-var/global/vouchers = 20 //So badmins can't change this
+var/global/vouchers = 10 //So badmins can't change this
 
 /obj/machinery/voucher
 	name = "Voucher Console"
