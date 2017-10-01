@@ -63,7 +63,7 @@
 "bk" = (/obj/machinery/vending/pizza,/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
 "bl" = (/obj/machinery/light{dir = 1},/obj/machinery/computer/slot_machine,/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
 "bm" = (/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
-"bn" = (/obj/machinery/party/turntable,/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
+"bn" = (/obj/machinery/media/jukebox,/turf/simulated/floor{icon_state = "bar"},/area/crew_quarters/cafeteria)
 "bo" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor{dir = 1; icon_state = "browncorner"; tag = "icon-greencorner (NORTH)"},/area/hallway/secondary/entry)
 "bp" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"; tag = ""},/turf/simulated/floor,/area/hallway/secondary/entry)
 "bq" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor{dir = 4; icon_state = "arrival"},/area/hallway/secondary/entry)

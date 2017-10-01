@@ -192,7 +192,7 @@
 	F << the_mode
 
 /world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
+	join_motd = sanitize_russian(utf8_to_cp1251(file2text("config/motd.txt")))
 
 /world/proc/load_configuration()
 	config = new /datum/configuration()

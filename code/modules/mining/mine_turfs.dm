@@ -33,6 +33,9 @@
 /turf/simulated/mineral/Del()
 	return
 
+/turf/simulated/mineral/ChangeTurf(var/turf/N, var/force_lighting_update = 0)
+	return ..(N, 1)
+
 /turf/simulated/mineral/ex_act(severity)
 	switch(severity)
 		if(3.0)

@@ -211,9 +211,15 @@
 		del L
 
 //Creates a new turf
-/turf/proc/ChangeTurf(var/turf/N)
+/turf/proc/ChangeTurf(var/turf/N, var/force_lighting_update = 0)
 	if (!N)
 		return
+
+	var/old_opacity = opacity
+	var/old_dynamic_lighting = dynamic_lighting
+	var/old_affecting_lights = affecting_lights
+	var/old_lighting_overlay = lighting_overlay
+	var/old_corners = corners
 
 	if(ispath(N, /turf/simulated/floor))
 		var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
@@ -247,6 +253,17 @@
 		if(air_master)
 			for(var/turf/simulated/T in orange(src,1))
 				air_master.tiles_to_update.Add(T)
+
+		lighting_overlay = old_lighting_overlay
+		affecting_lights = old_affecting_lights
+		corners = old_corners
+		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
+			reconsider_lights()
+		if(dynamic_lighting != old_dynamic_lighting)
+			if(dynamic_lighting)
+				lighting_build_overlay()
+			else
+				lighting_clear_overlay()
 
 		W.levelupdate()
 		return W
