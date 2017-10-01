@@ -56,20 +56,17 @@
 	var/automute_on = 0					//enables automuting/spam prevention
 	var/jobs_have_minimal_access = 0	//determines whether jobs use minimal access or expanded access.
 
-	var/achievement_hub = null
-	var/achievement_password = null
-
 	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
 	var/alien_to_human_ratio = 0.5
+
+	var/achievement_hub = null
+	var/achievement_password = null
 
 	var/server
 	var/banappeals
 	var/wikiurl = "http://wiki.ss13.ru"
 	var/forumurl = "http://forum.ss13.ru"
-
-	var/media_base_url = "" // http://ss13.nexisonline.net/media
-	var/media_secret_key = "" // Random string
 
 	//Alert level description
 	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
