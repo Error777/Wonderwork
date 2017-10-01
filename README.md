@@ -1,4 +1,4 @@
-# Wonderwork [![Build Status](https://travis-ci.org/BlueCabaret/Wonderwork.svg?branch=master)](https://travis-ci.org/BlueCabaret/Wonderwork)
+# Wonderwork
 
 [Сайт](http://ss13.ru) : 
 [Репозиторий](https://github.com/BlueCabaret/Wonderwork) : 
