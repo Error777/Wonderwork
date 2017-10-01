@@ -1,4 +1,4 @@
-# Wonderwork
+# Wonderwork [![Build Status](https://travis-ci.org/animusdev/Old-World-Blue.svg?branch=master)](https://travis-ci.org/animusdev/Old-World-Blue)
 
 [Сайт](http://ss13.ru) : 
 [Репозиторий](https://github.com/BlueCabaret/Wonderwork) : 
