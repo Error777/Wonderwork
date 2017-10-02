@@ -1,0 +1,4 @@
+# dmm map merger hook
+# needs additional setup, see maptools/install.txt
+*.dmm merge=merge-dmm
+* text=auto
