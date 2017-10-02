@@ -1,0 +1,2 @@
+#lowercase ckey - money amount
+victorserion 3000

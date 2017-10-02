@@ -3,7 +3,7 @@ import os
 import argparse
 import map_helpers #why we don't have some generic package for these reee
 
-default_map_directory = "../../_maps"
+default_map_directory = "../../maps"
 replacement_re = re.compile('\s*([^{]*)\s*(\{(.*)\})?')
 
 def tgm_check(map_file):

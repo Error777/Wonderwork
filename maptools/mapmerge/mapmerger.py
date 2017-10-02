@@ -2,7 +2,7 @@ import map_helpers
 import sys
 import shutil
 
-#main("../../_maps/")
+#main("../../maps/")
 def main(map_folder, tgm=0):
     maps = map_helpers.prompt_maps(map_folder, "merge", tgm)
 

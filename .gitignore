@@ -1,3 +1,8 @@
+#Ignore everything in datafolder and subdirectories
+/data/**/*
+
+#Ignore compiled files and other files generated during compilation.
+*.mdme
 *.log
 *.int
 *.rsc
@@ -8,51 +13,31 @@ info.json
 # WinMerge backups
 *.bak
 
-# String dumps
-*.str
-
-# Compiled Python doohickies
-*.pyc
-
-# Vim
-*.swp
-
 #ignore any files in config/, except those in subdirectories.
 !/config/*/*
-
-# OpenBYOND-generated crap
-/dmis
-/interface-indented
-/code-indented
-*.new.dmi
-
-.metadata
-/bot/config.yml
-/bot/data
-/analysis
-/code-fixed
 
 # Player preferences
 players2.sqlite
 
-# New CMC Minimap images.
-/data/minimaps/*
-
-# Map rendering
-/maprendering/renderoutput/*
-
 # Backup maps created by maptools
 *.dmm.backup
+*.dmm.before
 
-# Changelog dry runs
-/html/changelog.dry.html
-/html/changelogs/.dry_changelog.yml
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
 
-# Map player count config
-/maps/voting/*/playercount.txt
+# Folder config file
+Desktop.ini
 
-# Runtime condenser I/O files.
-/tools/Runtime\ Condenser/*.txt
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# Investigate logs that have an annoying tendency to generate during testing
-/data/investigate/*
+# Windows Installer files
+#*.cab
+#*.msi
+#*.msm
+#*.msp
+
+# Windows shortcuts
+*.lnk
