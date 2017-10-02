@@ -1441,14 +1441,19 @@
 				if(blinded)		overlay_fullscreen("blind", /obj/screen/fullscreen/, 1)
 				else			clear_fullscreen("blind")
 
+			var/nearsighted = 0
+
 			if(disabilities & NEARSIGHTED)	//this looks meh but saves a lot of memory by not requiring to add var/prescription
 				if(glasses)					//to every /obj/item
 					var/obj/item/clothing/glasses/G = glasses
-					if(!G.prescription)
+					if(!G.prescription == 1)
 						overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
+						nearsighted = 1
 				else
 					overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
-			else
+					nearsighted = 1
+
+			if(!nearsighted)
 				clear_fullscreen("nearsighted")
 
 			if(eye_blurry)
@@ -1632,11 +1637,6 @@
 				overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 			else
 				clear_fullscreen("blind", 0)
-
-				if(disabilities & NEARSIGHTED)
-					overlay_fullscreen("impaired", /obj/screen/fullscreen/impaired, 1)
-				else
-					clear_fullscreen("impaired")
 
 				if(eye_blurry)
 					overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)
