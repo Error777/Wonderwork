@@ -215,7 +215,7 @@
 
 /obj/structure/closet/wardrobe/toxins_white
 	name = "toxins wardrobe"
-	icon_state = "white"
+	icon_state = "sciuniform"
 	icon_closed = "white"
 
 /obj/structure/closet/wardrobe/toxins_white/New()
@@ -253,7 +253,7 @@
 
 /obj/structure/closet/wardrobe/chemistry_white
 	name = "chemistry wardrobe"
-	icon_state = "white"
+	icon_state = "chemuniform"
 	icon_closed = "white"
 
 /obj/structure/closet/wardrobe/chemistry_white/New()
@@ -268,7 +268,7 @@
 
 /obj/structure/closet/wardrobe/genetics_white
 	name = "genetics wardrobe"
-	icon_state = "white"
+	icon_state = "geneuniform"
 	icon_closed = "white"
 
 /obj/structure/closet/wardrobe/genetics_white/New()
@@ -283,7 +283,7 @@
 
 /obj/structure/closet/wardrobe/virology_white
 	name = "virology wardrobe"
-	icon_state = "white"
+	icon_state = "virouniform"
 	icon_closed = "white"
 
 /obj/structure/closet/wardrobe/virology_white/New()

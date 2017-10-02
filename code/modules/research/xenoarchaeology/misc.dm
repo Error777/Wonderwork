@@ -82,9 +82,9 @@
 
 /obj/structure/closet/excavation
 	name = "Excavation tools"
-	icon_state = "toolcloset"
-	icon_closed = "toolcloset"
-	icon_opened = "toolclosetopen"
+	icon_state = "xen"
+	icon_closed = "xen"
+	icon_opened = "xenopen"
 
 	New()
 		..()
