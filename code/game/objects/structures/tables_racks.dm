@@ -511,8 +511,9 @@
 
 	if (istype(W, /obj/item/weapon/wrench))
 		if(src.status == 2)
+			user.drop_item()
+			step(W, get_dir(W, src))
 			return
-
 	..()
 
 /obj/structure/table/woodreinforced
@@ -547,8 +548,9 @@
 
 	if (istype(W, /obj/item/weapon/wrench))
 		if(src.status == 2)
+			user.drop_item()
+			step(W, get_dir(W, src))
 			return
-
 	..()
 
 /*
