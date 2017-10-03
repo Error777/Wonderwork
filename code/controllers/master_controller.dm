@@ -66,6 +66,7 @@ datum/controller/game_controller/proc/setup()
 	setupgenetics()
 	setupfactions()
 	setup_economy()
+
 	create_global_parallax_icons()
 
 	for(var/i=0, i<max_secret_rooms, i++)
@@ -76,12 +77,12 @@ datum/controller/game_controller/proc/setup()
 			ticker.pregame()
 
 datum/controller/game_controller/proc/setup_objects()
-	world << "\red \b Initializing objects"
+	world << "\red \b Initializing objects."
 	sleep(-1)
 	for(var/atom/movable/object in world)
 		object.initialize()
 
-	world << "\red \b Initializing pipe networks"
+	world << "\red \b Initializing pipe networks."
 	sleep(-1)
 	for(var/obj/machinery/atmospherics/machine in machines)
 		machine.build_network()

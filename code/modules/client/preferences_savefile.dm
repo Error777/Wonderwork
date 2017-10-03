@@ -80,6 +80,9 @@
 	S["be_special"]			<< be_special
 	S["default_slot"]		<< default_slot
 	S["toggles"]			<< toggles
+	S["space_parallax"]		<< space_parallax
+	S["space_dust"]			<< space_dust
+	S["parallax_speed"]		<< parallax_speed
 
 	return 1
 
@@ -175,6 +178,10 @@
 	underwear		= sanitize_integer(underwear, 1, underwear_m.len, initial(underwear))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	b_type			= sanitize_text(b_type, initial(b_type))
+	space_parallax	= sanitize_integer(space_parallax, 0, 1, initial(space_parallax))
+	space_dust		= sanitize_integer(space_dust, 0, 1, initial(space_dust))
+	parallax_speed	= sanitize_integer(parallax_speed, 0, 5, initial(parallax_speed))
+
 
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))

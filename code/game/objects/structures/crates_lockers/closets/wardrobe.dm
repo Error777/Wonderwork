@@ -69,28 +69,6 @@
 	new /obj/item/clothing/head/that(src)
 	return
 
-
-/obj/structure/closet/wardrobe/chaplain_black
-	name = "chapel wardrobe"
-	desc = "It's a storage unit for Nanotrasen-approved religious attire."
-	icon_state = "black"
-	icon_closed = "black"
-
-/obj/structure/closet/wardrobe/chaplain_black/New()
-	new /obj/item/clothing/under/rank/chaplain(src)
-	new /obj/item/clothing/shoes/black(src)
-	new /obj/item/clothing/suit/nun(src)
-	new /obj/item/clothing/head/nun_hood(src)
-	new /obj/item/clothing/suit/chaplain_hoodie(src)
-	new /obj/item/clothing/head/chaplain_hood(src)
-	new /obj/item/clothing/suit/holidaypriest(src)
-	new /obj/item/clothing/under/wedding/bride_white(src)
-	new /obj/item/weapon/storage/backpack/cultpack (src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
-	return
-
-
 /obj/structure/closet/wardrobe/green
 	name = "green wardrobe"
 	icon_state = "green"
@@ -152,8 +130,8 @@
 
 /obj/structure/closet/wardrobe/atmospherics_yellow
 	name = "atmospherics wardrobe"
-	icon_state = "yellow"
-	icon_closed = "yellow"
+	icon_state = "atmos"
+	icon_closed = "atmos"
 
 /obj/structure/closet/wardrobe/atmospherics_yellow/New()
 	new /obj/item/clothing/under/rank/atmospheric_technician(src)
@@ -198,8 +176,8 @@
 
 /obj/structure/closet/wardrobe/pjs
 	name = "Pajama wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	icon_state = "medpj"
+	icon_closed = "medpj"
 
 /obj/structure/closet/wardrobe/pjs/New()
 	new /obj/item/clothing/under/pj/red(src)
@@ -216,7 +194,7 @@
 /obj/structure/closet/wardrobe/toxins_white
 	name = "toxins wardrobe"
 	icon_state = "sciuniform"
-	icon_closed = "white"
+	icon_closed = "sciuniform"
 
 /obj/structure/closet/wardrobe/toxins_white/New()
 	new /obj/item/clothing/under/rank/scientist(src)
@@ -254,7 +232,7 @@
 /obj/structure/closet/wardrobe/chemistry_white
 	name = "chemistry wardrobe"
 	icon_state = "chemuniform"
-	icon_closed = "white"
+	icon_closed = "chemuniform"
 
 /obj/structure/closet/wardrobe/chemistry_white/New()
 	new /obj/item/clothing/under/rank/chemist(src)
@@ -269,7 +247,7 @@
 /obj/structure/closet/wardrobe/genetics_white
 	name = "genetics wardrobe"
 	icon_state = "geneuniform"
-	icon_closed = "white"
+	icon_closed = "geneuniform"
 
 /obj/structure/closet/wardrobe/genetics_white/New()
 	new /obj/item/clothing/under/rank/geneticist(src)
@@ -284,7 +262,7 @@
 /obj/structure/closet/wardrobe/virology_white
 	name = "virology wardrobe"
 	icon_state = "virouniform"
-	icon_closed = "white"
+	icon_closed = "virouniform"
 
 /obj/structure/closet/wardrobe/virology_white/New()
 	new /obj/item/clothing/under/rank/virologist(src)

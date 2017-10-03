@@ -836,6 +836,23 @@
 
 	return 0
 
+/mob/living/carbon/human/proc/act_lay_down()
+
+	src.lay_down()
+
+	if(src.resting || src.sleeping)
+		src.lay_down.icon_state = "getup"
+	else
+		src.lay_down.icon_state = "rest"
+
+/mob/living/carbon/human/proc/act_sleep()
+
+	src.mob_sleep()
+
+	if(src.sleeping)
+		src.mob_sleep.icon_state = "awake"
+	else
+		src.mob_sleep.icon_state = "sleep"
 
 /mob/living/carbon/human/proc/check_dna()
 	dna.check_integrity(src)

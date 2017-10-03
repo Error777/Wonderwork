@@ -435,6 +435,20 @@
 	mymob.throw_icon.screen_loc = special.locations["throw"]
 	src.hotkeybuttons += mymob.throw_icon
 
+	mymob.lay_down = new /obj/screen()
+	mymob.lay_down.name = "rest"
+	mymob.lay_down.icon = uistyle
+	mymob.lay_down.icon_state = "rest"
+	mymob.lay_down.screen_loc = special.locations["throw"]
+//	src.hotkeybuttons += mymob.lay_down
+
+	mymob.mob_sleep = new /obj/screen()
+	mymob.mob_sleep.name = "sleep"
+	mymob.mob_sleep.icon = uistyle
+	mymob.mob_sleep.icon_state = "sleep"
+	mymob.mob_sleep.screen_loc = special.locations["resist"]
+//	src.hotkeybuttons += mymob.mob_sleep
+
 	mymob.oxygen = new /obj/screen()
 	mymob.oxygen.icon = uistyle
 	mymob.oxygen.icon_state = "oxy0"
@@ -526,7 +540,7 @@
 
 	mymob.client.screen = null
 
-	mymob.client.screen += list(mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.damageoverlay)
+	mymob.client.screen += list(mymob.throw_icon, mymob.mob_sleep, mymob.lay_down, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.damageoverlay)
 	mymob.client.screen += src.adding + src.hotkeybuttons
 	inventory_shown = 0
 

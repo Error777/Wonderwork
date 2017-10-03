@@ -12,12 +12,32 @@
 	var/moved_recently = 0
 	var/mob/pulledby = null
 	var/inertia_dir = 0
+
+
+/atom/movable/proc/update_client_hook(atom/destination)
+	if(locate(/mob) in src)
+		for(var/client/C in clients)
+			if((get_turf(C.eye) == destination) && (C.mob.hud_used))
+				C.update_special_views()
+
+/mob/update_client_hook(atom/destination)
+	if(locate(/mob) in src)
+		for(var/client/C in clients)
+			if((get_turf(C.eye) == destination) && (C.mob.hud_used))
+				C.update_special_views()
+	else if(client && hud_used)
+		var/client/C = client
+		C.update_special_views()
+
 /atom/movable/Move()
 	var/atom/A = src.loc
 	. = ..()
 	src.move_speed = world.timeofday - src.l_move_time
 	src.l_move_time = world.timeofday
 	src.m_flag = 1
+
+	update_client_hook(loc)
+
 	if ((A != src.loc && A && A.z == src.z))
 		src.last_move = get_dir(A, src.loc)
 	return
@@ -42,6 +62,7 @@
 		loc = destination
 		loc.Entered(src)
 		return 1
+	update_client_hook(loc)
 	return 0
 
 /atom/movable/proc/hit_check(var/speed)
@@ -192,6 +213,7 @@
 	//done throwing, either because it hit something or it finished moving
 	src.throwing = 0
 	if(isobj(src)) src:throw_impact(get_turf(src),speed)
+
 
 
 //Overlays

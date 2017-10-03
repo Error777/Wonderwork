@@ -299,6 +299,27 @@
 	mymob.throw_icon.screen_loc = ui_drop_throw
 	src.hotkeybuttons += mymob.throw_icon
 
+	mymob.pullin = new /obj/screen()
+	mymob.pullin.icon = ui_style
+	mymob.pullin.icon_state = "pull0"
+	mymob.pullin.name = "pull"
+	mymob.pullin.screen_loc = ui_pull_resist
+	src.hotkeybuttons += mymob.pullin
+
+	mymob.lay_down = new /obj/screen()
+	mymob.lay_down.icon = ui_style
+	mymob.lay_down.icon_state = "rest"
+	mymob.lay_down.name = "rest"
+	mymob.lay_down.screen_loc = ui_drop_throw
+	src.hotkeybuttons += mymob.lay_down
+
+	mymob.mob_sleep = new /obj/screen()
+	mymob.mob_sleep.icon = ui_style
+	mymob.mob_sleep.icon_state = "sleep"
+	mymob.mob_sleep.name = "sleep"
+	mymob.mob_sleep.screen_loc = ui_pull_resist
+	src.hotkeybuttons += mymob.mob_sleep
+
 	mymob.oxygen = new /obj/screen()
 	mymob.oxygen.icon = ui_style
 	mymob.oxygen.icon_state = "oxy0"
@@ -346,13 +367,6 @@
 	mymob.nutrition_icon.icon_state = "nutrition0"
 	mymob.nutrition_icon.name = "nutrition"
 	mymob.nutrition_icon.screen_loc = ui_nutrition
-
-	mymob.pullin = new /obj/screen()
-	mymob.pullin.icon = ui_style
-	mymob.pullin.icon_state = "pull0"
-	mymob.pullin.name = "pull"
-	mymob.pullin.screen_loc = ui_pull_resist
-	src.hotkeybuttons += mymob.pullin
 /*
 	mymob.noise1 = new /obj/screen()
 	mymob.noise1.icon = 'icons/mob/noise.dmi'
@@ -379,7 +393,7 @@
 
 	mymob.client.screen = null
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.damageoverlay) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
+	mymob.client.screen += list( mymob.throw_icon, mymob.mob_sleep, mymob.lay_down, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.damageoverlay) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
 	mymob.client.screen += src.adding + src.hotkeybuttons
 	inventory_shown = 0
 

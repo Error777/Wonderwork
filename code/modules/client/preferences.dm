@@ -46,6 +46,11 @@ datum/preferences
 	var/UI_style = "Midnight"
 	var/toggles = TOGGLES_DEFAULT
 
+	//SPAAAACE PARALAX
+	var/space_parallax = 1
+	var/space_dust = 1
+	var/parallax_speed = 2
+
 	//character preferences
 	var/real_name						//our character's name
 	var/be_random_name = 0				//whether we are a random name every round
@@ -110,10 +115,6 @@ datum/preferences
 		// OOC Metadata:
 	var/metadata = ""
 	var/slot_name = ""
-
-//	SPAAAACE PARALAX
-//	var/parallax_speed = 2
-//	var/parallax_togs = PARALLAX_SPACE | PROGRESS_BARS
 
 /datum/preferences/New(client/C)
 	b_type = pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
@@ -244,9 +245,9 @@ datum/preferences
 		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
 		dat += "<br>"
 		dat += "<b>UI Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
-		//dat += "<b>Space Parallax:</b> <a href='?_src_=prefs;preference=parallax'><b>[toggles & PARALLAX_SPACE]</b></a><br>"
-		//dat += "<b>Parallax Speed:</b> <a href='?_src_=prefs;preference=p_speed'><b>[parallax_speed]</b></a><br>"
-		//dat += "<b>Space Dust:</b> <a href='?_src_=prefs;preference=dust'><b>[toggles & PARALLAX_DUST]</b></a><br>"
+		dat += "<b>Space Parallax:</b> <a href='?_src_=prefs;preference=parallax'><b>[space_parallax ? "Enabled" : "Disabled"]</b></a><br>"
+		dat += "<b>Parallax Speed:</b> <a href='?_src_=prefs;preference=p_speed'><b>[parallax_speed]</b></a><br>"
+		dat += "<b>Space Dust:</b> <a href='?_src_=prefs;preference=dust'><b>[space_dust ? "Yes" : "No"]</b></a><br>"
 		dat += "<b>Play admin midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 		dat += "<b>Play lobby music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 		dat += "<b>Ghost ears:</b> <a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles & CHAT_GHOSTEARS) ? "Nearest Creatures" : "All Speech"]</b></a><br>"
@@ -1085,6 +1086,19 @@ datum/preferences
 								UI_style = "Cooldown"
 							else
 								UI_style = "Midnight"
+
+					if("parallax")
+						space_parallax = !space_parallax
+						if(user && user.hud_used)
+							user.hud_used.update_parallax_existence()
+
+					if("dust")
+						space_dust = !space_dust
+						if(user && user.hud_used)
+							user.hud_used.update_parallax_existence()
+
+					if("p_speed")
+						parallax_speed = min(max(input(user, "Enter a number between 0 and 5 included (default=2)","Parallax Speed Preferences",parallax_speed),0),5)
 
 					if("be_special")
 						var/num = text2num(href_list["num"])
