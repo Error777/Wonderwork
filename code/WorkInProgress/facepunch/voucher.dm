@@ -94,11 +94,6 @@ var/global/vouchers = 10 //So badmins can't change this
 				vouchers -= 7
 				command_alert("Attention. A research jumpstart item has been purchased with vouchers and been approved. Destroy it in the Destructive Analyzer. Do not depend on this.")
 				message_admins("([usr.key]/[usr.real_name]) has purchased a research jumpstart with vouchers.")
-			if("buycode")
-				getcode()
-				command_alert("Attention. An away mission opportunity has been purchased with vouchers and been approved. Please enter [tempcode] to your gateway computer. This code will not be repeated. Proceed with caution. Additionally memorize the gateway code listed on your main computer so you can return to the station.")
-				message_admins("([usr.key]/[usr.real_name]) has purchased an away mission code with vouchers.")
-				vouchers -= 10
 			if("smes")
 				command_alert("Attention. A powering of all SMES oppurtunity has been purchased with vouchers and been approved. Do not slack off in the future.")
 				vouchers -= 10
@@ -106,33 +101,9 @@ var/global/vouchers = 10 //So badmins can't change this
 				power_restore_quick()
 			if("emag")
 				special = 1
-				getcode()
+
 				usr << "We have received and approved of your request. Please enter [tempcode] into the gateway computer. This will be told only once. Additionally memorize the gateway code listed on the main gateway computer so you can return to the station."
 				message_admins("([usr.key]/[usr.real_name]) has purchased a syndicate hiding spot with vouchers.")
 				vouchers -= 10
 	attack_hand(usr)
 	return
-
-
-/obj/machinery/voucher/proc/getcode()//They will never, EVER get this twice per round.
-	var/list/L = new/list()
-	if(special)
-		for(var/obj/machinery/stargate/center/special/gate in world)
-			if(gate.station)	continue
-			L.Add(gate)
-		if(!L.len)	return
-		var/obj/machinery/stargate/center/P = pick(L)
-		if(P)
-			tempcode = P.code
-			special = 0
-	else
-		for(var/obj/machinery/stargate/center/gate in world)
-			if(gate.type == /obj/machinery/stargate/center/special) continue
-			if(gate.station)	continue
-			L.Add(gate)
-		if(!L.len)	return
-		var/obj/machinery/stargate/center/P = pick(L)
-		if(P)
-			tempcode = P.code
-
-/obj/machinery/stargate/center/special

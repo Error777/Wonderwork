@@ -1484,6 +1484,35 @@
 			if(!masked)
 				clear_fullscreen("tint")
 
+			var/gasmasked = 0
+
+			if(!gasmasked &&  istype(wear_mask, /obj/item/clothing/mask/gas))
+				var/obj/item/clothing/mask/gas/GM = wear_mask
+				if(GM.overlay)
+					overlay_fullscreen("gasmask", /obj/screen/fullscreen/gasmask)
+					gasmasked = 1
+
+			if(!gasmasked)
+				clear_fullscreen("gasmask")
+
+			var/thermal = 0
+
+			if(!thermal &&  istype(glasses, /obj/item/clothing/glasses/thermal))
+				overlay_fullscreen("thermal", /obj/screen/fullscreen/thermal)
+				thermal = 1
+
+			if(!thermal)
+				clear_fullscreen("thermal")
+
+			var/meson = 0
+
+			if(!meson &&  istype(glasses, /obj/item/clothing/glasses/meson))
+				overlay_fullscreen("meson", /obj/screen/fullscreen/meson)
+				thermal = 1
+
+			if(!meson)
+				clear_fullscreen("meson")
+
 			if(eye_stat > 20)
 				if(eye_stat > 30)	overlay_fullscreen("eye", /obj/screen/fullscreen/blurry)
 				else				overlay_fullscreen("eye", /obj/screen/fullscreen/impaired, 2)
