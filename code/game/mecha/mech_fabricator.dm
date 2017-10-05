@@ -187,7 +187,7 @@
 
 /obj/machinery/mecha_part_fabricator/Del()
 	for(var/atom/A in src)
-		del A
+		del(A)
 	..()
 	return
 
@@ -270,7 +270,7 @@
 	if(!istype(apart)) return 0
 	for(var/obj/O in part_set)
 		if(O.type == apart.type)
-			del apart
+			del(apart)
 			return 0
 	part_set[++part_set.len] = apart
 	return 1
@@ -703,7 +703,7 @@
 		res.Move(src.loc)
 		result = res.amount
 	else
-		del res
+		del(res)
 	return result
 
 

@@ -462,7 +462,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			imp_in.put_in_hands(scanned)
 		else
 			scanned.loc = t
-		del src
+		del(src)
 
 	implanted(mob/source as mob)
 		src.activation_emote = input("Choose activation emote:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch_s", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")

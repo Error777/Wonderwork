@@ -46,7 +46,7 @@
 				user << "<span class='notice'>You burn away the fungi with \the [WT].</span>"
 				playsound(src.loc, 'sound/items/Welder.ogg', 10, 1)
 				for(var/obj/effect/E in src) if(E.name == "Wallrot")
-					del E
+					del(E)
 				rotting = 0
 				return
 		else if(!is_sharp(W) && W.force >= 10 || W.force >= 20)

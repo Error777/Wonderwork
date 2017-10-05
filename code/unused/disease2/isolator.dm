@@ -130,7 +130,7 @@
 		user << "The dish shatters"
 		if(virus2.infectionchance > 0)
 			infect_virus2(user,virus2)
-		del src
+		del(src)
 
 /obj/item/weapon/virusdish/examine()
 	usr << "This is a virus containment dish"

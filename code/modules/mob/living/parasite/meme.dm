@@ -134,7 +134,7 @@ mob/living/parasite/meme/death()
 	..()
 	message_admins("[src.key](MEME) is die. Last host: [src.host]([src.host.ckey])", 0)
 	log_game("[src.key](MEME) is die. Last host: [src.host]([src.host.ckey])")
-	del src
+	del(src)
 
 // When a meme speaks, it speaks through its host
 mob/living/parasite/meme/say(message as text)
@@ -611,7 +611,7 @@ mob/living/parasite/meme/verb/Possession()
 		host.update_body()
 		src << "\red You lose control.."
 
-		del dummy
+		del(dummy)
 
 // Enter dormant mode, increases meme point gain
 mob/living/parasite/meme/verb/Dormant()

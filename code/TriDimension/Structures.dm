@@ -54,7 +54,7 @@
 	Del()
 		spawn(1)
 			if(target && icon_state == "ladderdown")
-				del target
+				del(target)
 		return ..()
 
 	attack_paw(var/mob/M)
@@ -218,7 +218,7 @@
 		attack_hand(var/mob/M)
 
 			if(!target || !istype(target.loc, /turf))
-				del src
+				del(src)
 
 			if(active)
 				M << "That [src] is being used."
@@ -236,7 +236,7 @@
 
 			spawn(7)
 				if(!target || !istype(target.loc, /turf))
-					del src
+					del(src)
 				if(M.z == z && get_dist(src,M) <= 1)
 					var/list/adjacent_to_me = global_adjacent_z_levels["[z]"]
 					M.visible_message("\blue \The [M] scurries [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "You scramble [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "You hear some grunting, and a hatch sealing.")

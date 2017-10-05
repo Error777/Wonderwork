@@ -407,7 +407,7 @@
 		tray.nutrilevel = 10
 		tray.yieldmod = fert.yieldmod
 		tray.mutmod = fert.mutmod
-		del fert
+		del(fert)
 		tray.updateicon()
 		icon_state = "farmbot_fertile"
 		mode = FARMBOT_MODE_WAITING

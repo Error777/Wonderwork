@@ -43,7 +43,7 @@
 		new weapon1 (src.loc)
 	if(weapon2)
 		new weapon2 (src.loc)
-	del src
+	del(src)
 	return
 
 ///////////////Sword and shield////////////
@@ -160,5 +160,5 @@
 /mob/living/simple_animal/hostile/viscerator/Die()
 	..()
 	visible_message("\red <b>[src]</b> is smashed into pieces!")
-	del src
+	del(src)
 	return

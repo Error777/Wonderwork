@@ -1264,7 +1264,7 @@ datum
 					var/turf/simulated/wall/W = T
 					if(W.rotting)
 						W.rotting = 0
-						for(var/obj/effect/E in W) if(E.name == "Wallrot") del E
+						for(var/obj/effect/E in W) if(E.name == "Wallrot") del(E)
 
 						for(var/mob/O in viewers(W, null))
 							O.show_message(text("\blue The fungi are completely dissolved by the solution!"), 1)

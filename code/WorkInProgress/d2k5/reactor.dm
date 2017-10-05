@@ -74,7 +74,7 @@
 		src.fuel += (src.fuel + 10)
 		enrichment = 10
 		risk = 0
-		del W
+		del(W)
 	if (istype(W, /obj/item/weapon/ore/lovite))
 		if(src.fuel > src.maxfuel)
 			src.fuel = src.maxfuel
@@ -83,7 +83,7 @@
 		src.fuel += (src.fuel + 30)
 		enrichment = 1200
 		risk = 0
-		del W
+		del(W)
 	if (istype(W, /obj/item/weapon/ore/cerenkite))
 		if(src.fuel > src.maxfuel)
 			src.fuel = src.maxfuel
@@ -92,7 +92,7 @@
 		src.fuel += (src.fuel + 50)
 		enrichment = 75
 		risk = 0
-		del W
+		del(W)
 	if(istype(W, /obj/item/weapon/ore/plasma))
 		if(src.fuel > src.maxfuel)
 			src.fuel = src.maxfuel
@@ -101,7 +101,7 @@
 		src.fuel += (src.fuel + 100)
 		enrichment = 750
 		risk = 1
-		del W
+		del(W)
 	if (istype(W, /obj/item/weapon/ore/uranium))
 		if(src.fuel > src.maxfuel)
 			src.fuel = src.maxfuel
@@ -110,7 +110,7 @@
 		src.fuel = (src.fuel + 200)
 		enrichment = 850
 		risk = 2
-		del W
+		del(W)
 	if(istype(W, /obj/item/weapon/ore/erebite))
 		if(src.fuel > src.maxfuel)
 			src.fuel = src.maxfuel
@@ -119,12 +119,12 @@
 		src.fuel = (src.fuel + 300)
 		enrichment = 2000
 		risk = 7
-		del W
+		del(W)
 /*	if(istype(W, /obj/item/metroid_core))	POWER OUTPUT TESTER, DON'T FUCK WITH THIS
 		src.fuel = INFINITY
 		enrichment = 300
 		risk = 0.01
-		del W*/
+		del(W)*/
 
 /obj/machinery/power/reactor/proc/updateicon()
 	if(!src.active)

@@ -33,12 +33,12 @@
 /datum/artifact_effect/proc/HaltEffect()
 	for(var/obj/effect/energy_field/F in created_field)
 		created_field.Remove(F)
-		del F
+		del(F)
 
 /datum/artifact_effect/proc/UpdateEffect(var/atom/originator)
 	/*for(var/obj/effect/energy_field/F in created_field)
 		created_field.Remove(F)
-		del F*/
+		del(F)*/
 	if(originator.loc != archived_loc)
 		archived_loc = originator.loc
 		update_move(originator)

@@ -230,7 +230,7 @@ obj/structure/door_assembly
 					if(!src || !WT.isOn()) return
 					user << "\blue You dissasembled the airlock assembly!"
 					new /obj/item/stack/sheet/metal(src.loc, 4)
-					del (src)
+					del(src)
 		else
 			user << "\blue You need more welding fuel."
 			return

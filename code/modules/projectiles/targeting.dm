@@ -223,8 +223,8 @@ mob/living/proc/NotTargeted(var/obj/item/weapon/gun/I)
 	if(T && ismob(T) && !I.target)
 		T.client.remove_gun_icons()
 	if(!targeted_by.len)
-		del target_locked //Remove the overlay
-		del targeted_by
+		del(target_locked) //Remove the overlay
+		del(targeted_by)
 	spawn(1) update_targeted()
 
 mob/living/Move()
@@ -273,9 +273,9 @@ client/proc/remove_gun_icons()
 	screen -= usr.gun_move_icon
 	if (target_can_move)
 		screen -= usr.gun_run_icon
-	del usr.gun_move_icon
-	del usr.item_use_icon
-	del usr.gun_run_icon
+	del(usr.gun_move_icon)
+	del(usr.item_use_icon)
+	del(usr.gun_run_icon)
 
 client/proc/ToggleGunMode()
 	return	//Blocked. Jarlo.

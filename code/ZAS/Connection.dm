@@ -221,15 +221,15 @@ Indirect connections will not merge the two zones after they reach equilibrium.
 
 	//Check sanity: existance of turfs
 	if(!A || !B)
-		del src
+		del(src)
 
 	//Check sanity: zones are different
 	if(A.zone == B.zone)
-		del src
+		del(src)
 
 	//Check sanity: same turfs as before.
 	if(ref_A != "\ref[A]" || ref_B != "\ref[B]")
-		del src
+		del(src)
 
 	//Handle zones changing on a turf.
 	if((A.zone && A.zone != zone_A) || (B.zone && B.zone != zone_B))
@@ -240,7 +240,7 @@ Indirect connections will not merge the two zones after they reach equilibrium.
 		no_zone_count++
 		if(no_zone_count >= 5)
 			//world.log << "Connection removed: [A] or [B] missing a zone."
-			del src
+			del(src)
 		return 0
 
 	return 1
@@ -277,7 +277,7 @@ Indirect connections will not merge the two zones after they reach equilibrium.
 
 		//If I can no longer pass air, better delete
 		else
-			del src
+			del(src)
 
 /connection/proc/Sanitize()
 	//If the zones change on connected turfs, update it.
