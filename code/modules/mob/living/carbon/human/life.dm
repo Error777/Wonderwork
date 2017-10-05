@@ -1508,7 +1508,7 @@
 
 			if(!meson &&  istype(glasses, /obj/item/clothing/glasses/meson))
 				overlay_fullscreen("meson", /obj/screen/fullscreen/meson)
-				thermal = 1
+				meson = 1
 
 			if(!meson)
 				clear_fullscreen("meson")

@@ -23,7 +23,7 @@
 
 /obj/machinery/humancloner/attack_hand()
 	if(!cloning)
-		cloning = 150
+		cloning = 1
 		icon_state = "hc_g"
 		process()
 	else return
@@ -42,9 +42,8 @@
 
 	use_power(1000)
 	if(cloning)
-		cloning -= 1
-		sleep(4)
-		if(!cloning)
-			new /mob/living/carbon/monkey(src.loc)  //need insert infant here
-			icon_state = "hc_0"
+		sleep(20)
+		cloning = 0
+		new /mob/living/carbon/monkey(src.loc)  //need insert infant here
+		icon_state = "hc_0"
 	return
