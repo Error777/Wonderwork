@@ -140,7 +140,7 @@ var/global/datum/controller/gameticker/ticker
 	//new random event system is handled from the MC.
 
 	supply_shuttle.process() 		//Start the supply shuttle regenerating points -- TLE
-	master_controller.process()		//Start master_controller.process()
+	Master.RoundStart()			//Start master_controller.process()
 //	lighting_controller.process()	//Start processing goonlightcontroller updates
 
 	return 1
@@ -383,3 +383,6 @@ var/global/datum/controller/gameticker/ticker
 		log_game("[i]s[total_antagonists[i]].")
 
 	return 1
+
+/world/proc/has_round_started()
+	return ticker && ticker.current_state >= GAME_STATE_PLAYING

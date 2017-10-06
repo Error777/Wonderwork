@@ -1,3 +1,7 @@
+var/global/list/del_profiling = list()
+var/global/list/gdel_profiling = list()
+var/global/list/ghdel_profiling = list()
+
 /atom
 	layer = 2
 	var/level = 2
@@ -11,6 +15,7 @@
 	var/throwpass = 0
 	var/germ_level = 0 // The higher the germ level, the more germ on the atom.
 	var/ignoreinvert = 0
+	var/timestopped
 	///Chemistry.
 	var/datum/reagents/reagents = null
 

@@ -91,6 +91,7 @@ var/datum/controller/air_system/air_master
 	//Geoemetry lists
 	var/list/turfs_with_connections = list()
 	var/list/active_hotspots = list()
+	var/list/zones = list()
 
 	//Special functions lists
 	var/list/tiles_to_reconsider_zones = list()

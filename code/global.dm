@@ -6,10 +6,10 @@ var/global/obj/effect/overlay/plmaster = null
 var/global/obj/effect/overlay/slmaster = null
 
 var/global/datum/universal_state/universe = new
-/var/global/list/machines = list()
-/var/global/list/processing_objects = list()
-/var/global/list/active_diseases = list()
-/var/global/list/events = list()
+
+
+
+
 		//items that ask to be called every cycle
 
 var/global/defer_powernet_rebuild = 0		// true if net rebuild will be called manually after an event
@@ -149,7 +149,7 @@ var/list/OOClog = list()
 var/list/adminlog = list()
 
 
-/var/list/powernets = list()
+
 
 var/Debug = 0	// global debug switch
 var/Debug2 = 0
@@ -230,6 +230,10 @@ var/sqldb = "tgstation"
 var/sqllogin = "root"
 var/sqlpass = ""
 
+var/sqlfdbkdb    = "test"
+var/sqlfdbklogin = "root"
+var/sqlfdbkpass  = ""
+var/sqllogging   = 0 // Should we log deaths, population stats, etc.?
 
 	// Variables which change is necessary for conducting's Event
 var/timetorespawn = 30

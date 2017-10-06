@@ -107,6 +107,18 @@ proc/sanitize_russian(var/msg) //Специально для всего, где не нужно убирать пере
 	var/name = input(user, message, title, default)
 	return strip_html_simple(name, max_length)
 
+/proc/cmp_subsystem_init(datum/subsystem/a, datum/subsystem/b)
+	return b.init_order - a.init_order
+
+/proc/cmp_subsystem_display(datum/subsystem/a, datum/subsystem/b)
+	if(a.display_order == b.display_order)
+		return sorttext(b.name, a.name)
+	return a.display_order - b.display_order
+
+/proc/cmp_subsystem_priority(datum/subsystem/a, datum/subsystem/b)
+	return a.priority - b.priority
+
+
 //Filters out undesirable characters from names
 /proc/reject_bad_name(var/t_in, var/allow_numbers=0, var/max_length=MAX_NAME_LEN)
 	if(!t_in || length(t_in) > max_length)

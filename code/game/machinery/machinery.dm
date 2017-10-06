@@ -110,6 +110,7 @@ Class Procs:
 	var/global/gl_uid = 1
 	var/light_power_on = 0
 	var/light_range_on = 0
+	var/inMachineList = 1 // For debugging.
 
 /obj/machinery/New()
 	..()
@@ -240,3 +241,5 @@ Class Procs:
 	uid = gl_uid
 	gl_uid++
 
+/obj/machinery/proc/check_rebuild()
+	return

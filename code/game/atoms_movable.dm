@@ -12,7 +12,7 @@
 	var/moved_recently = 0
 	var/mob/pulledby = null
 	var/inertia_dir = 0
-
+	var/hard_deleted = 0
 
 /atom/movable/proc/update_client_hook(atom/destination)
 	if(locate(/mob) in src)

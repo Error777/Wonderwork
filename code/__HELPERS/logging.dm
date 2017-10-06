@@ -75,3 +75,10 @@
 /proc/log_pda(text)
 	if (config.log_pda)
 		diary << "\[[time_stamp()]]PDA: [text][log_end]"
+
+/**
+ * Standardized method for tracking startup times.
+ */
+/proc/log_startup_progress(var/message)
+	to_chat(world, "<span class='danger'>[message]</span>")
+	world.log << message
