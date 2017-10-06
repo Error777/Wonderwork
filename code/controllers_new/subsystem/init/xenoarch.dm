@@ -6,18 +6,14 @@ var/datum/subsystem/xenoarch/SSxenoarch
 	init_order = SS_INIT_MORE_INIT
 	flags      = SS_NO_FIRE
 
-	var/list/artifact_spawning_turfs = list()
-
 
 /datum/subsystem/xenoarch/New()
 	NEW_SS_GLOBAL(SSxenoarch)
 
 
 /datum/subsystem/xenoarch/Initialize(timeofday)
-	SetupXenoarch()
 
+	for(var/i=0, i<max_secret_rooms, i++)
+		make_mining_asteroid_secret()
 
-
-/datum/subsystem/xenoarch/Recover()
-	artifact_spawning_turfs = SSxenoarch.artifact_spawning_turfs
 	..()

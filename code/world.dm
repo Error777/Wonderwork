@@ -76,7 +76,7 @@
 
 	sleep_offline = 1
 
-	processScheduler = new
+	processScheduler = new /datum/controller/processScheduler()
 
 //	master_controller = new /datum/controller/game_controller()
 //	lighting_controller = new /datum/controller/lighting()
@@ -230,7 +230,7 @@
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
+	s += "<a href=\"http://ss13.ru\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 	s += "ss13.ru"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"

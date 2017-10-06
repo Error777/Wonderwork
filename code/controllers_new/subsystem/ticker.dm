@@ -22,7 +22,7 @@ var/datum/subsystem/ticker/SSticker
 	lastTickerTime = world.timeofday
 
 	if (!ticker)
-		ticker = new
+		ticker = new /datum/controller/gameticker()
 
 	spawn (0)
 		if (ticker)
