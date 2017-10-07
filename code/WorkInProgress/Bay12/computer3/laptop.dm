@@ -52,7 +52,7 @@
 					O.loc = loc
 			usr << "\The [src] crumbles to pieces."
 			spawn(5)
-				del(src)
+				qdel(src)
 			return
 
 		stored_computer.loc = loc
@@ -182,7 +182,7 @@
 			var/obj/O = loc
 			spawn(5)
 				if(O)
-					del(O)
+					qdel(O)
 		..()
 
 

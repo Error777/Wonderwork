@@ -35,7 +35,7 @@
 
 	Move(newloc, dir)
 		if(!generator)
-			del(src)
+			qdel(src)
 			return 0
 		generator.DestroyShields()
 
@@ -74,7 +74,7 @@
 	Del()
 		if(generate_shields)
 			DestroyShields()
-			del(linked)
+			qdel(linked)
 		..()
 
 	process()
@@ -160,7 +160,7 @@
 
 	proc/DestroyShields()
 		for(var/obj/effect/E in shields)
-			del(E)
+			qdel(E)
 
 	proc/Type2Name(var/type)
 		switch(type)

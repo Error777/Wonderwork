@@ -7,7 +7,7 @@
 	for(var/obj/effect/spreader/spread in spreadEpicentre.spreadList)
 		spreadTurfs += get_turf(spread)
 
-	del(spreadEpicentre)
+	qdel(spreadEpicentre)
 	return
 
 //DEBUG START
@@ -24,12 +24,12 @@
 /obj/effect/spreader/Del()
 	for(var/obj/effect/spreader/spread in spreadList)
 		if(spread != src)
-			del(spread)
+			qdel(spread)
 	..()
 
 /obj/effect/spreader/New(location,var/amount = 1,obj/effects/spreader/source = src) //just a copypaste job from foam
 	if(amount <= 0)
-		del(src)
+		qdel(src)
 		return
 	else
 		..()

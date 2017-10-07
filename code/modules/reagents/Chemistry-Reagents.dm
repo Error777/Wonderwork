@@ -271,7 +271,7 @@ datum
 					lowertemp.temperature = max( min(lowertemp.temperature-2000,lowertemp.temperature / 2) ,0)
 					lowertemp.react()
 					T.assume_air(lowertemp)
-					del(hotspot)
+					qdel(hotspot)
 				return
 			reaction_obj(var/obj/O, var/volume)
 				src = null
@@ -282,7 +282,7 @@ datum
 					lowertemp.temperature = max( min(lowertemp.temperature-2000,lowertemp.temperature / 2) ,0)
 					lowertemp.react()
 					T.assume_air(lowertemp)
-					del(hotspot)
+					qdel(hotspot)
 				if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/monkeycube))
 					var/obj/item/weapon/reagent_containers/food/snacks/monkeycube/cube = O
 					if(!cube.wrapped)
@@ -468,7 +468,7 @@ datum
 					M.invisibility = 101
 					for(var/obj/item/W in M)
 						if(istype(W, /obj/item/weapon/implant))	//TODO: Carn. give implants a dropped() or something
-							del(W)
+							qdel(W)
 							continue
 						W.layer = initial(W.layer)
 						W.loc = M.loc
@@ -480,7 +480,7 @@ datum
 						M.mind.transfer_to(new_mob)
 					else
 						new_mob.key = M.key
-					del(M)
+					qdel(M)
 				..()
 				return
 
@@ -829,7 +829,7 @@ datum
 
 						if(H.head)
 							if(prob(15) && !H.head.unacidable)
-								del(H.head)
+								qdel(H.head)
 								H.update_inv_head()
 								H << "\red Your helmet melts away but protects you from the acid"
 							else
@@ -869,7 +869,7 @@ datum
 						I.desc = "Looks like this was \an [O] some time ago."
 						for(var/mob/M in viewers(5, O))
 							M << "\red \the [O] melts."
-						del(O)
+						qdel(O)
 
 		pacid
 			name = "Polytrinic acid"
@@ -895,7 +895,7 @@ datum
 							return
 						if(M:head)
 							if(prob(15))
-								del(M:head)
+								qdel(M:head)
 								M << "\red Your helmet melts from the acid!"
 							else
 								M << "\red Your helmet protects you from the acid!"
@@ -1205,7 +1205,7 @@ datum
 
 			reaction_obj(var/obj/O, var/volume)
 				if(istype(O,/obj/effect/decal/cleanable))
-					del(O)
+					qdel(O)
 				else
 					if(O)
 						O.clean_blood()
@@ -1214,7 +1214,7 @@ datum
 					T.overlays.Cut()
 					T.clean_blood()
 					for(var/obj/effect/decal/cleanable/C in src)
-						del(C)
+						qdel(C)
 
 					for(var/mob/living/carbon/metroid/M in T)
 						M.adjustToxLoss(rand(5,10))
@@ -1264,7 +1264,7 @@ datum
 					var/turf/simulated/wall/W = T
 					if(W.rotting)
 						W.rotting = 0
-						for(var/obj/effect/E in W) if(E.name == "Wallrot") del(E)
+						for(var/obj/effect/E in W) if(E.name == "Wallrot") qdel(E)
 
 						for(var/mob/O in viewers(W, null))
 							O.show_message(text("\blue The fungi are completely dissolved by the solution!"), 1)
@@ -1275,9 +1275,9 @@ datum
 					alien_weeds.health -= rand(15,35) // Kills alien weeds pretty fast
 					alien_weeds.healthcheck()
 				else if(istype(O,/obj/effect/glowshroom)) //even a small amount is enough to kill it
-					del(O)
+					qdel(O)
 				else if(istype(O,/obj/effect/spacevine))
-					if(prob(50)) del(O) //Kills kudzu too.
+					if(prob(50)) qdel(O) //Kills kudzu too.
 				// Damage that is done to growing plants is separately
 				// at code/game/machinery/hydroponics at obj/item/hydroponics
 
@@ -2354,7 +2354,7 @@ datum
 					lowertemp.temperature = max( min(lowertemp.temperature-2000,lowertemp.temperature / 2) ,0)
 					lowertemp.react()
 					T.assume_air(lowertemp)
-					del(hotspot)
+					qdel(hotspot)
 
 		enzyme
 			name = "Universal Enzyme"

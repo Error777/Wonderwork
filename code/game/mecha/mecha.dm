@@ -563,7 +563,7 @@
 						E.forceMove(T)
 						E.destroy()
 		spawn(0)
-			del(src)
+			qdel(src)
 	return
 
 /obj/mecha/ex_act(severity)
@@ -785,7 +785,7 @@
 		src.reset_icon()
 
 		user.drop_item()
-		del(P)
+		qdel(P)
 
 	else
 		call((proc_res["dynattackby"]||src), "dynattackby")(W,user)
@@ -1654,7 +1654,7 @@
 			AI.bruteloss = O.getBruteLoss()
 			AI.toxloss = O.toxloss
 			AI.updatehealth()
-			del(O)
+			qdel(O)
 			if (!AI.stat)
 				AI.icon_state = "ai"
 			else
@@ -1741,7 +1741,7 @@
 					if(t_air)
 						t_air.merge(removed)
 					else //just delete the cabin gas, we're in space or some shit
-						del(removed)
+						qdel(removed)
 		else
 			return stop()
 		return
@@ -1784,7 +1784,7 @@
 				if(mecha.loc && hascall(mecha.loc,"assume_air"))
 					mecha.loc.assume_air(leaked_gas)
 				else
-					del(leaked_gas)
+					qdel(leaked_gas)
 		if(mecha.hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
 			if(mecha.get_charge())
 				mecha.spark_system.start()

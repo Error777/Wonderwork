@@ -89,7 +89,7 @@ max volume of plasma storeable by the field = the total volume of a number of ti
 /obj/machinery/rust/core/proc/Shutdown()
 	icon_state = "core0"
 	on = 0
-	del(owned_field)
+	qdel(owned_field)
 	luminosity = 0
 
 /obj/machinery/rust/core/proc/AddParticles(var/name, var/quantity = 1)

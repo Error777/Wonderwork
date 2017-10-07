@@ -141,7 +141,7 @@
 		user.put_in_hands(W)
 		user << "<span class='notice'>You wrap the cable restraint around the top of the rod.</span>"
 
-		del(src)
+		qdel(src)
 
 
 /obj/item/weapon/handcuffs/cyborg

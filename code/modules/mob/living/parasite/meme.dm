@@ -76,7 +76,7 @@ mob/living/parasite/meme/New()
 
 	if(!allowed_mob.len)
 		message_admins("Failed to find host for meme [src.key]. Aborting.")
-		del(src)
+		qdel(src)
 		return
 
 	var/newhost = pick(allowed_mob)
@@ -134,7 +134,7 @@ mob/living/parasite/meme/death()
 	..()
 	message_admins("[src.key](MEME) is die. Last host: [src.host]([src.host.ckey])", 0)
 	log_game("[src.key](MEME) is die. Last host: [src.host]([src.host.ckey])")
-	del(src)
+	qdel(src)
 
 // When a meme speaks, it speaks through its host
 mob/living/parasite/meme/say(message as text)
@@ -611,7 +611,7 @@ mob/living/parasite/meme/verb/Possession()
 		host.update_body()
 		src << "\red You lose control.."
 
-		del(dummy)
+		qdel(dummy)
 
 // Enter dormant mode, increases meme point gain
 mob/living/parasite/meme/verb/Dormant()

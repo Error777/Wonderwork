@@ -47,9 +47,9 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 			owned_core = em_core
 
 		if(!owned_core)
-			del(src)
+			qdel(src)
 		if(!owned_core.on)
-			del(src)
+			qdel(src)
 
 		//create the gimmicky things to handle field collisions
 		var/obj/effects/rust/particle_catcher/catcher
@@ -118,9 +118,9 @@ Deuterium-tritium fusion: 4.5 x 10^7 K
 	process()
 		//make sure the field generator is still intact
 		if(!owned_core)
-			del(src)
+			qdel(src)
 		if(!owned_core.on)
-			del(src)
+			qdel(src)
 
 		//handle radiation
 		if(!radiator)

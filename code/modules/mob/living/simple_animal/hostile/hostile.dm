@@ -179,7 +179,7 @@
 	if(!A)	return
 
 	if (!istype(target, /turf))
-		del(A)
+		qdel(A)
 		return
 	A.current = target
 	A.yo = target:y - start:y

@@ -264,7 +264,7 @@
 			attached_to.attachments -= src
 			attached_to.update_icon()
 
-			del(src)
+			qdel(src)
 
 	mech_storage/
 		name = "mech storage"

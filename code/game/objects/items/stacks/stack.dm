@@ -108,7 +108,7 @@
 		list_recipes(usr, text2num(href_list["sublist"]))
 
 	if (href_list["make"])
-		if (src.amount < 1) del(src) //Never should happen
+		if (src.amount < 1) qdel(src) //Never should happen
 
 		var/list/recipes_list = recipes
 		if (href_list["sublist"])
@@ -144,16 +144,16 @@
 		src.amount-=R.req_amount*multiplier
 		if (src.amount<=0)
 			var/oldsrc = src
-			src = null //dont kill proc after del()
+			src = null //dont kill proc after qdel()
 			usr.before_take_item(oldsrc)
-			del(oldsrc)
+			qdel(oldsrc)
 			if (istype(O,/obj/item))
 				usr.put_in_hands(O)
 		O.add_fingerprint(usr)
 		//BubbleWrap - so newly formed boxes are empty
 		if ( istype(O, /obj/item/weapon/storage) )
 			for (var/obj/item/I in O)
-				del(I)
+				qdel(I)
 		//BubbleWrap END
 	if (src && usr.machine==src) //do not reopen closed window
 		spawn( 0 )
@@ -165,10 +165,10 @@
 	src.amount-=amount
 	if (src.amount<=0)
 		var/oldsrc = src
-		src = null //dont kill proc after del()
+		src = null //dont kill proc after qdel()
 		if(usr)
 			usr.before_take_item(oldsrc)
-		del(oldsrc)
+		qdel(oldsrc)
 	return
 
 /obj/item/stack/proc/add_to_stacks(mob/usr as mob)

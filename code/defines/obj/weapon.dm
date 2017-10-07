@@ -56,7 +56,7 @@ var/global/list/moneytypes = list(
 /obj/item/weapon/spacecash/proc/update_cash()
 	name = "[src.worth] credit"
 	desc = "It's worth [src.worth] credits."
-	if (src.worth < 1) del(src)
+	if (src.worth < 1) qdel(src)
 	else if (src.worth<20) src.icon_state = "spacecash10"
 	else if (src.worth<50) src.icon_state = "spacecash20"
 	else if (src.worth<100) src.icon_state = "spacecash50"
@@ -69,7 +69,7 @@ var/global/list/moneytypes = list(
 	if(istype(W, /obj/item/weapon/spacecash))
 		src.worth+=W:worth
 		user.drop_item()
-		del(W)
+		qdel(W)
 		src.update_cash()
 
 /obj/item/weapon/spacecash/attack_self(mob/user as mob)

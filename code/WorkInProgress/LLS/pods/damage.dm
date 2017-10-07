@@ -23,7 +23,7 @@
 					if(prob(20))
 						S = new /obj/item/stack/sheet/plasteel(get_turf(src))
 						S.amount = 2 * pick(1, 2, 3)
-					del(src)
+					qdel(src)
 
 /*
 * Damage System
@@ -103,7 +103,7 @@
 
 		for(var/datum/global_iterator/iterator in GetIterators())
 			iterator.stop()
-			del(iterator)
+			qdel(iterator)
 
 		for(var/mob/living/carbon/human/H in GetOccupants())
 			H.loc = get_turf(src)
@@ -134,7 +134,7 @@
 					new /obj/effect/decal/cleanable/oil(T)
 
 		spawn(0)
-			del(src)
+			qdel(src)
 
 	attack_paw(var/mob/living/user)
 		TakeDamage(rand(pod_config.paw_damage_lower, pod_config.paw_damage_upper), 0, 0, user)
@@ -158,7 +158,7 @@
 
 		if((P.damage_type == BURN) || (P.damage_type == BRUTE) || (P.damage_type in list("burn", "brute", "fire")))
 			if(src in P.permutated)
-				del(P)
+				qdel(P)
 			else
 				TakeDamage(P.damage, 0, P)
 

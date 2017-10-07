@@ -16,7 +16,7 @@
 		if (machine)
 			machine.CONSOLE = src
 		else
-			del(src)
+			qdel(src)
 
 /obj/machinery/mineral/stacking_unit_console/process()
 	updateDialog()
@@ -229,70 +229,70 @@
 			O = locate(/obj/item, input.loc)
 			if (istype(O,/obj/item/stack/sheet/metal))
 				ore_iron+= O:amount;
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/diamond))
 				ore_diamond+= O:amount;
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/plasma))
 				ore_plasma+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/gold))
 				ore_gold+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/silver))
 				ore_silver+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/clown))
 				ore_clown+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/uranium))
 				ore_uranium+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/glass))
 				ore_glass+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/rglass))
 				ore_rglass+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/plasteel))
 				ore_plasteel+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/adamantine))
 				ore_adamantine+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/mineral/mythril))
 				ore_mythril+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/cardboard))
 				ore_cardboard+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/wood))
 				ore_wood+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/cloth))
 				ore_cloth+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/stack/sheet/leather))
 				ore_leather+= O:amount
-				del(O)
+				qdel(O)
 				continue
 			if (istype(O,/obj/item/weapon/ore/slag))
-				del(O)
+				qdel(O)
 				continue
 			O.loc = src.output.loc
 	if (ore_gold >= stack_amt)

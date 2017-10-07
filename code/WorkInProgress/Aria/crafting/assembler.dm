@@ -199,7 +199,7 @@ var/list/assembler_recipes = list()
 			reagents.remove_reagent(RR,liquidmatches[RR])
 
 		for(var/RO in matches)
-			del(RO)
+			qdel(RO)
 
 		return 1
 
@@ -213,7 +213,7 @@ var/list/assembler_recipes = list()
 
 		for(var/i = 1,i <= amount,i++)
 			new S.type(src)
-		del(S)
+		qdel(S)
 	else if (istype(O,/obj/item/weapon/cable_coil))
 		var/obj/item/weapon/cable_coil/C = O
 
@@ -228,7 +228,7 @@ var/list/assembler_recipes = list()
 		C.use(amount)
 	else if (istype(O,/obj/item/weapon/liquidcartridge))
 		O.reagents.trans_to(src,O.reagents.total_volume)
-		del(O)
+		qdel(O)
 	else
 		O.loc = src
 
@@ -269,7 +269,7 @@ var/list/assembler_recipes = list()
 		C.use(amount)
 	else if (istype(O,/obj/item/weapon/liquidcartridge))
 		O.reagents.trans_to(src,O.reagents.total_volume)
-		del(O)
+		qdel(O)
 		user << "You insert a liquid cartridge."
 	else
 		usr.before_take_item(O)

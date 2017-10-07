@@ -313,7 +313,7 @@
 					if(!src || !WT.isOn()) return
 					user << "\blue You deconstruct the frame."
 					new /obj/item/stack/sheet/metal( src.loc, 5 )
-					del(src)
+					qdel(src)
 		if(1)
 			if(istype(P, /obj/item/weapon/wrench))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
@@ -356,7 +356,7 @@
 					if(do_after(user, 20))
 						if(P)
 							P:amount -= 5
-							if(!P:amount) del(P)
+							if(!P:amount) qdel(P)
 							user << "\blue You add cables to the frame."
 							src.state = 3
 							src.icon_state = "3"
@@ -401,4 +401,4 @@
 					var/obj/machinery/computer/security/C = B
 					var/obj/item/weapon/circuitboard/security/CB = circuit
 					C.network = CB.network
-				del(src)
+				qdel(src)

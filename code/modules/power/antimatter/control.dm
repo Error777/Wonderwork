@@ -41,7 +41,7 @@
 
 /obj/machinery/power/am_control_unit/Del()//Perhaps damage and run stability checks rather than just del on the others
 	for(var/obj/machinery/am_shielding/AMS in linked_shielding)
-		del(AMS)
+		qdel(AMS)
 	..()
 
 
@@ -51,7 +51,7 @@
 		exploded=1
 		explosion(get_turf(src),8,10,12,15)
 		if(src)
-			del(src)
+			qdel(src)
 
 	if(update_shield_icons && !shield_icon_delay)
 		check_shield_icons()
@@ -117,7 +117,7 @@
 			AMS.blob_act()
 		spawn(0)
 			//Likely explode
-			del(src)
+			qdel(src)
 		return
 	check_stability()
 	return
@@ -224,7 +224,7 @@
 
 /obj/machinery/power/am_control_unit/proc/check_stability()//TODO: make it break when low also might want to add a way to fix it like a part or such that can be replaced
 	if(stability <= 0)
-		del(src)
+		qdel(src)
 	return
 
 

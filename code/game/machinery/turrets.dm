@@ -306,11 +306,11 @@
 	src.stat |= BROKEN
 	src.icon_state = "destroyed_target_prism"
 	if (cover!=null)
-		del(cover)
+		qdel(cover)
 	sleep(3)
 	flick("explosion", src)
 	spawn(13)
-		del(src)
+		qdel(src)
 
 /obj/machinery/turretid
 	name = "Turret deactivation control"
@@ -497,26 +497,26 @@
 
 
 	ex_act()
-		del(src)
+		qdel(src)
 		return
 
 	emp_act()
-		del(src)
+		qdel(src)
 		return
 
 	meteorhit()
-		del(src)
+		qdel(src)
 		return
 
 	proc/update_health()
 		if(src.health<=0)
-			del(src)
+			qdel(src)
 		return
 
 	proc/take_damage(damage)
 		src.health -= damage
 		if(src.health<=0)
-			del(src)
+			qdel(src)
 		return
 
 

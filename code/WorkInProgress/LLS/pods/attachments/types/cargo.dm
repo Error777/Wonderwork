@@ -89,7 +89,7 @@
 				if(same)
 					if((same.amount + stack.amount) <= same.max_amount)
 						same.amount += stack.amount
-						del(I)
+						qdel(I)
 						return P_CARGOERROR_CLEAR
 
 			I.Move(src)

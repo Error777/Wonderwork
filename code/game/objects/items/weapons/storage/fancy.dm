@@ -166,7 +166,7 @@
 	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
 
 /obj/item/weapon/storage/fancy/cigarettes/Del()
-	del(reagents)
+	qdel(reagents)
 	..()
 
 

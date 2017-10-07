@@ -118,7 +118,7 @@
 		using_client.mob.mind.transfer_to(original_mob)
 
 		if(copy)
-			del(copy)
+			qdel(copy)
 
 	is_in_use = 0
 	vr_controller.contained_clients -= using_client

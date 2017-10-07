@@ -2,7 +2,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/soda/attackby(var/obj/item/I, mob/user as mob)
 	if((isigniter(I)) && assemblystate == 0)
 		assemblystate++
-		del(I)
+		qdel(I)
 		user << "<span class='notice'>You stuff the igniter in the can, emptying the can in process.</span>"
 		reagents.clear_reagents()
 		underlays += "grenade_ing"
@@ -15,7 +15,7 @@
 		user << "<span class='notice'>You wire the igniter.</span>"
 		overlays += "grenade_w"
 	else if(isprox(I) && assemblystate == 2 && !prox)
-		del(I)
+		qdel(I)
 		user << "<span class='notice'>You attach the sensor.</span>"
 		prox = 1
 
@@ -73,4 +73,4 @@
 
 	if(expl_power)
 		explosion(src.loc, expl_power - 3, expl_power - 2, expl_power)
-		del(src)
+		qdel(src)

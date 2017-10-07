@@ -324,8 +324,8 @@
 		f2.sd_set_opacity(opacity)
 
 	Del()
-		del(f1)
-		del(f2)
+		qdel(f1)
+		qdel(f2)
 		..()
 
 /obj/machinery/door/poddoor/two_tile_ver
@@ -343,8 +343,8 @@
 		f2.sd_set_opacity(opacity)
 
 	Del()
-		del(f1)
-		del(f2)
+		qdel(f1)
+		qdel(f2)
 		..()
 
 /obj/machinery/door/poddoor/four_tile_hor
@@ -370,10 +370,10 @@
 		f3.sd_set_opacity(opacity)
 
 	Del()
-		del(f1)
-		del(f2)
-		del(f3)
-		del(f4)
+		qdel(f1)
+		qdel(f2)
+		qdel(f3)
+		qdel(f4)
 		..()
 
 /obj/machinery/door/poddoor/four_tile_ver
@@ -399,10 +399,10 @@
 		f3.sd_set_opacity(opacity)
 
 	Del()
-		del(f1)
-		del(f2)
-		del(f3)
-		del(f4)
+		qdel(f1)
+		qdel(f2)
+		qdel(f3)
+		qdel(f4)
 		..()
 
 /obj/machinery/door/poddoor/filler_object

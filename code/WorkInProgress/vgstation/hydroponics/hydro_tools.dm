@@ -490,7 +490,7 @@
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 75, 1)
 		new/obj/effect/decal/cleanable/clay_fragments(src.loc)
 		src.visible_message("<span class='warning'>\The [src.name] has been smashed.</span>","<span class='warning'>You hear a crashing sound.</span>")
-		del(src)
+		qdel(src)
 
 /obj/structure/claypot
 	name = "clay pot"
@@ -526,7 +526,7 @@
 									"<span class='notice'>You hear some digging.</span>")
 			var/obj/item/claypot/C = new(loc)
 			transfer_fingerprints(src, C)
-			del(src)
+			qdel(src)
 
 	else if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown) || istype(O,/obj/item/weapon/grown))
 		to_chat(user, "<span class='warning'>There is already a plant in \the [src]</span>")

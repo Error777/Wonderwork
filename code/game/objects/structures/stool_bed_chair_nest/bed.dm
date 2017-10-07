@@ -127,7 +127,7 @@
 	attack_self(mob/user)
 		var/obj/structure/stool/bed/roller/R = new /obj/structure/stool/bed/roller(user.loc)
 		R.add_fingerprint(user)
-		del(src)
+		qdel(src)
 
 /obj/structure/stool/bed/roller/Move()
 	..()
@@ -167,7 +167,7 @@
 		visible_message("[usr] collapses \the [src.name]")
 		new/obj/item/roller(get_turf(src))
 		spawn(0)
-			del(src)
+			qdel(src)
 		return
 
 /* ================================================= */

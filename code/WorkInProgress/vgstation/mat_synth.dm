@@ -169,7 +169,7 @@
 		else
 			matter += 10
 			playsound(get_turf(src), 'sound/machines/click.ogg', 20, 1)
-			del(RA)
+			qdel(RA)
 			user << "<span class='notice'>The material synthetizer now holds [matter]/[MAX_MATSYNTH_MATTER] matter-units.</span>"
 	if(istype(O, /obj/item/weapon/card/emag))
 		if(!emagged)
@@ -187,7 +187,7 @@
 			else
 				user<<"<span class='danger'>The lack of matter in \the [src] shorts out the device!</span>"
 				explosion(src.loc, 0, 0, 1, 2) //traitors - fuck them, am I right?
-				del(src)
+				qdel(src)
 		else
 			user << "<span class='warning'>You don't think you can do that again.</span>"
 			return

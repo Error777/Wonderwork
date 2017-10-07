@@ -42,12 +42,12 @@
 	Entered(var/atom/movable/M, var/atom/old_loc)
 		for(var/x in thunderdome_items)
 			if(istype(M, x))
-				del(M)
+				qdel(M)
 
 		if(istype(get_area(old_loc), /area/virtual_reality/firing_range))
 			for(var/y in forbidden_range_items)
 				if(istype(M, y))
-					del(M)
+					qdel(M)
 
 		..(M, old_loc)
 
@@ -82,7 +82,7 @@
 						for(var/_type in thunderdome_items)
 							if(istype(I, _type))
 								L.u_equip(I, 1)
-								del(I)
+								qdel(I)
 
 		Enter(var/atom/movable/O, var/atom/oldloc)
 			// Get (stay) out of here.

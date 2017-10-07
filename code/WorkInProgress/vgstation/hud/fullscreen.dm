@@ -43,7 +43,7 @@
 	screens -= category
 	if(client)
 		client.screen -= screen
-	del(screen)
+	qdel(screen)
 
 /mob/proc/clear_fullscreens()
 	for(var/category in screens)

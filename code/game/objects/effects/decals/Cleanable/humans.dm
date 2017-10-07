@@ -29,7 +29,7 @@
 				if(B != src)
 					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
-					del(B)
+					qdel(B)
 	spawn(DRYING_TIME * (amount+1))
 		dry()
 

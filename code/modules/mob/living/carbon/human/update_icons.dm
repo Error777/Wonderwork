@@ -215,8 +215,8 @@ proc/get_damage_icon_part(damage_state, body_part)
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body(var/update_icons=1)
-	if(stand_icon)	del(stand_icon)
-	if(lying_icon)	del(lying_icon)
+	if(stand_icon)	qdel(stand_icon)
+	if(lying_icon)	qdel(lying_icon)
 
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
@@ -447,7 +447,7 @@ proc/get_damage_icon_part(damage_state, body_part)
 		overlays_lying[TARGETED_LAYER]		= target_locked
 		overlays_standing[TARGETED_LAYER]	= target_locked
 	else if (!targeted_by && target_locked)
-		del(target_locked)
+		qdel(target_locked)
 	if (!targeted_by)
 		overlays_lying[TARGETED_LAYER]		= null
 		overlays_standing[TARGETED_LAYER]	= null

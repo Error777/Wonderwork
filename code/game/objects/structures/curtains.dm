@@ -15,16 +15,16 @@
 	opacity = 0
 
 /obj/structure/curtain/bullet_act(var/obj/item/projectile/Proj)
-	del(src)
+	qdel(src)
 
 /obj/structure/curtain/ex_act(severity)
-	del(src)
+	qdel(src)
 
 /obj/structure/curtain/blob_act()
-	del(src)
+	qdel(src)
 
 /obj/structure/curtain/meteorhit()
-	del(src)
+	qdel(src)
 
 /obj/structure/curtain/attack_paw(mob/user as mob)
 	attack_hand(user)
@@ -78,7 +78,7 @@
 
 /obj/structure/curtain/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 1500)
-		del(src)
+		qdel(src)
 
 #undef CURTAIN_OPEN_LAYER
 #undef CURTAIN_CLOSED_LAYER

@@ -12,8 +12,8 @@
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 		user << "\red You painstakingly modify [src] to make it more suitable for a Tajaran user."
 		new /obj/item/clothing/head/helmet/space/rig/tajara(user.loc)
-		del(I)
-		del(src)
+		qdel(I)
+		qdel(src)
 		return
 	..()
 
@@ -23,8 +23,8 @@
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 		user << "\red You painstakingly modify [src] to make it more suitable for a Tajaran user."
 		new /obj/item/clothing/suit/space/rig/tajara(user.loc)
-		del(I)
-		del(src)
+		qdel(I)
+		qdel(src)
 		return
 	..()
 

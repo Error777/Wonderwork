@@ -291,7 +291,7 @@
 
 				attachment.OnDetach(src, usr)
 				if(alert("Delete attachment?", "Confirmation", "Yes", "No") == "Yes")
-					del(attachment)
+					qdel(attachment)
 
 				message_admins("[key_name_admin(usr)] has removed an attachment from the [src] (space pod) @{[x], [y], [z]} ([attachment.type])")
 				log_admin("[key_name(usr)] has removed an attachment from a space pod ([attachment.type])")

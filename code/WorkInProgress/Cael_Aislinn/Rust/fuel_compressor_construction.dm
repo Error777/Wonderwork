@@ -11,7 +11,7 @@
 /obj/item/weapon/rust/fuel_compressor_frame/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/wrench))
 		new /obj/item/stack/sheet/plasteel( get_turf(src.loc), 12 )
-		del(src)
+		qdel(src)
 		return
 	..()
 
@@ -30,7 +30,7 @@
 		usr << "\red Compressor cannot be placed in this area."
 		return
 	new /obj/machinery/rust/fuel_assembly_port(loc, ndir, 1)
-	del(src)
+	qdel(src)
 
 //construction steps
 /obj/machinery/rust/fuel_compressor/New(turf/loc, var/ndir, var/building=0)
@@ -134,7 +134,7 @@
 		if(do_after(user, 10))
 			has_electronics &= 1
 			user << "You place the circuitboard inside the frame."
-			del(W)
+			qdel(W)
 		return
 
 	else if (istype(W, /obj/item/weapon/weldingtool) && opened && !has_electronics)
@@ -151,7 +151,7 @@
 				"\red [src] has been cut away from the wall by [user.name].",\
 				"You detached the compressor frame.",\
 				"\red You hear welding.")
-			del(src)
+			qdel(src)
 		return
 
 	..()

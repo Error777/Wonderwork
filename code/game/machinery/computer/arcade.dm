@@ -218,7 +218,7 @@
 
 /obj/machinery/computer/arcade/proc/explode() //Cuban Pete WINS!
 	explosion(get_turf(src), 1, 2, 3) //BOOM
-	del(src)
+	qdel(src)
 
 /obj/machinery/computer/arcade/power_change()
 	if(stat & BROKEN)

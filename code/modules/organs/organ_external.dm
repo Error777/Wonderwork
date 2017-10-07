@@ -441,7 +441,7 @@
 		src.status &= ~ORGAN_BLEEDING
 		src.status &= ~ORGAN_SPLINTED
 		for(var/implant in implants)
-			del(implant)
+			qdel(implant)
 
 		// If any organs are attached to this, destroy them
 		for(var/datum/organ/external/O in owner.organs)
@@ -508,7 +508,7 @@
 				spark_system.attach(owner)
 				spark_system.start()
 				spawn(10)
-					del(spark_system)
+					qdel(spark_system)
 
 			owner.visible_message("\red [owner.name]'s [display_name] flies off in an arc.",\
 			"<span class='moderate'><b>Your [display_name] goes flying off!</b></span>",\

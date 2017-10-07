@@ -968,7 +968,7 @@
 			if(overeatduration > 1)
 				overeatduration -= 2 //doubled the unfat rate
 
-		// Начало злоебучего кода голода. Подсветка синтаксиса даже выделяет его коричневым!
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!
 		/*if(nutrition > 50)
 			adjustBrainLoss(-68)
 			if(getBrainLoss() == 1)
@@ -995,7 +995,7 @@
 			else
 				if(prob(30))
 					adjustCloneLoss(1)*/
-		// Конец злоебучего кода голода.
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 
 		if(nutrition > 1)
 			if(overeatduration > 1)
@@ -1047,7 +1047,7 @@
 						spark_system.attach(src)
 						spark_system.start()
 						spawn(10)
-							del(spark_system)
+							qdel(spark_system)
 				else if(E.name == "r_hand" || E.name == "r_arm")
 					if(!hand && equipped())
 						drop_item()
@@ -1057,7 +1057,7 @@
 						spark_system.attach(src)
 						spark_system.start()
 						spawn(10)
-							del(spark_system)
+							qdel(spark_system)
 				else if(E.name == "l_leg" || E.name == "l_foot" \
 					|| E.name == "r_leg" || E.name == "r_foot" && !lying)
 					leg_tally--									// let it fail even if just foot&leg
@@ -1583,7 +1583,7 @@
 					if(M.stat == 2)
 						M.death(1)
 						stomach_contents.Remove(M)
-						del(M)
+						qdel(M)
 						continue
 					if(air_master.current_cycle%3==1)
 						if(!(M.status_flags & GODMODE))

@@ -56,7 +56,7 @@
 			if ("DeleteDoc")
 				var/datum/tablet_data/document/D = locate(href_list["target"])
 				loadeddoc = null
-				del(D)
+				qdel(D)
 			if ("PrintDoc")
 				if(tablet.core.toner >= 1)
 					var/mob/M = tablet.loc
@@ -68,7 +68,7 @@
 					if(usr.put_in_hands(C))
 						tablet.core.toner -= 1
 					else
-						del(C)
+						qdel(C)
 						usr << "<span class='notice'>You couldn't print because your hands are full.</span>"
 				else
 					usr << "ERROR: Replace printer toner"

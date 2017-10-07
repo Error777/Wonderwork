@@ -33,7 +33,7 @@
 	ranged_l.add_to(src)
 	var/obj/item/weapon/powerarmor/weapon/ranged/proj/P = ranged_l
 	var/obj/item/weapon/gun/projectile/automatic/powersuit/gun = P.gun
-	del(gun.chambered)
+	qdel(gun.chambered)
 	gun.magazine = new /obj/item/ammo_magazine/external/m12mm(gun)
 	gun.process_chambered()
 

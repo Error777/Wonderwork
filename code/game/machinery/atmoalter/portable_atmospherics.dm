@@ -35,7 +35,7 @@
 			update_icon()
 
 	Del()
-		del(air_contents)
+		qdel(air_contents)
 
 		..()
 

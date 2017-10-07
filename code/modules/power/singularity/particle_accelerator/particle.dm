@@ -67,7 +67,7 @@
 
 
 /obj/effect/accelerated_particle/ex_act(severity)
-	del(src)
+	qdel(src)
 	return
 
 
@@ -105,7 +105,7 @@
 		movement_range++
 
 	if(energy <= 0)
-		del(src)
+		qdel(src)
 	else
 		sleep(lag)
 		move(lag)

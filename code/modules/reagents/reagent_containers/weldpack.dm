@@ -20,7 +20,7 @@
 		user << "\red That was stupid of you."
 	explosion(get_turf(src),-1,0,2)
 	if(src)
-		del(src)
+		qdel(src)
 
 /obj/item/weapon/weldpack/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/weldingtool))
@@ -31,7 +31,7 @@
 			user << "\red That was stupid of you."
 			explosion(get_turf(src),-1,0,2)
 			if(src)
-				del(src)
+				qdel(src)
 			return
 		else
 			if(T.welding)

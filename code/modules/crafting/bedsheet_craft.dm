@@ -3,6 +3,6 @@
 		usr << "You cutting bedsheet into some pieces of cloth..."
 		if(do_after(user, 30))
 			new /obj/item/stack/sheet/cloth(get_turf(src.loc, 3))
-			del(src)
+			qdel(src)
 			return
  		..()

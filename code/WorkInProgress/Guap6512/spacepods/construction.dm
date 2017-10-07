@@ -70,13 +70,13 @@
 			user.visible_message("[user] welds the [src]'s armor.")
 			if(src.arm.pod_type == "industrial")
 				new /obj/spacepod/industrial(src.loc)
-				del(src)
+				qdel(src)
 			else if(src.arm.pod_type == "civilian")
 				new /obj/spacepod/civilian(src.loc)
-				del(src)
+				qdel(src)
 			else
 				user << "BUG: Unknown armour type. Tell Guap6512."
-				del(src)
+				qdel(src)
 
 /////////////////////////////////
 // CONSTRUCTION STEPS

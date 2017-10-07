@@ -108,7 +108,7 @@ var/building_started_at = 0
 				var/icon/turf_icon = getFlatIcon(T)
 				I.Blend(turf_icon, blendMode2iconMode(T.blend_mode), x * 32 + 1, y * 32 + 1)
 
-				del(turf_icon)
+				qdel(turf_icon)
 			progress_ticker()
 
 		user << "Tiling finished. Starting items building..."
@@ -145,7 +145,7 @@ var/building_started_at = 0
 
 					I.Blend(img, blendMode2iconMode(A.blend_mode), offX, offY)
 
-					del(img)
+					qdel(img)
 
 				//objects_processed += atoms.len
 				//
@@ -164,7 +164,7 @@ var/building_started_at = 0
 				+ "</body></html>", "window=book;size=800x800")
 
 			user << "chunk[gx]-[real_gy]-[z].png pushed into cache"
-			del(I)
+			qdel(I)
 
 /*
 Uncomment if you haven't this

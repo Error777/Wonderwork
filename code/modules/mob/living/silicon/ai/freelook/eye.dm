@@ -73,7 +73,7 @@
 
 /mob/living/silicon/ai/Del()
 	eyeobj.ai = null
-	del(eyeobj) // No AI, no Eye
+	qdel(eyeobj) // No AI, no Eye
 	..()
 
 /atom/proc/move_camera_by_click()

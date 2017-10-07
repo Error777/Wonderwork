@@ -155,7 +155,7 @@
 	if (client.statpanel == "Status")
 		if (internal)
 			if (!internal.air_contents)
-				del(internal)
+				qdel(internal)
 			else
 				stat("Internal Atmosphere Info", internal.name)
 				stat("Tank Pressure", internal.air_contents.return_pressure())
@@ -945,7 +945,7 @@
 	for(var/x in all_hairs)
 		var/datum/sprite_accessory/hair/H = new x // create new hair datum based on type x
 		hairs.Add(H.name) // add hair name to hairs
-		del(H) // delete the hair after it's all done
+		qdel(H) // delete the hair after it's all done
 
 	var/new_style = input("Please select hair style", "Character Generation",h_style)  as null|anything in hairs
 
@@ -960,7 +960,7 @@
 	for(var/x in all_fhairs)
 		var/datum/sprite_accessory/facial_hair/H = new x
 		fhairs.Add(H.name)
-		del(H)
+		qdel(H)
 
 	new_style = input("Please select facial style", "Character Generation",f_style)  as null|anything in fhairs
 
@@ -1075,7 +1075,7 @@
 			if(H.brainmob.real_name == src.real_name)
 				if(H.brainmob.mind)
 					H.brainmob.mind.transfer_to(src)
-					del(H)
+					qdel(H)
 
 	for(var/E in internal_organs)
 		var/datum/organ/internal/I = internal_organs[E]
@@ -1145,7 +1145,7 @@
 /mob/living/carbon/human/clean_blood()
 	.=..()
 	if(istype(feet_blood_DNA, /list) && feet_blood_DNA.len)
-		del(feet_blood_DNA)
+		qdel(feet_blood_DNA)
 		return 1
 
 mob/living/carbon/human/yank_out_object()
@@ -1348,5 +1348,5 @@ mob/living/carbon/human/yank_out_object()
 			ghostize(src)//ghosts this mob
 			src << "Your body no longer exists. Normally this is due to your main body destroyed while in VR."
 			spawn(0)
-				del(src)
+				qdel(src)
 	*/

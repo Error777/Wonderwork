@@ -132,7 +132,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/pistol/syndie/New()
 	..()
-	del(magazine)
+	qdel(magazine)
 	magazine = new /obj/item/ammo_magazine/external/mc9mm/extra(src)
 
 

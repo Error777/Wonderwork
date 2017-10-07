@@ -77,7 +77,7 @@ obj/machinery/atmospherics/pipe/zpipe/check_pressure(pressure)
 obj/machinery/atmospherics/pipe/zpipe/proc/burst()
 	src.visible_message("\red \bold [src] bursts!");
 	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
-	del(src)
+	qdel(src)
 
 obj/machinery/atmospherics/pipe/zpipe/proc/normalize_dir()
 	if(dir==3)
@@ -101,12 +101,12 @@ obj/machinery/atmospherics/pipe/zpipe/update_icon()
 obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node1 = null
 
 	if(reference == node2)
 		if(istype(node2, /obj/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node2 = null
 
 	return null

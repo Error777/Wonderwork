@@ -24,7 +24,7 @@
 
 /turf/proc/lighting_clear_overlay()
 	if(lighting_overlay)
-		del(lighting_overlay)
+		qdel(lighting_overlay)
 
 	for(var/A in corners)
 		if(!A)

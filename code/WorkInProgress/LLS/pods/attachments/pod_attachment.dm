@@ -87,7 +87,7 @@
 			if(pod.CanAttach(src))
 				OnAttach(pod, 0)
 			else
-				del(src)
+				qdel(src)
 			return 0
 
 		if(active & P_ATTACHMENT_INACTIVE)

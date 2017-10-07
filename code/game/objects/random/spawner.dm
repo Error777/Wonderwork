@@ -13,7 +13,7 @@ again.
 		for(var/i = 1, i <= spawn_list.len, i++)
 			var/to_spawn = spawn_list[i]
 			new to_spawn(get_turf(src))
-	del(src)
+	qdel(src)
 
 /obj/effect/spawner/structure/window
 	icon = 'icons/misc/random.dmi'

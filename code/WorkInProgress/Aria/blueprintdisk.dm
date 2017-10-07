@@ -109,7 +109,7 @@
 		currentholo.pixel_x = O.pixel_x
 		currentholo.pixel_y = O.pixel_y
 
-		del(O)
+		qdel(O)
 
 	currentholo.icon = getHologramIcon(newicon, 1, rgb(20,240,60))
 
@@ -122,7 +122,7 @@
 	ready = 0
 	anchored = 0
 	if(currentholo)
-		del(currentholo)
+		qdel(currentholo)
 		currentholo = null
 
 /obj/item/weapon/deployframe/proc/deploy()
@@ -131,11 +131,11 @@
 		if(O)
 			O.dir = deploydir
 
-	del(src)
+	qdel(src)
 
 /obj/item/weapon/deployframe/Del()
 	if(currentholo)
-		del(currentholo)
+		qdel(currentholo)
 	..()
 
 /obj/item/weapon/blueprintdisk

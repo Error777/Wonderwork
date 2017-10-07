@@ -16,14 +16,14 @@
 
 
 	dropped(mob/user as mob)
-		del(src)
+		qdel(src)
 		return
 
 
 	//stops TK grabs being equipped anywhere but into hands
 	equipped(var/mob/user, var/slot)
 		if( (slot == slot_l_hand) || (slot== slot_r_hand) )	return
-		del(src)
+		qdel(src)
 		return
 
 /*
@@ -36,7 +36,7 @@
 		user.update_inv_l_hand(0)
 		user.update_inv_r_hand()
 		spawn(0)
-			del(src)
+			qdel(src)
 		return
 */
 
@@ -44,14 +44,14 @@
 		if(!target || !user)	return
 		if(last_throw+3 > world.time)	return
 		if(!host)
-			del(src)
+			qdel(src)
 			return
 		if(!(TK in host.mutations))
-			del(src)
+			qdel(src)
 			return
 		if(isobj(target))
 			if(!target.loc || !isturf(target.loc))
-				del(src)
+				qdel(src)
 				return
 		if(!focus)
 			focus_object(target, user)

@@ -121,7 +121,7 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	idtype = /obj/item/weapon/card/id/medical
-	access = list(access_medical, access_chemistry)
+	access = list(access_chemistry, access_medical)
 	minimal_access = list(access_medical)
 
 

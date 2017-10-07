@@ -258,4 +258,3 @@
 			if(pa.Find("right"))
 				if(holder.throw_atom)
 					holder.throw_atom.throw_at(object, 10, 1)
-

@@ -82,7 +82,7 @@
 	adult.name = src.name
 	adult.real_name = src.real_name
 	adult.ckey = src.ckey
-	del(src)
+	qdel(src)
 
 /mob/living/carbon/monkey/diona/verb/steal_blood()
 	set category = "Diona"

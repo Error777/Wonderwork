@@ -25,9 +25,9 @@
 		var/location = get_turf(user)
 		for(var/obj/item/weapon/ore/glass/sandToConvert in location)
 			new /obj/item/stack/sheet/mineral/sandstone(location)
-			del(sandToConvert)
+			qdel(sandToConvert)
 		new /obj/item/stack/sheet/mineral/sandstone(location)
-		del(src)
+		qdel(src)
 
 /obj/item/weapon/ore/plasma
 	name = "Plasma ore"
@@ -134,11 +134,11 @@
 
 /obj/item/weapon/ore/erebite/ex_act()
 	explosion(src.loc,-1,0,2)
-	del(src)
+	qdel(src)
 
 /obj/item/weapon/ore/erebite/bullet_act(var/obj/item/projectile/P)
 	explosion(src.loc,-1,0,2)
-	del(src)
+	qdel(src)
 
 /obj/item/weapon/ore/cerenkite
 	name = "cerenkite ore"
@@ -149,17 +149,17 @@
 	var/L = get_turf(src)
 	for(var/mob/living/carbon/human/M in viewers(L, null))
 		M.apply_effect((rand(10, 50)), IRRADIATE, 0)
-	del(src)
+	qdel(src)
 /obj/item/weapon/ore/cerenkite/attack_hand(mob/user as mob)
 	var/L = get_turf(user)
 	for(var/mob/living/carbon/human/M in viewers(L, null))
 		M.apply_effect((rand(10, 50)), IRRADIATE, 0)
-	del(src)
+	qdel(src)
 /obj/item/weapon/ore/cerenkite/bullet_act(var/obj/item/projectile/P)
 	var/L = get_turf(src)
 	for(var/mob/living/carbon/human/M in viewers(L, null))
 		M.apply_effect((rand(10, 50)), IRRADIATE, 0)
-	del(src)
+	qdel(src)
 /obj/item/weapon/ore/cytine
 	name = "cytine"
 	desc = "A glowing Cytine gemstone, somewhat valuable but not paticularly useful."
@@ -291,7 +291,7 @@
 
 		if(CC.amount <= 0)
 			user << "\blue This cable coil appears to be empty."
-			del(CC)
+			qdel(CC)
 			return
 
 		overlays += image('icons/obj/items.dmi',"coin_string_overlay")

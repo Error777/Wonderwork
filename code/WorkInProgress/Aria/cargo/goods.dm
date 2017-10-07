@@ -62,7 +62,7 @@ proc/basegood2supplygood(var/datum/basegood/component/good) //Don't even ask
 		newgood.iconstate = A.icon_state
 		newgood.color = A.color
 
-	del(A)
+	qdel(A)
 
 	return newgood
 

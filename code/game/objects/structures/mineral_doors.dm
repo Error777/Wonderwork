@@ -138,7 +138,7 @@
 				var/ore = text2path("/obj/item/stack/sheet/mineral/[mineralType]")
 				for(var/i = 3, i <= oreAmount, i++)
 					new ore(get_turf(src))
-		del(src)
+		qdel(src)
 
 	ex_act(severity = 1)
 		switch(severity)
@@ -263,7 +263,7 @@
 		if(!devastated)
 			for(var/i = 1, i <= oreAmount, i++)
 				new/obj/item/stack/sheet/wood(get_turf(src))
-		del(src)
+		qdel(src)
 
 /obj/structure/mineral_door/resin
 	mineralType = "resin"
@@ -301,7 +301,7 @@
 		isSwitchingStates = 0
 
 	Dismantle(devastated = 0)
-		del(src)
+		qdel(src)
 
 	CheckHardness()
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)

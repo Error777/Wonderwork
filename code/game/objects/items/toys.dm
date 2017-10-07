@@ -148,7 +148,7 @@
 		if(istype(I, /obj/item/toy/ammo/crossbow))
 			if(bullets <= 4)
 				user.drop_item()
-				del(I)
+				qdel(I)
 				bullets++
 				user << "\blue You load the foam dart into the crossbow."
 			else
@@ -180,21 +180,21 @@
 						for(var/mob/O in viewers(world.view, D))
 							O.show_message(text("\red [] was hit by the foam dart!", M), 1)
 						new /obj/item/toy/ammo/crossbow(M.loc)
-						del(D)
+						qdel(D)
 						return
 
 					for(var/atom/A in D.loc)
 						if(A == user) continue
 						if(A.density)
 							new /obj/item/toy/ammo/crossbow(A.loc)
-							del(D)
+							qdel(D)
 
 				sleep(1)
 
 			spawn(10)
 				if(D)
 					new /obj/item/toy/ammo/crossbow(D.loc)
-					del(D)
+					qdel(D)
 
 			return
 		else if (bullets == 0)
@@ -324,7 +324,7 @@
 		new /obj/effect/decal/cleanable/ash(src.loc)
 		src.visible_message("\red The [src.name] explodes!","\red You hear a snap!")
 		playsound(src, 'sound/effects/snap.ogg', 50, 1)
-		del(src)
+		qdel(src)
 
 /obj/item/toy/snappop/HasEntered(H as mob|obj)
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
@@ -338,7 +338,7 @@
 			new /obj/effect/decal/cleanable/ash(src.loc)
 			src.visible_message("\red The [src.name] explodes!","\red You hear a snap!")
 			playsound(src, 'sound/effects/snap.ogg', 50, 1)
-			del(src)
+			qdel(src)
 
 /*
  * Mech prizes
@@ -512,7 +512,7 @@
 
 	if(target)
 		target.overlays -= overlayicon
-	del(src)
+	qdel(src)
 
 /obj/item/toy/c4/attack(mob/M as mob, mob/user as mob)
 	return
@@ -812,7 +812,7 @@
 		for(var/mob/M in ultra_range(10, src))
 			if(!M.stat && !istype(M, /mob/living/silicon/ai))\
 				shake_camera(M, 3, 1)
-		del(src)
+		qdel(src)
 
 /*
  * Toy big red button

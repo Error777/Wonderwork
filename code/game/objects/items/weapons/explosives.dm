@@ -78,8 +78,8 @@
 			target.ex_act(1)
 		if (isobj(target))
 			if (target)
-				del(target)
-	del(src)
+				qdel(target)
+	qdel(src)
 
 /obj/item/weapon/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
 	return

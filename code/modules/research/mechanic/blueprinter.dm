@@ -45,13 +45,13 @@
 		if(istype(P, /obj/item/weapon/paper/nano))
 			if(max_nano > nano_loaded)
 				nano_loaded++
-				del(P)
+				qdel(P)
 			else
 				to_chat(user, "<span class='notice'>\The [src] is full.</span>")
 		else
 			if(max_paper > paper_loaded)
 				paper_loaded++
-				del(P)
+				qdel(P)
 			else
 				to_chat(user, "<span class='notice'>\The [src] is full.</span>")
 		return

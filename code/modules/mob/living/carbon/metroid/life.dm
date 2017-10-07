@@ -524,7 +524,7 @@
 							M.Discipline = Discipline
 							if(i != 1) step_away(M,src)
 
-						del(src)
+						qdel(src)
 
 				else
 					if(!client)
@@ -534,7 +534,7 @@
 						A.Friends = Friends
 						A.tame = tame
 						A.rabid = rabid
-						del(src)
+						qdel(src)
 
 
 		handle_virus_updates()

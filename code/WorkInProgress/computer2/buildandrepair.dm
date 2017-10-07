@@ -35,7 +35,7 @@
 				if(do_after(user, 20))
 					user << "\blue You deconstruct the frame."
 					new /obj/item/stack/sheet/metal( src.loc, 5 )
-					del(src)
+					qdel(src)
 		if(1)
 			if(istype(P, /obj/item/weapon/wrench))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
@@ -90,7 +90,7 @@
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					if(do_after(user, 20))
 						P:amount -= 5
-						if(!P:amount) del(P)
+						if(!P:amount) qdel(P)
 						user << "\blue You add cables to the frame."
 						src.state = 3
 						src.icon_state = "[screen_size]3"
@@ -140,7 +140,7 @@
 				C.setup_drive_size = 0
 				C.icon_state = src.created_icon_state
 				if(mainboard.created_name) C.name = mainboard.created_name
-				del(mainboard)
+				qdel(mainboard)
 				if(hd)
 					C.hd = hd
 					hd.loc = C
@@ -148,4 +148,4 @@
 					W.loc = C
 					W.host = C
 					C.peripherals.Add(W)
-				del(src)
+				qdel(src)

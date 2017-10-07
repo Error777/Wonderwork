@@ -157,7 +157,7 @@
 
 /obj/item/device/bombcore/proc/detonate()
 	explosion(get_turf(src),2,5,11)
-	del(src)
+	qdel(src)
 
 /obj/item/device/bombcore/proc/defuse()
 
@@ -176,7 +176,7 @@
 		if(holder.wires)
 			holder.wires.Shuffle()
 	else
-		del(src)
+		qdel(src)
 
 /obj/item/device/bombcore/training/defuse()
 	var/obj/item/device/syndicatebomb/holder = src.loc

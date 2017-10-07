@@ -70,7 +70,7 @@
 				M << "<span class='danger'>[src] blows up in your face.</span>"
 				M.take_organ_damage(0,20)
 				M.drop_item()
-				del(src)
+				qdel(src)
 				return
 
 	if (!user.IsAdvancedToolUser())
@@ -111,7 +111,7 @@
 	in_chamber.def_zone = user.zone_sel.selecting
 	if(targloc == curloc)
 		user.bullet_act(in_chamber)
-		del(in_chamber)
+		qdel(in_chamber)
 		update_icon()
 		return
 
@@ -200,7 +200,7 @@
 			msg_admin_attack("[user] ([user.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[user]'>JMP</A>) shot [M] ([M.ckey]) point blank with [src].", 0)
 			log_attack("[user] ([user.ckey]) shot [M] ([M.ckey]) point blank with [src].")
 
-			del(in_chamber)
+			qdel(in_chamber)
 			mouthshoot = 0
 			return
 		else

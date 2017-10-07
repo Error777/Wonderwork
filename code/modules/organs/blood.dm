@@ -146,7 +146,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 		this.blood_DNA[dna.unique_enzymes] = dna.b_type
 	else
 		for(var/obj/effect/decal/cleanable/blood/drip/G in nums)
-			del(G)
+			qdel(G)
 		T.add_blood(src)
 
 /****************************************************

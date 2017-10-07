@@ -72,7 +72,7 @@
 		to_chat(world, text("DEBUG_DATUM_POOL: returnToPool([]) exceeds [] discarding...", D.type, MAINTAINING_OBJECT_POOL_COUNT))
 		#endif
 
-		del(D)
+		qdel(D)
 		return
 
 	if(isnull(masterdatumPool[D.type]))

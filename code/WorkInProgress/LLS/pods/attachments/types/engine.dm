@@ -40,7 +40,7 @@
 			var/combined_amount = 0
 			for(var/obj/item/stack/sheet/fuel in fuel_list)
 				combined_amount += fuel.amount
-				del(fuel)
+				qdel(fuel)
 
 			if(combined_amount <= 0)
 				return 0
@@ -60,7 +60,7 @@
 			var/obj/item/stack/sheet/mineral/fuel = new fuel_type()
 			desc = "Uses [fuel.name] sheets."
 
-			del(fuel)
+			qdel(fuel)
 
 		plasma/
 			name = "plasma engine"

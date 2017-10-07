@@ -178,7 +178,7 @@
 
 			new_metroid.a_intent = "hurt"
 			new_metroid << "<B>You are now an adult Metroid.</B>"
-			del(src)
+			qdel(src)
 		else
 			src << "<i>I am not ready to evolve yet...</i>"
 	else
@@ -218,7 +218,7 @@
 
 					new_metroid.a_intent = "hurt"
 					new_metroid << "<B>You are now a baby Metroid.</B>"
-					del(src)
+					qdel(src)
 		else
 			src << "<i>I am not ready to reproduce yet...</i>"
 	else

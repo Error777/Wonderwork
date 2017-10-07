@@ -31,7 +31,7 @@
 	R.hands.icon_state = "nomod"
 	R.icon_state = "robot"
 	R.base_icon = "robot"
-	del(R.module)
+	qdel(R.module)
 	R.module = null
 	R.camera.network.Remove(list("Medical","MINE"))
 	R.updatename("Default")

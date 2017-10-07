@@ -22,12 +22,12 @@
 		target << browse_rsc(S)
 		//sound = S
 		if(target.hear_music != src)
-			del(src)
+			qdel(src)
 		if(!stop)
 			target << S
 			status = PLAYING
 		else
-			del(src)
+			qdel(src)
 
 	proc/stop()
 		if(!target)
@@ -37,7 +37,7 @@
 			S.channel = 10
 			S.wait = 1
 			target << S
-			del(src)
+			qdel(src)
 		else if(status == UPLOADING)
 			stop = 1
 		target.hear_music = null
@@ -66,7 +66,7 @@
 	..()
 	for(var/obj/machinery/party/turntable/TT) // NO WAY
 		if(TT != src)
-			del(src)
+			qdel(src)
 	turntable_soundtracks = list()
 	for(var/i in typesof(/datum/turntable_soundtrack) - /datum/turntable_soundtrack)
 		var/datum/turntable_soundtrack/D = new i()
@@ -268,7 +268,7 @@
 				var/area/AA = get_area(F)
 				var/turf/T = get_turf(F)
 				if(T.density == 1 || AA.name != A.name)
-					del(F)
+					qdel(F)
 					return
 				cycle++
 				if(cycle > 3)
@@ -283,7 +283,7 @@
 				var/area/AA = get_area(F)
 				var/turf/T = get_turf(F)
 				if(T.density == 1 || AA.name != A.name)
-					del(F)
+					qdel(F)
 					return
 				cycle++
 				if(cycle > 3)
@@ -298,7 +298,7 @@
 				var/area/AA = get_area(F)
 				var/turf/T = get_turf(F)
 				if(T.density == 1 || AA.name != A.name)
-					del(F)
+					qdel(F)
 					return
 				cycle++
 				if(cycle > 3)
@@ -315,7 +315,7 @@
 				var/area/AA = get_area(F)
 				var/turf/T = get_turf(F)
 				if(T.density == 1 || AA.name != A.name)
-					del(F)
+					qdel(F)
 					return
 				cycle++
 				if(cycle > 3)
@@ -330,7 +330,7 @@
 				var/area/AA = get_area(F)
 				var/turf/T = get_turf(F)
 				if(T.density == 1 || AA.name != A.name)
-					del(F)
+					qdel(F)
 					return
 				cycle++
 				if(cycle > 3)
@@ -345,7 +345,7 @@
 				var/area/AA = get_area(F)
 				var/turf/T = get_turf(F)
 				if(T.density == 1 || AA.name != A.name)
-					del(F)
+					qdel(F)
 					return
 				cycle++
 				if(cycle > 3)
@@ -358,5 +358,5 @@
 	var/area/A = src.loc.loc
 	for(var/area/RA in A.related)
 		for(var/obj/effects/laser/F in RA)
-			del(F)
+			qdel(F)
 

@@ -475,7 +475,7 @@
 	T.time = worldtime2text()
 	vendor_account.transaction_log.Add(T)
 
-	del(relap)
+	qdel(relap)
 	vendmode = 0
 	cardreader = 0
 	floppy = 0

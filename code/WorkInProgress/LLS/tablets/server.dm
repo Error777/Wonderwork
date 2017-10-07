@@ -20,7 +20,7 @@ var/global/list/obj/machinery/nanonet_router/nanonet_routers = list()
 	for(var/x in typesof(/datum/program/))
 		var/datum/program/A = new x(src)
 		if(!A.app_id)
-			del(A)
+			qdel(A)
 			continue
 		programs.Add(A)
 	..()

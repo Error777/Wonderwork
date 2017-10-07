@@ -22,7 +22,7 @@
 			reagents.reaction(splashturf)
 			for(var/atom/A in splashturf)
 				reagents.reaction(A)
-		del(src)
+		qdel(src)
 
 /obj/item/weapon/reagent_containers/glass/balloon/throw_impact(atom/hit_atom)
 	if(reagents.total_volume >= 1)
@@ -35,7 +35,7 @@
 
 		icon_state = "burst"
 		sleep(5)
-		del(src)
+		qdel(src)
 	return
 
 /obj/item/weapon/reagent_containers/glass/balloon/update_icon()

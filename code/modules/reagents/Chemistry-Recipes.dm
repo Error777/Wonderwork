@@ -850,7 +850,7 @@ datum
 									M.client.screen += blueeffect
 									sleep(20)
 									M.client.screen -= blueeffect
-									del(blueeffect)
+									qdel(blueeffect)
 		metroidcrit
 			name = "metroid Crit"
 			id = "m_tele"
@@ -1551,7 +1551,7 @@ datum
 									M.client.screen += blueeffect
 									sleep(20)
 									M.client.screen -= blueeffect
-									del(blueeffect)
+									qdel(blueeffect)
 		metroidcrit
 			name = "Metroid Crit"
 			id = "m_tele"

@@ -329,7 +329,7 @@
 				"\blue You have unfastened \the [src].", \
 				"You hear ratchet.")
 			new /obj/item/pipe(loc, make_from=src)
-			del(src)
+			qdel(src)
 
 /obj/machinery/atmospherics/unary/vent_pump/Del()
 	if(initial_loc)

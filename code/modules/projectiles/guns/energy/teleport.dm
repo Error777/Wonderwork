@@ -64,7 +64,7 @@
 			target = pick(turfs)
 
 	if(!target)
-		del(src)
+		qdel(src)
 		return
 
 	if(A)
@@ -82,4 +82,4 @@
 					do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), pick(3,4,5)), 0)
 				else
 					do_teleport(M, target, 1)
-	del(src)
+	qdel(src)

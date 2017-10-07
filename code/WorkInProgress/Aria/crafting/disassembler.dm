@@ -131,7 +131,7 @@
 
 		for(var/i = 1,i <= amount,i++)
 			new S.type(src)
-		del(S)
+		qdel(S)
 	else if (istype(O,/obj/item/weapon/cable_coil))
 		var/obj/item/weapon/cable_coil/C = O
 
@@ -145,7 +145,7 @@
 		C.use(amount)
 	else if (istype(O,/obj/item/weapon/liquidcartridge))
 		O.reagents.trans_to(src,O.reagents.total_volume)
-		del(O)
+		qdel(O)
 	else
 		O.loc = src
 
@@ -185,7 +185,7 @@
 		C.use(amount)
 	else if (istype(O,/obj/item/weapon/liquidcartridge))
 		O.reagents.trans_to(src,O.reagents.total_volume)
-		del(O)
+		qdel(O)
 		user << "You insert a liquid cartridge."
 	else
 		usr.before_take_item(O)
@@ -492,7 +492,7 @@
 
 					var/newresearch = selectedrecipe.destroy(src)
 
-					del(selecteditem)
+					qdel(selecteditem)
 
 					selecteditem = null
 					selectedrecipe = null
@@ -519,7 +519,7 @@
 					for(var/obj/O in contents)
 						if(istype(O,selectedtype))
 							newresearch = selectedrecipe.destroy(src)
-							del(O)
+							qdel(O)
 
 					if(!newresearch)
 						screen = 1

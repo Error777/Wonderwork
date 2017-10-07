@@ -55,7 +55,7 @@
 			return
 		user.visible_message("[user] destroys the [name]!", \
 							 "<span class='notice'>You destroy the [name].</span>")
-		del(src)
+		qdel(src)
 
 	else if(istype(W, /obj/item/weapon/weldingtool) && !anchored)
 		playsound(loc, 'sound/items/Welder.ogg', 40, 1)
@@ -108,7 +108,7 @@
 			var/ore = text2path("/obj/item/stack/sheet/mineral/[mineralType]")
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
-	del(src)
+	qdel(src)
 
 /obj/structure/statue/ex_act(severity = 1)
 	switch(severity)

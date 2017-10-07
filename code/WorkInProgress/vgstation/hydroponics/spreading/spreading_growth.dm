@@ -121,6 +121,6 @@
 		for(var/obj/effect/plantsegment/neighbor in check_turf.contents)
 			neighbor.neighbors |= check_turf
 			plant_controller.add_plant(neighbor)
-	spawn(1) if(src) del(src) //fuck linebreaks amirite
+	spawn(1) if(src) qdel(src) //fuck linebreaks amirite
 
 #undef NEIGHBOR_REFRESH_TIME

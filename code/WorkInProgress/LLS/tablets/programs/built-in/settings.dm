@@ -56,7 +56,7 @@
 				tablet.core.volume = !tablet.core.volume
 			if("Delete")
 				var/datum/program/P = locate(href_list["target"])
-				del(P)
+				qdel(P)
 			if("Category")
 				var/datum/program/P = locate(href_list["target"])
 				P.secondary = !P.secondary

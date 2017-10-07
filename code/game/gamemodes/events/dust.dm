@@ -37,7 +37,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 	density = 1
 	anchored = 1
 	var/strength = 2 //ex_act severity number
-	var/life = 2 //how many things we hit before del(src)
+	var/life = 2 //how many things we hit before qdel(src)
 
 	weak
 		strength = 3

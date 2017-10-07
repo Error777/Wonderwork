@@ -10,8 +10,8 @@
 	flags = FPRINT | TABLEPASS| CONDUCT
 
 /obj/item/assembly/shock_kit/Del()
-	del(part1)
-	del(part2)
+	qdel(part1)
+	qdel(part2)
 	..()
 	return
 
@@ -26,7 +26,7 @@
 		part2.master = null
 		part1 = null
 		part2 = null
-		del(src)
+		qdel(src)
 		return
 	if(istype(W, /obj/item/weapon/screwdriver))
 		status = !status

@@ -14,7 +14,7 @@
 		for(var/obj/machinery/rust/em_field/field in range(6))
 			parent = field
 		if(!parent)
-			del(src)*/
+			qdel(src)*/
 
 	proc/SetSize(var/newsize)
 		name = "collector [newsize]"
@@ -46,4 +46,4 @@
 	process()
 		..()
 		if(!parent)
-			del(src)
+			qdel(src)

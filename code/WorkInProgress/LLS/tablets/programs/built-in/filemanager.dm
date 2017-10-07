@@ -53,7 +53,7 @@
 					loadeddata = null
 				if("Delete")
 					var/datum/tablet_data/C = locate(href_list["target"])
-					del(C)
+					qdel(C)
 				if("Download")
 					var/datum/tablet_data/C = locate(href_list["target"])
 					tablet.core.downloads.Remove(C)

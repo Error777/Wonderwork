@@ -42,7 +42,7 @@
 
 	ex_act(var/severity)
 		if(severity < 3)
-			del(src)
+			qdel(src)
 
 	process()
 		if((stat & (NOPOWER|BROKEN)) || !anchored)

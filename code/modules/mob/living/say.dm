@@ -34,38 +34,38 @@ var/list/department_radio_keys = list(
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":к" = "right hand",	"#к" = "right hand",	".к" = "right hand",
-	  ":д" = "left hand",	"#д" = "left hand",		".д" = "left hand",
-	  ":ш" = "intercom",	"#ш" = "intercom",		".ш" = "intercom",
-	  ":р" = "department",	"#р" = "department",	".р" = "department",
-	  ":с" = "Command",		"#с" = "Command",		".с" = "Command",
-	  ":т" = "Science",		"#т" = "Science",		".т" = "Science",
-	  ":ь" = "Medical",		"#ь" = "Medical",		".ь" = "Medical",
-	  ":у" = "Engineering",	"#у" = "Engineering",	".у" = "Engineering",
-	  ":ы" = "Security",	"#ы" = "Security",		".ы" = "Security",
-	  ":ц" = "whisper",		"#ц" = "whisper",		".ц" = "whisper",
-	  ":и" = "binary",		"#и" = "binary",		".и" = "binary",
-	  ":ф" = "alientalk",	"#ф" = "alientalk",		".ф" = "alientalk",
-	  ":е" = "Syndicate",	"#е" = "Syndicate",		".е" = "Syndicate",
-	  ":й" = "Supply",		"#й" = "Supply",		".й" = "Supply",
-	  ":п" = "changeling",	"#п" = "changeling",	".п" = "changeling",
+	  ":пїЅ" = "right hand",	"#пїЅ" = "right hand",	".пїЅ" = "right hand",
+	  ":пїЅ" = "left hand",	"#пїЅ" = "left hand",		".пїЅ" = "left hand",
+	  ":пїЅ" = "intercom",	"#пїЅ" = "intercom",		".пїЅ" = "intercom",
+	  ":пїЅ" = "department",	"#пїЅ" = "department",	".пїЅ" = "department",
+	  ":пїЅ" = "Command",		"#пїЅ" = "Command",		".пїЅ" = "Command",
+	  ":пїЅ" = "Science",		"#пїЅ" = "Science",		".пїЅ" = "Science",
+	  ":пїЅ" = "Medical",		"#пїЅ" = "Medical",		".пїЅ" = "Medical",
+	  ":пїЅ" = "Engineering",	"#пїЅ" = "Engineering",	".пїЅ" = "Engineering",
+	  ":пїЅ" = "Security",	"#пїЅ" = "Security",		".пїЅ" = "Security",
+	  ":пїЅ" = "whisper",		"#пїЅ" = "whisper",		".пїЅ" = "whisper",
+	  ":пїЅ" = "binary",		"#пїЅ" = "binary",		".пїЅ" = "binary",
+	  ":пїЅ" = "alientalk",	"#пїЅ" = "alientalk",		".пїЅ" = "alientalk",
+	  ":пїЅ" = "Syndicate",	"#пїЅ" = "Syndicate",		".пїЅ" = "Syndicate",
+	  ":пїЅ" = "Supply",		"#пїЅ" = "Supply",		".пїЅ" = "Supply",
+	  ":пїЅ" = "changeling",	"#пїЅ" = "changeling",	".пїЅ" = "changeling",
 
-	  //Давно не хватало. К тому же, теперь это полностью совместимо с моим парсером. - Rel
-	  ":К" = "right hand",	"#К" = "right hand",	".К" = "right hand",
-	  ":Д" = "left hand",	"#Д" = "left hand",		".Д" = "left hand",
-	  ":Ш" = "intercom",	"#Ш" = "intercom",		".Ш" = "intercom",
-	  ":Р" = "department",	"#Р" = "department",	".Р" = "department",
-	  ":С" = "Command",		"#С" = "Command",		".С" = "Command",
-	  ":Т" = "Science",		"#Т" = "Science",		".Т" = "Science",
-	  ":Ь" = "Medical",		"#Ь" = "Medical",		".Ь" = "Medical",
-	  ":У" = "Engineering",	"#У" = "Engineering",	".У" = "Engineering",
-	  ":Ы" = "Security",	"#Ы" = "Security",		".Ы" = "Security",
-	  ":Ц" = "whisper",		"#Ц" = "whisper",		".Ц" = "whisper",
-	  ":И" = "binary",		"#И" = "binary",		".И" = "binary",
-	  ":Ф" = "alientalk",	"#Ф" = "alientalk",		".Ф" = "alientalk",
-	  ":Е" = "Syndicate",	"#Е" = "Syndicate",		".Е" = "Syndicate",
-	  ":Й" = "Supply",		"#Й" = "Supply",		".Й" = "Supply",
-	  ":П" = "changeling",	"#П" = "changeling",	".П" = "changeling"
+	  //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. - Rel
+	  ":пїЅ" = "right hand",	"#пїЅ" = "right hand",	".пїЅ" = "right hand",
+	  ":пїЅ" = "left hand",	"#пїЅ" = "left hand",		".пїЅ" = "left hand",
+	  ":пїЅ" = "intercom",	"#пїЅ" = "intercom",		".пїЅ" = "intercom",
+	  ":пїЅ" = "department",	"#пїЅ" = "department",	".пїЅ" = "department",
+	  ":пїЅ" = "Command",		"#пїЅ" = "Command",		".пїЅ" = "Command",
+	  ":пїЅ" = "Science",		"#пїЅ" = "Science",		".пїЅ" = "Science",
+	  ":пїЅ" = "Medical",		"#пїЅ" = "Medical",		".пїЅ" = "Medical",
+	  ":пїЅ" = "Engineering",	"#пїЅ" = "Engineering",	".пїЅ" = "Engineering",
+	  ":пїЅ" = "Security",	"#пїЅ" = "Security",		".пїЅ" = "Security",
+	  ":пїЅ" = "whisper",		"#пїЅ" = "whisper",		".пїЅ" = "whisper",
+	  ":пїЅ" = "binary",		"#пїЅ" = "binary",		".пїЅ" = "binary",
+	  ":пїЅ" = "alientalk",	"#пїЅ" = "alientalk",		".пїЅ" = "alientalk",
+	  ":пїЅ" = "Syndicate",	"#пїЅ" = "Syndicate",		".пїЅ" = "Syndicate",
+	  ":пїЅ" = "Supply",		"#пїЅ" = "Supply",		".пїЅ" = "Supply",
+	  ":пїЅ" = "changeling",	"#пїЅ" = "changeling",	".пїЅ" = "changeling"
 )
 
 /mob/living/proc/binarycheck()
@@ -392,7 +392,7 @@ var/list/department_radio_keys = list(
 
 	var/speech_bubble_test = say_test(message)
 	var/image/speech_bubble = image('icons/mob/talk.dmi',src,"h[speech_bubble_test]")
-	spawn(30) del(speech_bubble)
+	spawn(30) qdel(speech_bubble)
 
 	for(var/mob/M in hearers(5, src))
 		if(M != src && is_speaking_radio)
@@ -453,7 +453,7 @@ var/list/department_radio_keys = list(
 
 		spawn()
 			sleep(11)
-			del(B)
+			qdel(B)
 		*/
 
 	//talking items

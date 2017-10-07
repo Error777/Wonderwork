@@ -54,14 +54,14 @@
 		sleep(250) // ugly hack, should mean roundstart plants are fine.
 	if(!plant_controller)
 		error("<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-		del(src)
+		qdel(src)
 		return
 
 	if(!istype(newseed))
 		newseed = plant_controller.seeds[DEFAULT_SEED]
 	seed = newseed
 	if(!seed)
-		del(src)
+		qdel(src)
 		return
 
 	name = "[seed.seed_name] vines"

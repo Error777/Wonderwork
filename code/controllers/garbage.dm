@@ -151,7 +151,7 @@ world/loop_checks = 0
 	if(isnull(D.gcDestroyed))
 		// Let our friend know they're about to get fucked up.
 		if(!ignore_destroy)
-			D.Destroy()
+			D.Del()
 
 		garbageCollector.addTrash(D)
 

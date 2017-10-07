@@ -39,12 +39,12 @@ proc/cardinalrange(var/center)
 /obj/machinery/am_shielding/proc/controllerscan(var/priorscan = 0)
 	//Make sure we are the only one here
 	if(!istype(src.loc, /turf))
-		del(src)
+		qdel(src)
 		return
 	for(var/obj/machinery/am_shielding/AMS in loc.contents)
 		if(AMS == src) continue
 		spawn(0)
-			del(src)
+			qdel(src)
 		return
 
 	//Search for shielding first
@@ -64,7 +64,7 @@ proc/cardinalrange(var/center)
 				controllerscan(1)//Last chance
 			return
 		spawn(0)
-			del(src)
+			qdel(src)
 	return
 
 
@@ -101,7 +101,7 @@ proc/cardinalrange(var/center)
 		else
 			new /obj/effect/blob(src.loc,60)
 		spawn(0)
-			del(src)
+			qdel(src)
 		return
 	check_stability()
 	return
@@ -213,7 +213,7 @@ proc/cardinalrange(var/center)
 	if(injecting_fuel && control_unit)
 		control_unit.exploding = 1
 	if(src)
-		del(src)
+		qdel(src)
 	return
 
 
@@ -244,7 +244,7 @@ proc/cardinalrange(var/center)
 /obj/item/device/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/device/multitool) && istype(src.loc,/turf))
 		new/obj/machinery/am_shielding(src.loc)
-		del(src)
+		qdel(src)
 		return
 	..()
 	return

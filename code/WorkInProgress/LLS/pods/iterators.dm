@@ -3,7 +3,7 @@
 
 	process(var/obj/pod/pod)
 		if(!pod)
-			del(src)
+			qdel(src)
 
 		if(pod.size[1] > 1)
 			// So for some reason when going north or east, Entered() isn't called on the turfs in a 2x2 pod
@@ -24,7 +24,7 @@
 
 	process(var/obj/pod/pod)
 		if(!pod)
-			del(src)
+			qdel(src)
 
 		if(pod.internal_canister)
 			var/datum/gas_mixture/tank_air = pod.internal_canister.return_air()
@@ -53,7 +53,7 @@
 					if(t_air)
 						t_air.merge(removed)
 					else //just delete the cabin gas, we're in space or some shit
-						del(removed)
+						qdel(removed)
 		else
 			stop()
 
@@ -62,7 +62,7 @@
 
 	process(var/obj/pod/pod)
 		if(!pod)
-			del(src)
+			qdel(src)
 
 		for(var/obj/item/weapon/pod_attachment/A in pod.attachments)
 			A.PodProcess(pod)

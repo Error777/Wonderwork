@@ -121,7 +121,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/Del()
 	..()
-	del(reagents)
+	qdel(reagents)
 
 /obj/item/clothing/mask/cigarette/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
@@ -181,13 +181,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/datum/effect/effect/system/reagents_explosion/e = new()
 			e.set_up(round(reagents.get_reagent_amount("plasma") / 2.5, 1), get_turf(src), 0, 0)
 			e.start()
-			del(src)
+			qdel(src)
 			return
 		if(reagents.get_reagent_amount("fuel")) // the fuel explodes, too, but much less violently
 			var/datum/effect/effect/system/reagents_explosion/e = new()
 			e.set_up(round(reagents.get_reagent_amount("fuel") / 5, 1), get_turf(src), 0, 0)
 			e.start()
-			del(src)
+			qdel(src)
 			return
 		flags &= ~NOREACT // allowing reagents to react after being lit
 		reagents.handle_reactions()
@@ -225,7 +225,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/turf/T = get_turf(src)
 		new type_butt(T)
 		processing_objects.Remove(src)
-		del(src)
+		qdel(src)
 	return ..()
 
 /obj/item/clothing/mask/cigarette/proc/die()
@@ -238,7 +238,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.u_equip(src)	//un-equip it so the overlays can update
 		M.update_inv_wear_mask(0)
 	processing_objects.Remove(src)
-	del(src)
+	qdel(src)
 
 ///////////
 // JOINT //

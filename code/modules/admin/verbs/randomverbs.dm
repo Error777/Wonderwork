@@ -463,7 +463,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		src << "Only administrators may use this command."
 		return
 	var/input = sanitize(input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null)
-	var/customname = sanitize(input(usr, "Pick a title for the report.", "Title") as text|null, repl_chars = list("пїЅ"="пїЅ","я"="____255_"))
+	var/customname = sanitize(input(usr, "Pick a title for the report.", "Title") as text|null, repl_chars = list("пїЅ"="пїЅ","пїЅ"="____255_"))
 	if(!input)
 		return
 	if(!customname)
@@ -500,7 +500,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		log_admin("[key_name(usr)] deleted [O] at ([O.x],[O.y],[O.z])")
 		message_admins("[key_name_admin(usr)] deleted [O] at ([O.x],[O.y],[O.z])", 1)
 		feedback_add_details("admin_verb","DEL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		del(O)
+		qdel(O)
 
 /client/proc/cmd_admin_list_open_jobs()
 	set category = "Admin"
@@ -638,8 +638,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 			message_admins("\blue[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 			world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=[mins]&server=[replacetext(config.server_name, "#", "")]")
-			del(M.client)
-			del(M)
+			qdel(M.client)
+			qdel(M)
 		else
 
 	if("No")
@@ -653,8 +653,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.")
 		message_admins("\blue[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.")
 		world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=perma&server=[replacetext(config.server_name, "#", "")]")
-		del(M.client)
-		del(M)
+		qdel(M.client)
+		qdel(M)
 */
 
 /client/proc/update_world()
@@ -738,7 +738,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			return
 
 	emergency_shuttle.incall()
-	captain_announce("Вызван эвакуационный шаттл. Он прибудет на станцию через [round(emergency_shuttle.timeleft()/60)] минут.")
+	captain_announce("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ [round(emergency_shuttle.timeleft()/60)] пїЅпїЅпїЅпїЅпїЅ.")
 	world << sound('sound/AI/shuttlecalled.ogg')
 	feedback_add_details("admin_verb","CSHUT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] admin-called the emergency shuttle.")

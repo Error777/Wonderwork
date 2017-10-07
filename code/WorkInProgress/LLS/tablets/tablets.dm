@@ -62,7 +62,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 	for(var/x in typesof(/datum/program/builtin))
 		var/datum/program/builtin/A = new x(src)
 		if(!A.app_id)
-			del(A)
+			qdel(A)
 			continue
 		A.tablet = src
 		core.programs.Add(A)
@@ -296,7 +296,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 	if(T)
 		T.hotspot_expose(700,125)
 		explosion(T, -1, -1, 2, 3, flame_range = 2)
-	del(src)
+	qdel(src)
 
 /obj/item/device/tablet/proc/get_apps_list()
 	apps_builtin = list()
@@ -353,7 +353,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 					if(dup.app_id == P.app_id)
 						duplicate = 1
 				if(duplicate)
-					del(P)
+					qdel(P)
 				else
 					P.secondary = 1
 					core.programs.Add(P)
@@ -363,7 +363,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 		if(istype(C, /obj/item/weapon/spacecash))
 			var/obj/item/weapon/spacecash/S = C
 			core.cash += S.worth
-			del(C)
+			qdel(C)
 			updateSelfDialog()//For the non-input related code.
 			if(S.worth)
 				user << "<span class='notice'>You convert the Space Cash into digital currency in your E-Wallet</span>"
@@ -372,7 +372,7 @@ var/global/list/obj/item/device/tablet/tablets_list = list()
 		if(istype(C, /obj/item/device/toner))
 			core.toner = 30
 			user << "<span class='notice'>You replace the toner cartridge.</span>"
-			del(C)
+			qdel(C)
 		if(istype(C, /obj/item/weapon/pen))
 			var/obj/item/weapon/pen/O = locate() in src
 			if(O)

@@ -326,7 +326,7 @@
 
 
 			A.anchored = 1
-			del(src)
+			qdel(src)
 
 	else
 		src.attack_hand(user)
@@ -336,7 +336,7 @@
 	for(var/obj/item/weapon/peripheral/P in src.peripherals)
 		P.receive_command(src, command, signal)
 
-	del(signal)
+	qdel(signal)
 
 /obj/machinery/terminal/proc/receive_command(obj/source, command, datum/signal/signal)
 	if(source in src.contents)
@@ -344,7 +344,7 @@
 		for(var/datum/computer/file/computer_program/P in src.processing_programs)
 			P.receive_command(src, command, signal)
 
-		del(signal)
+		qdel(signal)
 
 	return
 
@@ -411,5 +411,5 @@
 //	file.holder.root.remove_file(file)
 
 	//world << "Now calling del on [file]..."
-	del(file)
+	qdel(file)
 	return 1

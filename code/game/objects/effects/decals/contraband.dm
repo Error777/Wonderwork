@@ -59,7 +59,7 @@
 			resulting_poster.loc = W //Looks like it's uncluttered enough. Place the poster
 			W.contents += resulting_poster
 
-			del(src)*/
+			qdel(src)*/
 
 
 
@@ -239,7 +239,7 @@ obj/structure/sign/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		if(ruined)
 			user << "<span class='notice'>You remove the remnants of the poster.</span>"
-			del(src)
+			qdel(src)
 		else
 			user << "<span class='notice'>You carefully remove the poster from the wall.</span>"
 			roll_and_drop(user.loc)
@@ -269,7 +269,7 @@ obj/structure/sign/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	P.resulting_poster = src
 	P.loc = loc
 	loc = P
-	del(src)
+	qdel(src)
 
 
 //seperated to reduce code duplication. Moved here for ease of reference and to unclutter r_wall/attackby()
@@ -294,7 +294,7 @@ obj/structure/sign/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/temp_loc = user.loc
 	flick("poster_being_set",D)
 	D.loc = src
-	del(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
+	qdel(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 	playsound(D.loc, 'sound/items/poster_being_created.ogg', 100, 1)
 
 	sleep(17)

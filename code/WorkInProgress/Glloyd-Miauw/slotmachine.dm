@@ -320,7 +320,7 @@
 		var/money_add = S.amount * S.worth
 
 		if(user.drop_item(I))
-			del(I)
+			qdel(I)
 
 			src.stored_money += money_add
 			src.updateUsrDialog()

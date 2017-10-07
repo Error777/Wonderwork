@@ -17,7 +17,7 @@
 
 			if(lootspawn)
 				new lootspawn(get_turf(src))
-	del(src)
+	qdel(src)
 
 /obj/effect/spawner/lootdrop/armory_contraband
 	name = "armory contraband gun spawner"

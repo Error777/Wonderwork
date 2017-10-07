@@ -34,49 +34,49 @@
 						tablet.core.cash -=10
 					else
 						usr << "<span class='notice'>You couldn't withdraw because your hands are full.</span>"
-						del(dosh)
+						qdel(dosh)
 				if (cash == "20")
 					var/obj/item/weapon/spacecash/dosh = new /obj/item/weapon/spacecash/c20(usr.loc)
 					if(usr.put_in_hands(dosh) && tablet.core.cash >= dosh.worth)
 						tablet.core.cash -=20
 					else
 						usr << "<span class='notice'>You couldn't withdraw because your hands are full.</span>"
-						del(dosh)
+						qdel(dosh)
 				if (cash == "50")
 					var/obj/item/weapon/spacecash/dosh = new /obj/item/weapon/spacecash/c50(usr.loc)
 					if(usr.put_in_hands(dosh) && tablet.core.cash >= dosh.worth)
 						tablet.core.cash -=50
 					else
 						usr << "<span class='notice'>You couldn't withdraw because your hands are full.</span>"
-						del(dosh)
+						qdel(dosh)
 				if (cash == "100")
 					var/obj/item/weapon/spacecash/dosh = new /obj/item/weapon/spacecash/c100(usr.loc)
 					if(usr.put_in_hands(dosh) && tablet.core.cash >= dosh.worth)
 						tablet.core.cash -=100
 					else
 						usr << "<span class='notice'>You couldn't withdraw because your hands are full.</span>"
-						del(dosh)
+						qdel(dosh)
 				if (cash == "200")
 					var/obj/item/weapon/spacecash/dosh = new /obj/item/weapon/spacecash/c200(usr.loc)
 					if(usr.put_in_hands(dosh) && tablet.core.cash >= dosh.worth)
 						tablet.core.cash -=200
 					else
 						usr << "<span class='notice'>You couldn't withdraw because your hands are full.</span>"
-						del(dosh)
+						qdel(dosh)
 				if (cash == "500")
 					var/obj/item/weapon/spacecash/dosh = new /obj/item/weapon/spacecash/c500(usr.loc)
 					if(usr.put_in_hands(dosh) && tablet.core.cash >= dosh.worth)
 						tablet.core.cash -=500
 					else
 						usr << "<span class='notice'>You couldn't withdraw because your hands are full.</span>"
-						del(dosh)
+						qdel(dosh)
 				if (cash == "1000")
 					var/obj/item/weapon/spacecash/dosh = new /obj/item/weapon/spacecash/c1000(usr.loc)
 					if(usr.put_in_hands(dosh) && tablet.core.cash >= dosh.worth)
 						tablet.core.cash -=1000
 					else
 						usr << "<span class='notice'>You couldn't withdraw because your hands are full.</span>"
-						del(dosh)
+						qdel(dosh)
 		use_app()
 		tablet.attack_self(usr)
 

@@ -83,7 +83,7 @@
 			//failure
 			user.visible_message("<font color='red'><b>[src] suddenly crumbles away.</b></font>",\
 			"\red [src] has disintegrated under your onslaught, any secrets it was holding long gone.")
-			del(src)
+			qdel(src)
 		else if(prob(reveal_prob))
 			//success
 			if(artifact_find)
@@ -97,4 +97,4 @@
 			else
 				user.visible_message("<font color='red'><b>[src] suddenly crumbles away.</b></font>",\
 				"\blue There was nothing of interest inside.")
-			del(src)
+			qdel(src)

@@ -28,7 +28,7 @@
 					if(!src || !WT.remove_fuel(0, user)) return
 					user << "\blue You deconstruct the frame."
 					new /obj/item/stack/sheet/plasteel( loc, 4)
-					del(src)
+					qdel(src)
 		if(1)
 			if(istype(P, /obj/item/weapon/wrench))
 				playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
@@ -66,7 +66,7 @@
 					playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					if(do_after(user, 20))
 						P:amount -= 5
-						if(!P:amount) del(P)
+						if(!P:amount) qdel(P)
 						user << "\blue You add cables to the frame."
 						state = 3
 						icon_state = "3"
@@ -88,7 +88,7 @@
 					if(do_after(user, 20))
 						if (P)
 							P:amount -= 2
-							if(!P:amount) del(P)
+							if(!P:amount) qdel(P)
 							user << "\blue You put in the glass panel."
 							state = 4
 							icon_state = "4"
@@ -164,7 +164,7 @@
 				if(A) //if there's no brain, the mob is deleted and a structure/AIcore is created
 					A.rename_self("ai", 1)
 				feedback_inc("cyborg_ais_created",1)
-				del(src)
+				qdel(src)
 
 /obj/structure/AIcore/deactivated
 	name = "Inactive AI"
@@ -260,7 +260,7 @@ That prevents a few funky behaviors.
 							A.cancel_camera()
 							A << "You have been uploaded to a stationary terminal. Remote device connection restored."
 							U << "\blue <b>Transfer successful</b>: \black [A.name] ([rand(1000,9999)].exe) installed and executed succesfully. Local copy has been removed."
-							del(T)
+							qdel(T)
 					if("NINJASUIT")
 						var/obj/item/clothing/suit/space/space_ninja/C = src
 						var/mob/living/silicon/ai/A = C.AI
@@ -271,7 +271,7 @@ That prevents a few funky behaviors.
 							A.cancel_camera()
 							A << "You have been uploaded to a stationary terminal. Remote device connection restored."
 							U << "\blue <b>Transfer succesful</b>: \black [A.name] ([rand(1000,9999)].exe) installed and executed succesfully. Local copy has been removed."
-							del(T)
+							qdel(T)
 			if("AIFIXER")//AI Fixer terminal.
 				var/obj/machinery/computer/aifixer/T = target
 				switch(interaction)

@@ -38,7 +38,7 @@
 					new /obj/item/weapon/table_parts/glass( get_turf(src.loc), 2 )
 				if (5)
 					new /obj/item/weapon/table_parts/woodreinforced( get_turf(src.loc), 2 )
-			del(T)
+			qdel(T)
 	update_icon()
 	for(var/direction in list(1,2,4,8,5,6,9,10))
 		if(locate(/obj/structure/table,get_step(src,direction)))
@@ -55,7 +55,7 @@
 /obj/structure/table/proc/destroy()
 	new parts(loc)
 	density = 0
-	del(src)
+	qdel(src)
 
 
 /obj/structure/table/update_icon()
@@ -264,11 +264,11 @@
 /obj/structure/table/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
-				del(src)
+				qdel(src)
 				return
 		if(3.0)
 			if (prob(25))
@@ -390,7 +390,7 @@
 		for(var/mob/O in viewers(world.view, src))
 			if (O.client)
 				O << "\red [G.assailant] puts [G.affecting] on the table."
-		del(W)
+		qdel(W)
 		return
 
 	if (istype(W, /obj/item/weapon/wrench))
@@ -463,7 +463,7 @@
 		playsound(src.loc, "shatter", 50, 1)
 		new /obj/item/stack/rods(src.loc)
 		new /obj/item/weapon/shard(src.loc)
-		del(src)
+		qdel(src)
 
 
 /obj/structure/table/glass/climb_table(mob/user)
@@ -472,7 +472,7 @@
 		playsound(src.loc, "shatter", 50, 1)
 		new /obj/item/stack/rods(src.loc)
 		new /obj/item/weapon/shard(src.loc)
-		del(src)
+		qdel(src)
 		user.Weaken(5)
 */
 
@@ -573,23 +573,23 @@
 /obj/structure/rack/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			del(src)
+			qdel(src)
 		if(2.0)
-			del(src)
+			qdel(src)
 			if(prob(50))
 				new /obj/item/weapon/rack_parts(src.loc)
 		if(3.0)
 			if(prob(25))
-				del(src)
+				qdel(src)
 				new /obj/item/weapon/rack_parts(src.loc)
 
 /obj/structure/rack/blob_act()
 	if(prob(75))
-		del(src)
+		qdel(src)
 		return
 	else if(prob(50))
 		new /obj/item/weapon/rack_parts(src.loc)
-		del(src)
+		qdel(src)
 		return
 
 /obj/structure/rack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
@@ -621,7 +621,7 @@
 	if (istype(W, /obj/item/weapon/wrench))
 		new /obj/item/weapon/rack_parts( src.loc )
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-		del(src)
+		qdel(src)
 		return
 	if(isrobot(user))
 		return
@@ -630,7 +630,7 @@
 	return
 
 /obj/structure/rack/meteorhit(obj/O as obj)
-	del(src)
+	qdel(src)
 
 /obj/structure/table/attack_hand(mob/user)
 	if(HULK in user.mutations)
@@ -638,7 +638,7 @@
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		new parts(loc)
 		density = 0
-		del(src)
+		qdel(src)
 
 	if(usr.a_intent == "disarm" && get_dist(user, src) <= 1 && !usr.buckled)
 		visible_message("<span class='notice'>[user] trying to clumb on the [src].</span>")
@@ -656,14 +656,14 @@
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		new /obj/item/weapon/rack_parts(loc)
 		density = 0
-		del(src)
+		qdel(src)
 
 
 /obj/structure/rack/attack_alien(mob/user)
 	visible_message("<span class='danger'>[user] slices [src] apart!</span>")
 	new /obj/item/weapon/rack_parts(loc)
 	density = 0
-	del(src)
+	qdel(src)
 
 
 /obj/structure/rack/attack_animal(mob/living/simple_animal/user)
@@ -671,7 +671,7 @@
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		new /obj/item/weapon/rack_parts(loc)
 		density = 0
-		del(src)
+		qdel(src)
 
 /obj/structure/rack/shelf
 	name = "shelving unit"

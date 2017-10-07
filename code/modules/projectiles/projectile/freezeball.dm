@@ -71,7 +71,7 @@ obj/item/weapon/gun/energy/freezegun
 
 	process() // soooo uglycode!
 		if(!occupant)
-			del(src)
+			qdel(src)
 		if(occupant.stat != 2)
 			occupant:adjustOxyLoss(-4) // 4 critguys
 			occupant.weakened= 2
@@ -124,7 +124,7 @@ obj/item/weapon/gun/energy/freezegun
 			src.occupant.freezed = 0
 			src.occupant.gib()
 
-			del(src)
+			qdel(src)
 		if (2)
 			if (prob(50))
 				src.health -= 15
@@ -154,7 +154,7 @@ obj/item/weapon/gun/energy/freezegun
 		src.occupant.freezed = 0
 		src.occupant.gib()
 
-		del(src)
+		qdel(src)
 
 
 /obj/structure/freezedmob/meteorhit(obj/O as obj)
@@ -162,7 +162,7 @@ obj/item/weapon/gun/energy/freezegun
 	src.occupant.loc = src.loc
 	src.occupant.freezed = 0
 	src.occupant.gib()
-	del(src)
+	qdel(src)
 
 
 /obj/structure/freezedmob/proc/healthcheck()
@@ -172,7 +172,7 @@ obj/item/weapon/gun/energy/freezegun
 		src.occupant.loc = src.loc
 		src.occupant.freezed = 0
 		src.occupant.gib()
-		del(src)
+		qdel(src)
 	else
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 	return
@@ -199,7 +199,7 @@ obj/item/weapon/gun/energy/freezegun
 			I.loc = src.loc
 		M.sdisabilities &= !DEAF
 		src.occupant << "Thanks god, ice finally melted"
-		del(src)
+		qdel(src)
 	else
 		if(src.ice > 200)
 			if(src.occupant.stat != 2)

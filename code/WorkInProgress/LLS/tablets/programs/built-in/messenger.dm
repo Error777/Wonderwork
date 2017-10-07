@@ -177,7 +177,7 @@
 					T.alert_self("Messenger:","<b>[tablet.owner] ([tablet.ownjob]) has left \"[active_chat.name]\"","messenger")
 				log_pda("[usr.key] (tablet: [tablet.owner]) left chat: \"[active_chat.name]\"")
 				if(!active_chat.users.len)
-					del(active_chat)
+					qdel(active_chat)
 				active_chat = null
 			if("Change Title")
 				if(!spamcheck)

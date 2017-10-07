@@ -546,7 +546,7 @@
 			animation.master = src
 			flick("h2monkey", animation)
 			sleep(48)
-			del(animation)
+			qdel(animation)
 
 
 		var/mob/living/carbon/monkey/O = null
@@ -573,7 +573,7 @@
 
 
 		for(var/obj/T in (M.contents-implants))
-			del(T)
+			qdel(T)
 
 		O.loc = M.loc
 
@@ -596,7 +596,7 @@
 			I.loc = O
 			I.implanted = O
 //		O.update_icon = 1	//queue a full icon update at next life() call
-		del(M)
+		qdel(M)
 		return
 
 	if (!isblockon(getblock(M.dna.struc_enzymes, MONKEYBLOCK,3),MONKEYBLOCK) && !istype(M, /mob/living/carbon/human))
@@ -620,7 +620,7 @@
 			animation.master = src
 			flick("monkey2h", animation)
 			sleep(48)
-			del(animation)
+			qdel(animation)
 
 		var/mob/living/carbon/human/O = new( src )
 		if(Mo.greaterform)
@@ -646,7 +646,7 @@
 			M.viruses -= D
 
 		//for(var/obj/T in M)
-		//	del(T)
+		//	qdel(T)
 
 		O.loc = M.loc
 
@@ -681,7 +681,7 @@
 			I.loc = O
 			I.implanted = O
 //		O.update_icon = 1	//queue a full icon update at next life() call
-		del(M)
+		qdel(M)
 		return
 //////////////////////////////////////////////////////////// Monkey Block
 	if(M)
@@ -767,7 +767,7 @@
 	/*
 	for(var/obj/O in src)    // THIS IS P. STUPID -- LOVE, DOOHL
 		//O = null
-		del(O)
+		qdel(O)
 		//Foreach goto(124)
 	*/
 	src.add_fingerprint(usr)
@@ -803,7 +803,7 @@
 				if(ghost.mind == M.mind)
 					ghost << "<b><font color = #330033><font size = 3>Your corpse has been placed into a cloning scanner. Return to your body if you want to be resurrected/cloned!</b> (Verbs -> Ghost -> Re-enter corpse)</font color>"
 					break
-	del(G)
+	qdel(G)
 	return
 
 /obj/machinery/dna_scannernew/proc/go_out()
@@ -832,7 +832,7 @@
 				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
@@ -841,7 +841,7 @@
 					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		if(3.0)
 			if (prob(25))
@@ -850,7 +850,7 @@
 					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		else
 	return
@@ -860,7 +860,7 @@
 	if(prob(75))
 		for(var/atom/movable/A as mob|obj in src)
 			A.loc = src.loc
-		del(src)
+		qdel(src)
 
 
 /obj/machinery/computer/scan_consolenew/ex_act(severity)
@@ -868,12 +868,12 @@
 	switch(severity)
 		if(1.0)
 			//SN src = null
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		else
 	return
@@ -881,7 +881,7 @@
 /obj/machinery/computer/scan_consolenew/blob_act()
 
 	if(prob(75))
-		del(src)
+		qdel(src)
 
 /obj/machinery/computer/scan_consolenew/power_change()
 	if(stat & BROKEN)

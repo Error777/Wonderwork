@@ -78,7 +78,7 @@
 			if(T)
 				explosion(T, 1, 3, 5, 12)
 				if (src)
-					del(src)
+					qdel(src)
 
 		return
 
@@ -98,7 +98,7 @@
 		if(T)
 			explosion(T, 1, 3, 5, 12)
 			if (src)
-				del(src)
+				qdel(src)
 
 
 /obj/item/device/bombassembly/afterattack(atom/target as obj|turf, mob/user as mob, flag)
@@ -128,4 +128,4 @@
 			if(target)
 				explosion(location, 1, 3, 5, 12)
 				if (src)
-					del(src)
+					qdel(src)

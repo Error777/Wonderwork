@@ -44,7 +44,7 @@ var/list/pod_list = list()
 		..()
 
 		if(!size || !size.len)
-			del(src)
+			qdel(src)
 			return
 
 		pod_list += src
@@ -88,7 +88,7 @@ var/list/pod_list = list()
 
 				var/obj/item/weapon/cell/cell = locate() in T
 				if(cell)
-					del(power_source)
+					qdel(power_source)
 					cell.loc = src
 					power_source = cell
 

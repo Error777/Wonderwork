@@ -151,7 +151,7 @@
 	pulse2.anchored = 1
 	pulse2.set_dir(pick(cardinal))
 
-	del(pulse2)
+	qdel(pulse2)
 	if(on)
 		turn_off()
 
@@ -217,7 +217,7 @@
 	new /obj/effect/gibspawner/robot(Tsec)
 	new /obj/effect/decal/cleanable/oil(src.loc)
 
-	del(src)
+	qdel(src)
 
 /obj/vehicle/proc/healthcheck()
 	if(health <= 0)

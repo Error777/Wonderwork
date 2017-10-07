@@ -85,7 +85,7 @@ proc/move_mining_shuttle()
 				*/
 
 			if(istype(T, /turf/simulated))
-				del(T)
+				qdel(T)
 
 		for(var/mob/living/carbon/bug in toArea) // If someone somehow is still in the shuttle's docking area...
 			bug.gib()
@@ -175,7 +175,7 @@ proc/move_mining_shuttle()
 				A.state = 4
 				A.icon_state = "4"
 
-			del(src)
+			qdel(src)
 
 /******************************Lantern*******************************/
 
@@ -382,7 +382,7 @@ proc/move_mining_shuttle()
 		spawn(timetoburst)
 			playsound(src,'sound/weapons/resonator_blast.ogg',50,1)
 			M.gets_drilled(creator)
-			del(src)
+			qdel(src)
 	else
 		var/datum/gas_mixture/environment = proj_turf.return_air()
 		var/pressure = environment.return_pressure()
@@ -400,4 +400,4 @@ proc/move_mining_shuttle()
 				for(var/mob/living/L in src.loc)
 					L << "<span class='danger'>The [src.name] ruptured with you in it!</span>"
 					L.adjustBruteLoss(resonance_damage)
-			del(src)
+			qdel(src)

@@ -103,7 +103,7 @@
 		else
 			icon_state = "data"
 			bans = "9" //if get_region_accesses ever uses 9 we're fucked
-			del(DE)
+			qdel(DE)
 	else
 		return ..()
 
@@ -142,6 +142,6 @@
 				user << "<span class='notice'>You require at least one stamp.</span>"
 				return
 			icon_state = "soviet"
-			del(D)
+			qdel(D)
 	else
 		return ..()

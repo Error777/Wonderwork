@@ -8,7 +8,7 @@ datum/computer/file/embedded_program
 			if(master)
 				master.post_signal(signal, comm_line)
 			else
-				del(signal)
+				qdel(signal)
 
 		receive_user_command(command)
 
@@ -75,7 +75,7 @@ obj/machinery/embedded_controller
 			if(radio_connection)
 				return radio_connection.post_signal(src, signal)
 			else
-				del(signal)
+				qdel(signal)
 
 		proc
 			set_frequency(new_frequency)

@@ -34,7 +34,7 @@
 				if(ismob(A))
 					if(A:client)
 						A:client:eye = A
-			del(active_dummy)
+			qdel(active_dummy)
 			active_dummy = null
 			usr << "\blue You deactivate the [src]."
 			var/obj/effect/overlay/T = new/obj/effect/overlay(get_turf(src))
@@ -54,7 +54,7 @@
 			usr.loc = C
 			C.master = src
 			src.active_dummy = C
-			del(O)
+			qdel(O)
 			usr << "\blue You activate the [src]."
 			var/obj/effect/overlay/T = new/obj/effect/overlay(get_turf(src))
 			T.icon = 'icons/effects/effects.dmi'
@@ -72,7 +72,7 @@
 				if(ismob(A))
 					if(A:client)
 						A:client:eye = A
-			del(active_dummy)
+			qdel(active_dummy)
 			active_dummy = null
 			can_use = 0
 			spawn(100) can_use = 1

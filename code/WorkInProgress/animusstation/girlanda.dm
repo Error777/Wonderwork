@@ -17,7 +17,7 @@
 				return
 			visible_message("<span class='warning'>[user] rips [src] in a single, decisive motion!</span>" )
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, 1)
-			del(src)
+			qdel(src)
 		if("No")
 			return
 /*
@@ -114,7 +114,7 @@
 	if(src.amount < used)
 		return 0
 	else if (src.amount == used)
-		del(src)
+		qdel(src)
 	else
 		amount -= used
 		update_icon()
@@ -144,7 +144,7 @@
 
 	var/temp_loc = user.loc
 	D.loc = src
-	del(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
+	qdel(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 	playsound(D.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 
 	if(!D)	return

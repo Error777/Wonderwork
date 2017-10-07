@@ -129,8 +129,8 @@ datum/preferences
 
 
 	proc/update_preview_icon()		//seriously. This is horrendous.
-		del(preview_icon_front)
-		del(preview_icon_side)
+		qdel(preview_icon_front)
+		qdel(preview_icon_side)
 		var/icon/preview_icon = null
 
 		var/g = "m"
@@ -566,6 +566,6 @@ datum/preferences
 		preview_icon_front = new(preview_icon, dir = SOUTH)
 		preview_icon_side = new(preview_icon, dir = WEST)
 
-		del(preview_icon)
-		del(eyes_s)
-		del(clothes_s)
+		qdel(preview_icon)
+		qdel(eyes_s)
+		qdel(clothes_s)

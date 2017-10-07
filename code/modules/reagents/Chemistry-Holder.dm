@@ -376,7 +376,7 @@ datum
 					var/datum/reagent/R = A
 					if (R.id == reagent)
 						reagent_list -= A
-						del(A)
+						qdel(A)
 						update_total()
 						my_atom.on_reagent_change()
 						return 0

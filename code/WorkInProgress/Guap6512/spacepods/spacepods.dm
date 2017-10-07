@@ -60,7 +60,7 @@
 	equipment_system = new(src)
 
 /obj/spacepod/Del()
-	del(ion_trail)
+	qdel(ion_trail)
 	..()
 
 /obj/spacepod/proc/click_action(atom/target,mob/user)
@@ -173,8 +173,8 @@
 				H2.loc = get_turf(src)
 				H2.ex_act(severity + 1)
 				H2 << "<span class='warning'>You are forcefully thrown from \the [src]!</span>"
-			del(ion_trail)
-			del(src)
+			qdel(ion_trail)
+			qdel(src)
 		if(2)
 			deal_damage(100)
 		if(3)
@@ -606,7 +606,7 @@
 					if(t_air)
 						t_air.merge(removed)
 					else //just delete the cabin gas, we're in space or some shit
-						del(removed)
+						qdel(removed)
 		else
 			return stop()
 		return

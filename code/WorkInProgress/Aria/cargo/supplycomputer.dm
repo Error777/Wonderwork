@@ -279,9 +279,9 @@
 	//Remove anything or anyone that was either left behind or that bypassed supply_can_move() -Nodrak
 	for(var/area/supply/station/A in world)
 		for(var/obj/item/I in A.contents)
-			del(I)
+			qdel(I)
 		for(var/mob/living/M in A.contents)
-			del(M)
+			qdel(M)
 
 	send_supply_shuttle()
 
@@ -511,6 +511,6 @@
 
 		if(good)
 			src.internalcard.money += good.get_sell_price()
-			del(A)
+			qdel(A)
 
 	return

@@ -340,7 +340,7 @@
 	sleep(burntime) //7 seconds
 	src.visible_message("<span class='warning'>[src] burns away, leaving behind a pile of ashes.</span>")
 	new /obj/effect/decal/cleanable/ash(src.loc)
-	del(src)
+	qdel(src)
 
 /*
  * Premade paper

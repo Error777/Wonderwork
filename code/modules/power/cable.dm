@@ -119,7 +119,7 @@
 //							c.Del()
 ///// Z-Level Stuff
 
-		del(src)
+		qdel(src)
 
 		return	// not needed, but for clarity
 
@@ -163,16 +163,16 @@
 /obj/structure/cable/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			del(src)
+			qdel(src)
 		if(2.0)
 			if (prob(50))
 				new/obj/item/weapon/cable_coil(src.loc, src.d1 ? 2 : 1, cable_color)
-				del(src)
+				qdel(src)
 
 		if(3.0)
 			if (prob(25))
 				new/obj/item/weapon/cable_coil(src.loc, src.d1 ? 2 : 1, cable_color)
-				del(src)
+				qdel(src)
 	return
 
 // the cable coil object, used for laying cable
@@ -272,7 +272,7 @@
 			C.amount += src.amount
 			user << "You join the cable coils together."
 			C.updateicon()
-			del(src)
+			qdel(src)
 			return
 
 		else
@@ -287,7 +287,7 @@
 	if(src.amount < used)
 		return 0
 	else if (src.amount == used)
-		del(src)
+		qdel(src)
 	else
 		amount -= used
 		updateicon()
@@ -342,7 +342,7 @@
 		if (C.shock(user, 50))
 			if (prob(50)) //fail
 				new/obj/item/weapon/cable_coil(C.loc, 1, C.cable_color)
-				del(C)
+				qdel(C)
 		//src.laying = 1
 		//last = C
 
@@ -402,7 +402,7 @@
 			if (NC.shock(user, 50))
 				if (prob(50)) //fail
 					new/obj/item/weapon/cable_coil(NC.loc, 1, NC.cable_color)
-					del(NC)
+					qdel(NC)
 
 			return
 	else if(C.d1 == 0)		// exisiting cable doesn't point at our position, so see if it's a stub
@@ -441,7 +441,7 @@
 		if (C.shock(user, 50))
 			if (prob(50)) //fail
 				new/obj/item/weapon/cable_coil(C.loc, 2, C.cable_color)
-				del(C)
+				qdel(C)
 
 		return
 

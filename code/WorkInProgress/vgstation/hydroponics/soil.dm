@@ -14,7 +14,7 @@
 			to_chat(user, "You clear up [src]!")
 			new /obj/item/weapon/ore/glass(loc)//we get some of the dirt back
 			new /obj/item/weapon/ore/glass(loc)
-			del(src)
+			qdel(src)
 			return 1
 		else
 			..()
@@ -22,7 +22,7 @@
 		return ..()
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/smashDestroy(destroy_chance)
-	del(src)
+	qdel(src)
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/New()
 	..()

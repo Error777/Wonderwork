@@ -31,7 +31,7 @@
 			src.first.updatebeam()
 	else
 		if(first)
-			del(first)
+			qdel(first)
 
 /obj/machinery/engine/laser/proc/setpower(var/powera)
 	src.power = powera
@@ -71,11 +71,11 @@
 				for(var/atom/o in src.loc.contents)
 					if(o.density || o == src.master || (ismob(o) && !istype(o, /mob/dead)) )
 						o.laser_act(src)
-						del(src)
+						qdel(src)
 						return
 			else
 				src.loc.laser_act(src)
-				del(e)
+				qdel(e)
 				return
 			step(e,e.dir)
 			if(e)

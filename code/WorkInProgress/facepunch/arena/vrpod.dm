@@ -13,7 +13,7 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 /obj/structure/literal_firewall/attackby(var/obj/item/W, var/mob/user)
 	if (istype(W, /obj/item/weapon/keycard))
 		to_chat(user, "<span style=\"color:blue\">keycard -c 'ufw allow 2323/stcp from ::1'</span>")
-		del(src)
+		qdel(src)
 	else
 		return
 
@@ -94,7 +94,7 @@ var/VRPadItems = list()
 	src.icon_state = "vrpod_1[src.emagged]"
 	for(var/obj/O in src)
 		//O = null
-		del(O)
+		qdel(O)
 		//Foreach goto(124)
 	src.add_fingerprint(usr)
 
@@ -116,16 +116,16 @@ var/VRPadItems = list()
 				src.vrbody.drop_from_inventory(W)
 				W.loc = src.vrbody.loc
 
-				if(W.contents.len) //Make sure we catch anything not handled by del() on the items.
+				if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
 					for(var/obj/item/O in W.contents)
 						O.loc = src
 				if (istype(W, /obj/item/clothing/under))
-					del(W)
+					qdel(W)
 				if (istype(W, /obj/item/clothing/shoes))
-					del(W)
+					qdel(W)
 		else
 			src.occupant.ckey = src.savedkey
-		del(src.vrbody)
+		qdel(src.vrbody)
 	else
 		src.occupant.ckey = src.savedkey
 	if (src.occupant.client)
@@ -220,7 +220,7 @@ var/VRPadItems = list()
 			//Foreach goto(154)
 		src.add_fingerprint(user)
 		//G = null
-		del(G)
+		qdel(G)
 		return
 	if(istype(D, /obj/item/weapon/wrench))
 		if(src.anchored)
@@ -279,7 +279,7 @@ var/VRPadItems = list()
 				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
@@ -288,7 +288,7 @@ var/VRPadItems = list()
 					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		if(3.0)
 			if (prob(25))
@@ -297,7 +297,7 @@ var/VRPadItems = list()
 					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		else
 	return
@@ -306,7 +306,7 @@ var/VRPadItems = list()
 	if(prob(50))
 		for(var/atom/movable/A as mob|obj in src)
 			A.loc = src.loc
-		del(src)
+		qdel(src)
 
 
 // VR POD ENTRY PADS, YEEE.
@@ -330,7 +330,7 @@ var/VRPadItems = list()
 				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
@@ -339,7 +339,7 @@ var/VRPadItems = list()
 					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		if(3.0)
 			if (prob(25))
@@ -348,7 +348,7 @@ var/VRPadItems = list()
 					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
-				del(src)
+				qdel(src)
 				return
 		else
 	return
@@ -357,7 +357,7 @@ var/VRPadItems = list()
 	if(prob(50))
 		for(var/atom/movable/A as mob|obj in src)
 			A.loc = src.loc
-		del(src)
+		qdel(src)
 
 /obj/machinery/vrpad/attack_hand(mob/user)
 	if(!user)

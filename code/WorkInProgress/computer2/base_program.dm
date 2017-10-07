@@ -8,7 +8,7 @@
 		var/gen = 0
 		Del()
 			for(var/datum/computer/F in src.contents)
-				del(F)
+				qdel(F)
 			..()
 		proc
 			add_file(datum/computer/R)
@@ -55,7 +55,7 @@
 							newfile.vars[V] = src.vars[V]
 
 					if(!newfolder.add_file(newfile))
-						del(newfile)
+						qdel(newfile)
 
 					return 1
 
@@ -155,7 +155,7 @@
 			if(master)
 				master.send_command(command, signal)
 			else
-				del(signal)
+				qdel(signal)
 
 		transfer_holder(obj/item/weapon/disk/data/newholder,datum/computer/folder/newfolder)
 

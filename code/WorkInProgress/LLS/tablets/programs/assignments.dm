@@ -130,7 +130,7 @@
 		tablet.attack_self(usr)
 
 	proc/recycle_assignment(var/datum/assignment/A)
-		del(A)
+		qdel(A)
 		new_task = null
 		return
 
@@ -232,7 +232,7 @@
 				A.temp = "Assignment canceled"
 				A.use_app()
 				A.tablet.attack_self(usr)
-				del(src)
+				qdel(src)
 				return
 			if("users")
 				var/list/D = list()

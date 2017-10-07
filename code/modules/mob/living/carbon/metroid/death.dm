@@ -8,7 +8,7 @@
 			ghostize()
 			explosion(get_turf(src), -1,-1,3,12)
 			sleep(2)
-			del(src)
+			qdel(src)
 		else
 			for(var/mob/O in viewers(src, null))
 				O.show_message("<b>The [src.name]</b> seizes up and falls limp...", 1) //ded -- Urist

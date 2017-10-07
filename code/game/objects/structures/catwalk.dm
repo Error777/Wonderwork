@@ -17,17 +17,17 @@
 /obj/structure/catwalk/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			del(src)
+			qdel(src)
 		if(2.0)
 			if(prob(75))
-				del(src)
+				qdel(src)
 			else
 				new /obj/structure/lattice(src.loc)
-				del(src)
+				qdel(src)
 		if(3.0)
 			if(prob(10))
 				new /obj/structure/lattice(src.loc)
-				del(src)
+				qdel(src)
 
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(!C || !user)
@@ -39,7 +39,7 @@
 			to_chat(user, "<span class='notice'>You finish taking taking the catwalk apart.</span>")
 			new /obj/item/stack/rods(src.loc, 2)
 			new /obj/structure/lattice(src.loc)
-			del(src)
+			qdel(src)
 		return
 
 	if(istype(C, /obj/item/weapon/cable_coil))

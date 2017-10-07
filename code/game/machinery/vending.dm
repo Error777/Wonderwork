@@ -90,11 +90,11 @@
 /obj/machinery/vending/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			del(src)
+			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
-				del(src)
+				qdel(src)
 				return
 		if(3.0)
 			if (prob(25))
@@ -109,7 +109,7 @@
 	if (prob(50))
 		spawn(0)
 			src.malfunction()
-			del(src)
+			qdel(src)
 		return
 
 	return
@@ -503,9 +503,9 @@
 				user << "\blue You successfully pull the coin out before the [src] could swallow it."
 			else
 				user << "\blue You weren't able to pull the coin out fast enough, the machine ate it, string and all."
-				del(coin)
+				qdel(coin)
 		else
-			del(coin)
+			qdel(coin)
 
 	R.amount--
 
@@ -904,7 +904,7 @@
 
 /obj/machinery/vending/pizza
 	name = "PizzaFlat"
-	desc = "Pizza machine only on a PizzaFlat Ñorporation. With a taste of Italy."
+	desc = "Pizza machine only on a PizzaFlat ï¿½orporation. With a taste of Italy."
 	icon_state = "pizzavend"
 	refill_canister = /obj/item/weapon/vending_charge/snack
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita = 3,/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 4,/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushroompizza = 2,)

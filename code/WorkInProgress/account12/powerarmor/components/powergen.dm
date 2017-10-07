@@ -72,7 +72,7 @@
 			user << "\blue You feed plasma ore into the armor's generator."
 			fuel += 15
 			//raw plasma has impurities, so it doesn't provide as much fuel. --NEO
-			del(item)
+			qdel(item)
 		else
 			user << "\red The generator already has plenty of plasma."
 			return 1

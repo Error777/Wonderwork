@@ -627,7 +627,7 @@ steam.start() -- spawns the effect
 /obj/effect/effect/mustard_gas/New()
 	..()
 	spawn (100)
-		del(src)
+		qdel(src)
 	return
 
 /obj/effect/effect/mustard_gas/Move()
@@ -694,7 +694,7 @@ steam.start() -- spawns the effect
 					sleep(10)
 					step(smoke,direction)
 				spawn(100)
-					del(smoke)
+					qdel(smoke)
 					src.total_smoke--
 
 
@@ -1046,14 +1046,14 @@ steam.start() -- spawns the effect
 
 
 	ex_act(severity)
-		del(src)
+		qdel(src)
 
 	blob_act()
-		del(src)
+		qdel(src)
 
 	bullet_act()
 		if(metal==1 || prob(50))
-			del(src)
+			qdel(src)
 
 	attack_paw(var/mob/user)
 		attack_hand(user)
@@ -1066,7 +1066,7 @@ steam.start() -- spawns the effect
 				if ((O.client && !( O.blinded )))
 					O << "\red [user] smashes through the foamed metal."
 
-			del(src)
+			qdel(src)
 		else
 			user << "\blue You hit the metal foam but bounce off it."
 		return
@@ -1080,8 +1080,8 @@ steam.start() -- spawns the effect
 			for(var/mob/O in viewers(src))
 				if (O.client)
 					O << "\red [G.assailant] smashes [G.affecting] through the foamed metal wall."
-			del(I)
-			del(src)
+			qdel(I)
+			qdel(src)
 			return
 
 		if(prob(I.force*20 - metal*25))
@@ -1089,7 +1089,7 @@ steam.start() -- spawns the effect
 			for(var/mob/O in oviewers(user))
 				if ((O.client && !( O.blinded )))
 					O << "\red [user] smashes through the foamed metal."
-			del(src)
+			qdel(src)
 		else
 			user << "\blue You hit the metal foam to no effect."
 

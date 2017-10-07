@@ -32,4 +32,4 @@
 
 	uses--
 	if(uses == 0)
-		del(src)
+		qdel(src)

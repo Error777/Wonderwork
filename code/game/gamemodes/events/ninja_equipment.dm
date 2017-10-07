@@ -46,17 +46,17 @@ ________________________________________________________________________________
 	if(AI)//If there are AIs present when the ninja kicks the bucket.
 		killai()
 	if(hologram)//If there is a hologram
-		del(hologram.i_attached)//Delete it and the attached image.
-		del(hologram)
+		qdel(hologram.i_attached)//Delete it and the attached image.
+		qdel(hologram)
 	..()
 	return
 
 //Simply deletes all the attachments and self, killing all related procs.
 /obj/item/clothing/suit/space/space_ninja/proc/terminate()
-	del(n_hood)
-	del(n_gloves)
-	del(n_shoes)
-	del(src)
+	qdel(n_hood)
+	qdel(n_gloves)
+	qdel(n_shoes)
+	qdel(src)
 
 /obj/item/clothing/suit/space/space_ninja/proc/killai(mob/living/silicon/ai/A = AI)
 	if(A.client)
@@ -64,7 +64,7 @@ ________________________________________________________________________________
 		A << browse(null, "window=hack spideros")
 	AI = null
 	A.death(1)//Kill, deleting mob.
-	del(A)
+	qdel(A)
 	return
 
 //=======//SUIT VERBS//=======//
@@ -744,8 +744,8 @@ ________________________________________________________________________________
 
 	spawn while(hologram&&s_initialized&&AI)//Suit on and there is an AI present.
 		if(!s_initialized||get_dist(affecting,hologram.loc)>3)//Once suit is de-initialized or hologram reaches out of bounds.
-			del(hologram.i_attached)
-			del(hologram)
+			qdel(hologram.i_attached)
+			qdel(hologram)
 
 			verbs -= /obj/item/clothing/suit/space/space_ninja/proc/ai_holo_clear
 			return
@@ -765,8 +765,8 @@ ________________________________________________________________________________
 	set category = "AI Ninja Equip"
 	set src = usr.loc
 
-	del(hologram.i_attached)
-	del(hologram)
+	qdel(hologram.i_attached)
+	qdel(hologram)
 
 	verbs -= /obj/item/clothing/suit/space/space_ninja/proc/ai_holo_clear
 	return

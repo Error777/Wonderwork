@@ -264,7 +264,7 @@
 				"You hear ratchet.")
 			pipe_vision_img = image(src, loc, layer = 20, dir = dir)
 			new /obj/item/pipe(loc, make_from=src)
-			del(src)
+			qdel(src)
 
 /obj/machinery/atmospherics/unary/vent_scrubber/Del()
 	if(initial_loc)

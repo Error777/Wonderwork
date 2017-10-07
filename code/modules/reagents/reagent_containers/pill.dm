@@ -26,9 +26,9 @@
 				reagents.reaction(M, INGEST)
 				spawn(5)
 					reagents.trans_to(M, reagents.total_volume)
-					del(src)
+					qdel(src)
 			else
-				del(src)
+				qdel(src)
 			return 1
 
 		else if(istype(M, /mob/living/carbon/human) )
@@ -51,9 +51,9 @@
 				reagents.reaction(M, INGEST)
 				spawn(5)
 					reagents.trans_to(M, reagents.total_volume)
-					del(src)
+					qdel(src)
 			else
-				del(src)
+				qdel(src)
 
 			return 1
 
@@ -70,7 +70,7 @@
 			for(var/mob/O in viewers(2, user))
 				O.show_message("\red [user] puts something in [target].", 1)
 			spawn(5)
-				del(src)
+				qdel(src)
 
 		return
 

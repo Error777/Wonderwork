@@ -202,7 +202,7 @@
 				if((missile_amount + 1) <= max_missile_amount)
 					missile_amount++
 					user << "<span class='info'>You place the [I] into the [attached_to].</span>"
-					del(I)
+					qdel(I)
 					return 1
 				else
 					user << "<span class='warning'>\The missile pylon is full.</span>"

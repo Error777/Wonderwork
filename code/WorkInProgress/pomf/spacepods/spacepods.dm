@@ -517,7 +517,7 @@
 					if(t_air)
 						t_air.merge(removed)
 					else //just delete the cabin gas, we're in space or some shit
-						del(removed)
+						qdel(removed)
 		else
 			return stop()
 		return
@@ -656,7 +656,7 @@
 			if(istype(V,/mob))
 				V.loc = src.loc
 		for(var/obj/O in src.contents)
-			del(O)
+			qdel(O)
 		visible_message("<span class='warning'>The [name] explodes!</span>")
 		explosion(src.loc,-1,0,2,7,10)
 		icon_state = icon_state+"_destroy"

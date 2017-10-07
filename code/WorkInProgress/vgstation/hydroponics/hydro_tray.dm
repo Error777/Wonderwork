@@ -202,7 +202,7 @@
 
 			if(!S.seed)
 				to_chat(user, "The packet seems to be empty. You throw it away.")
-				del(O)
+				qdel(O)
 				return
 
 			to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")
@@ -224,7 +224,7 @@
 
 			lastcycle = world.time
 
-			del(O)
+			qdel(O)
 
 			check_level_sanity()
 			update_icon()
@@ -256,7 +256,7 @@
 
 			var/obj/structure/claypot/S = new(get_turf(C))
 			transfer_fingerprints(C, S)
-			del(C)
+			qdel(C)
 
 			if(seed.large)
 				S.icon_state += "-large"
@@ -342,7 +342,7 @@
 		weedlevel -= spray.weed_kill_str
 		to_chat(user, "You spray [src] with [O].")
 		playsound(loc, 'sound/effects/spray3.ogg', 50, 1, -6)
-		del(O)
+		qdel(O)
 
 		check_level_sanity()
 		update_icon()
@@ -366,7 +366,7 @@
 			to_chat(user, "<span class='alert'>[src] is already occupied!</span>")
 		else
 			user.drop_item(O, force_drop = 1)
-			del(O)
+			qdel(O)
 
 			var/obj/machinery/apiary/A = new(src.loc)
 			A.icon = src.icon
@@ -376,7 +376,7 @@
 			A.contents = contents.Copy()
 			contents.len = 0
 			component_parts.len = 0
-			del(src)
+			qdel(src)
 
 	else if(O.is_sharp() && harvest)
 		attack_hand(user)

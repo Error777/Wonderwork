@@ -1335,7 +1335,7 @@ About the new airlock wires panel:
 					ae.icon_state = "door_electronics_smoked"
 					operating = 0
 
-				del(src)
+				qdel(src)
 				return
 		else if(arePowerSystemsOn() && !(stat & NOPOWER))
 			user << "\blue The airlock's motors resist your efforts to force it."
@@ -1416,7 +1416,7 @@ About the new airlock wires panel:
 				S.victim = M
 				S.loc = M.loc
 				spawn(20)
-					del(S)
+					qdel(S)
 				M.emote("scream")
 			var/turf/location = src.loc
 			if(istype(location, /turf/simulated))

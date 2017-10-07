@@ -160,7 +160,7 @@
 /mob/living/simple_animal/hostile/retaliate/malf_drone/Die()
 	src.visible_message("\blue \icon[src] [src] suddenly breaks apart.")
 	..()
-	del(src)
+	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/malf_drone/Del()
 	//some random debris left behind

@@ -24,11 +24,11 @@
 
 /obj/item/weapon/flamethrower/Del()
 	if(weldtool)
-		del(weldtool)
+		qdel(weldtool)
 	if(igniter)
-		del(igniter)
+		qdel(igniter)
 	if(ptank)
-		del(ptank)
+		qdel(ptank)
 	..()
 	return
 
@@ -82,7 +82,7 @@
 			ptank.loc = T
 			ptank = null
 		new /obj/item/stack/rods(T)
-		del(src)
+		qdel(src)
 		return
 
 	if(isscrewdriver(W) && igniter && !lit)

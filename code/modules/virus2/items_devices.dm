@@ -57,7 +57,7 @@
 				if(airborne_can_reach(src.loc, target.loc))
 					if(get_infection_chance(target))
 						infect_virus2(target,src.virus2)
-		del(src)
+		qdel(src)
 
 /obj/item/weapon/virusdish/examine()
 	usr << "This is a virus containment dish"

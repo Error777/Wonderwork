@@ -105,7 +105,7 @@
 	user.put_in_hands(stuck)
 	stuck = null
 	overlays = null
-	del(src)
+	qdel(src)
 
 /obj/item/weapon/ducttape/afterattack(var/A, mob/user, flag, params)
 

@@ -183,12 +183,12 @@
 	if(istype(W, /obj/item/weapon/cable_coil))
 		if(W:amount >= 5)
 			W:amount -= 5
-			if(!W:amount) del(W)
+			if(!W:amount) qdel(W)
 			user << "<span class='notice'>You add some cable to the potato and slide it inside the battery encasing.</span>"
 			var/obj/item/weapon/cell/potato/pocell = new /obj/item/weapon/cell/potato(user.loc)
 			pocell.maxcharge = src.potency * 10
 			pocell.charge = pocell.maxcharge
-			del(src)
+			qdel(src)
 			return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/grapes
@@ -352,8 +352,8 @@
 			var/obj/item/clothing/mask/cigarette/weed/P = new(user.loc)
 			reagents.trans_to(P, reagents.total_volume)
 			P.name = pick("joint","doobie","spliff","roach","blunt","roll","fatty","reefer")
-			del(W)
-			del(src)
+			qdel(W)
+			qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiadeus
 	seed = "/obj/item/seeds/ambrosiadeus"
@@ -377,8 +377,8 @@
 			var/obj/item/clothing/mask/cigarette/weed/P = new(user.loc)
 			reagents.trans_to(P, reagents.total_volume)
 			P.name = pick("joint","doobie","spliff","roach","blunt","roll","fatty","reefer")
-			del(W)
-			del(src)
+			qdel(W)
+			qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/apple
 	seed = "/obj/item/seeds/appleseed"
@@ -458,7 +458,7 @@
 	if(istype(W, /obj/item/weapon/circular_saw) || istype(W, /obj/item/weapon/hatchet) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/kitchen/utensil/knife) || istype(W, /obj/item/weapon/kitchenknife) || istype(W, /obj/item/weapon/melee/energy))
 		user.show_message("<span class='notice'>You carve a face into [src]!</span>", 1)
 		new /obj/item/clothing/head/pumpkinhead (user.loc)
-		del(src)
+		qdel(src)
 		return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/lime
@@ -583,7 +583,7 @@
 		..()
 		new/obj/effect/decal/cleanable/tomato_smudge(src.loc)
 		src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
-		del(src)
+		qdel(src)
 		return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/killertomato
@@ -611,7 +611,7 @@
 	if(istype(user.loc,/turf/space))
 		return
 	new /mob/living/simple_animal/tomato(user.loc)
-	del(src)
+	qdel(src)
 
 	user << "<span class='notice'>You plant the killer-tomato.</span>"
 
@@ -635,7 +635,7 @@
 		src.reagents.reaction(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.reaction(A)
-		del(src)
+		qdel(src)
 		return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/bluetomato
@@ -658,7 +658,7 @@
 		src.reagents.reaction(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.reaction(A)
-		del(src)
+		qdel(src)
 		return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/bluetomato/HasEntered(AM as mob|obj)
@@ -854,7 +854,7 @@
 	if(istype(user.loc,/turf/space))
 		return
 	new /mob/living/simple_animal/mushroom(user.loc)
-	del(src)
+	qdel(src)
 
 	user << "<span class='notice'>You plant the walking mushroom.</span>"
 
@@ -900,7 +900,7 @@
 	planted.endurance = endurance
 	planted.yield = yield
 	planted.potency = potency
-	del(src)
+	qdel(src)
 
 	user << "<span class='notice'>You plant the glowshroom.</span>"
 
@@ -934,7 +934,7 @@
 	New()
 		new/obj/item/stack/tile/grass(src.loc)
 		spawn(5) //Workaround to keep harvesting from working weirdly.
-			del(src)
+			qdel(src)
 */
 
 //This object is just a transition object. All it does is make dosh and delete itself. -Cheridan
@@ -963,7 +963,7 @@
 			else
 				new/obj/item/weapon/spacecash/c1000(src.loc)
 		spawn(5) //Workaround to keep harvesting from working weirdly.
-			del(src)
+			qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/bluespacetomato
 	seed = "/obj/item/seeds/bluespacetomatoseed"
@@ -989,7 +989,7 @@
 		if(inner_teleport_radius < 1) //Wasn't potent enough, it just splats.
 			new/obj/effect/decal/cleanable/oil(src.loc)
 			src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
-			del(src)
+			qdel(src)
 			return
 		for(var/turf/T in orange(M,outer_teleport_radius))
 			if(T in orange(M,inner_teleport_radius)) continue
@@ -1026,5 +1026,5 @@
 					s.start()
 		new/obj/effect/decal/cleanable/oil(src.loc)
 		src.visible_message("<span class='notice'>The [src.name] has been squashed, causing a distortion in space-time.</span>","<span class='moderate'>You hear a splat and a crackle.</span>")
-		del(src)
+		qdel(src)
 		return

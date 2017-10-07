@@ -51,7 +51,7 @@
 		else
 			warning("A lighting overlay realised it was in nullspace in update_overlay() and got pooled!")
 
-		del(src)
+		qdel(src)
 
 	var/list/L = src.color:Copy() // For some dumb reason BYOND won't allow me to use [] on a colour matrix directly.
 	var/anylums = 0

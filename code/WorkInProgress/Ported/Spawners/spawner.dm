@@ -129,7 +129,7 @@
 			p4.air_contents.temperature = btemp + T0C
 			p2.status = 1
 
-	del(src)
+	qdel(src)
 
 
 /obj/spawner/newbomb/New()
@@ -205,4 +205,4 @@
 			OT.air_contents.temperature = btemp2 + T0C
 
 			V.update_icon()
-	//del(src)
+	//qdel(src)

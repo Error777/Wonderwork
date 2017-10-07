@@ -194,7 +194,7 @@
 						playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 100, 0, 0)
 						engine_type = I.type
 						update_icon()
-						del(I)
+						qdel(I)
 
 			else if(istype(I, /obj/item/weapon/cable_coil))
 				if(CSHasFlag(P_CS_ENGINE) && !CSHasFlag(P_CS_WIRES) && GetRequiredToolUsage(src) == 0)
@@ -218,7 +218,7 @@
 						playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 100, 0, 0)
 						cell_type = I.type
 						update_icon()
-						del(I)
+						qdel(I)
 
 	parts/
 		icon = 'icons/pods/pod_attachments.dmi'
@@ -271,8 +271,8 @@
 						var/obj/item/pod_construction_part/parts/armor/A = src
 						spawn(-1)
 							A.CreatePod(get_turf(frame), frame)
-						del(frame)
-						del(src)
+						qdel(frame)
+						qdel(src)
 						return 0
 
 					user << "<span class='info'>You attached the [src] to the [frame].</span>"
@@ -280,7 +280,7 @@
 					frame.CSAddFlag(required_action)
 					frame.update_icon()
 					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 100, 0, 0)
-					del(src)
+					qdel(src)
 			else
 				if(result == P_C_ERROR_REQUIRES)
 					user << "<span class='info'>The [src] requires [BF2Text(required_construction_stage)].</span>"
@@ -317,8 +317,8 @@
 					if(W.isOn())
 						var/obj/item/pod_construction_part/frame/F = new(get_turf(left_frame))
 						F.dir = left_frame.dir
-						del(left_frame)
-						del(right_frame)
+						qdel(left_frame)
+						qdel(right_frame)
 
 						F.PlayToolSound(P_CS_ACTION_WELD)
 
@@ -373,7 +373,7 @@
 			proc/CreatePod(var/turf/location, var/obj/item/pod_construction_part/frame/F)
 				var/obj/pod/pod = new pod_type(location)
 				if(pod.GetAttachmentOnHardpoint(P_HARDPOINT_ENGINE))
-					del(pod.GetAttachmentOnHardpoint(P_HARDPOINT_ENGINE))
+					qdel(pod.GetAttachmentOnHardpoint(P_HARDPOINT_ENGINE))
 				var/obj/item/weapon/pod_attachment/engine/E = new F.engine_type(pod)
 				E.OnAttach(pod)
 

@@ -27,7 +27,7 @@ atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed
 	if(!on_fire)
 		return
 	new ashtype(src.loc)
-	del(src)
+	qdel(src)
 
 /atom/proc/extinguish()
 	on_fire=0
@@ -64,7 +64,7 @@ atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed
 		return 1
 	if(molten || on_fire)
 		if(istype(E))
-			del(E)
+			qdel(E)
 		return 0
 	if(!E && soot_type && prob(25))
 		new soot_type(src)
@@ -126,7 +126,7 @@ turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh, atom/sou
 	for(var/atom/A in loc)
 		A.extinguish()
 
-	del(src)
+	qdel(src)
 
 /obj/fire/process()
 	. = 1
@@ -134,10 +134,10 @@ turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh, atom/sou
 	//get location and check if it is in a proper ZAS zone
 	var/turf/simulated/floor/S = loc
 	if(!S.zone)
-		del(src)
+		qdel(src)
 
 	if(!istype(S))
-		del(src)
+		qdel(src)
 
 	var/datum/gas_mixture/air_contents = S.return_air()
 	//get liquid fuels on the ground.
@@ -147,7 +147,7 @@ turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh, atom/sou
 
 	//check if there is something to combust
 	if(!air_contents.check_combustability(liquid))
-		del(src)
+		qdel(src)
 
 	//get a firelevel and set the icon
 	firelevel = air_contents.calculate_firelevel(liquid)
@@ -211,7 +211,7 @@ turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh, atom/sou
 	..()
 
 	if(!istype(loc, /turf))
-		del(src)
+		qdel(src)
 
 	dir = pick(cardinal)
 	set_light(3)
@@ -255,7 +255,7 @@ datum/gas_mixture/proc/zburn(obj/effect/decal/cleanable/liquid_fuel/liquid,force
 			if(liquid)
 			//Liquid Fuel
 				if(liquid.amount <= 0)
-					del(liquid)
+					qdel(liquid)
 				else
 					total_fuel += liquid.amount
 
@@ -300,11 +300,11 @@ datum/gas_mixture/proc/zburn(obj/effect/decal/cleanable/liquid_fuel/liquid,force
 
 			if(fuel)
 				fuel.moles -= fuel.moles * used_fuel_ratio * used_reactants_ratio
-				if(fuel.moles <= 0) del(fuel)
+				if(fuel.moles <= 0) qdel(fuel)
 
 			if(liquid)
 				liquid.amount -= liquid.amount * used_fuel_ratio * used_reactants_ratio
-				if(liquid.amount <= 0) del(liquid)
+				if(liquid.amount <= 0) qdel(liquid)
 
 			//calculate the energy produced by the reaction and then set the new temperature of the mix
 			temperature = (starting_energy + vsc.fire_fuel_energy_release * total_fuel) / heat_capacity()

@@ -73,7 +73,7 @@ obj/structure/windoor_assembly/Del()
 						new /obj/item/stack/sheet/rglass(get_turf(src), 5)
 						if(secure)
 							new /obj/item/stack/rods(get_turf(src), 4)
-						del(src)
+						qdel(src)
 				else
 					user << "\blue You need more welding fuel to dissassemble the windoor assembly."
 					return
@@ -246,7 +246,7 @@ obj/structure/windoor_assembly/Del()
 						src.electronics.loc = windoor
 
 
-					del(src)
+					qdel(src)
 
 
 			else

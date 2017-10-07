@@ -25,7 +25,7 @@
 				if(input_obj)
 					if(isturf(input_obj.loc))
 						input_plate = input_obj.loc
-						del(input_obj)
+						qdel(input_obj)
 						break
 
 			if(!input_plate)
@@ -98,7 +98,7 @@
 			M.client.eye = src
 		M.loc = src
 		src.occupant = M
-		del(G)
+		qdel(G)
 		update_icon()
 
 /obj/machinery/gibber/verb/eject()
@@ -160,7 +160,7 @@
 
 	src.occupant.death(1)
 	src.occupant.ghostize()
-	del(src.occupant)
+	qdel(src.occupant)
 	spawn(src.gibtime)
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 		operating = 0

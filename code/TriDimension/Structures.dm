@@ -54,7 +54,7 @@
 	Del()
 		spawn(1)
 			if(target && icon_state == "ladderdown")
-				del(target)
+				qdel(target)
 		return ..()
 
 	attack_paw(var/mob/M)
@@ -191,7 +191,7 @@
 				else
 					M.visible_message("\blue \The [M] puts [G.affecting] [src.icon_state == "ladderup" ? "up" : "down"] \the [src]!", "\blue You put [G.affecting] [src.icon_state == "ladderup"  ? "up" : "down"] \the [src]!", "You hear some grunting, and clanging of a metal ladder being used.")
 					G.affecting.Move(target.loc)
-					del(W)
+					qdel(W)
 
 
 
@@ -218,7 +218,7 @@
 		attack_hand(var/mob/M)
 
 			if(!target || !istype(target.loc, /turf))
-				del(src)
+				qdel(src)
 
 			if(active)
 				M << "That [src] is being used."
@@ -236,7 +236,7 @@
 
 			spawn(7)
 				if(!target || !istype(target.loc, /turf))
-					del(src)
+					qdel(src)
 				if(M.z == z && get_dist(src,M) <= 1)
 					var/list/adjacent_to_me = global_adjacent_z_levels["[z]"]
 					M.visible_message("\blue \The [M] scurries [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "You scramble [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "You hear some grunting, and a hatch sealing.")

@@ -130,6 +130,6 @@
 	if (istype(O, /obj/item/weapon/paper))
 		new /obj/item/weapon/paperspoon( get_turf(usr.loc), 2 )
 		usr << "\blue You \red make \blue paper \red spoon! \blue You \red are \blue mad!"	//lol
-		del(O)
+		qdel(O)
 		return
 	..()

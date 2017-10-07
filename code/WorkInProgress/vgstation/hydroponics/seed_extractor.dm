@@ -92,7 +92,7 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 		else
 			to_chat(user, "[O] doesn't seem to have any usable seeds inside it.")
 
-		del(O)
+		qdel(O)
 
 	//Grass. //Why isn't this using the nonplant_seed_type functionality below?
 	else if(istype(O, /obj/item/stack/tile/grass))
@@ -111,7 +111,7 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			while(t_amount < t_max)
 				new F.nonplant_seed_type(src.loc)
 				t_amount++
-			del(F)
+			qdel(F)
 
 	..()
 
@@ -199,7 +199,7 @@ obj/machinery/seed_extractor/Topic(var/href, var/list/href_list)
 			P.amount -= amt
 			if (P.amount <= 0)
 				piles -= P
-				del(P)
+				qdel(P)
 			break
 
 	for (var/obj/item/seeds/O in contents) //Now we find the seed we need to vend

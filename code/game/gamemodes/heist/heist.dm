@@ -70,7 +70,7 @@ var/global/vox_kills = 0 //Used to check the Inviolate.
 	for(var/obj/effect/landmark/L in landmarks_list)
 		if(L.name == "voxstart")
 			raider_spawn += get_turf(L)
-			del(L)
+			qdel(L)
 			continue
 
 	//Generate objectives for the group.

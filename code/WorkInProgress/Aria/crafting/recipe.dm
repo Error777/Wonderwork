@@ -78,13 +78,13 @@ datum/assemblerprint
 
 					desc += "[O.name]<BR>"
 
-					del(O)
+					qdel(O)
 
 			desc += "<BR>"
 			desc += "Requires [powerusage]W<BR>"
 			desc += "Takes [duration/10] seconds<BR>"
 
-		del(testobj)
+		qdel(testobj)
 
 	proc/builditem(var/location)
 		var/obj/O
@@ -124,7 +124,7 @@ datum/assemblerprint
 			if(!istype(O,/obj/item/chemmaker))
 				a.eject(O)
 			else
-				del(O)
+				qdel(O)
 
 			return 1
 

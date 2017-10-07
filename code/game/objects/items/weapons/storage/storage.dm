@@ -143,7 +143,7 @@
 
 	New(obj/item/sample as obj)
 		if(!istype(sample))
-			del(src)
+			qdel(src)
 		sample_object = sample
 		number = 1
 
@@ -444,7 +444,7 @@
 	// Now make the cardboard
 	user << "<span class='notice'>You fold [src] flat.</span>"
 	new src.foldable(get_turf(src))
-	del(src)
+	qdel(src)
 //BubbleWrap END
 
 

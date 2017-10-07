@@ -20,7 +20,7 @@ var/list/sacrificed = list()
 				user << "\red You feel pain, as rune disappears in reality shift caused by too much wear of space-time fabric"
 				if (istype(user, /mob/living))
 					user.take_overall_damage(5, 0)
-				del(src)
+				qdel(src)
 			if(allrunesloc && index != 0)
 				var/cultist_use = "talisman"
 				if(istype(src,/obj/effect/rune))
@@ -61,7 +61,7 @@ var/list/sacrificed = list()
 				user << "\red You feel pain, as rune disappears in reality shift caused by too much wear of space-time fabric"
 				if (istype(user, /mob/living))
 					user.take_overall_damage(5, 0)
-				del(src)
+				qdel(src)
 			var/list/cultists_names = new()
 			for(var/mob/living/carbon/C in orange(1,src))
 				if(iscultist(C) && !C.stat)
@@ -104,7 +104,7 @@ var/list/sacrificed = list()
 				new /obj/item/weapon/tome(src.loc)
 			else
 				new /obj/item/weapon/tome(usr.loc)
-			del(src)
+			qdel(src)
 			return
 
 
@@ -173,7 +173,7 @@ var/list/sacrificed = list()
 				T.hotspot_expose(700,125)
 			var/rune = src // detaching the proc - in theory
 			empulse(U, (range_red - 2), range_red)
-			del(rune)
+			qdel(rune)
 			return
 
 /////////////////////////////////////////SIXTH RUNE
@@ -347,7 +347,7 @@ var/list/sacrificed = list()
 					for (var/mob/V in viewers(src))
 						V.show_message("\red The rune turns into gray dust, veiling the surrounding runes.", 3)
 					log_game("[usr.name]([usr.ckey]) use [cultist_use] to hide runes")
-					del(src)
+					qdel(src)
 				else
 					usr.whisper("Kla[pick("'","`")]atu barada nikt'o!")
 					usr << "\red Your talisman turns into gray dust, veiling the surrounding runes."
@@ -531,8 +531,8 @@ var/list/sacrificed = list()
 				if (T.info)
 					t = "teleport to key: [T.info]"
 				log_game("[usr.name]([usr.ckey]) use rune to create talisman (TYPE:[t])")
-				del(imbued_from)
-				del(newtalisman)
+				qdel(imbued_from)
+				qdel(newtalisman)
 			else
 				return fizzle()
 
@@ -580,7 +580,7 @@ var/list/sacrificed = list()
 				if (H.current)
 					H.current << "\red \b [sanitize(input)]"
 			log_game("[usr.name]([usr.ckey]) use [cultist_use] to communicate with the others cultists")
-			del(src)
+			qdel(src)
 			return 1
 
 /////////////////////////////////////////FIFTEENTH RUNE
@@ -737,7 +737,7 @@ var/list/sacrificed = list()
 					usr.say("Nikt[pick("'","`")]o barada kla'atu!")
 					for (var/mob/V in viewers(src))
 						V.show_message("\red The rune turns into red dust, reveaing the surrounding runes.", 3)
-					del(src)
+					qdel(src)
 					return
 				if(istype(W,/obj/item/weapon/paper/talisman))
 					usr.whisper("Nikt[pick("'","`")]o barada kla'atu!")
@@ -820,7 +820,7 @@ var/list/sacrificed = list()
 					user.take_overall_damage(15, 0)
 					C.say("Khari[pick("'","`")]d! Gual'te nikka!")
 				log_game("Cultists use rune to free [target_name]. Cultists: [cultists_names]")
-				del(src)
+				qdel(src)
 			return fizzle()
 
 /////////////////////////////////////////NINETEENTH RUNE
@@ -859,7 +859,7 @@ var/list/sacrificed = list()
 				"\red You are blinded by the flash of red light! After you're able to see again, you see that now instead of the rune there's a body.", \
 				"\red You hear a pop and smell ozone.")
 				log_game("Cultists use rune to summon [target_name]. Cultists: [cultists_names]")
-				del(src)
+				qdel(src)
 			return fizzle()
 
 /////////////////////////////////////////TWENTIETH RUNES
@@ -900,7 +900,7 @@ var/list/sacrificed = list()
 					usr.attack_log += "\[[time_stamp()]\]<font color='red'> Use [cultist_use] to deafen victim(s). Victims: [victims_names]</font>"
 					message_admins("[usr.name]([usr.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[usr]'>JMP</A>) use [cultist_use] to deafen victim(s). Victims: [victims_names]", 0)
 					log_attack("[usr.name]([usr.ckey]) use [cultist_use] to deafen victim(s). Victims: [victims_names]")
-					del(src)
+					qdel(src)
 				else
 					usr.whisper("Sti[pick("'","`")] kaliedir!")
 					usr << "\red Your talisman turns into gray dust, deafening everyone around."
@@ -958,7 +958,7 @@ var/list/sacrificed = list()
 					usr.attack_log += "\[[time_stamp()]\]<font color='red'> Use [cultist_use] to blind victim(s). Victims: [victims_names]</font>"
 					message_admins("[usr.name]([usr.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[usr]'>JMP</A>) use [cultist_use] to blind victim(s). Victims: [victims_names]", 0)
 					log_attack("[usr.name]([usr.ckey]) use [cultist_use] to blind victim(s). Victims: [victims_names]")
-					del(src)
+					qdel(src)
 				else
 					usr.whisper("Sti[pick("'","`")] kaliesin!")
 					usr << "\red Your talisman turns into gray dust, blinding those who not follow the Nar-Sie."
@@ -1010,7 +1010,7 @@ var/list/sacrificed = list()
 						C.attack_log += "\[[time_stamp()]\]<font color='red'> Use rune to boil victim(s)'s blood. Victims: [victims_names]</font>"
 				message_admins("Cultists use to boil victim(s)'s blood(<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>). Cultists: [cultists_names] Victims: [victims_names]", 0)
 				log_attack("Cultists use to boil victim(s)'s blood. Cultists: [cultists_names] Victims: [victims_names]")
-				del(src)
+				qdel(src)
 			else
 				return fizzle()
 			return
@@ -1040,8 +1040,8 @@ var/list/sacrificed = list()
 							M << "\red Blood suddenly ignites, burning you!"
 							var/turf/T = get_turf(B)
 							T.hotspot_expose(700,125)
-							del(B)
-				del(src)
+							qdel(B)
+				qdel(src)
 
 //////////             Rune 24 (counting burningblood, which kinda doesnt work yet.)
 
@@ -1072,7 +1072,7 @@ var/list/sacrificed = list()
 					usr.attack_log += "\[[time_stamp()]\]<font color='red'> Use rune to stun victim(s). Victims: [victims_names]</font>"
 					message_admins("[usr.name]([usr.ckey])(<A HREF='?_src_=holder;adminplayerobservejump=\ref[usr]'>JMP</A>) use rune to stun victim(s). Victims: [victims_names]", 0)
 					log_attack("[usr.name]([usr.ckey]) use rune to blind victim(s). Victims: [victims_names]")
-				del(src)
+				qdel(src)
 			else                        ///When invoked as talisman, stun and mute the target mob.
 				usr.say("Dream sign ''Evil sealing talisman'[pick("'","`")]!")
 				var/obj/item/weapon/nullrod/N = locate() in T
@@ -1120,5 +1120,5 @@ var/list/sacrificed = list()
 			user.take_overall_damage(15, 0)
 			log_game("[usr.name]([usr.ckey]) use rune to stun summon a set of armor")
 
-			del(src)
+			qdel(src)
 			return

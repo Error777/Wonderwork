@@ -116,4 +116,4 @@
 	..()
 	spawn(time_between_triggers)
 		if(src)
-			del(src)
+			qdel(src)

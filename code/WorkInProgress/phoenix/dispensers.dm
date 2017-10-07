@@ -106,7 +106,7 @@
 			user << "\red The [src] is full."
 			return
 		else
-			del(D)
+			qdel(D)
 			numofRB++
 			update_icon()
 			user << "\blue You add a rollerbed to the despenser."
@@ -160,7 +160,7 @@
 			user << "\red The [src] is full."
 			return
 		else
-			del(D)
+			qdel(D)
 			numofWC++
 			update_icon()
 			user << "\blue You add a wheelchair to the despenser."
@@ -205,7 +205,7 @@
 			user << "\red The [src] is full."
 			return
 		else
-			del(D)
+			qdel(D)
 			numofBB++
 			update_icon()
 			user << "\blue You add a bodybag to the despenser."

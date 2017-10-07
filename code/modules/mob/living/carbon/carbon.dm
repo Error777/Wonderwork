@@ -345,8 +345,8 @@
 		return
 
 	if( istype(W,/obj/item/tk_grab) )
-		if(hand)	del(l_hand)
-		else		del(r_hand)
+		if(hand)	qdel(l_hand)
+		else		qdel(r_hand)
 		return
 
 	if (src.in_throw_mode)

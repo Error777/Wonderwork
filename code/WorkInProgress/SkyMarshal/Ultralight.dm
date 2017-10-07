@@ -146,19 +146,19 @@ atom/proc/ul_Extinguish()
 				if(Affected.MaxRed)
 					Affected.MaxRed -= DeltaRed
 					if(!Affected.MaxRed.len)
-						del(Affected.MaxRed)
+						qdel(Affected.MaxRed)
 
 			if(DeltaGreen > 0)
 				if(Affected.MaxGreen)
 					Affected.MaxGreen -= DeltaGreen
 					if(!Affected.MaxGreen.len)
-						del(Affected.MaxGreen)
+						qdel(Affected.MaxGreen)
 
 			if(DeltaBlue > 0)
 				if(Affected.MaxBlue)
 					Affected.MaxBlue -= DeltaBlue
 					if(!Affected.MaxBlue.len)
-						del(Affected.MaxBlue)
+						qdel(Affected.MaxBlue)
 
 			Affected.ul_UpdateLight()
 

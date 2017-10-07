@@ -17,7 +17,7 @@ obj/machinery/atmospherics/pipe
 
 	proc/check_pressure(pressure)
 		//Return 1 if parent should continue checking other pipes
-		//Return null if parent should stop checking other pipes. Recall: del(src) will by default return null
+		//Return null if parent should stop checking other pipes. Recall: qdel(src) will by default return null
 
 		return 1
 
@@ -54,7 +54,7 @@ obj/machinery/atmospherics/pipe
 		return parent.return_network(reference)
 
 	Del()
-		del(parent)
+		qdel(parent)
 		if(air_temporary)
 			loc.assume_air(air_temporary)
 
@@ -168,7 +168,7 @@ obj/machinery/atmospherics/pipe
 			var/datum/effect/effect/system/harmless_smoke_spread/smoke = new
 			smoke.set_up(1,0, src.loc, 0)
 			smoke.start()
-			del(src)
+			qdel(src)
 
 		proc/normalize_dir()
 			if(dir==3)
@@ -199,7 +199,7 @@ obj/machinery/atmospherics/pipe
 
 			else
 				if(!node1&&!node2)
-					del(src) //TODO: silent deleting looks weird
+					qdel(src) //TODO: silent deleting looks weird
 				var/have_node1 = node1?1:0
 				var/have_node2 = node2?1:0
 				icon_state = "exposed[have_node1][have_node2][invisibility ? "-f" : "" ]"
@@ -235,12 +235,12 @@ obj/machinery/atmospherics/pipe
 		disconnect(obj/machinery/atmospherics/reference)
 			if(reference == node1)
 				if(istype(node1, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node1 = null
 
 			if(reference == node2)
 				if(istype(node2, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node2 = null
 
 			update_icon()
@@ -476,7 +476,7 @@ obj/machinery/atmospherics/pipe
 		disconnect(obj/machinery/atmospherics/reference)
 			if(reference == node1)
 				if(istype(node1, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node1 = null
 
 			update_icon()
@@ -585,7 +585,7 @@ obj/machinery/atmospherics/pipe
 		disconnect(obj/machinery/atmospherics/reference)
 			if(reference == node1)
 				if(istype(node1, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node1 = null
 
 			update_icon()
@@ -678,17 +678,17 @@ obj/machinery/atmospherics/pipe
 		disconnect(obj/machinery/atmospherics/reference)
 			if(reference == node1)
 				if(istype(node1, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node1 = null
 
 			if(reference == node2)
 				if(istype(node2, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node2 = null
 
 			if(reference == node3)
 				if(istype(node3, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node3 = null
 
 			update_icon()
@@ -717,7 +717,7 @@ obj/machinery/atmospherics/pipe
 				icon_state = "manifold_[connected]_[unconnected]"
 
 				if(!connected)
-					del(src)
+					qdel(src)
 
 			return
 
@@ -896,22 +896,22 @@ obj/machinery/atmospherics/pipe
 		disconnect(obj/machinery/atmospherics/reference)
 			if(reference == node1)
 				if(istype(node1, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node1 = null
 
 			if(reference == node2)
 				if(istype(node2, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node2 = null
 
 			if(reference == node3)
 				if(istype(node3, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node3 = null
 
 			if(reference == node4)
 				if(istype(node4, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node4 = null
 
 			update_icon()
@@ -938,7 +938,7 @@ obj/machinery/atmospherics/pipe
 					overlays += new/image(con,dir=8)
 
 				if(!node1 && !node2 && !node3 && !node4)
-					del(src)
+					qdel(src)
 			return
 
 		initialize()
@@ -1086,7 +1086,7 @@ obj/machinery/atmospherics/pipe
 		disconnect(obj/machinery/atmospherics/reference)
 			if(reference == node)
 				if(istype(node, /obj/machinery/atmospherics/pipe))
-					del(parent)
+					qdel(parent)
 				node = null
 
 			update_icon()
@@ -1151,5 +1151,5 @@ obj/machinery/atmospherics/pipe/attackby(var/obj/item/weapon/W as obj, var/mob/u
 		for (var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
-				del(meter)
-		del(src)
+				qdel(meter)
+		qdel(src)

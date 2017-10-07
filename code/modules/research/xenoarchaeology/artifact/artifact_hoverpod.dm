@@ -11,7 +11,7 @@
 	New()
 		..()
 		for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)//Deletes the beacon so it can't be found easily
-			del(B)
+			qdel(B)
 //duplicate of parent proc, but without space drifting
 /obj/mecha/working/hoverpod/dyndomove(direction)
 	if(!can_move)

@@ -23,7 +23,7 @@
 		sleep(1)
 		for (var/channel in song.musical_free_channels)
 			global.musical_free_channels += channel // Deoccupy channels
-		del(song)
+		qdel(song)
 		..()
 
 /obj/sound_player/proc/apply_modifications_for(mob/who, sound/what, note_num, which_line, which_note) // You don't need to override this

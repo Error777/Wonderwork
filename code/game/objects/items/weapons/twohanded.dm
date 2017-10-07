@@ -96,10 +96,10 @@
 	name = "offhand"
 
 	unwield()
-		del(src)
+		qdel(src)
 
 	wield()
-		del(src)
+		qdel(src)
 
 /*
  * Fireaxe
@@ -131,7 +131,7 @@
 			if (W.dir == SOUTHWEST)
 				new /obj/item/weapon/shard( W.loc )
 				if(W.reinforced) new /obj/item/stack/rods( W.loc)
-		del(A)
+		qdel(A)
 
 
 /*
@@ -199,8 +199,8 @@
 
 		user.put_in_hands(S)
 		user << "<span class='notice'>You fasten the glass shard to the top of the rod with the cable.</span>"
-		del(I)
-		del(src)
+		qdel(I)
+		qdel(src)
 
 //spears
 /obj/item/weapon/twohanded/spear

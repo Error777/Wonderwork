@@ -221,7 +221,7 @@
 		return
 
 	else if (stat == 2 && !client)
-		del(src)
+		qdel(src)
 		return
 */
 	var/b_loss = null
@@ -328,7 +328,7 @@
 								for(var/mob/O in viewers(M, null))
 									O.show_message(text("\red [] has been pulled from []'s grip by []", G.affecting, G.assailant, src), 1)
 								//G = null
-								del(G)
+								qdel(G)
 						else
 							ok = 0
 						if (locate(/obj/item/weapon/grab, M.grabbed_by.len))
@@ -805,7 +805,7 @@ mob/living/carbon/metroid/var/temperature_resistance = T0C+75
 					if(!border_obstacle.CanPass(D, D.loc, 1, 0))
 						ok = 0
 
-	del(D)
+	qdel(D)
 	if (!( ok ))
 
 		return 0

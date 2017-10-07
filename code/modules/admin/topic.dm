@@ -158,7 +158,7 @@
 				if ((!( ticker ) || emergency_shuttle.location))
 					return
 				emergency_shuttle.incall()
-				captain_announce("Вызван эвакуационный шаттл. Он прибудет на станцию через [round(emergency_shuttle.timeleft()/60)] минут.")
+				captain_announce("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ [round(emergency_shuttle.timeleft()/60)] пїЅпїЅпїЅпїЅпїЅ.")
 				log_admin("[key_name(usr)] called the Emergency Shuttle")
 				message_admins("\blue [key_name_admin(usr)] called the Emergency Shuttle to the station", 1)
 
@@ -168,7 +168,7 @@
 				switch(emergency_shuttle.direction)
 					if(-1)
 						emergency_shuttle.incall()
-						captain_announce("Вызван эвакуационный шаттл. Он прибудет на станцию через [round(emergency_shuttle.timeleft()/60)] минут.")
+						captain_announce("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ [round(emergency_shuttle.timeleft()/60)] пїЅпїЅпїЅпїЅпїЅ.")
 						log_admin("[key_name(usr)] called the Emergency Shuttle")
 						message_admins("\blue [key_name_admin(usr)] called the Emergency Shuttle to the station", 1)
 					if(1)
@@ -183,7 +183,7 @@
 
 		emergency_shuttle.settimeleft( input("Enter new shuttle duration (seconds):","Edit Shuttle Timeleft", emergency_shuttle.timeleft() ) as num )
 		log_admin("[key_name(usr)] edited the Emergency Shuttle's timeleft to [emergency_shuttle.timeleft()]")
-		captain_announce("Вызван эвакуационный шаттл. Он прибудет на станцию через [round(emergency_shuttle.timeleft()/60)] минут.")
+		captain_announce("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ [round(emergency_shuttle.timeleft()/60)] пїЅпїЅпїЅпїЅпїЅ.")
 		message_admins("\blue [key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [emergency_shuttle.timeleft()]", 1)
 		href_list["secretsadmin"] = "check_antagonist"
 
@@ -270,7 +270,7 @@
 			log_admin("[key_name(usr)] booted [key_name(M)].")
 			message_admins("\blue [key_name_admin(usr)] booted [key_name_admin(M)].", 1)
 			//M.client = null
-			del(M.client)
+			qdel(M.client)
 
 	//Player Notes
 	else if(href_list["notes"])
@@ -333,8 +333,8 @@
 				log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 				message_admins("\blue[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 
-				del(M.client)
-				//del(M)	// See no reason why to delete mob. Important stuff can be lost. And ban can be lifted before round ends.
+				qdel(M.client)
+				//qdel(M)	// See no reason why to delete mob. Important stuff can be lost. And ban can be lifted before round ends.
 			if("No")
 				var/reason = sanitize(input(usr,"Reason?","reason","Griefer") as text|null)
 				if(!reason)
@@ -357,8 +357,8 @@
 				feedback_inc("ban_perma",1)
 				DB_ban_record(BANTYPE_PERMA, M, -1, reason)
 
-				del(M.client)
-				//del(M)
+				qdel(M.client)
+				//qdel(M)
 			if("Cancel")
 				return
 
@@ -895,7 +895,7 @@
 		S.victim = M
 		S.loc = M.loc
 		spawn(20)
-			del(S)
+			qdel(S)
 
 		var/turf/simulated/floor/T = get_turf(M)
 		if(istype(T))
@@ -1267,21 +1267,21 @@
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","SC")
 				for(var/obj/item/clothing/under/O in world)
-					del(O)
+					qdel(O)
 				ok = 1
 			if("sec_all_clothes")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","SAC")
 				for(var/obj/item/clothing/O in world)
-					del(O)
+					qdel(O)
 				ok = 1
 			if("sec_classic1")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","SC1")
 				for(var/obj/item/clothing/suit/fire/O in world)
-					del(O)
+					qdel(O)
 				for(var/obj/structure/grille/O in world)
-					del(O)
+					qdel(O)
 			if("monkey")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","M")

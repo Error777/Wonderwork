@@ -16,7 +16,7 @@
 		if (machine)
 			machine.CONSOLE = src
 		else
-			del(src)
+			qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/process()
 	updateDialog()
@@ -1071,127 +1071,127 @@
 			if (O)
 				if (istype(O,/obj/item/weapon/ore/iron))
 					ore_iron++;
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/glass))
 					ore_glass++;
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/diamond))
 					ore_diamond++;
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/plasma))
 					ore_plasma++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/gold))
 					ore_gold++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/silver))
 					ore_silver++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/uranium))
 					ore_uranium++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/clown))
 					ore_clown++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/phazon))
 					ore_phazon++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/aluminum))
 					ore_aluminum++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/adamantine))
 					ore_adamantine++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/triberium))
 					ore_triberium++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/mauxite))
 					ore_mauxite++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/molitz))
 					ore_molitz++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/pharosium))
 					ore_pharosium++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/cobryl))
 					ore_cobryl++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/char))
 					ore_char++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/claretine))
 					ore_claretine++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/bohrum))
 					ore_bohrum++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/syreline))
 					ore_syreline++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/erebite))
 					ore_erebite++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/cerenkite))
 					ore_cerenkite++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/cytine))
 					ore_cytine++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/coal))
 					ore_coal++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/ruvium))
 					ore_ruvium++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/lovite))
 					ore_lovite++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/telecrystal))
 					ore_telecrystal++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/martian))
 					ore_martian++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/eldritch))
 					ore_eldritch++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/ice))
 					ore_ice++
-					del(O)
+					qdel(O)
 					continue
 				if (istype(O,/obj/item/weapon/ore/uqill))
 					ore_uqill++
-					del(O)
+					qdel(O)
 					continue
 				O.loc = src.output.loc
 			else

@@ -184,7 +184,7 @@
 
 	if(!W.mob_can_equip(src, slot, disable_warning))
 		if(del_on_fail)
-			del(W)
+			qdel(W)
 		else
 			if(!disable_warning)
 				src << "\red You are unable to equip that." //Only print if del_on_fail is false
@@ -293,7 +293,7 @@ var/list/slot_equipment_priority = list( \
 				var/list/temp = list(  )
 				temp += L.container
 				//L = null
-				del(L)
+				qdel(L)
 				return temp
 			else
 				return L.container
@@ -439,7 +439,7 @@ var/list/slot_equipment_priority = list( \
 	var/mob/new_player/M = new /mob/new_player()
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
-		del(M)
+		qdel(M)
 		return
 
 	M.key = key

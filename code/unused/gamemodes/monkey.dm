@@ -60,7 +60,7 @@
 			if (!(rabid_monkey.mind in initial_monkeys) && (!isturf(rabid_monkey.loc) || rabid_monkey.z!=1))
 				continue
 			rabid_monkey.contract_disease(new /datum/disease/jungle_fever,1,0)
-		del(initial_monkeys)
+		qdel(initial_monkeys)
 	..()
 
 /datum/game_mode/monkey/proc/is_important_monkey(var/mob/living/carbon/monkey/M as mob)

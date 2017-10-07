@@ -62,7 +62,7 @@
 					continue
 				G.attackby(NG, user)
 			to_chat(user, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
-		del(src)
+		qdel(src)
 		return
 
 /obj/item/weapon/grown/log/tree
@@ -165,7 +165,7 @@
 	else
 		to_chat(usr, "All the leaves have fallen off the nettle from violent whacking.")
 		user.drop_item(src, force_drop = 1)
-		del(src)
+		qdel(src)
 
 /obj/item/weapon/grown/nettle/changePotency(newValue) //-QualityVan
 	potency = newValue
@@ -235,7 +235,7 @@
 	else
 		to_chat(user, "All the leaves have fallen off the deathnettle from violent whacking.")
 		user.drop_item(src, force_drop = 1)
-		del(src)
+		qdel(src)
 
 /obj/item/weapon/grown/deathnettle/changePotency(newValue) //-QualityVan
 	potency = newValue
@@ -258,5 +258,5 @@
 		to_chat(user, "<span class='notice'>You use [W] to fashion a pipe out of the corn cob!</span>")
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)
 		user.drop_item(src, force_drop = 1)
-		del(src)
+		qdel(src)
 		return

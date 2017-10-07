@@ -1157,7 +1157,7 @@
 			if (mats_used && mats_used.len)
 				src.materials_in_use = mats_used
 				//for (var/obj/item/O in mats_used)
-				//	del(O)
+				//	qdel(O)
 
 			src.powconsumption = 1500
 			src.powconsumption *= src.speed * 1.5

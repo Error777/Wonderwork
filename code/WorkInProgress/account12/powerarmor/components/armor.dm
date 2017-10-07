@@ -57,7 +57,7 @@
 		add_armor(list(melee = 10, bullet = 4, laser = 2, bomb = 5, rad = 8))
 		user << "<span class='info'>You strengthen [src], improving its resistance against radiation and melee attacks.</span>"
 		user.u_equip(W)
-		del(W)
+		qdel(W)
 
 	else if(istype(W, /obj/item/weapon/screwdriver) && !upgrades["screwdriver"])
 		upgrades["screwdriver"]++

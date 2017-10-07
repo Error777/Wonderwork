@@ -7,7 +7,7 @@
 	var/help = 0
 
 	Del()
-		del(player)
+		qdel(player)
 		..()
 
 	attack_hand(mob/user)
@@ -149,7 +149,7 @@
 	var/help = 0
 
 	Del()
-		del(player)
+		qdel(player)
 		..()
 
 	attack_self(mob/user)

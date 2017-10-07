@@ -94,7 +94,7 @@ var/datum/virtual_reality_controller/vr_controller = new()
 
 		// Remove all bullet casings for clean-up.
 		for(var/obj/item/ammo_casing/A in get_area(locate(/area/virtual_reality)))
-			del(A)
+			qdel(A)
 
 		// Make sure we're kicking people who are not supposed to be in the VR when entering is disabled.
 		if(!can_enter)

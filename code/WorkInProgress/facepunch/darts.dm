@@ -47,7 +47,7 @@
 					desc = "There is one dart on the board, and it is on the [dart1] space."
 				darts++
 
-				del(H)
+				qdel(H)
 				return
 
 			if(!dart2 && darts <= 1)
@@ -62,7 +62,7 @@
 					src.visible_message("The dart has hit [dart2]! The total is [total()]")
 					desc = "There are two darts on the board, one is worth [dart1] points, the other is worth [dart2] points."
 				darts++
-				del(H)
+				qdel(H)
 				return
 
 			if(!dart3 && darts >= 2)
@@ -77,7 +77,7 @@
 					src.visible_message("The dart has hit [dart3]! The total is [total()]")
 					desc = "There are three darts on the board, one is worth [dart1] points, the second is worth [dart2] points, and the third is worth [dart3] points."
 				darts++
-				del(H)
+				qdel(H)
 				return
 
 /obj/structure/darts/proc/resetdarts()

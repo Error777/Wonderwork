@@ -80,10 +80,10 @@
 */
 				machine.forceMove(src.loc)
 				machine = null
-				del(src)
+				qdel(src)
 			else
 				to_chat(user, "<span class='notice'>[bicon(src)]It seems this [src] was empty...</span>")
-				del(src)
+				qdel(src)
 		assembling = 0
 		return
 
@@ -92,7 +92,7 @@
 	machine.RefreshParts()
 	for(var/atom/movable/AM in src)
 		AM.loc = get_turf(src)
-	del(src)
+	qdel(src)
 
 /obj/structure/closet/crate/flatpack/attack_hand(mob/user, params)
 	return unstack(user, params, get_turf(user))
@@ -250,11 +250,11 @@
 /datum/construction/flatpack_unpack/spawn_result(mob/user as mob)
 	var/obj/structure/closet/crate/flatpack/FP = holder
 	if(!istype(FP))
-		del(src)
+		qdel(src)
 		return
 	else
 		FP.Finalize()
-		del(src)
+		qdel(src)
 		return 1
 
 #undef Fl_ACTION

@@ -35,17 +35,17 @@
 		if(state >= 2)
 			var/grabee = affecting
 			spawn(1)
-				del(src)
+				qdel(src)
 			return grabee
 		else
 			spawn(1)
-				del(src)
+				qdel(src)
 			return null
 
 	else if(structure)
 		var/grabee = structure
 		spawn(1)
-			del(src)
+			qdel(src)
 		return grabee
 
 	return null
@@ -54,7 +54,7 @@
 /obj/item/weapon/grab/proc/synch()
 	if(affecting)
 		if(affecting.anchored)//This will prevent from grabbing people that are anchored.
-			del(src)
+			qdel(src)
 		if (assailant.r_hand == src)
 			if(ishuman(assailant))
 				var/mob/living/carbon/human/H = assailant
@@ -72,17 +72,17 @@
 
 /obj/item/weapon/grab/process()
 	if(!assailant || (!affecting && !structure))
-		del(src)
+		qdel(src)
 		return
 
 	if(affecting && !structure)
 		if ((!( isturf(assailant.loc) ) || (!( isturf(affecting.loc) ) || (assailant.loc != affecting.loc && get_dist(assailant, affecting) > 1))))
 			//SN src = null
-			del(src)
+			qdel(src)
 			return
 	else if(!affecting && structure)
 		if (!isturf(structure.loc) || !isturf(structure.loc) || (assailant.loc != structure.loc && get_dist(assailant, structure) > 1))
-			del(src)
+			qdel(src)
 			return
 
 	if (assailant.client)
@@ -153,7 +153,7 @@
 		return
 	if ((!( assailant.canmove ) || assailant.lying))
 		//SN src = null
-		del(src)
+		qdel(src)
 		return
 	switch(S.id)
 		if(1.0)
@@ -178,7 +178,7 @@
 	if (!affecting)
 		return
 	if ((!( assailant.canmove ) || assailant.lying))
-		del(src)
+		qdel(src)
 		return
 	if(killing)
 		return
@@ -199,7 +199,7 @@
 				else
 					for(var/mob/O in viewers(assailant, null))
 						O.show_message(text("\red [] has failed to grab [] aggressively!", assailant, affecting), 1)
-					del(src)
+					qdel(src)
 					return*/
 			else
 				if (state < 3)
@@ -246,10 +246,10 @@
 							if(killing == 2)
 								return
 							if(!affecting)
-								del(src)
+								qdel(src)
 								return
 							if ((!( assailant.canmove ) || assailant.lying))
-								del(src)
+								qdel(src)
 								return
 							killing = 2
 							kill_loc = assailant.loc
@@ -301,15 +301,15 @@
 			user.visible_message("\red <B>[user] devours [affecting]!</B>")
 			affecting.loc = user
 			attacker.stomach_contents.Add(affecting)
-			del(src)
+			qdel(src)
 
 
 /obj/item/weapon/grab/dropped()
-	del(src)
+	qdel(src)
 	return
 
 
 /obj/item/weapon/grab/Del()
-	del(hud1)
+	qdel(hud1)
 	..()
 	return

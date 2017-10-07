@@ -55,7 +55,7 @@ datum/shuttle_controller/proc/recall()
 		if(alert == 0)
 			if(timeleft >= 600)
 				return
-			captain_announce("Эвакуационный шаттл отозван.")
+			captain_announce("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.")
 			world << sound('sound/AI/shuttlerecalled.ogg')
 			setdirection(-1)
 			online = 1
@@ -64,7 +64,7 @@ datum/shuttle_controller/proc/recall()
 					A.readyreset()
 			return
 		else //makes it possible to send shuttle back.
-			captain_announce("Шаттл отозван.")
+			captain_announce("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.")
 			setdirection(-1)
 			online = 1
 			alert = 0 // set alert back to 0 after an admin recall
@@ -273,7 +273,7 @@ datum/shuttle_controller/emergency_shuttle/process()
 						*/
 
 					if(istype(T, /turf/simulated))
-						del(T)
+						qdel(T)
 
 				for(var/mob/living/carbon/bug in end_location) // If someone somehow is still in the shuttle's docking area...
 					bug.gib()
@@ -283,7 +283,7 @@ datum/shuttle_controller/emergency_shuttle/process()
 
 				start_location.move_contents_to(end_location)
 				settimeleft(SHUTTLELEAVETIME)
-				captain_announce("Эвакуационный шаттл состыковался со станцией. У вас есть [round(timeleft()/60,1)] минуты на посадку.")
+				captain_announce("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ [round(timeleft()/60,1)] пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.")
 				world << sound('sound/AI/shuttledock.ogg')
 
 				return 1
@@ -414,7 +414,7 @@ datum/shuttle_controller/emergency_shuttle/process()
 						if(!M.buckled)
 							M.Weaken(5)
 
-				captain_announce("Эвакуационный шаттл успешно отстыковался. Оценочное время пути -- [round(timeleft()/60,1)] минут.")
+				captain_announce("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ -- [round(timeleft()/60,1)] пїЅпїЅпїЅпїЅпїЅ.")
 
 				return 1
 
@@ -450,7 +450,7 @@ datum/shuttle_controller/emergency_shuttle/process()
 		sleep(speed)
 		step(src, direction)
 		for(var/obj/effect/starender/E in loc)
-			del(src)
+			qdel(src)
 
 
 /obj/effect/starender

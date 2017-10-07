@@ -279,7 +279,7 @@
 		T.visible_message("<span class='danger'>\The [src] explodes!</span>")
 		T.hotspot_expose(700,125)
 		explosion(T, -1, 0, 2, 4)
-	del(src)
+	qdel(src)
 	return
 
 //empty tape recorders

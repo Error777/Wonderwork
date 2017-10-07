@@ -34,7 +34,7 @@
 		E.part = SK
 		SK.loc = E
 		SK.master = E
-		del(src)
+		qdel(src)
 
 /obj/structure/stool/bed/chair/proc/handle_rotation()	//making this into a seperate proc so office chairs can call it on Move()
 	if(src.dir == NORTH)
@@ -91,7 +91,7 @@
 	if(istype(W, /obj/item/weapon/wrench))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		new /obj/item/stack/sheet/wood(src.loc)
-		del(src)
+		qdel(src)
 	else
 		..()
 

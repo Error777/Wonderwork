@@ -136,7 +136,7 @@
 		M.icon_state = "box_1"
 		for(var/obj/I in component_parts)
 			I.loc = src.loc
-		del(src)
+		qdel(src)
 		ejectItem()
 		return 1
 
@@ -233,7 +233,7 @@
 			dropturf = get_turf(src)
 		loaded_item.loc = dropturf
 		if(delete)
-			del(loaded_item)
+			qdel(loaded_item)
 		loaded_item = null
 
 /obj/machinery/r_n_d/experimentor/proc/throwSmoke(turf/where)
@@ -332,7 +332,7 @@
 			smoke.set_up(1,0, src.loc, 0)
 			smoke.start()
 			playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)
-			del(R)
+			qdel(R)
 			ejectItem(TRUE)
 		if(prob(EFFECT_PROB_VERYLOW-badThingCoeff))
 			visible_message("<span class='danger'>[src]'s chemical chamber has sprung a leak!</span>")
@@ -344,7 +344,7 @@
 			smoke.set_up(1,0, src.loc, 0)
 			smoke.start()
 			playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)
-			del(R)
+			qdel(R)
 			ejectItem(TRUE)
 			warn_admins(usr, "[chosenchem] smoke")
 			investigate_log("Experimentor has released <font color='red'>[chosenchem]</font> smoke!", "experimentor")
@@ -430,7 +430,7 @@
 			smoke.set_up(1,0, src.loc, 0)
 			smoke.start()
 			playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)
-			del(R)
+			qdel(R)
 			ejectItem(TRUE)
 		if(prob(EFFECT_PROB_LOW-badThingCoeff))
 			visible_message("<span class='warning'>[src] malfunctions, shattering [exp_on] and leaking cold air!</span>")
@@ -684,7 +684,7 @@
 	warn_admins(user, "Mass Mob Spawn")
 	if(prob(60))
 		user << "<span class='warning'>[src] falls apart!</span>"
-		del(src)
+		qdel(src)
 
 /obj/item/weapon/relic/proc/rapidDupe(mob/user)
 	visible_message("[src] emits a loud pop!")
@@ -705,7 +705,7 @@
 	spawn(rand(10,100))
 		for(counter = 1; counter <= dupes.len; counter++)
 			var/obj/item/weapon/relic/R = dupes[counter]
-			del(R)
+			qdel(R)
 	warn_admins(user, "Rapid duplicator", 0)
 
 /obj/item/weapon/relic/proc/explode(mob/user)
@@ -715,7 +715,7 @@
 			visible_message("<span class='notice'>The [src]'s top opens, releasing a powerful blast!</span>")
 			explosion(user.loc, -1, rand(1,5), rand(1,5), rand(1,5), rand(1,5), flame_range = 2)
 			warn_admins(user, "Explosion")
-			del(src) //Comment this line to produce a light grenade (the bomb that keeps on exploding when used)!!
+			qdel(src) //Comment this line to produce a light grenade (the bomb that keeps on exploding when used)!!
 
 /obj/item/weapon/relic/proc/teleport(mob/user)
 	user << "<span class='notice'>The [src] begins to vibrate!</span>"

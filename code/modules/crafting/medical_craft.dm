@@ -12,7 +12,7 @@
 		new /obj/item/stack/medical/bruise_pack/medical_craft( get_turf(usr.loc), 2 )
 		usr << "\blue You make some gauze from this jumpsuit and this shard."
 		user.visible_message("\red [user] cut jumpsuit into several pieces.")
-		del(O)
+		qdel(O)
 		return
 	..()
 
@@ -23,7 +23,7 @@
 		new /obj/item/stack/medical/bruise_pack/medical_craft( get_turf(usr.loc), 2 )
 		usr << "\blue You make some gauze from this jumpsuit and this scalpel."
 		user.visible_message("\red [user] cut jumpsuit into several pieces.")
-		del(O)
+		qdel(O)
 		return
 	..()
 
@@ -34,6 +34,6 @@
 		new /obj/item/stack/medical/bruise_pack/medical_craft( get_turf(usr.loc), 2 )
 		usr << "\blue You make some gauze from this jumpsuit and this knife."
 		user.visible_message("\red [user] cut jumpsuit into several pieces.")
-		del(O)
+		qdel(O)
 		return
 	..()

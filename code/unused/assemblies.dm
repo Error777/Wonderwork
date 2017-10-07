@@ -122,8 +122,8 @@
 	//part2.status = 0
 
 /obj/item/assembly/time_ignite/Del()
-	del(part1)
-	del(part2)
+	qdel(part1)
+	qdel(part2)
 	..()
 
 /obj/item/assembly/time_ignite/attack_self(mob/user as mob)
@@ -142,7 +142,7 @@
 
 /obj/effect/decal/ash/attack_hand(mob/user as mob)
 	usr << "\blue The ashes slip through your fingers."
-	del(src)
+	qdel(src)
 	return
 
 /obj/item/assembly/time_ignite/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -158,7 +158,7 @@
 		src.part2.master = null
 		src.part2 = null
 
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/screwdriver) ))
 		return
@@ -190,7 +190,7 @@
 		src.part2.master = null
 		src.part2 = null
 
-		del(src)
+		qdel(src)
 		return
 	if (( istype(W, /obj/item/weapon/screwdriver) ))
 		src.status = !( src.status )
@@ -214,7 +214,7 @@
 		user.before_take_item(W)
 		R.part3 = W
 		R.part3.master = R
-		del(src)
+		qdel(src)
 
 /* WTF THIS SHIT? It is working? Shouldn't. --rastaf0
 		W.loc = R
@@ -288,7 +288,7 @@
 		src.part3.master = null
 		src.part3 = null
 
-		del(src)
+		qdel(src)
 		return
 	if (( istype(W, /obj/item/weapon/screwdriver) ))
 		if (!src.status && (!part1||!part2||!part3))
@@ -303,19 +303,19 @@
 
 /obj/item/assembly/a_i_a/Del()
 	//src.part1 = null
-	del(src.part1)
+	qdel(src.part1)
 	//src.part2 = null
-	del(src.part2)
-	del(src.part3)
+	qdel(src.part2)
+	qdel(src.part3)
 	..()
 	return
 //*****
 
 /obj/item/assembly/rad_time/Del()
 	//src.part1 = null
-	del(src.part1)
+	qdel(src.part1)
 	//src.part2 = null
-	del(src.part2)
+	qdel(src.part2)
 	..()
 	return
 
@@ -333,7 +333,7 @@
 		src.part1 = null
 		src.part2 = null
 		//SN src = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/screwdriver) ))
 		return
@@ -363,9 +363,9 @@
 
 /obj/item/assembly/rad_prox/Del()
 	//src.part1 = null
-	del(src.part1)
+	qdel(src.part1)
 	//src.part2 = null
-	del(src.part2)
+	qdel(src.part2)
 	..()
 	return
 
@@ -389,7 +389,7 @@
 		src.part1 = null
 		src.part2 = null
 		//SN src = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/screwdriver) ))
 		return
@@ -432,8 +432,8 @@
 	return
 
 /obj/item/assembly/rad_infra/Del()
-	del(src.part1)
-	del(src.part2)
+	qdel(src.part1)
+	qdel(src.part2)
 	..()
 	return
 
@@ -450,7 +450,7 @@
 		src.part1 = null
 		src.part2 = null
 		//SN src = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/screwdriver) ))
 		return
@@ -491,14 +491,14 @@
 	..()
 	src.dir = t
 	//src.part2.first = null
-	del(src.part2.first)
+	qdel(src.part2.first)
 	return
 
 /obj/item/assembly/rad_infra/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/item/assembly/rad_infra/attack_hand(M)
-	del(src.part2.first)
+	qdel(src.part2.first)
 	..()
 	return
 
@@ -517,8 +517,8 @@
 	return
 
 /obj/item/assembly/prox_ignite/Del()
-	del(src.part1)
-	del(src.part2)
+	qdel(src.part1)
+	qdel(src.part2)
 	..()
 	return
 
@@ -539,7 +539,7 @@
 		src.part1 = null
 		src.part2 = null
 		//SN src = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/screwdriver) ))
 		return
@@ -566,8 +566,8 @@
 	return
 
 /obj/item/assembly/rad_ignite/Del()
-	del(src.part1)
-	del(src.part2)
+	qdel(src.part1)
+	qdel(src.part2)
 	..()
 	return
 
@@ -586,7 +586,7 @@
 		src.part1 = null
 		src.part2 = null
 		//SN src = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/screwdriver) ))
 		return
@@ -667,11 +667,11 @@
 /obj/item/assembly/m_i_ptank/Del()
 
 	//src.part1 = null
-	del(src.part1)
+	qdel(src.part1)
 	//src.part2 = null
-	del(src.part2)
+	qdel(src.part2)
 	//src.part3 = null
-	del(src.part3)
+	qdel(src.part3)
 	..()
 	return
 
@@ -695,7 +695,7 @@
 		src.part1 = null
 		src.part2 = null
 		src.part3 = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/weldingtool)&&W:welding ))
 		return
@@ -755,11 +755,11 @@
 /obj/item/assembly/t_i_ptank/Del()
 
 	//src.part1 = null
-	del(src.part1)
+	qdel(src.part1)
 	//src.part2 = null
-	del(src.part2)
+	qdel(src.part2)
 	//src.part3 = null
-	del(src.part3)
+	qdel(src.part3)
 	..()
 	return
 
@@ -784,7 +784,7 @@
 		src.part1 = null
 		src.part2 = null
 		src.part3 = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/weldingtool) && W:welding))
 		return
@@ -834,11 +834,11 @@
 /obj/item/assembly/r_i_ptank/Del()
 
 	//src.part1 = null
-	del(src.part1)
+	qdel(src.part1)
 	//src.part2 = null
-	del(src.part2)
+	qdel(src.part2)
 	//src.part3 = null
-	del(src.part3)
+	qdel(src.part3)
 	..()
 	return
 
@@ -863,7 +863,7 @@
 		src.part1 = null
 		src.part2 = null
 		src.part3 = null
-		del(src)
+		qdel(src)
 		return
 	if (!( istype(W, /obj/item/weapon/weldingtool) && W:welding ))
 		return
@@ -911,7 +911,7 @@
 		src.part2 = null
 		src.part3 = null
 		src.part4 = null
-		del(src)
+		qdel(src)
 		return
 	if (( istype(W, /obj/item/weapon/weldingtool) && W:welding))
 		return
