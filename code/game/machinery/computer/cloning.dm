@@ -1,6 +1,7 @@
 /obj/machinery/computer/scan_consolenew
 	name = "DNA Modifier Access Console"
 	desc = "Scand DNA."
+	light_color = LIGHT_COLOR_BLUE
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "scanner"
 	density = 1
@@ -81,6 +82,7 @@
 	name = "Cloning console"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "dna"
+	light_color = LIGHT_COLOR_BLUE
 	circuit = "/obj/item/weapon/circuitboard/cloning"
 	req_access = list(access_heads) //Only used for record deletion right now.
 	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.

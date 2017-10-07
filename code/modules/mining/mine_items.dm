@@ -6,9 +6,10 @@
 	anchored = 1
 	unacidable = 1
 	luminosity = 8
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/effect/light_emitter/New()
-	SetLuminosity(8,8,8)
+	set_light(luminosity)
 
 /**********************Miner Lockers**************************/
 
@@ -116,6 +117,7 @@ proc/move_mining_shuttle()
 	name = "mining shuttle console"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "shuttle"
+	light_color = LIGHT_COLOR_CYAN
 	req_access = list(access_mining)
 	circuit = "/obj/item/weapon/circuitboard/mining_shuttle"
 	var/hacked = 0

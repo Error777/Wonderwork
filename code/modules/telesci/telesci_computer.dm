@@ -1,7 +1,8 @@
 /obj/machinery/computer/telescience
 	name = "\improper Telepad Control Console"
 	desc = "Used to teleport objects to and from the telescience telepad."
-	icon_state = "teleport"
+	icon_state = "s_teleport"
+	light_color = LIGHT_COLOR_PINK
 	var/sending = 1
 	var/obj/machinery/telepad/telepad = null
 	var/temp_msg = "Telescience control console initialized.<BR>Welcome."
@@ -53,7 +54,7 @@
 		icon_state = "telescib"
 	else
 		if(stat & NOPOWER)
-			src.icon_state = "teleport0"
+			src.icon_state = "s_teleport0"
 			stat |= NOPOWER
 		else
 			icon_state = initial(icon_state)

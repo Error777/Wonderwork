@@ -1,7 +1,7 @@
 /obj/machinery/disassembler
 	name = "Disassembler"
 	icon = 'icons/obj/machines/research.dmi'
-	icon_state = "d_analyzer"
+	icon_state = "a_analyzer"
 	density = 1
 	anchored = 1
 	use_power = 1
@@ -213,7 +213,7 @@
 	var/dat as text
 	dat += "Disassembler Wires:<BR>"
 	for(var/wire in src.wires)
-		dat += text("[wire] Wire: <A href='?src=\ref[src];wire=[wire];act=wire'>[src.wires[wire] ? "Mend" : "Cut"]</A> <A href='?src=\ref[src];wire=[wire];act=pulse'>Pulse</A><BR>")
+		dat += text("[wire] Wire: <a href='byond://?src=\ref[src];wire=[wire];act=wire'>[src.wires[wire] ? "Mend" : "Cut"]</a> <a href='byond://?src=\ref[src];wire=[wire];act=pulse'>Pulse</a><BR>")
 
 	dat += text("The red light is [src.disabled ? "off" : "on"].<BR>")
 	dat += text("The green light is [src.shocked ? "off" : "on"].<BR>")
@@ -226,48 +226,48 @@
 		regular_win(mob/user as mob)
 			var/dat as text
 			dat = text("<HR>")
-			dat += "<A href='?src=\ref[src];menu=0.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=1.0'>Component Storage</A> || "
-			dat += "<A href='?src=\ref[src];menu=2.0'>Material Storage</A> || "
-			dat += "<A href='?src=\ref[src];menu=3.0'>Blueprint Storage</A><HR>"
+			dat += "<a href='byond://?src=\ref[src];menu=0.0'>Main Menu</a> || "
+			dat += "<a href='byond://?src=\ref[src];menu=1.0'>Component Storage</a> || "
+			dat += "<a href='byond://?src=\ref[src];menu=2.0'>Material Storage</a> || "
+			dat += "<a href='byond://?src=\ref[src];menu=3.0'>Blueprint Storage</a><HR>"
 
 			switch(screen)
 				if(0.0)
-					dat += "EJECTION: <A href='?src=\ref[src];mode=1'>[capitalize(eject == 0 ? "no eject" : (eject == 1 ? "manual" : "auto"))]</A> "
-					dat += "INLET: <A href='?src=\ref[src];inlet=1'>[capitalize(dir2text(indir))]</A> "
-					dat += "OUTLET: <A href='?src=\ref[src];outlet=1'>[capitalize(dir2text(outdir))]</A>"
-					dat += " (<A href='?src=\ref[src];swapdir=1'>SWAP</A>)</TT><HR>"
+					dat += "EJECTION: <a href='byond://?src=\ref[src];mode=1'>[capitalize(eject == 0 ? "no eject" : (eject == 1 ? "manual" : "auto"))]</a> "
+					dat += "INLET: <a href='byond://?src=\ref[src];inlet=1'>[capitalize(dir2text(indir))]</a> "
+					dat += "OUTLET: <a href='byond://?src=\ref[src];outlet=1'>[capitalize(dir2text(outdir))]</a>"
+					dat += " (<a href='byond://?src=\ref[src];swapdir=1'>SWAP</a>)</TT><HR>"
 					dat += "<BR>"
 				if(1.1)
 					if(selectedrecipe)
 						dat += "[selectedrecipe.name]<BR><BR>"
 						dat += "[selectedrecipe.desc]<BR><BR>"
-						dat += "<A href='?src=\ref[src];confirm=1'>Destroy</A><BR>"
-						dat += "<A href='?src=\ref[src];confirmall=1'>Destroy All</A><BR>"
+						dat += "<a href='byond://?src=\ref[src];confirm=1'>Destroy</a><BR>"
+						dat += "<a href='byond://?src=\ref[src];confirmall=1'>Destroy All</a><BR>"
 				if(0.2)
 					if(error)
 						dat += "[error]<BR><BR>"
-						dat += "<A href='?src=\ref[src];menu=0.0'>Main Menu</A>"
+						dat += "<a href='byond://?src=\ref[src];menu=0.0'>Main Menu</a>"
 				if(1.0)
 					dat += "Component Storage<BR><HR>"
 					for(var/obj/O in contents)
 						if(O == recipedisk)
 							continue
 						dat += "[O.name] "
-						dat += "<A href='?src=\ref[src];disassemble=\ref[O]'>(Disassemble)</A>"
-						dat += "<A href='?src=\ref[src];eject=\ref[O]'>(Eject)</A><BR>"
+						dat += "<a href='byond://?src=\ref[src];disassemble=\ref[O]'>(Disassemble)</a>"
+						dat += "<a href='byond://?src=\ref[src];eject=\ref[O]'>(Eject)</a><BR>"
 				if(2.0)
 					dat += "Material Storage<BR><HR>"
 					for(var/datum/reagent/R in reagents.reagent_list)
 						dat += "Name: [R.name] | Units: [R.volume] "
-						dat += "<A href='?src=\ref[src];disposeP=[R.id]'>(Purge)</A><BR>"
-					dat += "<A href='?src=\ref[src];disposeallP=1'><U>Disposal All Materials in Storage</U></A><BR>"
+						dat += "<a href='byond://?src=\ref[src];disposeP=[R.id]'>(Purge)</a><BR>"
+					dat += "<a href='byond://?src=\ref[src];disposeallP=1'><U>Disposal All Materials in Storage</U></a><BR>"
 				if(3.0)
 					dat += "Blueprint Storage<BR><HR>"
-					dat += "<A href='?src=\ref[src];menu=3.1'>Internal Storage</A><BR>"
+					dat += "<A href='?src=\ref[src];menu=3.1'>Internal Storage</a><BR>"
 					if(recipedisk)
-						dat += "<A href='?src=\ref[src];menu=3.2'>External Storage</A> "
-						dat += "<A href='?src=\ref[src];eject=\ref[recipedisk]'>(Eject)</A><BR>"
+						dat += "<a href='byond://?src=\ref[src];menu=3.2'>External Storage</a> "
+						dat += "<a href='byond://?src=\ref[src];eject=\ref[recipedisk]'>(Eject)</a><BR>"
 					else
 						dat += "NO BLUEPRINT DISK INSERTED<BR>"
 				if(3.1)
@@ -275,17 +275,17 @@
 					for(var/datum/assemblerprint/R in possiblerecipes)
 						dat += "[R.name] "
 						if(recipedisk)
-							dat += "<A href='?src=\ref[src];save=\ref[R]'>Save</A>||"
+							dat += "<a href='byond://?src=\ref[src];save=\ref[R]'>Save</a>||"
 						else
 							dat += "Save||"
-						dat += "<A href='?src=\ref[src];deleteP=\ref[R]'>Delete</A><BR>"
+						dat += "<a href='byond://?src=\ref[src];deleteP=\ref[R]'>Delete</a><BR>"
 				if(3.2)
 					dat += "External Blueprint Storage<BR><HR>"
-					dat += "<A href='?src=\ref[src];clear=1'>Clear Disk</A><BR>"
+					dat += "<a href='byond://?src=\ref[src];clear=1'>Clear Disk</a><BR>"
 					for(var/datum/assemblerprint/R in recipedisk.recipes)
 						dat += "[R.name] "
-						dat += "<A href='?src=\ref[src];load=\ref[R]'>Load</A>||"
-						dat += "<A href='?src=\ref[src];delete=\ref[R]'>Delete</A><BR>"
+						dat += "<a href='byond://?src=\ref[src];load=\ref[R]'>Load</a>||"
+						dat += "<a href='byond://?src=\ref[src];delete=\ref[R]'>Delete</a><BR>"
 			user << browse("<HTML><HEAD><TITLE>Disassembler Control Panel</TITLE></HEAD><BODY><TT>[dat]</TT></BODY></HTML>", "window=disassembler_regular")
 			onclose(user, "disassembler_regular")
 

@@ -4,6 +4,7 @@
 	name = "Mounted flash"
 	desc = "A wall-mounted flashbulb device."
 	icon = 'icons/obj/stationobjs.dmi'
+	light_color = LIGHT_COLOR_GREEN
 	icon_state = "mflash1"
 	var/id = null
 	var/range = 2 //this is roughly the size of brig cell
@@ -24,17 +25,17 @@
 
 /obj/machinery/flasher/New()
 	sleep(4)
-	SetLuminosity(0,2,0)
+	set_light(2)
 
 /obj/machinery/flasher/power_change()
 	if ( powered() )
 		stat &= ~NOPOWER
 		icon_state = "[base_state]1"
-		src.SetLuminosity(0,2,0)
+		src.set_light(2)
 	else
 		stat |= ~NOPOWER
 		icon_state = "[base_state]1-p"
-		src.SetLuminosity(0)
+		src.set_light(0)
 
 //Don't want to render prison breaks impossible
 /obj/machinery/flasher/attackby(obj/item/weapon/W as obj, mob/user as mob)

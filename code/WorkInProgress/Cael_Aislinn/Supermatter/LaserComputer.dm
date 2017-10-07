@@ -1,6 +1,7 @@
 //The laser control computer
 //Used to control the lasers
 /obj/machinery/computer/lasercon
+	light_color = LIGHT_COLOR_ORANGE
 	name = "Laser control computer"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "power"

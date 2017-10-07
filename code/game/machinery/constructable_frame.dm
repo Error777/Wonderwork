@@ -208,6 +208,17 @@ to destroy them and players will be able to make replacements.
 							"/obj/item/weapon/stock_parts/manipulator" = 1,
 							"/obj/item/weapon/reagent_containers/glass/beaker" = 2)
 
+/obj/item/weapon/circuitboard/experimentor
+	name = "Circuit board (Experimentor)"
+	build_path = "/obj/machinery/r_n_d/experimentor"
+	board_type = "machine"
+	origin_tech = "engineering=2;programming=2"
+	frame_desc = "Requires 2 Matter Bins, 2 Manipulators, and 2 Beakers."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/matter_bin" = 2,
+							"/obj/item/weapon/stock_parts/manipulator" = 2,
+							"/obj/item/weapon/reagent_containers/glass/beaker" = 2)
+
 /obj/item/weapon/circuitboard/pacman
 	name = "Circuit Board (PACMAN-type Generator)"
 	build_path = "/obj/machinery/power/port_gen/pacman"
@@ -251,6 +262,17 @@ obj/item/weapon/circuitboard/rdserver
 							"/obj/item/weapon/stock_parts/manipulator" = 1,
 							"/obj/item/weapon/stock_parts/micro_laser" = 1,
 							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
+/obj/item/weapon/circuitboard/podfab
+	name = "Circuit board (Spacepod Fabricator)"
+	build_path = "/obj/machinery/mecha_part_fabricator/pod"
+	board_type = "machine"
+	origin_tech = "programming=3;engineering=3"
+	frame_desc = "Requires 3 Matter Bins, 2 Manipulators, and 2 Micro-Lasers."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/matter_bin" = 3,
+							"/obj/item/weapon/stock_parts/manipulator" = 2,
+							"/obj/item/weapon/stock_parts/micro_laser" = 2)
 
 /obj/item/weapon/circuitboard/clonepod
 	name = "Circuit board (Clone Pod)"

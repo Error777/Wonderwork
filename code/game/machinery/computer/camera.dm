@@ -5,6 +5,7 @@
 	name = "Security Cameras"
 	desc = "Used to access the various cameras on the station."
 	icon_state = "cameras"
+	light_color = LIGHT_COLOR_RED
 	var/obj/machinery/camera/current = null
 	var/last_pic = 1.0
 	var/list/network = list("SS13")
@@ -169,6 +170,8 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
+	light_power_on = 0
+	light_range_on = 0
 	density = 0
 
 /obj/machinery/computer/security/telescreen/update_icon()
@@ -206,16 +209,19 @@
 	name = "Outpost Cameras"
 	desc = "Used to access the various cameras on the outpost."
 	icon_state = "miningcameras"
+	light_color = LIGHT_COLOR_PINK
 	network = list("MINE")
 
 /obj/machinery/computer/security/engineering
 	name = "Engineering Cameras"
 	desc = "Used to monitor fires and breaches."
 	icon_state = "engineeringcameras"
+	light_color = LIGHT_COLOR_YELLOW
 	network = list("Power Alarms","Atmosphere Alarms","Fire Alarms")
 
 /obj/machinery/computer/security/medical
 	name = "Medical Cameras"
 	desc = "Used to monitor medbay."
 	icon_state = "medicalcameras"
+	light_color = LIGHT_COLOR_CYAN
 	network = list("Medical")

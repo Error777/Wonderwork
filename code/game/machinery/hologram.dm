@@ -33,9 +33,24 @@ var/const/HOLOPAD_MODE = 0
 	name = "\improper AI holopad"
 	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
 	icon_state = "holopad0"
+	light_color = LIGHT_COLOR_BLUE
 	var/mob/living/silicon/ai/master//Which AI, if any, is controlling the object? Only one AI may control a hologram at any time.
 	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
+	light_power_on = 1
+	light_range_on = 3
+
+/obj/machinery/hologram/holopad/New()
+	sleep(4)
+	set_light(light_range_on,light_power_on)
+
+/obj/machinery/hologram/holopad/power_change()
+	if ( powered() )
+		stat &= ~NOPOWER
+		src.set_light(light_range_on,light_power_on)
+	else
+		stat |= ~NOPOWER
+		src.set_light(0)
 
 /obj/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
@@ -95,7 +110,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
 	hologram.anchored = 1//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	SetLuminosity(0,0,1)	//hologram lighting
+	hologram.set_light(1)	//hologram lighting
 	icon_state = "holopad1"
 	A.current = src
 	master = A//AI is the master.
@@ -103,12 +118,12 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	return 1
 
 /obj/machinery/hologram/holopad/proc/clear_holo()
-//	hologram.SetLuminosity(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
+	hologram.set_light(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
 	del(hologram)//Get rid of hologram.
 	if(master.current == src)
 		master.current = null
 	master = null//Null the master, since no-one is using it now.
-	SetLuminosity(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
+	set_light(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 	icon_state = "holopad0"
 	use_power = 1//Passive power usage.
 	return 1
@@ -148,12 +163,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/obj/effect/overlay/hologram//The projection itself. If there is one, the instrument is on, off otherwise.
-
-/obj/machinery/hologram/power_change()
-	if (powered())
-		stat &= ~NOPOWER
-	else
-		stat |= ~NOPOWER
 
 //Destruction procs.
 /obj/machinery/hologram/ex_act(severity)

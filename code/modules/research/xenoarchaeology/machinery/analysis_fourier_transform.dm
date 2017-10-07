@@ -3,6 +3,8 @@
 
 obj/machinery/anomaly/fourier_transform
 	name = "Fourier Transform spectroscope"
+	icon = 'icons/obj/machines/research.dmi'
+	icon_state = "resonator"
 
 obj/machinery/anomaly/fourier_transform/ScanResults()
 	var/results = "The scan was inconclusive. Check sample integrity and carrier consistency."

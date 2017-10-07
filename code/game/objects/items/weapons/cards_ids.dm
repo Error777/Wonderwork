@@ -231,6 +231,8 @@
 							"command",
 							"ce",
 							"cmo",
+							"rd",
+							"hos",
 							"clown",
 							"civilian",
 							"prison",
@@ -425,7 +427,7 @@
 /obj/item/weapon/card/id/hos
 	name = "Head of Security ID"
 	registered_name = "HoS"
-	icon_state = "command"
+	icon_state = "hos"
 	desc = "An ID awarded to only the most robust shits in the buisness."
 
 /obj/item/weapon/card/id/cmo
@@ -437,7 +439,7 @@
 /obj/item/weapon/card/id/rd
 	name = "Research Director ID"
 	registered_name = "RD"
-	icon_state = "command"
+	icon_state = "rd"
 	desc = "If you put your ear to the card, you can faintly hear screaming, glomping, and mechs. What the fuck."
 
 /obj/item/weapon/card/id/ce

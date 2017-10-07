@@ -16,18 +16,19 @@ datum/controller/game_controller
 	var/breather_ticks = 2		//a somewhat crude attempt to iron over the 'bumps' caused by high-cpu use by letting the MC have a breather for this many ticks after every loop
 	var/minimum_ticks = 20		//The minimum length of time between MC ticks
 
-	var/air_cost 		= 0
-	var/sun_cost		= 0
-	var/mobs_cost		= 0
-	var/diseases_cost	= 0
-	var/machines_cost	= 0
-	var/objects_cost	= 0
-	var/networks_cost	= 0
-	var/powernets_cost	= 0
-	var/events_cost		= 0
-	var/ticker_cost		= 0
-	var/total_cost		= 0
-
+	var/air_cost 				= 0
+	var/sun_cost				= 0
+	var/mobs_cost				= 0
+	var/diseases_cost			= 0
+	var/machines_cost			= 0
+	var/objects_cost			= 0
+	var/networks_cost			= 0
+	var/powernets_cost			= 0
+	var/events_cost				= 0
+	var/ticker_cost				= 0
+	var/total_cost				= 0
+	var/parallax_cost			= 0
+	var/parallax_initialized	= 0
 	var/last_thing_processed
 
 datum/controller/game_controller/New()
@@ -65,6 +66,7 @@ datum/controller/game_controller/proc/setup()
 	setupgenetics()
 	setupfactions()
 	setup_economy()
+	create_global_parallax_icons()
 
 	for(var/i=0, i<max_secret_rooms, i++)
 		make_mining_asteroid_secret()

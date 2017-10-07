@@ -2,7 +2,9 @@
 /datum/job/chaplain
 	title = "Chaplain"
 	flag = CHAPLAIN
+	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
+	departments = list("Civilian")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1

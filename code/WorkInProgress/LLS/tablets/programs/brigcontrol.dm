@@ -32,30 +32,28 @@
 						permalockdown = 0
 			dat += "Permabrig Lockdown is: <i>[permalockdown ? "Active" : "Inactive"]</i>"
 			dat += "<br>"
-			var/laborlock = 1
-			for(var/obj/machinery/door/poddoor/M in world)
-				if(M.id == "Labor")
-					if(M.density)
-						laborlock = 1
-					else
-						laborlock = 0
-			dat += "Labor Lockdown is: <i>[laborlock ? "Active" : "Inactive"]</i>"
-			dat += "<br>"
-			var/datum/shuttle_manager/s = shuttles["laborcamp"]
-			if(s.location == /area/shuttle/laborcamp/outpost)
-				dat += "Labor Shuttle Location: Labor Camp<BR>"
-			else
-				dat += "Labor Shuttle Location:  Station<BR>"
+			//var/laborlock = 1
+			//for(var/obj/machinery/door/poddoor/M in world)
+			//	if(M.id == "Labor")
+			//		if(M.density)
+			//			laborlock = 1
+			//		else
+			//			laborlock = 0
+			//dat += "Labor Lockdown is: <i>[laborlock ? "Active" : "Inactive"]</i>"
+			//dat += "<br>"
+			//var/datum/shuttle_manager/s = shuttles["laborcamp"]
+			//if(s.location == /area/shuttle/laborcamp/outpost)
+			//	dat += "Labor Shuttle Location: Labor Camp<BR>"
+			//else
+			//	dat += "Labor Shuttle Location:  Station<BR>"
 			dat += "<h4>Cell Details</h4>"
-			for(var/obj/machinery/brig_timer/cell in world)
+			for(var/obj/machinery/door_timer/cell in world)
 				if(cell.timing)
 					dat += "<div class='statusDisplay'>"
 					dat += {"[cell.name]<br>"}
 					var/second = round(cell.timeleft() % 60)
 					var/minute = round((cell.timeleft() - second) / 60)
 					dat += {"Time Left: [minute]:[second]<br>"}
-					dat += {"Crime: [cell.detail]<br>"}
-					dat += {"Prisoner: [cell.prisoner]<br>"}
 					dat += "</div>"
 		else
 			dat = "ERROR: No connection to the server"

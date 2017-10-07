@@ -4,8 +4,8 @@
 obj/machinery/anomaly/isotope_ratio
 	name = "Isotope ratio spectrometer"
 	desc = "A specialised, complex analysis machine."
-	icon = 'icons/obj/virology.dmi'
-	icon_state = "analyser"
+	icon = 'icons/obj/machines/research.dmi'
+	icon_state = "anocol"
 
 obj/machinery/anomaly/isotope_ratio/ScanResults()
 	var/results = "The scan was inconclusive. Check sample integrity and carrier consistency."

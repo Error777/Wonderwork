@@ -24,14 +24,14 @@ var/list/mechtoys = list(
 	name = "supply shuttle"
 	icon_state = "shuttle3"
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	requires_power = 0
 
 /area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "supply shuttle"
 	icon_state = "shuttle3"
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	requires_power = 0
 
 //SUPPLY PACKS MOVED TO /code/defines/obj/supplypacks.dm
@@ -93,6 +93,7 @@ var/list/mechtoys = list(
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "supply"
 	req_access = list(access_cargo)
+	light_color = LIGHT_COLOR_TUNGSTEN
 	circuit = "/obj/item/weapon/circuitboard/supplycomp"
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
@@ -103,6 +104,7 @@ var/list/mechtoys = list(
 /obj/machinery/computer/ordercomp
 	name = "Supply ordering console"
 	icon = 'icons/obj/computer.dmi'
+	light_color = LIGHT_COLOR_YELLOW
 	icon_state = "request"
 	circuit = "/obj/item/weapon/circuitboard/ordercomp"
 	var/temp = null

@@ -1,6 +1,18 @@
 /datum/program/crewmonitor
 	name = "Medical Monitor"
 	app_id = "crewmonitor"
+	var/list/tracked = list(  )
+	proc/scan()
+		for(var/obj/item/clothing/under/C in world)
+			if((C.has_sensor) && (istype(C.loc, /mob/living/carbon/human)))
+				var/check = 0
+				for(var/O in src.tracked)
+					if(O == C)
+						check = 1
+						break
+				if(!check)
+					src.tracked.Add(C)
+		return 1
 
 	use_app()
 		if(tablet.network())
@@ -46,7 +58,7 @@
 			dat += "Locating all critical/deceased crew members on the crew monitoring console"
 			dat += "<table width='100%'><tr><td width='40%'><h3>Name</h3></td><td width='30%'><h3>Vitals</h3></td><td width='30%'><h3>Position</h3></td></tr>"
 			var/list/logs = list()
-			var/list/tracked = crewscan()
+			var/list/tracked = scan()
 			for(var/mob/living/carbon/human/H in tracked)
 				var/log = ""
 				var/turf/pos = get_turf(H)

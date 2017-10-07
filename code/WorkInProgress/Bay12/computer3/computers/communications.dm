@@ -8,20 +8,6 @@
 	spawn_files			= list(/datum/file/program/card_comp, /datum/file/program/security, /datum/file/program/crew, /datum/file/program/arcade,
 							/datum/file/camnet_key, /datum/file/camnet_key/entertainment, /datum/file/camnet_key/singulo)
 
-
-/datum/file/program/communications
-	var/const/STATE_DEFAULT = 1
-	var/const/STATE_CALLSHUTTLE = 2
-	var/const/STATE_CANCELSHUTTLE = 3
-	var/const/STATE_MESSAGELIST = 4
-	var/const/STATE_VIEWMESSAGE = 5
-	var/const/STATE_DELMESSAGE = 6
-	var/const/STATE_STATUSDISPLAY = 7
-	var/const/STATE_ALERT_LEVEL = 8
-	var/const/STATE_CONFIRM_LEVEL = 9
-	var/const/STATE_CONFIRM_LEVEL = 9
-
-
 /datum/file/program/communications
 	name = "Centcom communications relay"
 	desc = "Used to connect to Centcom."
@@ -39,6 +25,16 @@
 	var/message_cooldown = 0
 	var/centcomm_message_cooldown = 0
 	var/tmp_alertlevel = 0
+	var/const/STATE_DEFAULT = 1
+	var/const/STATE_CALLSHUTTLE = 2
+	var/const/STATE_CANCELSHUTTLE = 3
+	var/const/STATE_MESSAGELIST = 4
+	var/const/STATE_VIEWMESSAGE = 5
+	var/const/STATE_DELMESSAGE = 6
+	var/const/STATE_STATUSDISPLAY = 7
+	var/const/STATE_ALERT_LEVEL = 8
+	var/const/STATE_CONFIRM_LEVEL = 9
+	var/const/STATE_CREWTRANSFER = 10
 
 	var/status_display_freq = "1435"
 	var/stat_msg1

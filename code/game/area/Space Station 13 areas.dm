@@ -117,7 +117,7 @@ proc/process_ghost_teleport_locs()
 /area/admin
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	name = "\improper Admin room"
 	icon_state = "start"
 
@@ -130,7 +130,7 @@ proc/process_ghost_teleport_locs()
 /area/shuttle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
@@ -232,14 +232,14 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Alien Shuttle Base"
 	requires_power = 1
 	luminosity = 0
-	ul_Lighting = 1
+	dynamic_lighting = 1
 
 /area/shuttle/alien/mine
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Mine"
 	requires_power = 1
 	luminosity = 0
-	ul_Lighting = 1
+	dynamic_lighting = 1
 
 /area/shuttle/prison
 	name = "\improper Prison Shuttle"
@@ -318,7 +318,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "yellow"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/airtunnel1/      // referenced in airtunnel.dm:759
 
@@ -329,7 +329,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "start"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	has_gravity = 1
 
 // === end remove
@@ -346,7 +346,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "centcom"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/centcom/control
 	name = "\improper Centcom Control"
@@ -389,7 +389,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "syndie-ship"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/syndicate_mothership/control
 	name = "\improper Syndicate Control Room"
@@ -420,14 +420,14 @@ proc/process_ghost_teleport_locs()
 	icon_state = "honk"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/tdome
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/tdome/tdome1
 	name = "\improper Thunderdome (Team 1)"
@@ -453,7 +453,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "yellow"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/syndicate_station/start
 	name = "\improper Syndicate Forward Operating Base"
@@ -500,49 +500,49 @@ proc/process_ghost_teleport_locs()
 	icon_state = "yellow"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/vox_station/transit
 	name = "\improper hyperspace"
 	icon_state = "shuttle"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/vox_station/southwest_solars
 	name = "\improper aft port solars"
 	icon_state = "southwest"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/vox_station/northwest_solars
 	name = "\improper fore port solars"
 	icon_state = "northwest"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/vox_station/northeast_solars
 	name = "\improper fore starboard solars"
 	icon_state = "northeast"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/vox_station/southeast_solars
 	name = "\improper aft starboard solars"
 	icon_state = "southeast"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/vox_station/mining
 	name = "\improper nearby mining asteroid"
 	icon_state = "north"
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 //PRISON
 /area/prison
@@ -921,7 +921,7 @@ area/ship/eva
 	name = "\improper Holodeck"
 	icon_state = "Holodeck"
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/holodeck/alphadeck
 	name = "\improper Holodeck Alpha"
@@ -996,6 +996,7 @@ area/ship/eva
 
 /area/solar
 	requires_power = 0
+	dynamic_lighting = 0
 
 /area/solar/auxport
 	name = "\improper Fore Port Solar Array"
@@ -1474,7 +1475,7 @@ area/ship/eva
 /area/testroom
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	name = "\improper Test Room"
 	icon_state = "storage"
 
@@ -1749,7 +1750,7 @@ area/ship/eva
 /area/template/gravity/powered/lit
 	requires_power = 0
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	has_gravity = 1
 
 //variations
@@ -1758,7 +1759,7 @@ area/ship/eva
 
 /area/template/gravity/lit
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 /area/template/gravity/powered
 	requires_power = 0
@@ -1768,7 +1769,7 @@ area/ship/eva
 
 /area/template/powered/lit
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 
 // Elevators
 
@@ -1889,7 +1890,7 @@ area/ship/eva
 	name = "Beach"
 	icon_state = "null"
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	requires_power = 0
 	var/sound/mysound = null
 
@@ -2014,7 +2015,7 @@ var/list/the_station_areas = list (
 	name = "Keelin's private beach"
 	icon_state = "null"
 	luminosity = 1
-	ul_Lighting = 0
+	dynamic_lighting = 0
 	requires_power = 0
 	var/sound/mysound = null
 

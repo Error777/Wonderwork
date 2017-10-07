@@ -3,7 +3,7 @@
 /obj/structure/computerframe
 	density = 1
 	anchored = 0
-	name = "Computer-frame"
+	name = "computer-frame"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "0"
 	var/state = 0
@@ -225,6 +225,8 @@
 	name = "Circuit board (Fax)"
 	build_path = "/obj/machinery/computer/faxmachine"
 	origin_tech = "programming=2"
+/obj/item/weapon/circuitboard/mecha/pod
+	name = "Circuit Board (Space Pod Mainboard)"
 
 /obj/item/weapon/circuitboard/supplycomp/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/device/multitool))

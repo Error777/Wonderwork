@@ -123,16 +123,21 @@
 	S["b_type"]				>> b_type
 
 	//Jobs
-	S["alternate_option"]	>> alternate_option
-	S["job_civilian_high"]	>> job_civilian_high
-	S["job_civilian_med"]	>> job_civilian_med
-	S["job_civilian_low"]	>> job_civilian_low
-	S["job_medsci_high"]	>> job_medsci_high
-	S["job_medsci_med"]		>> job_medsci_med
-	S["job_medsci_low"]		>> job_medsci_low
-	S["job_engsec_high"]	>> job_engsec_high
-	S["job_engsec_med"]		>> job_engsec_med
-	S["job_engsec_low"]		>> job_engsec_low
+	S["job_civilian_1"] 	>> job_civilian_1
+	S["job_civilian_2"] 	>> job_civilian_2
+	S["job_civilian_3"] 	>> job_civilian_3
+	S["job_civilian_4"] 	>> job_civilian_4
+	S["job_civilian_5"] 	>> job_civilian_5
+	S["job_engsec_1"]		>> job_engsec_1
+	S["job_engsec_2"]		>> job_engsec_2
+	S["job_engsec_3"]		>> job_engsec_3
+	S["job_engsec_4"]		>> job_engsec_4
+	S["job_engsec_5"]		>> job_engsec_5
+	S["job_medsci_1"]		>> job_medsci_1
+	S["job_medsci_2"]		>> job_medsci_2
+	S["job_medsci_3"]		>> job_medsci_3
+	S["job_medsci_4"]		>> job_medsci_4
+	S["job_medsci_5"]		>> job_medsci_5
 
 	//Miscellaneous
 	S["flavor_text"]		>> flavor_text
@@ -176,16 +181,21 @@
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	b_type			= sanitize_text(b_type, initial(b_type))
 
-	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
-	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
-	job_civilian_med = sanitize_integer(job_civilian_med, 0, 65535, initial(job_civilian_med))
-	job_civilian_low = sanitize_integer(job_civilian_low, 0, 65535, initial(job_civilian_low))
-	job_medsci_high = sanitize_integer(job_medsci_high, 0, 65535, initial(job_medsci_high))
-	job_medsci_med = sanitize_integer(job_medsci_med, 0, 65535, initial(job_medsci_med))
-	job_medsci_low = sanitize_integer(job_medsci_low, 0, 65535, initial(job_medsci_low))
-	job_engsec_high = sanitize_integer(job_engsec_high, 0, 65535, initial(job_engsec_high))
-	job_engsec_med = sanitize_integer(job_engsec_med, 0, 65535, initial(job_engsec_med))
-	job_engsec_low = sanitize_integer(job_engsec_low, 0, 65535, initial(job_engsec_low))
+	job_civilian_1 = sanitize_integer(job_civilian_1, 0, 65535, initial(job_civilian_1))
+	job_civilian_2 = sanitize_integer(job_civilian_2, 0, 65535, initial(job_civilian_2))
+	job_civilian_3 = sanitize_integer(job_civilian_3, 0, 65535, initial(job_civilian_3))
+	job_civilian_4 = sanitize_integer(job_civilian_4, 0, 65535, initial(job_civilian_4))
+	job_civilian_5 = sanitize_integer(job_civilian_5, 0, 65535, initial(job_civilian_5))
+	job_engsec_1 = sanitize_integer(job_engsec_1, 0, 65535, initial(job_engsec_1))
+	job_engsec_2 = sanitize_integer(job_engsec_2, 0, 65535, initial(job_engsec_2))
+	job_engsec_3 = sanitize_integer(job_engsec_3, 0, 65535, initial(job_engsec_3))
+	job_engsec_4 = sanitize_integer(job_engsec_4, 0, 65535, initial(job_engsec_4))
+	job_engsec_5 = sanitize_integer(job_engsec_5, 0, 65535, initial(job_engsec_5))
+	job_medsci_1 = sanitize_integer(job_medsci_1, 0, 65535, initial(job_medsci_1))
+	job_medsci_2 = sanitize_integer(job_medsci_2, 0, 65535, initial(job_medsci_2))
+	job_medsci_3 = sanitize_integer(job_medsci_3, 0, 65535, initial(job_medsci_3))
+	job_medsci_4 = sanitize_integer(job_medsci_4, 0, 65535, initial(job_medsci_4))
+	job_medsci_5 = sanitize_integer(job_medsci_5, 0, 65535, initial(job_medsci_5))
 
 	if(!skills) skills = list()
 	if(!used_skillpoints) used_skillpoints= 0
@@ -227,16 +237,21 @@
 	S["b_type"]				<< b_type
 
 	//Jobs
-	S["alternate_option"]	<< alternate_option
-	S["job_civilian_high"]	<< job_civilian_high
-	S["job_civilian_med"]	<< job_civilian_med
-	S["job_civilian_low"]	<< job_civilian_low
-	S["job_medsci_high"]	<< job_medsci_high
-	S["job_medsci_med"]		<< job_medsci_med
-	S["job_medsci_low"]		<< job_medsci_low
-	S["job_engsec_high"]	<< job_engsec_high
-	S["job_engsec_med"]		<< job_engsec_med
-	S["job_engsec_low"]		<< job_engsec_low
+	S["job_civilian_1"] 	>> job_civilian_1
+	S["job_civilian_2"] 	>> job_civilian_2
+	S["job_civilian_3"] 	>> job_civilian_3
+	S["job_civilian_4"] 	>> job_civilian_4
+	S["job_civilian_5"] 	>> job_civilian_5
+	S["job_engsec_1"]		>> job_engsec_1
+	S["job_engsec_2"]		>> job_engsec_2
+	S["job_engsec_3"]		>> job_engsec_3
+	S["job_engsec_4"]		>> job_engsec_4
+	S["job_engsec_5"]		>> job_engsec_5
+	S["job_medsci_1"]		>> job_medsci_1
+	S["job_medsci_2"]		>> job_medsci_2
+	S["job_medsci_3"]		>> job_medsci_3
+	S["job_medsci_4"]		>> job_medsci_4
+	S["job_medsci_5"]		>> job_medsci_5
 
 	//Miscellaneous
 	S["flavor_text"]		<< flavor_text

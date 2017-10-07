@@ -11,7 +11,7 @@
 	spawn_parts			= list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/networking/cameras)
 	spawn_files 		= list(/datum/file/camnet_key)
 	icon_state			= "frame-sec"
-
+	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/computer3/security/wooden_tv
 	name				= "security cameras"
@@ -78,8 +78,8 @@
 
 /datum/file/camnet_key/New()
 	for(var/N in networks)
-		if(N == "ALL")
-			networks = station_networks
+		if(N == "SS13")
+			networks = list("SS13")
 			break
 	return ..()
 
@@ -109,7 +109,7 @@
 /datum/file/camnet_key/singulo
 	name = "Singularity Camera Network Key"
 	title = "singularity"
-	networks = list(NETWORK_ENGINE)
+	networks = list(NETWORK_ENGINEERING)
 
 /datum/file/camnet_key/entertainment
 	name = "Entertainment Channel Encryption Key"
@@ -134,7 +134,7 @@
 	name = "Camera Network Key"
 	title = "%!#BUFFER OVERFLOW"
 	desc = "Connects to security cameras."
-	networks = list("ALL")
+	networks = list("SS13")
 	hidden_file = 1
 
 
@@ -154,7 +154,7 @@
 		if (!computer || computer.z > 6)
 			return null
 
-		cameranet.process_sort()
+		//cameranet.process_sort()
 
 		var/list/L = list()
 		for(var/obj/machinery/camera/C in cameranet.cameras)
@@ -302,16 +302,8 @@
 		reset_current()
 
 	src.current = C
-	if(current)
-		var/mob/living/L = current.loc
-		if(istype(L))
-			L.tracking_initiated()
 
 /datum/file/program/security/proc/reset_current()
-	if(current)
-		var/mob/living/L = current.loc
-		if(istype(L))
-			L.tracking_cancelled()
 	current = null
 
 			// Atlantis: Required for camnetkeys to work.

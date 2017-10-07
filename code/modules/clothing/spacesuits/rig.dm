@@ -38,6 +38,7 @@
 	allowed = list(/obj/item/device/flashlight)
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
+	light_color = LIGHT_COLOR_TUNGSTEN
 	item_color = "engineering" //Determines used sprites: rig[on]-[color] and rig[on]-[color]2 (lying down sprite)
 	icon_action_button = "action_hardhat"
 	flags_inv = 0
@@ -54,30 +55,19 @@
 	item_state = "rig[on]-[item_color]"
 
 	if(on)
-		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
+		user.set_light(brightness_on,light_power,light_color)
 	else
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
+		user.set_light(0)
 
 /obj/item/clothing/head/helmet/space/rig/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + (brightness_on - 1), user.LuminosityBlue)
-		SetLuminosity(0)
+		set_light(0)
+		user.set_light(brightness_on)
 
 /obj/item/clothing/head/helmet/space/rig/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - (brightness_on - 1), user.LuminosityBlue)
-		SetLuminosity(brightness_on, brightness_on - 1, 0)
-
-/obj/item/clothing/head/helmet/space/rig/on_enter_storage()
-	if(on)
-		usr.SetLuminosity(usr.LuminosityRed - brightness_on, usr.LuminosityGreen - (brightness_on - 1), usr.LuminosityBlue)
-		on = 0
-		icon_state = "rig[on]-[item_color]"
-		item_state = "rig[on]-[item_color]"
-	else if (isturf(src.loc))
-		SetLuminosity(0)
-	..()
-	return
+		user.set_light(0)
+		set_light(brightness_on)
 
 /obj/item/clothing/suit/space/rig
 	name = "engineering hardsuit"

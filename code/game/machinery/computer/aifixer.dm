@@ -3,12 +3,12 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "ai-fixer"
 	req_access = list(access_captain, access_robotics, access_heads)
+	light_color = LIGHT_COLOR_BLUE
 	var/mob/living/silicon/ai/occupant = null
 	var/active = 0
 
 /obj/machinery/computer/aifixer/New()
 	src.overlays += image('icons/obj/computer.dmi', "ai-fixer-empty")
-	loc.SetLuminosity(loc.LuminosityRed, loc.LuminosityGreen, loc.LuminosityBlue + brightness_on)
 
 /obj/machinery/computer/aifixer/attackby(I as obj, user as mob)
 /*

@@ -44,12 +44,13 @@
 	anchored = 1
 	layer = 2
 	luminosity = 1
+	light_color = LIGHT_COLOR_GREEN
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
 	New()
 		..()
-		SetLuminosity(0,3,0)
+		set_light(3)
 		spawn(1200)// 2 minutes
 			del(src)
 

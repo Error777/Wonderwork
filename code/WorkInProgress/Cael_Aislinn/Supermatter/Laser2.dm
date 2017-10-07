@@ -52,7 +52,7 @@
 	anchored = 1
 
 /obj/effect/beam/e_beam/New()
-	SetLuminosity(1, 1, 4)
+	set_light(4)
 
 /obj/effect/beam/e_beam/proc/updatebeam()
 	if(!next)

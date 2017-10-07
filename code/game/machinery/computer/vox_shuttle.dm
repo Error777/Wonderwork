@@ -9,6 +9,7 @@ var/global/vox_shuttle_location
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "syndishuttle"
 	req_access = list(access_syndicate)
+	light_color = LIGHT_COLOR_RED
 	var/area/curr_location
 	var/moving = 0
 	var/lastMove = 0

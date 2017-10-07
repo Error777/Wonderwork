@@ -122,6 +122,12 @@
 		src.loc = F
 	return
 
+/obj/item/weapon/tank/plasma/heavy
+	name = "heavy plasma tank"
+	icon_state = "plasma_m"
+	item_state = "plasma_m"
+	volume = 14
+
 /*
  * Emergency Oxygen
  */
@@ -137,21 +143,20 @@
 	volume = 4
 
 
-	New()
-		..()
-		src.air_contents.oxygen = (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
-		//
-		src.air_contents.update_values()
+/obj/item/weapon/tank/emergency_oxygen/New()
+	..()
+	src.air_contents.oxygen = (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
+	//
+	src.air_contents.update_values()
+	return
 
-		return
 
-
-	examine()
-		set src in usr
-		..()
-		if(air_contents.oxygen < 0.2 && loc==usr)
-			usr << text("\red <B>The meter on the [src.name] indicates you are almost out of air!</B>")
-			usr << sound('sound/effects/alert.ogg')
+/obj/item/weapon/tank/emergency_oxygen/examine()
+	set src in usr
+	..()
+	if(air_contents.oxygen < 0.2 && loc==usr)
+		usr << text("\red <B>The meter on the [src.name] indicates you are almost out of air!</B>")
+		usr << sound('sound/effects/alert.ogg')
 
 /obj/item/weapon/tank/emergency_oxygen/engi
 	name = "extended-capacity emergency oxygen tank"

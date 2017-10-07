@@ -159,8 +159,8 @@
 				continue
 			if(T.ownjob == "Captain") //Captain can only add himself
 				continue
-			var/list/my_depts = job_master.GetDeptList(tablet.ownjob)
-			var/list/their_depts = job_master.GetDeptList(T.ownjob)
+			var/list/my_depts = job_master.GetJob(tablet.ownjob)
+			var/list/their_depts = job_master.GetJob(T.ownjob)
 			if(!my_depts || !their_depts)
 				continue
 			if(length(my_depts & their_depts))

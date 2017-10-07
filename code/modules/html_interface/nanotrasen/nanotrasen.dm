@@ -178,5 +178,5 @@ The client is optional and may be a /mob, /client or /html_interface_client obje
 			hclient.putExtraVar("eye_color", color)
 
 			winset(hclient.client, "browser_\ref[src].uiTitleEye", list2params(list("image" = "[resource]")))
-	else
-		WARNING("Invalid object passed to /datum/html_interface/nanotrasen/proc/setEyeColor")
+	//else
+		//WARNING("Invalid object passed to /datum/html_interface/nanotrasen/proc/setEyeColor")

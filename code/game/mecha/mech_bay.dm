@@ -129,6 +129,7 @@
 	name = "Mech Bay Power Control Console"
 	density = 1
 	anchored = 1
+	light_color = LIGHT_COLOR_PINK
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "recharge_comp"
 	circuit = "/obj/item/weapon/circuitboard/mech_bay_power_console"

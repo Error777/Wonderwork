@@ -5,7 +5,7 @@ var/global/obj/effect/datacore/data_core = null
 var/global/obj/effect/overlay/plmaster = null
 var/global/obj/effect/overlay/slmaster = null
 
-
+var/global/datum/universal_state/universe = new
 /var/global/list/machines = list()
 /var/global/list/processing_objects = list()
 /var/global/list/active_diseases = list()
@@ -24,7 +24,6 @@ var/global/list/global_map = null
 	//4 - Derelict
 	//3 - AI satellite
 	//5 - empty space
-
 
 	//////////////
 var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre",	\
@@ -79,7 +78,7 @@ var/diaryofmeanpeople = null
 var/href_logfile = null
 var/station_name = "NSS Exodus"
 var/vessel_type = "station"
-var/game_version = "Green Miracle"
+var/game_version = "Green Wonderwork"
 var/changelog_hash = ""
 
 var/datum/air_tunnel/air_tunnel1/SS13_airtunnel = null
@@ -87,6 +86,7 @@ var/going = 1.0
 var/master_mode = "extended"//"extended"
 var/secret_force_mode = "secret" // if this is anything but "secret", the secret rotation will forceably choose this mode
 
+var/game_year = (text2num(time2text(world.realtime, "YYYY")) + 544)
 var/datum/engine_eject/engine_eject_control = null
 var/host = null
 var/aliens_allowed = 0
@@ -166,6 +166,9 @@ var/shuttlecoming = 0
 var/join_motd = null
 var/forceblob = 0
 
+// nanomanager, the manager for Nano UIs
+var/datum/nanomanager/nanomanager = new()
+
 	//airlockWireColorToIndex takes a number representing the wire color, e.g. the orange wire is always 1, the dark red wire is always 2, etc. It returns the index for whatever that wire does.
 	//airlockIndexToWireColor does the opposite thing - it takes the index for what the wire does, for example AIRLOCK_WIRE_IDSCAN is 1, AIRLOCK_WIRE_POWER1 is 2, etc. It returns the wire color number.
 	//airlockWireColorToFlag takes the wire color number and returns the flag for it (1, 2, 4, 8, 16, etc)
@@ -201,6 +204,21 @@ var/list/AAlarmWireColorToIndex
 #define shuttle_time_in_station 1800 // 3 minutes in the station
 #define shuttle_time_to_arrive 6000 // 10 minutes to arrive
 
+// computer3 error codes, move lower in the file when it passes dev -Sayu
+#define PROG_CRASH          0x1  // Generic crash.
+#define MISSING_PERIPHERAL  0x2  // Missing hardware.
+#define BUSTED_ASS_COMPUTER 0x4  // Self-perpetuating error.  BAC will continue to crash forever.
+#define MISSING_PROGRAM     0x8  // Some files try to automatically launch a program. This is that failing.
+#define FILE_DRM            0x10 // Some files want to not be copied/moved. This is them complaining that you tried.
+#define NETWORK_FAILURE     0x20
+
+// NanoUI flags
+#define STATUS_INTERACTIVE 2 // GREEN Visability
+#define STATUS_UPDATE 1 // ORANGE Visability
+#define STATUS_DISABLED 0 // RED Visability
+#define STATUS_CLOSE -1 // Close the interface
+
+#define NANO_IGNORE_DISTANCE 1
 	//away missions
 var/list/awaydestinations = list()	//a list of landmarks that the warpgate can take you to
 

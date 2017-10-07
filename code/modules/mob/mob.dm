@@ -79,6 +79,8 @@
 	for(var/mob/M in viewers(src))
 		M.show_message( message, 1, blind_message, 2)
 
+/mob/proc/setClickCooldown(var/timeout)
+	next_move = max(world.time + timeout, next_move)
 
 //This is awful
 /mob/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -579,16 +581,6 @@ var/list/slot_equipment_priority = list( \
 		update_flavor_text()
 //	..()
 	return
-
-/mob/proc/UpdateLuminosity()//Current hardcode max at 7, should likely be a const somewhere else
-	if (LuminosityRed < 0)
-		SetLuminosity(LuminosityRed - LuminosityRed, LuminosityGreen, LuminosityBlue)
-	if (LuminosityGreen < 0)
-		SetLuminosity(LuminosityRed, LuminosityGreen - LuminosityGreen, LuminosityBlue)
-	if (LuminosityBlue < 0)
-		SetLuminosity(LuminosityRed, LuminosityGreen, LuminosityBlue - LuminosityGreen)
-	return 1
-
 
 /mob/proc/pull_damage()
 	if(ishuman(src))

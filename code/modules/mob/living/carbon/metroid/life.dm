@@ -35,7 +35,7 @@
 	handle_chemicals_in_body()
 
 	//Status updates, death etc.
-	UpdateLuminosity()
+
 	handle_regular_status_updates()
 
 	/*

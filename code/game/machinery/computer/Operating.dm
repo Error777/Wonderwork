@@ -4,6 +4,7 @@
 	name = "Operating Computer"
 	density = 1
 	anchored = 1.0
+	light_color = LIGHT_COLOR_BLUE
 	icon_state = "operating"
 	circuit = "/obj/item/weapon/circuitboard/operating"
 	var/mob/living/carbon/human/victim = null

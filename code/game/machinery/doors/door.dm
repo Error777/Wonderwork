@@ -82,7 +82,7 @@
 				open()
 			else
 				flick("door_deny", src)
-				playsound(src.loc, 'sound/machines/deniedold.ogg', 100, 1)
+				playsound(src.loc, 'sound/machines/denied.ogg', 100, 1)
 		return
 	return
 
@@ -106,7 +106,7 @@
 		if(allowed(user))	open()
 		else
 			flick("door_deny", src)
-			playsound(src.loc, 'sound/machines/deniedold.ogg', 100, 1)
+			playsound(src.loc, 'sound/machines/denied.ogg', 100, 1)
 	return
 
 /obj/machinery/door/meteorhit(obj/M as obj)
@@ -147,7 +147,7 @@
 		return
 	if(src.density)
 		flick("door_deny", src)
-	playsound(src.loc, 'sound/machines/deniedold.ogg', 100, 1)
+	playsound(src.loc, 'sound/machines/denied.ogg', 100, 1)
 	return
 
 
@@ -205,7 +205,7 @@
 				flick("doorc1", src)
 		if("deny")
 			flick("door_deny", src)
-			playsound(src.loc, 'sound/machines/deniedold.ogg', 100, 1)
+			playsound(src.loc, 'sound/machines/denied.ogg', 100, 1)
 	return
 
 
@@ -217,13 +217,13 @@
 
 	do_animate("opening")
 	icon_state = "door0"
-	src.SetOpacity(0)
+	src.set_opacity(0)
 	sleep(10)
 	src.layer = base_layer
 	src.density = 0
 	explosion_resistance = 0
 	update_icon()
-	SetOpacity(0)
+	set_opacity(0)
 	update_nearby_tiles()
 
 	if(operating)	operating = 0
@@ -250,7 +250,7 @@
 	sleep(10)
 	update_icon()
 	if(visible && !glass)
-		SetOpacity(1)	//caaaaarn!
+		set_opacity(1)	//caaaaarn!
 	operating = 0
 	update_nearby_tiles()
 

@@ -67,9 +67,11 @@
 										// can override if needed
 	if(powered(power_channel))
 		stat &= ~NOPOWER
+		set_light(light_range_on, light_power_on)
 	else
 
 		stat |= NOPOWER
+		set_light(0)
 	return
 
 
@@ -196,6 +198,16 @@
 		for(var/L = 2 to P.len)
 			powernet_nextlink(P[L], PN)
 
+//add a cable to the current powernet
+//Warning : this proc DON'T check if the cable exists
+/datum/powernet/proc/add_cable(var/obj/structure/cable/C)
+	if(C.powernet)// if C already has a powernet...
+		if(C.powernet == src)
+			return
+		else
+			C.powernet.cut_cable(C) //..remove it
+	C.powernet = src
+	cables +=C
 
 // cut a powernet at this cable object
 /datum/powernet/proc/cut_cable(var/obj/structure/cable/C)

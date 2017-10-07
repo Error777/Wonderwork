@@ -382,6 +382,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "lighter-g"
 	var/icon_on = "lighter-g-on"
 	var/icon_off = "lighter-g"
+	light_color = LIGHT_COLOR_ORANGE
 	w_class = 1
 	throwforce = 4
 	flags = TABLEPASS | CONDUCT
@@ -421,7 +422,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					for(var/mob/O in viewers(user, null))
 						O.show_message("\red After a few attempts, \the [user] manages to light \the [src], they however burn themself in the process.", 1)
 
-			user.SetLuminosity(user.LuminosityRed + 2, user.LuminosityGreen + 1, user.LuminosityBlue)
+			user.set_light(3)
 			processing_objects.Add(src)
 		else
 			src.lit = 0
@@ -434,7 +435,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				for(var/mob/O in viewers(user, null))
 					O.show_message("\red [user] quietly shuts off the [src].", 1)
 
-			user.SetLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
+			user.set_light(0)
 			processing_objects.Remove(src)
 	else
 		return ..()
@@ -458,23 +459,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(location)
 		location.hotspot_expose(700, 5)
 	return
-
 /obj/item/weapon/lighter/pickup(mob/user)
 	if(lit)
-		src.SetLuminosity(0)
-		user.SetLuminosity(user.LuminosityRed + 2, user.LuminosityGreen + 1, user.LuminosityBlue)
-	return
+		set_light(0)
+		user.set_light(3)
 
 /obj/item/weapon/lighter/dropped(mob/user)
 	if(lit)
-		user.SetLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
-		SetLuminosity(2,1,0)
-	return
-
-/obj/item/weapon/lighter/on_enter_storage()
-	if(lit)
-		lit = 0
-		update_icon()
-		SetLuminosity(LuminosityRed - 2, LuminosityGreen - 1, LuminosityBlue)
-	..()
-	return
+		user.set_light(0)
+		set_light(3)

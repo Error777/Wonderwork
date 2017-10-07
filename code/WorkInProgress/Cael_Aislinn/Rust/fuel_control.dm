@@ -2,6 +2,7 @@
 /obj/machinery/computer/rust/fuel_control
 	name = "Fuel Injection Control"
 	icon_state = "power"
+	light_color = LIGHT_COLOR_ORANGE
 	var/list/fuel_injectors
 	var/list/stage_status
 	var/announce_fueldepletion = 0

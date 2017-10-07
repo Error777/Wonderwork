@@ -4,6 +4,7 @@
 	name = "power monitoring computer"
 	desc = "It monitors power levels across the station."
 	icon = 'icons/obj/computer.dmi'
+	light_color = LIGHT_COLOR_YELLOW
 	icon_state = "power"
 	density = 1
 	anchored = 1

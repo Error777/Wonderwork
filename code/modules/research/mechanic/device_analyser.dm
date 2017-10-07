@@ -14,7 +14,7 @@
 	var/loadone = 0 //whether or not it should load just one at a time. 0 is all at once, 1 is one at a time
 	flags = FPRINT
 	slot_flags = SLOT_BELT
-	w_class = 2
+	w_class = W_CLASS_SMALL
 	item_state = "electronic"
 	starting_materials = null
 	w_type = RECYK_ELECTRONIC
@@ -36,7 +36,7 @@
 		var/obj/O = A
 		if(istype(O, /obj/machinery/r_n_d/reverse_engine) && loaded_designs.len)
 			return //don't try to scan the reverse engine if we have any designs to upload! let the reverse engine's attackby handle it instead
-		for(var/datum/design/mechanic_design/current_design in loaded_designs)
+		for(var/datum/design/current_design in loaded_designs)
 			if(current_design.build_path == O.type)
 				to_chat(user, "<span class='rose'>You've already got a schematic of \the [O]!</span>")
 				return
@@ -49,11 +49,11 @@
 						user.visible_message("[user] scans \the [O].", "<span class='notice'>You successfully scan \the [O].</span>")
 						return 1
 					else
-						to_chat(user, "\icon [src] \The [src] flashes a message on-screen: \"Too many designs loaded.\"")
+						to_chat(user, "[bicon(src)] \The [src] flashes a message on-screen: \"Too many designs loaded.\"")
 				if(-1)
-					to_chat(user, "<span class='rose'>\icon [src] \The [src]'s safety features prevent you from scanning that object.</span>")
+					to_chat(user, "<span class='rose'>[bicon(src)] \The [src]'s safety features prevent you from scanning that object.</span>")
 				if(-2)
-					to_chat(user, "<span class='rose'>\icon [src] \The [src]'s access requirements prevent you from scanning that object.</span>")
+					to_chat(user, "<span class='rose'>[bicon(src)] \The [src]'s access requirements prevent you from scanning that object.</span>")
 				else //no origin_tech, no scans.
 					to_chat(user, "<span class='rose'>\The [src] can't seem to scan \the [O]!</span>")
 		else //no origin_tech, no scans.

@@ -36,13 +36,13 @@
 
 /obj/item/clothing/head/powered/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(user.luminosity + brightness_on)
-		SetLuminosity(0)
+		user.set_light(brightness_on)
+		set_light(0)
 
 /obj/item/clothing/head/powered/dropped(mob/user)
 	if(on)
 		on = 0
-		user.SetLuminosity(user.luminosity - brightness_on)
+		user.set_light(0)
 		update_icon()
 
 /obj/item/clothing/head/powered/Stat(var/stat = 0)
@@ -79,8 +79,8 @@
 	on = !on
 	update_icon()
 
-	if(on)	user.SetLuminosity(user.luminosity + brightness_on)
-	else	user.SetLuminosity(user.luminosity - brightness_on)
+	if(on)	user.set_light(brightness_on)
+	else	user.set_light(0)
 
 /obj/item/clothing/head/powered/process()
 	if(on && brightness_on)

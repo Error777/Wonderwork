@@ -13,42 +13,29 @@
 	layer = 10
 	master = src //moved outside the spawn(1) to avoid runtimes in lighting.dm when it references loc.loc.master ~Carn
 	uid = ++global_uid
-	spawn(1)
-	//world.log << "New: [src] [tag]"
-		var/ul_created = findtext(tag,":UL")
-		ul_Prep()
-		if(ul_created)
-			if(!islist(related))
-				related = list()
-			related += src
-			return
-		related = list(src)
-
-		src.icon = 'icons/effects/alert.dmi'
-		src.layer = 10
-	//	update_lights()
-		if(name == "Space")			// override defaults for space
-			requires_power = 1
-			always_unpowered = 1
-			LightLevels = list("Red" = 2, "Green" = 2, "Blue" = 3)
-			power_light = 0
-			power_equip = 0
-			power_environ = 0
-			//has_gravity = 0    // Space has gravity.  Because.. because.
-
-		if(!requires_power)
-			power_light = 0//rastaf0
-			power_equip = 0//rastaf0
-			power_environ = 0//rastaf0
-			if(!ul_Lighting)
-				luminosity = 1
-		else
-			luminosity = 0
-			area_lights_luminosity = rand(6,8)
-		if(LightLevels)
-			ul_Light()
 
 
+	src.icon = 'icons/effects/alert.dmi'
+	src.layer = 10
+//	update_lights()
+	if(name == "Space")			// override defaults for space
+		requires_power = 1
+		always_unpowered = 1
+		dynamic_lighting = 0
+		power_light = 0
+		power_equip = 0
+		power_environ = 0
+		//has_gravity = 0    // Space has gravity.  Because.. because.
+
+	if(!requires_power)
+		power_light = 0//rastaf0
+		power_equip = 0//rastaf0
+		power_environ = 0//rastaf0
+		if(!dynamic_lighting)
+			luminosity = 1
+	else
+		luminosity = 0
+		area_lights_luminosity = rand(6,8)
 
 /area/proc/poweralert(var/state, var/obj/source as obj)
 	if (state != poweralm)

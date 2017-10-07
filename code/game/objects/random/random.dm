@@ -70,7 +70,8 @@
 		return pick(/obj/item/device/assembly/igniter,\
 					/obj/item/device/assembly/prox_sensor,\
 					/obj/item/device/assembly/signaler,\
-					/obj/item/device/multitool)
+					/obj/item/device/multitool,\
+					/obj/item/weapon/relic)
 
 
 /obj/random/toolbox
@@ -94,6 +95,7 @@
 					prob(1);/obj/item/weapon/packageWrap,\
 					prob(2);/obj/random/bomb_supply,\
 					prob(1);/obj/item/weapon/extinguisher,\
+					prob(1);/obj/item/weapon/relic,\
 					prob(3);/obj/item/weapon/cable_coil/random,\
 					prob(2);/obj/random/toolbox,\
 					prob(2);/obj/item/weapon/storage/belt/utility,\
@@ -152,6 +154,7 @@
 					prob(2);/obj/item/clothing/glasses/thermal/syndi,\
 					prob(3);/obj/item/clothing/glasses/night,\
 					prob(3);/obj/item/weapon/storage/box/emps,\
+					prob(1);/obj/item/weapon/relic,\
 					prob(2);/obj/item/weapon/storage/box/syndie_kit/space_random,\
 					prob(2);/obj/item/device/debugger,\
 					prob(3);/obj/item/weapon/gun/projectile/revolver)

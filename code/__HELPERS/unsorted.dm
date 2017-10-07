@@ -2,8 +2,25 @@
 
 
 /*UL*/
+/var/mob/dview/dview_mob = new
 
-#define ul_Luminosity(A) max(A.LuminosityRed, A.LuminosityGreen, A.LuminosityBlue)
+//Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
+	if(!center)
+		return
+
+	dview_mob.loc = center
+
+	dview_mob.see_invisible = invis_flags
+
+	. = view(range, dview_mob)
+	dview_mob.loc = null
+
+/mob/dview
+	invisibility = 101
+	density = 0
+	see_in_dark = 1e6
+	anchored = 1
 /*
  * A large number of misc global procs.
  */
@@ -171,6 +188,11 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	if(DirBlocked(A,adir)) return 1
 	if(DirBlocked(B,rdir)) return 1
 	return 0
+
+/proc/topic_link(var/datum/D, var/arglist, var/content)
+	if(istype(arglist,/list))
+		arglist = list2params(arglist)
+	return "<a href='?src=\ref[D];[arglist]'>[content]</a>"
 
 
 /proc/DirBlocked(turf/loc,var/dir)
@@ -570,7 +592,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 // Optionally, specify the "ref" parameter as the controlled atom (usually src)
 // to pass a "close=1" parameter to the atom's Topic() proc for special handling.
 // Otherwise, the user mob's machine var will be reset directly.
-//
+/*
 /proc/onclose(mob/user, windowid, var/atom/ref=null)
 	if(!user.client) return
 	var/param = "null"
@@ -580,13 +602,13 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	winset(user, windowid, "on-close=\".windowclose [param]\"")
 
 	//world << "OnClose [user]: [windowid] : ["on-close=\".windowclose [param]\""]"
-
+*/
 
 // the on-close client verb
 // called when a browser popup window is closed after registering with proc/onclose()
 // if a valid atom reference is supplied, call the atom's Topic() with "close=1"
 // otherwise, just reset the client mob's machine var.
-//
+/*
 /client/verb/windowclose(var/atomref as text)
 	set hidden = 1						// hide this verb from the user's panel
 	set name = ".windowclose"			// no autocomplete on cmd line
@@ -607,7 +629,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		//world << "[src] was [src.mob.machine], setting to null"
 		src.mob.unset_machine()
 	return
-
+*/
 //Will return the location of the turf an atom is ultimatly sitting on
 /proc/get_turf_loc(var/atom/movable/M) //gets the location of the turf that the atom is on, or what the atom is in is on, etc
 	//in case they're in a closet or sleeper or something
@@ -969,7 +991,7 @@ proc/anim(turf/location as turf,target as mob|obj,a_icon,a_icon_state as text,fl
 
 //					if(AR.lighting_use_dynamic)							//TODO: rewrite this code so it's not messed by lighting ~Carn
 //						X.opacity = !X.opacity
-//						X.SetOpacity(!X.opacity)
+//						X.set_opacity(!X.opacity)
 
 					toupdate += X
 
@@ -980,7 +1002,7 @@ proc/anim(turf/location as turf,target as mob|obj,a_icon,a_icon_state as text,fl
 
 //						if(AR2.lighting_use_dynamic)						//TODO: rewrite this code so it's not messed by lighting ~Carn
 //							ttl.opacity = !ttl.opacity
-//							ttl.sd_SetOpacity(!ttl.opacity)
+//							ttl.sd_set_opacity(!ttl.opacity)
 
 						fromupdate += ttl
 
@@ -1145,7 +1167,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 
 //					if(AR.lighting_use_dynamic)
 //						X.opacity = !X.opacity
-//						X.sd_SetOpacity(!X.opacity)			//TODO: rewrite this code so it's not messed by lighting ~Carn
+//						X.sd_set_opacity(!X.opacity)			//TODO: rewrite this code so it's not messed by lighting ~Carn
 
 					toupdate += X
 

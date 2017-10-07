@@ -1,10 +1,12 @@
 
 /obj/machinery/computer/rust/radiation_monitor
 	name = "Core Radiation Monitor"
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/rust/energy_monitor
 	name = "Core Primary Monitor"
 	icon_state = "power"
+	light_color = LIGHT_COLOR_ORANGE
 	var/obj/machinery/rust/core/core_generator = null
 	var/updating = 1
 

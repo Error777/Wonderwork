@@ -124,7 +124,3 @@
 						overlays += image('icons/obj/pda.dmi', "aicard-on")
 		attack_self(U)
 
-
-
-
-

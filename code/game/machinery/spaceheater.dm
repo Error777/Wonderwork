@@ -1,10 +1,13 @@
 /obj/machinery/space_heater
-	anchored = 0
-	density = 1
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	anchored = 0
+	density = 1
+	light_power_on = 0.75
+	light_range_on = 2
+	light_color = LIGHT_COLOR_ORANGE
 	var/obj/item/weapon/cell/cell
 	var/on = 0
 	var/open = 0
@@ -19,12 +22,14 @@
 		cell = new(src)
 		cell.charge = 1000
 		cell.maxcharge = 1000
+//		set_light(light_range_on,light_power_on)
 		update_icon()
 		return
 
 	update_icon()
 		overlays.Cut()
 		icon_state = "sheater[on]"
+		set_light(on ? light_range_on : 0, light_power_on)
 		if(open)
 			overlays  += "sheater-open"
 		return

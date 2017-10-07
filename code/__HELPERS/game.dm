@@ -14,6 +14,12 @@
 		return 1
 	return 0
 
+/proc/get_new_area(O)
+	var/turf/loc = get_turf(O)
+	if(loc)
+		var/area/res = loc.loc
+		.= res
+
 /proc/get_area(O)
 	var/atom/location = O
 	var/i

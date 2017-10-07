@@ -8,6 +8,8 @@
 */
 
 /obj/machinery/computer3
+	light_power_on = 1
+	light_range_on = 2
 
 	/*
 		interactable(user): performs all standard sanity checks

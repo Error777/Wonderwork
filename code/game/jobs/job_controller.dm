@@ -42,6 +42,14 @@ var/global/datum/controller/occupations/job_master
 			if(J.title == rank)	return J
 		return null
 
+	proc/GetDeptList(var/rank) //Used for assignments and evaluations, returns a list of the job's departments
+		if(!rank)	return null
+		for(var/datum/job/J in occupations)
+			if(!J)	continue
+			if(J.title == rank)	return J.departments
+		return null
+
+
 	proc/GetPlayerAltTitle(mob/new_player/player, rank)
 		return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
 

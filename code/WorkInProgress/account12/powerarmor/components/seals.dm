@@ -151,7 +151,7 @@
 			if(parent.helm.on)
 				parent.helm.on = 0
 				parent.helm.update_icon()
-				user.SetLuminosity(user.luminosity - parent.helm:brightness_on)
+				user.set_light(0)
 			if(!sudden)
 				if(manual)
 					sleep(20)

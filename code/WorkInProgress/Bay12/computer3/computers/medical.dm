@@ -10,7 +10,8 @@
 /obj/machinery/computer3/med_data
 	default_prog	= /datum/file/program/med_data
 	spawn_parts		= list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/cardslot,/obj/item/part/computer/networking/radio)
-
+	icon_state = "frame-med"
+	light_color = LIGHT_COLOR_GREEN
 
 /obj/machinery/computer3/laptop/medical
 	spawn_parts = list(/obj/item/part/computer/storage/hdd,/obj/item/part/computer/cardslot,/obj/item/part/computer/networking/radio)
@@ -88,8 +89,8 @@
 					if(4.0)
 						dat += "<CENTER><B>Medical Record</B></CENTER><BR>"
 						if ((istype(src.active1, /datum/data/record) && data_core.general.Find(src.active1)))
-							var/icon/front = active1.fields["photo_front"]
-							var/icon/side = active1.fields["photo_side"]
+							var/icon/front = new(active1.fields["photo"], dir = SOUTH)
+							var/icon/side = new(active1.fields["photo"], dir = WEST)
 							usr << browse_rsc(front, "front.png")
 							usr << browse_rsc(side, "side.png")
 
@@ -136,7 +137,7 @@
 						dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
 						dat += "<br><b>Medical Robots:</b>"
 						var/bdat = null
-						for(var/mob/living/bot/medbot/M in world)
+						for(var/obj/machinery/bot/medbot/M in world)
 
 							if(M.z != computer.z)	continue	//only find medibots on the same z-level as the computer
 							var/turf/bl = get_turf(M)
@@ -154,6 +155,7 @@
 					else
 			else
 				dat += text("<A href='?src=\ref[];login=1'>{Log In}</A>", src)
+
 		popup.width = 600
 		popup.height = 400
 		popup.set_content(dat)
@@ -378,8 +380,6 @@
 							src.active1.fields["p_stat"] = "Physically Unfit"
 						if("disabled")
 							src.active1.fields["p_stat"] = "Disabled"
-					if(PDA_Manifest.len)
-						PDA_Manifest.Cut()
 
 			if (href_list["m_stat"])
 				if (src.active1)
@@ -413,7 +413,6 @@
 							src.active2.fields["b_type"] = "AB+"
 						if("op")
 							src.active2.fields["b_type"] = "O+"
-
 
 			if (href_list["del_r"])
 				if (src.active2)

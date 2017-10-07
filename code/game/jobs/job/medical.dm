@@ -1,7 +1,9 @@
 /datum/job/cmo
 	title = "Chief Medical Officer"
 	flag = CMO
+	department_head = list("Captain")
 	department_flag = MEDSCI
+	departments = list("Command","Medical")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -46,7 +48,9 @@
 /datum/job/doctor
 	title = "Medical Doctor"
 	flag = DOCTOR
+	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
+	departments = list("Medical")
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
@@ -108,7 +112,9 @@
 /datum/job/chemist
 	title = "Chemist"
 	flag = CHEMIST
+	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
+	departments = list("Medical")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
@@ -139,7 +145,9 @@
 /datum/job/geneticist
 	title = "Geneticist"
 	flag = GENETICIST
+	department_head = list("Chief Medical Officer", "Research Director")
 	department_flag = MEDSCI
+	departments = list("Medical","Science")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
@@ -169,7 +177,9 @@
 /*/datum/job/virologist
 	title = "Virologist"
 	flag = VIROLOGIST
+	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
+	departments = list("Medical")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -204,7 +214,9 @@
 /datum/job/psychiatrist
 	title = "Psychiatrist"
 	flag = PSYCHIATRIST
+	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
+	departments = list("Medical")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1

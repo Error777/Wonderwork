@@ -751,7 +751,73 @@ steam.start() -- spawns the effect
 		src.processing = 0
 		src.on = 0
 
+/datum/effect/effect/system/ion_trail_follow/space_trail
+//	var/turf/oldloc // secondary ion trail loc
+	var/turf/currloc
+	var/pi_x = 0
+	var/pi_y = 0
 
+/datum/effect/effect/system/ion_trail_follow/space_trail/start()
+	if(!src.on)
+		src.on = 1
+		src.processing = 1
+	if(src.processing)
+		src.processing = 0
+		spawn(0)
+			var/turf/T = get_turf(src.holder)
+			if(currloc != T)
+				pi_x = 0
+				pi_y = 0
+				switch(holder.dir)
+					if(NORTH)
+						src.oldposition = T
+						src.oldposition = get_step(oldposition, SOUTH)
+						pi_x = 16
+//						src.oldloc = get_step(oldposition,EAST)
+						//src.oldloc = get_step(oldloc, SOUTH)
+					if(SOUTH) // More difficult, offset to the north!
+						src.oldposition = get_step(holder,NORTH)
+						src.oldposition = get_step(oldposition,NORTH)
+						pi_x = 16
+//						src.oldloc = get_step(oldposition,EAST)
+						//src.oldloc = get_step(oldloc,NORTH)
+					if(EAST) // Just one to the north should suffice
+						src.oldposition = T
+						src.oldposition = get_step(oldposition, WEST)
+						pi_y = 16
+//						src.oldloc = get_step(oldposition,NORTH)
+						//src.oldloc = get_step(oldloc,WEST)
+					if(WEST) // One to the east and north from there
+						src.oldposition = get_step(holder,EAST)
+						src.oldposition = get_step(oldposition,EAST)
+						pi_y = 16
+//						src.oldloc = get_step(oldposition,NORTH)
+						//src.oldloc = get_step(oldloc,EAST)
+				if(istype(T, /turf/space))
+					var/obj/effect/effect/ion_trails/I = new /obj/effect/effect/ion_trails(src.oldposition)
+					I.pixel_x = pi_x
+					I.pixel_y = pi_y
+//					var/obj/effect/effect/ion_trails/II = new /obj/effect/effect/ion_trails(src.oldloc)
+					//src.oldposition = T
+					I.dir = src.holder.dir
+//					II.dir = src.holder.dir
+					flick("ion_fade_pod", I)
+//					flick("ion_fade", II)
+//					I.icon_state = "blank"
+//					II.icon_state = "blank"
+					spawn(3)
+						if(I) I.delete()
+//						if(II) II.delete()
+				spawn(2)
+					if(src.on)
+						src.processing = 1
+						src.start()
+			else
+				spawn(2)
+					if(src.on)
+						src.processing = 1
+						src.start()
+			currloc = T
 
 
 /////////////////////////////////////////////

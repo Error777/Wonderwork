@@ -2,6 +2,7 @@
 	name = "Teleporter"
 	desc = "Used to control a linked teleportation Hub and Station."
 	icon_state = "teleport"
+	light_color = LIGHT_COLOR_BLUE
 	circuit = "/obj/item/weapon/circuitboard/teleporter"
 	var/obj/item/locked = null
 	var/id = null

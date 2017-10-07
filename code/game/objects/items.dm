@@ -27,7 +27,7 @@
 
 	var/icon_action_button //If this is set, The item will make an action button on the player's HUD when picked up. The button will have the icon_action_button sprite from the screen1_action.dmi file.
 	var/action_button_name //This is the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. Note that icon_action_button needs to be set in order for the action button to appear.
-
+	var/list/materials = list()
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	var/flags_inv //This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
 	var/item_color = null
@@ -125,6 +125,31 @@
 	usr << "This is a [src.blood_DNA ? "bloody " : ""]\icon[src][src.name]. It is a [size] item."
 	if(src.desc)
 		usr << src.desc
+/*
+	if(user.research_scanner) //Mob has a research scanner active.
+		var/msg = "*--------* <BR>"
+
+		if(origin_tech)
+			msg += "<span class='notice'>Testing potentials:</span><BR>"
+			var/list/techlvls = params2list(origin_tech)
+			for(var/T in techlvls) //This needs to use the better names.
+				msg += "Tech: [CallTechName(T)] | magnitude: [techlvls[T]] <BR>"
+			msg += "Research reliability: [reliability]% <BR>"
+			if(crit_fail)
+				msg += "<span class='danger'>Critical failure detected in subject!</span><BR>"
+		else
+			msg += "<span class='danger'>No tech origins detected.</span><BR>"
+
+
+		if(materials.len)
+			msg += "<span class='notice'>Extractable materials:<BR>"
+			for(var/mat in materials)
+				msg += "[CallMaterialName(mat)]<BR>" //Capitize first word, remove the "$"
+		else
+			msg += "<span class='danger'>No extractable materials detected.</span><BR>"
+		msg += "*--------*"
+		user << msg
+*/
 	return
 
 /obj/item/attack_hand(mob/user as mob)
@@ -394,7 +419,16 @@
 /obj/item/proc/attack_self()
 	return
 
-/obj/item/proc/afterattack()
+/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, params)
+	if(istype(target, /obj/structure/table))
+		var/list/click_params = params2list(params)
+		//Center the icon where the user clicked.
+		pixel_x = (text2num(click_params["icon-x"]) - 16)
+		pixel_y = (text2num(click_params["icon-y"]) - 16)
+		layer = user.layer + 0.1
+
+		if(!isnum(click_params))
+			return
 	return
 
 /obj/item/proc/talk_into(mob/M as mob, text)

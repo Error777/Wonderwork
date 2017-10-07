@@ -199,21 +199,27 @@
 
 /obj/structure/cable/green
 	cable_color = COLOR_GREEN
+	color = COLOR_GREEN
 
 /obj/structure/cable/blue
 	cable_color = COLOR_BLUE
+	color = COLOR_BLUE
 
 /obj/structure/cable/pink
 	cable_color = COLOR_PINK
+	color = COLOR_PINK
 
 /obj/structure/cable/orange
 	cable_color = COLOR_ORANGE
+	color = COLOR_ORANGE
 
 /obj/structure/cable/cyan
 	cable_color = COLOR_CYAN
+	color = COLOR_CYAN
 
 /obj/structure/cable/white
 	cable_color = COLOR_WHITE
+	color = COLOR_WHITE
 
 /obj/structure/cable/New()
 	..()
@@ -290,6 +296,10 @@
 /obj/item/metroid_core/t3
 /obj/item/metroid_core/t4
 /obj/item/metroid_core/t5
+/obj/item/metroid_core/t6
+/obj/item/metroid_core/t7
+/obj/item/metroid_core/t8
+/obj/item/metroid_core/t9
 // see Chemistry-Recipes.dm
 
 /obj/effect/spawner

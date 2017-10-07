@@ -254,6 +254,7 @@
 	seed = "/obj/item/seeds/glowberryseed"
 	name = "bunch of glow-berries"
 	desc = "Nutritious!"
+	light_color = LIGHT_COLOR_BLUE
 	var/on = 1
 	var/brightness_on = 2 //luminosity when on
 	icon_state = "glowberrypile"
@@ -265,16 +266,16 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/Del()
 	if(istype(loc,/mob))
-		loc.SetLuminosity(loc.LuminosityRed - potency/5, loc.LuminosityGreen - potency/5, loc.LuminosityBlue - potency/5)
+		loc.set_light(0)
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/pickup(mob/user)
-	SetLuminosity(0)
-	user.SetLuminosity(user.LuminosityRed + potency/5, user.LuminosityGreen + potency/5, user.LuminosityBlue + potency/5)
+	set_light(0)
+	user.set_light(potency/5)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/glowberries/dropped(mob/user)
-	user.SetLuminosity(user.LuminosityRed - potency/5, user.LuminosityGreen - potency/5, user.LuminosityBlue - potency/5)
-	SetLuminosity(potency/5)
+	user.set_light(0)
+	set_light(potency/5)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cocoapod
 	seed = "/obj/item/seeds/cocoapodseed"
@@ -872,6 +873,7 @@
 	seed = "/obj/item/seeds/glowshroom"
 	name = "glowshroom cluster"
 	desc = "<I>Mycena Bregprox</I>: This species of mushroom glows in the dark. Or does it?"
+	light_color = LIGHT_COLOR_GREEN
 	icon_state = "glowshroom"
 	New()
 		..()
@@ -880,7 +882,7 @@
 		if(istype(src.loc,/mob))
 			pickup(src.loc)
 		else
-			src.SetLuminosity(round(potency/10,1))
+			src.set_light(round(potency/10,1))
 	lifespan = 120 //ten times that is the delay
 	endurance = 30
 	maturation = 15
@@ -904,16 +906,16 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/Del()
 	if(istype(loc,/mob))
-		loc.SetLuminosity(round(loc.luminosity - potency/10,1))
+		loc.set_light(round(loc.luminosity - potency/10))
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
-	SetLuminosity(0)
-	user.SetLuminosity(round(user.luminosity + (potency/10),1))
+	set_light(0)
+	user.set_light(round(user.luminosity + (potency/10)))
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.SetLuminosity(round(user.luminosity + (potency/10),1))
-	SetLuminosity(round(potency/10,1))
+	user.set_light(round(user.luminosity + (potency/10)))
+	set_light(round(potency/10))
 
 
 // *************************************

@@ -11,7 +11,7 @@
 	var/throw_range = 7
 	var/moved_recently = 0
 	var/mob/pulledby = null
-
+	var/inertia_dir = 0
 /atom/movable/Move()
 	var/atom/A = src.loc
 	. = ..()

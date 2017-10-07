@@ -6,7 +6,11 @@
 	var/id = null
 	var/on = 1.0
 	anchored = 1.0
+	light_color = LIGHT_COLOR_FIRE
+	anchored = 1
 	use_power = 1
+	light_power_on = 1
+	light_range_on = 3
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -42,8 +46,10 @@
 /obj/machinery/igniter/power_change()
 	if(!( stat & NOPOWER) )
 		icon_state = "igniter[src.on]"
+		src.set_light(light_range_on,light_power_on)
 	else
 		icon_state = "igniter0"
+		src.set_light(0)
 
 // Wall mounted remote-control igniter.
 
@@ -52,6 +58,7 @@
 	desc = "A wall-mounted ignition device."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "migniter"
+	light_color = LIGHT_COLOR_TUNGSTEN
 	var/id = null
 	var/disable = 0
 	var/last_spark = 0
@@ -65,11 +72,11 @@
 	if ( powered() && disable == 0 )
 		stat &= ~NOPOWER
 		icon_state = "[base_state]"
-		src.SetLuminosity(2)
+		src.set_light(2)
 	else
 		stat |= ~NOPOWER
 		icon_state = "[base_state]-p"
-		src.SetLuminosity(0)
+		src.set_light(0)
 
 /obj/machinery/sparker/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/device/detective_scanner))

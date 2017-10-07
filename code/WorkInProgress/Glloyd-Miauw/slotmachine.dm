@@ -3,7 +3,7 @@
 |	  Original code by Glloyd	|
 |	  Tgstation port by Miauw	|
 \*******************************/
-
+//#define DEBUG_SLOT_MACHINES
 #ifdef DEBUG_SLOT_MACHINES
 	#warning Slot machines are being debugged! Turn this off in code/game/machinery/computer/slot_machine.dm
 #endif
@@ -27,7 +27,7 @@
 	desc = "The arm is just for decoration."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "slot"
-
+	light_color = LIGHT_COLOR_PINK
 	var/show_name
 
 	var/image/overlay_1
@@ -76,10 +76,10 @@
 	overlay_1 = image('icons/obj/economy.dmi',icon_state="[value_1]",loc = src)
 
 	overlay_2 = image('icons/obj/economy.dmi',icon_state="[value_2]",loc = src)
-	overlay_2.pixel_x = 4
+	overlay_2.pixel_x = 4 * 32/32
 
 	overlay_3 = image('icons/obj/economy.dmi',icon_state="[value_3]",loc = src)
-	overlay_3.pixel_x = 8
+	overlay_3.pixel_x = 8 * 32/32
 
 	//The reason why there guys aren't actually added to the overlays list is that their icon_state has to be changed during the spin() proc,
 	//which would be impossible if they were in the overlays list
@@ -121,7 +121,8 @@
 				return
 
 /obj/machinery/computer/slot_machine/proc/spin(mob/user)
-	if(spinning) return
+	if(spinning)
+		return
 
 	//Charge money:
 	if(stored_money >= spin_cost) //If there's cash in the machine
@@ -258,7 +259,8 @@
 
 //Broadcast something over the radio!
 /obj/machinery/computer/slot_machine/proc/broadcast(var/message)
-	if(!message) return
+	if(!message)
+		return
 
 	Broadcast_Message(radio, all_languages, null, radio, message, "[capitalize(src.name)]", "Money Snatcher", "Slot machine #[id]", 0, 0, list(0,1), 1459)
 
@@ -266,27 +268,28 @@
 	if(..())
 		return
 
-	user.machine = src
+	user.set_machine(src)
 
-	var/dat = {"<h4><center>Current Jackpot: <b>[our_money_account ? "$[num2text(our_money_account.money)]" : "---ERROR---"]</b></center></h4><br>"}
+	var/dat = {"<h4><center>Current Jackpot: <b>[our_money_account ? "$[num2septext(our_money_account.money)]" : "---ERROR---"]</b></center></h4><br>"}
 
 	if(stored_money > 0)
-		dat += {"There are <span style="color:[stored_money<spin_cost?"red":"green"]"><b>$[num2text(stored_money)]</b>
-			space credits insterted. <span style="color:blue"><a href='byond://?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
+		dat += {"There are <span style="color:[stored_money<spin_cost?"red":"green"]"><b>$[num2septext(stored_money)]</b>
+			space credits inserted. <span style="color:blue"><a href='?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
 	else
-		dat += {"You need at least <b>$[spin_cost]</b> credits to play. Use a nearby ATM and retreive some cash from your money account!<br>"}
+		dat += {"You need at least <b>$[spin_cost]</b> credits to play. Use a nearby ATM and retrieve some cash from your money account!<br>"}
 
 	if(can_play())
 		if(stored_money >= spin_cost)
-			dat += {"<span style="color:yellow"><a href='byond://?src=\ref[src];spin=1'>Play! (<b>$[spin_cost]</b>)</a></span><br>"}
+			dat += {"<span style="color:yellow"><a href='?src=\ref[src];spin=1'>Play! (<b>$[spin_cost]</b>)</a></span><br>"}
 
 	else
 		dat += {"<b>OUT OF SERVICE</b><br>"}
 
-	src.updateUsrDialog()
-	user << browse(dat,"window=slotmachine")
+	var/datum/browser/popup = new(user, "slotmachine", "[src]", 500, 300, src)
+	popup.set_content(dat)
+	popup.open()
+
 	onclose(user, "slotmachine")
-	return
 
 /obj/machinery/computer/slot_machine/Topic(href, href_list)
 	if(..())
@@ -302,13 +305,11 @@
 		if((stored_money >= spin_cost) && can_play())
 			spin(usr)
 
-	updateUsrDialog()
-	return
+	src.updateUsrDialog()
+
 
 /obj/machinery/computer/slot_machine/attackby(obj/item/I as obj, mob/user as mob)
 	..()
-
-	user.machine = src
 
 	if(istype(I,/obj/item/weapon/spacecash))
 		if(!can_play())

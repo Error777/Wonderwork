@@ -68,6 +68,9 @@ proc/sanitize_russian(var/msg) //Специально для всего, где не нужно убирать пере
 		index = findtext(msg, "я")
 	return msg
 
+/proc/strip_improper(var/text)
+	return replacetext(replacetext(text, "\proper", ""), "\improper", "")
+
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t,var/list/repl_chars = null)
 	return sanitize_simple(t,repl_chars)
