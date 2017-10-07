@@ -561,3 +561,12 @@
 		new /obj/item/weapon/light/tube(src)
 	for(var/i = 0; i < 7; i++)
 		new /obj/item/weapon/light/bulb(src)
+
+/obj/item/weapon/storage/box/lights/emergency
+	name = "box of replacement emergency light bulbs"
+	icon_state = "lightr"
+
+/obj/item/weapon/storage/box/lights/emergency/New()
+	..()
+	for(var/i = 0; i < 21; i++)
+		new /obj/item/weapon/light/bulb/fire(src)

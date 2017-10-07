@@ -6,7 +6,7 @@
 	. = ..()
 
 	loc.overlays += src
-	del src
+	del(src)
 
 /obj/effect/decal/warning_stripes/floor
 	name = "floor decal"

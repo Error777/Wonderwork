@@ -9,6 +9,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
+	var/overlay = 1
 	can_breath = 1
 	can_eat = 0
 
@@ -55,7 +56,7 @@
 	item_state = "clown_hat"
 	can_breath = 0
 	can_eat = 1
-
+	overlay = 0
 /obj/item/clothing/mask/gas/sexyclown
 	name = "sexy-clown wig and mask"
 	desc = "A feminine clown mask for the dabbling crossdressers or female entertainers."
@@ -63,7 +64,7 @@
 	item_state = "sexyclown"
 	can_breath = 0
 	can_eat = 1
-
+	overlay = 0
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
 	desc = "The traditional mime's mask. It has an eerie facial posture."
@@ -71,7 +72,7 @@
 	item_state = "mime"
 	can_breath = 0
 	can_eat = 1
-
+	overlay = 0
 /obj/item/clothing/mask/gas/monkeymask
 	name = "monkey mask"
 	desc = "A mask used when acting as a monkey."
@@ -79,7 +80,7 @@
 	item_state = "monkeymask"
 	can_breath = 0
 	can_eat = 1
-
+	overlay = 0
 /obj/item/clothing/mask/gas/sexymime
 	name = "sexy mime mask"
 	desc = "A traditional female mime's mask."
@@ -87,7 +88,7 @@
 	item_state = "sexymime"
 	can_breath = 0
 	can_eat = 1
-
+	overlay = 0
 /obj/item/clothing/mask/gas/death_commando
 	name = "Death Commando Mask"
 	icon_state = "death_commando_mask"
@@ -98,14 +99,14 @@
 	name = "cyborg visor"
 	desc = "Beep boop"
 	icon_state = "death"
-
+	overlay = 0
 /obj/item/clothing/mask/gas/owl_mask
 	name = "owl mask"
 	desc = "Twoooo!"
 	icon_state = "owl"
 	can_breath = 0
 	can_eat = 1
-
+	overlay = 0
 /obj/item/clothing/mask/gas/security/hos
 	name = "Head of security's mask"
 	desc = "Spec Ops time."
@@ -137,3 +138,4 @@
 	siemens_coefficient = 0.5
 	can_breath = 0
 	can_eat = 1
+	overlay = 0

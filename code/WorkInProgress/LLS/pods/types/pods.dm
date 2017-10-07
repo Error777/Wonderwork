@@ -5,7 +5,7 @@
 /obj/pod/large
 	size = list(2, 2)
 	icon_state = "pod_civ"
-	icon = 'icons/obj/pod-2-2.dmi'
+	icon = 'icons/pods/pod-2-2.dmi'
 
 	pre_equipped/
 
@@ -61,7 +61,7 @@
 			return list(new /obj/item/weapon/pod_attachment/cargo/large(src), new /obj/item/weapon/pod_attachment/shield/plasma(src))
 
 		GetPowercell()
-			return new /obj/item/weapon/stock_parts/cell/super(src)
+			return new /obj/item/weapon/cell/super(src)
 
 		GetSeats()
 			return 2
@@ -160,7 +160,7 @@
 			return list(new /obj/item/weapon/pod_attachment/cargo/large(src), new /obj/item/weapon/pod_attachment/shield/plasma(src))
 
 		GetPowercell()
-			return new /obj/item/weapon/stock_parts/cell/super(src)
+			return new /obj/item/weapon/cell/super(src)
 
 	industrial/
 		name = "industrial miniputt"

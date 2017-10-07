@@ -1,6 +1,6 @@
 /obj/item/weapon/storage/box/pod_frame_left
 	name = "left pod frame box"
-	icon = 'icons/obj/pod_attachments.dmi'
+	icon = 'icons/pods/pod_attachments.dmi'
 	icon_state = "attachment_default"
 	foldable = /obj/item/pod_construction_part/parts/frames/left
 	can_hold = list()
@@ -15,7 +15,7 @@
 
 /obj/item/weapon/storage/box/pod_frame_right
 	name = "right pod frame box"
-	icon = 'icons/obj/pod_attachments.dmi'
+	icon = 'icons/pods/pod_attachments.dmi'
 	icon_state = "attachment_default"
 	foldable = /obj/item/pod_construction_part/parts/frames/right
 	can_hold = list()
@@ -31,7 +31,7 @@
 // NOTE(drache): Redo this. Such a mess.
 /obj/item/pod_construction_part
 	name = "pod construction part"
-	icon = 'icons/obj/pod-2-2.dmi'
+	icon = 'icons/pods/pod-2-2.dmi'
 	icon_state = "pod_frame"
 
 	proc/GetRequiredToolUsage(var/obj/item/pod_construction_part/frame/frame)
@@ -84,6 +84,7 @@
 		w_class = INFINITY
 		var/engine_type = 0
 		var/cell_type = 0
+
 
 		pickup()
 			return 0
@@ -195,7 +196,7 @@
 						update_icon()
 						del(I)
 
-			else if(istype(I, /obj/item/stack/cable_coil))
+			else if(istype(I, /obj/item/weapon/cable_coil))
 				if(CSHasFlag(P_CS_ENGINE) && !CSHasFlag(P_CS_WIRES) && GetRequiredToolUsage(src) == 0)
 					user << "<span class='info'>You start attaching the [I] to the [src].</span>"
 					if(do_after(user, 20))
@@ -204,10 +205,10 @@
 						CSAddFlag(P_CS_WIRES)
 						playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 100, 0, 0)
 						update_icon()
-						var/obj/item/stack/cable_coil/C = I
+						var/obj/item/weapon/cable_coil/C = I
 						C.use(1)
 
-			else if(istype(I, /obj/item/weapon/stock_parts/cell))
+			else if(istype(I, /obj/item/weapon/cell))
 				if(CSHasFlag(P_CS_CONTROL) && !CSHasFlag(P_CS_CELL) && GetRequiredToolUsage(src) == 0)
 					user << "<span class='info'>You start attaching the [I] to the [src].</span>"
 					if(do_after(user, 20))
@@ -220,7 +221,7 @@
 						del(I)
 
 	parts/
-		icon = 'icons/obj/pod_attachments.dmi'
+		icon = 'icons/pods/pod_attachments.dmi'
 		icon_state = "attachment_default"
 		w_class = 4
 
@@ -294,7 +295,7 @@
 
 		frames/
 			name = "pod frame part"
-			icon = 'icons/obj/pod-2-2.dmi'
+			icon = 'icons/pods/pod-2-2.dmi'
 			icon_state = "pod_frame2"
 			density = 0
 			bound_height = 64
@@ -376,7 +377,7 @@
 				var/obj/item/weapon/pod_attachment/engine/E = new F.engine_type(pod)
 				E.OnAttach(pod)
 
-				var/obj/item/weapon/stock_parts/cell/cell = new F.cell_type(pod)
+				var/obj/item/weapon/cell/cell = new F.cell_type(pod)
 				pod.power_source = cell
 
 			light/

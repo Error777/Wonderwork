@@ -121,6 +121,11 @@ var/list/beam_master = list()
 	icon_state = "emitter"
 	damage = 50
 
+/obj/item/projectile/beam/emitter/on_hit(var/atom/target, var/blocked = 0)
+	..()
+	if(istype(target, /turf/simulated/mineral))
+		var/turf/simulated/mineral/D = target
+		D.gets_drilled()
 
 /obj/item/projectile/beam/lastertag/blue
 	name = "lasertag beam"

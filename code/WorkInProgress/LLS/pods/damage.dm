@@ -8,7 +8,7 @@
 
 	New(loc, var/list/size = list())
 		..(loc)
-		icon = file("icons/obj/pod-[size[1]]-[size[2]].dmi")
+		icon = file("icons/pods/pod-[size[1]]-[size[2]].dmi")
 		bound_width = size[1] * 32
 		bound_height = size[2] * 32
 
@@ -185,9 +185,9 @@
 			if(!UsePower(power_source.maxcharge * (power_to_absorb_percent / 100)))
 				power_source.charge = 0
 
-			var/datum/effect/effect/system/lightning_spread/system = new()
-			system.set_up(3, 0, pick(GetDirectionalTurfsUnderPod(pick(cardinal))))
-			system.start()
+			var/datum/effect/effect/system/spark_spread/S = new/datum/effect/effect/system/spark_spread(pick(GetDirectionalTurfsUnderPod(pick(cardinal))))
+			S.set_up(3, 0, pick(GetDirectionalTurfsUnderPod(pick(cardinal))))
+			S.start()
 
 		sparks.start()
 
@@ -248,10 +248,10 @@
 		if(pod.HasDamageFlag(P_DAMAGE_FIRE) && ((last_fire_tick + pod_config.fire_damage_cooldown) <= world.time))
 			// If we are in space, the fire consumes a bit of oxygen from the internal air (which is refilled by the gas canister in the pod)
 			if(istype(get_turf(pod), /turf/space))
-				if(!pod.internal_air || pod.internal_air.gasses[OXYGEN] < pod_config.fire_damage_oxygen_cutoff)
+				if(!pod.internal_air || pod.internal_air.oxygen < pod_config.fire_damage_oxygen_cutoff)
 					pod.RemoveDamageFlag(P_DAMAGE_FIRE)
 
-				pod.internal_air.gasses[OXYGEN] = (pod.internal_air.gasses[OXYGEN] - (pod.internal_air.gasses[OXYGEN] * pod_config.fire_oxygen_consumption_percent))
+				pod.internal_air.oxygen = (pod.internal_air.oxygen - (pod.internal_air.oxygen * pod_config.fire_oxygen_consumption_percent))
 
 			pod.TakeDamage(pod_config.fire_damage)
 			last_fire_tick = world.time
@@ -263,6 +263,6 @@
 				if(prob(pod_config.emp_sparkchance))
 					pod.sparks.start()
 
-		for(var/obj/effect/hotspot/H in pod.GetTurfsUnderPod())
-			var/show_notice = ((last_notice_tick + pod_config.damage_notice_cooldown) <= world.time)
-			pod.fire_act(0, H.temperature, H.volume, show_notice)
+//		for(var/obj/effect/hotspot/H in pod.GetTurfsUnderPod())
+//			var/show_notice = ((last_notice_tick + pod_config.damage_notice_cooldown) <= world.time)
+//			pod.fire_act(0, H.temperature, H.volume, show_notice)

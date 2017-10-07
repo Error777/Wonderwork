@@ -228,7 +228,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	var/on = 0					// 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness_range = 5	// luminosity when on, also used in power calculation
+	var/brightness_range = 6	// luminosity when on, also used in power calculation
 	var/brightness_power = 1
 	var/brightness_color = null
 	var/redalert = 1
@@ -762,7 +762,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	m_amt = 60
 	var/rigged = 0		// true if rigged to explode
 	var/brightness = 2
-	var/brightness_range = 2 //how much light it gives off
+	var/brightness_range = 5 //how much light it gives off
 	var/brightness_power = 1
 	var/brightness_color = null
 

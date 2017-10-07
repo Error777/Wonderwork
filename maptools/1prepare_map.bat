@@ -1,14 +1,9 @@
-set MAPFILE_FR=fernflower_1.4.1.dmm
-set MAPFILE_TGO=tgstation_2.0.7.dmm
-set MAPFILE_TG=tgstation_2.1.0.dmm
-set MAPFILE_OLD=oldstation.dmm
-set MAPFILE_AN=antiqua.dmm
+set MAPFILE_FR=fernflower.dmm
+set MAPFILE_EFF=efficiency.dmm
 
 cd ../maps
+
 copy %MAPFILE_FR% %MAPFILE_FR%.backup
-copy %MAPFILE_TGO% %MAPFILE_TGO%.backup
-copy %MAPFILE_TG% %MAPFILE_TG%.backup
-copy %MAPFILE_OLD% %MAPFILE_OLD%.backup
-copy %MAPFILE_AN% %MAPFILE_AN%.backup
+copy %MAPFILE_EFF% %MAPFILE_EFF%.backup
 
 pause

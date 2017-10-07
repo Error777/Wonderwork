@@ -145,7 +145,7 @@
 			if(announce)
 				world << "<span class=notice>[target] earned the [title] achievement.</span>"
 				achivements_unlocked += 1
-				target.givepoint()
+				//target.givepoint()
 			else if(ismob(target.mob) && target)
 				src << "<span class=notice>You earned the [title] achievement.</span>"
 		else if(isnull(result) && ismob(target.mob) && target)

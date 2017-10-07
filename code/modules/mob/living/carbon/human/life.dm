@@ -1441,14 +1441,19 @@
 				if(blinded)		overlay_fullscreen("blind", /obj/screen/fullscreen/, 1)
 				else			clear_fullscreen("blind")
 
+			var/nearsighted = 0
+
 			if(disabilities & NEARSIGHTED)	//this looks meh but saves a lot of memory by not requiring to add var/prescription
 				if(glasses)					//to every /obj/item
 					var/obj/item/clothing/glasses/G = glasses
-					if(!G.prescription)
+					if(!G.prescription == 1)
 						overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
+						nearsighted = 1
 				else
 					overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
-			else
+					nearsighted = 1
+
+			if(!nearsighted)
 				clear_fullscreen("nearsighted")
 
 			if(eye_blurry)
@@ -1478,6 +1483,35 @@
 
 			if(!masked)
 				clear_fullscreen("tint")
+
+			var/gasmasked = 0
+
+			if(!gasmasked &&  istype(wear_mask, /obj/item/clothing/mask/gas))
+				var/obj/item/clothing/mask/gas/GM = wear_mask
+				if(GM.overlay)
+					overlay_fullscreen("gasmask", /obj/screen/fullscreen/gasmask)
+					gasmasked = 1
+
+			if(!gasmasked)
+				clear_fullscreen("gasmask")
+
+			var/thermal = 0
+
+			if(!thermal &&  istype(glasses, /obj/item/clothing/glasses/thermal))
+				overlay_fullscreen("thermal", /obj/screen/fullscreen/thermal)
+				thermal = 1
+
+			if(!thermal)
+				clear_fullscreen("thermal")
+
+			var/meson = 0
+
+			if(!meson &&  istype(glasses, /obj/item/clothing/glasses/meson))
+				overlay_fullscreen("meson", /obj/screen/fullscreen/meson)
+				meson = 1
+
+			if(!meson)
+				clear_fullscreen("meson")
 
 			if(eye_stat > 20)
 				if(eye_stat > 30)	overlay_fullscreen("eye", /obj/screen/fullscreen/blurry)
@@ -1632,11 +1666,6 @@
 				overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 			else
 				clear_fullscreen("blind", 0)
-
-				if(disabilities & NEARSIGHTED)
-					overlay_fullscreen("impaired", /obj/screen/fullscreen/impaired, 1)
-				else
-					clear_fullscreen("impaired")
 
 				if(eye_blurry)
 					overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)

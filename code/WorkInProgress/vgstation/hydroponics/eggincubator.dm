@@ -7,9 +7,6 @@
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 500
-	machine_flags = SCREWTOGGLE | CROWDESTROY | WRENCHMOVE | EJECTNOTDEL
-	flags = OPENCONTAINER | NOREACT
-	pass_flags = PASSTABLE
 	var/list/egg_storage = list()
 	var/limit = 1
 	var/speed_bonus = 0

@@ -71,7 +71,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 			path_obj = text2path(path_text)
 			item = new path_obj()
 			name = O[3]
-			del item
+			del(item)
 
 			src.menu_message += "<A href='byond://?src=\ref[src];buy_item=[path_text];cost=[cost]'>[name]</A> ([cost])<BR>"
 			category_items++
@@ -376,7 +376,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 					else
 						item:loc = get_turf(A)
 	/*				if(istype(item, /obj/spawner)) // Spawners need to have del called on them to avoid leaving a marker behind
-						del item*/
+						del(item)*/
 					usr.client.onBought("[item:name]")
 				src.attack_self(usr)
 				return

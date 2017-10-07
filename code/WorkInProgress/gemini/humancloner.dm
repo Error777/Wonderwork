@@ -23,28 +23,27 @@
 
 /obj/machinery/humancloner/attack_hand()
 	if(!cloning)
-		cloning = 150
+		cloning = 1
 		icon_state = "hc_g"
+		process()
+	else return
 
 /obj/machinery/humancloner/attackby(var/obj/item/O as obj, var/mob/user as mob, params)
+
 	if(istype(O, /obj/item/weapon/wrench))
-		if(!anchored && istype(get_turf(src), /turf/space))
-			anchored = 1
-			//power_change()
-			user << "<span class='notice'>You fasten [src].</span>"
-		else if(anchored)
-			anchored = 0
-			//power_change()
-			user << "<span class='notice'>You unfasten [src].</span>"
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		anchored = !anchored
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
+
 
 /obj/machinery/humancloner/process()
 	if(stat & (NOPOWER|BROKEN))
 		return
+
 	use_power(1000)
 	if(cloning)
-		cloning -= 1
-		if(!cloning)
-			new /mob/living/carbon/monkey(src.loc)  //need insert infant here
-			icon_state = "hc_0"
+		sleep(20)
+		cloning = 0
+		new /mob/living/carbon/monkey(src.loc)  //need insert infant here
+		icon_state = "hc_0"
 	return

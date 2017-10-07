@@ -284,6 +284,56 @@
 					return
 	..(W, user)
 
+/obj/spacepod/black
+	icon_state = "pod_black"
+	desc = "An all black space pod with no insignias."
+
+	New()
+		..()
+		name = "Pod C-[rand(100,999)]"
+
+/obj/spacepod/nanomil
+	icon_state = "pod_mil"
+	desc = "A dark grey space pod brandishing the Nanotrasen Military insignia"
+	health = 500
+
+	New()
+		..()
+		name = "Pod C-[rand(100,999)]"
+
+/obj/spacepod/syndicate
+	icon_state = "pod_synd"
+	desc = "A menacing military space pod with Fuck NT stenciled onto the side"
+	health = 500
+
+	New()
+		..()
+		name = "Pod C-[rand(100,999)]"
+
+/obj/spacepod/gold
+	icon_state = "pod_gold"
+	desc = "A civilian space pod with a gold body, must have cost somebody a pretty penny"
+/*
+/obj/spacepod/clown
+	icon_state = "pod_clown"
+	desc = "A civilian space pod with a purple and blue body with a bannana hanging in its window."
+
+/obj/spacepod/clown/New()
+	..()
+	var/obj/item/device/spacepod_equipment/weaponry/clown/W = new /obj/item/device/spacepod_equipment/weaponry/clown
+	W.loc = equipment_system
+	equipment_system.weapon_system = W
+	verbs += /obj/spacepod/proc/fire_weapon_system()
+*/
+/obj/spacepod/fighter
+	icon_state = "pod_skin3"
+	desc = "A civilian space pod modeled to look like a fighter frigate."
+
+/obj/spacepod/fighter/New()
+	..()
+	var/obj/item/device/spacepod_equipment/weapon/energy/laser/W = new /obj/item/device/spacepod_equipment/weapon/energy/laser
+	W.loc = equipment_system
+
 /obj/spacepod/industrial
 	icon_state = "pod_industrial"
 	desc = "A slow yet sturdy industrial pod, designed for hazardous work in asteroid belts."
@@ -314,6 +364,8 @@
 			desc = "A civilian space pod with a gold body, must have cost somebody a pretty penny."
 		if("pod_industrial")
 			desc = "A rough looking space pod meant for industrial work."
+
+
 
 /obj/spacepod/verb/toggle_internal_tank()
 	set name = "Toggle internal airtank usage"

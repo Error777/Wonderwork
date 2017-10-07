@@ -90,6 +90,7 @@
 		..()
 		spawn(2)
 			power_change()
+			set_light(light_range_on)
 
 		if(show_keyboard)
 			var/kb_state = "kb[rand(1,15)]"

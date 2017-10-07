@@ -4,7 +4,7 @@
 
 /obj/item/weapon/circuitboard/podfab
 	name = "circuit board (Pod Fabricator)"
-	build_path = /obj/machinery/part_fabricator/pod
+	build_path = /obj/machinery/mecha_part_fabricator/pod
 	board_type = "machine"
 	origin_tech = "programming=3;engineering=3"
 	req_components = list(
@@ -17,13 +17,13 @@
 * Pod Fabricator
 */
 
-/obj/machinery/part_fabricator/pod
+/obj/machinery/mecha_part_fabricator/pod
 	name = "space pod fabricator"
 	icon_state = "pod-fab"
-	build_type = PODFAB
-	place_dir = 0
+	var/build_type = PODFAB
+	var/place_dir = 0
 	req_access = list()
-	board_type = /obj/item/weapon/circuitboard/podfab
+	var/board_type = /obj/item/weapon/circuitboard/podfab
 
 	New()
 		..()

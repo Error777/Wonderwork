@@ -25,24 +25,24 @@
 /obj/effect/spacevine/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (!W || !user || !W.type) return
 	switch(W.type)
-		if(/obj/item/weapon/circular_saw) del src
-		if(/obj/item/weapon/kitchen/utensil/knife) del src
-		if(/obj/item/weapon/scalpel) del src
-		if(/obj/item/weapon/twohanded/fireaxe) del src
-		if(/obj/item/weapon/hatchet) del src
-		if(/obj/item/weapon/melee/energy) del src
+		if(/obj/item/weapon/circular_saw) del(src)
+		if(/obj/item/weapon/kitchen/utensil/knife) del(src)
+		if(/obj/item/weapon/scalpel) del(src)
+		if(/obj/item/weapon/twohanded/fireaxe) del(src)
+		if(/obj/item/weapon/hatchet) del(src)
+		if(/obj/item/weapon/melee/energy) del(src)
 
 		//less effective weapons
 		if(/obj/item/weapon/wirecutters)
-			if(prob(25)) del src
+			if(prob(25)) del(src)
 		if(/obj/item/weapon/shard)
-			if(prob(25)) del src
+			if(prob(25)) del(src)
 
 		else //weapons with subtypes
-			if(istype(W, /obj/item/weapon/melee/energy/sword)) del src
+			if(istype(W, /obj/item/weapon/melee/energy/sword)) del(src)
 			else if(istype(W, /obj/item/weapon/weldingtool))
 				var/obj/item/weapon/weldingtool/WT = W
-				if(WT.remove_fuel(0, user)) del src
+				if(WT.remove_fuel(0, user)) del(src)
 			else
 				manual_unbuckle(user)
 				return
@@ -240,7 +240,7 @@
 	return
 
 /obj/effect/spacevine/temperature_expose(null, temp, volume) //hotspots kill vines
-	del src
+	del(src)
 
 //Carn: Spacevines random event.
 /proc/spacevine_infestation()

@@ -1,7 +1,10 @@
 #define FULLSCREEN_LAYER 18
 #define DAMAGE_LAYER FULLSCREEN_LAYER + 0.1
 #define IMPAIRED_LAYER DAMAGE_LAYER + 0.1
-#define BLIND_LAYER IMPAIRED_LAYER + 0.1
+#define GASMASK_LAYER IMPAIRED_LAYER + 0.1
+#define THERMAL_LAYER GASMASK_LAYER + 0.1
+#define MESON_LAYER THERMAL_LAYER + 0.1
+#define BLIND_LAYER MESON_LAYER + 0.1
 #define CRIT_LAYER BLIND_LAYER + 0.1
 
 /mob
@@ -82,6 +85,18 @@
 /obj/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
 	layer = IMPAIRED_LAYER
+
+/obj/screen/fullscreen/gasmask
+	icon_state = "gasmaskoverlay"
+	layer = GASMASK_LAYER
+
+/obj/screen/fullscreen/thermal
+	icon_state = "thermaloverlay"
+	layer = THERMAL_LAYER
+
+/obj/screen/fullscreen/meson
+	icon_state = "mesonoverlay"
+	layer = MESON_LAYER
 
 /obj/screen/fullscreen/blurry
 	icon = 'icons/mob/screen1.dmi'

@@ -13,7 +13,7 @@
 	attackby(var/obj/item/I, var/mob/user)
 		if(istype(I,/obj/item/weapon/fuel_assembly))
 			if(cur_assembly)
-				del cur_assembly
+				del(cur_assembly)
 			cur_assembly = I
 			user.drop_item()
 			I.loc = src

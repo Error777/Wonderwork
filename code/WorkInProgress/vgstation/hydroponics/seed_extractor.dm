@@ -10,8 +10,6 @@
 	var/min_seeds = 1 //better manipulators improve this
 	var/max_seeds = 4 //better scanning modules improve this
 
-	machine_flags = SCREWTOGGLE | CROWDESTROY | WRENCHMOVE | FIXED2WORK
-
 /********************************************************************
 **   Adding Stock Parts to VV so preconstructed shit has its candy **
 ********************************************************************/

@@ -17,7 +17,7 @@
 	var/recharged = 0
 	var/list/dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine",
 	"sodium","aluminum","silicon","phosphorus","sulfur","chlorine","potassium","iron",
-	"copper","mercury","radium","water","ethanol","sugar","sacid","tungsten")
+	"copper","mercury","radium","water","ethanol","sugar","sacid","tungsten","bromine",)
 
 /obj/machinery/chem_dispenser/proc/recharge()
 	if(stat & (BROKEN|NOPOWER)) return
@@ -229,11 +229,6 @@
 	energy = 200
 	max_energy = 200
 	dispensable_reagents = list("thermite","cyanide","lexorin","space_drugs","adminordrazine","lube","pacid","synaptizine","hyperzine","leporazine","tricordrazine","alkysine","dermaline","dexalinp","bicaridine","ryetalyn","cryoxadone","clonexadone","glycerol","chloralhydrate","zombiepowder","LSD","neurotoxin",)
-
-
-/obj/machinery/chem_dispenser/goon
-	name = "good chem dispenser"
-	dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine","sodium","aluminium","silicon","phosphorus","sulfur","chlorine","potassium","iron","copper","mercury","radium","water","ethanol","sugar","sacid","welding_fuel","iodine","bromine","stable_plasma",)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -509,3 +509,6 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
+
+/mob/proc/changeNext_move(num)
+	next_move = world.time + num

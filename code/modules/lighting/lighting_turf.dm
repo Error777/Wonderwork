@@ -103,3 +103,30 @@
 		return null // Since this proc gets used in a for loop, null won't be looped though.
 
 	return corners
+
+/turf/ChangeTurf(var/turf/N, var/force_lighting_update = 0)
+	var/old_opacity = opacity
+	var/old_dynamic_lighting = dynamic_lighting
+	var/list/old_affecting_lights = affecting_lights
+	var/old_lighting_overlay = lighting_overlay
+	var/list/old_corners = corners
+
+	. = ..()
+
+	recalc_atom_opacity()
+	lighting_overlay = old_lighting_overlay
+	if (lighting_overlay && lighting_overlay.loc != src)
+		// This is a hack, but I can't figure out why the fuck they're not on the correct turf in the first place.
+		lighting_overlay.forceMove(src, harderforce = TRUE)
+
+	affecting_lights = old_affecting_lights
+	corners = old_corners
+
+	if ((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
+		reconsider_lights()
+
+	if (dynamic_lighting != old_dynamic_lighting)
+		if (dynamic_lighting)
+			lighting_build_overlay()
+		else
+			lighting_clear_overlay()

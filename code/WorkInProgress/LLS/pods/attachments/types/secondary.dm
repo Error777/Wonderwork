@@ -131,54 +131,38 @@
 				return 0
 
 			// Pretty much a copy of the hand-tele code, just made more readable.
-			var/list/targets = list()
-			for(var/obj/machinery/computer/teleporter/teleporter in world)
-				if(teleporter.target)
-					if(teleporter.power_station && teleporter.power_station.teleporter_hub && teleporter.power_station.engaged)
-						targets["[teleporter.id] (Active)"] = teleporter.target
+			var/list/L = list(  )
+			for(var/obj/machinery/teleport/hub/R in world)
+				var/obj/machinery/computer/teleporter/com = locate(/obj/machinery/computer/teleporter, locate(R.x - 2, R.y, R.z))
+				if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use)
+					if(R.icon_state == "tele1")
+						L["[com.id] (Active)"] = com.locked
 					else
-						targets["[teleporter.id] (Inactive)"] = teleporter.target
+						L["[com.id] (Inactive)"] = com.locked
+			var/list/turfs = list(	)
+			for(var/turf/T in orange(10))
+				if(T.x>world.maxx-8 || T.x<8)	continue	//putting them at the edge is dumb
+				if(T.y>world.maxy-8 || T.y<8)	continue
+				turfs += T
+			if(turfs.len)
+				L["None (Dangerous)"] = pick(turfs)
+			var/t1 = input(user, "Please select a teleporter to lock in on.", "Hand Teleporter") in L
+			if ((user.get_active_hand() != src || user.stat || user.restrained()))
+				return
+			var/count = 0	//num of portals from this teleport in world
+			for(var/obj/effect/portal/PO in world)
+				if(PO.creator == src)	count++
+			if(count >= 3)
+				user.show_message("<span class='notice'>\The [src] is recharging!</span>")
+				return
+			var/T = L[t1]
+			for(var/mob/O in hearers(user, null))
+				O.show_message("<span class='notice'>Locked In.</span>", 2)
+			var/obj/effect/portal/P = new /obj/effect/portal( get_turf(src) )
+			P.target = T
+			P.creator = src
 
-			var/list/ranged_turfs = list()
-			for(var/turf/T in orange(15, get_turf(attached_to)))
-				// Ignore turfs that scratch the transition-edge of a z-level
-				if(T.x > (world.maxx - 8) || T.x < 8)
-					continue
-				if(T.y > (world.maxy - 8) || T.y < 8)
-					continue
-				if(T.flags & NOJAUNT)
-					continue
-
-				ranged_turfs += T
-
-			if(length(ranged_turfs))
-				targets["None (Dangerous)"] = pick(ranged_turfs)
-
-			last_use = world.time
-
-			var/_target = input(user, "Please select a target.", "Input") in targets + "Cancel"
-			if(!_target || _target == "Cancel")
-				return 0
-
-			if(!UsePower(power_usage))
-				attached_to.PrintSystemAlert("Insufficient power.")
-				return 0
-
-			var/turf/T = get_turf(attached_to)
-			T.visible_message("<span class='notice'>Locked In.</span>")
-
-			T = targets[_target]
-
-			if(T.flags & NOJAUNT)
-				attached_to.PrintSystemAlert("Failed to lock on to target.")
-				return 0
-
-			var/obj/effect/portal/P = new(get_turf(attached_to), T, user)
-			try_move_adjacent(P)
-
-			attached_to.pod_log.LogUsage(user, src, list(T), list("portal created at {[P.x], [P.y], [P.z]} in area ([get_area(P)]), with target {[P.target.x], [P.target.y], [P.target.z]} in area ([get_area(P.target)])"))
-
-			return 0
+			return
 
 	ore_collector/
 		name = "ore collector"

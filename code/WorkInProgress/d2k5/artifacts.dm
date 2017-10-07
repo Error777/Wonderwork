@@ -279,9 +279,9 @@
 
 	ex_act(severity)
 		switch(severity)
-			if(1.0) del src
+			if(1.0) del(src)
 			if(2.0)
-				if (prob(50)) del src
+				if (prob(50)) del(src)
 				if (src.trigger == "force") src.Artifact_Activate()
 				if (src.trigger == "heat") src.Artifact_Activate()
 			if(3.0)
@@ -645,7 +645,7 @@
 				src.chargetime = src.recharge
 				spawn (src.recharge)
 					for(var/obj/effect/forcefield/F in range(5,src))
-						del F
+						del(F)
 			if("teleport")
 				var/list/randomturfs = new/list()
 				for(var/turf/T in orange(user, 50))

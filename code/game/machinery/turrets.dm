@@ -497,26 +497,26 @@
 
 
 	ex_act()
-		del src
+		del(src)
 		return
 
 	emp_act()
-		del src
+		del(src)
 		return
 
 	meteorhit()
-		del src
+		del(src)
 		return
 
 	proc/update_health()
 		if(src.health<=0)
-			del src
+			del(src)
 		return
 
 	proc/take_damage(damage)
 		src.health -= damage
 		if(src.health<=0)
-			del src
+			del(src)
 		return
 
 

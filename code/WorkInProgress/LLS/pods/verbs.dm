@@ -7,9 +7,9 @@
 
 		if(istype(usr, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = usr
-			if(usr.canUseTopic(src))
-				HandleExit(usr)
-			else if(H.handcuffed)
+			HandleExit(usr)
+
+			if(H.handcuffed)
 				var/turf/location = get_turf(src)
 				H << "<span class='notice'>You attempt to remove your restraints. (This will take around [pod_config.handcuffed_exit_delay/600] minutes and the pod has to stand still)</span>"
 				spawn(pod_config.handcuffed_exit_delay)

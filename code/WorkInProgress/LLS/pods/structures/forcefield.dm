@@ -16,14 +16,14 @@
 		var/turf/simulated/S = get_turf(src)
 		if(S)
 			S.blocks_air = 1
-		air_update_turf(1)
+
 		..()
 
 	Del()
 		var/turf/simulated/S = get_turf(src)
 		if(S)
 			S.blocks_air = 0
-		air_update_turf(1)
+
 		..()
 
 	var/obj/machinery/hangar_forcefield_generator/generator
@@ -201,8 +201,6 @@
 		popup.open()
 
 	Topic(href, href_list)
-		if(!usr.canUseTopic(src))
-			return 0
 
 		switch(href_list["action"])
 			if("remove_permeable")

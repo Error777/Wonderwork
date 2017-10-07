@@ -1,7 +1,7 @@
 /obj/item/weapon/pod_attachment
 	name = "pod attachment"
 	desc = "An attachment for a space pod"
-	icon = 'icons/obj/pod_attachments.dmi'
+	icon = 'icons/pods/pod_attachments.dmi'
 	icon_state = "attachment_default"
 	item_state = "syringe_kit"
 	w_class = 4
@@ -51,7 +51,7 @@
 	proc/StartAttach(var/obj/pod/pod, var/mob/user)
 		user << "<span class='info'>You start attaching the [src] to the [GetHardpointDisplayName()] of the [pod].</span>"
 		if(do_after(user, attachment_delay))
-			user.unEquip(src, 1)
+			user.u_equip(src, 1)
 			user << "<span class='info'>You finished attaching the [src].</span>"
 			OnAttach(pod, user)
 

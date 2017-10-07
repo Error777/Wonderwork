@@ -89,7 +89,7 @@
 
 		wood/
 			name = "wooden engine"
-			fuel_type = /obj/item/stack/sheet/mineral/wood
+			fuel_type = /obj/item/stack/sheet/wood
 			power_per_fuel = 200
 			burn_time = 50
 			construction_cost = list("metal" = 4000)

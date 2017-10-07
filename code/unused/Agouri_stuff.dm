@@ -530,7 +530,7 @@
 /turf/proc/RemoveLattice()
 	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 	if(L)
-		del L
+		del(L)
 
 /turf/proc/ReplaceWithFloor(explode=0)
 	var/prior_icon = icon_old

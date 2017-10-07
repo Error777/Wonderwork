@@ -1,7 +1,7 @@
 /obj/machinery/pod_induction_charger
 	name = "induction charger"
 	icon_state = "induction_charger"
-	icon = 'icons/obj/induction_charger.dmi'
+	icon = 'icons/pods/induction_charger.dmi'
 	bound_width = 64
 	bound_height = 64
 	anchored = 1

@@ -34,7 +34,7 @@
 			if((M.client && !( M.blinded )))
 				M.show_message("\red [src] collapses in a shattered heap ")
 				ghostize()
-		del src
+		del(src)
 		return
 
 /mob/living/simple_animal/construct/examine()

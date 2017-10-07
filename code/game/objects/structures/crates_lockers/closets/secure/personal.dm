@@ -26,7 +26,39 @@
 		new /obj/item/clothing/shoes/white( src )
 	return
 
+/obj/structure/closet/secure_closet/personal/patient/genetics
+	name = "genetics patient's closet"
+	icon_state = "genepatient1"
+	icon_closed = "genepatient"
+	icon_locked = "genepatient1"
+	icon_opened = "genepatientopen"
+	icon_broken = "genepatientbroken"
+	icon_off = "genepatientoff"
 
+/obj/structure/closet/secure_closet/personal/patient/genetics/New()
+	..()
+	spawn(4)
+		contents = list()
+		new /obj/item/clothing/under/color/white( src )
+		new /obj/item/clothing/shoes/white( src )
+	return
+
+/obj/structure/closet/secure_closet/personal/patient/virology
+	name = "virology patient's closet"
+	icon_state = "viropatient1"
+	icon_closed = "viropatient"
+	icon_locked = "viropatient1"
+	icon_opened = "viropatientopen"
+	icon_broken = "viropatientbroken"
+	icon_off = "viropatientoff"
+
+/obj/structure/closet/secure_closet/personal/patient/virology/New()
+	..()
+	spawn(4)
+		contents = list()
+		new /obj/item/clothing/under/color/white( src )
+		new /obj/item/clothing/shoes/white( src )
+	return
 
 /obj/structure/closet/secure_closet/personal/cabinet
 	icon_state = "cabinetdetective_locked"

@@ -12,7 +12,7 @@ var/const/SAFETY_COOLDOWN = 100
 	var/grinding = 0
 	var/icon_name = "grinder-o"
 	var/blood = 0
-	var/eat_dir = WEST
+	var/eat_dir = EAST
 
 /obj/machinery/recycler/New()
 	// On us

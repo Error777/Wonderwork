@@ -104,7 +104,7 @@
 	origin.loc = get_turf(src)
 	user.u_equip(src)
 	user.visible_message("\blue [user] puts [src] down.", "\blue You put [src] down.")
-	del src
+	del(src)
 
 /obj/item/weapon/stool/attack(mob/M as mob, mob/user as mob)
 	if (prob(5) && istype(M,/mob/living))
@@ -112,7 +112,7 @@
 		user.u_equip(src)
 		var/obj/item/stack/sheet/metal/m = new/obj/item/stack/sheet/metal
 		m.loc = get_turf(src)
-		del src
+		del(src)
 		var/mob/living/T = M
 		T.Weaken(10)
 		T.apply_damage(20)

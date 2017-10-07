@@ -115,7 +115,7 @@
 				if(usr in src)
 					return 0
 
-				var/obj/item/weapon/stock_parts/cell/battery = locate(href_list["battery"])
+				var/obj/item/weapon/cell/battery = locate(href_list["battery"])
 
 				if(!battery)
 					return 0
@@ -230,7 +230,7 @@
 				popup.open()
 
 			if("damage")
-				if(!check_rights(R_PRIMARYADMIN))
+				if(!check_rights(R_ADMIN|R_FUN))
 					return 0
 
 				var/amount = input(usr, "How much?", "Input") as num
@@ -243,7 +243,7 @@
 				log_admin("[key_name(usr)] has damaged a space pod by [amount].")
 
 			if("heal")
-				if(!check_rights(R_PRIMARYADMIN))
+				if(!check_rights(R_ADMIN|R_FUN))
 					return 0
 
 				var/amount = input(usr, "How much?", "Input") as num
@@ -256,7 +256,7 @@
 				log_admin("[key_name(usr)] has healed a space pod by [amount].")
 
 			if("charge")
-				if(!check_rights(R_PRIMARYADMIN))
+				if(!check_rights(R_ADMIN|R_FUN))
 					return 0
 
 				var/amount = input(usr, "How much?", "Input") as num
@@ -269,7 +269,7 @@
 				log_admin("[key_name(usr)] has charged a space pod by [amount].")
 
 			if("remove_charge")
-				if(!check_rights(R_PRIMARYADMIN))
+				if(!check_rights(R_ADMIN|R_FUN))
 					return 0
 
 				var/amount = input(usr, "How much?", "Input") as num
@@ -282,7 +282,7 @@
 				log_admin("[key_name(usr)] has removed charge from a space pod by [amount].")
 
 			if("remove_attachment")
-				if(!check_rights(R_PRIMARYADMIN))
+				if(!check_rights(R_ADMIN|R_FUN))
 					return 0
 
 				var/obj/item/weapon/pod_attachment/attachment = locate(href_list["attachment"])

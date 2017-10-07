@@ -442,7 +442,7 @@ datum/design/spacepod_main
 	req_tech = list("programming" = 4)
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
-	build_path = /obj/item/weapon/circuitboard/mecha/pod
+	build_path = /obj/item/weapon/circuitboard/SPfab
 
 ///////////////////////////////////
 //////////AI Module Disks//////////
@@ -1306,6 +1306,14 @@ datum/design/mechfab
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = /obj/item/weapon/circuitboard/mechfab
 
+datum/design/spfab
+	name = "Space Pod Fabricator Board"
+	desc = "The circuit board for a Space Pod Fabricator"
+	id = "spfab"
+	req_tech = list("programming" = 3, "engineering" = 3)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = "/obj/item/weapon/circuitboard/spfab"
 
 /////////////////////////////////////////
 ////////////Power Stuff//////////////////

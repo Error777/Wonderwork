@@ -157,7 +157,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/harebell
 	seed = "obj/item/seeds/harebellseed"
 	name = "harebell"
-	desc = "\"I'll sweeten thy sad grave: thou shalt not lack the flower that's like thy face, pale primrose, nor the azured hare-bell, like thy veins; no, nor the leaf of eglantine, whom not to slander, out-sweeten’d not thy breath.\""
+	desc = "\"I'll sweeten thy sad grave: thou shalt not lack the flower that's like thy face, pale primrose, nor the azured hare-bell, like thy veins; no, nor the leaf of eglantine, whom not to slander, out-sweetenï¿½d not thy breath.\""
 	icon_state = "harebell"
 	potency = 1
 	New()
@@ -352,8 +352,8 @@
 			var/obj/item/clothing/mask/cigarette/weed/P = new(user.loc)
 			reagents.trans_to(P, reagents.total_volume)
 			P.name = pick("joint","doobie","spliff","roach","blunt","roll","fatty","reefer")
-			del W
-			del src
+			del(W)
+			del(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiadeus
 	seed = "/obj/item/seeds/ambrosiadeus"
@@ -377,8 +377,8 @@
 			var/obj/item/clothing/mask/cigarette/weed/P = new(user.loc)
 			reagents.trans_to(P, reagents.total_volume)
 			P.name = pick("joint","doobie","spliff","roach","blunt","roll","fatty","reefer")
-			del W
-			del src
+			del(W)
+			del(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/apple
 	seed = "/obj/item/seeds/appleseed"

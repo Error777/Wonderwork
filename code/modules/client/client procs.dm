@@ -86,6 +86,10 @@
 	fileaccess_timer = world.time + FTPDELAY	*/
 	return 1
 
+/client/proc/update_special_views()
+	if(prefs.space_parallax)	//Updating parallax for clients that have parallax turned on.
+		if(parallax_initialized)
+			mob.hud_used.update_parallax_values()
 
 	///////////
 	//CONNECT//

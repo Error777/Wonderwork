@@ -21,6 +21,75 @@
 /obj/machinery/computer3/proc/disassemble(mob/user as mob) // todo
 	return
 
+/obj/item/weapon/maincircuitboard
+	density = 0
+	anchored = 0
+	w_class = 2.0
+	name = "Mainframe Circuit board"
+	icon = 'icons/obj/module.dmi'
+	icon_state = "mainboard"
+	item_state = "electronic"
+	origin_tech = "programming=2"
+	var/id = null
+	var/frequency = null
+	var/build_path = null
+	var/board_type = "computer"
+	var/list/req_components = null
+	var/powernet = null
+	var/list/records = null
+	var/frame_desc = null
+	var/contain_parts = 1
+
+	var/datum/file/program/OS = new/datum/file/program/ntos
+
+
+//MAINFRAME CIRCUIT BOARD
+
+/obj/item/weapon/maincircuitboard/holodeck
+	name = "Mainframe Circuit board (Holodeck Control)"
+	build_path = "/obj/machinery/computer3/HolodeckControl"
+/obj/item/weapon/maincircuitboard/arcade
+	name = "Mainframe Circuit board (Arcade)"
+	build_path = "/obj/machinery/computer3/arcade"
+/obj/item/weapon/maincircuitboard/aiupload
+	name = "Mainframe Circuit board (AI Upload)"
+	build_path = "/obj/machinery/computer3/aiupload"
+	origin_tech = "programming=4"
+/obj/item/weapon/maincircuitboard/borgupload
+	name = "Mainframe Circuit board (Cyborg Upload)"
+	build_path = "/obj/machinery/computer3/borgupload"
+	origin_tech = "programming=4"
+/obj/item/weapon/maincircuitboard/robotics
+	name = "Mainframe Circuit board (Cyborg Control)"
+	build_path = "/obj/machinery/computer3/robotics"
+	origin_tech = "programming=4"
+/obj/item/weapon/maincircuitboard/med_data
+	name = "Mainframe Circuit board (Medical Records)"
+	build_path = "/obj/machinery/computer3/med_data"
+/obj/item/weapon/maincircuitboard/crew
+	name = "Mainframe Circuit board (Crew Monitoring Console)"
+	build_path = "/obj/machinery/computer3/crew"
+/obj/item/weapon/maincircuitboard/secure_data
+	name = "Mainframe Circuit board (Security Records)"
+	build_path = "/obj/machinery/computer3/secure_data"
+/obj/item/weapon/maincircuitboard/card
+	name = "Mainframe Circuit board (ID Computer)"
+	build_path = "/obj/machinery/computer3/card/hop"
+	origin_tech = "programming=2;magnets=2"
+/obj/item/weapon/maincircuitboard/card/centcom
+	name = "Mainframe Circuit board (CentCom ID Computer)"
+	build_path = "/obj/machinery/computer3/card/centcom"
+/obj/item/weapon/maincircuitboard/powermonitor
+	name = "Mainframe Circuit board (Power Monitoring Console)"
+	build_path = "/obj/machinery/computer3/powermonitor"
+	origin_tech = "programming=2;magnets=2"
+/obj/item/weapon/maincircuitboard/atmos_alert
+	name = "Mainframe Circuit board (Atmos Alert Console)"
+	build_path = "/obj/machinery/computer3/atmos_alert"
+	origin_tech = "programming=2;magnets=2"
+/obj/item/weapon/maincircuitboard/operating
+	name = "Mainframe Circuit board (Operating Table Monitor)"
+	build_path = "/obj/machinery/computer3/operating"
 
 /obj/structure/computer3frame
 	density = 1
@@ -102,12 +171,12 @@
 					user << "\blue You unfasten the frame."
 					src.anchored = 0
 					src.state = 0
-			if(istype(P, /obj/item/weapon/circuitboard) && !circuit)
-				var/obj/item/weapon/circuitboard/B = P
+			if(istype(P, /obj/item/weapon/maincircuitboard) && !circuit)
+				var/obj/item/weapon/maincircuitboard/B = P
 				if(B.board_type == "computer")
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					user << "\blue You place the circuit board inside the frame."
-					src.icon_state = "[name]1"
+					src.icon_state = "frame1"
 					src.circuit = P
 					user.drop_item()
 					P.loc = src
@@ -117,12 +186,12 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 				user << "\blue You screw the circuit board into place."
 				src.state = 2
-				src.icon_state = "[name]2"
+				src.icon_state = "frame2"
 			if(istype(P, /obj/item/weapon/crowbar) && circuit)
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 				user << "\blue You remove the circuit board."
 				src.state = 1
-				src.icon_state = "[name]0"
+				src.icon_state = "frame0"
 				circuit.loc = src.loc
 				src.circuit = null
 		if(2)
@@ -130,7 +199,7 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 				user << "\blue You unfasten the circuit board."
 				src.state = 1
-				src.icon_state = "[name]1"
+				src.icon_state = "frame1"
 
 			if(istype(P, /obj/item/weapon/crowbar))
 				if(battery)
@@ -162,7 +231,7 @@
 							if(!P:amount) del(P)
 							user << "\blue You add cables to the frame."
 							src.state = 3
-							src.icon_state = "[name]3"
+							src.icon_state = "frame3"
 		if(3)
 			if(istype(P, /obj/item/weapon/wirecutters))
 				if(components.len)
@@ -171,7 +240,7 @@
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 50, 1)
 				user << "\blue You remove the cables."
 				src.state = 2
-				src.icon_state = "[name]2"
+				src.icon_state = "frame2"
 				var/obj/item/weapon/cable_coil/A = new /obj/item/weapon/cable_coil( src.loc )
 				A.amount = 5
 
@@ -187,26 +256,18 @@
 							S.use(2)
 							user << "<span class='notice'>You put in the glass panel.</span>"
 							src.state = 4
-							src.icon_state = "[name]4"
+							src.icon_state = "frame4"
 		if(4)
 			if(istype(P, /obj/item/weapon/crowbar))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 				user << "\blue You remove the glass panel."
 				src.state = 3
-				src.icon_state = "[name]3"
+				src.icon_state = "frame3"
 				new /obj/item/stack/sheet/glass( src.loc, 2 )
 			if(istype(P, /obj/item/weapon/screwdriver))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 				user << "\blue You connect the monitor."
-				var/obj/machinery/computer3/B = new src.circuit.build_path ( src.loc, built=1 )
-				/*if(circuit.powernet) B:powernet = circuit.powernet
-				if(circuit.id) B:id = circuit.id
-				//if(circuit.records) B:records = circuit.records
-				if(circuit.frequency) B:frequency = circuit.frequency
-				if(istype(circuit,/obj/item/weapon/circuitboard/supplycomp))
-					var/obj/machinery/computer/supplycomp/SC = B
-					var/obj/item/weapon/circuitboard/supplycomp/C = circuit
-					SC.can_order_contraband = C.contraband_enabled*/
+				var/obj/machinery/computer3/B = new src.circuit.build_path ( src.loc )
 				B.circuit = circuit
 				circuit.loc = B
 				if(circuit.OS)

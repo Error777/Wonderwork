@@ -24,7 +24,7 @@
 
 /datum/robot_component/proc/destroy()
 	if(wrapped)
-		del wrapped
+		del(wrapped)
 
 
 	wrapped = new/obj/item/broken_device

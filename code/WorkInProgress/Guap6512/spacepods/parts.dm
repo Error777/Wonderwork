@@ -130,9 +130,51 @@
 	var/pod_type = "civilian"
 
 /obj/item/pod_parts/armor/mining
-	name = "industrial pod armor"
+	name = "mining pod armor"
 	icon = 'icons/pods/pod_parts.dmi'
 	icon_state = "pod_armor_ind"
-	desc = "Spacepod armor. This is the industrial version. It looks rather rough."
+	desc = "Spacepod armor. This is the industrial mining version. It looks rather rough."
 	pod_type = "industrial"
 	construction_cost = list("metal"=30000,"glass"=10000, "plasma"=1000)
+
+/obj/item/pod_parts/armor/light
+	name = "light armor"
+	health = 50
+	construction_cost = list("metal" = 16000)
+	origin_tech = "engineering=1;materials=1"
+	pod_type = "industrial"
+
+/obj/item/pod_parts/armor/gold
+	name = "golden armor"
+	health = 100
+	construction_cost = list("metal" = 16000, "gold" = 8000)
+	origin_tech = "engineering=2;materials=2"
+	pod_type = "industrial"
+
+/obj/item/pod_parts/armor/industrial
+	name = "industrial armor"
+	health = 150
+	construction_cost = list("metal" = 16000, "uranium" = 8000)
+	origin_tech = "engineering=4;materials=4"
+	pod_type = "industrial"
+
+/obj/item/pod_parts/armor/heavy
+	name = "heavy armor"
+	health = 200
+	construction_cost = list("metal" = 16000, "uranium" = 12000)
+	origin_tech = "engineering=4;materials=4;combat=3"
+	pod_type = "nanomil"
+
+/obj/item/pod_parts/armor/prototype
+	name = "prototype armor"
+	health = 300
+	construction_cost = list("metal" = 16000, "uranium" = 12000, "diamond" = 6000, "silver" = 6000)
+	origin_tech = "engineering=5;materials=6;illegal=2"
+	pod_type = "black"
+
+/obj/item/pod_parts/armor/precursor
+	name = "precursor armor"
+	health = 500
+	construction_cost = list("metal" = 16000, "uranium" = 12000, "diamond" = 10000, "silver" = 8000)
+	origin_tech = "engineering=5;materials=6;illegal=4"
+	pod_type = "syndicate"
