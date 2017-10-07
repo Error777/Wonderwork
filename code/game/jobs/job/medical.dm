@@ -122,7 +122,7 @@
 	selection_color = "#ffeef0"
 	idtype = /obj/item/weapon/card/id/medical
 	access = list(access_medical, access_chemistry)
-	minimal_access = list(access_medical)
+	minimal_access = list(access_medical, access_chemistry)
 
 
 	equip(var/mob/living/carbon/human/H)
