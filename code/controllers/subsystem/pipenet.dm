@@ -25,7 +25,8 @@ var/event/on_pipenet_tick = new
 
 
 /datum/subsystem/pipenet/Initialize()
-	for (var/obj/machinery/atmospherics/machine in atmos_machines)
+
+	for (var/obj/machinery/atmospherics/machine in machines)
 		machine.build_network()
 
 		if (istype(machine, /obj/machinery/atmospherics/unary/vent_pump))

@@ -118,6 +118,7 @@ Class Procs:
 
 /obj/machinery/Del()
 	machines -= src
+
 	..()
 
 /obj/machinery/process()//If you dont use process or power why are you here
