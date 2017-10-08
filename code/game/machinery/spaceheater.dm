@@ -22,7 +22,7 @@
 		cell = new(src)
 		cell.charge = 1000
 		cell.maxcharge = 1000
-//		set_light(light_range_on,light_power_on)
+		set_light(0)
 		update_icon()
 		return
 
