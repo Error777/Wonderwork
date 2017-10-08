@@ -1461,7 +1461,7 @@ datum/design/advmatsynthesizer
 	name = "Advanced Material Synthesizer"
 	desc = "A advanced device capable of producing very little material with a great deal of investment."
 	id = "advmatsynthesizer"
-	req_tech = list("materials" = 4, "engineering" = 5)
+	req_tech = list("materials" = 5, "engineering" = 5, "powerstorage" = 5)
 	build_type = PROTOLATHE
 	materials = list("$metal" = 3000, "$glass" = 2000)
 	build_path = /obj/item/device/material_synth/adv
