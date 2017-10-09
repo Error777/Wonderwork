@@ -117,6 +117,32 @@
 		..()
 		name = "plating"
 
+/turf/simulated/floor/plating/grilled
+	blocks_air = 1
+	icon_state = "with_grille"
+	var/strict_typecheck = 1
+	var/tmp/border_type = /obj/structure/window
+
+/turf/simulated/floor/plating/grilled/New()
+	..()
+	icon_state = "plating"
+	var/type = /turf/simulated/floor/plating
+	if(strict_typecheck)
+		type = src.type
+	new /obj/structure/grille(src)
+	var/obj/structure/window/reinforced/W = null
+	for(var/dir in cardinal)
+		if(!istype(get_step(src,dir), type))
+			W = new border_type(src)
+			W.dir = dir
+	blocks_air = 0
+
+/turf/simulated/floor/plating/grilled/reinforced
+	border_type = /obj/structure/window/reinforced
+
+/turf/simulated/floor/plating/grilled/tinted
+	border_type = /obj/structure/window/reinforced/tinted
+
 /turf/simulated/floor/bluegrid
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "bcircuit"
