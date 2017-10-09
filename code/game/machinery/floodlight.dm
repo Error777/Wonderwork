@@ -11,7 +11,7 @@
 	var/use = 5
 	var/unlocked = 0
 	var/open = 0
-	var/brightness_on = 20		//can't remember what the maxed out value is
+	light_range_on = 8		//can't remember what the maxed out value is
 
 /obj/machinery/floodlight/New()
 	src.cell = new(src)
@@ -58,7 +58,7 @@
 			return
 		on = 1
 		user << "\blue You turn on the light"
-		set_light(brightness_on)
+		set_light(light_range_on)
 
 	updateicon()
 
