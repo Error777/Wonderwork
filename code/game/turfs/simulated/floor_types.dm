@@ -189,32 +189,32 @@
 /turf/simulated/gold
 	name = "gold floor tiles"
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "tile_gold"
+	icon_state = "gold"
 
 /turf/simulated/plasma
 	name = "plasma floor tiles"
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "tile_plasma"
+	icon_state = "plasma"
 
 /turf/simulated/silver
 	name = "silver floor tiles"
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "tile_silver"
+	icon_state = "silver"
 
 /turf/simulated/bananium
 	name = "bananium floor tiles"
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "tile_bananium"
+	icon_state = "bananium"
 
 /turf/simulated/uranium
-	name = "gold floor tiles"
+	name = "uranium floor tiles"
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "tile-space"
+	icon_state = "uranium"
 
 /turf/simulated/diamond
-	name = "gold floor tiles"
+	name = "diamond floor tiles"
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "tile-space"
+	icon_state = "diamond"
 
 /turf/simulated/beach
 	name = "Beach"
