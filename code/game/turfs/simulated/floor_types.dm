@@ -186,6 +186,36 @@
 	name = "Brig floor"        // Also added it into the 2x3 brig area of the shuttle.
 	icon_state = "floor4"
 
+/turf/simulated/gold
+	name = "gold floor tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "gold"
+
+/turf/simulated/plasma
+	name = "plasma floor tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "plasma"
+
+/turf/simulated/silver
+	name = "silver floor tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "silver"
+
+/turf/simulated/bananium
+	name = "bananium floor tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "bananium"
+
+/turf/simulated/uranium
+	name = "uranium floor tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "uranium"
+
+/turf/simulated/diamond
+	name = "diamond floor tiles"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "diamond"
+
 /turf/simulated/beach
 	name = "Beach"
 	icon = 'icons/misc/beach.dmi'
