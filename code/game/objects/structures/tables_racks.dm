@@ -40,13 +40,13 @@
 					new /obj/item/weapon/table_parts/woodreinforced( get_turf(src.loc), 2 )
 			del(T)
 	update_icon()
-	for(var/direction in list(1,2,4,8,5,6,9,10))
+	for(var/direction in alldirs)
 		if(locate(/obj/structure/table,get_step(src,direction)))
 			var/obj/structure/table/T = locate(/obj/structure/table,get_step(src,direction))
 			T.update_icon()
 
 /obj/structure/table/Del()
-	for(var/direction in list(1,2,4,8,5,6,9,10))
+	for(var/direction in alldirs)
 		if(locate(/obj/structure/table,get_step(src,direction)))
 			var/obj/structure/table/T = locate(/obj/structure/table,get_step(src,direction))
 			T.update_icon()
@@ -61,7 +61,7 @@
 /obj/structure/table/update_icon()
 	spawn(2) //So it properly updates when deleting
 		var/dir_sum = 0
-		for(var/direction in list(1,2,4,8,5,6,9,10))
+		for(var/direction in alldirs)
 			var/skip_sum = 0
 			for(var/obj/structure/window/W in src.loc)
 				if(W.dir == direction) //So smooth tables don't go smooth through windows
@@ -256,7 +256,7 @@
 					icon_state = "tabledir2"
 				if(6)
 					icon_state = "tabledir3"
-		if (dir_sum in list(1,2,4,8,5,6,9,10))
+		if (dir_sum in alldirs)
 			dir = dir_sum
 		else
 			dir = 2
