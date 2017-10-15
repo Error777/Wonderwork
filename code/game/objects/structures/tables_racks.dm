@@ -340,6 +340,10 @@
 /obj/structure/table/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
 	if (!W) return
 
+
+	if(isrobot(user))
+		return
+
 	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
 		var/obj/item/weapon/grab/G = W
 		if(G.state<2)
@@ -400,9 +404,6 @@
 			destroy()
 		return
 
-	if(isrobot(user))
-		return
-
 	if(istype(W, /obj/item/weapon/melee/energy/blade))
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 		spark_system.set_up(5, 0, src.loc)
@@ -413,28 +414,15 @@
 			O.show_message("\blue The [src] was sliced apart by [user]!", 1, "\red You hear [src] coming apart.", 2)
 		destroy()
 
-//	user.drop_item(src)
-//	return
+	user.drop_item()
 
-	if(!isrobot(user) && !(W.flags & ABSTRACT)) //rip more parems rip in peace ;_;
-		user.drop_item()
-		if (W && W.loc)
-			W.Move(src.loc)
-			if (islist(params) && params["icon-y"] && params["icon-x"])
-				W.pixel_x = text2num(params["icon-x"]) - 16
-				W.pixel_y = text2num(params["icon-y"]) - 16
+	if (W && W.loc)
+		W.Move(src.loc)
+		if (islist(params) && params["icon-y"] && params["icon-x"])
+			W.pixel_x = text2num(params["icon-x"]) - 16
+			W.pixel_y = text2num(params["icon-y"]) - 16
 	return
 
-//	if(!(W.flags & ABSTRACT)) //rip more parems rip in peace ;_;
-//		var/list/click_params = params2list(params)
-//		if(user.drop_item(W, src.loc))
-//			W.Move(src.loc && click_params.len)
-//			//Center the icon where the user clicked.
-//			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
-//				return
-//			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-//			W.pixel_x = Clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-//			W.pixel_y = Clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
 
 /*
  * Wooden tables
@@ -489,6 +477,10 @@
 
 
 /obj/structure/table/reinforced/attackby(obj/item/weapon/W as obj, mob/user as mob)
+
+	if(isrobot(user))
+		return
+
 	if (istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
@@ -528,6 +520,10 @@
 
 
 /obj/structure/table/woodreinforced/attackby(obj/item/weapon/W as obj, mob/user as mob)
+
+	if(isrobot(user))
+		return
+
 	if (istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
