@@ -439,7 +439,6 @@
 
 /obj/item/proc/dropped(mob/user as mob)
 	..()
-	user.update_clothing()
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)

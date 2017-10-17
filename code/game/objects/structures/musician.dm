@@ -204,10 +204,7 @@
 		if("Cn9")	soundfile = 'sound/piano/Cn9.ogg'
 		else		return
 
-	//hearers(15, src) << sound(soundfile)
-	var/turf/source = get_turf(src)
-	for(var/mob/M in hearers(15, source))
-		M.playsound_local(source, file(soundfile), 100, falloff = 5)
+	hearers(15, src) << sound(soundfile)
 
 /obj/structure/device/piano/proc/playsong()
 	do
@@ -306,6 +303,7 @@
 	var/datum/browser/popup = new(user, "piano", "Space Piano")
 	popup.set_content(dat)
 	popup.open()
+
 
 /obj/structure/device/piano/Topic(href, href_list)
 

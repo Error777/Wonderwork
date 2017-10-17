@@ -1468,7 +1468,6 @@
 #include "code\WorkInProgress\Cutelilduck\human_resources.dm"
 #include "code\WorkInProgress\d2k5\artifacts.dm"
 #include "code\WorkInProgress\d2k5\cargotransporter.dm"
-#include "code\WorkInProgress\d2k5\metaldetector.dm"
 #include "code\WorkInProgress\d2k5\mininglaser.dm"
 #include "code\WorkInProgress\d2k5\reactor.dm"
 #include "code\WorkInProgress\DALS\mixColor.dm"
