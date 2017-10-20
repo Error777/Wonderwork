@@ -87,7 +87,8 @@ datum/track/New(var/title_name, var/audio)
 		for(var/datum/track/T in tracks)
 			if(T.title == href_list["title"])
 				current_track = T
-			StartPlaying()
+				StartPlaying()
+				break
 	else if(href_list["stop"])
 		StopPlaying()
 	else if(href_list["play"])

@@ -56,8 +56,7 @@
 	var/sound_damaged = 'sound/effects/grillehit.ogg'
 	var/sound_destroyed = 'sound/effects/robogib.ogg'
 	power_usage = 200
-	var/static/list/sounds_malfunction = list('sound/machines/engine_grump1.ogg','sound/machines/engine_grump2.ogg','sound/machines/engine_grump3.ogg',
-	'sound/machines/glitch1.ogg','sound/machines/glitch2.ogg','sound/machines/glitch3.ogg','sound/effects/clang.ogg','sound/effects/bang.ogg','sound/machines/romhack1.ogg','sound/machines/romhack3.ogg')
+	var/static/list/sounds_malfunction = list('sound/machines/engine_grump1.ogg','sound/machines/engine_grump2.ogg','sound/machines/engine_grump3.ogg','sound/machines/glitch1.ogg','sound/machines/glitch2.ogg','sound/machines/glitch3.ogg','sound/effects/clang.ogg','sound/effects/bang.ogg','sound/machines/romhack1.ogg','sound/machines/romhack3.ogg')
 	var/static/list/text_flipout_adjective = list("an awful","a terrible","a loud","a horrible","a nasty","a horrendous")
 	var/static/list/text_flipout_noun = list("noise","racket","ruckus","clatter","commotion","din")
 	var/list/text_bad_output_adjective = list("janky","crooked","warped","shoddy","shabby","lousy","crappy","shitty")
