@@ -4,7 +4,7 @@
 //Then terrorized the ship's exec, until she squashed it flat!
 
 //Mutates the plant overall (randomly).
-/obj/machinery/hydroponics/proc/mutate(var/severity)
+/obj/machinery/portable_atmospherics/hydroponics/proc/mutate(var/severity)
 
 	if(!severity) return
 
@@ -29,7 +29,7 @@
 	var/mutation_type = pick_mut(severity)
 	apply_mut(mutation_type, severity)
 
-/obj/machinery/hydroponics/proc/pick_mut(var/severity, var/mutation_category = "")
+/obj/machinery/portable_atmospherics/hydroponics/proc/pick_mut(var/severity, var/mutation_category = "")
 
 	var/datum/seed/S = seed
 	if (!S) return
@@ -113,24 +113,24 @@
 			)
 	return mutation_type
 
-/obj/machinery/hydroponics/proc/generic_mutation_message(var/text = "quivers!")
+/obj/machinery/portable_atmospherics/hydroponics/proc/generic_mutation_message(var/text = "quivers!")
 	visible_message("<span class='notice'>\The [seed.display_name] [text]</span>")
 
-/obj/machinery/hydroponics/proc/check_for_divergence(var/modified = 0)
+/obj/machinery/portable_atmospherics/hydroponics/proc/check_for_divergence(var/modified = 0)
 	// We need to make sure we're not modifying one of the global seed datums.
 	// If it's not in the global list, then no products of the line have been
 	// harvested yet and it's safe to assume it's restricted to this tray.
 	if(!isnull(plant_controller.seeds[seed.name]))
 		seed = seed.diverge(modified)
 
-/obj/machinery/hydroponics/proc/get_ratio(var/severity, var/list/softcaps, var/list/hardcaps, var/input)
+/obj/machinery/portable_atmospherics/hydroponics/proc/get_ratio(var/severity, var/list/softcaps, var/list/hardcaps, var/input)
 	var/i = min(Ceiling(severity/5), 5)
 	var/lerp_factor = (severity % 5) /5
 	var/softcap = mix(softcaps[i], softcaps[i+1], lerp_factor)
 	var/hardcap = mix(hardcaps[i], hardcaps[i+1], lerp_factor)
 	return(unmix(input, softcap, hardcap))
 
-/obj/machinery/hydroponics/proc/apply_mut(var/mutation_type, var/severity)
+/obj/machinery/portable_atmospherics/hydroponics/proc/apply_mut(var/mutation_type, var/severity)
 
 	// Check if we should even bother working on the current seed datum.
 	if(seed.immutable > 0) return
@@ -505,7 +505,7 @@
 	if(!mutants || !mutants.len || immutable > 0) return 0
 	return pick(mutants)
 
-/obj/machiner/hydroponics/proc/mutate_species()
+/obj/machinery/portable_atmospherics/hydroponics/proc/mutate_species()
 	var/previous_plant = seed.display_name
 	var/newseed = seed.get_mutant_variant()
 

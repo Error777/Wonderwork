@@ -1,7 +1,7 @@
 /obj/item/weapon/disk/botany
 	name = "flora data disk"
 	desc = "A small disk used for carrying data on plant genetics."
-	icon = 'icons/obj/hydroponics.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics.dmi'
 	icon_state = "disk"
 	w_class = 1.0
 
@@ -17,29 +17,18 @@
 	if(genes.len)
 		var/choice = alert(user, "Are you sure you want to wipe the disk?", "Xenobotany Data", "No", "Yes")
 		if(src && user && genes && choice && choice == "Yes" && user.get_active_hand() == src)
-			to_chat(user, "You wipe the disk data.")
+			user << "You wipe the disk data."
 			name = initial(name)
 			desc = initial(name)
 			genes = list()
 			genesource = "unknown"
 
-/obj/item/weapon/storage/box/botanydisk
-	name = "flora disk box"
-	desc = "A box of flora data disks."
-
-/obj/item/weapon/storage/box/botanydisk/New()
-	..()
-	for(var/i = 1 to 7)
-		new /obj/item/weapon/disk/botany(src)
-
 /obj/machinery/botany
-	icon = 'icons/obj/hydroponics.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics.dmi'
 	icon_state = "hydrotray3"
 	density = 1
 	anchored = 1
 	use_power = 1
-
-	machine_flags = SCREWTOGGLE | CROWDESTROY | WRENCHMOVE | FIXED2WORK | EJECTNOTDEL
 
 	var/obj/item/seeds/loaded_seed // Currently loaded seed packet.
 	var/obj/item/weapon/disk/botany/loaded_disk //Currently loaded data disk.
@@ -89,39 +78,39 @@
 /obj/machinery/botany/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/seeds))
 		if(loaded_seed)
-			to_chat(user, "There is already a seed loaded.")
+			user << "There is already a seed loaded."
 			return
 		var/obj/item/seeds/S = W
 		if(S.seed && S.seed.immutable > 0)
-			to_chat(user, "That seed is not compatible with our genetics technology.")
+			user << "That seed is not compatible with our genetics technology."
 		else
-			user.drop_item(S, src, force_drop = 1)
+			user.drop_item(S, src)
 			loaded_seed = W
-			to_chat(user, "You load [W] into [src].")
+			user << "You load [W] into [src]."
 			nanomanager.update_uis(src)
 		return
 
 	if(istype(W,/obj/item/weapon/disk/botany))
 		if(loaded_disk)
-			to_chat(user, "There is already a data disk loaded.")
+			user << "There is already a data disk loaded."
 			return
 		else
 			var/obj/item/weapon/disk/botany/B = W
 
 			if(B.genes && B.genes.len)
 				if(!disk_needs_genes)
-					to_chat(user, "That disk already has gene data loaded.")
+					user << "That disk already has gene data loaded."
 					return
 			else
 				if(disk_needs_genes)
-					to_chat(user, "That disk does not have any gene data loaded.")
+					user << "That disk does not have any gene data loaded."
 					return
 
 			if(!user.drop_item(W, src))
 				return
 
 			loaded_disk = W
-			to_chat(user, "You load [W] into [src].")
+			user << "You load [W] into [src]."
 			nanomanager.update_uis(src)
 
 		return

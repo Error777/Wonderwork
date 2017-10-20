@@ -10,20 +10,11 @@ Growing it to term with nothing injected will grab a ghost from the observers. *
 	species = "replicapod"
 	plantname = "Dionaea"
 	productname = "/mob/living/carbon/human" //verrry special -- Urist
-	lifespan = 50 //no idea what those do
-	endurance = 8
-	maturation = 5
-	production = 10
-	yield = 1 //seeds if there isn't a dna inside
-	oneharvest = 1
-	potency = 30
-	plant_type = 0
-	growthstages = 6
 	var/ckey = null
 	var/realName = null
 	var/mob/living/carbon/human/source //Donor of blood, if any.
 	gender = MALE
-	var/obj/machinery/hydroponics/parent = null
+	var/obj/machinery/portable_atmospherics/hydroponics/parent = null
 	var/found_player = 0
 
 /obj/item/seeds/replicapod/attackby(obj/item/weapon/W as obj, mob/user as mob)

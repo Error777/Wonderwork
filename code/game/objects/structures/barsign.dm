@@ -51,7 +51,7 @@
 
 /obj/structure/sign/double/barsign/attack_hand(mob/user as mob)
 	if (!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		user << "<span class='warning'>Access denied.</span>"
 		return
 
 	if (!(get_dir(src, usr) in list(NORTHWEST, NORTH, NORTHEAST)))

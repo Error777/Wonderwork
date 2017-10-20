@@ -23,7 +23,7 @@ var/global/list/camera_bugs = list()
 			cameras += C
 
 	if(!cameras.len)
-		to_chat(user, "<span class='warning'>No camera bugs found.</span>")
+		user << "<span class='warning'>No camera bugs found.</span>"
 		return
 
 	var/list/friendly_cameras = new/list()
@@ -83,21 +83,21 @@ var/global/list/camera_bugs = list()
 
 /obj/item/device/camera_bug/afterattack(atom/A, mob/user)
 	if(!c_tag || c_tag == "")
-		to_chat(user, "<span class='notice'>Set the tag first dumbass</span>")
+		user << "<span class='notice'>Set the tag first dumbass</span>"
 		return 0
 
 	if(is_type_in_list(src.excludes))
-		to_chat(user, "<span class='warning'>\The [src] won't stick!</span>")
+		user << "<span class='warning'>\The [src] won't stick!</span>"
 		return 0
 
 	if(istype(A, /obj/item))
 		var/obj/item/I = A
 		if(I.w_class < 3)
-			to_chat(user, "<span class='warning'>\The [I] is too small for \the [src]</span>")
+			user << "<span class='warning'>\The [I] is too small for \the [src]</span>"
 			return 0
 
 	if(user.drop_item(src, A))
-		to_chat(user, "<span class='notice'>You stealthily place \the [src] onto \the [A]</span>")
+		user << "<span class='notice'>You stealthily place \the [src] onto \the [A]</span>"
 		active = 1
 		camera_bugs += src
 		return 1

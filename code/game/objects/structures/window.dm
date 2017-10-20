@@ -44,26 +44,26 @@
 
 	..()
 	if(!anchored)
-		to_chat(user, "It appears to be completely loose and movable.")
+		user << "It appears to be completely loose and movable."
 	//switch most likely can't take inequalities, so here's that if block
 	if(health >= initial(health)) //Sanity
-		to_chat(user, "It's in perfect shape, not even a scratch.")
+		user << "It's in perfect shape, not even a scratch."
 	else if(health >= 0.8*initial(health))
-		to_chat(user, "It has a few scratches and a small impact.")
+		user << "It has a few scratches and a small impact."
 	else if(health >= 0.5*initial(health))
-		to_chat(user, "It has a few impacts and some cracks running from them.")
+		user << "It has a few impacts and some cracks running from them."
 	else if(health >= 0.2*initial(health))
-		to_chat(user, "It's covered in impact marks and most of the outer sheet is crackled.")
+		user << "It's covered in impact marks and most of the outer sheet is crackled."
 	else
-		to_chat(user, "It's completely crackled over multiple layers, it's a miracle it's even standing.")
+		user << "It's completely crackled over multiple layers, it's a miracle it's even standing."
 	if(reinforced) //Normal windows can be loose or not, reinforced windows are more complex
 		switch(d_state)
 			if(WINDOWSECURE)
-				to_chat(user, "It is firmly secured.")
+				user << "It is firmly secured."
 			if(WINDOWUNSECUREFRAME)
-				to_chat(user, "It appears it was unfastened from its frame.")
+				user << "It appears it was unfastened from its frame."
 			if(WINDOWLOOSEFRAME)
-				to_chat(user, "It appears to be loose from its frame.")
+				user << "It appears to be loose from its frame."
 
 //Allows us to quickly check if we should break the window, can handle not having an user
 /obj/structure/window/proc/healthcheck(var/mob/M, var/sound = 1)
@@ -308,7 +308,7 @@
 							del(src)
 							return
 					else
-						to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+						user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
 						return
 
 	else if(!reinforced) //Normal window steps
@@ -338,7 +338,7 @@
 					Del()
 					return
 			else
-				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+				user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
 				return
 
 	if(W.damtype == BRUTE || W.damtype == BURN)

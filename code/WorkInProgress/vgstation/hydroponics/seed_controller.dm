@@ -22,7 +22,7 @@
 var/global/datum/controller/plants/plant_controller // Set in New().
 
 /datum/controller/plants
-
+	var/processing = 0
 	var/plants_per_tick = PLANTS_PER_TICK
 	var/plant_tick_time = PLANT_TICK_TIME
 	var/list/plant_queue = list()           // All queued plants.
@@ -34,7 +34,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 		log_debug("Rebuilding plant controller.")
 		del(plant_controller)
 	plant_controller = src
-	setup()
+//	setup()
 	process()
 
 // Predefined/roundstart varieties use a string key to make it

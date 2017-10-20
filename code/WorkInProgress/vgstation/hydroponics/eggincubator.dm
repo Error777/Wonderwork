@@ -42,12 +42,9 @@
 	if(..())
 		return 1
 	if(contents.len >= limit)
-		to_chat(user, "\The [src] has no more space for eggs!")
+		user << "\The [src] has no more space for eggs!"
 		return 1
 	if (istype(O,/obj/item/weapon/reagent_containers/food/snacks/egg))
-		if(animal_count[/mob/living/simple_animal/chicken] >= ANIMAL_CHILD_CAP)
-			to_chat(user, "<span class='warning'>You get the feeling there are enough chickens already.</span>")
-			return 1
 		if(user.drop_item(O, src))
 			user.visible_message( \
 				"<span class='notice'>\The [user] has added \the [O] to \the [src].</span>", \
@@ -95,7 +92,7 @@
 		E.amount_grown += rand(2,3)+speed_bonus
 		if(E.amount_grown>=100)
 			eject(E)
-			E.hatch()
+			del(E)
 			playsound(get_turf(src), 'sound/machines/ding.ogg', 50, 1)
 	src.updateUsrDialog()
 

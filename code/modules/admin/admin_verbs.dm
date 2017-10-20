@@ -70,9 +70,9 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/show_skills,
 	/client/proc/man_up,
 	/client/proc/global_man_up,
-	/client/proc/response_team,		//Response Teams admin verb
+	/client/proc/response_team, // Response Teams admin verb
 	/client/proc/delbook,
-	/client/proc/job_lock_panel,	//allow to lock main jobs. Only work on late join players
+	/client/proc/job_lock_panel,			/*allow to lock main jobs. Only work on late join players*/
 	/client/proc/checkAccount,
 	/client/proc/checkAllAccounts
 )
@@ -131,6 +131,7 @@ var/list/admin_verbs_server = list(
 var/list/admin_verbs_debug = list(
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
+	/client/verb/mapWorld,
 	/client/proc/kill_air,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/kill_airgroup,
@@ -434,10 +435,7 @@ var/list/admin_verbs_events = list(
 	set name = "Display Job bans"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
-			holder.Jobbans()
-		else
-			holder.jobban_panel()
+		holder.Jobbans()
 	feedback_add_details("admin_verb","VJB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -445,10 +443,7 @@ var/list/admin_verbs_events = list(
 	set name = "Unban Panel"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
-			holder.unbanpanel()
-		else
-			holder.DB_ban_unban()
+		holder.unbanpanel()
 	feedback_add_details("admin_verb","UBP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 

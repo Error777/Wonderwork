@@ -6,6 +6,7 @@ var/global/obj/effect/overlay/plmaster = null
 var/global/obj/effect/overlay/slmaster = null
 
 var/global/datum/universal_state/universe = new
+var/global/datum/gas_mixture/space_gas = new
 /var/global/list/machines = list()
 /var/global/list/processing_objects = list()
 /var/global/list/active_diseases = list()

@@ -108,6 +108,28 @@
 	icon = 'icons/effects/tomatodecal.dmi'
 	random_icon_states = list("tomato_floor1", "tomato_floor2", "tomato_floor3")
 
+/obj/effect/decal/cleanable/fruit_smudge
+	name = "smudge"
+	desc = "Some kind of fruit smear."
+	density = 0
+	anchored = 1
+	icon = 'icons/effects/tomatodecal.dmi'
+	random_icon_states = list("fruit_smudge1", "fruit_smudge2", "fruit_smudge3")
+	icon_state = "fruit_smudge1"
+
+/obj/effect/decal/cleanable/clay_fragments
+	name = "clay fragments"
+	desc = "pieces from a broken clay pot"
+	gender = PLURAL
+	icon = 'icons/effects/tomatodecal.dmi'
+	icon_state = "clay_fragments"
+	anchored = 0
+
+/obj/effect/decal/cleanable/clay_fragments/New()
+	..()
+	pixel_x = rand (-3,3) * 32
+	pixel_y = rand (-3,3) * 32
+
 /obj/effect/decal/cleanable/egg_smudge
 	name = "smashed egg"
 	desc = "Seems like this one won't hatch."

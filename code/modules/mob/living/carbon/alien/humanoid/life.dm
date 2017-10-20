@@ -381,21 +381,21 @@
 				druggy = max(druggy-1, 0)
 		return 1
 
-
 	proc/handle_regular_hud_updates()
+
 
 		if (stat == 2 || (XRAY in mutations))
 			sight |= SEE_TURFS
 			sight |= SEE_MOBS
 			sight |= SEE_OBJS
 			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			see_invisible = SEE_INVISIBLE_MINIMUM
 		else if (stat != 2)
 			sight |= SEE_MOBS
 			sight &= ~SEE_TURFS
 			sight &= ~SEE_OBJS
 			see_in_dark = 4
-			see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			see_invisible = SEE_INVISIBLE_MINIMUM
 
 		if (healths)
 			if (stat != 2)
@@ -418,28 +418,25 @@
 		if(pullin)	pullin.icon_state = "pull[pulling ? 1 : 0]"
 
 
-		if (toxin)	toxin.icon_state = "tox[toxins_alert ? 1 : 0]"
-		if (oxygen) oxygen.icon_state = "oxy[oxygen_alert ? 1 : 0]"
-		if (fire) fire.icon_state = "fire[fire_alert ? 1 : 0]"
+		if (toxin)
+			toxin.icon_state = "tox[toxins_alert ? 1 : 0]"
+		if (oxygen)
+			oxygen.icon_state = "oxy[oxygen_alert ? 1 : 0]"
+		if (fire)
+			fire.icon_state = "fire[fire_alert ? 1 : 0]"
 		//NOTE: the alerts dont reset when youre out of danger. dont blame me,
 		//blame the person who coded them. Temporary fix added.
 		if (client)
-			client.screen.Remove(global_hud.blurry,global_hud.druggy,global_hud.vimpaired)
+			clear_fullscreens()
 
-		if ((blind && stat != 2))
-			if ((blinded))
-				blind.layer = 18
-			else
-				blind.layer = 0
-
-				if (disabilities & NEARSIGHTED)
-					client.screen += global_hud.vimpaired
-
-				if (eye_blurry)
-					client.screen += global_hud.blurry
-
-				if (druggy)
-					client.screen += global_hud.druggy
+			if(src.eye_blind)
+				overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			if (src.disabilities & NEARSIGHTED)
+				overlay_fullscreen("impaired", /obj/screen/fullscreen/impaired)
+			if (src.eye_blurry)
+				overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)
+			if (src.druggy)
+				overlay_fullscreen("high", /obj/screen/fullscreen/high)
 
 		if (stat != 2)
 			if (machine)

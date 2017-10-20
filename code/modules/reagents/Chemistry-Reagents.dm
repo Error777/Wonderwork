@@ -22,6 +22,7 @@ datum
 		var/mildly_toxic = 0
 		var/addiction_stage = 0
 		var/metabolization_rate = REAGENTS_METABOLISM
+		var/custom_plant_metabolism = 1
 		var/overdosed = 0 // You fucked up and this is now triggering it's overdose effects, purge that shit quick.
 		var/overrides_metab = 0
 		var/overdose_threshold = 0
@@ -90,6 +91,16 @@ datum
 
 			on_update(var/atom/A)
 				return
+
+			on_plant_life(var/obj/machinery/portable_atmospherics/hydroponics/T)
+				if(!holder)
+					return
+				if(!T)
+					T = holder.my_atom //Try to find the mob through the holder
+				if(!istype(T)) //Still can't find it, abort
+					return
+
+				holder.remove_reagent(src.id, custom_plant_metabolism)
 
 // Called if the reagent has passed the overdose threshold and is set to be triggering overdose effects
 			overdose_process(var/mob/living/M as mob)
@@ -1244,6 +1255,33 @@ datum
 							if(H.shoes.clean_blood())
 								H.update_inv_shoes(0)
 					M.clean_blood()
+
+		//Reagents used for plant fertilizers.
+		//WHY, just WHY, were fertilizers declared as a child of toxin and later snowflaked to work differently in the hydrotray's process_reagents()?
+
+		fertilizer
+			name = "fertilizer"
+			id = "fertilizer"
+			description = "A chemical mix good for growing plants with."
+			reagent_state = LIQUID
+			reagent_color = "#664330" // rgb: 102, 67, 48
+
+		fertilizer/eznutrient
+			name = "EZ Nutrient"
+			id = "eznutrient"
+			reagent_color = "#A4AF1C" // rgb: 164, 175, 28
+
+		fertilizer/left4zed
+			name = "Left-4-Zed"
+			id = "left4zed"
+			description = "A cocktail of mutagenic compounds, which cause plant life to become highly unstable."
+			reagent_color = "#5B406C" // rgb: 91, 64, 108
+
+		fertilizer/robustharvest
+			name = "Robust Harvest"
+			id = "robustharvest"
+			description = "Plant-enhancing hormones, good for increasing potency."
+			reagent_color = "#3E901C" // rgb: 62, 144, 28
 
 		plantbgone
 			name = "Plant-B-Gone"

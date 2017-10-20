@@ -91,7 +91,7 @@
 				S.contents += src;
 			else
 				user << "\blue The plant bag is full."
-	return*/
+	return
 
 /obj/item/weapon/grown/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	..()
@@ -113,7 +113,7 @@
 		msg += "*---------*</span>"
 		usr << msg
 		return
-
+*/
 /obj/item/weapon/reagent_containers/food/snacks/grown/corn
 	seed = "/obj/item/seeds/cornseed"
 	name = "ear of corn"
@@ -355,12 +355,20 @@
 			del(W)
 			del(src)
 
+/obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris/cruciatus
+	plantname = "ambrosiacruciatus"
+	name = "ambrosia vulgaris branch"
+	desc = "This is a plant containing various healing chemicals."
+	icon_state = "ambrosiavulgaris"
+	potency = 10
+
 /obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiadeus
 	seed = "/obj/item/seeds/ambrosiadeus"
 	name = "ambrosia deus branch"
 	desc = "Eating this makes you feel immortal!"
 	icon_state = "ambrosiadeus"
 	potency = 10
+
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
@@ -379,6 +387,44 @@
 			P.name = pick("joint","doobie","spliff","roach","blunt","roll","fatty","reefer")
 			del(W)
 			del(src)
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/moonflower
+	name = "moonflower"
+	desc = "Store in a location at least 50 yards away from werewolves."
+	icon_state = "moonflower"
+	potency = 25
+	seed = "/obj/item/seeds/moonflowers"
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/cinnamon
+	name = "cinnamon sticks"
+	desc = "Straight from the bark!"
+	icon_state = "cinnamon"
+	seed = "/obj/item/seeds/cinnamomum"
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/koibeans
+	seed = "/obj/item/seeds/koibean"
+	name = "koibean"
+	desc = "Something about these seems fishy."
+	icon_state = "koibeans"
+	New()
+		..()
+		spawn(5)	//So potency can be set in the proc that creates these crops
+			reagents.maximum_volume = 40
+			reagents.add_reagent("nutriment", 1+round((potency / 10), 1))
+			bitesize = reagents.maximum_volume // Always eat the apple in one
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/peanut
+	seed = "/obj/item/seeds/peanut"
+	name = "peanut"
+	desc = "Nuts!"
+	icon_state = "peanut"
+	potency = 25
+	New()
+		..()
+		spawn(5)	//So potency can be set in the proc that creates these crops
+			reagents.maximum_volume = 40
+			reagents.add_reagent("nutriment", 1+round((potency / 10), 1))
+			bitesize = reagents.maximum_volume // Always eat the apple in one
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/apple
 	seed = "/obj/item/seeds/appleseed"

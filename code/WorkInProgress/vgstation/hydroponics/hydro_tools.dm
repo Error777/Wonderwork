@@ -3,7 +3,6 @@
 /obj/item/weapon/wirecutters/clippers
 	name = "plant clippers"
 	desc = "A tool used to take samples from plants."
-	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/misc_tools.dmi', "right_hand" = 'icons/mob/in-hand/right/misc_tools.dmi')
 	icon_state = "plantclippers"
 	item_state = "plantclippers"
 
@@ -57,7 +56,7 @@
 		grown_seed = K.seed
 
 	if(!grown_seed)
-		to_chat(user, "<span class='warning'>\icon[src] [src] can tell you nothing about [target].</span>")
+		user << "<span class='warning'>\icon[src] [src] can tell you nothing about [target].</span>"
 		return
 
 	form_title = "[grown_seed.seed_name] (#[grown_seed.uid])"
@@ -212,7 +211,7 @@
 	if(last_data)
 		user << browse(last_data,"window=plant_analyzer_\ref[src];size=400x500")
 	else
-		to_chat(user, "<span class='notice'>\icon[src] No plant scan data in memory.</span>")
+		user << "<span class='notice'>\icon[src] No plant scan data in memory.</span>"
 	return 0
 
 /obj/item/device/analyzer/plant_analyzer/proc/print_report_verb()
@@ -235,10 +234,10 @@
 
 /obj/item/device/analyzer/plant_analyzer/proc/print_report(var/mob/living/user) //full credits to Zuhayr
 	if(!last_data)
-		to_chat(user, "<span class='warning'>\icon[src] There is no plant scan data to print.</span>")
+		user << "<span class='warning'>\icon[src] There is no plant scan data to print.</span>"
 		return
 	if (world.time < last_print + 4 SECONDS)
-		to_chat(user, "<span class='warning'>\icon[src] \The [src] is not yet ready to print again.</span>")
+		user << "<span class='warning'>\icon[src] \The [src] is not yet ready to print again.</span>"
 		return
 	last_print = world.time
 	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
@@ -256,7 +255,7 @@
 /obj/item/weapon/plantspray
 	icon = 'icons/obj/hydroponics.dmi'
 	item_state = "spray"
-	flags = FPRINT | NOBLUDGEON
+	flags = FPRINT
 	slot_flags = SLOT_BELT
 	throwforce = 4
 	w_class = 2.0
@@ -308,7 +307,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
 	item_state = "hoe"
-	flags = FPRINT  | NOBLUDGEON
+	flags = FPRINT
 	siemens_coefficient = 1
 	force = 5.0
 	throwforce = 7.0
@@ -409,7 +408,6 @@
 	throwforce = 15.0
 	throw_speed = 4
 	throw_range = 4
-	sharpness = 1.2
 	origin_tech = "materials=2;combat=1"
 	attack_verb = list("chopped", "torn", "cut")
 
@@ -433,7 +431,6 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 3
-	sharpness = 1.0
 	w_class = 4.0
 	flags = FPRINT
 	slot_flags = SLOT_BACK
@@ -442,32 +439,20 @@
 
 /obj/item/weapon/scythe/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity) return
-	if(istype(A, /obj/effect/plantsegment) || istype(A, /turf/simulated/floor))
-		for(var/obj/effect/plantsegment/B in range(user,1))
-			B.take_damage(src)
-		user.delayNextAttack(10)
-		/*var/olddir = user.dir
-		spawn for(var/i=-2, i<=2, i++) //hheeeehehe i'm so dumb
-			user.dir = turn(olddir, 45*i)
-			sleep(2)*/
-	/*if(istype(A, /obj/effect/plantsegment))
+	if(istype(A, /obj/effect/plantsegment))
 		for(var/obj/effect/plantsegment/B in orange(A,1))
-			if(prob(B.seed.ligneous ? 10 : 80))
-				B.die_off()
-		var/obj/effect/plantsegment/K = A
-		K.die_off()
-	if(istype(A, /turf/simulated/floor))
-		for(var/obj/effect/plantsegment/B in orange(A,1))
-			if(prob(B.seed.ligneous ? 10 : 80))
-				B.die_off()*/
+			if(prob(80))
+				del B
+		del A
+
+		user.next_move = world.time + 10
 
 /obj/item/claypot
 	name = "clay pot"
 	desc = "Plants placed in those stop aging, but cannot be retrieved either."
-	icon = 'icons/obj/hydroponics2.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics2.dmi'
 	icon_state = "claypot-item"
 	item_state = "claypot"
-	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/misc_tools.dmi', "right_hand" = 'icons/mob/in-hand/right/misc_tools.dmi')
 	w_class = 3.0
 	force = 5.0
 	throwforce = 20.0
@@ -477,11 +462,11 @@
 
 /obj/item/claypot/attackby(var/obj/item/O,var/mob/user)
 	if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown) || istype(O,/obj/item/weapon/grown))
-		to_chat(user, "<span class='warning'>You have to transplant the plant into the pot directly from the hydroponic tray, using a spade.</span>")
-	else if(istype(O,/obj/item/weapon/pickaxe/shovel))
-		to_chat(user, "<span class='warning'>There is no plant to remove in \the [src].</span>")
+		user << "<span class='warning'>You have to transplant the plant into the pot directly from the hydroponic tray, using a spade.</span>"
+	else if(istype(O,/obj/item/weapon/shovel))
+		user << "<span class='warning'>There is no plant to remove in \the [src].</span>"
 	else
-		to_chat(user, "<span class='warning'>You cannot plant \the [O] in \the [src].</span>")
+		user << "<span class='warning'>You cannot plant \the [O] in \the [src].</span>"
 
 
 /obj/item/claypot/throw_impact(atom/hit_atom)
@@ -495,7 +480,7 @@
 /obj/structure/claypot
 	name = "clay pot"
 	desc = "Plants placed in those stop aging, but cannot be retrieved either."
-	icon = 'icons/obj/hydroponics2.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics2.dmi'
 	icon_state = "claypot"
 	anchored = 0
 	density = 0
@@ -504,10 +489,10 @@
 /obj/structure/claypot/examine(mob/user)
 	..()
 	if(plant_name)
-		to_chat(user, "<span class='info'>You can see [plant_name] planted in it.</span>")
+		user << "<span class='info'>You can see [plant_name] planted in it.</span>"
 
 /obj/structure/claypot/attack_hand(mob/user as mob)
-	to_chat(user, "It's too heavy to pick up while it has a plant in it.")
+	user << "It's too heavy to pick up while it has a plant in it."
 
 /obj/structure/claypot/attackby(var/obj/item/O,var/mob/user)
 	if(istype(O,/obj/item/weapon/wrench))
@@ -517,8 +502,8 @@
 			user.visible_message(	"<span class='notice'>[user] [anchored ? "wrench" : "unwrench"]es \the [src] [anchored ? "in place" : "from its fixture"].</span>",
 									"<span class='notice'>\icon[src] You [anchored ? "wrench" : "unwrench"] \the [src] [anchored ? "in place" : "from its fixture"].</span>",
 									"<span class='notice'>You hear a ratchet.</span>")
-	else if(plant_name && istype(O,/obj/item/weapon/pickaxe/shovel))
-		to_chat(user, "<span class='notice'>\icon[src] You start removing the [plant_name] from \the [src].</span>")
+	else if(plant_name && istype(O,/obj/item/weapon/shovel))
+		user << "<span class='notice'>\icon[src] You start removing the [plant_name] from \the [src].</span>"
 		if(do_after(user, src, 30))
 			playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 			user.visible_message(	"<span class='notice'>[user] removes the [plant_name] from \the [src].</span>",
@@ -529,7 +514,7 @@
 			del(src)
 
 	else if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown) || istype(O,/obj/item/weapon/grown))
-		to_chat(user, "<span class='warning'>There is already a plant in \the [src]</span>")
+		user << "<span class='warning'>There is already a plant in \the [src]</span>"
 
 	else
 		..()

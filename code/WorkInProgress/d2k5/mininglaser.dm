@@ -37,15 +37,15 @@
 		if(!src.locked)
 			if(src.active==1)
 				src.active = 0
-				to_chat(user, "You turn off [src].")
+				user << "You turn off [src]."
 			else
 				src.active = 1
-				to_chat(user, "You turn on [src].")
+				user << "You turn on [src]."
 			update_icon()
 		else
-			to_chat(user, "\red The controls are locked!")
+			user << "\red The controls are locked!"
 	else
-		to_chat(user, "\red The [src.name] needs to be firmly secured to the floor first.")
+		user << "\red The [src.name] needs to be firmly secured to the floor first."
 		return 1
 
 /obj/machinery/mininglaser/process()
@@ -83,7 +83,7 @@
 /obj/machinery/mininglaser/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/wrench))
 		if(active)
-			to_chat(user, "Turn off the [src] first.")
+			user << "Turn off the [src] first."
 			return
 		switch(state)
 			if(0)
@@ -101,17 +101,17 @@
 					"You hear a ratchet")
 				src.anchored = 0
 			if(2)
-				to_chat(user, "\red The [src.name] needs to be unwelded from the floor.")
+				user << "\red The [src.name] needs to be unwelded from the floor."
 		return
 
 	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(active)
-			to_chat(user, "Turn off [src] first.")
+			user << "Turn off [src] first."
 			return
 		switch(state)
 			if(0)
-				to_chat(user, "\red The [src.name] needs to be wrenched to the floor.")
+				user << "\red The [src.name] needs to be wrenched to the floor."
 			if(1)
 				if (WT.remove_fuel(0,user))
 					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -121,9 +121,9 @@
 					if (do_after(user,20))
 						if(!src || !WT.isOn()) return
 						state = 2
-						to_chat(user, "You weld [src] to the floor.")
+						user << "You weld [src] to the floor."
 				else
-					to_chat(user, "\red You need more welding fuel to complete this task.")
+					user << "\red You need more welding fuel to complete this task."
 			if(2)
 				if (WT.remove_fuel(0,user))
 					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -133,9 +133,9 @@
 					if (do_after(user,20))
 						if(!src || !WT.isOn()) return
 						state = 1
-						to_chat(user, "You cut [src] free from the floor.")
+						user << "You cut [src] free from the floor."
 				else
-					to_chat(user, "\red You need more welding fuel to complete this task.")
+					user << "\red You need more welding fuel to complete this task."
 		return
 
 	if(istype(W, /obj/item/weapon/card/emag) && !emagged)

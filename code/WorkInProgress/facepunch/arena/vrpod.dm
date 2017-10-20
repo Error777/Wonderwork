@@ -12,7 +12,7 @@ var/global/list/mob/living/carbon/arenaplayers = list()
 
 /obj/structure/literal_firewall/attackby(var/obj/item/W, var/mob/user)
 	if (istype(W, /obj/item/weapon/keycard))
-		to_chat(user, "<span style=\"color:blue\">keycard -c 'ufw allow 2323/stcp from ::1'</span>")
+		user << "<span style=\"color:blue\">keycard -c 'ufw allow 2323/stcp from ::1'</span>"
 		del(src)
 	else
 		return

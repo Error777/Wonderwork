@@ -33,16 +33,16 @@
 		return
 
 	searching = 1
-	var/list/active_candidates = get_active_candidates(ROLE_PLANT)
 
-	for(var/mob/dead/observer/O in active_candidates)
-		if(!check_observer(O))
-			continue
+	for(var/mob/dead/observer/O in player_list)
+		if(O.client)
+			if(O.client.prefs.be_special & BE_PLANT)
+				continue
 
-		currently_querying |= O
-		to_chat(O, "<span class='recruit'>Someone is harvesting [display_name]. You have been added to the list of potential ghosts. (<a href='?src=\ref[O];jump=\ref[host]'>Teleport</a> | <a href='?src=\ref[src];signup=\ref[O]'>retract</a>)</span>")
+			currently_querying |= O
+			to_chat(O, "<span class='recruit'>Someone is harvesting [display_name]. You have been added to the list of potential ghosts. (<a href='?src=\ref[O];jump=\ref[host]'>Teleport</a> | <a href='?src=\ref[src];signup=\ref[O]'>retract</a>)</span>")
 
-	for(var/mob/dead/observer/O in dead_mob_list - active_candidates)
+	for(var/mob/dead/observer/O in player_list)
 		if(!check_observer(O))
 			continue
 
@@ -123,9 +123,6 @@
 		return
 
 /datum/seed/proc/check_observer(var/mob/dead/observer/O)
-	if(O.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
-		return 0
-
 	if(jobban_isbanned(O, "Dionaea") || (!is_alien_whitelisted(src, "Diona") && config.usealienwhitelist))
 		return 0
 

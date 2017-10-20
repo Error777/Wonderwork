@@ -358,8 +358,8 @@
 							if(prob(10)) M << "\red SYSTEM ALERT: Energy draining field detected!"
 				if("planthelper")
 //					world << "invalid expression fix"
-					for (var/obj/machinery/hydroponics/P in range(src.aurarange,src))
-						if(!P.planted) continue
+					for (var/obj/machinery/portable_atmospherics/hydroponics/P in range(src.aurarange,src))
+						if(P.seed && !P.dead) continue
 						if(P.waterlevel < 100) P.waterlevel++
 						if(P.nutrilevel < 10) P.nutrilevel++
 						if(P.weedlevel > 0) P.weedlevel--
@@ -443,8 +443,8 @@
 					src.charged = 0
 					src.chargetime = src.recharge
 				if("planthelper")
-					for (var/obj/machinery/hydroponics/P in range(src.aurarange,src))
-						if(!P.planted) continue
+					for (var/obj/machinery/portable_atmospherics/hydroponics/P in range(src.aurarange,src))
+						if(P.seed && !P.dead) continue
 						if(P.waterlevel < 100) P.waterlevel = 100
 						if(P.nutrilevel < 10) P.nutrilevel = 10
 						if(P.weedlevel > 0) P.weedlevel = 0

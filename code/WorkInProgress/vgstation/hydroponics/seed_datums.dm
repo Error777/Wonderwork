@@ -529,9 +529,9 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 		return
 
 	if(isnull(products) || !products.len || yield <= 0)
-		to_chat(user, "<span class='warning'>You fail to harvest anything useful.</span>")
+		user << "<span class='warning'>You fail to harvest anything useful.</span>"
 	else
-		to_chat(user, "You harvest from the [display_name].")
+		user << "You harvest from the [display_name]."
 
 		add_newline_to_controller()
 
@@ -548,8 +548,6 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 		for(var/i = 0;i<total_yield;i++)
 			var/product_type = pick(products)
 			var/obj/item/product = new product_type(get_turf(user))
-
-			score["stuffharvested"] += 1 //One point per product unit
 
 			if(mysterious)
 				product.name += "?"
@@ -581,11 +579,11 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	if(thorny || stinging)
 		var/mob/living/carbon/human/H = user
 		if(istype(H))
-			if(!H.check_body_part_coverage(HANDS))
+			if(!H.equipped())
 				for(var/assblast in list("r_hand", "l_hand"))
 					if(stung) continue
 					var/datum/organ/external/affecting = H.get_organ(assblast)
-					if(affecting && affecting.is_existing() && affecting.is_usable() && affecting.is_organic())
+					if(affecting && affecting.is_usable())
 						stung = 1
 						if(thorny)
 							if(affecting.take_damage(5+carnivorous*5, 0))
@@ -594,7 +592,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 							else
 								H.adjustBruteLoss(5+carnivorous*5)
 							to_chat(H, "<span class='danger'>You are prickled by the sharp thorns on \the [seed_name]!</span>")
-							if(H.species && !(H.species.flags & NO_PAIN))
+							if(H.species)
 								success = 0
 						if(stinging)
 							if(chems && chems.len)
@@ -602,14 +600,14 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 									H.reagents.add_reagent(rid, Clamp(1, 5, potency/10))
 								to_chat(H, "<span class='danger'>You are stung by \the [seed_name]!</span>")
 								if(hematophage)
-									if(tray && H.species && !(H.species.flags & NO_BLOOD)) //the indentation gap doesn't stop from getting wider
+									if(tray && H.species) //the indentation gap doesn't stop from getting wider
 										var/drawing = min(15, H.vessel.get_reagent_amount("blood"))
 										H.vessel.remove_reagent("blood", drawing)
 										tray.reagents.add_reagent("blood", drawing)
 	if(ligneous)
 		if(istype(user, /mob/living/carbon))
 			var/mob/living/carbon/M = user
-			if((!M.l_hand || !M.l_hand.is_sharp()) && (!M.r_hand || !M.r_hand.is_sharp()))
+			if((!M.l_hand) && (!M.r_hand))
 				to_chat(M, "<span class='warning'>The stems on this plant are too tough to cut by hand, you'll need something sharp in one of your hands to harvest it.</span>")
 				success = 0
 	return success

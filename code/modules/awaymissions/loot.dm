@@ -99,7 +99,7 @@
 				/obj/item/weapon/hand_labeler = 1,
 				/obj/item/weapon/paper/crumpled = 1,
 				/obj/item/weapon/pen = 1,
-				/obj/item/weapon/pestspray = 1,
+				/obj/item/weapon/plantspray = 1,
 				/obj/item/weapon/reagent_containers/glass/rag = 3,
 				/obj/item/weapon/cell = 3,
 				/obj/item/weapon/storage/belt/utility = 2,

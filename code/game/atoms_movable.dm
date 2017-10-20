@@ -13,7 +13,6 @@
 	var/mob/pulledby = null
 	var/inertia_dir = 0
 
-
 /atom/movable/proc/update_client_hook(atom/destination)
 	if(locate(/mob) in src)
 		for(var/client/C in clients)
@@ -213,8 +212,6 @@
 	//done throwing, either because it hit something or it finished moving
 	src.throwing = 0
 	if(isobj(src)) src:throw_impact(get_turf(src),speed)
-
-
 
 //Overlays
 /atom/movable/overlay

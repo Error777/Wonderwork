@@ -48,6 +48,7 @@
 /obj/item/weapon/storage/box/gloves
 	name = "box of latex gloves"
 	desc = "Contains white gloves."
+	icon_state = "latex"
 	New()
 		..()
 		new /obj/item/clothing/gloves/latex(src)
@@ -354,6 +355,16 @@
 		..()
 		for(var/i = 1; i <= storage_slots; i++)
 			new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/neaera/wrapped(src)
+
+/obj/item/weapon/storage/box/botanydisk
+	name = "flora disk box"
+	desc = "A box of flora data disks."
+	icon_state = "botanydisk"
+
+/obj/item/weapon/storage/box/botanydisk/New()
+	..()
+	for(var/i = 1 to 7)
+		new /obj/item/weapon/disk/botany(src)
 
 /obj/item/weapon/storage/box/ids
 	name = "spare IDs"

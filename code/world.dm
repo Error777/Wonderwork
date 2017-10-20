@@ -79,10 +79,11 @@
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 //	lighting_controller = new /datum/controller/lighting()
-
+	plant_controller = new /datum/controller/plants()
 	spawn(1)
 		processScheduler.setup()
 		master_controller.setup()
+		plant_controller.setup()
 
 
 	process_teleport_locs()			//Sets up the wizard teleport locations

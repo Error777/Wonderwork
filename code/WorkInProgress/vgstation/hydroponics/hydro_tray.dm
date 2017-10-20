@@ -1,13 +1,11 @@
 /obj/machinery/portable_atmospherics/hydroponics
 	name = "hydroponics tray"
-	icon = 'icons/obj/hydroponics.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics.dmi'
 	icon_state = "hydrotray3"
 	density = 1
 	anchored = 1
-	flags = OPENCONTAINER | PROXMOVE // PROXMOVE could be added and removed as necessary if it causes lag
+	flags = OPENCONTAINER // PROXMOVE could be added and removed as necessary if it causes lag
 	volume = 100
-
-	machine_flags = SCREWTOGGLE | CROWDESTROY | WRENCHMOVE | FIXED2WORK
 
 	var/draw_warnings = 1 // Set to 0 to stop it from drawing the alert lights.
 	var/tmp/update_icon_after_process = 0 // Will try to only call update_icon() when necessary.
@@ -60,7 +58,7 @@
 	connect()
 	update_icon()
 	component_parts = newlist(
-		/obj/item/weapon/circuitboard/hydroponics,
+		/obj/item/weapon/circuitboard/hydroponicst,
 		/obj/item/weapon/stock_parts/matter_bin,
 		/obj/item/weapon/stock_parts/matter_bin,
 		/obj/item/weapon/stock_parts/scanning_module,
@@ -134,7 +132,7 @@
 		return
 
 	if(closed_system)
-		to_chat(user, "You can't harvest from the plant while the lid is shut.")
+		user << "You can't harvest from the plant while the lid is shut."
 		return
 
 	if(!seed.check_harvest(user))
@@ -158,12 +156,12 @@
 	if(!user || !dead) return
 
 	if(closed_system)
-		to_chat(user, "You can't remove the dead plant while the lid is shut.")
+		user << "You can't remove the dead plant while the lid is shut."
 		return
 
 	remove_plant()
 
-	to_chat(user, "You remove the dead plant from the [src].")
+	user << "You remove the dead plant from the [src]."
 	check_level_sanity()
 	update_icon()
 	return
@@ -201,11 +199,11 @@
 			user.drop_item(S)
 
 			if(!S.seed)
-				to_chat(user, "The packet seems to be empty. You throw it away.")
+				user << "The packet seems to be empty. You throw it away."
 				del(O)
 				return
 
-			to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")
+			user << "You plant the [S.seed.seed_name] [S.seed.seed_noun]."
 			switch(S.seed.spread)
 				if(1)
 					var/turf/T = get_turf(src)
@@ -230,23 +228,23 @@
 			update_icon()
 
 		else
-			to_chat(user, "<span class='alert'>\The [src] already has seeds in it!</span>")
+			user << "<span class='alert'>\The [src] already has seeds in it!</span>"
 
-	else if(O.force && seed && user.a_intent == I_HURT)
+	else if(O.force && seed && user.a_intent == "hurt")
 		visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [O]!</span>")
 		if(!dead)
 			health -= O.force
 			check_health()
-		user.delayNextAttack(5)
+		user.next_move = world.time + 5
 
 	else if(istype(O, /obj/item/claypot))
-		to_chat(user, "<span class='warning'>You must place the pot on the ground and use a spade on \the [src] to make a transplant.</span>")
+		user << "<span class='warning'>You must place the pot on the ground and use a spade on \the [src] to make a transplant.</span>"
 		return
 
-	else if(seed && istype(O, /obj/item/weapon/pickaxe/shovel))
+	else if(seed && istype(O, /obj/item/weapon/shovel))
 		var/obj/item/claypot/C = locate() in range(user,1)
 		if(!C)
-			to_chat(user, "<span class='warning'>You need an empty clay pot next to you.</span>")
+			user << "<span class='warning'>You need an empty clay pot next to you.</span>"
 			return
 		playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 		if(do_after(user, src, 50))
@@ -288,20 +286,20 @@
 	else if(is_type_in_list(O, list(/obj/item/weapon/wirecutters, /obj/item/weapon/scalpel)))
 
 		if(!seed)
-			to_chat(user, "There is nothing to take a sample from in \the [src].")
+			user << "There is nothing to take a sample from in \the [src]."
 			return
 
 		if(sampled)
-			to_chat(user, "You have already sampled from this plant.")
+			user << "You have already sampled from this plant."
 			return
 
 		if(dead)
-			to_chat(user, "The plant is dead.")
+			user << "The plant is dead."
 			return
 
 		// Create a sample.
 		seed.spawn_seed_packet(get_turf(user))
-		to_chat(user, "You take a sample from the [seed.display_name].")
+		user << "You take a sample from the [seed.display_name]."
 		health -= (rand(3,5)*10)
 
 		if(prob(30))
@@ -321,7 +319,7 @@
 			weedlevel = 0
 			update_icon()
 		else
-			to_chat(user, "<span class='alert'>This plot is completely devoid of weeds. It doesn't need uprooting.</span>")
+			user << "<span class='alert'>This plot is completely devoid of weeds. It doesn't need uprooting.</span>"
 
 	else if (istype(O, /obj/item/weapon/storage/bag/plants))
 
@@ -336,7 +334,7 @@
 	else if ( istype(O, /obj/item/weapon/plantspray) )
 
 		var/obj/item/weapon/plantspray/spray = O
-		user.drop_item(spray, force_drop = 1)
+		user.drop_item(spray)
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str
@@ -353,19 +351,19 @@
 	else if(istype(O, /obj/item/weapon/wrench))
 
 		//If there's a connector here, the portable_atmospherics setup can handle it.
-		if(locate(/obj/machinery/atmospherics/unary/portables_connector/) in loc)
+		if(locate(/obj/machinery/atmospherics/portables_connector/) in loc)
 			return ..()
 
 		/*playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		anchored = !anchored
-		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")*/
+		user << "You [anchored ? "wrench" : "unwrench"] \the [src]."*/
 
 	else if(istype(O, /obj/item/apiary))
 
 		if(seed)
-			to_chat(user, "<span class='alert'>[src] is already occupied!</span>")
+			user << "<span class='alert'>[src] is already occupied!</span>"
 		else
-			user.drop_item(O, force_drop = 1)
+			user.drop_item(O)
 			del(O)
 
 			var/obj/machinery/apiary/A = new(src.loc)
@@ -378,16 +376,8 @@
 			component_parts.len = 0
 			del(src)
 
-	else if(O.is_sharp() && harvest)
-		attack_hand(user)
-
-/obj/machinery/portable_atmospherics/hydroponics/attack_tk(mob/user as mob)
-
-	if(harvest)
-		harvest(user)
-
-	else if(dead)
-		remove_dead(user)
+//	else if(O.is_sharp() && harvest)
+//		attack_hand(user)
 
 /obj/machinery/portable_atmospherics/hydroponics/attack_ai(mob/user as mob)
 
@@ -395,8 +385,8 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/attack_robot(mob/user as mob)
 
-	if(isMoMMI(user) && Adjacent(user)) //Are we a beep ping ?
-		return attack_hand(user) //Let them use the tray
+//	if(isMoMMI(user) && Adjacent(user)) //Are we a beep ping ?
+//		return attack_hand(user) //Let them use the tray
 
 /obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
 
@@ -417,32 +407,32 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/view_contents(mob/user)
 	if(src.seed && !src.dead)
-		to_chat(user, "<span class='info'>[src.seed.display_name]</span> is growing here.")
+		user << "<span class='info'>[src.seed.display_name]</span> is growing here."
 		if(src.health <= (src.seed.endurance / 2))
-			to_chat(user, "The plant looks <span class='alert'>[age > seed.lifespan ? "old and wilting" : "unhealthy"].</span>")
+			user << "The plant looks <span class='alert'>[age > seed.lifespan ? "old and wilting" : "unhealthy"].</span>"
 	else if(src.seed && src.dead)
-		to_chat(user, "[src] is full of dead plant matter.")
+		user << "[src] is full of dead plant matter."
 	else
-		to_chat(user, "[src] has nothing planted.")
+		user << "[src] has nothing planted."
 	if (Adjacent(user) || isobserver(user) || issilicon(user))
-		to_chat(user, "Water: [round(src.waterlevel,0.1)]/100")
-		if(seed && seed.hematophage) to_chat(user, "<span class='danger'>Blood:</span> [round(src.nutrilevel,0.1)]/10") //so edgy!!
-		else to_chat(user, "Nutrient: [round(src.nutrilevel,0.1)]/10")
+		user << "Water: [round(src.waterlevel,0.1)]/100"
+		if(seed && seed.hematophage) user << "<span class='danger'>Blood:</span> [round(src.nutrilevel,0.1)]/10" //so edgy!!
+		else user << "Nutrient: [round(src.nutrilevel,0.1)]/10"
 		if(src.weedlevel >= 5)
-			to_chat(user, "[src] is <span class='alert'>filled with weeds!</span>")
+			user << "[src] is <span class='alert'>filled with weeds!</span>"
 		if(src.pestlevel >= 5)
-			to_chat(user, "[src] is <span class='alert'>filled with tiny worms!</span>")
+			user << "[src] is <span class='alert'>filled with tiny worms!</span>"
 		if(draw_warnings)
 			if(src.toxins >= 40)
-				to_chat(user, "The tray's <span class='alert'>toxicity level alert</span> is flashing red.")
+				user << "The tray's <span class='alert'>toxicity level alert</span> is flashing red."
 			if(improper_light)
-				to_chat(user, "The tray's <span class='alert'>improper light level alert</span> is blinking.")
+				user << "The tray's <span class='alert'>improper light level alert</span> is blinking."
 			if(improper_heat)
-				to_chat(user, "The tray's <span class='alert'>improper temperature alert</span> is blinking.")
+				user << "The tray's <span class='alert'>improper temperature alert</span> is blinking."
 			if(improper_kpa)
-				to_chat(user, "The tray's <span class='alert'>improper environment pressure alert</span> is blinking.")
+				user << "The tray's <span class='alert'>improper environment pressure alert</span> is blinking."
 			if(missing_gas)
-				to_chat(user, "The tray's <span class='alert'>improper gas environment alert</span> is blinking.")
+				user << "The tray's <span class='alert'>improper gas environment alert</span> is blinking."
 
 		if(!istype(src,/obj/machinery/portable_atmospherics/hydroponics/soil))
 
@@ -466,7 +456,7 @@
 			if(T.dynamic_lighting)
 				light_available = T.get_lumcount() * 10
 
-			to_chat(user, "The tray's sensor suite is reporting a light level of [round(light_available, 0.1)] lumens and a temperature of [environment.temperature]K.")
+			user << "The tray's sensor suite is reporting a light level of [round(light_available, 0.1)] lumens and a temperature of [environment.temperature]K."
 
 /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid()
 	set name = "Toggle Tray Lid"
@@ -508,7 +498,7 @@
 
 	labeled = copytext(n_label, 1, 32) //technically replaces any traditional hand labeler labels, but will anyone really complain?
 	update_name()
-	new/atom/proc/remove_label(src)
+	new /atom/proc/remove_label(src)
 
 /obj/machinery/portable_atmospherics/hydroponics/remove_label()
 	..()
@@ -516,17 +506,17 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/HasProximity(mob/living/simple_animal/M)
 	if(seed && !dead && seed.carnivorous == 2 && age > seed.maturation)
-		if(istype(M, /mob/living/simple_animal/mouse) || istype(M, /mob/living/simple_animal/lizard) && !M.locked_to && !M.anchored)
+		if(istype(M, /mob/living/simple_animal/mouse) || istype(M, /mob/living/simple_animal/lizard) && !M.anchored)
 			spawn(10)
-				if(!M || !Adjacent(M) || M.locked_to || M.anchored) return // HasProximity() will likely fire a few times almost simultaneously, so spawn() is tricky with it's sanity
+				if(!M || !Adjacent(M) || M.anchored) return // HasProximity() will likely fire a few times almost simultaneously, so spawn() is tricky with it's sanity
 				visible_message("<span class='warning'>\The [seed.display_name] hungrily lashes a vine at \the [M]!</span>")
 				if(M.health > 0)
 					M.Die()
 				M.forceMove(src.loc)
-				lock_atom(M)
+				M.anchored = 1
 				spawn(30)
 					if(M && M.loc == get_turf(src))
-						unlock_atom(M)
+						M.anchored = 0
 						M.gib(meat = 0) //"meat" argument only exists for mob/living/simple_animal/gib()
 						nutrilevel += 6
 						check_level_sanity()

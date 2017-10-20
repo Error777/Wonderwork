@@ -529,6 +529,12 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	if(M < 0)
 		return -M
 
+/proc/transfer_fingerprints(atom/A,atom/B)//synchronizes the fingerprints between two atoms. Useful when you have two different atoms actually being different states of a same object.
+	if(!A || !B)
+		return
+	B.fingerprints = A.fingerprints
+	B.fingerprintshidden = A.fingerprintshidden
+	B.fingerprintslast = A.fingerprintslast
 
 /proc/key_name(var/whom, var/include_link = null, var/include_name = 1, var/real_key = 0)
 	var/mob/M
@@ -1648,3 +1654,15 @@ var/list/WALLITEMS = list(
 					del(I)
 	target.update_icons()
 	target.update_hud()
+
+/proc/get_random_colour(var/simple, var/lower, var/upper)
+	var/colour
+	if(simple)
+		colour = pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))
+	else
+		for(var/i=1;i<=3;i++)
+			var/temp_col = "[num2hex(rand(lower,upper))]"
+			if(length(temp_col )<2)
+				temp_col  = "0[temp_col]"
+			colour += temp_col
+	return colour

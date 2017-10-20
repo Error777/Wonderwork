@@ -20,7 +20,6 @@
 
 /obj/item/seeds/telriis
 	seed_type = "telriis"
-	vending_cat = "prehistoric"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/telriis_clump
 	name = "telriis grass"
@@ -48,7 +47,6 @@
 
 /obj/item/seeds/thaadra
 	seed_type = "thaadra"
-	vending_cat = "prehistoric"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/thaadrabloom
 	name = "thaa'dra bloom"
@@ -79,7 +77,6 @@
 
 /obj/item/seeds/jurlmah
 	seed_type = "jurlmah"
-	vending_cat = "prehistoric"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/jurlmah
 	name = "jurl'mah pod"
@@ -111,7 +108,6 @@
 
 /obj/item/seeds/amauri
 	seed_type = "amauri"
-	vending_cat = "prehistoric"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/amauri
 	name = "amauri fruit"
@@ -141,7 +137,6 @@
 
 /obj/item/seeds/gelthi
 	seed_type = "gelthi"
-	vending_cat = "prehistoric"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/gelthi
 	name = "gelthi berries"
@@ -172,7 +167,6 @@
 
 /obj/item/seeds/vale
 	seed_type = "vale"
-	vending_cat = "prehistoric"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/vale
 	name = "vale leaves"
@@ -202,7 +196,6 @@
 
 /obj/item/seeds/surik
 	seed_type = "surik"
-	vending_cat = "prehistoric"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/surik
 	name = "surik fruit"

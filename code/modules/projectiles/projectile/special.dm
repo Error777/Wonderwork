@@ -76,6 +76,7 @@
 	damage_type = TOX
 	nodamage = 1
 	flag = "energy"
+	var/mutstrength = 10 //how many units of mutagen will the mutation projectile act as
 
 	on_hit(var/atom/target, var/blocked = 0)
 		var/mob/living/M = target

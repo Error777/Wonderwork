@@ -126,7 +126,6 @@ proc/hasorgans(A)
 /proc/hsl2rgb(h, s, l)
 	return
 
-
 /proc/check_zone(zone)
 	if(!zone)	return "chest"
 	switch(zone)

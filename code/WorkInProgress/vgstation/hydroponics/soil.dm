@@ -1,17 +1,15 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil
 	name = "soil"
-	icon = 'icons/obj/hydroponics.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics.dmi'
 	icon_state = "soil"
 	density = 0
 	use_power = 0
 	draw_warnings = 0
 
-	machine_flags = 0 // THIS SHOULD NOT EVER BE UNWRENCHED AND IT SHOULD NOT EVER SPAWN MACHINE FRAMES, MY GOD
-
 /obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/weapon/pickaxe/shovel))
+	if(istype(W, /obj/item/weapon/shovel))
 		if(!seed)
-			to_chat(user, "You clear up [src]!")
+			user << "You clear up [src]!"
 			new /obj/item/weapon/ore/glass(loc)//we get some of the dirt back
 			new /obj/item/weapon/ore/glass(loc)
 			del(src)
@@ -20,9 +18,6 @@
 			..()
 	else
 		return ..()
-
-/obj/machinery/portable_atmospherics/hydroponics/soil/smashDestroy(destroy_chance)
-	del(src)
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/New()
 	..()

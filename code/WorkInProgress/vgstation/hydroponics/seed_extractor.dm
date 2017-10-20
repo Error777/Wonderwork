@@ -1,7 +1,7 @@
 /obj/machinery/seed_extractor
 	name = "seed extractor"
 	desc = "Extracts and bags seeds from produce."
-	icon = 'icons/obj/hydroponics.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics.dmi'
 	icon_state = "sextractor"
 	density = 1
 	anchored = 1
@@ -50,29 +50,29 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 		for(var/obj/item/seeds/G in P.contents)
 			++loaded
 			moveToStorage(G)
-			if(contents.len >= MAX_N_OF_ITEMS)
-				to_chat(user, "<span class='notice'>You fill \the [src] to the brim.</span>")
+			if(contents.len >= 999)
+				user << "<span class='notice'>You fill \the [src] to the brim.</span>"
 				return
 		if (loaded)
-			to_chat(user, "<span class='notice'>You put the seeds from \the [O.name] into [src].</span>")
+			user << "<span class='notice'>You put the seeds from \the [O.name] into [src].</span>"
 		else
-			to_chat(user, "<span class='notice'>There are no seeds in \the [O.name].</span>")
+			user << "<span class='notice'>There are no seeds in \the [O.name].</span>"
 		return
 
 	// Loading individual seeds into the machine
 	if (istype(O,/obj/item/seeds))
 		if (!hasSpaceCheck(user))
 			return
-		user.drop_item(force_drop = 1)
+		user.drop_item(O)
 		moveToStorage(O)
-		to_chat(user, "<span class='notice'>You add [O] to [src.name].</span>")
+		user << "<span class='notice'>You add [O] to [src.name].</span>"
 		updateUsrDialog()
 		return
 
 	// Fruits and vegetables.
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown) || istype(O, /obj/item/weapon/grown))
 
-		user.drop_item(O, force_drop = 1)
+		user.drop_item(O)
 
 		var/datum/seed/new_seed_type
 		if(istype(O, /obj/item/weapon/grown))
@@ -83,29 +83,29 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			new_seed_type = plant_controller.seeds[F.plantname]
 
 		if(new_seed_type)
-			to_chat(user, "<span class='notice'>You extract some seeds from [O].</span>")
+			user << "<span class='notice'>You extract some seeds from [O].</span>"
 			var/produce = rand(min_seeds,max_seeds)
 			for(var/i = 0;i<=produce;i++)
 				var/obj/item/seeds/seeds = new(get_turf(src))
 				seeds.seed_type = new_seed_type.name
 				seeds.update_seed()
 		else
-			to_chat(user, "[O] doesn't seem to have any usable seeds inside it.")
+			user << "[O] doesn't seem to have any usable seeds inside it."
 
 		del(O)
 
 	//Grass. //Why isn't this using the nonplant_seed_type functionality below?
 	else if(istype(O, /obj/item/stack/tile/grass))
 		var/obj/item/stack/tile/grass/S = O
-		to_chat(user, "<span class='notice'>You extract some seeds from the [S.name].</span>")
+		user << "<span class='notice'>You extract some seeds from the [S.name].</span>"
 		S.use(1)
 		new /obj/item/seeds/grassseed(loc)
 
 	if(O)
 		var/obj/item/F = O
 		if(F.nonplant_seed_type)
-			to_chat(user, "<span class='notice'>You extract some seeds from the [F.name].</span>")
-			user.drop_item(O, force_drop = 1)
+			user << "<span class='notice'>You extract some seeds from the [F.name].</span>"
+			user.drop_item(O)
 			var/t_amount = 0
 			var/t_max = rand(1,4)
 			while(t_amount < t_max)
@@ -226,7 +226,7 @@ obj/machinery/seed_extractor/proc/moveToStorage(var/obj/item/seeds/O as obj)
 	piles += new /datum/seed_pile(O.seed)
 
 obj/machinery/seed_extractor/proc/hasSpaceCheck(mob/user as mob)
-	if(contents.len >= MAX_N_OF_ITEMS)
-		to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+	if(contents.len >= 999)
+		user << "<span class='notice'>\The [src] is full.</span>"
 		return 0
 	else return 1

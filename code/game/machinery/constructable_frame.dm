@@ -399,7 +399,51 @@ obj/item/weapon/circuitboard/rdserver
 
 /obj/item/weapon/circuitboard/hydroponicst
 	name = "Circuit board (Hydroponics Tray)"
-	build_path = "/obj/machinery/hydroponics"
+	build_path = "/obj/machinery/portable_atmospherics/hydroponics"
+	board_type = "machine"
+	origin_tech = "programming=2;engineering=1"
+	frame_desc = "Requires 2 Matter Bins, 3 Manipulator and 1 Console Screen."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/matter_bin" = 2,
+							"/obj/item/weapon/stock_parts/manipulator" = 3,
+							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
+/obj/item/weapon/circuitboard/seed_extractor
+	name = "Circuit board (Seed Extractor)"
+	build_path = "/obj/machinery/seed_extractor"
+	board_type = "machine"
+	origin_tech = "programming=2;engineering=1"
+	frame_desc = "Requires 2 Matter Bins, 3 Manipulator and 1 Console Screen."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/matter_bin" = 2,
+							"/obj/item/weapon/stock_parts/manipulator" = 3,
+							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
+/obj/item/weapon/circuitboard/egg_incubator
+	name = "Circuit board (Egg Incubator)"
+	build_path = "/obj/machinery/egg_incubator"
+	board_type = "machine"
+	origin_tech = "programming=2;engineering=1"
+	frame_desc = "Requires 2 Matter Bins, 3 Manipulator and 1 Console Screen."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/matter_bin" = 2,
+							"/obj/item/weapon/stock_parts/manipulator" = 3,
+							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
+/obj/item/weapon/circuitboard/botany_centrifuge
+	name = "Circuit board (Botany Centrifuge)"
+	build_path = "/obj/machinery/botany/extractor"
+	board_type = "machine"
+	origin_tech = "programming=2;engineering=1"
+	frame_desc = "Requires 2 Matter Bins, 3 Manipulator and 1 Console Screen."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/matter_bin" = 2,
+							"/obj/item/weapon/stock_parts/manipulator" = 3,
+							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
+/obj/item/weapon/circuitboard/botany_bioballistic
+	name = "Circuit board (Bioballistic Delivery System)"
+	build_path = "/obj/machinery/botany/editor"
 	board_type = "machine"
 	origin_tech = "programming=2;engineering=1"
 	frame_desc = "Requires 2 Matter Bins, 3 Manipulator and 1 Console Screen."
@@ -419,3 +463,5 @@ obj/item/weapon/circuitboard/rdserver
 							"/obj/item/weapon/stock_parts/manipulator" = 1,
 							"/obj/item/weapon/stock_parts/micro_laser" = 1,
 							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
+

@@ -79,9 +79,6 @@
 	for(var/mob/M in viewers(src))
 		M.show_message( message, 1, blind_message, 2)
 
-/mob/proc/setClickCooldown(var/timeout)
-	next_move = max(world.time + timeout, next_move)
-
 //This is awful
 /mob/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
@@ -994,6 +991,10 @@ mob/verb/yank_out_object()
 
 /mob/proc/update_clothing()
 	return
+
+/mob/proc/isUnconscious() //Returns 1 if unconscious, dead or faking death
+	if(status_flags & FAKEDEATH)
+		return 1
 
 /mob/proc/instant_vision_update(state=null, atom/A)
 	if(!client || isnull(state))

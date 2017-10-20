@@ -13,6 +13,7 @@
 	var/ignoreinvert = 0
 	///Chemistry.
 	var/datum/reagents/reagents = null
+	var/labeled //Stupid and ugly way to do it, but the alternative would probably require rewriting everywhere a name is read.
 
 	//var/chem_is_open_container = 0
 	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
@@ -1087,40 +1088,12 @@ var/using_new_click_proc = 0 //TODO ERRORAGE (This is temporary, while the DblCl
 
 	return
 
-/atom/proc/AltClick()
-
-	/* // NOT UNTIL I FIGURE OUT A GOOD WAY TO DO THIS SHIT
-	if((HULK in usr.mutations) || (SUPRSTR in usr.augmentations))
-		if(!istype(src, /obj/item) && !istype(src, /mob) && !istype(src, /turf))
-			if(!usr.get_active_hand())
-
-				var/liftable = 0
-				for(var/x in liftable_structures)
-					if(findtext("[src.type]", "[x]"))
-						liftable = 1
-						break
-
-				if(liftable)
-
-					add_fingerprint(usr)
-					var/obj/item/weapon/grab/G = new /obj/item/weapon/grab(usr)
-					G.assailant = usr
-					usr.put_in_active_hand(G)
-					G.structure = src
-					G.synch()
-
-					visible_message("\red [usr] has picked up [src]!")
-
-					return
-				else
-					usr << "\red You can't pick this up!"
-	*/
-
-	return
-
 /atom/proc/CtrlClick()
 	if(hascall(src,"pull"))
 		src:pull()
+	return
+
+/atom/proc/AltClick(var/mob/user)
 	return
 
 /atom/proc/AIShiftClick() // Opens and closes doors!
