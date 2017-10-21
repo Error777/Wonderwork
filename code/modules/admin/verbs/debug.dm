@@ -1040,6 +1040,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 //RISK CODE HERE DON'T USE IN LIVE SERVER,ALSO THERE'S NO CHECK FOR ADMINS SO ANYONE CAN USE IT WATCHOUTYO
 //Special proc to set up the server for mapping via screenshots
+/*
 /client/verb/mapWorld()
         set name = "Map World"
         set desc = "Takes a series of screenshots for mapping"
@@ -1115,3 +1116,4 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
                                 sleep(delay)
 
         alert("Mapping complete!", "Yay!", "Ok")
+*/
