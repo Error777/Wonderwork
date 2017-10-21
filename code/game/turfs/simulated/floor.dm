@@ -7,8 +7,8 @@ var/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","
 				"asteroid","asteroid_dug",
 				"asteroid0","asteroid1","asteroid2","asteroid3","asteroid4",
 				"asteroid5","asteroid6","asteroid7","asteroid8","asteroid9","asteroid10","asteroid11","asteroid12",
-				"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "wood-broken", "carpet","carpet-broken",
-				"carpetcorner", "carpetside", "carpet", "ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5",
+				"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "wood-broken", "carpet",
+				"carpetcorner", "carpetside","ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5",
 				"ironsand6", "ironsand7", "ironsand8", "ironsand9", "ironsand10", "ironsand11",
 				"ironsand12", "ironsand13", "ironsand14", "ironsand15")
 
@@ -17,9 +17,11 @@ var/list/plating_icons = list("plating","platingdmg1","platingdmg2","platingdmg3
 				"ironsand8", "ironsand9", "ironsand10", "ironsand11",
 				"ironsand12", "ironsand13", "ironsand14", "ironsand15")
 
-var/list/wood_icons = list("wood","wood1","wood2","wood3","wood4","wood5","woodold","wood-broken","wood-broken1","wood-broken2","wood-broken3","wood-broken4","wood-broken5","wood-broken6","wood-broken7","mrboneswood")
+var/list/wood_icons = list("wood","wood1","wood2","wood3","wood4","wood5","wood6","woodold","wood-broken","wood-broken1","wood-broken2","wood-broken3","wood-broken4","wood-broken5","wood-broken6","wood-broken7","mrboneswood")
 
 var/list/fakespace_icons = list("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25")
+
+var/list/dark_icons = list("dark","darkfloor2")
 
 var/list/gold_icons = list("gold","gold-broken")
 
@@ -102,9 +104,11 @@ turf/simulated/floor/proc/update_icon()
 	if(lava)
 		return
 	else if(is_plasteel_floor())
+		icon = 'icons/turf/floors.dmi'
 		if(!broken && !burnt)
 			icon_state = icon_regular_floor
 	else if(is_plating())
+		icon = 'icons/turf/floors.dmi'
 		if(!broken && !burnt)
 			icon_state = icon_plating //Because asteroids are 'platings' too.
 	else if(is_light_floor())
@@ -132,10 +136,12 @@ turf/simulated/floor/proc/update_icon()
 			if(!(icon_state in list("grass1","grass2","grass3","grass4")))
 				icon_state = "grass[pick("1","2","3","4")]"
 	else if(is_fakespace_floor())
+		icon = 'icons/turf/space.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in fakespace_icons) )
 				icon_state = "[pick("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25")]"
 	else if(is_carpet_floor())
+		icon = 'icons/turf/carpet.dmi'
 		if(!broken && !burnt)
 			if(icon_state != "carpetsymbol")
 				var/connectdir = 0
@@ -178,47 +184,62 @@ turf/simulated/floor/proc/update_icon()
 
 				icon_state = "carpet[connectdir]-[diagonalconnect]"
 
+	else if(is_dark_floor())
+		icon = 'icons/turf/darkfloors.dmi'
+		if(!broken && !burnt)
+			if( !(icon_state in dark_icons) )
+				icon_state = "dark"
+
 	else if(is_gold_floor())
+		icon = 'icons/turf/other.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in gold_icons) )
 				icon_state = "gold"
 
 	else if(is_plasma_floor())
+		icon = 'icons/turf/other.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in plasma_icons) )
 				icon_state = "plasma"
 
 	else if(is_silver_floor())
+		icon = 'icons/turf/other.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in silver_icons) )
 				icon_state = "silver"
 
 	else if(is_bananium_floor())
+		icon = 'icons/turf/other.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in bananium_icons) )
 				icon_state = "bananium"
 
 	else if(is_uranium_floor())
+		icon = 'icons/turf/other.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in uranium_icons) )
 				icon_state = "uranium"
 
 	else if(is_diamond_floor())
+		icon = 'icons/turf/other.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in diamond_icons) )
 				icon_state = "diamond"
 
 	else if(is_grimy_floor())
+		icon = 'icons/turf/carpet.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in grimy_icons) )
 				icon_state = "grimy"
 
 	else if(is_arcade_floor())
+		icon = 'icons/turf/carpet.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in arcade_icons) )
 				icon_state = "arcade"
 
 	else if(is_wood_floor())
+		icon = 'icons/turf/wood.dmi'
 		if(!broken && !burnt)
 			if( !(icon_state in wood_icons) )
 				icon_state = "wood"
@@ -299,6 +320,12 @@ turf/simulated/floor/proc/update_icon()
 
 /turf/simulated/floor/is_wood_floor()
 	if(istype(floor_tile,/obj/item/stack/tile/wood))
+		return 1
+	else
+		return 0
+
+/turf/simulated/floor/is_dark_floor()
+	if(istype(floor_tile,/obj/item/stack/tile/dark))
 		return 1
 	else
 		return 0
@@ -388,6 +415,9 @@ turf/simulated/floor/proc/update_icon()
 	else if(is_bananium_floor())
 		src.icon_state = "bananium-broken"
 		broken = 1
+	else if(is_dark_floor())
+		src.icon_state = "damaged[pick(1,2,3,4,5)]"
+		broken = 1
 	else if(is_gold_floor())
 		src.icon_state = "gold-broken"
 		broken = 1
@@ -434,6 +464,9 @@ turf/simulated/floor/proc/update_icon()
 		burnt = 1
 	else if(is_bananium_floor())
 		src.icon_state = "bananium-broken"
+		burnt = 1
+	else if(is_dark_floor())
+		src.icon_state = "damaged[pick(1,2,3,4,5)]"
 		burnt = 1
 	else if(is_gold_floor())
 		src.icon_state = "gold-broken"
@@ -529,6 +562,25 @@ turf/simulated/floor/proc/update_icon()
 			return
 	//if you gave a valid parameter, it won't get thisf ar.
 	floor_tile = new/obj/item/stack/tile/light
+
+	update_icon()
+	levelupdate()
+
+//This proc will make the turf a light floor tile. The expected argument is the tile to make the turf with
+//If none is given it will make a new object. dropping or unequipping must be handled before or after calling
+//this proc.
+/turf/simulated/floor/proc/make_dark_floor(var/obj/item/stack/tile/dark/T = null)
+	broken = 0
+	burnt = 0
+	intact = 1
+	if(T)
+		if(istype(T,/obj/item/stack/tile/dark))
+			floor_tile = T
+			update_icon()
+			levelupdate()
+			return
+	//if you gave a valid parameter, it won't get thisf ar.
+	floor_tile = new/obj/item/stack/tile/dark
 
 	update_icon()
 	levelupdate()

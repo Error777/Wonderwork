@@ -43,6 +43,20 @@
 	throw_range = 20
 	flags = FPRINT | TABLEPASS | CONDUCT
 	max_amount = 60
+/*
+ * Dark
+ */
+/obj/item/stack/tile/dark
+	name = "dark floor tiles"
+	singular_name = "dark floor tile"
+	icon_state = "tile_dark"
+	w_class = 3.0
+	force = 1.0
+	throwforce = 1.0
+	throw_speed = 5
+	throw_range = 20
+	flags = FPRINT | TABLEPASS | CONDUCT
+	max_amount = 60
 
 /*
  * Carpets

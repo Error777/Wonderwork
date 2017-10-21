@@ -174,6 +174,11 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "wcircuit"
 
+/turf/simulated/floor/dark
+	icon = 'icons/turf/darkfloors.dmi'
+	icon_state = "dark"
+	floor_tile = new /obj/item/stack/tile/dark
+
 /turf/simulated/floor/gold
 	name = "gold floor tiles"
 	icon = 'icons/turf/other.dmi'

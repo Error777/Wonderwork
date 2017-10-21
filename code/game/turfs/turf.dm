@@ -170,6 +170,8 @@
 	return 0
 /turf/proc/is_bananium_floor()
 	return 0
+/turf/proc/is_dark_floor()
+	return 0
 /turf/proc/is_gold_floor()
 	return 0
 /turf/proc/is_plasma_floor()
