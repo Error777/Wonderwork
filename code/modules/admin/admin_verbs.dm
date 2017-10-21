@@ -145,6 +145,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/restart_controller,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
+	/client/verb/mapWorld,
 	/client/proc/toggledebuglogs
 	)
 var/list/admin_verbs_possess = list(

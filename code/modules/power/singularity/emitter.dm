@@ -2,7 +2,7 @@
 
 /obj/machinery/power/emitter
 	name = "Emitter"
-	desc = "A heavy duty industrial laser"
+	desc = "It is a heavy duty industrial laser."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "emitter"
 	anchored = 0
@@ -91,6 +91,11 @@
 
 /obj/machinery/containment_field/meteorhit()
 	return 0
+
+/obj/machinery/power/emitter/blob_act()
+
+	if(prob(30))
+		del(src)
 
 /obj/machinery/power/emitter/process()
 	if(stat & (BROKEN))
