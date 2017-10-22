@@ -530,7 +530,7 @@
 	display_name = "ambrosia vulgaris"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris)
 	mutants = list("ambrosiadeus")
-	packet_icon = "seed-ambrosiavulgaris"
+	packet_icon = "seed-ambrosia"
 	plant_icon = "ambrosiavulgaris"
 	harvest_repeat = 1
 	chems = list("nutriment" = list(1), "space_drugs" = list(1,8), "kelotane" = list(1,8,1), "bicaridine" = list(1,10,1), "toxin" = list(1,5))
@@ -547,7 +547,7 @@
 /datum/seed/ambrosia/cruciatus
 	name = "ambrosiacruciatus"
 	seed_name = "ambrosia vulgaris"
-	packet_icon = "seed-ambrosiavulgaris"
+	packet_icon = "seed-ambrosia"
 	plant_icon = "ambrosiavulgaris"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris/cruciatus)
 	mutants = null
@@ -578,7 +578,7 @@
 	display_name = "chanterelle mushrooms"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/chanterelle)
 	mutants = list("reishi","amanita","plumphelmet")
-	packet_icon = "mycelium-chanter"
+	packet_icon = "seed-chanter"
 	plant_icon = "chanter"
 	chems = list("nutriment" = list(1,25))
 
@@ -611,7 +611,7 @@
 	display_name = "plump helmet mushrooms"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/plumphelmet)
 	mutants = list("walkingmushroom","towercap")
-	packet_icon = "mycelium-plump"
+	packet_icon = "seed-plump"
 	plant_icon = "plump"
 	chems = list("nutriment" = list(2,10))
 
@@ -626,7 +626,7 @@
 	display_name = "reishi"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/reishi)
 	mutants = list("libertycap","glowshroom")
-	packet_icon = "mycelium-reishi"
+	packet_icon = "seed-reishi"
 	plant_icon = "reishi"
 	chems = list("nutriment" = list(1), "stoxin" = list(3,3), "space_drugs" = list(1,25))
 
@@ -642,7 +642,7 @@
 	display_name = "liberty cap mushrooms"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/libertycap)
 	mutants = null
-	packet_icon = "mycelium-liberty"
+	packet_icon = "seed-liberty"
 	plant_icon = "liberty"
 	chems = list("nutriment" = list(1,50), "psilocybin" = list(3,5))
 
@@ -657,7 +657,7 @@
 	display_name = "fly amanita mushrooms"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/amanita)
 	mutants = list("destroyingangel","plastic")
-	packet_icon = "mycelium-amanita"
+	packet_icon = "seed-amanita"
 	plant_icon = "amanita"
 	chems = list("nutriment" = list(1), "amatoxin" = list(3,3), "psilocybin" = list(1,25))
 
@@ -673,7 +673,7 @@
 	display_name = "destroying angel mushrooms"
 	mutants = null
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/angel)
-	packet_icon = "mycelium-angel"
+	packet_icon = "seed-angel"
 	plant_icon = "angel"
 	chems = list("nutriment" = list(1,50), "amatoxin" = list(13,3), "psilocybin" = list(1,25))
 
@@ -687,7 +687,7 @@
 	display_name = "tower caps"
 	mutants = null
 	products = list(/obj/item/weapon/grown/log)
-	packet_icon = "mycelium-tower"
+	packet_icon = "seed-tower"
 	plant_icon = "towercap"
 
 	lifespan = 80
@@ -700,7 +700,7 @@
 	display_name = "glowshrooms"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom)
 	mutants = null
-	packet_icon = "mycelium-glowshroom"
+	packet_icon = "seed-glowshroom"
 	plant_icon = "glowshroom"
 	chems = list("radium" = list(1,20))
 
@@ -718,7 +718,7 @@
 	display_name = "walking mushrooms"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/walkingmushroom)
 	mutants = null
-	packet_icon = "mycelium-walkingmushroom"
+	packet_icon = "seed-walkingmushroom"
 	plant_icon = "walkingmushroom"
 	chems = list("nutriment" = list(2,10))
 
@@ -734,7 +734,7 @@
 	display_name = "plastellium"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/grown/plastellium)
 	mutants = null
-	packet_icon = "mycelium-plast"
+	packet_icon = "seed-plastic"
 	plant_icon = "plastellium"
 	chems = list("plasticide" = list(3,12))
 
@@ -1318,7 +1318,7 @@
 	seed_name = "diona"
 	seed_noun = "nodes"
 	display_name = "diona nodes"
-	packet_icon = "seed-dionanode"
+	packet_icon = "seed-diona"
 	products = list(/mob/living/carbon/monkey/diona)
 	plant_dmi = 'icons/obj/hydroponics/hydroponics2.dmi'
 	plant_icon = "dionanode"
