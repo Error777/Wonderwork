@@ -253,7 +253,7 @@
 // *************************************
 
 /obj/item/weapon/plantspray
-	icon = 'icons/obj/hydroponics.dmi'
+	icon = 'icons/obj/hydroponics/hydroponics.dmi'
 	item_state = "spray"
 	flags = FPRINT
 	slot_flags = SLOT_BELT

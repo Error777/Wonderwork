@@ -58,7 +58,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	var/juicy = 0					// 0 = no, 1 = splatters when thrown, 2 = slips
 
 	// Cosmetics.
-	var/plant_dmi = 'icons/obj/hydroponics.dmi'// DMI  to use for the plant growing in the tray.
+	var/plant_dmi = 'icons/obj/hydroponics/hydroponics.dmi'// DMI  to use for the plant growing in the tray.
 	var/plant_icon                  // Icon to use for the plant growing in the tray.
 	var/packet_icon = "seed"        // Icon to use for physical seed packet item.
 	var/biolum                      // Plant is bioluminescent.
@@ -255,15 +255,15 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 		list("seed-eggy",               "eggy",					6),
 		list("seed-apple",              "apple",				6),
 		list("seed-goldapple",          "goldapple",			6),
-		list("seed-ambrosiavulgaris",   "ambrosiavulgaris",		6),
+		list("seed-ambrosia",           "ambrosiavulgaris",		6),
 		list("seed-ambrosiadeus",       "ambrosiadeus",			6),
-		list("seed-chanter",            "chanter",				3),
+		list("seed-chanter",  	        "chanter",				3),
 		list("seed-plump",              "plump",				3),
 		list("seed-reishi",             "reishi",				4),
 		list("seed-liberty",            "liberty",				3),
 		list("seed-amanita",            "amanita",				3),
 		list("seed-angel",              "angel",				3),
-		list("seed-tower",              "towercap",				3),
+		list("seed-towercap",           "towercap",				3),
 		list("seed-glowshroom",         "glowshroom",			4),
 		list("seed-walkingmushroom",    "walkingmushroom",		3),
 		list("seed-plast",              "plastellium",			3),
