@@ -199,7 +199,7 @@ datum/assemblerprint
 		powerusage = 4000
 
 	bombassembly
-		typepath = /obj/item/device/bombassembly
+		//typepath = /obj/item/device/bombassembly
 		simplicity = 70
 		components = list(/obj/item/weapon/stock_parts/scrap/spring,
 		/obj/item/weapon/stock_parts/scrap/slide)
@@ -207,15 +207,15 @@ datum/assemblerprint
 		duration = 50
 		powerusage = 100
 
-	corobomb
-		typepath = /obj/item/device/bombassembly/done
+	/*corobomb
+		//typepath = /obj/item/device/bombassembly/done
 		simplicity = 70
-		components = list(/obj/item/device/bombassembly,
+		//components = list(/obj/item/device/bombassembly,
 		/obj/item/weapon/ore/gem/coronium,
 		/obj/item/weapon/ore/gem/coronium)
 		liquidcomponents = list("water" = 100)
 		duration = 50
-		powerusage = 100
+		powerusage = 100*/
 
 	pda
 		typepath = /obj/item/device/pda
